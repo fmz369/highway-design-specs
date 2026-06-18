@@ -12,7 +12,7 @@ function renderCard(s, linkToDetail) {
   }).join('');
 
   var href = linkToDetail !== false
-    ? ' href="specs/?code=' + encodeURIComponent(s.code) + '"'
+    ? ' href="../specs/?code=' + encodeURIComponent(s.code) + '"'
     : '';
   var tag = linkToDetail !== false ? 'a' : 'div';
 
