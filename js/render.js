@@ -66,12 +66,42 @@
     // 搜索
     var si = document.getElementById('searchInput');
     var clearBtn = document.getElementById('clearSearch');
+    var searchBar = si.parentNode;
+    // 创建联想下拉
+    var sugDiv = document.createElement('div');
+    sugDiv.className = 'search-suggestions';
+    searchBar.appendChild(sugDiv);
+
     si.addEventListener('input', function() {
       clearBtn.classList.toggle('visible', si.value.length > 0);
+      var q = si.value.trim();
+      if (q) {
+        var results = searchSpecs(q).slice(0, 6);
+        if (results.length > 0) {
+          var sugHTML = '';
+          results.forEach(function(s) {
+            sugHTML += '<div class="sug-item" data-code="' + s.code + '">'
+              + '<span class="sug-code">' + s.code + '</span>'
+              + '<span class="sug-title">' + s.title + '</span>'
+              + '<span class="sug-cat">' + (CAT_NAMES[s.cat]||'') + '</span></div>';
+          });
+          sugDiv.innerHTML = sugHTML;
+          sugDiv.classList.add('active');
+        } else { sugDiv.classList.remove('active'); }
+      } else { sugDiv.classList.remove('active'); }
       doRender();
     });
+    sugDiv.addEventListener('mousedown', function(e) {
+      var item = e.target.closest('.sug-item');
+      if (item) {
+        window.location.href = '../specs/?code=' + encodeURIComponent(item.dataset.code);
+      }
+    });
+    document.addEventListener('click', function(e) {
+      if (!searchBar.contains(e.target)) sugDiv.classList.remove('active');
+    });
     clearBtn.addEventListener('click', function() {
-      si.value = ''; clearBtn.classList.remove('visible'); doRender(); si.focus();
+      si.value = ''; clearBtn.classList.remove('visible'); sugDiv.classList.remove('active'); doRender(); si.focus();
     });
     document.addEventListener('keydown', function(e) {
       if (e.key === '/' && document.activeElement !== si && document.activeElement.tagName !== 'INPUT') {
@@ -88,6 +118,9 @@
     var spec = getSpecByCode(code);
     if (!spec) return;
 
+    // 记录浏览历史
+    addHistory(spec.code);
+
     // 页面标题
     document.title = spec.code + ' ' + spec.title + ' — 公路道路设计规范';
     document.getElementById('headerTitle').textContent = spec.code;
@@ -103,7 +136,23 @@
     // 统计
     document.getElementById('statsPills').innerHTML = renderStatsPills();
 
-    // 渲染详情
+    // 构建内容HTML用于TOC提取
+    var contentHTML = spec.content || '<p>暂无详细内容</p>';
+
+    // 提取h4标题生成TOC
+    var tocItems = [];
+    var tmpDiv = document.createElement('div');
+    tmpDiv.innerHTML = contentHTML;
+    var h4s = tmpDiv.querySelectorAll('h4');
+    h4s.forEach(function(h4, i) {
+      var id = 'section-' + i;
+      h4.setAttribute('id', id);
+      var cleanText = h4.textContent.replace(/[\u{1F300}-\u{1F9FF}\u{2600}-\u{27BF}\u{2300}-\u{23FF}\u{2700}-\u{27BF}\u{1F000}-\u{1F02F}]/gu, '').replace(/^\d+\.\d*\s*/, '').replace(/第[一二三四五六七八九十\d]+章\s*/, '').trim();
+      tocItems.push({ id: id, text: cleanText || h4.textContent.trim() });
+    });
+    contentHTML = tmpDiv.innerHTML;
+
+    // 渲染详情布局
     var isFav = isFavorite(spec.code);
     var sc = spec.status === 'current' ? 'status-current' : 'status-replaced';
     var st = spec.status === 'current' ? '现行' : '已替代';
@@ -120,9 +169,66 @@
     html += tags;
     if (spec.hasPdf) html += '<span style="font-size:11px;color:#16a34a;">📥 离线PDF可用</span>';
     html += '</div></div>';
-    html += '<div class="spec-content">' + (spec.content || '<p>暂无详细内容</p>') + '</div>';
+
+    // TOC切换按钮（移动端）
+    if (tocItems.length > 3) {
+      html += '<button class="spec-toc-toggle" id="tocToggle">📑 目录导航</button>';
+    }
+
+    html += '<div class="spec-detail-wrapper">';
+    // 侧边TOC
+    if (tocItems.length > 3) {
+      html += '<nav class="spec-toc visible" id="specToc"><h5>📑 本页目录</h5>';
+      tocItems.forEach(function(item) {
+        html += '<a href="#' + item.id + '" data-toc="' + item.id + '">' + item.text + '</a>';
+      });
+      html += '</nav>';
+    }
+    html += '<div class="spec-detail-main">';
+    html += '<div class="spec-content">' + contentHTML + '</div>';
+    html += '</div></div>';
 
     document.getElementById('specDetail').innerHTML = html;
+
+    // TOC交互
+    if (tocItems.length > 3) {
+      // 移动端切换
+      var tocToggle = document.getElementById('tocToggle');
+      var specToc = document.getElementById('specToc');
+      if (tocToggle && specToc) {
+        tocToggle.addEventListener('click', function() {
+          specToc.classList.toggle('visible');
+        });
+      }
+      // TOC点击平滑滚动
+      specToc.addEventListener('click', function(e) {
+        var a = e.target.closest('a');
+        if (!a) return;
+        e.preventDefault();
+        var id = a.getAttribute('data-toc');
+        var el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          history.replaceState(null, '', '#' + id);
+        }
+      });
+      // 滚动高亮
+      var tocLinks = specToc.querySelectorAll('a');
+      window.addEventListener('scroll', function() {
+        var scrollPos = window.scrollY + 180;
+        tocItems.forEach(function(item, i) {
+          var el = document.getElementById(item.id);
+          if (el) {
+            var top = el.getBoundingClientRect().top + window.scrollY;
+            var bottom = top + el.offsetHeight;
+            if (scrollPos >= top && scrollPos < bottom) {
+              tocLinks.forEach(function(l) { l.classList.remove('active'); });
+              if (tocLinks[i]) tocLinks[i].classList.add('active');
+            }
+          }
+        });
+      });
+    }
 
     // 收藏按钮交互
     var btnFav = document.getElementById('btnFavorite');
@@ -136,34 +242,15 @@
           btnFav.classList.remove('active');
           btnFav.innerHTML = '☆ 收藏';
         }
-        // 更新统计
         document.getElementById('statsPills').innerHTML = renderStatsPills();
       });
     }
 
-    // 回到顶部
-    var backTop = document.createElement('button');
-    backTop.className = 'back-top';
-    backTop.id = 'backTop';
-    backTop.textContent = '↑';
-    backTop.title = '回到顶部';
-    document.body.appendChild(backTop);
-    window.addEventListener('scroll', function() {
-      backTop.classList.toggle('visible', window.scrollY > 700);
-    });
-    backTop.addEventListener('click', function() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // 页脚
-    var footer = document.createElement('footer');
-    footer.className = 'footer';
-    footer.innerHTML = renderFooter().replace(/<footer class="footer">|<\/footer>/g, '');
-    document.querySelector('.main').after(footer);
+    addBackTopAndFooter();
   }
 
-  // ===== 通用：回到顶部 =====
-  if (!isSpec) {
+  // ===== 通用：回到顶部 + 页脚 =====
+  function addBackTopAndFooter() {
     var bt = document.createElement('button');
     bt.className = 'back-top'; bt.id = 'backTop'; bt.textContent = '↑'; bt.title = '回到顶部';
     document.body.appendChild(bt);
@@ -173,11 +260,13 @@
     bt.addEventListener('click', function() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-
-    // 页脚
     var ft = document.createElement('footer');
     ft.className = 'footer';
     ft.innerHTML = renderFooter().replace(/<footer class="footer">|<\/footer>/g, '');
     document.querySelector('.main').after(ft);
+  }
+
+  if (!isSpec) {
+    addBackTopAndFooter();
   }
 })();

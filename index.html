@@ -18,9 +18,12 @@
 </div>
 </div>
 <div class="header-actions">
+<div class="search-wrapper">
 <div class="search-bar">
-<input type="text" id="searchInput" placeholder="🔍 搜索规范编号 / 名称 / 关键词…（按 / 键快速聚焦）">
+<input type="text" id="searchInput" placeholder="搜索规范编号 / 名称 / 关键词…（按 / 键快速聚焦）" autocomplete="off">
 <button class="clear-btn" id="clearSearch" title="清除">✕</button>
+</div>
+<div class="search-suggestions" id="searchSuggestions"></div>
 </div>
 <div class="stats-pills" id="statsPills"></div>
 </div>
@@ -37,6 +40,12 @@
 <!-- 推荐规范 -->
 <h2 style="margin-bottom:14px;font-size:18px;">📌 核心规范推荐</h2>
 <div class="grid" id="featuredGrid"></div>
+
+<!-- 最近浏览 -->
+<div id="historySection" style="display:none;">
+<h2 style="margin-bottom:14px;font-size:18px;">📜 最近浏览</h2>
+<div class="grid" id="historyGrid"></div>
+</div>
 
 </main>
 
@@ -56,6 +65,7 @@
 <script src="js/router.js"></script>
 <script src="js/favorites.js"></script>
 <script src="js/components.js"></script>
+<script src="js/theme.js"></script>
 <script>
 // ===== 渲染分类卡片 =====
 (function() {
@@ -105,14 +115,52 @@
   document.getElementById('featuredGrid').innerHTML = html;
 })();
 
-// ===== 搜索 =====
+// ===== 浏览记录 =====
+(function() {
+  var histSpecs = getHistorySpecs();
+  if (histSpecs.length > 0) {
+    document.getElementById('historySection').style.display = 'block';
+    var hhtml = '';
+    histSpecs.forEach(function(s) {
+      hhtml += renderCard(s, true);
+    });
+    document.getElementById('historyGrid').innerHTML = hhtml;
+  }
+})();
+
+// ===== 搜索（带联想） =====
 var si = document.getElementById('searchInput');
 var clearBtn = document.getElementById('clearSearch');
+var sugDiv = document.getElementById('searchSuggestions');
+var searchWrapper = si.closest('.search-wrapper');
+
 si.addEventListener('input', function() {
   clearBtn.classList.toggle('visible', si.value.length > 0);
+  var q = si.value.trim();
+  if (q) {
+    var results = searchSpecs(q).slice(0, 6);
+    if (results.length > 0) {
+      var sugHTML = '';
+      results.forEach(function(s) {
+        sugHTML += '<div class="sug-item" data-code="' + s.code + '">'
+          + '<span class="sug-code">' + s.code + '</span>'
+          + '<span class="sug-title">' + s.title + '</span>'
+          + '<span class="sug-cat">' + (CAT_NAMES[s.cat]||'') + '</span></div>';
+      });
+      sugDiv.innerHTML = sugHTML;
+      sugDiv.classList.add('active');
+    } else { sugDiv.classList.remove('active'); }
+  } else { sugDiv.classList.remove('active'); }
+});
+sugDiv.addEventListener('mousedown', function(e) {
+  var item = e.target.closest('.sug-item');
+  if (item) window.location.href = 'specs/?code=' + encodeURIComponent(item.dataset.code);
+});
+document.addEventListener('click', function(e) {
+  if (!searchWrapper.contains(e.target)) sugDiv.classList.remove('active');
 });
 clearBtn.addEventListener('click', function() {
-  si.value = ''; clearBtn.classList.remove('visible'); si.focus();
+  si.value = ''; clearBtn.classList.remove('visible'); sugDiv.classList.remove('active'); si.focus();
 });
 si.addEventListener('keydown', function(e) {
   if (e.key === 'Enter' && si.value.trim()) {
