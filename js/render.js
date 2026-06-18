@@ -139,18 +139,52 @@
     // 构建内容HTML用于TOC提取
     var contentHTML = spec.content || '<p>暂无详细内容</p>';
 
-    // 提取h4标题生成TOC
+    // 提取h4标题生成TOC（层次化）
     var tocItems = [];
     var tmpDiv = document.createElement('div');
     tmpDiv.innerHTML = contentHTML;
     var h4s = tmpDiv.querySelectorAll('h4');
+    var chapterNum = 0;
     h4s.forEach(function(h4, i) {
-      var id = 'section-' + i;
+      var id = 'sec-' + i;
       h4.setAttribute('id', id);
-      var cleanText = h4.textContent.replace(/[\u{1F300}-\u{1F9FF}\u{2600}-\u{27BF}\u{2300}-\u{23FF}\u{2700}-\u{27BF}\u{1F000}-\u{1F02F}]/gu, '').replace(/^\d+\.\d*\s*/, '').replace(/第[一二三四五六七八九十\d]+章\s*/, '').trim();
-      tocItems.push({ id: id, text: cleanText || h4.textContent.trim() });
+      var raw = h4.textContent.trim();
+
+      // 判断是否是章标题（如"第3章 基本规定"、"📐 第4章 总体设计"）
+      var isChapter = /第[一二三四五六七八九十\d]+章/.test(raw);
+      var level = isChapter ? 1 : 2;
+      if (isChapter) chapterNum++;
+
+      // 清理文字：去emoji，保留章号和节号
+      var clean = raw
+        .replace(/[\u{1F300}-\u{1F9FF}\u{2600}-\u{27BF}\u{2300}-\u{23FF}\u{200D}\u{FE0F}]/gu, '')
+        .replace(/^\d+\.\d+\.?\d*\s*/, '')  // 去前导编号（后面再加回来）
+        .trim();
+
+      // 提取编号用于显示
+      var numLabel = '';
+      var numMatch = raw.match(/^(\d+\.\d+\.?\d*)/);
+      if (numMatch) {
+        numLabel = numMatch[1];
+      } else if (isChapter) {
+        numLabel = 'Ch' + chapterNum;
+      }
+
+      var displayText = clean;
+      // 限制标题长度
+      if (displayText.length > 18) displayText = displayText.substring(0, 16) + '…';
+
+      tocItems.push({
+        id: id,
+        text: displayText,
+        num: numLabel,
+        level: level,
+        raw: raw
+      });
     });
     contentHTML = tmpDiv.innerHTML;
+
+    // ... (rest of rendering continues below)
 
     // 渲染详情布局
     var isFav = isFavorite(spec.code);
@@ -172,17 +206,21 @@
 
     // TOC切换按钮（移动端）
     if (tocItems.length > 3) {
-      html += '<button class="spec-toc-toggle" id="tocToggle">📑 目录导航</button>';
+      html += '<button class="spec-toc-toggle" id="tocToggle">📑 目录导航（' + tocItems.length + '节）</button>';
     }
 
     html += '<div class="spec-detail-wrapper">';
     // 侧边TOC
     if (tocItems.length > 3) {
-      html += '<nav class="spec-toc visible" id="specToc"><h5>📑 本页目录</h5>';
+      html += '<nav class="spec-toc" id="specToc">';
+      html += '<div class="spec-toc-header"><span>📑 目录</span><button id="tocCollapse" title="折叠目录">−</button></div>';
+      html += '<div class="spec-toc-list">';
       tocItems.forEach(function(item) {
-        html += '<a href="#' + item.id + '" data-toc="' + item.id + '">' + item.text + '</a>';
+        var cls = item.level === 2 ? ' l2' : '';
+        var numHtml = item.num ? '<span class="toc-num">' + item.num + '</span>' : '';
+        html += '<a href="#' + item.id + '" data-toc="' + item.id + '" class="' + cls + '">' + numHtml + '<span class="toc-text">' + item.text + '</span></a>';
       });
-      html += '</nav>';
+      html += '</div></nav>';
     }
     html += '<div class="spec-detail-main">';
     html += '<div class="spec-content">' + contentHTML + '</div>';
@@ -192,41 +230,70 @@
 
     // TOC交互
     if (tocItems.length > 3) {
-      // 移动端切换
       var tocToggle = document.getElementById('tocToggle');
       var specToc = document.getElementById('specToc');
+      var tocCollapse = document.getElementById('tocCollapse');
+
+      // 移动端切换
       if (tocToggle && specToc) {
         tocToggle.addEventListener('click', function() {
           specToc.classList.toggle('visible');
         });
       }
+
+      // 桌面端折叠
+      if (tocCollapse && specToc) {
+        tocCollapse.addEventListener('click', function(e) {
+          e.stopPropagation();
+          specToc.classList.toggle('collapsed');
+          tocCollapse.textContent = specToc.classList.contains('collapsed') ? '+' : '−';
+        });
+      }
+
       // TOC点击平滑滚动
       specToc.addEventListener('click', function(e) {
         var a = e.target.closest('a');
         if (!a) return;
         e.preventDefault();
-        var id = a.getAttribute('data-toc');
-        var el = document.getElementById(id);
+        var targetId = a.getAttribute('data-toc');
+        var el = document.getElementById(targetId);
         if (el) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          history.replaceState(null, '', '#' + id);
+          var offset = 170; // 顶部 sticky header 高度
+          var top = el.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+          history.replaceState(null, '', '#' + targetId);
         }
       });
-      // 滚动高亮
+
+      // 滚动高亮（节流优化）
       var tocLinks = specToc.querySelectorAll('a');
+      var ticking = false;
       window.addEventListener('scroll', function() {
-        var scrollPos = window.scrollY + 180;
-        tocItems.forEach(function(item, i) {
-          var el = document.getElementById(item.id);
-          if (el) {
-            var top = el.getBoundingClientRect().top + window.scrollY;
-            var bottom = top + el.offsetHeight;
-            if (scrollPos >= top && scrollPos < bottom) {
+        if (!ticking) {
+          requestAnimationFrame(function() {
+            var scrollPos = window.scrollY + 200;
+            var currentId = null;
+            tocItems.forEach(function(item) {
+              var el = document.getElementById(item.id);
+              if (el) {
+                var top = el.getBoundingClientRect().top + window.scrollY;
+                if (scrollPos >= top) currentId = item.id;
+              }
+            });
+            if (currentId) {
               tocLinks.forEach(function(l) { l.classList.remove('active'); });
-              if (tocLinks[i]) tocLinks[i].classList.add('active');
+              var activeLink = specToc.querySelector('[data-toc="' + currentId + '"]');
+              if (activeLink) {
+                activeLink.classList.add('active');
+                // 自动滚动TOC使当前项可见
+                var tocTop = activeLink.offsetTop - specToc.clientHeight / 2;
+                if (tocTop > 0) specToc.scrollTop = tocTop;
+              }
             }
-          }
-        });
+            ticking = false;
+          });
+          ticking = true;
+        }
       });
     }
 
