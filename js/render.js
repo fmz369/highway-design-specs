@@ -217,49 +217,61 @@
         });
       }
 
-      // TOC点击平滑滚动
+      // TOC点击平滑滚动（立即高亮点击项）
+      var tocLinks = specToc.querySelectorAll('a');
+      var ignoreScroll = false;
       specToc.addEventListener('click', function(e) {
         var a = e.target.closest('a');
         if (!a) return;
         e.preventDefault();
         var targetId = a.getAttribute('data-toc');
         var el = document.getElementById(targetId);
-        if (el) {
-          var offset = 170; // 顶部 sticky header 高度
-          var top = el.getBoundingClientRect().top + window.scrollY - offset;
-          window.scrollTo({ top: top, behavior: 'smooth' });
-          history.replaceState(null, '', '#' + targetId);
-        }
+        if (!el) return;
+        // 立即高亮
+        tocLinks.forEach(function(l) { l.classList.remove('active'); });
+        a.classList.add('active');
+        // 暂停自动高亮，等滚动结束
+        ignoreScroll = true;
+        var offset = 160;
+        var top = el.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+        history.replaceState(null, '', '#' + targetId);
+        // 滚动结束后恢复自动跟踪
+        setTimeout(function() { ignoreScroll = false; }, 800);
       });
 
       // 滚动高亮（节流优化）
-      var tocLinks = specToc.querySelectorAll('a');
       var ticking = false;
       window.addEventListener('scroll', function() {
-        if (!ticking) {
-          requestAnimationFrame(function() {
-            var scrollPos = window.scrollY + 200;
-            var currentId = null;
-            tocItems.forEach(function(item) {
-              var el = document.getElementById(item.id);
-              if (el) {
+        if (ignoreScroll || !ticking) {
+          if (!ticking) {
+            requestAnimationFrame(function() {
+              if (ignoreScroll) { ticking = false; return; }
+              var scrollPos = window.scrollY + 180;
+              var currentId = null;
+              for (var i = 0; i < tocItems.length; i++) {
+                var el = document.getElementById(tocItems[i].id);
+                if (!el) continue;
                 var top = el.getBoundingClientRect().top + window.scrollY;
-                if (scrollPos >= top) currentId = item.id;
+                if (scrollPos >= top) currentId = tocItems[i].id;
+                else break; // h4是按顺序排列的，后面的都更靠下
               }
+              if (currentId) {
+                tocLinks.forEach(function(l) { l.classList.remove('active'); });
+                var al = specToc.querySelector('[data-toc="' + currentId + '"]');
+                if (al) {
+                  al.classList.add('active');
+                  var tt = al.offsetTop - specToc.clientHeight / 2;
+                  if (tt > 0) specToc.scrollTop = tt;
+                }
+              }
+              ticking = false;
             });
-            if (currentId) {
-              tocLinks.forEach(function(l) { l.classList.remove('active'); });
-              var activeLink = specToc.querySelector('[data-toc="' + currentId + '"]');
-              if (activeLink) {
-                activeLink.classList.add('active');
-                // 自动滚动TOC使当前项可见
-                var tocTop = activeLink.offsetTop - specToc.clientHeight / 2;
-                if (tocTop > 0) specToc.scrollTop = tocTop;
-              }
-            }
-            ticking = false;
-          });
-          ticking = true;
+            ticking = true;
+          }
+        } else {
+          // 暂停期间跳过
+          ticking = false;
         }
       });
     }
