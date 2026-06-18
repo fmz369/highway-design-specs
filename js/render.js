@@ -139,52 +139,21 @@
     // 构建内容HTML用于TOC提取
     var contentHTML = spec.content || '<p>暂无详细内容</p>';
 
-    // 提取h4标题生成TOC（层次化）
+    // 提取h4标题生成TOC
     var tocItems = [];
     var tmpDiv = document.createElement('div');
     tmpDiv.innerHTML = contentHTML;
     var h4s = tmpDiv.querySelectorAll('h4');
-    var chapterNum = 0;
     h4s.forEach(function(h4, i) {
       var id = 'sec-' + i;
       h4.setAttribute('id', id);
-      var raw = h4.textContent.trim();
-
-      // 判断是否是章标题（如"第3章 基本规定"、"📐 第4章 总体设计"）
-      var isChapter = /第[一二三四五六七八九十\d]+章/.test(raw);
-      var level = isChapter ? 1 : 2;
-      if (isChapter) chapterNum++;
-
-      // 清理文字：去emoji，保留章号和节号
-      var clean = raw
-        .replace(/[\u{1F300}-\u{1F9FF}\u{2600}-\u{27BF}\u{2300}-\u{23FF}\u{200D}\u{FE0F}]/gu, '')
-        .replace(/^\d+\.\d+\.?\d*\s*/, '')  // 去前导编号（后面再加回来）
-        .trim();
-
-      // 提取编号用于显示
-      var numLabel = '';
-      var numMatch = raw.match(/^(\d+\.\d+\.?\d*)/);
-      if (numMatch) {
-        numLabel = numMatch[1];
-      } else if (isChapter) {
-        numLabel = 'Ch' + chapterNum;
-      }
-
-      var displayText = clean;
-      // 限制标题长度
-      if (displayText.length > 18) displayText = displayText.substring(0, 16) + '…';
-
-      tocItems.push({
-        id: id,
-        text: displayText,
-        num: numLabel,
-        level: level,
-        raw: raw
-      });
+      // 只去掉emoji，保留章号节号原文
+      var text = h4.textContent.replace(/[\u{1F300}-\u{1F9FF}\u{2600}-\u{27BF}\u{2300}-\u{23FF}\u{200D}\u{FE0F}\u{2702}\u{2705}\u{2728}\u{274C}\u{2753}\u{2757}\u{2795}-\u{2797}\u{2934}\u{2935}\u{2B05}-\u{2B07}\u{2B1B}\u{2B1C}\u{2B50}\u{2B55}\u{3030}\u{303D}\u{3297}\u{3299}]/gu, '').trim();
+      // 判断层级
+      var isChapter = /第[一二三四五六七八九十\d]+章/.test(text);
+      tocItems.push({ id: id, text: text, level: isChapter ? 1 : 2 });
     });
     contentHTML = tmpDiv.innerHTML;
-
-    // ... (rest of rendering continues below)
 
     // 渲染详情布局
     var isFav = isFavorite(spec.code);
@@ -204,21 +173,19 @@
     if (spec.hasPdf) html += '<span style="font-size:11px;color:#16a34a;">📥 离线PDF可用</span>';
     html += '</div></div>';
 
-    // TOC切换按钮（移动端）
+    // TOC切换按钮
     if (tocItems.length > 3) {
-      html += '<button class="spec-toc-toggle" id="tocToggle">📑 目录导航（' + tocItems.length + '节）</button>';
+      html += '<button class="spec-toc-toggle" id="tocToggle">📑 目录</button>';
     }
 
     html += '<div class="spec-detail-wrapper">';
-    // 侧边TOC
     if (tocItems.length > 3) {
       html += '<nav class="spec-toc" id="specToc">';
-      html += '<div class="spec-toc-header"><span>📑 目录</span><button id="tocCollapse" title="折叠目录">−</button></div>';
+      html += '<div class="spec-toc-header">📑 目录<button id="tocCollapse" title="折叠">−</button></div>';
       html += '<div class="spec-toc-list">';
       tocItems.forEach(function(item) {
-        var cls = item.level === 2 ? ' l2' : '';
-        var numHtml = item.num ? '<span class="toc-num">' + item.num + '</span>' : '';
-        html += '<a href="#' + item.id + '" data-toc="' + item.id + '" class="' + cls + '">' + numHtml + '<span class="toc-text">' + item.text + '</span></a>';
+        var cls = item.level === 2 ? ' class="l2"' : '';
+        html += '<a href="#' + item.id + '" data-toc="' + item.id + '"' + cls + '>' + item.text + '</a>';
       });
       html += '</div></nav>';
     }
