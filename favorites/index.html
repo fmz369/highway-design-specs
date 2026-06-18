@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>收藏夹 — 公路道路设计规范</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="header">
+<div class="header-inner">
+<div class="header-top">
+<a href="../" class="header-logo" style="text-decoration:none;">⭐</a>
+<div>
+<h1>我的收藏夹</h1>
+<p class="subtitle">已收藏的规范列表 — 数据保存在浏览器本地</p>
+</div>
+</div>
+<div id="statsPills"></div>
+</div>
+</header>
+
+<main class="main">
+<div id="breadcrumb"></div>
+
+<div id="toolbar" style="display:flex;gap:10px;align-items:center;margin-bottom:18px;flex-wrap:wrap;">
+</div>
+
+<div id="favContent">
+<div class="grid" id="gridContainer"></div>
+<div class="empty-state" id="emptyState">
+<div class="empty-icon">⭐</div>
+<div class="empty-title">收藏夹为空</div>
+<div class="empty-hint">浏览规范时点击收藏按钮，这里就会出现啦</div>
+<a href="../category/?cat=all" class="btn-primary">去浏览规范</a>
+</div>
+</div>
+</main>
+
+<script src="../js/data.js"></script>
+<script src="../js/router.js"></script>
+<script src="../js/favorites.js"></script>
+<script src="../js/components.js"></script>
+<script>
+(function() {
+  // 面包屑
+  document.getElementById('breadcrumb').innerHTML = renderBreadcrumb([
+    { label: '🏠 首页', link: '../' },
+    { label: '⭐ 收藏夹' }
+  ]);
+
+  // 统计
+  document.getElementById('statsPills').innerHTML = renderStatsPills();
+
+  // 工具栏
+  var favList = getFavorites();
+  var toolbarHTML = '<span style="font-size:14px;color:var(--text2);">共 <strong>' + favList.length + '</strong> 部已收藏</span>';
+  if (favList.length > 0) {
+    toolbarHTML += ' <button id="btnClearAll" class="btn-primary" style="font-size:12px;padding:6px 16px;background:#ef4444;">🗑 清空全部</button>';
+  }
+  toolbarHTML += ' <a href="../compare/" class="btn-primary" style="font-size:12px;padding:6px 16px;">📊 对比收藏的规范</a>';
+  document.getElementById('toolbar').innerHTML = toolbarHTML;
+
+  function renderFavs() {
+    var specs = getFavoriteSpecs();
+    if (specs.length === 0) {
+      document.getElementById('emptyState').style.display = 'block';
+      document.getElementById('gridContainer').innerHTML = '';
+    } else {
+      document.getElementById('emptyState').style.display = 'none';
+      var html = '';
+      specs.forEach(function(s) {
+        html += renderCard(s, true);
+      });
+      document.getElementById('gridContainer').innerHTML = html;
+    }
+  }
+  renderFavs();
+
+  // 清空按钮
+  var btnClear = document.getElementById('btnClearAll');
+  if (btnClear) {
+    btnClear.addEventListener('click', function() {
+      if (confirm('确定要清空全部收藏吗？此操作不可恢复。')) {
+        clearFavorites();
+        renderFavs();
+        document.getElementById('toolbar').innerHTML = '<span style="font-size:14px;color:var(--text2);">收藏夹已清空</span> <a href="../category/?cat=all" class="btn-primary" style="font-size:12px;padding:6px 16px;">去浏览规范</a>';
+      }
+    });
+  }
+
+  // 回到顶部
+  var bt = document.createElement('button');
+  bt.className = 'back-top'; bt.id = 'backTop'; bt.textContent = '↑';
+  document.body.appendChild(bt);
+  window.addEventListener('scroll', function() {
+    bt.classList.toggle('visible', window.scrollY > 700);
+  });
+  bt.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // 页脚
+  var ft = document.createElement('footer');
+  ft.className = 'footer';
+  ft.innerHTML = renderFooter().replace(/<footer class="footer">|<\/footer>/g, '');
+  document.querySelector('.main').after(ft);
+})();
+</script>
+</body>
+</html>

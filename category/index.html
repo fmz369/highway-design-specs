@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>分类浏览 — 公路道路设计规范</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="header">
+<div class="header-inner">
+<div class="header-top">
+<a href="../" class="header-logo" style="text-decoration:none;">🛣️</a>
+<div>
+<h1 id="pageTitle">公路道路设计规范</h1>
+<p class="subtitle" id="pageSubtitle"></p>
+</div>
+</div>
+<div class="header-actions">
+<div class="search-bar">
+<input type="text" id="searchInput" placeholder="在此分类内搜索…（按 / 键聚焦）">
+<button class="clear-btn" id="clearSearch" title="清除">✕</button>
+</div>
+<div id="statsPills"></div>
+</div>
+</div>
+</header>
+
+<main class="main">
+<div id="breadcrumb"></div>
+<div class="tabs-wrap">
+<div class="tabs" id="tabsContainer"></div>
+</div>
+<div class="grid" id="gridContainer"></div>
+<div class="empty-state" id="emptyState" style="display:none;">
+<div class="empty-icon">📭</div>
+<div class="empty-title">没有匹配的规范</div>
+<div class="empty-hint">试试更换搜索关键词或切换分类标签</div>
+</div>
+</main>
+
+<script src="../js/data.js"></script>
+<script src="../js/router.js"></script>
+<script src="../js/favorites.js"></script>
+<script src="../js/components.js"></script>
+<script src="../js/render.js"></script>
+</body>
+</html>

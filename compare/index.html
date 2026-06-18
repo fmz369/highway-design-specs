@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>规范对比 — 公路道路设计规范</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="header">
+<div class="header-inner">
+<div class="header-top">
+<a href="../" class="header-logo" style="text-decoration:none;">📊</a>
+<div>
+<h1>规范对比工具</h1>
+<p class="subtitle">选择 2~4 部规范，横向对比关键设计参数</p>
+</div>
+</div>
+<div id="statsPills"></div>
+</div>
+</header>
+
+<main class="main compare-container">
+<div id="breadcrumb"></div>
+
+<!-- 选择区 -->
+<div class="compare-selector" style="background:#fff;padding:16px 20px;border-radius:var(--radius);box-shadow:var(--shadow-sm);border:1px solid var(--border);margin-bottom:20px;">
+<div style="flex:1;min-width:200px;">
+<label style="font-size:12px;color:var(--text3);display:block;margin-bottom:4px;">🔍 搜索并添加规范（最多4部）</label>
+<input type="text" id="specSearch" placeholder="输入规范编号或名称…" style="width:100%;padding:10px 16px;border:1.5px solid var(--border);border-radius:22px;font-size:14px;outline:none;">
+<div id="searchResults" style="position:absolute;background:#fff;border:1px solid var(--border);border-radius:8px;box-shadow:var(--shadow-md);max-height:200px;overflow-y:auto;display:none;z-index:50;max-width:400px;"></div>
+</div>
+<div style="display:flex;gap:8px;align-items:center;">
+<span style="font-size:12px;color:var(--text3);">或</span>
+<a href="?from=favorites" id="btnLoadFavs" class="btn" style="font-size:12px;text-decoration:none;">⭐ 加载收藏列表</a>
+<button id="btnClear" class="btn" style="font-size:12px;">🗑 清空列表</button>
+</div>
+</div>
+
+<!-- 已选规范 -->
+<div id="selectedSpecs" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;"></div>
+
+<!-- 对比表格 -->
+<div id="compareResult"></div>
+
+</main>
+
+<script src="../js/data.js"></script>
+<script src="../js/router.js"></script>
+<script src="../js/favorites.js"></script>
+<script src="../js/components.js"></script>
+<script src="../js/compare.js"></script>
+<script>
+(function() {
+  // 面包屑
+  document.getElementById('breadcrumb').innerHTML = renderBreadcrumb([
+    { label: '🏠 首页', link: '../' },
+    { label: '📊 规范对比' }
+  ]);
+  document.getElementById('statsPills').innerHTML = renderStatsPills();
+
+  var selectedCodes = [];
+  var catIconMap = { general:'📐', geometry:'📏', pavement:'🛣', bridge:'🌉', drainage:'💧', safety:'🛡' };
+
+  // 从 URL 读取初始选择
+  var urlCodes = getParam('codes');
+  if (urlCodes) {
+    selectedCodes = urlCodes.split(',').filter(Boolean).slice(0, 4);
+  }
+
+  // 从收藏夹加载
+  var fromFavs = getParam('from');
+  if (fromFavs === 'favorites' && selectedCodes.length === 0) {
+    selectedCodes = getFavorites().slice(0, 4);
+  }
+
+  function getSelectedSpecs() {
+    return selectedCodes.map(function(c) { return getSpecByCode(c); }).filter(Boolean);
+  }
+
+  function renderSelected() {
+    var specs = getSelectedSpecs();
+    var html = '';
+    specs.forEach(function(s, i) {
+      html += '<div style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:13px;">'
+        + (catIconMap[s.cat]||'📋') + ' <strong>' + s.code + '</strong> ' + s.title.substring(0, 15)
+        + '<button onclick="removeSpec(' + i + ')" style="border:none;background:none;cursor:pointer;color:#ef4444;font-size:16px;line-height:1;" title="移除">×</button>'
+        + '</div>';
+    });
+    document.getElementById('selectedSpecs').innerHTML = html;
+    document.getElementById('compareResult').innerHTML = renderCompareTable(specs);
+
+    // 更新URL
+    if (selectedCodes.length > 0) {
+      var url = '?codes=' + selectedCodes.map(encodeURIComponent).join(',');
+      if (fromFavs) url += '&from=favorites';
+      window.history.replaceState({}, '', url);
+    } else {
+      window.history.replaceState({}, '', window.location.pathname);
+    }
+  }
+
+  // 全局暴露移除函数
+  window.removeSpec = function(i) {
+    selectedCodes.splice(i, 1);
+    renderSelected();
+  };
+
+  // 搜索输入
+  var searchInput = document.getElementById('specSearch');
+  var searchResults = document.getElementById('searchResults');
+  var searchTimer;
+
+  searchInput.addEventListener('input', function() {
+    clearTimeout(searchTimer);
+    var q = searchInput.value.trim().toLowerCase();
+    if (!q || selectedCodes.length >= 4) { searchResults.style.display = 'none'; return; }
+
+    searchTimer = setTimeout(function() {
+      var results = searchSpecs(q).filter(function(s) {
+        return selectedCodes.indexOf(s.code) < 0;
+      }).slice(0, 8);
+
+      if (results.length === 0) {
+        searchResults.innerHTML = '<div style="padding:10px;color:var(--text3);font-size:12px;">无匹配结果</div>';
+      } else {
+        var html = '';
+        results.forEach(function(s) {
+          html += '<div style="padding:8px 14px;cursor:pointer;font-size:13px;border-bottom:1px solid #f0f0f0;" onmousedown="addSpec(\'' + s.code.replace(/'/g,"\\'") + '\')">'
+            + (catIconMap[s.cat]||'📋') + ' <strong>' + s.code + '</strong> ' + s.title + '</div>';
+        });
+        searchResults.innerHTML = html;
+      }
+      searchResults.style.display = 'block';
+    }, 200);
+  });
+
+  // 全局暴露添加函数
+  window.addSpec = function(code) {
+    if (selectedCodes.indexOf(code) < 0 && selectedCodes.length < 4) {
+      selectedCodes.push(code);
+      renderSelected();
+      searchInput.value = '';
+      searchResults.style.display = 'none';
+    }
+  };
+
+  // 点击外部关闭搜索结果
+  document.addEventListener('click', function(e) {
+    if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+      searchResults.style.display = 'none';
+    }
+  });
+
+  // 清空按钮
+  document.getElementById('btnClear').addEventListener('click', function() {
+    selectedCodes = [];
+    renderSelected();
+  });
+
+  // 加载收藏按钮
+  document.getElementById('btnLoadFavs').addEventListener('click', function(e) {
+    e.preventDefault();
+    var favs = getFavorites();
+    if (favs.length === 0) {
+      alert('收藏夹为空，请先收藏规范');
+      return;
+    }
+    selectedCodes = favs.slice(0, 4);
+    renderSelected();
+  });
+
+  // 初始渲染
+  renderSelected();
+
+  // 页脚 + 回到顶部
+  var bt = document.createElement('button');
+  bt.className = 'back-top'; bt.id = 'backTop'; bt.textContent = '↑';
+  document.body.appendChild(bt);
+  window.addEventListener('scroll', function() {
+    bt.classList.toggle('visible', window.scrollY > 700);
+  });
+  bt.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  var ft = document.createElement('footer');
+  ft.className = 'footer';
+  ft.innerHTML = renderFooter().replace(/<footer class="footer">|<\/footer>/g, '');
+  document.querySelector('.main').after(ft);
+})();
+</script>
+</body>
+</html>

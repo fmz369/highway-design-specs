@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>公路道路设计规范 · 深度查阅手册</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="header">
+<div class="header-inner">
+<div class="header-top">
+<a href="./" class="header-logo" style="text-decoration:none;">🛣️</a>
+<div>
+<h1>公路道路设计规范 · 深度查阅手册</h1>
+<p class="subtitle">Highway & Road Design Standards — 69 部规范 | 章节结构 | 核心参数 | 设计公式 | 离线可查</p>
+</div>
+</div>
+<div class="header-actions">
+<div class="search-bar">
+<input type="text" id="searchInput" placeholder="🔍 搜索规范编号 / 名称 / 关键词…（按 / 键快速聚焦）">
+<button class="clear-btn" id="clearSearch" title="清除">✕</button>
+</div>
+<div class="stats-pills" id="statsPills"></div>
+</div>
+</div>
+</header>
+
+<main class="main">
+
+<!-- 分类导航 -->
+<h2 style="text-align:center;margin-bottom:6px;font-size:20px;">📂 按分类浏览</h2>
+<p style="text-align:center;color:var(--text3);margin-bottom:18px;font-size:13px;">点击分类卡片进入规范列表，或使用顶部搜索框全站检索</p>
+<div class="category-cards" id="categoryCards"></div>
+
+<!-- 推荐规范 -->
+<h2 style="margin-bottom:14px;font-size:18px;">📌 核心规范推荐</h2>
+<div class="grid" id="featuredGrid"></div>
+
+</main>
+
+<footer class="footer">
+<div class="footer-links">
+<a href="favorites/">⭐ 收藏夹</a>
+<a href="compare/">📊 规范对比</a>
+<a href="category/?cat=all">📋 全部规范</a>
+</div>
+<p>⚠ 本网站为设计辅助查阅工具，规范正文请通过交通运输部官网、中国标准在线服务网等官方渠道获取。</p>
+<p>数据以各规范正式出版物为准，设计中请使用最新版本。</p>
+</footer>
+
+<button class="back-top" id="backTop" title="回到顶部">↑</button>
+
+<script src="js/data.js"></script>
+<script src="js/router.js"></script>
+<script src="js/favorites.js"></script>
+<script src="js/components.js"></script>
+<script>
+// ===== 渲染分类卡片 =====
+(function() {
+  var counts = getCategoryCounts();
+  var cats = ['general', 'geometry', 'pavement', 'bridge', 'drainage', 'safety'];
+  var catColors = {
+    general: '#7c3aed', geometry: '#d97706', pavement: '#16a34a',
+    bridge: '#db2777', drainage: '#0284c7', safety: '#dc2626'
+  };
+  var catEmoji = {
+    general: '📐', geometry: '📏', pavement: '🛣',
+    bridge: '🌉', drainage: '💧', safety: '🛡'
+  };
+
+  var html = '';
+  cats.forEach(function(c) {
+    html += '<a href="category/?cat=' + c + '" class="cat-card" style="border-top: 3px solid ' + catColors[c] + ';">'
+      + '<div class="cat-icon">' + catEmoji[c] + '</div>'
+      + '<div class="cat-name">' + CAT_NAMES[c] + '</div>'
+      + '<div class="cat-count">' + counts[c] + ' 部规范</div>'
+      + '</a>';
+  });
+  document.getElementById('categoryCards').innerHTML = html;
+
+  // 统计胶囊
+  document.getElementById('statsPills').innerHTML = renderStatsPills();
+})();
+
+// ===== 推荐规范列表 =====
+(function() {
+  var featured = [
+    'JTG B01-2014',       // 公路工程技术标准
+    'JTG D20-2017',       // 公路路线设计规范
+    'JTG D30-2015',       // 公路路基设计规范
+    'JTG D50-2017',       // 公路沥青路面设计规范
+    'JTG D60-2015',       // 公路桥涵设计通用规范
+    'JTG D81-2017',       // 公路交通安全设施设计规范
+  ];
+  var specs = featured.map(function(code) {
+    return SPECS.find(function(s) { return s.code === code; });
+  }).filter(Boolean);
+
+  var html = '';
+  specs.forEach(function(s) {
+    html += renderCard(s, true);
+  });
+  document.getElementById('featuredGrid').innerHTML = html;
+})();
+
+// ===== 搜索 =====
+var si = document.getElementById('searchInput');
+var clearBtn = document.getElementById('clearSearch');
+si.addEventListener('input', function() {
+  clearBtn.classList.toggle('visible', si.value.length > 0);
+});
+clearBtn.addEventListener('click', function() {
+  si.value = ''; clearBtn.classList.remove('visible'); si.focus();
+});
+si.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' && si.value.trim()) {
+    window.location.href = 'category/?cat=all&q=' + encodeURIComponent(si.value.trim());
+  }
+});
+
+// ===== 快捷键 =====
+document.addEventListener('keydown', function(e) {
+  if (e.key === '/' && document.activeElement !== si && document.activeElement.tagName !== 'INPUT') {
+    e.preventDefault(); si.focus(); si.select();
+  }
+});
+
+// ===== 回到顶部 =====
+var backTop = document.getElementById('backTop');
+window.addEventListener('scroll', function() {
+  backTop.classList.toggle('visible', window.scrollY > 700);
+});
+backTop.addEventListener('click', function() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+</script>
+</body>
+</html>
