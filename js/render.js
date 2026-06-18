@@ -152,7 +152,6 @@
       var cleanTitle = h4.textContent.replace(/[\u{1F000}-\u{1FFFF}\u{2600}-\u{27FF}\u{2300}-\u{23FF}\u{2B00}-\u{2BFF}\u{FE00}-\u{FEFF}\u{200D}\u{20D0}-\u{20FF}]/gu, '').replace(/^\s+/,'').trim();
       h4.textContent = cleanTitle;
       tocItems.push({ id: id, text: cleanTitle, level: /第[一二三四五六七八九十\d]+章/.test(cleanTitle) ? 1 : 2 });
-      tocItems.push({ id: id, text: text, level: isChapter ? 1 : 2 });
     });
     contentHTML = tmpDiv.innerHTML;
 
