@@ -112,11 +112,12 @@
 
   // ===== 规范详情页渲染 =====
   if (isSpec) {
+    try {
     var code = getParam('code');
-    if (!code) return;
+    if (!code) { showError('URL缺少code参数'); return; }
 
     var spec = getSpecByCode(code);
-    if (!spec) return;
+    if (!spec) { showError('未找到规范：' + code + '<br><small>SPECS共' + SPECS.length + '部，请检查编号是否正确</small>'); return; }
 
     // 记录浏览历史
     addHistory(spec.code);
@@ -293,6 +294,15 @@
     }
 
     addBackTopAndFooter();
+
+    } catch(e) {
+      showError('页面渲染出错：' + e.message + '<br><small>' + (e.stack||'').split('\n').slice(0,3).join('<br>') + '</small>');
+    }
+  }
+
+  // ===== 错误展示 =====
+  function showError(msg) {
+    document.getElementById('specDetail').innerHTML = '<div class="empty-state"><div class="empty-icon">⚠️</div><div class="empty-title">出错了</div><div class="empty-hint">' + msg + '</div><a href="../" class="btn-primary">返回首页</a></div>';
   }
 
   // ===== 通用：回到顶部 + 页脚 =====
