@@ -147,8 +147,8 @@
     h4s.forEach(function(h4, i) {
       var id = 'sec-' + i;
       h4.setAttribute('id', id);
-      // 只去掉emoji，保留章号节号原文
-      var text = h4.textContent.replace(/[\u{1F300}-\u{1F9FF}\u{2600}-\u{27BF}\u{2300}-\u{23FF}\u{200D}\u{FE0F}\u{2702}\u{2705}\u{2728}\u{274C}\u{2753}\u{2757}\u{2795}-\u{2797}\u{2934}\u{2935}\u{2B05}-\u{2B07}\u{2B1B}\u{2B1C}\u{2B50}\u{2B55}\u{3030}\u{303D}\u{3297}\u{3299}]/gu, '').trim();
+      // 去掉所有emoji和特殊符号，只保留文字
+      var text = h4.textContent.replace(/[\u{1F000}-\u{1FFFF}\u{2600}-\u{27FF}\u{2300}-\u{23FF}\u{2B00}-\u{2BFF}\u{FE00}-\u{FEFF}\u{200D}\u{20D0}-\u{20FF}]/gu, '').replace(/^\s+/,'').trim();
       // 判断层级
       var isChapter = /第[一二三四五六七八九十\d]+章/.test(text);
       tocItems.push({ id: id, text: text, level: isChapter ? 1 : 2 });
