@@ -58,13 +58,16 @@ status:'current',
 tags:["钢材","材料"],
 pdf:'规范PDF/GBT 1499.1-2024 钢筋混凝土用钢 第1部分：热轧光圆钢筋.pdf',
 hasPdf:true,
-content:`
-	<h4>📑 适用范围</h4><p>规定了热轧光圆钢筋的术语、牌号、订货内容、尺寸、技术要求、试验方法等。公路桥涵混凝土结构中普通钢筋的基础材料标准。</p>
-	<h4>🔑 牌号与力学性能</h4>
-	<table><tr><th>牌号</th><th>屈服强度(MPa)</th><th>抗拉强度(MPa)</th><th>断后伸长率(%)</th><th>最大力总延伸率(%)</th><th>冷弯180°</th></tr>
-	<tr><td>HPB300</td><td>≥300</td><td>≥420</td><td>≥25.0</td><td>≥10.0</td><td>d=a（合格）</td></tr></table>
-	<h4>📏 公称直径</h4><ul><li>6mm、8mm、10mm、12mm、14mm、16mm、18mm、20mm、22mm</li><li>长度：通常定尺9m或12m</li></ul>
-	<div class="note-box"><strong>💡 公路桥梁用途</strong><br>HPB300主要用于箍筋、分布筋、构造筋等次要受力部位。主筋一般使用HRB400/HRB500。</div>`
+content:`<h4>📑 适用范围</h4><p>规定了热轧光圆钢筋的术语、牌号、尺寸、技术要求等。<span class="hl">2024年新版</span>（2024-06-25发布，2024-09-25实施），替代GB/T 1499.1-2017。</p>
+<h4>🔑 牌号与规格（2024版）</h4>
+<table><tr><th>牌号</th><th>屈服强度(MPa)</th><th>抗拉强度(MPa)</th><th>断后伸长率(%)</th><th>冷弯180°</th></tr>
+<tr><td><span class="hl">HPB300</span></td><td>≥300</td><td>≥420</td><td>≥25.0</td><td>d=a（合格）</td></tr></table>
+<h4>📏 公称直径及理论重量（2024版）</h4>
+<table><tr><th>直径(mm)</th><th>6</th><th>8</th><th>10</th><th>12</th><th>14</th><th>16</th><th>18</th><th>20</th><th>22</th><th>25</th></tr>
+<tr><td>截面积(mm²)</td><td>28.3</td><td>50.3</td><td>78.5</td><td>113</td><td>154</td><td>201</td><td>254</td><td>314</td><td>380</td><td>491</td></tr>
+<tr><td>理论重量(kg/m)</td><td>0.222</td><td>0.395</td><td>0.617</td><td>0.888</td><td>1.21</td><td>1.58</td><td>2.00</td><td>2.47</td><td>2.98</td><td>3.85</td></tr></table>
+<div class="note-box"><strong>🆕 2024版主要变化（vs 2017版）</strong><br>① 公称直径范围由6~22mm扩大至<span class="hl">6~25mm</span><br>② 删除"推荐直径"概念，改为完整规格系列<br>③ 更新化学成分允许偏差要求</div>
+<h4>📄 规范原文获取</h4><ul><li>📥 <a href="./规范PDF/GBT 1499.1-2024 钢筋混凝土用钢 第1部分：热轧光圆钢筋.pdf" target="_blank" style="color:#2563eb;font-weight:600;">打开 PDF 原文</a></li></ul>`
 },
 {
 code:'GB/T 1499.2-2024',
@@ -74,18 +77,29 @@ status:'current',
 tags:["钢材","材料"],
 pdf:'规范PDF/GBT 1499.2-2024 钢筋混凝土用钢 第2部分：热轧带肋钢筋.pdf',
 hasPdf:true,
-content:`
-	<h4>📑 适用范围</h4><p>规定了热轧带肋钢筋的术语、分类、牌号、技术要求、试验方法等。公路桥梁结构主筋的基础材料标准。</p>
-	<h4>🔑 牌号与力学性能</h4>
-	<table><tr><th>牌号</th><th>屈服强度(MPa)</th><th>抗拉强度(MPa)</th><th>强屈比</th><th>断后伸长率(%)</th><th>最大力总延伸率(%)</th></tr>
-	<tr><td>HRB400</td><td>≥400</td><td>≥540</td><td>≥1.25</td><td>≥16</td><td>≥7.5</td></tr>
-	<tr><td>HRB400E</td><td>≥400</td><td>≥540</td><td>≥1.25</td><td>≥16</td><td>≥9.0</td></tr>
-	<tr><td>HRB500</td><td>≥500</td><td>≥630</td><td>≥1.25</td><td>≥15</td><td>≥7.5</td></tr>
-	<tr><td>HRB500E</td><td>≥500</td><td>≥630</td><td>≥1.25</td><td>≥15</td><td>≥9.0</td></tr></table>
-	<h4>📏 公称直径范围</h4>
-	<ul><li>6~50mm（常用：12、16、20、22、25、28、32mm）</li><li>带"<span class="hl">E</span>"为抗震钢筋（满足超强比≤1.25+屈服波动≤80MPa）</li></ul>
-	<h4>🏗 应用场景</h4>
-	<ul><li>HRB400(E)：公路桥梁主要受力钢筋（梁、柱、墩、桩）</li><li>HRB500(E)：高强钢筋，用于大跨度桥梁、高层墩柱，可节约钢筋15%~20%</li><li>公路桥涵设计（JTG 3362）推荐 HRB400 为主筋首选</li></ul>`
+content:`<h4>📑 适用范围</h4><p>规定了热轧带肋钢筋的术语、分类、牌号、尺寸、技术要求等。<span class="hl">2024年新版</span>，替代GB/T 1499.2-2018。</p>
+<h4>🔩 分类与牌号（2024版）</h4>
+<table><tr><th>类别</th><th>牌号</th><th>说明</th></tr>
+<tr><td rowspan="3">普通热轧</td><td>HRB400</td><td>400级</td></tr>
+<tr><td>HRB500</td><td>500级</td></tr>
+<tr><td><span class="hl">HRB600</span></td><td>600级（2024版新增）</td></tr>
+<tr><td rowspan="2">抗震</td><td>HRB400E</td><td>400级抗震</td></tr>
+<tr><td>HRB500E</td><td>500级抗震</td></tr>
+<tr><td rowspan="4">细晶粒</td><td>HRBF400</td><td>细晶粒400级</td></tr>
+<tr><td>HRBF500</td><td>细晶粒500级</td></tr>
+<tr><td>HRBF400E</td><td>细晶粒400抗震</td></tr>
+<tr><td>HRBF500E</td><td>细晶粒500抗震</td></tr></table>
+<h4>💪 力学性能（2024版）</h4>
+<table><tr><th>牌号</th><th>屈服ReL(MPa)</th><th>抗拉Rm(MPa)</th><th>强屈比</th><th>伸长率A(%)</th><th>最大力总延伸率(%)</th></tr>
+<tr><td>HRB400/HRBF400</td><td>≥400</td><td>≥540</td><td>≥1.25</td><td>≥16</td><td>≥7.5</td></tr>
+<tr><td>HRB400E/HRBF400E</td><td>≥400</td><td>≥540</td><td>≥1.25</td><td>≥16</td><td>≥9.0</td></tr>
+<tr><td>HRB500/HRBF500</td><td>≥500</td><td>≥630</td><td>≥1.25</td><td>≥15</td><td>≥7.5</td></tr>
+<tr><td>HRB500E/HRBF500E</td><td>≥500</td><td>≥630</td><td>≥1.25</td><td>≥15</td><td>≥9.0</td></tr>
+<tr><td><span class="hl">HRB600</span></td><td>≥600</td><td>≥730</td><td>≥1.25</td><td>≥14</td><td>≥7.5</td></tr></table>
+<h4>📏 公称直径</h4><ul><li>范围：<span class="hl">6mm~50mm</span></li><li>常用规格：12、16、20、22、25、28、32mm</li></ul>
+<h4>🏗 应用建议</h4><ul><li>HRB400(E)：公路桥梁主要受力钢筋</li><li>HRB500(E)：大跨度桥梁、高层墩柱，可节约钢筋15%~20%</li><li><span class="hl">HRB600</span>：超高层/特大跨桥梁，进一步节约钢材</li></ul>
+<div class="note-box"><strong>🆕 2024版主要变化（vs 2018版）</strong><br>① <span class="hl">新增HRB600</span>（600MPa级高强钢筋）<br>② 细晶粒钢筋牌号扩展（HRBF系列）<br>③ 6mm直径正式纳入标准<br>④ 更新疲劳性能和焊接性能要求</div>
+<h4>📄 规范原文获取</h4><ul><li>📥 <a href="./规范PDF/GBT 1499.2-2024 钢筋混凝土用钢 第2部分：热轧带肋钢筋.pdf" target="_blank" style="color:#2563eb;font-weight:600;">打开 PDF 原文</a></li></ul>`
 },
 {
 code:'GB/T 51224-2017',
