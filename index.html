@@ -32,6 +32,9 @@
 
 <main class="main">
 
+<!-- 数据看板 -->
+<div class="dashboard" id="dashboard"></div>
+
 <!-- 分类导航 -->
 <h2 style="text-align:center;margin-bottom:6px;font-size:20px;">📂 按分类浏览</h2>
 <p style="text-align:center;color:var(--text3);margin-bottom:18px;font-size:13px;">点击分类卡片进入规范列表，或使用顶部搜索框全站检索</p>
@@ -67,6 +70,43 @@
 <script src="js/components.js?v=2"></script>
 <script src="js/theme.js?v=2"></script>
 <script>
+// ===== 数据看板 =====
+(function() {
+  var counts = getCategoryCounts();
+  var total = SPECS.length;
+  var current = SPECS.filter(function(s) { return s.status === 'current'; }).length;
+  var replaced = total - current;
+  var pdfs = SPECS.filter(function(s) { return s.hasPdf; }).length;
+  var curentPct = Math.round(current / total * 100);
+
+  var dashHTML = '';
+  // 统计卡片
+  dashHTML += '<div class="stat-cards">';
+  dashHTML += '<div class="stat-card"><div class="sc-icon blue">📋</div><div><div class="sc-value">' + total + '</div><div class="sc-label">收录规范总数</div></div></div>';
+  dashHTML += '<div class="stat-card"><div class="sc-icon green">✅</div><div><div class="sc-value">' + current + '</div><div class="sc-label">现行规范（' + curentPct + '%）</div></div></div>';
+  dashHTML += '<div class="stat-card"><div class="sc-icon amber">📥</div><div><div class="sc-value">' + pdfs + '</div><div class="sc-label">离线PDF可用</div></div></div>';
+  dashHTML += '<div class="stat-card"><div class="sc-icon purple">📂</div><div><div class="sc-value">10</div><div class="sc-label">分类维度</div></div></div>';
+  dashHTML += '</div>';
+
+  // 分类分布条
+  var catColors = { general:'#7c3aed', geometry:'#d97706', pavement:'#16a34a', bridge:'#db2777', drainage:'#0284c7', safety:'#dc2626', rural:'#65a30d', materials:'#4f46e5', seismic:'#ea580c', drawings:'#0d9488' };
+  var catNames = CAT_NAMES;
+  var catOrder = ['bridge','safety','general','pavement','materials','rural','geometry','drawings','drainage','seismic'];
+  var maxCount = Math.max.apply(null, catOrder.map(function(c) { return counts[c] || 0; }));
+
+  dashHTML += '<div class="cat-bars"><h3>📊 各分类规范数量分布</h3>';
+  catOrder.forEach(function(c) {
+    var n = counts[c] || 0;
+    var pct = Math.round(n / maxCount * 100);
+    dashHTML += '<div class="cat-bar-row"><span class="cat-bar-label">' + (CAT_ICONS[c]||'') + ' ' + (catNames[c]||c) + '</span>';
+    dashHTML += '<div class="cat-bar-track"><div class="cat-bar-fill" style="width:' + pct + '%;background:' + (catColors[c]||'#888') + ';">' + (n > 3 ? n : '') + '</div></div>';
+    dashHTML += '<span class="cat-bar-count">' + n + '</span></div>';
+  });
+  dashHTML += '</div>';
+
+  document.getElementById('dashboard').innerHTML = dashHTML;
+})();
+
 // ===== 渲染分类卡片 =====
 (function() {
   var counts = getCategoryCounts();
