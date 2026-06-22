@@ -310,7 +310,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 .cat-card {
   background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-sm);
   border: 1px solid var(--border); padding: 20px 16px; text-align: center;
-  cursor: pointer; transition: all 0.2s ease; position: relative; overflow: hidden;
+  cursor: pointer; transition: all 0.2s ease;
 }
 .cat-card .cat-icon { font-size: 36px; margin-bottom: 8px; transition: transform 0.2s ease; }
 .cat-card:hover .cat-icon { transform: scale(1.15); }
