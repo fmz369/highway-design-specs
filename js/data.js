@@ -321,15 +321,12 @@ tags:["农村公路"],
 pdf:'规范PDF/JTG 2111-2019 小交通量农村公路工程技术标准.pdf',
 hasPdf:true,
 content:`
-<h4>📑 章节</h4><div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 分级与设计速度</div><div>4 路线</div><div>5 路基</div><div>6 路面</div><div>7 排水</div><div>8 桥涵</div></div>
-<h4>🔑 核心参数</h4>
-<ul>
-<li>AADT&lt;1000pcu/d 适用</li>
-<li>路面宽度 3.5~4.5m，<span class="hl">错车道</span>间距≤300m</li>
-<li>可适当放宽平纵面指标</li>
-<li>结构层可简化，利用地方材料</li>
-<li>排水宜采用浅碟形边沟或土沟</li>
-</ul>\$\$\$\$\$`
+<h4>📑 章节目录（14章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 公路分级</div><div>4 设计速度</div><div>5 车道与硬路肩</div><div>6 建筑限界</div><div>7 横断面</div><div>8 路线</div><div>9 路基路面</div><div>10 桥涵</div><div>11 隧道</div><div>12 交叉</div><div>13 交安设施</div><div>14 环境保护</div></div>
+<h4>🏘 公路分级（四级公路Ⅰ/Ⅱ类）</h4>
+<table><tr><th>等级类型</th><th>车道数</th><th>AADT(pcu/d)</th><th>设计速度</th></tr><tr><td>四级公路（Ⅰ类）</td><td>双车道</td><td>≤1000</td><td><span class="hl">15km/h</span></td></tr><tr><td>四级公路（Ⅱ类）</td><td>单车道</td><td>≤400</td><td>15km/h</td></tr></table>
+<h4>📏 关键指标</h4><table><tr><th>项目</th><th>Ⅰ类</th><th>Ⅱ类</th></tr><tr><td>车道宽度(m)</td><td>3.0~3.5</td><td>3.5</td></tr><tr><td>路肩宽度(m)</td><td>0.25</td><td>0.50</td></tr><tr><td>建筑限界净高(m)</td><td colspan="2">4.50</td></tr></table>
+<div class="note-box"><strong>💡 与JTG B01-2014的关系</strong><br>本标准为JTG B01的<span class="hl">补充细化</span>，针对小交通量农村公路的特殊性提出专门技术标准。与之配套的设计规范为JTG/T 3311-2021。</div>`
 },
 {
 code:'JTG 5110-2023',
@@ -444,12 +441,11 @@ tags:["安全评价"],
 pdf:null,
 hasPdf:false,
 content:`
-<h4>📑 章节</h4><div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 一般要求</div><div>4 工可阶段评价</div><div>5 初设阶段评价</div><div>6 施工图阶段评价</div><div>7 交工验收评价</div></div>
-<h4>🔑 四阶段评价要点</h4>
-<ul><li><span class="hl">工可阶段</span>：路线走向、规模、技术标准选用的安全性</li>
-<li><span class="hl">初步设计</span>：运行速度协调性分析（|Δv|≤20km/h为优良）</li>
-<li><span class="hl">施工图设计</span>：护栏、标志标线等交安设施细节</li>
-<li><span class="hl">交工验收</span>：现场核查，试运行安全评估</li></ul>\$\$\$\$\$`
+<h4>📑 章节目录（7章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 一般要求</div><div>4 工可阶段评价</div><div>5 初设阶段评价</div><div>6 施工图阶段评价</div><div>7 交工验收评价</div></div>
+<h4>🔄 四阶段评价体系</h4>
+<table><tr><th>阶段</th><th>评价重点</th></tr><tr><td><span class="hl">工可阶段</span></td><td>路线走向、规模、技术标准选用的安全性</td></tr><tr><td><span class="hl">初步设计</span></td><td><span class="hl">运行速度协调性分析</span>：|Δv|≤20km/h为优良；Δv>20km/h需优化线形</td></tr><tr><td><span class="hl">施工图设计</span></td><td>护栏等级验算、标志标线布设、视距复核</td></tr><tr><td><span class="hl">交工验收</span></td><td>现场核查、试运行安全评估</td></tr></table>
+<h4>🎯 V85运行速度预测</h4><ul><li>小客车V85 = 设计速度×1.2~1.5（按平纵面指标调整）</li><li>大货车V85 = 设计速度×0.8~1.0</li></ul>`
 },
 {
 code:'JTG B06-2007',
@@ -1145,9 +1141,12 @@ tags:["快速路","城市"],
 pdf:null,
 hasPdf:false,
 content:`
-<h4>📑 章节</h4><div class="ch-list"><div>1~3 总则/术语/规定</div><div>4 横断面</div><div>5 平面与纵断面</div><div>6 出入口</div><div>7 立交</div><div>8 路基路面</div><div>9 附属设施</div></div>
-<h4>🔑 核心参数</h4>
-<ul><li>全线控制出入，主线无信号交叉</li><li><span class="hl">出入口最小间距</span>：100km/h→1020m；80→760m；60→510m</li><li>辅道设计速度 30~40km/h</li><li>紧急停车带间距 ≤500m</li></ul>\$\$\$\$\$`
+<h4>📑 章节目录（9章）</h4>
+<div class="ch-list"><div>1~3 总则/术语/规定</div><div>4 横断面</div><div>5 平面与纵断面</div><div>6 出入口</div><div>7 立交</div><div>8 路基路面</div><div>9 附属设施</div></div>
+<h4>🔑 核心特征</h4><ul><li>全线<span class="hl">控制出入</span>，主线无信号交叉</li><li>设计速度：100/80/60km/h</li></ul>
+<h4>📏 出入口最小间距（m）</h4>
+<table><tr><th>设计速度(km/h)</th><th>出入口间距(m)</th></tr><tr><td>100</td><td><span class="hl">1020</span></td></tr><tr><td>80</td><td>760</td></tr><tr><td>60</td><td>510</td></tr></table>
+<h4>🛣 横断面</h4><ul><li>主线车道宽度：<span class="hl">3.50~3.75m</span></li><li>辅道设计速度：30~40km/h</li><li>紧急停车带间距：<span class="hl">≤500m</span></li></ul>`
 },
 {
 code:'CJJ 193-2012',
@@ -1171,9 +1170,10 @@ tags:["城镇化","路线"],
 pdf:null,
 hasPdf:false,
 content:`
-<h4>📑 章节</h4><div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 分级</div><div>4 横断面</div><div>5 路线</div><div>6 路基路面</div><div>7 交叉</div><div>8 交安及沿线设施</div></div>
-<h4>🔑 核心要点</h4>
-<ul><li>兼顾公路功能和城市道路功能</li><li>横断面应综合慢行交通需求</li><li>交叉间距可适当缩小</li><li>排水、照明、管线标准与城市道路协调</li></ul>\$\$\$\$\$`
+<h4>📑 章节目录（8章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 分级</div><div>4 横断面</div><div>5 路线</div><div>6 路基路面</div><div>7 交叉</div><div>8 交安及沿线设施</div></div>
+<h4>🏙 核心特点</h4><ul><li>兼顾<span class="hl">公路功能</span>和<span class="hl">城市道路功能</span></li><li>适用于<span class="hl">城镇化地区</span>的公路新建和改扩建</li></ul>
+<h4>📏 横断面特点</h4><table><tr><th>项目</th><th>城镇化公路</th><th>普通公路</th></tr><tr><td>慢行系统</td><td>应综合设置<span class="hl">非机动车道+人行道</span></td><td>一般不设</td></tr><tr><td>交叉间距</td><td>可适当缩小</td><td>按规范最小间距</td></tr><tr><td>排水</td><td>与城市排水系统协调</td><td>公路边沟排水</td></tr><tr><td>照明</td><td>应设置</td><td>一般不设</td></tr></table>`
 },
 {
 code:'JTG D20-2017',
@@ -1276,10 +1276,13 @@ tags:["改扩建","高速"],
 pdf:null,
 hasPdf:false,
 content:`
-<h4>📑 章节</h4><div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 基本规定</div><div>4 既有工程检测评价</div><div>5 路线</div><div>6 路基</div><div>7 路面</div><div>8 桥涵</div><div>9 交通组织</div></div>
-<h4>🎯 设计方案流程</h4>
-<ul><li>Step1：收集既有图纸+运营资料→Step2：现场检测（路面、桥梁、承载力）→Step3：确定利用标准→Step4：比选改扩建方式（<span class="hl">两侧拼宽/单侧拼宽/分离增建</span>）→Step5：差异沉降控制设计→Step6：交通组织方案→Step7：施工图</li></ul>
-<h4>⚠ 关键难点</h4><ul><li>新旧路基不均匀沉降控制（加筋+冲击碾压+预压）</li><li>桥梁拼接：新旧结构温度变形协调</li><li>施工期保通方案</li></ul>\$\$\$\$\$`
+<h4>📑 章节目录（9章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 基本规定</div><div>4 既有工程检测评价</div><div>5 路线</div><div>6 路基</div><div>7 路面</div><div>8 桥涵</div><div>9 交通组织</div></div>
+<h4>🎯 改扩建设计流程</h4>
+<ul><li>Step1：收集既有图纸+运营资料 → Step2：<span class="hl">现场检测</span>（路面/桥梁/承载力）→ Step3：确定利用标准 → Step4：比选改扩建方式 → Step5：差异沉降控制 → Step6：交通组织方案 → Step7：施工图</li></ul>
+<h4>🏗 改扩建方式</h4>
+<table><tr><th>方式</th><th>适用</th><th>难点</th></tr><tr><td><span class="hl">两侧拼宽</span></td><td>用地允许</td><td>新旧路基不均匀沉降</td></tr><tr><td>单侧拼宽</td><td>一侧用地受限</td><td>平面线形调整</td></tr><tr><td>分离增建</td><td>交通量大幅增长</td><td>投资较大</td></tr></table>
+<h4>⚠ 关键难点</h4><ul><li>新旧路基不均匀沉降控制：<span class="hl">加筋+冲击碾压+预压</span></li><li>桥梁拼接：新旧结构温度变形协调</li><li>施工期保通方案：逐级降速120→100→80</li></ul>`
 },
 {
 code:'JTG/T D21-2014',
@@ -2182,12 +2185,19 @@ tags:["钢结构","桥梁"],
 pdf:null,
 hasPdf:false,
 content:`
-<h4>📑 章节</h4>
+<h4>📑 章节目录（7章）</h4>
 <div class="ch-list"><div>1 总则</div><div>2 材料</div><div>3 强度验算</div><div>4 稳定验算</div><div>5 疲劳验算</div><div>6 连接</div><div>7 桥面系</div></div>
-<h4>🪵 常用钢材牌号</h4>
-<ul><li><span class="hl">Q345q</span>（屈服345MPa）常规钢桥</li><li><span class="hl">Q370q</span> 大跨度桥梁</li><li><span class="hl">Q420q</span> 特大跨度/关键受力部位</li></ul>
-<h4>🔄 疲劳验算</h4>
-<ul><li>根据交通量确定疲劳荷载等级（FLM1/FLM3/FLM4）</li><li>疲劳细节类别（Δσc=160/140/125…MPa）对应不同构造细节</li></ul>\$\$\$\$\$`
+<h4>🪵 第2章 材料</h4>
+<table><tr><th>牌号</th><th>屈服强度(MPa)</th><th>抗拉强度(MPa)</th><th>适用</th></tr>
+<tr><td><span class="hl">Q345qD/E</span></td><td>≥345</td><td>490~630</td><td>常规钢桥</td></tr>
+<tr><td>Q370qD/E</td><td>≥370</td><td>510~670</td><td>大跨度桥梁</td></tr>
+<tr><td>Q420qD/E</td><td>≥420</td><td>540~710</td><td>特大跨度关键部位</td></tr>
+<tr><td>Q500qD/E</td><td>≥500</td><td>610~770</td><td>超高性能桥</td></tr></table>
+<h4>⚡ 第3章 强度验算</h4>
+<ul><li>抗弯：<span class="hl">M ≤ Wn·f</span>（净截面模量×强度设计值）</li><li>抗剪：τ = V·S/(I·tw) ≤ fv</li><li>折算应力：√(σ²+3τ²) ≤ 1.1f</li></ul>
+<h4>🔩 第6章 连接设计</h4>
+<table><tr><th>连接方式</th><th>特点</th></tr><tr><td><span class="hl">高强度螺栓</span></td><td>摩擦型(M20/M22/M24,10.9S级)，摩擦面抗滑移系数≥0.45</td></tr><tr><td>焊接</td><td>全熔透焊/角焊缝，需焊接工艺评定(WPS)</td></tr></table>
+<h4>🔄 第5章 疲劳验算</h4><ul><li>疲劳荷载模型：FLM1/FLM3/FLM4</li><li>疲劳细节类别：Δσc=160/140/125/112/100/90/80MPa</li><li>疲劳寿命：>200万次</li></ul>`
 },
 {
 code:'JTG D65-2015',
@@ -2198,11 +2208,14 @@ tags:["钢混组合","桥梁"],
 pdf:null,
 hasPdf:false,
 content:`
-<h4>📑 章节</h4><div class="ch-list"><div>1 总则</div><div>2 材料</div><div>3 承载能力极限状态</div><div>4 正常使用极限状态</div><div>5 剪力连接件</div><div>6 施工</div></div>
-<h4>🔑 组合梁类型</h4>
-<ul><li>工字钢组合梁（I形钢梁+混凝土桥面板）</li><li>钢箱组合梁（钢箱+混凝土面板）</li><li>钢桁组合梁（钢桁+混凝土面板）</li></ul>
-<h4>📐 剪力连接件（栓钉）</h4>
-<ul><li>栓钉直径 16~25mm，高度≥4d</li><li>单钉抗剪承载力：按 Eurocode/规范公式计算</li><li>收缩徐变效应在组合截面中需分阶段考虑</li></ul>\$\$\$\$\$`
+<h4>📑 章节目录（6章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 材料</div><div>3 承载能力极限状态</div><div>4 正常使用极限状态</div><div>5 剪力连接件</div><div>6 施工</div></div>
+<h4>🏗 组合梁类型</h4>
+<ul><li><span class="hl">工字钢组合梁</span>：I形钢梁+混凝土桥面板（最常用）</li><li>钢箱组合梁：钢箱+混凝土面板</li><li>钢桁组合梁：钢桁+混凝土面板</li></ul>
+<h4>🔩 第5章 剪力连接件（栓钉）</h4>
+<table><tr><th>项目</th><th>规定</th></tr><tr><td>栓钉直径</td><td><span class="hl">16~25mm</span></td></tr><tr><td>栓钉高度</td><td>≥4d</td></tr><tr><td>单钉抗剪承载力</td><td>按 Eurocode/规范公式计算</td></tr><tr><td>布置方式</td><td>集束式或均布式</td></tr></table>
+<h4>📐 关键设计要点</h4>
+<ul><li>收缩徐变效应在组合截面中需<span class="hl">分阶段</span>考虑（施工阶段/使用阶段）</li><li>温度梯度：钢梁与混凝土板的温差效应</li><li>施工阶段钢梁稳定性验算</li></ul>`
 },
 {
 code:'JTG/T 2231-01-2020',
@@ -2260,10 +2273,11 @@ tags:["装配式","预制"],
 pdf:null,
 hasPdf:false,
 content:`
-<h4>📑 章节</h4><div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 总体设计</div><div>4 构件设计</div><div>5 连接设计</div><div>6 施工</div></div>
+<h4>📑 章节目录（6章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 总体设计</div><div>4 构件设计</div><div>5 连接设计</div><div>6 施工</div></div>
 <h4>🔑 连接方式</h4>
-<ul><li><span class="hl">湿接缝</span>：现浇混凝土连接（最常用）</li><li><span class="hl">灌浆套筒</span>：用于钢筋连接</li><li><span class="hl">预应力连接</span>：后张法串联预制节段</li></ul>
-<h4>📐 设计要求</h4><ul><li>标准化、模数化设计</li><li>吊装重量和运输尺寸控制</li><li>临时固定措施</li></ul>\$\$\$\$\$`
+<table><tr><th>类型</th><th>特点</th><th>适用</th></tr><tr><td><span class="hl">湿接缝</span></td><td>现浇混凝土连接，最常用</td><td>墩顶/横隔板</td></tr><tr><td><span class="hl">灌浆套筒</span></td><td>钢筋对接，精度要求高</td><td>墩柱/盖梁</td></tr><tr><td>预应力连接</td><td>后张法串联预制节段</td><td>上部结构</td></tr><tr><td>插槽式连接</td><td>承插连接，施工简便</td><td>墩柱与基础</td></tr></table>
+<h4>📐 设计要求</h4><ul><li><span class="hl">标准化、模数化</span>设计，减少构件类型</li><li>吊装重量≤运输和吊装设备能力</li><li>运输尺寸≤公路限界（宽≤3.5m，高≤4.5m）</li><li>临时固定措施必须在设计阶段明确</li></ul>`
 },
 {
 code:'JTG/T 3650-2020',
@@ -2430,12 +2444,12 @@ tags:["水文","勘测"],
 pdf:null,
 hasPdf:false,
 content:`
-<h4>📑 章节</h4>
+<h4>📑 章节目录（6章）</h4>
 <div class="ch-list"><div>1 总则</div><div>2 水文调查</div><div>3 设计洪水</div><div>4 桥涵水文</div><div>5 冲刷计算</div><div>6 调治构造物</div></div>
 <h4>🌧 设计洪水计算方法</h4>
-<ul><li>推理公式法：Qm = 0.278·ψ·(S/τ^n)·F</li><li>地区经验公式法（各省不同）</li><li>水文比拟法（有实测资料时）</li></ul>
-<h4>🔑 桥梁冲刷</h4>
-<ul><li><span class="hl">一般冲刷</span>：河槽压缩引起（64-1/64-2公式）</li><li><span class="hl">局部冲刷</span>：桥墩阻水引起（65-1/65-2公式）</li><li>基础埋深应在总冲刷线以下≥2m</li></ul>\$\$\$\$\$`
+<table><tr><th>方法</th><th>公式/适用</th></tr><tr><td><span class="hl">推理公式法</span></td><td>Qm=0.278·ψ·(S/τⁿ)·F（小流域<500km²）</td></tr><tr><td>地区经验公式</td><td>各省不同，根据水文手册查取</td></tr><tr><td>水文比拟法</td><td>有实测资料时移用邻近流域成果</td></tr></table>
+<h4>🌊 桥梁冲刷计算</h4><ul><li><span class="hl">一般冲刷</span>（河槽压缩）：64-1公式（非粘性土）/ 64-2公式（粘性土）</li><li><span class="hl">局部冲刷</span>（桥墩阻水）：65-1公式 / 65-2修正式</li><li>总冲刷深度 = 一般冲刷 + 局部冲刷</li><li>基础埋深应在总冲刷线以下<span class="hl">≥2m</span>（大桥≥2.5m）</li></ul>
+<h4>🏞 第6章 调治构造物</h4><ul><li>导流堤：引导水流平顺通过桥孔</li><li>丁坝：挑开水流，保护桥台/路基</li><li>护岸：防止河岸冲刷危及桥涵</li></ul>`
 },
 {
 code:'JTG/T 3610-2019',
@@ -2581,14 +2595,13 @@ tags:["标志","标线"],
 pdf:null,
 hasPdf:false,
 content:`
-<h4>📑 章节</h4><div class="ch-list"><div>1 总则</div><div>2 标志设置</div><div>3 标线设置</div><div>4 交叉口</div><div>5 立交</div><div>6 特殊路段</div></div>
+<h4>📑 章节目录（6章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 标志设置</div><div>3 标线设置</div><div>4 交叉口</div><div>5 立交</div><div>6 特殊路段</div></div>
 <h4>📏 指路标志前置距离</h4>
-<table><tr><th>设计速度(km/h)</th><th>出口预告标志(m)</th><th>方向地点标志(m)</th></tr>
-<tr><td>120</td><td>2km→1km→500m→出口</td><td>1km</td></tr>
-<tr><td>100</td><td>1.5km→1km→500m→出口</td><td>800m</td></tr>
-<tr><td>80</td><td>1km→500m→出口</td><td>500m</td></tr></table>
+<table><tr><th>设计速度(km/h)</th><th>出口预告(m)</th><th>方向地点(m)</th></tr><tr><td>120</td><td>2km→1km→500m→出口</td><td>1km</td></tr><tr><td>100</td><td>1.5km→1km→500m→出口</td><td>800m</td></tr><tr><td>80</td><td>1km→500m→出口</td><td>500m</td></tr></table>
 <h4>📐 标线宽度</h4>
-<ul><li><span class="hl">车道边缘线</span>：高速/一级 20cm；其他 15cm</li><li>车道分界线：15cm（高速）；10~15cm（其他）</li><li>导向箭头长度：高速 9m；一般公路 6m</li></ul>\$\$\$\$\$`
+<table><tr><th>类型</th><th>高速/一级</th><th>其他公路</th></tr><tr><td>车道边缘线</td><td><span class="hl">20cm</span></td><td>15cm</td></tr><tr><td>车道分界线</td><td>15cm</td><td>10~15cm</td></tr><tr><td>导向箭头长度</td><td>9m</td><td>6m</td></tr></table>
+<h4>🔀 第4章 交叉口设置</h4><ul><li>交叉口范围内标线应确保视距三角形内<span class="hl">无任何障碍物</span></li><li>导向车道线长度≥30m（高速/一级≥50m）</li><li>人行横道线宽40~60cm，间距60cm</li></ul>`
 },
 {
 code:'JTG/T 3381-03-2024',
@@ -2696,10 +2709,12 @@ tags:["限速","标志"],
 pdf:null,
 hasPdf:false,
 content:`
-<h4>📑 章节</h4><div class="ch-list"><div>1 总则</div><div>2 限速值确定</div><div>3 限速区段</div><div>4 可变限速</div></div>
+<h4>📑 章节目录（4章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 限速值确定</div><div>3 限速区段</div><div>4 可变限速</div></div>
 <h4>🎯 限速值确定方法</h4>
-<ul><li><span class="hl">设计速度法</span>：以设计速度为基础</li><li><span class="hl">运行速度法</span>：按V85确定（85%位车速）</li><li><span class="hl">风险分析法</span>：综合考虑事故率、线形、环境</li></ul>
-<h4>📏 分车型限速</h4><ul><li>大型车限速可比小型车低 10~20km/h</li><li>限速区段 ≥2km</li></ul>\$\$\$\$\$`
+<table><tr><th>方法</th><th>说明</th></tr><tr><td><span class="hl">设计速度法</span></td><td>以设计速度为基础，考虑平纵面指标调整</td></tr><tr><td><span class="hl">运行速度法</span></td><td>按<span class="hl">V85</span>（85%位车速）确定，需实测运行速度</td></tr><tr><td>风险分析法</td><td>综合考虑事故率、线形、环境因素</td></tr></table>
+<h4>📏 限速区段设置</h4><ul><li>限速区段长度：<span class="hl">≥2km</span></li><li>分车型限速：大型车可比小型车低<span class="hl">10~20km/h</span></li><li>限速变化梯度：每次≤20km/h</li><li>限速标志间距：≥500m（高速/一级）</li></ul>
+<h4>⚡ 第4章 可变限速</h4><ul><li>适用：雾区、事故多发段、拥堵常发段</li><li>可变情报板显示，配合<span class="hl">交通安全预警系统</span></li></ul>`
 },
 {
 code:'JTG/T 3671-2021',
@@ -2724,9 +2739,13 @@ tags:["交通安全","细则"],
 pdf:null,
 hasPdf:false,
 content:`
-<h4>📑 章节</h4><div class="ch-list"><div>1 总则</div><div>2~7（与 JTG D81对应）</div><div>附录A~F 设计算例</div></div>
+<h4>📑 章节目录</h4>
+<div class="ch-list"><div>1 总则</div><div>2~7（与JTG D81对应）</div><div>附录A~F 设计算例</div></div>
 <h4>🔑 细则重点关注</h4>
-<ul><li>护栏端部处理：外展埋入式/圆端头（防穿刺）</li><li>护栏过渡段：不同护栏形式连接（如波形梁↔混凝土）</li><li>标志结构抗风计算：基本风压 ω0=ρV²/2；体型系数 μs</li><li>标线材料选择：热熔型/溶剂型/双组分/预成型</li></ul>\$\$\$\$\$`
+<h4>护栏端部处理</h4><ul><li>波形梁护栏端部：<span class="hl">外展埋入式</span>或<span class="hl">圆端头</span>（防穿刺）</li><li>混凝土护栏端部：渐变过渡</li></ul>
+<h4>护栏过渡段设计</h4><table><tr><th>过渡类型</th><th>长度</th></tr><tr><td>波形梁↔混凝土护栏</td><td>≥12m</td></tr><tr><td>不同等级波形梁</td><td>≥8m</td></tr><tr><td>护栏↔桥梁混凝土护栏</td><td>≥12m</td></tr></table>
+<h4>标志结构抗风计算</h4><ul><li>基本风压：ω₀=ρV²/2（ρ=1.25kg/m³）</li><li>体型系数μs：单柱式1.2~1.4</li><li>阵风系数βgz按高度取值</li></ul>
+<h4>标线材料选择</h4><table><tr><th>类型</th><th>特点</th><th>适用</th></tr><tr><td><span class="hl">热熔型</span></td><td>耐久性好，1.5~2.5mm</td><td>高速/一级</td></tr><tr><td>溶剂型</td><td>价格低，寿命短</td><td>低等级公路</td></tr><tr><td>双组分</td><td>高耐磨，环保</td><td>重点路段</td></tr><tr><td>预成型</td><td>工厂预制，现场粘贴</td><td>特殊图案/文字</td></tr></table>`
 },
 {
 code:'GB 51038-2015',
