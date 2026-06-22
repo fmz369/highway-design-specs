@@ -94,10 +94,10 @@
   var catNames = CAT_NAMES;
   var catOrder = ['bridge','safety','pavement','general','materials','rural','geometry','drawings','drainage','seismic'];
   var totalAll = SPECS.length;
-  var R = 50, cx = 76, cy = 76, sw = 24;
+    var R = 50, cx = 76, cy = 76, sw = 24;
   var circ = 2 * Math.PI * R;
 
-  var svgParts = '<defs><filter id="ds"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.15"/></filter></defs>'
+  var svgParts = '<defs><filter id="ds"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.12"/></filter></defs>'
     + '<circle cx="76" cy="76" r="' + R + '" fill="none" stroke="#e8e8f0" stroke-width="' + sw + '"/>'
     + '<g transform="rotate(-90 76 76)">';
 
@@ -107,12 +107,11 @@
     if (n === 0) return;
     var len = Math.round(n / totalAll * circ);
     if (len < 2) len = 2;
-    svgParts += '<a href="category/?cat=' + c + '"><circle cx="76" cy="76" r="' + R + '" fill="none" stroke="' + catColors[c] + '" stroke-width="' + sw + '" stroke-dasharray="' + len + ' ' + (circ - len) + '" stroke-dashoffset="' + (-cumLen) + '" stroke-linecap="round" style="cursor:pointer" onmouseover="this.style.strokeWidth='28'" onmouseout="this.style.strokeWidth='24'"><title>' + catNames[c] + ': ' + n + '部</title></circle></a>';
+    svgParts += '<a href="category/?cat=' + c + '"><circle cx="76" cy="76" r="' + R + '" fill="none" stroke="' + catColors[c] + '" stroke-width="' + sw + '" stroke-dasharray="' + len + ' ' + (circ - len) + '" stroke-dashoffset="' + (-cumLen) + '" stroke-linecap="round" style="cursor:pointer" onmouseover="this.style.strokeWidth=\'28\'" onmouseout="this.style.strokeWidth=\'24\'"><title>' + catNames[c] + ': ' + n + '部（点击查看）</title></circle></a>';
     cumLen += len;
   });
   svgParts += '</g>';
 
-  // 紧凑可点击图例
   var legendHTML = '';
   catOrder.forEach(function(c) {
     var n = counts[c] || 0;
@@ -120,7 +119,135 @@
     legendHTML += '<a href="category/?cat=' + c + '" class="pl-item"><span class="pl-dot" style="background:' + catColors[c] + ';"></span><span class="pl-name">' + catNames[c] + '</span><span class="pl-num">' + n + '</span></a>';
   });
 
-  dashHTML += '<div class="pie-wrap"><div class="donut-box"><svg viewBox="0 0 152 152" class="donut-svg">' + svgParts + '</svg><div class="donut-center"><span class="donut-num">' + totalAll + '</span><span class="donut-label">部规范</span></div></div><div class="pie-legend">' + legendHTML + '</div></div>';;
+  dashHTML += '<div class="pie-wrap"><div class="donut-box"><svg viewBox="0 0 152 152" class="donut-svg">' + svgParts + '</svg><div class="donut-center"><span class="donut-num">' + totalAll + '</span><span class="donut-label">部规范</span></div></div><div class="pie-legend">' + legendHTML + '</div></div>';
+
+
+  document.getElementById('dashboard').innerHTML = dashHTML;
+  } catch(e) {
+    document.getElementById('dashboard').innerHTML = '<div class="pie-wrap" style="justify-content:center;padding:30px;color:#ef4444;">⚠️ 看板加载失败：' + e.message + '</div>';
+  }
+})();
+
+// ===== 渲染分类卡片 =====
+(function() {
+  var counts = getCategoryCounts();
+  var cats = ['general', 'geometry', 'pavement', 'bridge', 'drainage', 'safety', 'rural', 'materials', 'seismic'];
+  var catColors = {
+    general: '#7c3aed', geometry: '#d97706', pavement: '#16a34a',
+    bridge: '#db2777', drainage: '#0284c7', safety: '#dc2626',
+    rural: '#65a30d', materials: '#4f46e5', seismic: '#ea580c',
+    drawings: '#0d9488'
+  };
+  var catEmoji = {
+    general: '📐', geometry: '📏', pavement: '🛣',
+    bridge: '🌉', drainage: '💧', safety: '🛡',
+    rural: '🏘', materials: '🔩', seismic: '🏔',
+    drawings: '📐'
+  };
+
+  var html = '';
+  cats.forEach(function(c) {
+    html += '<a href="category/?cat=' + c + '" class="cat-card" style="border-top: 3px solid ' + catColors[c] + ';">'
+      + '<div class="cat-icon">' + catEmoji[c] + '</div>'
+      + '<div class="cat-name">' + CAT_NAMES[c] + '</div>'
+      + '<div class="cat-count">' + counts[c] + ' 部规范</div>'
+      + '</a>';
+  });
+  document.getElementById('categoryCards').innerHTML = html;
+
+  // 统计胶囊
+  document.getElementById('statsPills').innerHTML = renderStatsPills();
+})();
+
+// ===== 推荐规范列表 =====
+(function() {
+  var featured = [
+    'JTG B01-2014',       // 公路工程技术标准
+    'JTG D20-2017',       // 公路路线设计规范
+    'JTG D30-2015',       // 公路路基设计规范
+    'JTG D50-2017',       // 公路沥青路面设计规范
+    'JTG D60-2015',       // 公路桥涵设计通用规范
+    'JTG D81-2017',       // 公路交通安全设施设计规范
+  ];
+  var specs = featured.map(function(code) {
+    return SPECS.find(function(s) { return s.code === code; });
+  }).filter(Boolean);
+
+  var html = '';
+  specs.forEach(function(s) {
+    html += renderCard(s, true, 'specs/');
+  });
+  document.getElementById('featuredGrid').innerHTML = html;
+})();
+
+// ===== 浏览记录 =====
+(function() {
+  var histSpecs = getHistorySpecs();
+  if (histSpecs.length > 0) {
+    document.getElementById('historySection').style.display = 'block';
+    var hhtml = '';
+    histSpecs.forEach(function(s) {
+      hhtml += renderCard(s, true, 'specs/');
+    });
+    document.getElementById('historyGrid').innerHTML = hhtml;
+  }
+})();
+
+// ===== 搜索（带联想） =====
+var si = document.getElementById('searchInput');
+var clearBtn = document.getElementById('clearSearch');
+var sugDiv = document.getElementById('searchSuggestions');
+var searchWrapper = si.closest('.search-wrapper');
+
+si.addEventListener('input', function() {
+  clearBtn.classList.toggle('visible', si.value.length > 0);
+  var q = si.value.trim();
+  if (q) {
+    var results = searchSpecs(q).slice(0, 6);
+    if (results.length > 0) {
+      var sugHTML = '';
+      results.forEach(function(s) {
+        sugHTML += '<div class="sug-item" data-code="' + s.code + '">'
+          + '<span class="sug-code">' + s.code + '</span>'
+          + '<span class="sug-title">' + s.title + '</span>'
+          + '<span class="sug-cat">' + (CAT_NAMES[s.cat]||'') + '</span></div>';
+      });
+      sugDiv.innerHTML = sugHTML;
+      sugDiv.classList.add('active');
+    } else { sugDiv.classList.remove('active'); }
+  } else { sugDiv.classList.remove('active'); }
+});
+sugDiv.addEventListener('mousedown', function(e) {
+  var item = e.target.closest('.sug-item');
+  if (item) window.location.href = 'specs/?code=' + encodeURIComponent(item.dataset.code);
+});
+document.addEventListener('click', function(e) {
+  if (!searchWrapper.contains(e.target)) sugDiv.classList.remove('active');
+});
+clearBtn.addEventListener('click', function() {
+  si.value = ''; clearBtn.classList.remove('visible'); sugDiv.classList.remove('active'); si.focus();
+});
+si.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' && si.value.trim()) {
+    window.location.href = 'category/?cat=all&q=' + encodeURIComponent(si.value.trim());
+  }
+});
+
+// ===== 快捷键 =====
+document.addEventListener('keydown', function(e) {
+  if (e.key === '/' && document.activeElement !== si && document.activeElement.tagName !== 'INPUT') {
+    e.preventDefault(); si.focus(); si.select();
+  }
+});
+
+// ===== 回到顶部 =====
+var backTop = document.getElementById('backTop');
+window.addEventListener('scroll', function() {
+  backTop.classList.toggle('visible', window.scrollY > 700);
+});
+backTop.addEventListener('click', function() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 </script>
 </body>
 </html>
