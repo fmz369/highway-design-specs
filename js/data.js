@@ -1326,13 +1326,11 @@ tags:["城市道路","路面"],
 pdf:null,
 hasPdf:false,
 content:`
-<h4>📑 章节</h4><div class="ch-list"><div>1~3 总则/术语/规定</div><div>4 沥青路面</div><div>5 水泥路面</div><div>6 砌块路面</div><div>7 人行道</div></div>
-<h4>🔑 设计年限</h4>
-<table><tr><th>道路等级</th><th>沥青路面(年)</th><th>水泥路面(年)</th></tr>
-<tr><td>快速路</td><td>15</td><td>30</td></tr>
-<tr><td>主干路</td><td>15</td><td>30</td></tr>
-<tr><td>次干路</td><td>10~12</td><td>20</td></tr></table>
-<ul><li>需考虑检查井、雨水口影响</li><li>人行道铺装+盲道设置要求</li></ul>\$\$\$\$\$`
+<h4>📑 章节目录（7章）</h4>
+<div class="ch-list"><div>1~3 总则/术语/规定</div><div>4 沥青路面</div><div>5 水泥路面</div><div>6 砌块路面</div><div>7 人行道</div></div>
+<h4>📊 设计年限</h4>
+<table><tr><th>道路等级</th><th>沥青路面</th><th>水泥路面</th></tr><tr><td>快速路</td><td><span class="hl">15年</span></td><td>30年</td></tr><tr><td>主干路</td><td>15年</td><td>30年</td></tr><tr><td>次干路</td><td>10~12年</td><td>20年</td></tr><tr><td>支路</td><td>8~10年</td><td>15年</td></tr></table>
+<h4>🏙 城市道路路面特点</h4><ul><li>需考虑<span class="hl">检查井、雨水口</span>影响（路面减薄处补强）</li><li>人行道铺装：必须设置<span class="hl">盲道</span>，符合无障碍要求</li><li>砌块路面：联锁砌块/石材，适用于支路、广场、人行道</li><li>公交站台路面需加强抗车辙设计</li></ul>`
 },
 {
 code:'JTG 5142-2019',
@@ -1402,9 +1400,10 @@ tags:["路基","养护"],
 pdf:null,
 hasPdf:false,
 content:`
-<h4>📑 章节</h4><div class="ch-list"><div>1~2 总则/术语</div><div>3 日常巡查</div><div>4 路基</div><div>5 排水设施</div><div>6 防护与支挡</div><div>7 特殊路基</div></div>
-<h4>🔑 养护要点</h4>
-<ul><li>每年汛前至少一次排水设施全面检查</li><li>边坡稳定性定期评估（雨季加密）</li><li>挡墙等支挡结构定期检查</li></ul>\$\$\$\$\$`
+<h4>📑 章节目录（7章）</h4>
+<div class="ch-list"><div>1~2 总则/术语</div><div>3 日常巡查</div><div>4 路基</div><div>5 排水设施</div><div>6 防护与支挡</div><div>7 特殊路基</div></div>
+<h4>🔍 第3章 日常巡查</h4><table><tr><th>巡查类型</th><th>频率</th><th>重点内容</th></tr><tr><td>日常巡查</td><td><span class="hl">≥1次/周</span></td><td>路肩/边坡/排水设施</td></tr><tr><td>汛期巡查</td><td><span class="hl">加密</span></td><td>冲刷/滑坡/崩塌</td></tr><tr><td>雨后巡查</td><td>雨后24h内</td><td>水毁/坍塌</td></tr></table>
+<h4>🔧 第4~7章 养护要点</h4><ul><li>排水设施：每年汛前<span class="hl">至少一次</span>全面检查清淤</li><li>边坡稳定性：定期评估（雨季加密），发现裂缝及时灌浆</li><li>挡墙检查：倾斜/裂缝/泄水孔堵塞</li><li>特殊路基：软土路段监测沉降，冻土路段检查保温层</li></ul>`
 },
 {
 code:'JTG D30-2015',
@@ -1574,27 +1573,14 @@ tags:["沥青","路面"],
 pdf:null,
 hasPdf:false,
 content:`
-<h4>📑 章节目录</h4>
+<h4>📑 章节目录（7章+附录）</h4>
 <div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 设计参数</div><div>4 结构组合设计</div><div>5 结构厚度计算</div><div>6 材料设计</div><div>7 排水设计</div><div>附录 设计流程图</div></div>
 <h4>🎯 五大设计指标（验算体系）</h4>
-<ul>
-<li><span class="hl">① 沥青层底拉应变</span> εt ≤ [εt]（疲劳开裂控制）</li>
-<li><span class="hl">② 无机结合料层底拉应力</span> σt ≤ [σt]（半刚性基层疲劳）</li>
-<li><span class="hl">③ 路基顶面压应变</span> εz ≤ [εz]（路基永久变形控制）</li>
-<li><span class="hl">④ 沥青层永久变形量</span> Ra ≤ [Ra]（车辙控制）</li>
-<li><span class="hl">⑤ 低温开裂指数</span> CI ≤ [CI]（温缩裂缝控制）</li>
-</ul>
-<h4>📊 设计使用年限与最小厚度</h4>
-<table><tr><th>公路等级</th><th>设计年限</th><th>沥青面层最小厚度</th><th>半刚性基层厚度</th></tr>
-<tr><td>高速</td><td>15年</td><td>12~18cm</td><td>36~45cm</td></tr>
-<tr><td>一级</td><td>15年</td><td>10~15cm</td><td>34~42cm</td></tr>
-<tr><td>二级</td><td>12年</td><td>8~12cm</td><td>30~38cm</td></tr>
-<tr><td>三级</td><td>8年</td><td>5~8cm</td><td>20~30cm</td></tr></table>
-<h4>📐 标准轴载</h4>
-
-<ul><li>BZZ-100：单轴双轮组，轴重100kN，轮压 0.7MPa，当量圆直径 21.3cm</li></ul>
-<h4>🧪 材料设计要点</h4>
-<ul><li>沥青混合料类型：AC、SMA、SUP、OGFC</li><li>马歇尔试验指标：稳定度、流值、空隙率、VMA、VFA</li></ul>\$\$\$\$\$`
+<ul><li><span class="hl">① 沥青层底拉应变</span> εt≤[εt]（疲劳开裂控制）</li><li><span class="hl">② 无机结合料层底拉应力</span> σt≤[σt]（半刚性基层疲劳）</li><li><span class="hl">③ 路基顶面压应变</span> εz≤[εz]（路基永久变形控制）</li><li><span class="hl">④ 沥青层永久变形量</span> Ra≤[Ra]（车辙控制）</li><li><span class="hl">⑤ 低温开裂指数</span> CI≤[CI]（温缩裂缝控制）</li></ul>
+<h4>📊 设计年限与最小厚度</h4>
+<table><tr><th>公路等级</th><th>设计年限</th><th>沥青面层最小厚度</th><th>半刚性基层</th></tr><tr><td>高速</td><td>15年</td><td>12~18cm</td><td>36~45cm</td></tr><tr><td>一级</td><td>15年</td><td>10~15cm</td><td>34~42cm</td></tr><tr><td>二级</td><td>12年</td><td>8~12cm</td><td>30~38cm</td></tr></table>
+<h4>📐 标准轴载</h4><ul><li>BZZ-100：单轴双轮组，轴重<span class="hl">100kN</span>，轮压0.7MPa</li></ul>
+<h4>🧪 第6章 材料设计</h4><ul><li>沥青混合料类型：<span class="hl">AC(密级配)/SMA(沥青玛蹄脂)/SUP(高性能)/OGFC(开级配)</span></li><li>马歇尔试验：稳定度≥8kN、流值1.5~4mm、空隙率3%~6%、VMA按公称粒径</li></ul>`
 },
 {
 code:'JTG/T 3331-2018',
@@ -2095,9 +2081,12 @@ tags:["圬工","涵洞"],
 pdf:null,
 hasPdf:false,
 content:`
-<h4>📑 章节</h4><div class="ch-list"><div>1 总则</div><div>2 材料</div><div>3 构件计算</div><div>4 拱桥</div><div>5 涵洞</div></div>
-<h4>🔑 适用范围</h4>
-<ul><li>石拱桥、混凝土拱桥、涵洞等中小跨径结构</li><li>砌体抗压设计值：M10砂浆+MU30石料→2.5~3.0MPa</li><li>拱圈厚度：经验法 h=L/60~L/40（石拱）</li></ul>\$\$\$\$\$`
+<h4>📑 章节目录（5章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 材料</div><div>3 构件计算</div><div>4 拱桥</div><div>5 涵洞</div></div>
+<h4>🏛 适用范围</h4><ul><li>适用于<span class="hl">石拱桥、混凝土拱桥、涵洞</span>等以受压为主的中小跨径结构</li><li>砌体材料：石料(MU30~MU100)、混凝土预制块</li><li>砂浆：M5~M15水泥砂浆</li></ul>
+<h4>🔑 砌体抗压强度设计值(MPa)</h4>
+<table><tr><th>石料等级</th><th>M10砂浆</th><th>M7.5砂浆</th></tr><tr><td><span class="hl">MU30</span></td><td>2.5~3.0</td><td>2.1~2.5</td></tr><tr><td>MU50</td><td>3.5~4.0</td><td>3.0~3.5</td></tr><tr><td>MU80</td><td>4.5~5.0</td><td>3.8~4.3</td></tr><tr><td>MU100</td><td>5.5~6.0</td><td>4.5~5.0</td></tr></table>
+<h4>📐 拱圈厚度经验公式</h4><ul><li>石拱桥：h = L/<span class="hl">60~40</span>（L为跨径）</li><li>混凝土拱桥：h = L/70~50</li><li>拱上填料厚度≥30cm（防水+分散荷载）</li></ul>`
 },
 {
 code:'JTG D62-2004',
@@ -2472,15 +2461,12 @@ tags:["交通标志"],
 pdf:null,
 hasPdf:false,
 content:`
-<h4>📑 章节</h4>
+<h4>📑 章节目录</h4>
 <div class="ch-list"><div>1~3 范围/引用/术语</div><div>4 警告标志(86种)</div><div>5 禁令标志(58种)</div><div>6 指示标志(35种)</div><div>7 指路标志</div><div>8 旅游区标志</div><div>9 告示标志</div></div>
-<h4>📏 汉字高度（指路标志）</h4>
-<table><tr><th>设计速度(km/h)</th><th>汉字高度(cm)</th><th>高宽比</th></tr>
-<tr><td>120~100</td><td>60~70</td><td>1:1</td></tr>
-<tr><td>80~60</td><td>50~60</td><td>1:1</td></tr>
-<tr><td>40~30</td><td>30~40</td><td>1:1</td></tr></table>
-<h4>✨ 反光膜等级</h4>
-<ul><li>Ⅰ类：工程级（最低）；Ⅲ类：高强级；Ⅴ类：钻石级（最高）</li><li>高速/一级公路标志 ≥Ⅲ类</li></ul>\$\$\$\$\$`
+<h4>🚦 标志分类速查</h4>
+<table><tr><th>类别</th><th>颜色</th><th>形状</th><th>数量</th></tr><tr><td><span class="hl">警告标志</span></td><td>黄底黑边</td><td>正三角形</td><td>86种</td></tr><tr><td>禁令标志</td><td>白底红圈</td><td>圆形</td><td>58种</td></tr><tr><td>指示标志</td><td>蓝底白字</td><td>圆形/矩形</td><td>35种</td></tr><tr><td>指路标志</td><td>蓝/绿底白字</td><td>矩形</td><td>—</td></tr></table>
+<h4>📏 指路标志汉字高度</h4><table><tr><th>设计速度(km/h)</th><th>汉字高度(cm)</th></tr><tr><td>120~100</td><td><span class="hl">60~70</span></td></tr><tr><td>80~60</td><td>50~60</td></tr><tr><td>40~30</td><td>30~40</td></tr><tr><td>20</td><td>20~30</td></tr></table>
+<h4>2022版主要更新</h4><ul><li>新增<span class="hl">电动自行车</span>相关标志</li><li>指路标志信息分层优化</li><li>高速公路编号标志更新</li></ul>`
 },
 {
 code:'GB 5768.3-2009',
@@ -2541,10 +2527,10 @@ tags:["机电","质检"],
 pdf:null,
 hasPdf:false,
 content:`
-<h4>📑 章节</h4>
+<h4>📑 章节目录（7章）</h4>
 <div class="ch-list"><div>1 总则</div><div>2 监控设施</div><div>3 收费设施</div><div>4 通信设施</div><div>5 照明设施</div><div>6 通风/消防</div><div>7 供配电</div></div>
-<h4>🔑 评定规则</h4>
-<ul><li>合格率≥95%为合格工程</li><li>关键项目（标★）不合格一票否决</li><li>实测项目、检验方法按分项工程分别规定</li></ul>\$\$\$\$\$`
+<h4>📊 评定规则</h4><table><tr><th>项目</th><th>要求</th></tr><tr><td>合格率</td><td><span class="hl">≥95%</span>为合格工程</td></tr><tr><td>关键项目(标★)</td><td>不合格<span class="hl">一票否决</span></td></tr></table>
+<h4>🔑 各系统关键指标</h4><ul><li>监控：车辆检测器计数误差<span class="hl">≤2%</span></li><li>收费：ETC交易成功率<span class="hl">≥99%</span></li><li>照明：照度均匀度<span class="hl">≥0.4</span></li><li>通风：CO浓度正常≤150ppm</li></ul>`
 },
 {
 code:'JTG D70/2-2014',
@@ -2573,18 +2559,18 @@ tags:["交通安全","护栏"],
 pdf:null,
 hasPdf:false,
 content:`
-<h4>📑 章节</h4>
+<h4>📑 章节目录（7章）</h4>
 <div class="ch-list"><div>1 总则</div><div>2 护栏</div><div>3 标志</div><div>4 标线</div><div>5 隔离设施</div><div>6 防眩设施</div><div>7 视线诱导</div></div>
-<h4>🛡 护栏防撞等级</h4>
-<table><tr><th>等级</th><th>碰撞能量(kJ)</th><th>碰撞车速(km/h)</th><th>碰撞角度</th><th>典型形式</th></tr>
-<tr><td>C</td><td>40</td><td>40</td><td>20°</td><td>二波护栏</td></tr>
-<tr><td>B</td><td>70</td><td>60</td><td>20°</td><td>二波护栏(加强)</td></tr>
-<tr><td>A</td><td>160</td><td>60</td><td>20°</td><td>三波护栏</td></tr>
-<tr><td>SB</td><td>280</td><td>80</td><td>20°</td><td>三波护栏(加强)</td></tr>
-<tr><td>SA</td><td>400</td><td>80</td><td>20°</td><td>混凝土护栏</td></tr>
-<tr><td>SS</td><td>520</td><td>80</td><td>20°</td><td>加强混凝土护栏</td></tr></table>
-<h4>📏 护栏设置条件</h4>
-<ul><li>路侧：填方高度 ≥3m 或路侧有桥梁墩台、标志立柱、挡墙等危险物</li><li>中央分隔带：高速/一级公路均应设置</li><li>波形梁护栏板厚：B/A级 3mm；SB级 4mm</li><li>混凝土护栏高度 ≥81cm</li></ul>\$\$\$\$\$`
+<h4>🛡 第2章 护栏防撞等级</h4>
+<table><tr><th>等级</th><th>碰撞能量(kJ)</th><th>碰撞车速</th><th>典型形式</th></tr>
+<tr><td>C</td><td>40</td><td>40km/h</td><td>二波波形梁</td></tr>
+<tr><td>B</td><td>70</td><td>60km/h</td><td>二波(加强)</td></tr>
+<tr><td><span class="hl">A</span></td><td>160</td><td>60km/h</td><td>三波波形梁</td></tr>
+<tr><td>SB</td><td>280</td><td>80km/h</td><td>三波(加强)</td></tr>
+<tr><td>SA</td><td>400</td><td>80km/h</td><td>混凝土护栏</td></tr>
+<tr><td>SS</td><td>520</td><td>80km/h</td><td>加强混凝土</td></tr></table>
+<h4>护栏设置条件</h4><ul><li>路侧填方高度<span class="hl">≥3m</span>或路侧有危险物</li><li>高速/一级公路中央分隔带<span class="hl">必须设置</span></li><li>波形梁板厚：B/A级3mm；SB级4mm</li></ul>
+<h4>📋 第3章 交通标志</h4><ul><li>标志颜色含义：红(禁令)、黄(警告)、蓝(指示/指路)、绿(高速指路)、棕(旅游)</li><li>汉字高度：120/100km/h→<span class="hl">60~70cm</span>；80/60→50~60cm；40/30→30~40cm</li><li>反光膜等级：Ⅰ(工程级)/Ⅲ(高强级)/Ⅴ(钻石级)，高速≥Ⅲ级</li></ul>`
 },
 {
 code:'JTG D82-2009',
@@ -2725,10 +2711,10 @@ tags:["机电","隧道机电"],
 pdf:null,
 hasPdf:false,
 content:`
-<h4>📑 章节</h4>
+<h4>📑 章节目录（7章）</h4>
 <div class="ch-list"><div>1 总则</div><div>2 监控</div><div>3 收费</div><div>4 通信</div><div>5 照明</div><div>6 通风</div><div>7 供配电</div></div>
 <h4>🔑 各系统测试要点</h4>
-<ul><li>车辆检测器：计数误差≤2%</li><li>可变情报板：像素失效点≤3‰</li><li>ETC：交易成功率≥99%</li><li>照明：照度/亮度均匀度≥0.4</li></ul>\$\$\$\$\$`
+<table><tr><th>系统</th><th>测试项目</th><th>标准</th></tr><tr><td>车辆检测器</td><td>计数精度</td><td>误差<span class="hl">≤2%</span></td></tr><tr><td>可变情报板</td><td>像素完好率</td><td>失效点<span class="hl">≤3‰</span></td></tr><tr><td>ETC</td><td>交易成功率</td><td><span class="hl">≥99%</span></td></tr><tr><td>照明</td><td>照度/亮度均匀度</td><td><span class="hl">≥0.4</span></td></tr><tr><td>通风</td><td>风速/CO浓度</td><td>按设计值</td></tr></table>`
 },
 {
 code:'JTG/T D81-2017',
