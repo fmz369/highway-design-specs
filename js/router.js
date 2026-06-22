@@ -74,7 +74,7 @@ var CAT_NAMES = {
   rural: '农村公路',
   materials: '材料/钢材',
   seismic: '抗震/基础',
-  drawings: '标准图集'
+  drawings: '其他'
 };
 
 /** 分类图标映射 */
