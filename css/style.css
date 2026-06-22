@@ -285,7 +285,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 .sc-value { font-size: 28px; font-weight: 800; color: var(--text); line-height: 1; }
 .sc-label { font-size: 12px; color: var(--text3); margin-top: 2px; }
 [data-theme="dark"] .stat-card { background: #1e1e35; }
-[data-theme="dark"] @media (max-width: 700px) { .stat-cards { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 700px) { .stat-cards { grid-template-columns: repeat(2, 1fr); } }
 
 .pie-wrap { display: flex; align-items: center; gap: 28px; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-sm); border: 1px solid var(--border); padding: 20px 24px; }
 .donut-box { position: relative; width: 152px; height: 152px; flex-shrink: 0; }
@@ -487,22 +487,53 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 
 /* ====== 响应式 ====== */
 @media (max-width: 960px) {
-  .header-inner { padding: 0 20px; }
-  .main { padding: 16px 20px 50px; }
+  .header-inner { padding: 0 16px; }
+  .header h1 { font-size: 18px; letter-spacing: 1px; }
+  .main { padding: 14px 16px 50px; }
   .grid { grid-template-columns: 1fr; }
-  .spec-detail .toolbar { top: 135px; }
-  .spec-detail .spec-content { padding: 16px; }
+  .spec-detail .toolbar { top: 130px; padding: 8px 0; gap: 6px; }
+  .spec-detail .toolbar button, .spec-detail .toolbar .btn { padding: 6px 12px; font-size: 12px; }
+  .spec-detail .spec-content { padding: 14px; }
   .spec-detail .spec-content .ch-list { grid-template-columns: 1fr; }
   .stats-pills { display: none; }
   .category-cards { grid-template-columns: repeat(2, 1fr); }
-  .tabs-wrap { top: 130px; }
+  .tabs-wrap { top: 125px; }
+  .tab { padding: 6px 13px; font-size: 12px; }
+  .card-header { padding: 14px 16px; }
+  .card-icon { width: 40px; height: 40px; font-size: 18px; }
+  .card-code { font-size: 14px; }
+  .search-bar { max-width: 100%; }
 }
 @media (max-width: 540px) {
-  .header h1 { font-size: 17px; letter-spacing: .5px; }
-  .category-cards { grid-template-columns: 1fr; }
-  .card-header { padding: 14px 16px; }
-  .card-icon { width: 38px; height: 38px; font-size: 17px; border-radius: 10px; }
-  .back-top { bottom: 20px; right: 20px; width: 40px; height: 40px; font-size: 18px; }
+  .header { padding: 14px 0 10px; }
+  .header h1 { font-size: 16px; letter-spacing: 0; }
+  .header .subtitle { font-size: 11px; }
+  .header-inner { padding: 0 12px; }
+  .main { padding: 10px 12px 40px; }
+  .category-cards { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .cat-card { padding: 16px 12px; }
+  .cat-card .cat-icon { font-size: 30px; }
+  .cat-card .cat-name { font-size: 14px; }
+  .stat-cards { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .stat-card { padding: 12px 14px; gap: 10px; }
+  .stat-card .sc-icon { width: 36px; height: 36px; font-size: 18px; }
+  .sc-value { font-size: 22px; }
+  .pie-wrap { flex-direction: column; padding: 14px 16px; }
+  .donut-box { width: 120px; height: 120px; }
+  .donut-svg { width: 120px; height: 120px; }
+  .donut-num { font-size: 24px; }
+  .card-header { padding: 12px 14px; }
+  .card-icon { width: 36px; height: 36px; font-size: 16px; border-radius: 10px; }
+  .card-code { font-size: 13px; }
+  .card-title { font-size: 12px; }
+  .spec-detail .toolbar { top: 120px; }
+  .spec-detail .toolbar button, .spec-detail .toolbar .btn { padding: 5px 10px; font-size: 11px; }
+  .back-top { bottom: 16px; right: 16px; width: 40px; height: 40px; font-size: 18px; }
+  .tabs-wrap { top: 115px; }
+  .tab { padding: 5px 10px; font-size: 11px; }
+  .spec-detail .spec-content table { font-size: 11px; }
+  .spec-detail .spec-content td, .spec-content th { padding: 4px 6px; }
+  .theme-toggle { top: 8px; right: 8px; width: 30px; height: 30px; font-size: 16px; }
 }
 
 /* ====== 打印样式 ====== */
