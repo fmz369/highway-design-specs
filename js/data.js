@@ -21,16 +21,24 @@ status:'current',
 tags:["城市道路","总体"],
 pdf:'规范PDF/CJJ 37-2012 城市道路工程设计规范.pdf',
 hasPdf:true,
-content:`
-<h4>📑 章节目录</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 基本规定</div><div>4 通行能力与服务水���</div><div>5 横断面</div><div>6 平面与纵断面</div><div>7 交叉</div><div>8 路基路面</div><div>9 公共交通</div><div>10 行人与非机动车</div><div>11 管线及设施</div></div>
-<h4>🔑 核心参数表</h4>
-<table><tr><th>道路等级</th><th>设计速度(km/h)</th><th>一条车道通行能力(pcu/h)</th><th>设计年限</th></tr>
-<tr><td>快速路</td><td>100/80/60</td><td>1800~2000</td><td>20年</td></tr>
-<tr><td>主干路</td><td>60/50/40</td><td>1650~1800</td><td>20年</td></tr>
-<tr><td>次干路</td><td>50/40/30</td><td>1550~1700</td><td>15年</td></tr>
-<tr><td>支路</td><td>40/30/20</td><td>1400~1600</td><td>10~15年</td></tr></table>
-<ul><li>机动车道宽 3.25~3.50m（小客车道可3.00m）</li><li>非机动车道宽 2.5~3.5m（单向）</li><li>人行道最小宽 2.0m</li></ul>`
+content:`<h4>📑 章节目录（11章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 基本规定</div><div>4 通行能力与服务水平</div><div>5 横断面</div><div>6 平面与纵断面</div><div>7 交叉</div><div>8 路基路面</div><div>9 公共交通</div><div>10 行人与非机动车</div><div>11 管线及设施</div></div>
+
+<h4>🚗 第3章 基本规定</h4>
+<h4>道路分级与设计速度</h4>
+<table><tr><th>道路等级</th><th>设计速度(km/h)</th><th>设计年限(年)</th></tr><tr><td><span class="hl">快速路</span></td><td>100/80/60</td><td>20</td></tr><tr><td>主干路</td><td>60/50/40</td><td>20</td></tr><tr><td>次干路</td><td>50/40/30</td><td>15</td></tr><tr><td>支路</td><td>40/30/20</td><td>10~15</td></tr></table>
+
+<h4>通行能力</h4>
+<table><tr><th>道路等级</th><th>一条车道通行能力(pcu/h)</th></tr><tr><td>快速路</td><td><span class="hl">1800~2000</span></td></tr><tr><td>主干路</td><td>1650~1800</td></tr><tr><td>次干路</td><td>1550~1700</td></tr><tr><td>支路</td><td>1400~1600</td></tr></table>
+
+<h4>📏 第5章 横断面</h4><ul><li>机动车道宽度：<span class="hl">3.25~3.50m</span>（小客车道可3.00m）</li><li>非机动车道宽度：2.5~3.5m（单向）</li><li>人行道最小宽度：<span class="hl">2.0m</span></li><li>设施带宽度：0.5~1.5m</li></ul>
+
+<h4>🔀 第7章 交叉</h4><ul><li>平面交叉口视距三角形内<span class="hl">不得有任何障碍物</span></li><li>立体交叉设置条件：快速路与快速路/主干路相交</li></ul>
+
+<h4>🚌 第9章 公共交通</h4><ul><li>公交专用道宽度：<span class="hl">3.5~3.75m</span></li><li>公交停靠站间距：市区500~800m；郊区800~1000m</li></ul>
+
+<h4>🚶 第10章 行人与非机动车</h4><ul><li>人行道必须设置<span class="hl">盲道</span>，满足无障碍要求</li><li>非机动车道与机动车道之间应有<span class="hl">隔离设施</span></li></ul>
+<h4>📄 规范原文获取</h4><ul><li>📥 <a href="./规范PDF/CJJ 37-2012 城市道路工程设计规范.pdf" target="_blank" style="color:#2563eb;font-weight:600;">打开 PDF 原文</a></li></ul>`
 },
 {
 code:'GB 5768.1-2009',
@@ -322,13 +330,39 @@ status:'current',
 tags:["农村公路"],
 pdf:'规范PDF/JTG 2111-2019 小交通量农村公路工程技术标准.pdf',
 hasPdf:true,
-content:`
-<h4>📑 章节目录（14章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 公路分级</div><div>4 设计速度</div><div>5 车道与硬路肩</div><div>6 建筑限界</div><div>7 横断面</div><div>8 路线</div><div>9 路基路面</div><div>10 桥涵</div><div>11 隧道</div><div>12 交叉</div><div>13 交安设施</div><div>14 环境保护</div></div>
-<h4>🏘 公路分级（四级公路Ⅰ/Ⅱ类）</h4>
-<table><tr><th>等级类型</th><th>车道数</th><th>AADT(pcu/d)</th><th>设计速度</th></tr><tr><td>四级公路（Ⅰ类）</td><td>双车道</td><td>≤1000</td><td><span class="hl">15km/h</span></td></tr><tr><td>四级公路（Ⅱ类）</td><td>单车道</td><td>≤400</td><td>15km/h</td></tr></table>
-<h4>📏 关键指标</h4><table><tr><th>项目</th><th>Ⅰ类</th><th>Ⅱ类</th></tr><tr><td>车道宽度(m)</td><td>3.0~3.5</td><td>3.5</td></tr><tr><td>路肩宽度(m)</td><td>0.25</td><td>0.50</td></tr><tr><td>建筑限界净高(m)</td><td colspan="2">4.50</td></tr></table>
-<div class="note-box"><strong>💡 与JTG B01-2014的关系</strong><br>本标准为JTG B01的<span class="hl">补充细化</span>，针对小交通量农村公路的特殊性提出专门技术标准。与之配套的设计规范为JTG/T 3311-2021。</div>`
+content:`<h4>📑 章节目录（12章+2附录）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 基本规定</div><div>4 路线</div><div>5 路基</div><div>6 路面</div><div>7 排水</div><div>8 桥涵</div><div>9 隧道</div><div>10 路线交叉</div><div>11 交通安全设施</div><div>12 沿线设施及其他</div><div>附录A 路面典型结构</div><div>附录B 单车道隧道标准内轮廓</div></div>
+
+<h4>📜 第1章 总则（10条）</h4>
+<ul><li>1.0.1 为规范农村公路工程建设，补充完善公路工程技术标准制定本标准</li><li>1.0.2 适用于<span class="hl">小交通量农村公路</span>的新建和改扩建</li><li>1.0.3 遵循安全耐久、经济适用、保护环境、节约资源原则</li><li>1.0.5 村镇路段应注重安全便民，设置必要的<span class="hl">速度控制设施</span></li><li>1.0.6 应注重利用既有道路，鼓励<span class="hl">资源循环利用</span></li></ul>
+
+<h4>🚗 第3章 基本规定</h4>
+<h4>公路分级</h4>
+<table><tr><th>等级类型</th><th>车道数</th><th>AADT(pcu/d)</th></tr><tr><td>四级公路（Ⅰ类）</td><td>双车道</td><td>≤1000</td></tr><tr><td>四级公路（Ⅱ类）</td><td>单车道</td><td>≤400</td></tr></table>
+<h4>设计速度</h4><ul><li>四级公路（Ⅰ类）、（Ⅱ类）设计速度均为<span class="hl">15km/h</span></li></ul>
+<h4>建筑限界</h4><ul><li>净高：<span class="hl">4.50m</span>（检修道/人行道分开设置时2.50m）</li><li>侧向宽度L = 路肩宽度 - 0.25m</li></ul>
+
+<h4>📏 第4章 路线（关键参数）</h4>
+<h4>车道及路肩宽度（表4.0.2）</h4>
+<table><tr><th>公路等级</th><th>车道数</th><th>车道宽度(m)</th><th>路肩宽度(m)</th></tr><tr><td>四级公路（Ⅰ类）</td><td>2</td><td>3.0</td><td>0.25</td></tr><tr><td>四级公路（Ⅱ类）</td><td>1</td><td>3.5</td><td>0.50</td></tr></table>
+
+<h4>错车道路段尺寸（表4.0.3）</h4>
+<table><tr><th>项目</th><th>四级公路（Ⅱ类）</th></tr><tr><td>错车道行车道宽度</td><td><span class="hl">6m</span></td></tr><tr><td>错车道路肩宽度</td><td>0.25m</td></tr><tr><td>错车道有效长度</td><td><span class="hl">10m</span></td></tr><tr><td>每端渐变段长度</td><td>9m</td></tr></table>
+<ul><li>每公里设置<span class="hl">≥3处</span>，不通视路段间距≤200m</li></ul>
+
+<h4>视距（表4.0.5，设计速度15km/h）</h4>
+<table><tr><th>视距类型</th><th>最小长度(m)</th></tr><tr><td>停车视距</td><td><span class="hl">15</span></td></tr><tr><td>会车视距</td><td>30</td></tr><tr><td>超车视距</td><td>75(一般)/55(极限)</td></tr></table>
+
+<h4>🪨 第5章 路基</h4><ul><li>路基设计洪水频率<span class="hl">≥1/15</span></li><li>路基压实度参照JTG D30执行，可适当降低标准</li></ul>
+
+<h4>🛣 第6章 路面</h4><ul><li>路面设计使用年限：沥青路面<span class="hl">8~10年</span>；水泥路面<span class="hl">10~15年</span></li><li>推荐典型路面结构见附录A</li></ul>
+
+<h4>🌉 第8章 桥涵</h4><ul><li>涵洞设计洪水频率<span class="hl">≥1/25</span></li><li>小桥设计使用年限≥30年</li></ul>
+
+<h4>🛡 第11章 交通安全设施</h4><ul><li>必须设置<span class="hl">限速标志</span>和<span class="hl">警示标志</span></li><li>路侧险要路段应设置<span class="hl">护栏</span></li></ul>
+
+<div class="note-box"><strong>💡 与JTG/T 3311-2021的关系</strong><br>本标准为<span class="hl">强制性行业标准</span>，规定指标底线。JTG/T 3311-2021为配套推荐性设计规范，提供具体设计方法。两标准应<span class="hl">配合使用</span>。</div>
+<h4>📄 规范原文获取</h4><ul><li>📥 <a href="./规范PDF/JTG 2111-2019 小交通量农村公路工程技术标准.pdf" target="_blank" style="color:#2563eb;font-weight:600;">打开 PDF 原文</a></li></ul>`
 },
 {
 code:'JTG 5110-2023',
