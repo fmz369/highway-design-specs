@@ -45,7 +45,7 @@ function searchInCat(cat, query) {
 /** 获取各分类计数 */
 function getCategoryCounts() {
   var counts = { all: SPECS.length };
-  var cats = ['general', 'geometry', 'pavement', 'bridge', 'drainage', 'safety'];
+  var cats = ['general', 'geometry', 'pavement', 'bridge', 'drainage', 'safety', 'rural', 'materials', 'seismic'];
   cats.forEach(function(c) {
     counts[c] = SPECS.filter(function(s) { return s.cat === c; }).length;
   });
