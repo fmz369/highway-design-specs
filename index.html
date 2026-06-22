@@ -33,7 +33,7 @@
 <main class="main">
 
 <!-- 数据看板 -->
-<div class="dashboard" id="dashboard"></div>
+<div class="dashboard" id="dashboard"><div class="pie-wrap" style="justify-content:center;padding:30px;color:var(--text3);">📊 加载中...</div></div>
 
 <!-- 分类导航 -->
 <h2 style="text-align:center;margin-bottom:6px;font-size:20px;">📂 按分类浏览</h2>
@@ -72,6 +72,7 @@
 <script>
 // ===== 数据看板 =====
 (function() {
+  try {
   var counts = getCategoryCounts();
   var total = SPECS.length;
   var current = SPECS.filter(function(s) { return s.status === 'current'; }).length;
@@ -118,6 +119,9 @@
   dashHTML += '<div class="pie-wrap"><div class="pie-chart" style="background: conic-gradient(' + pieGrad + ');"></div><div class="pie-legend">' + legendHTML + '</div></div>';
 
   document.getElementById('dashboard').innerHTML = dashHTML;
+  } catch(e) {
+    document.getElementById('dashboard').innerHTML = '<div class="pie-wrap" style="justify-content:center;padding:30px;color:#ef4444;">⚠️ 看板加载失败：' + e.message + '</div>';
+  }
 })();
 
 // ===== 渲染分类卡片 =====
