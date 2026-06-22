@@ -284,20 +284,18 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 .sc-icon.amber { background: #fef3c7; } .sc-icon.purple { background: #f3e8ff; }
 .sc-value { font-size: 28px; font-weight: 800; color: var(--text); line-height: 1; }
 .sc-label { font-size: 12px; color: var(--text3); margin-top: 2px; }
-.cat-bars { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-sm); border: 1px solid var(--border); padding: 16px 20px; }
-.cat-bars h3 { font-size: 14px; color: var(--text); margin-bottom: 12px; }
-.cat-bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 12px; }
-.cat-bar-row:last-child { margin-bottom: 0; }
-.cat-bar-label { width: 85px; text-align: right; color: var(--text2); white-space: nowrap; flex-shrink: 0; }
-.cat-bar-track { flex: 1; height: 18px; background: #f5f5f8; border-radius: 9px; overflow: hidden; }
-.cat-bar-fill { height: 100%; border-radius: 9px; min-width: 4px; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; color: #fff; font-weight: 600; font-size: 11px; }
-.cat-bar-count { width: 35px; font-weight: 600; color: var(--text); flex-shrink: 0; }
+.pie-wrap { display: flex; align-items: center; gap: 30px; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-sm); border: 1px solid var(--border); padding: 20px 24px; }
+.pie-chart { width: 140px; height: 140px; border-radius: 50%; flex-shrink: 0; }
+.pie-legend { flex: 1; display: flex; flex-wrap: wrap; gap: 4px 16px; }
+.pie-legend-item { font-size: 12px; color: var(--text2); display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+.pie-legend-item i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; flex-shrink: 0; }
+.pie-legend-item b { color: var(--text); }
 [data-theme="dark"] .stat-card { background: #1e1e35; }
-[data-theme="dark"] .cat-bars { background: #1e1e35; }
-[data-theme="dark"] .cat-bar-track { background: #2a2a45; }
+[data-theme="dark"] .pie-wrap { background: #1e1e35; }
 [data-theme="dark"] .sc-icon.blue { background: #1e2a45; } [data-theme="dark"] .sc-icon.green { background: #1a3020; }
 [data-theme="dark"] .sc-icon.amber { background: #302810; } [data-theme="dark"] .sc-icon.purple { background: #251a35; }
-@media (max-width: 700px) { .stat-cards { grid-template-columns: repeat(2, 1fr); } .cat-bar-label { width: 60px; font-size: 11px; } }
+@media (max-width: 600px) { .pie-wrap { flex-direction: column; align-items: center; } .pie-legend { justify-content: center; } }
+@media (max-width: 700px) { .stat-cards { grid-template-columns: repeat(2, 1fr); } }
 
 /* ====== 首页分类卡片 ====== */
 .category-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-bottom: 30px; }

@@ -24,7 +24,7 @@ function renderCard(s, linkToDetail) {
     + '<div class="card-title">' + s.title + '</div>'
     + '<div class="card-meta">'
     + '<span class="status-badge ' + sc + '">' + st + '</span>' + tags
-    + (s.hasPdf ? '<span style="font-size:10px;color:#16a34a;">📥 PDF</span>' : '')
+    + (s.hasPdf ? '<span style="font-size:10px;color:#16a34a;">📥</span>' : '')
     + '</div></div></div>'
     + '</' + tag + '>';
 }
@@ -54,7 +54,7 @@ function renderStatsPills(extraHtml) {
   return '<div class="stats-pills">'
     + '<span class="stat-pill"><span class="dot green"></span> 现行 <strong>' + current + '</strong></span>'
     + '<span class="stat-pill"><span class="dot yellow"></span> 总计 <strong>' + total + '</strong></span>'
-    + (pdf > 0 ? '<span class="stat-pill" style="background:rgba(74,222,128,.15);border-color:rgba(74,222,128,.3);"><span class="dot green"></span> 离线PDF <strong>' + pdf + '</strong></span>' : '')
+    + (pdf > 0 ? '<span class="stat-pill" style="background:rgba(74,222,128,.15);border-color:rgba(74,222,128,.3);"><span class="dot green"></span> PDF原文 <strong>' + pdf + '</strong></span>' : '')
     + (fav > 0 ? '<span class="stat-pill"><span class="dot yellow"></span> ⭐ 收藏 <strong>' + fav + '</strong></span>' : '')
     + (extraHtml || '')
     + '</div>';
@@ -71,8 +71,8 @@ function renderToolbar(spec) {
     + '</button>'
     + '<button class="btn" onclick="window.print()" title="打印">🖨 打印</button>'
     + (spec.hasPdf
-      ? '<a href="../' + spec.pdf + '" target="_blank" class="btn btn-pdf" title="打开PDF">📥 打开PDF</a>'
-      : '<span class="btn" style="opacity:.4;" title="暂无离线PDF">📥 暂无PDF</span>')
+      ? '<a href="../' + spec.pdf + '" target="_blank" class="btn btn-pdf" title="查看PDF原文">📖 PDF原文</a>'
+      : '')
     + '<a href="../compare/?codes=' + encodeURIComponent(spec.code) + '" class="btn" title="对比">📊 对比</a>'
     + '</div>';
 }

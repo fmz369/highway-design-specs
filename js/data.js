@@ -247,7 +247,7 @@ content:`
 
 <h4>📄 规范原文获取</h4>
 <ul>
-<li>📥 <a href="./规范PDF/GBT%2051224-2017%20%E4%B9%A1%E6%9D%91%E9%81%93%E8%B7%AF%E5%B7%A5%E7%A8%8B%E6%8A%80%E6%9C%AF%E8%A7%84%E8%8C%83.pdf" target="_blank" style="color:#2563eb;font-weight:600;">打开本地 PDF（离线可看）</a></li>
+<li>📥 <a href="./规范PDF/GBT%2051224-2017%20%E4%B9%A1%E6%9D%91%E9%81%93%E8%B7%AF%E5%B7%A5%E7%A8%8B%E6%8A%80%E6%9C%AF%E8%A7%84%E8%8C%83.pdf" target="_blank" style="color:#2563eb;font-weight:600;">打开 PDF 原文</a></li>
 <li style="color:#888;font-size:11px;">📁 位置：规范PDF/GBT 51224-2017 乡村道路工程技术规范.pdf</li>
 </ul>\$\$\$\$\$`
 },
@@ -420,14 +420,14 @@ content:`
 <li>高速公路应控制出入，一级公路部分控制出入</li>
 	<h4>📄 规范原文获取</h4>
 	<ul>
-	<li>📥 <a href="./JTG_B01-2014_公路工程技术标准.pdf" target="_blank" style="color:#2563eb;font-weight:600;">打开本地 PDF（下载后放桌面即用）</a></li>
+	<li>📥 <a href="./JTG_B01-2014_公路工程技术标准.pdf" target="_blank" style="color:#2563eb;font-weight:600;">打开 PDF 原文（下载后放桌面即用）</a></li>
 	<li>🌐 <a href="https://www.waizi.org.cn/law/10312.html" target="_blank" style="color:#6e6e73;">在线阅读/免费下载（waizi.org.cn）</a></li>
 	<li>🌐 <a href="https://www.zhulouren.com/gb80299.html" target="_blank" style="color:#6e6e73;">备用下载（zhulouren.com）</a></li>
 	</ul>
 </ul>
 		<h4>📄 规范原文获取</h4>
 		<ul>
-		<li>📥 <a href="./规范PDF/JTG%20B01-2014%20%E5%85%AC%E8%B7%AF%E5%B7%A5%E7%A8%8B%E6%8A%80%E6%9C%AF%E6%A0%87%E5%87%86.pdf" target="_blank" style="color:#2563eb;font-weight:600;">点击打开本地 PDF（离线可用）</a></li>
+		<li>📥 <a href="./规范PDF/JTG%20B01-2014%20%E5%85%AC%E8%B7%AF%E5%B7%A5%E7%A8%8B%E6%8A%80%E6%9C%AF%E6%A0%87%E5%87%86.pdf" target="_blank" style="color:#2563eb;font-weight:600;">点击打开 PDF 原文</a></li>
 		<li style="color:#888;font-size:11px;">📁 位置：规范PDF/JTG B01-2014 公路工程技术标准.pdf</li>
 		</ul>
 	\$\$\$\$\$`

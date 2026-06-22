@@ -84,25 +84,38 @@
   dashHTML += '<div class="stat-cards">';
   dashHTML += '<div class="stat-card"><div class="sc-icon blue">📋</div><div><div class="sc-value">' + total + '</div><div class="sc-label">收录规范总数</div></div></div>';
   dashHTML += '<div class="stat-card"><div class="sc-icon green">✅</div><div><div class="sc-value">' + current + '</div><div class="sc-label">现行规范（' + curentPct + '%）</div></div></div>';
-  dashHTML += '<div class="stat-card"><div class="sc-icon amber">📥</div><div><div class="sc-value">' + pdfs + '</div><div class="sc-label">离线PDF可用</div></div></div>';
+  dashHTML += '<div class="stat-card"><div class="sc-icon amber">📥</div><div><div class="sc-value">' + pdfs + '</div><div class="sc-label">PDF原文可看</div></div></div>';
   dashHTML += '<div class="stat-card"><div class="sc-icon purple">📂</div><div><div class="sc-value">10</div><div class="sc-label">分类维度</div></div></div>';
   dashHTML += '</div>';
 
-  // 分类分布条
+  // 分类分布饼图
   var catColors = { general:'#7c3aed', geometry:'#d97706', pavement:'#16a34a', bridge:'#db2777', drainage:'#0284c7', safety:'#dc2626', rural:'#65a30d', materials:'#4f46e5', seismic:'#ea580c', drawings:'#0d9488' };
   var catNames = CAT_NAMES;
-  var catOrder = ['bridge','safety','general','pavement','materials','rural','geometry','drawings','drainage','seismic'];
-  var maxCount = Math.max.apply(null, catOrder.map(function(c) { return counts[c] || 0; }));
+  var catOrder = ['bridge','safety','pavement','general','materials','rural','geometry','drawings','drainage','seismic'];
 
-  dashHTML += '<div class="cat-bars"><h3>📊 各分类规范数量分布</h3>';
+  // 构建conic-gradient
+  var totalAll = SPECS.length;
+  var gradParts = [];
+  var cumDeg = 0;
   catOrder.forEach(function(c) {
     var n = counts[c] || 0;
-    var pct = Math.round(n / maxCount * 100);
-    dashHTML += '<div class="cat-bar-row"><span class="cat-bar-label">' + (CAT_ICONS[c]||'') + ' ' + (catNames[c]||c) + '</span>';
-    dashHTML += '<div class="cat-bar-track"><div class="cat-bar-fill" style="width:' + pct + '%;background:' + (catColors[c]||'#888') + ';">' + (n > 3 ? n : '') + '</div></div>';
-    dashHTML += '<span class="cat-bar-count">' + n + '</span></div>';
+    if (n === 0) return;
+    var deg = Math.round(n / totalAll * 360);
+    gradParts.push(catColors[c] + ' ' + cumDeg + 'deg ' + (cumDeg + deg) + 'deg');
+    cumDeg += deg;
   });
-  dashHTML += '</div>';
+  var pieGrad = gradParts.join(', ');
+
+  // 构建图例
+  var legendHTML = '';
+  catOrder.forEach(function(c) {
+    var n = counts[c] || 0;
+    if (n === 0) return;
+    var pct = Math.round(n / totalAll * 100);
+    legendHTML += '<span class="pie-legend-item"><i style="background:' + catColors[c] + ';"></i> ' + catNames[c] + ' <b>' + n + '</b></span>';
+  });
+
+  dashHTML += '<div class="pie-wrap"><div class="pie-chart" style="background: conic-gradient(' + pieGrad + ');"></div><div class="pie-legend">' + legendHTML + '</div></div>';
 
   document.getElementById('dashboard').innerHTML = dashHTML;
 })();

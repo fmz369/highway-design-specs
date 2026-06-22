@@ -170,7 +170,7 @@
     html += '<div class="spec-info">';
     html += '<span class="status-badge ' + sc + '">' + st + '</span>';
     html += tags;
-    if (spec.hasPdf) html += '<span style="font-size:11px;color:#16a34a;">📥 离线PDF可用</span>';
+    if (spec.hasPdf) html += '<span style="font-size:11px;color:#16a34a;">📖 PDF原文</span>';
     html += '</div></div>';
 
     // TOC切换按钮
