@@ -98,7 +98,8 @@
   var circ = 2 * Math.PI * R; // 圆周长
 
   var svgParts = '<defs><filter id="ds"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.15"/></filter></defs>'
-    + '<circle cx="76" cy="76" r="' + R + '" fill="none" stroke="#f0f0f5" stroke-width="' + sw + '"/>';
+    + '<circle cx="76" cy="76" r="' + R + '" fill="none" stroke="#f0f0f5" stroke-width="' + sw + '"/>'
+    + '<g transform="rotate(-90 76 76)">';
 
   var cumLen = 0; // 累计周长偏移
   catOrder.forEach(function(c) {
@@ -109,6 +110,7 @@
     svgParts += '<circle cx="76" cy="76" r="' + R + '" fill="none" stroke="' + catColors[c] + '" stroke-width="' + sw + '" stroke-dasharray="' + len + ' ' + (circ - len) + '" stroke-dashoffset="' + (-cumLen) + '" filter="url(#ds)" stroke-linecap="butt"><title>' + catNames[c] + ': ' + n + '部</title></circle>';
     cumLen += len;
   });
+  svgParts += '</g>';
 
   var legendHTML = '';
   catOrder.forEach(function(c) {
