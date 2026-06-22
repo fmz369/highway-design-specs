@@ -181,7 +181,7 @@
 
   var html = '';
   specs.forEach(function(s) {
-    html += renderCard(s, true);
+    html += renderCard(s, true, 'specs/');
   });
   document.getElementById('featuredGrid').innerHTML = html;
 })();
@@ -193,7 +193,7 @@
     document.getElementById('historySection').style.display = 'block';
     var hhtml = '';
     histSpecs.forEach(function(s) {
-      hhtml += renderCard(s, true);
+      hhtml += renderCard(s, true, 'specs/');
     });
     document.getElementById('historyGrid').innerHTML = hhtml;
   }

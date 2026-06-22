@@ -3,7 +3,7 @@
    ============================================================ */
 
 /** 渲染一张规范卡片（用于列表页） */
-function renderCard(s, linkToDetail) {
+function renderCard(s, linkToDetail, basePath) {
   var icon = CAT_ICONS[s.cat] || '📋';
   var sc = s.status === 'current' ? 'status-current' : 'status-replaced';
   var st = s.status === 'current' ? '现行' : '已替代';
@@ -11,8 +11,9 @@ function renderCard(s, linkToDetail) {
     return '<span class="card-tag tag-' + s.cat + '">' + t + '</span>';
   }).join('');
 
+  var bp = basePath || '../specs/';
   var href = linkToDetail !== false
-    ? ' href="../specs/?code=' + encodeURIComponent(s.code) + '"'
+    ? ' href="' + bp + '?code=' + encodeURIComponent(s.code) + '"'
     : '';
   var tag = linkToDetail !== false ? 'a' : 'div';
 
