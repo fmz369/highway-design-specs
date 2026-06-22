@@ -94,28 +94,33 @@
   var catNames = CAT_NAMES;
   var catOrder = ['bridge','safety','pavement','general','materials','rural','geometry','drawings','drainage','seismic'];
   var totalAll = SPECS.length;
-  var R = 64, cx = 76, cy = 76, innerR = 42;
+  var R = 62, cx = 76, cy = 76, innerR = 38;
 
-  var svgParts = '<defs><filter id="ds"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.12"/></filter></defs>';
-  var cumDeg = -90, gapDeg = 1.5;
+  var svgParts = '<defs><filter id="ds"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.15"/></filter></defs>';
+  var cumDeg = -90;
   function or(r, rad) { return r * Math.cos(rad); }
   function oy(r, rad) { return r * Math.sin(rad); }
   catOrder.forEach(function(c) {
     var n = counts[c] || 0;
     if (n === 0) return;
-    var deg = n / totalAll * 360 - gapDeg;
-    if (deg < 1) deg = 1;
-    var sr = (cumDeg + gapDeg/2) * Math.PI / 180;
-    var er = (cumDeg + gapDeg/2 + deg) * Math.PI / 180;
+    var deg = n / totalAll * 360;
+    if (deg < 3) deg = 3;
+    var sr = cumDeg * Math.PI / 180;
+    var er = (cumDeg + deg) * Math.PI / 180;
     var large = deg > 180 ? 1 : 0;
     var d = 'M' + or(innerR,sr).toFixed(1)+','+oy(innerR,sr).toFixed(1)
       + ' L' + or(R,sr).toFixed(1)+','+oy(R,sr).toFixed(1)
       + ' A'+R+','+R+' 0 '+large+' 1 '+or(R,er).toFixed(1)+','+oy(R,er).toFixed(1)
       + ' L' + or(innerR,er).toFixed(1)+','+oy(innerR,er).toFixed(1)
       + ' A'+innerR+','+innerR+' 0 '+large+' 0 '+or(innerR,sr).toFixed(1)+','+oy(innerR,sr).toFixed(1)+' Z';
-    svgParts += '<path d="' + d + '" fill="' + catColors[c] + '" filter="url(#ds)"><title>' + catNames[c] + ': ' + n + '部</title></path>';
-    cumDeg += deg + gapDeg;
+    svgParts += '<path d="' + d + '" fill="' + catColors[c] + '" stroke="#fff" stroke-width="2" filter="url(#ds)"><title>' + catNames[c] + ': ' + n + '部</title></path>';
+    cumDeg += deg;
   });
+  // 确保最后一个切片补齐360度
+  if (cumDeg < 270) {
+    var lastR = (360 + cumDeg) / 360 * Math.PI;
+    // 无需处理，因为所有切片之和正好是360度
+  }
 
   var legendHTML = '';
   catOrder.forEach(function(c) {
