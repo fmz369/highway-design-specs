@@ -147,7 +147,7 @@
 
   var html = '';
   cats.forEach(function(c) {
-    html += '<a href="category/?cat=' + c + '" class="cat-card" style="border-top: 3px solid ' + catColors[c] + ';">'
+    html += '<a href="category/?cat=' + c + '" class="cat-card" >'
       + '<div class="cat-icon">' + catEmoji[c] + '</div>'
       + '<div class="cat-name">' + CAT_NAMES[c] + '</div>'
       + '<div class="cat-count">' + counts[c] + ' 部规范</div>'
