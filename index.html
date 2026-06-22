@@ -94,33 +94,21 @@
   var catNames = CAT_NAMES;
   var catOrder = ['bridge','safety','pavement','general','materials','rural','geometry','drawings','drainage','seismic'];
   var totalAll = SPECS.length;
-  var R = 62, cx = 76, cy = 76, innerR = 38;
+  var R = 50, cx = 76, cy = 76, sw = 24;
+  var circ = 2 * Math.PI * R; // 圆周长
 
-  var svgParts = '<defs><filter id="ds"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.15"/></filter></defs>';
-  var cumDeg = -90;
-  function or(r, rad) { return r * Math.cos(rad); }
-  function oy(r, rad) { return r * Math.sin(rad); }
+  var svgParts = '<defs><filter id="ds"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.15"/></filter></defs>'
+    + '<circle cx="76" cy="76" r="' + R + '" fill="none" stroke="#f0f0f5" stroke-width="' + sw + '"/>';
+
+  var cumLen = 0; // 累计周长偏移
   catOrder.forEach(function(c) {
     var n = counts[c] || 0;
     if (n === 0) return;
-    var deg = n / totalAll * 360;
-    if (deg < 3) deg = 3;
-    var sr = cumDeg * Math.PI / 180;
-    var er = (cumDeg + deg) * Math.PI / 180;
-    var large = deg > 180 ? 1 : 0;
-    var d = 'M' + or(innerR,sr).toFixed(1)+','+oy(innerR,sr).toFixed(1)
-      + ' L' + or(R,sr).toFixed(1)+','+oy(R,sr).toFixed(1)
-      + ' A'+R+','+R+' 0 '+large+' 1 '+or(R,er).toFixed(1)+','+oy(R,er).toFixed(1)
-      + ' L' + or(innerR,er).toFixed(1)+','+oy(innerR,er).toFixed(1)
-      + ' A'+innerR+','+innerR+' 0 '+large+' 0 '+or(innerR,sr).toFixed(1)+','+oy(innerR,sr).toFixed(1)+' Z';
-    svgParts += '<path d="' + d + '" fill="' + catColors[c] + '" stroke="#fff" stroke-width="2" filter="url(#ds)"><title>' + catNames[c] + ': ' + n + '部</title></path>';
-    cumDeg += deg;
+    var len = Math.round(n / totalAll * circ);
+    if (len < 2) len = 2;
+    svgParts += '<circle cx="76" cy="76" r="' + R + '" fill="none" stroke="' + catColors[c] + '" stroke-width="' + sw + '" stroke-dasharray="' + len + ' ' + (circ - len) + '" stroke-dashoffset="' + (-cumLen) + '" filter="url(#ds)" stroke-linecap="butt"><title>' + catNames[c] + ': ' + n + '部</title></circle>';
+    cumLen += len;
   });
-  // 确保最后一个切片补齐360度
-  if (cumDeg < 270) {
-    var lastR = (360 + cumDeg) / 360 * Math.PI;
-    // 无需处理，因为所有切片之和正好是360度
-  }
 
   var legendHTML = '';
   catOrder.forEach(function(c) {
