@@ -90,40 +90,39 @@
   dashHTML += '</div>';
 
   // 精美圆环图
-  var catColors = { bridge:'#ec4899', safety:'#ef4444', pavement:'#22c55e', general:'#8b5cf6', materials:'#6366f1', rural:'#84cc16', geometry:'#f59e0b', drawings:'#14b8a6', drainage:'#0ea5e9', seismic:'#f97316' };
+  var catColors = { bridge:'#e85d9a', safety:'#f05252', pavement:'#31c48d', general:'#9061f9', materials:'#6875f5', rural:'#84cc16', geometry:'#f5a623', drawings:'#0d9488', drainage:'#38bdf8', seismic:'#f97316' };
   var catNames = CAT_NAMES;
   var catOrder = ['bridge','safety','pavement','general','materials','rural','geometry','drawings','drainage','seismic'];
   var totalAll = SPECS.length;
-  var R = 58, cx = 76, cy = 76, innerR = 36;
+  var R = 64, cx = 76, cy = 76, innerR = 42;
 
-  // 构建SVG环形
-  var svgParts = '';
-  var cumDeg = -90;
+  var svgParts = '<defs><filter id="ds"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.12"/></filter></defs>';
+  var cumDeg = -90, gapDeg = 1.5;
+  function or(r, rad) { return r * Math.cos(rad); }
+  function oy(r, rad) { return r * Math.sin(rad); }
   catOrder.forEach(function(c) {
     var n = counts[c] || 0;
     if (n === 0) return;
-    var deg = n / totalAll * 360;
+    var deg = n / totalAll * 360 - gapDeg;
     if (deg < 1) deg = 1;
-    var sr = (cumDeg) * Math.PI / 180;
-    var er = (cumDeg + deg) * Math.PI / 180;
+    var sr = (cumDeg + gapDeg/2) * Math.PI / 180;
+    var er = (cumDeg + gapDeg/2 + deg) * Math.PI / 180;
     var large = deg > 180 ? 1 : 0;
-    var ox1 = cx + outerR(innerR, sr), oy1 = cy + outerY(innerR, sr);
-    var ox2 = cx + outerR(innerR, er), oy2 = cy + outerY(innerR, er);
-    var ix1 = cx + outerR(R, sr), iy1 = cy + outerY(R, sr);
-    var ix2 = cx + outerR(R, er), iy2 = cy + outerY(R, er);
-    svgParts += '<path d="M' + ox1.toFixed(1) + ',' + oy1.toFixed(1) + ' L' + ix1.toFixed(1) + ',' + iy1.toFixed(1) + ' A' + R + ',' + R + ' 0 ' + large + ' 1 ' + ix2.toFixed(1) + ',' + iy2.toFixed(1) + ' L' + ox2.toFixed(1) + ',' + oy2.toFixed(1) + ' A' + innerR + ',' + innerR + ' 0 ' + large + ' 0 ' + ox1.toFixed(1) + ',' + oy1.toFixed(1) + ' Z" fill="' + catColors[c] + '"/>';
-    cumDeg += deg;
+    var d = 'M' + or(innerR,sr).toFixed(1)+','+oy(innerR,sr).toFixed(1)
+      + ' L' + or(R,sr).toFixed(1)+','+oy(R,sr).toFixed(1)
+      + ' A'+R+','+R+' 0 '+large+' 1 '+or(R,er).toFixed(1)+','+oy(R,er).toFixed(1)
+      + ' L' + or(innerR,er).toFixed(1)+','+oy(innerR,er).toFixed(1)
+      + ' A'+innerR+','+innerR+' 0 '+large+' 0 '+or(innerR,sr).toFixed(1)+','+oy(innerR,sr).toFixed(1)+' Z';
+    svgParts += '<path d="' + d + '" fill="' + catColors[c] + '" filter="url(#ds)"><title>' + catNames[c] + ': ' + n + '部</title></path>';
+    cumDeg += deg + gapDeg;
   });
-  function outerR(r, rad) { return r * Math.cos(rad); }
-  function outerY(r, rad) { return r * Math.sin(rad); }
 
-  // 图例
   var legendHTML = '';
   catOrder.forEach(function(c) {
     var n = counts[c] || 0;
     if (n === 0) return;
     var pct = Math.round(n / totalAll * 100);
-    legendHTML += '<div class="pl-item"><span class="pl-dot" style="background:' + catColors[c] + ';"></span><span class="pl-name">' + catNames[c] + '</span><span class="pl-bar"><span class="pl-fill" style="width:' + pct + '%;background:' + catColors[c] + ';"></span></span><span class="pl-num">' + n + '</span></div>';
+    legendHTML += '<div class="pl-item"><span class="pl-dot" style="background:' + catColors[c] + ';"></span><span class="pl-name">' + catNames[c] + '</span><span class="pl-pct">' + pct + '%</span><span class="pl-bar"><span class="pl-fill" style="width:' + pct + '%;background:' + catColors[c] + ';"></span></span><span class="pl-num">' + n + '</span></div>';
   });
 
   dashHTML += '<div class="pie-wrap"><div class="donut-box"><svg viewBox="0 0 152 152" class="donut-svg">' + svgParts + '</svg><div class="donut-center"><span class="donut-num">' + totalAll + '</span><span class="donut-label">部规范</span></div></div><div class="pie-legend">' + legendHTML + '</div></div>';
