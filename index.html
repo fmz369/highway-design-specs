@@ -89,40 +89,44 @@
   dashHTML += '<div class="stat-card"><div class="sc-icon purple">📂</div><div><div class="sc-value">10</div><div class="sc-label">分类维度</div></div></div>';
   dashHTML += '</div>';
 
-  // SVG饼图（兼容所有浏览器）
-  var catColors = { general:'#7c3aed', geometry:'#d97706', pavement:'#16a34a', bridge:'#db2777', drainage:'#0284c7', safety:'#dc2626', rural:'#65a30d', materials:'#4f46e5', seismic:'#ea580c', drawings:'#0d9488' };
+  // 精美圆环图
+  var catColors = { bridge:'#ec4899', safety:'#ef4444', pavement:'#22c55e', general:'#8b5cf6', materials:'#6366f1', rural:'#84cc16', geometry:'#f59e0b', drawings:'#14b8a6', drainage:'#0ea5e9', seismic:'#f97316' };
   var catNames = CAT_NAMES;
   var catOrder = ['bridge','safety','pavement','general','materials','rural','geometry','drawings','drainage','seismic'];
   var totalAll = SPECS.length;
-  var R = 68, cx = 72, cy = 72;
+  var R = 58, cx = 76, cy = 76, innerR = 36;
 
-  // 构建SVG扇形路径
+  // 构建SVG环形
   var svgParts = '';
-  var cumDeg = -90; // 从顶部开始
+  var cumDeg = -90;
   catOrder.forEach(function(c) {
     var n = counts[c] || 0;
     if (n === 0) return;
     var deg = n / totalAll * 360;
-    var startRad = cumDeg * Math.PI / 180;
-    var endRad = (cumDeg + deg) * Math.PI / 180;
-    var x1 = cx + R * Math.cos(startRad);
-    var y1 = cy + R * Math.sin(startRad);
-    var x2 = cx + R * Math.cos(endRad);
-    var y2 = cy + R * Math.sin(endRad);
+    if (deg < 1) deg = 1;
+    var sr = (cumDeg) * Math.PI / 180;
+    var er = (cumDeg + deg) * Math.PI / 180;
     var large = deg > 180 ? 1 : 0;
-    svgParts += '<path d="M' + cx + ',' + cy + ' L' + x1.toFixed(1) + ',' + y1.toFixed(1) + ' A' + R + ',' + R + ' 0 ' + large + ' 1 ' + x2.toFixed(1) + ',' + y2.toFixed(1) + ' Z" fill="' + catColors[c] + '" stroke="#fff" stroke-width="1.5"/>';
+    var ox1 = cx + outerR(innerR, sr), oy1 = cy + outerY(innerR, sr);
+    var ox2 = cx + outerR(innerR, er), oy2 = cy + outerY(innerR, er);
+    var ix1 = cx + outerR(R, sr), iy1 = cy + outerY(R, sr);
+    var ix2 = cx + outerR(R, er), iy2 = cy + outerY(R, er);
+    svgParts += '<path d="M' + ox1.toFixed(1) + ',' + oy1.toFixed(1) + ' L' + ix1.toFixed(1) + ',' + iy1.toFixed(1) + ' A' + R + ',' + R + ' 0 ' + large + ' 1 ' + ix2.toFixed(1) + ',' + iy2.toFixed(1) + ' L' + ox2.toFixed(1) + ',' + oy2.toFixed(1) + ' A' + innerR + ',' + innerR + ' 0 ' + large + ' 0 ' + ox1.toFixed(1) + ',' + oy1.toFixed(1) + ' Z" fill="' + catColors[c] + '"/>';
     cumDeg += deg;
   });
+  function outerR(r, rad) { return r * Math.cos(rad); }
+  function outerY(r, rad) { return r * Math.sin(rad); }
 
-  // 构建图例
+  // 图例
   var legendHTML = '';
   catOrder.forEach(function(c) {
     var n = counts[c] || 0;
     if (n === 0) return;
-    legendHTML += '<span class="pie-legend-item"><i style="background:' + catColors[c] + ';"></i> ' + catNames[c] + ' <b>' + n + '</b></span>';
+    var pct = Math.round(n / totalAll * 100);
+    legendHTML += '<div class="pl-item"><span class="pl-dot" style="background:' + catColors[c] + ';"></span><span class="pl-name">' + catNames[c] + '</span><span class="pl-bar"><span class="pl-fill" style="width:' + pct + '%;background:' + catColors[c] + ';"></span></span><span class="pl-num">' + n + '</span></div>';
   });
 
-  dashHTML += '<div class="pie-wrap"><svg viewBox="0 0 144 144" class="pie-chart"><circle cx="72" cy="72" r="68" fill="#f5f5f8"/><circle cx="72" cy="72" r="30" fill="#fff"/>' + svgParts + '</svg><div class="pie-legend">' + legendHTML + '</div></div>';
+  dashHTML += '<div class="pie-wrap"><div class="donut-box"><svg viewBox="0 0 152 152" class="donut-svg">' + svgParts + '</svg><div class="donut-center"><span class="donut-num">' + totalAll + '</span><span class="donut-label">部规范</span></div></div><div class="pie-legend">' + legendHTML + '</div></div>';
 
   document.getElementById('dashboard').innerHTML = dashHTML;
   } catch(e) {
