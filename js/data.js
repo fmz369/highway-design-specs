@@ -9,15 +9,9 @@ status:'current',
 tags:["城市道路","施工"],
 pdf:null,
 hasPdf:false,
-content:`
-<h4>📑 章节</h4><div class="ch-list"><div>1~3 总则/术语/基本规定</div><div>4 路基</div><div>5 基层</div><div>6 沥青面层</div><div>7 水泥混凝土面层</div><div>8 附属构筑物</div><div>9 验收</div></div>
-<h4>🔑 关键验收指标</h4>
-<ul>
-<li><span class="hl">路基压实度</span>：快速/主干路≥96%（0~80cm）；次干路≥95%；支路≥93%</li>
-<li>沥青面层压实度≥96%（马歇尔标准密度）</li>
-<li>弯沉值≤设计弯沉值</li>
-<li>水泥混凝土抗弯拉强度≥设计值</li>
-</ul>`
+content:`<h4>📑 章节目录（9章）</h4>
+<div class="ch-list"><div>1~3 总则/术语/规定</div><div>4 路基</div><div>5 基层</div><div>6 沥青面层</div><div>7 水泥混凝土面层</div><div>8 附属构筑物</div><div>9 验收</div></div>
+<h4>🔑 关键验收指标</h4><table><tr><th>项目</th><th>快速/主干路</th><th>次干路</th><th>支路</th></tr><tr><td>路基压实度(0~80cm)</td><td><span class="hl">≥96%</span></td><td>≥95%</td><td>≥93%</td></tr><tr><td>沥青面层压实度</td><td colspan="3">≥96%（马歇尔标准密度）</td></tr><tr><td>弯沉值</td><td colspan="3">≤设计弯沉值</td></tr><tr><td>水泥混凝土抗弯拉强度</td><td colspan="3">≥设计值</td></tr></table>`
 },
 {
 code:'CJJ 37-2012（2016版）',
@@ -301,16 +295,10 @@ status:'current',
 tags:["标准体系"],
 pdf:null,
 hasPdf:false,
-content:`
-<h4>📑 章节目录</h4>
+content:`<h4>📑 章节目录（5章+附录）</h4>
 <div class="ch-list"><div>1 范围</div><div>2 术语</div><div>3 体系结构</div><div>4 标准编号规则</div><div>5 标准体系表</div><div>附录A 标准明细表</div></div>
-<h4>🔑 核心规定</h4>
-<ul>
-<li>体系分<span class="hl">三层</span>：基础标准→通用标准→专用标准</li>
-<li><span class="hl">编号规则</span>：JTG + 序号 + 发布年份（如 JTG B01-2014）</li>
-<li>JTG/T 为推荐性标准；JTG 为强制性标准</li>
-<li>涵盖：勘测、设计、施工、养护、检测、造价、安全等</li>
-</ul>`
+<h4>🏗 第3章 体系结构</h4><ul><li>公路工程标准体系分<span class="hl">三层</span>：<span class="hl">基础标准→通用标准→专用标准</span></li><li>基础标准：术语、符号、计量单位</li><li>通用标准：勘测、设计、施工、养护、检测</li><li>专用标准：针对特定工程或材料</li></ul>
+<h4>📋 第4章 编号规则</h4><ul><li><span class="hl">JTG</span>：强制性行业标准（如 JTG B01-2014）</li><li><span class="hl">JTG/T</span>：推荐性行业标准（如 JTG/T 3311-2021）</li><li>编号 = 分类号 + 序号 + 发布年份</li></ul>`
 },
 {
 code:'JTG 2111-2019',
@@ -513,13 +501,11 @@ status:'current',
 tags:["造价"],
 pdf:null,
 hasPdf:false,
-content:`
-<h4>📑 章节</h4><div class="ch-list"><div>1 总则</div><div>2 概预算编制</div><div>3 费用组成</div><div>4 费用标准</div><div>5 预备费</div><div>附录 计费表格</div></div>
-<h4>🔑 费用构成公式</h4>
-<ul><li>建筑安装工程费 = <span class="hl">直接费+间接费+利润+税金</span></li>
-<li>直接费=直接工程费(人材机)+措施费</li>
-<li>间接费=企业管理费+规费</li>
-<li>预备费=基本预备费+涨价预备费</li></ul>`
+content:`<h4>📑 章节目录</h4>
+<div class="ch-list"><div>1 总则</div><div>2 概预算编制</div><div>3 费用组成</div><div>4 费用标准</div><div>5 预备费</div><div>附录 计费表格</div></div>
+<h4>💰 费用构成公式</h4><ul><li><span class="hl">建筑安装工程费</span> = 直接费 + 间接费 + 利润 + 税金</li><li>直接费 = 直接工程费(人材机) + 措施费</li><li>间接费 = 企业管理费 + 规费</li></ul>
+<h4>📊 工程建设其他费用</h4><ul><li>土地使用费 / 拆迁补偿费</li><li>建设单位管理费</li><li>勘察设计费 / 监理费</li><li>研究试验费 / 专项评价费</li></ul>
+<h4>🔑 预备费</h4><ul><li><span class="hl">基本预备费</span>：按工程费用5%~10%计取</li><li>涨价预备费：按建设期和物价指数计算</li></ul>`
 },
 {
 code:'JTG/T 3311-2021',
@@ -1214,10 +1200,9 @@ status:'current',
 tags:["城市道路","线形"],
 pdf:null,
 hasPdf:false,
-content:`
-<h4>📑 章节</h4><div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 一般规定</div><div>4 横断面</div><div>5 平面</div><div>6 纵断面</div><div>7 线形组合</div></div>
-<h4>🔑 关键差异（相对公路）</h4>
-<ul><li>快速路一般平曲线半径 100km/h→650m；80→350m</li><li>最大纵坡一般比公路小 1%</li><li>强调交叉口视距三角区（不应有障碍物）</li><li>公交专用道、非机动车道断面布置要求</li></ul>`
+content:`<h4>📑 章节目录（7章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 一般规定</div><div>4 横断面</div><div>5 平面</div><div>6 纵断面</div><div>7 线形组合</div></div>
+<h4>🔑 与公路路线规范的关键差异</h4><table><tr><th>项目</th><th>城市道路</th><th>公路</th></tr><tr><td>平曲线半径(100km/h)</td><td><span class="hl">650m</span></td><td>700m</td></tr><tr><td>最大纵坡</td><td>一般比公路<span class="hl">小1%</span></td><td>—</td></tr><tr><td>交叉口视距</td><td>必须保证<span class="hl">视距三角区</span>无障碍</td><td>—</td></tr><tr><td>公交专用道</td><td>须考虑</td><td>一般不设</td></tr></table>`
 },
 {
 code:'JTG 2112-2021',
@@ -1371,9 +1356,10 @@ status:'current',
 tags:["改扩建"],
 pdf:null,
 hasPdf:false,
-content:`
-<h4>📑 章节</h4><div class="ch-list"><div>1 总则</div><div>2 施工区交通组织</div><div>3 临时交安设施</div><div>4 新旧设施衔接</div><div>5 机电设施</div></div>
-<h4>🔑 核心要点</h4><ul><li>施工区限速方案：逐级降速 120→100→80</li><li>临时标志橙底黑字</li><li>新旧交安设施衔接利用原则</li></ul>`
+content:`<h4>📑 章节目录（5章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 施工区交通组织</div><div>3 临时交安设施</div><div>4 新旧设施衔接</div><div>5 机电设施</div></div>
+<h4>🚧 第2章 施工区交通组织</h4><ul><li>限速方案：<span class="hl">逐级降速</span>120→100→80→60（每级≤20km/h）</li><li>六区组成：警告区→上游过渡区→缓冲区→工作区→下游过渡区→终止区</li></ul>
+<h4>🛡 第3章 临时交安设施</h4><ul><li>临时标志：<span class="hl">橙底黑字</span></li><li>临时标线：橙色，厚度0.3~0.8mm</li><li>临时护栏：水马/防撞桶/波形梁</li><li>夜间须设<span class="hl">施工警告灯</span>（黄色闪烁）</li></ul>`
 },
 {
 code:'CJJ 169-2012',
@@ -1757,13 +1743,9 @@ status:'current',
 tags:["土工材料"],
 pdf:null,
 hasPdf:false,
-content:`
-<h4>📑 章节</h4><div class="ch-list"><div>1 总则</div><div>2 材料分类</div><div>3 加筋</div><div>4 防渗</div><div>5 反滤与排水</div><div>6 隔离</div><div>7 防护</div></div>
-<h4>🧵 材料分类</h4>
-<ul><li><span class="hl">土工布</span>：透水织物（有纺/无纺）用于反滤、隔离</li>
-<li><span class="hl">土工格栅</span>：网格状，用于加筋（抗拉强度 30~200kN/m）</li>
-<li><span class="hl">土工膜</span>：防渗材料（HDPE/PVC）</li>
-<li><span class="hl">土工格室</span>：三维蜂窝状，用于边坡防护和地基加固</li></ul>`
+content:`<h4>📑 章节目录（7章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 材料分类</div><div>3 加筋</div><div>4 防渗</div><div>5 反滤与排水</div><div>6 隔离</div><div>7 防护</div></div>
+<h4>🧵 材料分类及应用</h4><table><tr><th>类型</th><th>用途</th><th>关键参数</th></tr><tr><td><span class="hl">土工布</span></td><td>反滤/隔离/防护</td><td>单位质量100~800g/m²</td></tr><tr><td><span class="hl">土工格栅</span></td><td>加筋</td><td>抗拉强度30~200kN/m</td></tr><tr><td>土工膜</td><td>防渗</td><td>厚度0.5~3mm</td></tr><tr><td>土工格室</td><td>边坡防护/地基加固</td><td>高度50~200mm</td></tr></table>`
 },
 {
 code:'JTG/T D33-2012',
@@ -1929,12 +1911,10 @@ status:'current',
 tags:["城市桥梁"],
 pdf:null,
 hasPdf:false,
-content:`
-<h4>📑 章节</h4><div class="ch-list"><div>1 总则</div><div>2 桥梁分类</div><div>3 荷载</div><div>4 结构设计</div><div>5 附属设施</div></div>
-<h4>🚛 城-A/城-B 荷载</h4>
-<ul><li>城-A：qk=10.5kN/m；Pk=330~240kN</li><li>城-B：按车道数折减</li></ul>
-<h4>🏙 城市特殊性</h4>
-<ul><li>桥梁需兼顾机动车+非机动车+行人</li><li>管线过桥需安全措施</li><li>桥梁景观与城市风貌协调</li></ul>`
+content:`<h4>📑 章节目录（5章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 桥梁分类</div><div>3 荷载</div><div>4 结构设计</div><div>5 附属设施</div></div>
+<h4>🚛 城-A/城-B 荷载</h4><ul><li>城-A：qk=10.5kN/m；Pk=330~240kN</li><li>城-B：按车道数折减</li></ul>
+<h4>🏙 城市桥梁特殊性</h4><ul><li>桥梁需兼顾<span class="hl">机动车+非机动车+行人</span></li><li>管线过桥需设置专用管廊或安全防护</li><li>桥梁景观应与<span class="hl">城市风貌协调</span></li><li>桥下净空满足通航、排洪、通行要求</li></ul>`
 },
 {
 code:'JTG 3362-2018',
@@ -2534,12 +2514,12 @@ status:'current',
 tags:["交通标线"],
 pdf:null,
 hasPdf:false,
-content:`
-<h4>📑 章节</h4>
+content:`<h4>📑 章节目录</h4>
 <div class="ch-list"><div>1~3 范围/引用/术语</div><div>4 指示标线</div><div>5 禁止标线</div><div>6 警告标线</div></div>
 <h4>📏 标线尺寸参数</h4>
-<ul><li>车道分界线（虚线）：≥60km/h→<span class="hl">划6m空9m</span>；<60km/h→划2m空4m</li>
-<li>热熔型标线厚度 1.5~2.5mm</li><li>振荡标线凸起高度 5~7mm</li></ul>`
+<table><tr><th>标线类型</th><th>设计速度≥60km/h</th><th>设计速度<60km/h</th></tr><tr><td>车道分界线(虚线)</td><td><span class="hl">划6m空9m</span></td><td>划2m空4m</td></tr><tr><td>车道边缘线(实线)</td><td>宽15~20cm</td><td>宽10~15cm</td></tr><tr><td>导向箭头长度</td><td>9m(高速)/6m(其他)</td><td>3m</td></tr></table>
+<h4>🎨 标线颜色含义</h4><ul><li>白色：同向车道分界、边缘线、导向箭头</li><li><span class="hl">黄色</span>：对向车道分界、禁止跨越线</li><li>蓝色：残疾人专用停车位</li><li>橙色：作业区临时标线</li></ul>
+<h4>🔧 标线材料</h4><ul><li>热熔型：厚<span class="hl">1.5~2.5mm</span>，反光玻璃珠嵌入</li><li>溶剂型：厚0.3~0.8mm，成本低寿命短</li><li>双组分：高耐磨，环保型</li><li>预成型：工厂预制现场粘贴</li></ul>`
 },
 {
 code:'GB 5768.4-2017',
@@ -2571,10 +2551,9 @@ status:'current',
 tags:["发光标志"],
 pdf:null,
 hasPdf:false,
-content:`
-<h4>📑 章节</h4><div class="ch-list"><div>1 范围</div><div>2 术语</div><div>3 技术要求</div><div>4 试验方法</div></div>
-<h4>🔑 关键技术指标</h4>
-<ul><li>亮度：白天≥8000cd/m²；夜间≥2000cd/m²</li><li>LED波长：红色625±5nm；绿色505±5nm</li><li>防护等级 ≥IP65</li><li>使用寿命 ≥50000h</li><li>适用场景：雾区、事故多发路段、夜间重点路段</li></ul>`
+content:`<h4>📑 章节目录（4章）</h4>
+<div class="ch-list"><div>1 范围</div><div>2 术语</div><div>3 技术要求</div><div>4 试验方法</div></div>
+<h4>🔑 关键技术指标</h4><table><tr><th>项目</th><th>要求</th></tr><tr><td>亮度(白天)</td><td><span class="hl">≥8000cd/m²</span></td></tr><tr><td>亮度(夜间)</td><td>≥2000cd/m²</td></tr><tr><td>LED波长</td><td>红625±5nm / 绿505±5nm</td></tr><tr><td>防护等级</td><td><span class="hl">≥IP65</span></td></tr><tr><td>使用寿命</td><td>≥50000h</td></tr></table><ul><li>适用场景：雾区、事故多发路段、夜间重点路段</li></ul>`
 },
 {
 code:'JTG 2182-2020',
@@ -2598,15 +2577,11 @@ status:'current',
 tags:["隧道","交安"],
 pdf:null,
 hasPdf:false,
-content:`
-<h4>📑 章节</h4>
+content:`<h4>📑 章节目录（6章）</h4>
 <div class="ch-list"><div>1 总则</div><div>2 通风</div><div>3 照明</div><div>4 消防</div><div>5 监控</div><div>6 供配电</div></div>
-<h4>💨 隧道通风标准</h4>
-<ul><li>CO浓度：正常 ≤150ppm；拥堵 ≤250ppm（15min）</li><li>烟雾浓度 K ≤0.0075m⁻¹</li><li>换气频率 ≥3次/h</li></ul>
-<h4>💡 隧道照明</h4>
-<ul><li>分入口段→过渡段→中间段→出口段</li><li>入口段亮度 Lin = k·L20(S)（k值按停车视距和交通量确定）</li><li>中间段亮度 1.0~4.5cd/m²（按设计速度）</li></ul>
-<h4>🔥 消防</h4>
-<ul><li>消火栓间距≤50m</li><li>灭火器每组4~6具（间距≤50m）</li><li>车行横洞≤750m；人行横洞≤250m</li><li>紧急电话≤200m</li></ul>`
+<h4>💨 第2章 隧道通风</h4><ul><li>CO浓度：正常<span class="hl">≤150ppm</span>；拥堵≤250ppm（15min）</li><li>烟雾浓度 K ≤ <span class="hl">0.0075m⁻¹</span></li><li>换气频率 ≥ 3次/h</li></ul>
+<h4>💡 第3章 隧道照明</h4><ul><li>分四段：<span class="hl">入口段→过渡段→中间段→出口段</span></li><li>入口段亮度：Lin = k·L20(S)，k按停车视距和交通量确定</li><li>中间段亮度：<span class="hl">1.0~4.5cd/m²</span>（按设计速度）</li></ul>
+<h4>🔥 第4章 消防</h4><ul><li>消火栓间距 <span class="hl">≤50m</span></li><li>灭火器每组4~6具，间距≤50m</li><li>车行横洞 <span class="hl">≤750m</span>；人行横洞 ≤250m</li><li>紧急电话 ≤200m</li></ul>`
 },
 {
 code:'JTG D81-2017',
