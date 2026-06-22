@@ -45,7 +45,7 @@ function searchInCat(cat, query) {
 /** 获取各分类计数 */
 function getCategoryCounts() {
   var counts = { all: SPECS.length };
-  var cats = ['general', 'geometry', 'pavement', 'bridge', 'drainage', 'safety', 'rural', 'materials', 'seismic'];
+  var cats = ['general', 'geometry', 'pavement', 'bridge', 'drainage', 'safety', 'rural', 'materials', 'seismic', 'drawings'];
   cats.forEach(function(c) {
     counts[c] = SPECS.filter(function(s) { return s.cat === c; }).length;
   });
@@ -73,7 +73,8 @@ var CAT_NAMES = {
   safety: '交安设施',
   rural: '农村公路',
   materials: '材料/钢材',
-  seismic: '抗震/基础'
+  seismic: '抗震/基础',
+  drawings: '标准图集'
 };
 
 /** 分类图标映射 */
@@ -86,5 +87,6 @@ var CAT_ICONS = {
   safety: '🛡',
   rural: '🏘',
   materials: '🔩',
-  seismic: '🏔'
+  seismic: '🏔',
+  drawings: '📐'
 };

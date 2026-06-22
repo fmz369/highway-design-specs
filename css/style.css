@@ -191,6 +191,8 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 .card-icon.rural { background: linear-gradient(135deg, #84cc16, #65a30d); }
 .card-icon.materials { background: linear-gradient(135deg, #6366f1, #4f46e5); }
 .card-icon.seismic { background: linear-gradient(135deg, #f97316, #ea580c); }
+.card-icon.drawings { background: linear-gradient(135deg, #14b8a6, #0d9488); }
+.tag-drawings { background: #ccfbf1; color: #134e4a; }
 .tag-rural { background: #ecfccb; color: #3f6212; }
 .tag-materials { background: #eef2ff; color: #3730a3; }
 .tag-seismic { background: #fff7ed; color: #9a3412; }
