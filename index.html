@@ -89,34 +89,40 @@
   dashHTML += '<div class="stat-card"><div class="sc-icon purple">📂</div><div><div class="sc-value">10</div><div class="sc-label">分类维度</div></div></div>';
   dashHTML += '</div>';
 
-  // 分类分布饼图
+  // SVG饼图（兼容所有浏览器）
   var catColors = { general:'#7c3aed', geometry:'#d97706', pavement:'#16a34a', bridge:'#db2777', drainage:'#0284c7', safety:'#dc2626', rural:'#65a30d', materials:'#4f46e5', seismic:'#ea580c', drawings:'#0d9488' };
   var catNames = CAT_NAMES;
   var catOrder = ['bridge','safety','pavement','general','materials','rural','geometry','drawings','drainage','seismic'];
-
-  // 构建conic-gradient
   var totalAll = SPECS.length;
-  var gradParts = [];
-  var cumDeg = 0;
+  var R = 68, cx = 72, cy = 72;
+
+  // 构建SVG扇形路径
+  var svgParts = '';
+  var cumDeg = -90; // 从顶部开始
   catOrder.forEach(function(c) {
     var n = counts[c] || 0;
     if (n === 0) return;
-    var deg = Math.round(n / totalAll * 360);
-    gradParts.push(catColors[c] + ' ' + cumDeg + 'deg ' + (cumDeg + deg) + 'deg');
+    var deg = n / totalAll * 360;
+    var startRad = cumDeg * Math.PI / 180;
+    var endRad = (cumDeg + deg) * Math.PI / 180;
+    var x1 = cx + R * Math.cos(startRad);
+    var y1 = cy + R * Math.sin(startRad);
+    var x2 = cx + R * Math.cos(endRad);
+    var y2 = cy + R * Math.sin(endRad);
+    var large = deg > 180 ? 1 : 0;
+    svgParts += '<path d="M' + cx + ',' + cy + ' L' + x1.toFixed(1) + ',' + y1.toFixed(1) + ' A' + R + ',' + R + ' 0 ' + large + ' 1 ' + x2.toFixed(1) + ',' + y2.toFixed(1) + ' Z" fill="' + catColors[c] + '" stroke="#fff" stroke-width="1.5"/>';
     cumDeg += deg;
   });
-  var pieGrad = gradParts.join(', ');
 
   // 构建图例
   var legendHTML = '';
   catOrder.forEach(function(c) {
     var n = counts[c] || 0;
     if (n === 0) return;
-    var pct = Math.round(n / totalAll * 100);
     legendHTML += '<span class="pie-legend-item"><i style="background:' + catColors[c] + ';"></i> ' + catNames[c] + ' <b>' + n + '</b></span>';
   });
 
-  dashHTML += '<div class="pie-wrap"><div class="pie-chart" style="background: conic-gradient(' + pieGrad + ');"></div><div class="pie-legend">' + legendHTML + '</div></div>';
+  dashHTML += '<div class="pie-wrap"><svg viewBox="0 0 144 144" class="pie-chart"><circle cx="72" cy="72" r="68" fill="#f5f5f8"/><circle cx="72" cy="72" r="30" fill="#fff"/>' + svgParts + '</svg><div class="pie-legend">' + legendHTML + '</div></div>';
 
   document.getElementById('dashboard').innerHTML = dashHTML;
   } catch(e) {
