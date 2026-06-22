@@ -396,41 +396,99 @@ status:'current',
 tags:["基础标准","总体设计"],
 pdf:'规范PDF/JTG B01-2014 公路工程技术标准.pdf',
 hasPdf:true,
-content:`
-<h4>📑 章节目录</h4>
+content:`<h4>📑 章节目录（14章）</h4>
 <div class="ch-list">
 <div>1 总则</div><div>2 术语</div><div>3 公路分级</div><div>4 设计速度</div>
 <div>5 车道与硬路肩</div><div>6 建筑限界</div><div>7 公路横断面</div><div>8 路线</div>
 <div>9 路基路面</div><div>10 桥涵</div><div>11 隧道</div><div>12 交叉</div>
 <div>13 交通工程及沿线设施</div><div>14 环境保护</div>
 </div>
-<h4>🔑 核心参数表</h4>
-<table><tr><th>公路等级</th><th>设计速度(km/h)</th><th>车道宽度(m)</th><th>硬路肩宽(m)</th><th>停车视距(m)</th><th>设计年限</th></tr>
-<tr><td>高速</td><td>120 / 100 / 80</td><td>3.75</td><td>3.00~3.50</td><td>210 / 160 / 110</td><td>20年</td></tr>
-<tr><td>一级</td><td>100 / 80 / 60</td><td>3.75 / 3.50</td><td>2.50~3.00</td><td>160 / 110 / 75</td><td>20年</td></tr>
-<tr><td>二级</td><td>80 / 60</td><td>3.75 / 3.50</td><td>0.75~1.50</td><td>110 / 75</td><td>15年</td></tr>
-<tr><td>三级</td><td>40 / 30</td><td>3.50 / 3.25</td><td>—</td><td>40 / 30</td><td>10~15年</td></tr>
-<tr><td>四级</td><td>30 / 20</td><td>3.25 / 3.00</td><td>—</td><td>30 / 20</td><td>10年</td></tr></table>
-<h4>📐 关键设计规定</h4>
-<ul>
-<li><span class="hl">建筑限界净高</span>：高速/一级≥5.0m；二/三/四级≥4.5m</li>
-<li><span class="hl">行车道宽度</span>：V≥80km/h→3.75m；V<80km/h→3.50m（低等级可3.25/3.00m）</li>
-<li><span class="hl">中间带宽度</span>：高速≥3.00m（含路缘带）；一级≥2.00m</li>
-<li><span class="hl">设计交通量</span>：按AADT（年平均日交通量）确定等级</li>
-<li>高速公路应控制出入，一级公路部分控制出入</li>
-	<h4>📄 规范原文获取</h4>
-	<ul>
-	<li>📥 <a href="./JTG_B01-2014_公路工程技术标准.pdf" target="_blank" style="color:#2563eb;font-weight:600;">打开 PDF 原文（下载后放桌面即用）</a></li>
-	<li>🌐 <a href="https://www.waizi.org.cn/law/10312.html" target="_blank" style="color:#6e6e73;">在线阅读/免费下载（waizi.org.cn）</a></li>
-	<li>🌐 <a href="https://www.zhulouren.com/gb80299.html" target="_blank" style="color:#6e6e73;">备用下载（zhulouren.com）</a></li>
-	</ul>
-</ul>
-		<h4>📄 规范原文获取</h4>
-		<ul>
-		<li>📥 <a href="./规范PDF/JTG%20B01-2014%20%E5%85%AC%E8%B7%AF%E5%B7%A5%E7%A8%8B%E6%8A%80%E6%9C%AF%E6%A0%87%E5%87%86.pdf" target="_blank" style="color:#2563eb;font-weight:600;">点击打开 PDF 原文</a></li>
-		<li style="color:#888;font-size:11px;">📁 位置：规范PDF/JTG B01-2014 公路工程技术标准.pdf</li>
-		</ul>
-	\$\$\$\$\$`
+
+<h4>🚗 第3章 公路分级</h4>
+<table><tr><th>公路等级</th><th>功能定位</th><th>设计交通量(AADT)</th><th>控制出入</th></tr>
+<tr><td><span class="hl">高速公路</span></td><td>专供汽车分向分道行驶</td><td>≥15000pcu/d</td><td>完全控制</td></tr>
+<tr><td>一级公路</td><td>供汽车分向分道行驶</td><td>≥15000pcu/d</td><td>部分控制</td></tr>
+<tr><td>二级公路</td><td>供汽车行驶</td><td>5000~15000</td><td>不控制</td></tr>
+<tr><td>三级公路</td><td>供汽车、非机动车</td><td>2000~6000</td><td>不控制</td></tr>
+<tr><td><span class="hl">四级公路</span></td><td>供汽车、非机动车</td><td>&lt;2000(双车道)/&lt;400(单车道)</td><td>不控制</td></tr></table>
+<ul><li>高速公路和一级公路按<span class="hl">单向</span>设计交通量计算</li><li>二、三、四级公路按<span class="hl">双向</span>设计交通量计算</li></ul>
+
+<h4>⚡ 第4章 设计速度</h4>
+<table><tr><th>公路等级</th><th colspan="3">设计速度(km/h)</th></tr>
+<tr><td>高速公路</td><td><span class="hl">120</span></td><td>100</td><td>80</td></tr>
+<tr><td>一级公路</td><td>100</td><td>80</td><td>60</td></tr>
+<tr><td>二级公路</td><td>80</td><td>60</td><td>—</td></tr>
+<tr><td>三级公路</td><td>40</td><td>30</td><td>—</td></tr>
+<tr><td>四级公路</td><td>30</td><td>20</td><td>—</td></tr></table>
+<ul><li>高速公路特殊困难路段可采用80km/h（地形地质复杂、造价剧增时）</li><li>一级公路作为干线时宜用100或80；集散时可用60</li></ul>
+
+<h4>📏 第5章 车道与硬路肩</h4>
+<h4>车道宽度</h4>
+<table><tr><th>设计速度(km/h)</th><th>120</th><th>100</th><th>80</th><th>60</th><th>40</th><th>30</th><th>20</th></tr>
+<tr><td>车道宽度(m)</td><td><span class="hl">3.75</span></td><td>3.75</td><td>3.75</td><td>3.50</td><td>3.50</td><td>3.25</td><td>3.00</td></tr></table>
+<h4>车道数</h4>
+<table><tr><th>公路等级</th><th>高速</th><th>一级</th><th>二级</th><th>三级</th><th>四级</th></tr>
+<tr><td>车道数</td><td>≥4</td><td>≥4</td><td>≥2</td><td>≥2</td><td>≥2(或1)</td></tr></table>
+<h4>硬路肩宽度</h4>
+<table><tr><th>设计速度(km/h)</th><th>120</th><th>100</th><th>80</th><th>60</th></tr>
+<tr><td>右侧硬路肩(m)</td><td><span class="hl">3.00~3.50</span></td><td>2.50~3.00</td><td>1.50~2.50</td><td>0.75~1.50</td></tr></table>
+<ul><li>八车道及以上高速内侧车道可3.50m</li></ul>
+
+<h4>🏛 第6章 建筑限界</h4>
+<table><tr><th>项目</th><th>高速/一级</th><th>二级</th><th>三级/四级</th></tr>
+<tr><td>行车道净高</td><td colspan="3"><span class="hl">5.00m</span></td></tr>
+<tr><td>检修道/人行道净高</td><td colspan="3">2.50m</td></tr></table>
+<ul><li>三/四级公路沥青表处或砂石路面时净高可<span class="hl">4.50m</span></li><li>限界内<span class="hl">不得有任何障碍物</span>侵入</li></ul>
+
+<h4>📐 第7章 公路横断面</h4>
+<h4>中间带宽度（高速/一级）</h4>
+<table><tr><th>设计速度(km/h)</th><th>120</th><th>100</th><th>80</th><th>60</th></tr>
+<tr><td>中央分隔带(m)</td><td>3.00</td><td>2.00</td><td>2.00</td><td>1.50</td></tr>
+<tr><td>左侧路缘带(m)</td><td>0.75</td><td>0.75</td><td>0.50</td><td>0.50</td></tr>
+<tr><td>中间带总宽(m)</td><td>4.50</td><td>3.50</td><td>3.00</td><td>2.50</td></tr></table>
+
+<h4>📏 第8章 路线（关键参数）</h4>
+<h4>停车视距</h4>
+<table><tr><th>设计速度(km/h)</th><th>120</th><th>100</th><th>80</th><th>60</th><th>40</th><th>30</th><th>20</th></tr>
+<tr><td>停车视距(m)</td><td><span class="hl">210</span></td><td>160</td><td>110</td><td>75</td><td>40</td><td>30</td><td>20</td></tr></table>
+<h4>最大纵坡</h4>
+<table><tr><th>设计速度(km/h)</th><th>120</th><th>100</th><th>80</th><th>60</th><th>40</th><th>30</th><th>20</th></tr>
+<tr><td>最大纵坡(%)</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr></table>
+<h4>圆曲线最小半径（一般值/极限值，m）</h4>
+<table><tr><th>设计速度</th><th>120</th><th>100</th><th>80</th><th>60</th><th>40</th><th>30</th><th>20</th></tr>
+<tr><td>一般值</td><td>1000</td><td>700</td><td>400</td><td>200</td><td>100</td><td>65</td><td>30</td></tr>
+<tr><td>极限值</td><td>650</td><td>400</td><td>250</td><td>125</td><td>60</td><td>30</td><td>15</td></tr></table>
+
+<h4>🪨 第9章 路基路面</h4>
+<h4>路基压实度（高速/一级）</h4>
+<table><tr><th>部位</th><th>深度</th><th>压实度</th></tr>
+<tr><td>上路床</td><td>0~0.30m</td><td><span class="hl">≥96%</span></td></tr>
+<tr><td>下路床</td><td>0.30~0.80m</td><td>≥96%</td></tr>
+<tr><td>上路堤</td><td>0.80~1.50m</td><td>≥94%</td></tr>
+<tr><td>下路堤</td><td>&gt;1.50m</td><td>≥93%</td></tr></table>
+<ul><li>沥青路面设计年限：高速/一级<span class="hl">15年</span>；二级12年</li><li>水泥路面设计年限：高速/一级<span class="hl">30年</span>；二级20年</li></ul>
+
+<h4>🌉 第10章 桥涵</h4>
+<table><tr><th>分类</th><th>单孔跨径Lk(m)</th><th>多孔总长L(m)</th></tr>
+<tr><td>特大桥</td><td>Lk&gt;150</td><td>L&gt;1000</td></tr>
+<tr><td>大桥</td><td>40≤Lk≤150</td><td>100≤L≤1000</td></tr>
+<tr><td>中桥</td><td>20≤Lk&lt;40</td><td>30≤L&lt;100</td></tr>
+<tr><td>小桥</td><td>5≤Lk&lt;20</td><td>8≤L&lt;30</td></tr>
+<tr><td>涵洞</td><td>Lk&lt;5</td><td>—</td></tr></table>
+<ul><li>汽车荷载：高速/一级→<span class="hl">公路-Ⅰ级</span>；二级及以下→公路-Ⅱ级</li><li>特大桥设计洪水频率：高速/一级<span class="hl">1/300</span>；其他1/100</li></ul>
+
+<h4>📋 第13章 交通工程及沿线设施</h4>
+<table><tr><th>设施</th><th>高速</th><th>一级</th><th>二级</th><th>三级</th><th>四级</th></tr>
+<tr><td>交通安全设施</td><td>●</td><td>●</td><td>●</td><td>●</td><td>●</td></tr>
+<tr><td>服务设施</td><td>●</td><td>●</td><td>○</td><td>—</td><td>—</td></tr>
+<tr><td>管理设施</td><td>●</td><td>●</td><td>○</td><td>—</td><td>—</td></tr>
+<tr><td>收费设施</td><td>●</td><td>○</td><td>—</td><td>—</td><td>—</td></tr></table>
+<p>●必须设置 ○可选设置 —不要求</p>
+
+<div class="note-box"><strong>💡 JTG B01-2014的地位</strong><br>本规范是公路工程的<span class="hl">"母标准"</span>——所有其他公路规范的技术指标均源于本标准。设计时必须<span class="hl">首先查阅</span>本标准确定技术等级和基本参数，再查阅各专业规范。</div>
+
+<h4>📄 规范原文获取</h4>
+<ul><li>📥 <a href="./规范PDF/JTG B01-2014 公路工程技术标准.pdf" target="_blank" style="color:#2563eb;font-weight:600;">打开 PDF 原文</a></li></ul>`
 },
 {
 code:'JTG B05-2015',
