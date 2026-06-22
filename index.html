@@ -77,7 +77,7 @@
   var total = SPECS.length;
   var current = SPECS.filter(function(s) { return s.status === 'current'; }).length;
   var replaced = total - current;
-  var pdfs = SPECS.filter(function(s) { return s.hasPdf; }).length;
+  var favs = getFavoriteCount();
   var curentPct = Math.round(current / total * 100);
 
   var dashHTML = '';
@@ -85,7 +85,7 @@
   dashHTML += '<div class="stat-cards">';
   dashHTML += '<div class="stat-card"><div class="sc-icon blue">📋</div><div><div class="sc-value">' + total + '</div><div class="sc-label">收录规范总数</div></div></div>';
   dashHTML += '<div class="stat-card"><div class="sc-icon green">✅</div><div><div class="sc-value">' + current + '</div><div class="sc-label">现行规范（' + curentPct + '%）</div></div></div>';
-  dashHTML += '<div class="stat-card"><div class="sc-icon amber">📥</div><div><div class="sc-value">' + pdfs + '</div><div class="sc-label">PDF原文可看</div></div></div>';
+  dashHTML += '<div class="stat-card"><div class="sc-icon amber">⭐</div><div><div class="sc-value">' + favs + '</div><div class="sc-label">已收藏规范</div></div></div>';
   dashHTML += '<div class="stat-card"><div class="sc-icon purple">📂</div><div><div class="sc-value">10</div><div class="sc-label">分类维度</div></div></div>';
   dashHTML += '</div>';
 

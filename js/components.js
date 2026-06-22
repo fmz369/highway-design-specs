@@ -24,7 +24,7 @@ function renderCard(s, linkToDetail) {
     + '<div class="card-title">' + s.title + '</div>'
     + '<div class="card-meta">'
     + '<span class="status-badge ' + sc + '">' + st + '</span>' + tags
-    + (s.hasPdf ? '<span style="font-size:10px;color:#16a34a;">📥</span>' : '')
+    + ""
     + '</div></div></div>'
     + '</' + tag + '>';
 }
@@ -54,7 +54,7 @@ function renderStatsPills(extraHtml) {
   return '<div class="stats-pills">'
     + '<span class="stat-pill"><span class="dot green"></span> 现行 <strong>' + current + '</strong></span>'
     + '<span class="stat-pill"><span class="dot yellow"></span> 总计 <strong>' + total + '</strong></span>'
-    + (pdf > 0 ? '<span class="stat-pill" style="background:rgba(74,222,128,.15);border-color:rgba(74,222,128,.3);"><span class="dot green"></span> PDF原文 <strong>' + pdf + '</strong></span>' : '')
+    + (pdf > 0 ? '' : '')
     + (fav > 0 ? '<span class="stat-pill"><span class="dot yellow"></span> ⭐ 收藏 <strong>' + fav + '</strong></span>' : '')
     + (extraHtml || '')
     + '</div>';
