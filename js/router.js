@@ -70,7 +70,10 @@ var CAT_NAMES = {
   pavement: '路基路面',
   bridge: '桥梁涵洞',
   drainage: '排水防护',
-  safety: '交安设施'
+  safety: '交安设施',
+  rural: '农村公路',
+  materials: '材料/钢材',
+  seismic: '抗震/基础'
 };
 
 /** 分类图标映射 */
@@ -80,5 +83,8 @@ var CAT_ICONS = {
   pavement: '🛣',
   bridge: '🌉',
   drainage: '💧',
-  safety: '🛡'
+  safety: '🛡',
+  rural: '🏘',
+  materials: '🔩',
+  seismic: '🏔'
 };

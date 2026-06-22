@@ -59,7 +59,7 @@ content:`
 {
 code:'GB/T 1499.1-2017',
 title:'钢筋混凝土用钢 第1部分：热轧光圆钢筋',
-cat:'general',
+cat:'materials',
 status:'current',
 tags:["钢材","材料"],
 pdf:null,
@@ -75,7 +75,7 @@ content:`
 {
 code:'GB/T 1499.2-2018',
 title:'钢筋混凝土用钢 第2部分：热轧带肋钢筋',
-cat:'general',
+cat:'materials',
 status:'current',
 tags:["钢材","材料"],
 pdf:null,
@@ -96,7 +96,7 @@ content:`
 {
 code:'GB/T 51224-2017',
 title:'乡村道路工程技术规范',
-cat:'general',
+cat:'rural',
 status:'current',
 tags:["乡村道路","国家标准"],
 pdf:'规范PDF/GBT 51224-2017 乡村道路工程技术规范.pdf',
@@ -254,7 +254,7 @@ content:`
 {
 code:'JGJ 107-2016',
 title:'钢筋机械连接技术规程',
-cat:'general',
+cat:'materials',
 status:'current',
 tags:["机械连接","施工"],
 pdf:null,
@@ -276,7 +276,7 @@ content:`
 {
 code:'JGJ 18-2012',
 title:'钢筋焊接及验收规程',
-cat:'general',
+cat:'materials',
 status:'current',
 tags:["焊接","施工"],
 pdf:null,
@@ -315,7 +315,7 @@ content:`
 {
 code:'JTG 2111-2019',
 title:'小交通量农村公路工程技术标准',
-cat:'general',
+cat:'rural',
 status:'current',
 tags:["农村公路"],
 pdf:'规范PDF/JTG 2111-2019 小交通量农村公路工程技术标准.pdf',
@@ -361,7 +361,7 @@ content:`
 {
 code:'JTG 5211-2024',
 title:'农村公路技术状况评定标准',
-cat:'general',
+cat:'rural',
 status:'current',
 tags:["农村公路","评定"],
 pdf:null,
@@ -470,7 +470,7 @@ content:`
 {
 code:'JTG/T 3311-2021',
 title:'小交通量农村公路工程设计规范',
-cat:'general',
+cat:'rural',
 status:'current',
 tags:["农村公路","设计"],
 pdf:'规范PDF/JTGT 3311-2021 小交通量农村公路工程设计规范.pdf',
@@ -855,7 +855,7 @@ content:`
 {
 code:'JTG/T 5190-2019',
 title:'农村公路养护技术规范',
-cat:'general',
+cat:'rural',
 status:'current',
 tags:["农村公路","养护"],
 pdf:null,
@@ -884,7 +884,7 @@ content:`
 {
 code:'JTG/T 5640-2020',
 title:'农村公路养护预算编制办法',
-cat:'general',
+cat:'rural',
 status:'current',
 tags:["农村公路","造价"],
 pdf:null,
@@ -938,7 +938,7 @@ content:`
 {
 code:'GB/T 1499.3-2022',
 title:'钢筋混凝土用钢 第3部分：钢筋焊接网',
-cat:'general',
+cat:'materials',
 status:'current',
 tags:["钢筋","材料"],
 pdf:'规范PDF/GBT 1499.3-2022 钢筋混凝土用钢 第3部分：钢筋焊接网.pdf',
@@ -960,7 +960,7 @@ content:`
 {
 code:'GB/T 13788-2024',
 title:'冷轧带肋钢筋',
-cat:'general',
+cat:'materials',
 status:'current',
 tags:["钢筋","材料"],
 pdf:'规范PDF/GBT 13788-2024 冷轧带肋钢筋.pdf',
@@ -983,7 +983,7 @@ content:`
 {
 code:'GB 50011-2010(2024版)',
 title:'建筑抗震设计标准',
-cat:'general',
+cat:'seismic',
 status:'current',
 tags:["抗震","国家标准"],
 pdf:'规范PDF/GB 50011-2010(2024版) 建筑抗震设计标准.pdf',
@@ -1002,7 +1002,7 @@ content:`
 {
 code:'GB 18306-2015',
 title:'中国地震动参数区划图',
-cat:'general',
+cat:'seismic',
 status:'current',
 tags:["地震","基础数据"],
 pdf:'规范PDF/GB 18306-2015 中国地震参数区划图.pdf',
@@ -1021,7 +1021,7 @@ content:`
 {
 code:'JGJ 120-2012',
 title:'建筑基坑支护技术规程',
-cat:'general',
+cat:'seismic',
 status:'current',
 tags:["基坑","支护"],
 pdf:'规范PDF/JGJ 120-2012 建筑基坑支护技术规程.pdf',
@@ -1043,7 +1043,7 @@ content:`
 {
 code:'GB/T 25826-2010',
 title:'钢筋混凝土用环氧涂层钢筋',
-cat:'general',
+cat:'materials',
 status:'current',
 tags:["钢筋","防腐"],
 pdf:'规范PDF/GBT 25826-2010 钢筋混凝土用环氧涂层钢筋.pdf',
@@ -1063,7 +1063,7 @@ content:`
 {
 code:'GB/T 20933-2021',
 title:'热轧钢板桩',
-cat:'general',
+cat:'materials',
 status:'current',
 tags:["钢板桩","材料"],
 pdf:'规范PDF/GBT 20933-2021 热轧钢板桩.pdf',
@@ -1592,7 +1592,7 @@ content:`
 {
 code:'JTG/T 3351-2024',
 title:'农村公路简易铺装路面设计施工技术细则',
-cat:'pavement',
+cat:'rural',
 status:'current',
 tags:["农村公路","路面"],
 pdf:null,
@@ -1797,7 +1797,7 @@ content:`
 {
 code:'GB/T 35162-2017',
 title:'道路基层用缓凝硅酸盐水泥',
-cat:'pavement',
+cat:'materials',
 status:'current',
 tags:["水泥","材料"],
 pdf:'规范PDF/GBT 35162-2017 道路基层用缓凝硅酸盐水泥.pdf',

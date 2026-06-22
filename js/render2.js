@@ -28,7 +28,7 @@
     ]);
 
     // 分类标签栏
-    var cats = ['all', 'general', 'geometry', 'pavement', 'bridge', 'drainage', 'safety'];
+    var cats = ['all', 'general', 'geometry', 'pavement', 'bridge', 'drainage', 'safety', 'rural', 'materials', 'seismic'];
     var counts = getCategoryCounts();
     var tabsHTML = '';
     cats.forEach(function(c) {
