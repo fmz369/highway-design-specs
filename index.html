@@ -91,12 +91,12 @@
   var catNames = CAT_NAMES;
   var catOrder = ['bridge','safety','pavement','general','materials','rural','geometry','drawings','drainage','seismic'];
   var totalAll = SPECS.length;
-    var R = 60, cx = 80, cy = 80, sw = 26;
+    var R = 72, cx = 100, cy = 100, sw = 30;
   var circ = 2 * Math.PI * R;
 
   var svgParts = '<defs><filter id="ds"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.12"/></filter></defs>'
     + '<circle cx="87" cy="87" r="' + R + '" fill="none" stroke="#e8e8f0" stroke-width="' + sw + '"/>'
-    + '<g transform="rotate(-90 87 87)">';
+    + '<g transform="rotate(-90 100 100)">';
 
   var cumLen = 0;
   catOrder.forEach(function(c) {
@@ -116,7 +116,7 @@
     legendHTML += '<a href="category/?cat=' + c + '" class="pl-item"><span class="pl-dot" style="background:' + catColors[c] + ';"></span><span class="pl-name">' + catNames[c] + '</span><span class="pl-num">' + n + '</span></a>';
   });
 
-  dashHTML += '<div class="pie-wrap"><div class="donut-box"><svg viewBox="0 0 174 174" class="donut-svg">' + svgParts + '</svg><div class="donut-center"><span class="donut-num">' + totalAll + '</span><span class="donut-label">部规范</span></div></div><div class="pie-legend">' + legendHTML + '</div></div>';
+  dashHTML += '<div class="pie-wrap"><div class="donut-box"><svg viewBox="0 0 210 210" class="donut-svg">' + svgParts + '</svg><div class="donut-center"><span class="donut-num">' + totalAll + '</span><span class="donut-label">部规范</span></div></div><div class="pie-legend">' + legendHTML + '</div></div>';
 
 
   document.getElementById('dashboard').innerHTML = dashHTML;
