@@ -67,6 +67,7 @@
   document.getElementById('statsPills').innerHTML = renderStatsPills();
 
   var selectedCodes = [];
+  var selectedGrades = {}; // {code: grade} 每个规范的选中等级
   var catIconMap = { general:'📐', geometry:'📏', pavement:'🛣', bridge:'🌉', drainage:'💧', safety:'🛡', rural:'🏘', materials:'🔩', seismic:'🏔', drawings:'📐' };
 
   // 从 URL 读取初始选择
@@ -89,13 +90,24 @@
     var specs = getSelectedSpecs();
     var html = '';
     specs.forEach(function(s, i) {
+      var p = extractKeyParams(s);
+      var grades = p['适用公路等级'] ? p['适用公路等级'].split('/') : [];
+      var selHTML = '';
+      if (grades.length > 1) {
+        selHTML = ' <select onchange="changeGrade(' + i + ',this.value)" style="font-size:11px;border:1px solid var(--border);border-radius:10px;padding:2px 6px;background:#f8f8ff;">';
+        grades.forEach(function(g) { selHTML += '<option value="'+g+'">'+g+'</option>'; });
+        selHTML += '</select>';
+      }
       html += '<div style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:13px;">'
-        + (catIconMap[s.cat]||'📋') + ' <strong>' + s.code + '</strong> ' + s.title.substring(0, 15)
+        + (catIconMap[s.cat]||'📋') + ' <strong>' + s.code + '</strong>'
+        + selHTML
         + '<button onclick="removeSpec(' + i + ')" style="border:none;background:none;cursor:pointer;color:#ef4444;font-size:16px;line-height:1;" title="移除">×</button>'
         + '</div>';
     });
     document.getElementById('selectedSpecs').innerHTML = html;
-    document.getElementById('compareResult').innerHTML = renderCompareTable(specs);
+    // 收集等级
+    var gradesForCompare = specs.map(function(s) { return selectedGrades[s.code] || null; });
+    document.getElementById('compareResult').innerHTML = renderCompareTable(specs, gradesForCompare);
     document.getElementById('btnExport').style.display = specs.length >= 2 ? 'inline-flex' : 'none';
 
     // 更新URL
@@ -110,7 +122,14 @@
 
   // 全局暴露移除函数
   window.removeSpec = function(i) {
+    var code = selectedCodes[i];
+    delete selectedGrades[code];
     selectedCodes.splice(i, 1);
+    renderSelected();
+  };
+  // 等级切换
+  window.changeGrade = function(i, grade) {
+    selectedGrades[selectedCodes[i]] = grade;
     renderSelected();
   };
 

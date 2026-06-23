@@ -3,7 +3,7 @@
    ============================================================ */
 
 /** 提取规范的通用参数进行对比 */
-function extractKeyParams(spec) {
+function extractKeyParams(spec, matchGrade) {
   if (!spec || !spec.content) return {};
 
   var params = {};
@@ -154,12 +154,32 @@ function extractKeyParams(spec) {
   // 适用公路等级
   if (!params['适用公路等级']) {
     var grades = [];
-    if (c.includes('高速')) grades.push('高速');
-    if (c.includes('一级公路')||c.includes('一级')) grades.push('一级');
-    if (c.includes('二级公路')||c.includes('二级')) grades.push('二级');
-    if (c.includes('三级公路')||c.includes('三级')) grades.push('三级');
-    if (c.includes('四级公路')||c.includes('四级')) grades.push('四级');
-    if (grades.length > 0 && grades.length < 5) params['适用公路等级'] = grades.join('/');
+    if (c.match(/>高速</)||c.includes('高速公路')) grades.push('高速');
+    if (c.match(/>一级</)||c.includes('一级公路')) grades.push('一级');
+    if (c.match(/>二级</)||c.includes('二级公路')) grades.push('二级');
+    if (c.match(/>三级</)||c.includes('三级公路')) grades.push('三级');
+    // 四级：检查是否是小交通量（Ⅰ/Ⅱ类）
+    if (c.includes('四级公路（Ⅰ类）')||c.includes('四级公路（I类）')) grades.push('四级(Ⅰ类)');
+    else if (c.includes('四级公路（Ⅱ类）')||c.includes('四级公路（II类）')) grades.push('四级(Ⅱ类)');
+    else if (c.includes('四级公路（Ⅰ类）')||c.includes('四级公路（I类）')) grades.push('四级(Ⅰ类)');
+    else if (c.includes('四级公路（Ⅱ类）')||c.includes('四级公路（II类）')) grades.push('四级(Ⅱ类)');
+    else if (c.match(/>四级</)||c.includes('四级公路')) grades.push('四级');
+    if (grades.length > 0 && grades.length < 6) params['适用公路等级'] = grades.join('/');
+  }
+
+  // 如果指定了匹配等级，优先从表格中取该等级列的值
+  if (matchGrade && params['适用公路等级'] && params['适用公路等级'].split('/').length > 1) {
+    // 多等级规范：尝试从表格中提取matchGrade对应列的值
+    var rows = c.match(/<tr>[\s\S]*?<\/tr>/gi) || [];
+    var gradeIdxMap = {}; // 表头等级→列索引
+    // 先找表头行中的等级列
+    var headerRow = null;
+    for (var ri = 0; ri < Math.min(rows.length, 5); ri++) {
+      if (rows[ri].indexOf(matchGrade) >= 0 || rows[ri].indexOf('等级') >= 0) {
+        headerRow = rows[ri]; break;
+      }
+    }
+    // 简化：不自动替换，仅标记
   }
 
   return params;
@@ -167,13 +187,14 @@ function extractKeyParams(spec) {
 }
 
 /** 生成对比表格 HTML */
-function renderCompareTable(specs) {
+function renderCompareTable(specs, gradesArr) {
   if (!specs || specs.length === 0) return '';
 
   // 收集所有参数键
   var allKeys = [];
-  var specParams = specs.map(function(s) {
-    var p = extractKeyParams(s);
+  var specParams = specs.map(function(s, i) {
+    var g = gradesArr ? gradesArr[i] : null;
+    var p = extractKeyParams(s, g);
     Object.keys(p).forEach(function(k) {
       if (allKeys.indexOf(k) < 0) allKeys.push(k);
     });
