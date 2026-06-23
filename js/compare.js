@@ -154,7 +154,7 @@ function extractKeyParams(spec, matchGrade) {
   // 适用公路等级（只在表格标签中检测，避免参考文字误判）
   if (!params['适用公路等级']) {
     var grades = [];
-    var tds = c.match(/<t[dh][^>]*>/gi) || []; var tdContent = tds.map(function(t){return t.replace(/<[^>]+>/g,'')}).join(' ');
+    var tdContent = (c.match(/<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi) || []).join(' ').replace(/<[^>]+>/g,'');
     // 四级(Ⅰ/Ⅱ类)小交通量
     if (tdContent.indexOf('四级公路（Ⅰ类）')>=0||tdContent.indexOf('四级公路（I类）')>=0) grades.push('四级(Ⅰ类)');
     if (tdContent.indexOf('四级公路（Ⅱ类）')>=0||tdContent.indexOf('四级公路（II类）')>=0) grades.push('四级(Ⅱ类)');
