@@ -154,7 +154,31 @@ function renderCompareTable(specs, gradesArr) {
   var specParams = specs.map(function(s,i){return extractKeyParams(s,gradesArr?gradesArr[i]:null);});
   var allKeys = []; specParams.forEach(function(p){Object.keys(p).forEach(function(k){if(k!=='适用公路等级'&&allKeys.indexOf(k)<0)allKeys.push(k);});});
   if (allKeys.length === 0) return '<div class="empty-state"><div class="empty-icon">📊</div><div class="empty-title">无可对比参数</div></div>';
-  allKeys.unshift('适用公路等级');
+  // === 工程师视角过滤：只保留核心设计参数 ===
+  var ENGINEER_PARAMS = [
+    '适用公路等级','设计速度(km/h)','车道宽度(m)','车道数',
+    '路肩宽度(m)','路基宽度(m)','路面宽度(m)','中间带宽度(m)',
+    '平曲线最小半径一般值(m)','平曲线最小半径极限值(m)',
+    '停车视距(m)','会车视距(m)','缓和曲线最小长度(m)',
+    '最大纵坡(%)','最小坡长(m)','最大坡长(m)',
+    '凸竖曲线一般值(m)','凹竖曲线一般值(m)',
+    '最大超高(%)','最大合成坡度(%)',
+    '建筑限界净高(m)',
+    '路基压实度(上路床)','填料CBR(%)',
+    '路面设计年限','面层最小厚度(cm)','基层厚度(mm)','水泥弯拉强度(MPa)','路拱坡度(%)',
+    '汽车荷载','设计洪水频率','桥梁设计使用年限',
+    '护栏防撞等级','AADT',
+    '错车道宽度(m)','圆曲线加宽值(m)',
+    '设计使用年限',
+  ];
+  // 只保留工程师关心的参数
+  var filteredKeys = [];
+  allKeys.forEach(function(k) {
+    if (ENGINEER_PARAMS.indexOf(k) >= 0) filteredKeys.push(k);
+  });
+  // 补回适用等级
+  if (filteredKeys.indexOf('适用公路等级') < 0) filteredKeys.unshift('适用公路等级');
+  allKeys = filteredKeys;
   var info = specs.map(function(s,i){return '<b>'+s.code+'</b>: '+(specParams[i]['适用公路等级']||'未识别');}).join(' | ');
   var html = '<div style="background:#fef3c7;padding:8px 14px;border-radius:6px;margin-bottom:10px;font-size:12px;color:#92400e;">📌 '+info+'</div>';
   html += '<div class="compare-table-wrap"><table class="compare-table"><thead><tr><th>参数项</th>';
