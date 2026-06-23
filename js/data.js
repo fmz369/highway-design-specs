@@ -1087,19 +1087,8 @@ status:'current',
 tags:["钢筋","材料"],
 pdf:'规范PDF/GBT 1499.3-2022 钢筋混凝土用钢 第3部分：钢筋焊接网.pdf',
 hasPdf:true,
-content:`
-<h4>📑 适用范围</h4>
-<p>规定了钢筋焊接网的术语、分类、技术要求、试验方法等。公路桥涵、路面、边坡防护等工程中钢筋网的选用基础标准。</p>
-<h4>🔑 主要技术指标</h4>
-<table><tr><th>项目</th><th>技术要求</th></tr>
-<tr><td>钢筋直径范围</td><td>5~16mm</td></tr>
-<tr><td>网孔尺寸</td><td>100×100mm~400×400mm</td></tr>
-<tr><td>焊点抗剪力</td><td>≥300N（d≤8mm）/ ≥500N（d>8mm）</td></tr>
-<tr><td>弯曲试验</td><td>弯心直径4d，180°不裂</td></tr></table>
-<ul>
-<li>常用牌号：CRB550（冷轧带肋）、HRB400</li>
-<li>公路应用：路面抗裂钢筋网、边坡锚喷支护网、桥面铺装钢筋网</li>
-</ul>`
+content:`<h4>📑 适用范围</h4><p>规定钢筋焊接网的分类、技术要求、试验方法。公路路面抗裂、边坡锚喷支护、桥面铺装<span class="hl">钢筋网</span>的选用标准。</p>
+<h4>🔑 主要技术指标</h4><table><tr><th>项目</th><th>要求</th></tr><tr><td>钢筋直径</td><td><span class="hl">5~16mm</span></td></tr><tr><td>网孔尺寸</td><td>100×100~400×400mm</td></tr><tr><td>焊点抗剪力(d≤8mm)</td><td>≥300N</td></tr><tr><td>焊点抗剪力(d>8mm)</td><td>≥500N</td></tr><tr><td>弯曲试验</td><td>弯心4d,180°不裂</td></tr></table><ul><li>常用牌号：CRB550、HRB400</li></ul>`
 },
 {
 code:'GB/T 13788-2024',
@@ -1132,16 +1121,9 @@ status:'current',
 tags:["抗震","国家标准"],
 pdf:'规范PDF/GB 50011-2010(2024版) 建筑抗震设计标准.pdf',
 hasPdf:true,
-content:`
-<h4>📑 适用范围</h4>
-<p>适用于抗震设防烈度<span class="hl">6~9度</span>地区建筑工程的抗震设计。公路桥涵抗震设计参考JTG/T 2231-01-2020。</p>
-<h4>🔑 核心参数</h4>
-<ul>
-<li>抗震设防烈度：<span class="hl">6/7/8/9度</span>，对应设计基本地震加速度0.05g/0.10(0.15)g/0.20(0.30)g/0.40g</li>
-<li>设计地震分组：<span class="hl">第一组/第二组/第三组</span>（影响特征周期Tg）</li>
-<li>场地类别：Ⅰ₀,Ⅰ₁,Ⅱ,Ⅲ,Ⅳ类</li>
-<li>特征周期Tg：0.20~0.90s（按场地类别+设计地震分组）</li>
-</ul>`
+content:`<h4>📑 适用范围</h4><p>适用于抗震设防烈度<span class="hl">6~9度</span>地区建筑工程的抗震设计。2024年修订版。</p>
+<h4>🔑 抗震设防核心参数</h4><table><tr><th>设防烈度</th><th>6度</th><th>7度</th><th>7.5度</th><th>8度</th><th>8.5度</th><th>9度</th></tr><tr><td>设计基本加速度</td><td>0.05g</td><td>0.10g</td><td>0.15g</td><td>0.20g</td><td>0.30g</td><td>0.40g</td></tr></table>
+<ul><li>设计地震分组：第一/二/三组（影响Tg取值）</li><li>场地类别：Ⅰ₀~Ⅳ类（6级）</li><li>特征周期Tg：<span class="hl">0.20~0.90s</span></li><li>公路桥涵抗震参考JTG/T 2231-01</li></ul>`
 },
 {
 code:'GB 18306-2015',
@@ -1151,16 +1133,8 @@ status:'current',
 tags:["地震","基础数据"],
 pdf:'规范PDF/GB 18306-2015 中国地震参数区划图.pdf',
 hasPdf:true,
-content:`
-<h4>📑 适用范围</h4>
-<p>给出了中国境内（不含港澳台）<span class="hl">Ⅱ类场地</span>条件下，50年超越概率10%的地震动参数。</p>
-<h4>🔑 核心内容</h4>
-<ul>
-<li>两张图：<span class="hl">地震动峰值加速度</span>区划图 + <span class="hl">地震动加速度反应谱特征周期</span>区划图</li>
-<li>峰值加速度分区：<0.05g / 0.05g / 0.10g / 0.15g / 0.20g / 0.30g / ≥0.40g</li>
-<li>特征周期分区：0.35s / 0.40s / 0.45s（对应1/2/3区）</li>
-<li>公路桥梁抗震设计时，地震动参数按本图取值后乘以场地调整系数</li>
-</ul>`
+content:`<h4>📑 适用范围</h4><p>给出中国境内<span class="hl">Ⅱ类场地</span>50年超越概率10%的地震动参数。抗震设计的<span class="hl">基础性图件</span>。</p>
+<h4>🗺 核心内容</h4><ul><li>两张区划图：<span class="hl">峰值加速度</span>图 + <span class="hl">特征周期</span>图</li><li>峰值加速度分区：<0.05g~≥0.40g七档</li><li>特征周期分区：0.35s / 0.40s / 0.45s</li><li>公路桥梁按本图取值后乘以<span class="hl">场地调整系数</span></li></ul><ul><li>附录A~D给出全国各乡镇的地震动参数</li></ul>`
 },
 {
 code:'JGJ 120-2012',
@@ -1170,19 +1144,8 @@ status:'current',
 tags:["基坑","支护"],
 pdf:'规范PDF/JGJ 120-2012 建筑基坑支护技术规程.pdf',
 hasPdf:true,
-content:`
-<h4>📑 章节目录</h4>
-<div class="ch-list">
-<div>1 总则</div><div>2 术语</div><div>3 基本规定</div><div>4 基坑工程勘察</div>
-<div>5 支护结构设计</div><div>6 地下水控制</div><div>7 基坑开挖与监测</div>
-</div>
-<h4>🔑 与公路工程的关系</h4>
-<ul>
-<li>公路桥梁<span class="hl">深基坑</span>（承台基坑、沉井）支护设计参考本规程</li>
-<li>公路挡土墙基坑深度较大时参考</li>
-<li>支护结构安全等级：<span class="hl">一级/二级/三级</span>（按基坑深度和周边环境）</li>
-<li>基坑深度≥5m为深基坑，需专项设计</li>
-</ul>`
+content:`<h4>📑 章节目录</h4><div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 基本规定</div><div>4 勘察</div><div>5 支护结构</div><div>6 地下水控制</div><div>7 开挖与监测</div></div>
+<h4>🔑 基坑安全等级</h4><table><tr><th>等级</th><th>破坏后果</th><th>深度条件</th></tr><tr><td><span class="hl">一级</span></td><td>很严重</td><td>≥15m或复杂环境</td></tr><tr><td>二级</td><td>严重</td><td>10~15m</td></tr><tr><td>三级</td><td>不严重</td><td><10m</td></tr></table><ul><li>支护结构：排桩/地下连续墙/土钉墙/锚杆</li><li>公路应用：桥梁深基坑、挡土墙基坑</li></ul>`
 },
 {
 code:'GB/T 25826-2010',
@@ -1192,17 +1155,8 @@ status:'current',
 tags:["钢筋","防腐"],
 pdf:'规范PDF/GBT 25826-2010 钢筋混凝土用环氧涂层钢筋.pdf',
 hasPdf:true,
-content:`
-<h4>📑 适用范围</h4>
-<p>规定了环氧涂层钢筋的技术要求。用于<span class="hl">海洋环境、除冰盐环境</span>等腐蚀性条件下的钢筋混凝土结构。</p>
-<h4>🔑 关键技术要求</h4>
-<ul>
-<li>涂层厚度：<span class="hl">0.18~0.30mm</span></li>
-<li>涂层连续性：针孔数≤<span class="hl">3个/m</span></li>
-<li>涂层可弯性：180°弯心直径4d不裂</li>
-<li>粘结强度≥设计值的<span class="hl">85%</span></li>
-<li>公路应用：跨海大桥、沿海公路桥梁、撒除冰盐路面桥梁</li>
-</ul>`
+content:`<h4>📑 适用范围</h4><p>规定环氧涂层钢筋的技术要求。用于<span class="hl">海洋环境、除冰盐环境</span>等腐蚀性条件下的钢筋混凝土结构。</p>
+<h4>🔑 关键技术指标</h4><table><tr><th>项目</th><th>要求</th></tr><tr><td>涂层厚度</td><td><span class="hl">0.18~0.30mm</span></td></tr><tr><td>针孔数</td><td>≤3个/m</td></tr><tr><td>180°弯曲</td><td>弯心直径4d，涂层不裂</td></tr><tr><td>粘结强度</td><td>≥设计值的<span class="hl">85%</span></td></tr><tr><td>耐磨性</td><td>≥设计指标</td></tr></table><ul><li>公路应用：跨海大桥/沿海桥梁/撒除冰盐路面桥梁的防腐蚀钢筋</li></ul>`
 },
 {
 code:'GB/T 20933-2021',
@@ -1212,17 +1166,8 @@ status:'current',
 tags:["钢板桩","材料"],
 pdf:'规范PDF/GBT 20933-2021 热轧钢板桩.pdf',
 hasPdf:true,
-content:`
-<h4>📑 适用范围</h4>
-<p>规定了热轧钢板桩的术语、分类、技术要求。2021年新版。</p>
-<h4>🔑 常见型号</h4>
-<ul>
-<li><span class="hl">U型</span>钢板桩：最常用，截面模量500~3800cm³/m</li>
-<li>Z型钢板桩：较大截面模量，用于深基坑/深水围堰</li>
-<li>直线型钢板桩：用于圆形围堰/格型结构</li>
-<li>常用牌号：SY295、SY390</li>
-<li>公路应用：桥梁承台围堰、深基坑支护、挡土墙</li>
-</ul>`
+content:`<h4>📑 适用范围</h4><p>规定热轧钢板桩的分类、技术要求。2021年新版，适用于<span class="hl">桥梁围堰、深基坑支护、挡土墙</span>等工程。</p>
+<h4>🔑 常见型号与截面特性</h4><table><tr><th>类型</th><th>宽度(mm)</th><th>高度(mm)</th><th>截面模量(cm³/m)</th><th>适用</th></tr><tr><td><span class="hl">U型</span></td><td>400~750</td><td>75~450</td><td>500~3800</td><td>一般支护/围堰</td></tr><tr><td>Z型</td><td>500~800</td><td>180~420</td><td>1000~4500</td><td>深基坑/深水围堰</td></tr><tr><td>直线型</td><td>500~800</td><td>—</td><td>—</td><td>圆形围堰/格型结构</td></tr></table><ul><li>常用牌号：SY295、SY390</li><li>公路应用：桥梁<span class="hl">承台围堰</span>、深基坑支护、挡土墙</li></ul>`
 },
 {
 code:'CJJ 129-2009',
@@ -1404,10 +1349,10 @@ status:'current',
 tags:["改扩建"],
 pdf:null,
 hasPdf:false,
-content:`<h4>📑 章节目录（5章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 施工区交通组织</div><div>3 临时交安设施</div><div>4 新旧设施衔接</div><div>5 机电设施</div></div>
-<h4>🚧 第2章 施工区交通组织</h4><ul><li>限速方案：<span class="hl">逐级降速</span>120→100→80→60（每级≤20km/h）</li><li>六区组成：警告区→上游过渡区→缓冲区→工作区→下游过渡区→终止区</li></ul>
-<h4>🛡 第3章 临时交安设施</h4><ul><li>临时标志：<span class="hl">橙底黑字</span></li><li>临时标线：橙色，厚度0.3~0.8mm</li><li>临时护栏：水马/防撞桶/波形梁</li><li>夜间须设<span class="hl">施工警告灯</span>（黄色闪烁）</li></ul>`
+content:`<h4>📑 章节目录（5章）</h4><div class="ch-list"><div>1 总则</div><div>2 施工区交通组织</div><div>3 临时交安设施</div><div>4 新旧设施衔接</div><div>5 机电设施</div></div>
+<h4>🚧 施工区限速方案</h4><table><tr><th>主线速度</th><th>限速方案</th></tr><tr><td>120km/h</td><td><span class="hl">120→100→80</span>（逐级降速）</td></tr><tr><td>100km/h</td><td>100→80→60</td></tr><tr><td>80km/h</td><td>80→60</td></tr></table>
+<h4>🛡 临时设施要求</h4><ul><li>标志：<span class="hl">橙底黑字</span>，反光膜等级≥工程级</li><li>标线：橙色，溶剂型0.3~0.8mm</li><li>护栏：水马/防撞桶/临时波形梁</li><li>夜间：<span class="hl">施工警告灯</span>黄色闪烁，间距≤30m</li></ul>
+<h4>🔗 新旧设施衔接</h4><ul><li>原有设施能利用的<span class="hl">尽量保留</span></li><li>新旧护栏过渡段长度≥12m</li><li>机电管线提前预埋，避免二次开挖</li></ul>`
 },
 {
 code:'CJJ 169-2012',
@@ -1959,10 +1904,9 @@ status:'current',
 tags:["城市桥梁"],
 pdf:null,
 hasPdf:false,
-content:`<h4>📑 章节目录（5章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 桥梁分类</div><div>3 荷载</div><div>4 结构设计</div><div>5 附属设施</div></div>
-<h4>🚛 城-A/城-B 荷载</h4><ul><li>城-A：qk=10.5kN/m；Pk=330~240kN</li><li>城-B：按车道数折减</li></ul>
-<h4>🏙 城市桥梁特殊性</h4><ul><li>桥梁需兼顾<span class="hl">机动车+非机动车+行人</span></li><li>管线过桥需设置专用管廊或安全防护</li><li>桥梁景观应与<span class="hl">城市风貌协调</span></li><li>桥下净空满足通航、排洪、通行要求</li></ul>`
+content:`<h4>📑 章节目录</h4><div class="ch-list"><div>1 总则</div><div>2 分类</div><div>3 荷载</div><div>4 结构设计</div><div>5 附属设施</div></div>
+<h4>🚛 汽车荷载（城-A/城-B）</h4><table><tr><th>荷载等级</th><th>qk(kN/m)</th><th>Pk(kN)</th></tr><tr><td><span class="hl">城-A</span></td><td>10.5</td><td>330~240</td></tr><tr><td>城-B</td><td>7.875</td><td>200~160</td></tr></table>
+<h4>🏙 城市桥梁特殊性</h4><ul><li>需兼顾<span class="hl">机动车+非机动车+行人</span></li><li>管线过桥须设专用管廊</li><li>桥梁<span class="hl">景观</span>须与城市风貌协调</li></ul>`
 },
 {
 code:'JTG 3362-2018',
@@ -2534,9 +2478,9 @@ status:'current',
 tags:["施工排水"],
 pdf:'规范PDF/JTG T 3610-2019 公路路基施工技术规范.pdf',
 hasPdf:true,
-content:`
-<h4>🔑 施工排水要点</h4>
-<ul><li>永久排水设施宜先行施工（路堤填筑前先建排水沟）</li><li>雨季施工：临时截水沟+集水井+水泵抽排</li><li>地下水位高路段：井点降水或排水砂沟</li><li>填方路段：每层设施工横坡 2%~4% 排雨水</li></ul>`
+content:`<h4>📑 章节目录</h4><div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 施工准备</div><div>4 一般路基施工</div><div>5 特殊路基施工</div><div>6 排水设施施工</div><div>7 防护与支挡施工</div></div>
+<h4>⚙ 路基施工核心要求</h4><ul><li>分层填筑：松铺厚度<span class="hl">≤30cm</span>（振动压路机）</li><li>填挖交界：台阶宽度<span class="hl">≥2m</span>，反向横坡≥3%</li><li>冲击碾压补强：H>4m段落每填2m冲碾一次（25kJ）</li><li><span class="hl">台背回填</span>：透水性材料，每层15~20cm，压实度≥96%</li></ul>
+<h4>💧 排水设施施工要点</h4><ul><li>永久排水设施<span class="hl">先行施工</span>（路堤填筑前先建排水沟）</li><li>雨季施工：临时截水沟+集水井+水泵抽排</li><li>地下水位高路段：井点降水或排水砂沟</li></ul>`
 },
 {
 code:'GB 5768.2-2022',
@@ -2599,9 +2543,8 @@ status:'current',
 tags:["发光标志"],
 pdf:null,
 hasPdf:false,
-content:`<h4>📑 章节目录（4章）</h4>
-<div class="ch-list"><div>1 范围</div><div>2 术语</div><div>3 技术要求</div><div>4 试验方法</div></div>
-<h4>🔑 关键技术指标</h4><table><tr><th>项目</th><th>要求</th></tr><tr><td>亮度(白天)</td><td><span class="hl">≥8000cd/m²</span></td></tr><tr><td>亮度(夜间)</td><td>≥2000cd/m²</td></tr><tr><td>LED波长</td><td>红625±5nm / 绿505±5nm</td></tr><tr><td>防护等级</td><td><span class="hl">≥IP65</span></td></tr><tr><td>使用寿命</td><td>≥50000h</td></tr></table><ul><li>适用场景：雾区、事故多发路段、夜间重点路段</li></ul>`
+content:`<h4>📑 适用范围</h4><p>规定<span class="hl">LED主动发光</span>交通标志的技术要求和试验方法。适用于雾区、事故多发路段、夜间重点路段。</p>
+<h4>🔑 核心技术指标</h4><table><tr><th>项目</th><th>要求</th></tr><tr><td>白天亮度</td><td><span class="hl">≥8000cd/m²</span></td></tr><tr><td>夜间亮度</td><td>≥2000cd/m²</td></tr><tr><td>LED波长(红)</td><td>625±5nm</td></tr><tr><td>LED波长(绿)</td><td>505±5nm</td></tr><tr><td>防护等级</td><td>≥IP65</td></tr><tr><td>使用寿命</td><td>≥50000h</td></tr></table><ul><li>供电方式：市电/太阳能+蓄电池</li><li>可视距离：白天≥200m，夜间≥500m</li></ul>`
 },
 {
 code:'JTG 2182-2020',
