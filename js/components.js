@@ -83,11 +83,14 @@ function renderFooter() {
   return '<footer class="footer">'
     + '<div class="footer-links">'
     + '<a href="../">🏠 首页</a>'
+    + '<a href="../quickref/">📋 参数速查</a>'
+    + '<a href="../compare/">📊 规范对比</a>'
+    + '<a href="../qa/">🤖 智能问答</a>'
     + '<a href="../favorites/">⭐ 收藏夹</a>'
-    + '<a href="../compare/">📊 对比工具</a>'
+    + '<a href="../category/?cat=all">📋 全部规范</a>'
     + '</div>'
-    + '<p>⚠ 本网站为设计辅助查阅工具，规范正文请以官方出版物为准。</p>'
-    + '<p>数据持续更新中 | 如有勘误请反馈指正</p>'
+    + '<p style="margin-bottom:8px;">📡 官方渠道：<a href="https://www.mot.gov.cn/" target="_blank">交通运输部官网</a> &nbsp;|&nbsp; <a href="https://www.spc.org.cn/" target="_blank">中国标准在线服务网</a></p>'
+    + '<p style="font-size:11px;color:var(--text3);">⚠ 免责声明：本网站为设计辅助查阅工具，所有规范内容仅供参考。工程设计请以官方发布的最新版本规范正本为准。使用者因依赖本网站信息而产生的任何后果，本网站不承担法律责任。</p>'
     + '</footer>';
 }
 
