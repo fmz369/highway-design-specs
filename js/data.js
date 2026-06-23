@@ -125,7 +125,7 @@ content:`
 <div>9 附属设施</div>
 </div>
 
-<h4>📜 第1章 总则</h4>
+<h4>📜 第1章 总则</h4><ul><li>乡村道路分级：<span class="hl">干路/支路/巷路</span>，按人口规模选用</li><li>设计速度：干路20~40km/h；支路15~20km/h；巷路≤15km/h</li></ul>
 <ul>
 <li><span class="hl">1.0.1</span> 为适应我国乡村道路建设和发展的需要，提高乡村道路质量和服务水平，规范乡村道路工程建设，制定本规范。</li>
 <li><span class="hl">1.0.2</span> 适用于<span class="hl">新建和改建乡村道路工程</span>的设计、施工及验收。</li>
@@ -581,6 +581,14 @@ content:`
 <tr><td><span class="hl">简易互通式立体交叉</span></td><td>simple interchange</td><td>通过一条或两条连接匝道连接上下层两条公路，以实现两条公路交通转换的公路设施。</td></tr></table>
 
 <h4>🔑 第3章 基本规定</h4>
+<h4>四级公路（Ⅰ类）vs（Ⅱ类）核心区别</h4>
+<table><tr><th>项目</th><th>Ⅰ类（双车道）</th><th>Ⅱ类（单车道）</th></tr>
+<tr><td>AADT</td><td>≤1000pcu/d</td><td>≤400pcu/d</td></tr>
+<tr><td>车道数</td><td>2</td><td>1</td></tr>
+<tr><td>车道宽度</td><td>3.0~3.5m</td><td>3.5m</td></tr>
+<tr><td>路肩宽度</td><td>0.25m</td><td>0.50m</td></tr>
+<tr><td>设计速度</td><td colspan="2">15km/h</td></tr>
+<tr><td>错车道</td><td>不强制</td><td>每公里≥3处</td></tr></table>
 <h4>3.1 技术等级类型</h4>
 <ul>
 <li><span class="hl">四级公路（Ⅰ类）</span>：双车道公路，适合中小型客车、中型载重汽车、轻型载重汽车、四轮低速货车、三轮汽车、摩托车、非机动车混合行驶。AADT宜≤1000pcu/d</li>

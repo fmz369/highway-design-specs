@@ -94,6 +94,38 @@ function extractKeyParams(spec, matchGrade) {
     }
   });
 
+
+  // === 更多参数 ===
+  var rules3 = [
+    ['AADT', /AADT[^<]*<[^>]*>([^<]+)</i],
+    ['设计交通量', /设计交通量[^<]*<[^>]*>([^<]+)</i],
+    ['车道数', /车道数[^<]*<[^>]*>([^<]+)</i],
+    ['路面宽度(m)', /路面宽度[^<]*<[^>]*>([^<]+)</i],
+    ['基层材料', /基层[^<]*<[^>]*>([^<]+)</i],
+    ['面层类型', /面层[^<]*<[^>]*>([^<]+)</i],
+    ['错车道', /错车道[^<]*<[^>]*>([^<]+)</i],
+    ['设计速度(km/h)', /设计速度[应为]*[^<]*?(\d+)\s*km\/h/i],
+    ['路面设计年限', /路面设计[使用]*年限[^<]*<[^>]*>([^<]+)</i],
+    ['水泥弯拉强度', /弯拉强度[^<]*<[^>]*>([^<]+)</i],
+    ['路基填料CBR', /CBR[^<]*<[^>]*>([^<]+)</i],
+    ['建筑限界净高(m)', /净高[^<]*<[^>]*>([^<]+)</i],
+    ['桥涵设计洪水频率', /洪水频率[^<]*<[^>]*>([^<]+)</i],
+    ['桥梁设计使用年限', /桥梁[^<]*设计使用年限[^<]*<[^>]*>([^<]+)</i],
+    ['护栏等级', /护栏[防撞]*等级[^<]*<[^>]*>([^<]+)</i],
+    ['视距(m)', /视距[^<]*<[^>]*>([^<]+)</i],
+    ['最大纵坡(%)', /最大纵坡[^<]*<[^>]*>([^<]+)</i],
+    ['最小平曲线半径(m)', /最小半径[^<]*<[^>]*>([^<]+)</i],
+    ['路拱坡度(%)', /路拱[横]*坡[度]*[^<]*<[^>]*>([^<]+)</i],
+    ['路肩宽度(m)', /路肩[宽]*[^<]*<[^>]*>([^<]+)</i],
+  ];
+  rules3.forEach(function(r) {
+    if (params[r[0]]) return;
+    var m = c.match(r[1]);
+    if (m) {
+      var v = (m[1] || m[0]).replace(/<[^>]+>/g, '').replace(/[^0-9a-zA-Z\/~%％:.\-\s一-鿿]/g, '').trim();
+      if (v && v.length > 0 && v.length < 30) params[r[0]] = v;
+    }
+  });
   // 洪水频率特殊处理
   if (!params['设计洪水频率']) {
     var fm = c.match(/1\/(\d+)/);
@@ -151,7 +183,28 @@ function extractKeyParams(spec, matchGrade) {
     }
   });
 
-  // 适用公路等级（只在表格标签中检测，避免参考文字误判）
+  // 适用公路等级
+  // 先检查是否乡村道路/农村公路体系（干路/支路/巷路 或 四级Ⅰ/Ⅱ类）
+  if (!params['适用公路等级']) {
+    var grades = [];
+    var tdContent = (c.match(/<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi) || []).join(' ').replace(/<[^>]+>/g,'');
+    // 乡村道路
+    if (tdContent.indexOf('干路')>=0 && tdContent.indexOf('支路')>=0) { grades.push('干路'); grades.push('支路');
+      if (tdContent.indexOf('巷路')>=0) grades.push('巷路');
+    }
+    // 四级(Ⅰ/Ⅱ类)小交通量
+    if (tdContent.indexOf('四级公路（Ⅰ类）')>=0||tdContent.indexOf('四级公路（I类）')>=0) grades.push('四级(Ⅰ类)');
+    if (tdContent.indexOf('四级公路（Ⅱ类）')>=0||tdContent.indexOf('四级公路（II类）')>=0) grades.push('四级(Ⅱ类)');
+    // 普通等级
+    if (grades.length === 0) {
+      if (tdContent.match(/高速[公路]*[^a-zA-Z]/)) grades.push('高速');
+      if (tdContent.match(/一级[公路]*[^a-zA-Z]/)) grades.push('一级');
+      if (tdContent.match(/二级[公路]*[^a-zA-Z]/)) grades.push('二级');
+      if (tdContent.match(/三级[公路]*[^a-zA-Z]/)) grades.push('三级');
+      if (tdContent.match(/四级[公路]*[^a-zA-Z]/)&&grades.length===0) grades.push('四级');
+    }
+    if (grades.length > 0 && grades.length < 6) params['适用公路等级'] = grades.join('/');
+  }
   if (!params['适用公路等级']) {
     var grades = [];
     var tdContent = (c.match(/<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi) || []).join(' ').replace(/<[^>]+>/g,'');
