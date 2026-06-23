@@ -161,8 +161,6 @@ function extractKeyParams(spec, matchGrade) {
     // 四级：检查是否是小交通量（Ⅰ/Ⅱ类）
     if (c.includes('四级公路（Ⅰ类）')||c.includes('四级公路（I类）')) grades.push('四级(Ⅰ类)');
     else if (c.includes('四级公路（Ⅱ类）')||c.includes('四级公路（II类）')) grades.push('四级(Ⅱ类)');
-    else if (c.includes('四级公路（Ⅰ类）')||c.includes('四级公路（I类）')) grades.push('四级(Ⅰ类)');
-    else if (c.includes('四级公路（Ⅱ类）')||c.includes('四级公路（II类）')) grades.push('四级(Ⅱ类)');
     else if (c.match(/>四级</)||c.includes('四级公路')) grades.push('四级');
     if (grades.length > 0 && grades.length < 6) params['适用公路等级'] = grades.join('/');
   }
