@@ -160,20 +160,13 @@ function extractKeyParams(spec, matchGrade) {
     if (tdContent.indexOf('四级公路（Ⅱ类）')>=0||tdContent.indexOf('四级公路（II类）')>=0) grades.push('四级(Ⅱ类)');
     // 如果没有Ⅰ/Ⅱ类细分，检测普通等级
     if (grades.length === 0) {
-      if (tdContent.indexOf('高速')>=0) grades.push('高速');
-      if (tdContent.indexOf('一级')>=0) grades.push('一级');
-      if (tdContent.indexOf('二级')>=0) grades.push('二级');
-      if (tdContent.indexOf('三级')>=0) grades.push('三级');
-      if (tdContent.indexOf('四级')>=0&&grades.length===0) grades.push('四级');
+      if (tdContent.match(/高速[公路]*[^a-zA-Z]/)) grades.push('高速');
+      if (tdContent.match(/一级[公路]*[^a-zA-Z]/)) grades.push('一级');
+      if (tdContent.match(/二级[公路]*[^a-zA-Z]/)) grades.push('二级');
+      if (tdContent.match(/三级[公路]*[^a-zA-Z]/)) grades.push('三级');
+      if (tdContent.match(/四级[公路]*[^a-zA-Z]/)&&grades.length===0) grades.push('四级');
     }
-    // fallback
-    if (grades.length === 0) {
-      if (c.match(/高速[公路]*[^<]*<[^>]*>/)) grades.push('高速');
-      if (c.match(/一级[公路]*[^<]*<[^>]*>/)) grades.push('一级');
-      if (c.match(/二级[公路]*[^<]*<[^>]*>/)) grades.push('二级');
-      if (c.match(/三级[公路]*[^<]*<[^>]*>/)) grades.push('三级');
-      if (c.match(/四级[公路]*[^<]*<[^>]*>/)) grades.push('四级');
-    }
+    // 严格检测：只在td中找等级
     if (grades.length > 0 && grades.length < 6) params['适用公路等级'] = grades.join('/');
   }
 
