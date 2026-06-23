@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>设计参数速查 — 公路设计规范</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+.qr-tabs { display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; }
+.qr-tab { padding: 10px 20px; border-radius: 20px; border: 2px solid var(--border); background: #fff; font-size: 14px; font-weight: 600; cursor: pointer; transition: all .2s; }
+.qr-tab:hover { border-color: var(--accent); color: var(--accent); }
+.qr-tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.qr-section { margin-bottom: 24px; }
+.qr-section h3 { font-size: 16px; margin-bottom: 10px; color: var(--text); padding-bottom: 6px; border-bottom: 2px solid var(--accent); }
+.qr-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+.qr-card { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-sm); border: 1px solid var(--border); padding: 14px 18px; transition: all .2s; }
+.qr-card:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+.qr-card .qr-name { font-size: 13px; color: var(--text2); margin-bottom: 4px; }
+.qr-card .qr-value { font-size: 22px; font-weight: 800; color: var(--accent); }
+.qr-card .qr-unit { font-size: 12px; color: var(--text3); font-weight: 400; }
+.qr-card .qr-source { font-size: 10px; color: var(--text3); margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--border); }
+.qr-card .qr-source a { color: var(--accent); }
+[data-theme="dark"] .qr-card { background: #1e1e35; }
+@media (max-width: 600px) { .qr-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header class="header">
+<div class="header-inner">
+<div class="header-top">
+<a href="../" class="header-logo" style="text-decoration:none;">📋</a>
+<div><h1>设计参数速查</h1><p class="subtitle">公路核心设计参数汇总 — 按等级分类，点击参数可查看规范原文</p></div>
+</div>
+</div>
+</header>
+<main class="main" style="max-width:1100px;">
+<div class="qr-tabs" id="qrTabs">
+<button class="qr-tab active" data-grade="高速">高速</button>
+<button class="qr-tab" data-grade="一级">一级</button>
+<button class="qr-tab" data-grade="二级">二级</button>
+<button class="qr-tab" data-grade="三级">三级</button>
+<button class="qr-tab" data-grade="四级">四级</button>
+</div>
+<div id="qrContent"></div>
+</main>
+<script src="../js/theme.js?v=2"></script>
+<script src="../js/data.js?v=2"></script>
+<script src="../js/router.js?v=2"></script>
+<script src="../js/components.js?v=2"></script>
+<script>
+// ===== 参数速查数据（来源于JTG B01-2014等核心规范） =====
+var PARAMS = {
+  '高速': {
+    '📐 线形指标': [
+      {n:'设计速度',v:'120 / 100 / 80',u:'km/h',s:'JTG B01-2014'},
+      {n:'车道宽度',v:'3.75',u:'m',s:'JTG B01-2014'},
+      {n:'车道数',v:'≥4',u:'条',s:'JTG B01-2014'},
+      {n:'右侧硬路肩宽度',v:'3.00~3.50',u:'m',s:'JTG B01-2014'},
+      {n:'中间带总宽',v:'4.50 / 3.50',u:'m',s:'JTG B01-2014'},
+      {n:'平曲线一般最小半径',v:'1000 / 700 / 400',u:'m',s:'JTG D20-2017'},
+      {n:'平曲线极限最小半径',v:'650 / 400 / 250',u:'m',s:'JTG D20-2017'},
+      {n:'停车视距',v:'210 / 160 / 110',u:'m',s:'JTG D20-2017'},
+      {n:'最大纵坡',v:'3 / 4 / 5',u:'%',s:'JTG D20-2017'},
+      {n:'最大超高',v:'8',u:'%',s:'JTG B01-2014'},
+      {n:'最大合成坡度',v:'10.0',u:'%',s:'JTG B01-2014'},
+      {n:'缓和曲线最小长度',v:'100 / 85 / 70',u:'m',s:'JTG D20-2017'},
+    ],
+    '🪨 路基路面': [
+      {n:'上路床压实度',v:'≥96',u:'%',s:'JTG D30-2015'},
+      {n:'上路床CBR',v:'≥8',u:'%',s:'JTG D30-2015'},
+      {n:'沥青路面设计年限',v:'15',u:'年',s:'JTG D50-2017'},
+      {n:'水泥路面设计年限',v:'30',u:'年',s:'JTG D40-2011'},
+      {n:'沥青面层最小厚度',v:'12~18',u:'cm',s:'JTG D50-2017'},
+      {n:'半刚性基层厚度',v:'36~45',u:'cm',s:'JTG D50-2017'},
+    ],
+    '🌉 桥涵隧道': [
+      {n:'汽车荷载等级',v:'公路-Ⅰ级',u:'',s:'JTG D60-2015'},
+      {n:'特大桥设计洪水频率',v:'1/300',u:'',s:'JTG B01-2014'},
+      {n:'大中桥设计洪水频率',v:'1/100',u:'',s:'JTG B01-2014'},
+      {n:'建筑限界净高',v:'5.00',u:'m',s:'JTG B01-2014'},
+      {n:'桥梁设计使用年限',v:'100',u:'年',s:'JTG D60-2015'},
+    ],
+  },
+  '一级': {
+    '📐 线形指标': [
+      {n:'设计速度',v:'100 / 80 / 60',u:'km/h',s:'JTG B01-2014'},
+      {n:'车道宽度',v:'3.75 / 3.50',u:'m',s:'JTG B01-2014'},
+      {n:'车道数',v:'≥4',u:'条',s:'JTG B01-2014'},
+      {n:'右侧硬路肩宽度',v:'2.50~3.00',u:'m',s:'JTG B01-2014'},
+      {n:'中间带总宽',v:'3.50 / 3.00',u:'m',s:'JTG B01-2014'},
+      {n:'平曲线一般最小半径',v:'700 / 400 / 200',u:'m',s:'JTG D20-2017'},
+      {n:'平曲线极限最小半径',v:'400 / 250 / 125',u:'m',s:'JTG D20-2017'},
+      {n:'停车视距',v:'160 / 110 / 75',u:'m',s:'JTG D20-2017'},
+      {n:'最大纵坡',v:'4 / 5 / 6',u:'%',s:'JTG D20-2017'},
+      {n:'最大超高',v:'8',u:'%',s:'JTG B01-2014'},
+      {n:'最大合成坡度',v:'10.0 / 10.5',u:'%',s:'JTG B01-2014'},
+    ],
+    '🪨 路基路面': [
+      {n:'上路床压实度',v:'≥96',u:'%',s:'JTG D30-2015'},
+      {n:'上路床CBR',v:'≥8',u:'%',s:'JTG D30-2015'},
+      {n:'沥青路面设计年限',v:'15',u:'年',s:'JTG D50-2017'},
+      {n:'水泥路面设计年限',v:'30',u:'年',s:'JTG D40-2011'},
+      {n:'沥青面层最小厚度',v:'10~15',u:'cm',s:'JTG D50-2017'},
+      {n:'半刚性基层厚度',v:'34~42',u:'cm',s:'JTG D50-2017'},
+    ],
+    '🌉 桥涵隧道': [
+      {n:'汽车荷载等级',v:'公路-Ⅰ级',u:'',s:'JTG D60-2015'},
+      {n:'特大桥设计洪水频率',v:'1/300',u:'',s:'JTG B01-2014'},
+      {n:'大中桥设计洪水频率',v:'1/100',u:'',s:'JTG B01-2014'},
+      {n:'建筑限界净高',v:'5.00',u:'m',s:'JTG B01-2014'},
+      {n:'桥梁设计使用年限',v:'100',u:'年',s:'JTG D60-2015'},
+    ],
+  },
+  '二级': {
+    '📐 线形指标': [
+      {n:'设计速度',v:'80 / 60',u:'km/h',s:'JTG B01-2014'},
+      {n:'车道宽度',v:'3.75 / 3.50',u:'m',s:'JTG B01-2014'},
+      {n:'车道数',v:'≥2',u:'条',s:'JTG B01-2014'},
+      {n:'硬路肩宽度',v:'0.75~1.50',u:'m',s:'JTG B01-2014'},
+      {n:'平曲线一般最小半径',v:'400 / 200',u:'m',s:'JTG D20-2017'},
+      {n:'平曲线极限最小半径',v:'250 / 125',u:'m',s:'JTG D20-2017'},
+      {n:'停车视距',v:'110 / 75',u:'m',s:'JTG D20-2017'},
+      {n:'最大纵坡',v:'5 / 6',u:'%',s:'JTG D20-2017'},
+      {n:'最大超高',v:'8',u:'%',s:'JTG B01-2014'},
+    ],
+    '🪨 路基路面': [
+      {n:'上路床压实度',v:'≥95',u:'%',s:'JTG D30-2015'},
+      {n:'上路床CBR',v:'≥6',u:'%',s:'JTG D30-2015'},
+      {n:'沥青路面设计年限',v:'12',u:'年',s:'JTG D50-2017'},
+      {n:'水泥路面设计年限',v:'20',u:'年',s:'JTG D40-2011'},
+      {n:'沥青面层最小厚度',v:'8~12',u:'cm',s:'JTG D50-2017'},
+      {n:'半刚性基层厚度',v:'30~38',u:'cm',s:'JTG D50-2017'},
+    ],
+    '🌉 桥涵隧道': [
+      {n:'汽车荷载等级',v:'公路-Ⅱ级',u:'',s:'JTG D60-2015'},
+      {n:'大中桥设计洪水频率',v:'1/100',u:'',s:'JTG B01-2014'},
+      {n:'小桥涵洪水频率',v:'1/50',u:'',s:'JTG B01-2014'},
+      {n:'建筑限界净高',v:'5.00',u:'m',s:'JTG B01-2014'},
+    ],
+  },
+  '三级': {
+    '📐 线形指标': [
+      {n:'设计速度',v:'40 / 30',u:'km/h',s:'JTG B01-2014'},
+      {n:'车道宽度',v:'3.50 / 3.25',u:'m',s:'JTG B01-2014'},
+      {n:'车道数',v:'≥2',u:'条',s:'JTG B01-2014'},
+      {n:'平曲线一般最小半径',v:'100 / 65',u:'m',s:'JTG D20-2017'},
+      {n:'平曲线极限最小半径',v:'60 / 30',u:'m',s:'JTG D20-2017'},
+      {n:'停车视距',v:'40 / 30',u:'m',s:'JTG D20-2017'},
+      {n:'最大纵坡',v:'7 / 8',u:'%',s:'JTG D20-2017'},
+      {n:'最大超高',v:'8',u:'%',s:'JTG B01-2014'},
+    ],
+    '🪨 路基路面': [
+      {n:'上路床压实度',v:'≥94',u:'%',s:'JTG D30-2015'},
+      {n:'上路床CBR',v:'≥5',u:'%',s:'JTG D30-2015'},
+      {n:'沥青路面设计年限',v:'8',u:'年',s:'JTG D50-2017'},
+      {n:'水泥路面设计年限',v:'15',u:'年',s:'JTG D40-2011'},
+    ],
+    '🌉 桥涵隧道': [
+      {n:'汽车荷载等级',v:'公路-Ⅱ级',u:'',s:'JTG D60-2015'},
+      {n:'大中桥设计洪水频率',v:'1/50',u:'',s:'JTG B01-2014'},
+      {n:'小桥涵洪水频率',v:'1/25',u:'',s:'JTG B01-2014'},
+      {n:'建筑限界净高',v:'4.50',u:'m',s:'JTG B01-2014'},
+    ],
+  },
+  '四级': {
+    '📐 线形指标': [
+      {n:'设计速度',v:'30 / 20',u:'km/h',s:'JTG B01-2014'},
+      {n:'车道宽度',v:'3.50 / 3.00',u:'m',s:'JTG B01-2014'},
+      {n:'车道数',v:'≥2(或1)',u:'条',s:'JTG B01-2014'},
+      {n:'平曲线一般最小半径',v:'65 / 30',u:'m',s:'JTG D20-2017'},
+      {n:'平曲线极限最小半径',v:'30 / 15',u:'m',s:'JTG D20-2017'},
+      {n:'停车视距',v:'30 / 20',u:'m',s:'JTG D20-2017'},
+      {n:'最大纵坡',v:'8 / 9',u:'%',s:'JTG D20-2017'},
+    ],
+    '🪨 路基路面': [
+      {n:'上路床压实度',v:'≥94',u:'%',s:'JTG D30-2015'},
+      {n:'上路床CBR',v:'≥5',u:'%',s:'JTG D30-2015'},
+      {n:'沥青路面设计年限',v:'8',u:'年',s:'JTG D50-2017'},
+      {n:'水泥路面设计年限',v:'10~15',u:'年',s:'JTG D40-2011'},
+    ],
+    '🌉 桥涵隧道': [
+      {n:'汽车荷载等级',v:'公路-Ⅱ级',u:'',s:'JTG D60-2015'},
+      {n:'大中桥设计洪水频率',v:'1/50',u:'',s:'JTG B01-2014'},
+      {n:'小桥涵洪水频率',v:'1/25',u:'',s:'JTG B01-2014'},
+      {n:'路基洪水频率',v:'1/15',u:'',s:'JTG B01-2014'},
+      {n:'建筑限界净高',v:'4.50',u:'m',s:'JTG B01-2014'},
+    ],
+  },
+};
+
+// 渲染
+var tabs=document.getElementById('qrTabs');
+var content=document.getElementById('qrContent');
+tabs.addEventListener('click',function(e){
+  var t=e.target.closest('.qr-tab');if(!t)return;
+  tabs.querySelectorAll('.qr-tab').forEach(function(x){x.classList.remove('active');});
+  t.classList.add('active');render(t.dataset.grade);
+});
+
+function render(grade){
+  var groups=PARAMS[grade]||{};
+  var h='';
+  Object.keys(groups).forEach(function(section){
+    h+='<div class="qr-section"><h3>'+section+'</h3><div class="qr-grid">';
+    groups[section].forEach(function(p){
+      h+='<div class="qr-card"><div class="qr-name">'+p.n+'</div><div class="qr-value">'+p.v+' <span class="qr-unit">'+p.u+'</span></div><div class="qr-source">📚 <a href="../specs/?code='+encodeURIComponent(p.s)+'">'+p.s+'</a></div></div>';
+    });
+    h+='</div></div>';
+  });
+  content.innerHTML=h;
+}
+render('高速');
+
+// 页脚+回到顶部
+var bt=document.createElement('button');bt.className='back-top';bt.id='backTop';bt.textContent='↑';
+document.body.appendChild(bt);window.addEventListener('scroll',function(){bt.classList.toggle('visible',window.scrollY>700);});
+bt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+var ft=document.createElement('footer');ft.className='footer';
+ft.innerHTML=renderFooter().replace(/<footer class="footer">|<\/footer>/g,'');
+document.querySelector('.main').after(ft);
+</script>
+</body>
+</html>
