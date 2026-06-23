@@ -25,16 +25,21 @@
 <div id="breadcrumb"></div>
 
 <!-- 选择区 -->
-<div class="compare-selector" style="background:#fff;padding:16px 20px;border-radius:var(--radius);box-shadow:var(--shadow-sm);border:1px solid var(--border);margin-bottom:20px;">
-<div style="flex:1;min-width:200px;">
-<label style="font-size:12px;color:var(--text3);display:block;margin-bottom:4px;">🔍 搜索并添加规范（最多4部）</label>
-<input type="text" id="specSearch" placeholder="输入规范编号或名称…" style="width:100%;padding:10px 16px;border:1.5px solid var(--border);border-radius:22px;font-size:14px;outline:none;">
-<div id="searchResults" style="position:absolute;background:#fff;border:1px solid var(--border);border-radius:8px;box-shadow:var(--shadow-md);max-height:200px;overflow-y:auto;display:none;z-index:50;max-width:400px;"></div>
+<div class="compare-selector" style="background:#fff;padding:16px 20px;border-radius:var(--radius);box-shadow:var(--shadow-sm);border:1px solid var(--border);margin-bottom:20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+<div style="flex:1;min-width:200px;position:relative;">
+<label style="font-size:12px;color:var(--text3);display:block;margin-bottom:4px;">🔍 搜索规范（最多4部）</label>
+<input type="text" id="specSearch" placeholder="输入编号或名称…" style="width:100%;padding:10px 16px;border:1.5px solid var(--border);border-radius:22px;font-size:14px;outline:none;" autocomplete="off">
+<div id="searchResults" style="position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid var(--border);border-radius:8px;box-shadow:var(--shadow-md);max-height:240px;overflow-y:auto;display:none;z-index:50;"></div>
 </div>
-<div style="display:flex;gap:8px;align-items:center;">
-<span style="font-size:12px;color:var(--text3);">或</span>
-<a href="?from=favorites" id="btnLoadFavs" class="btn" style="font-size:12px;text-decoration:none;">⭐ 加载收藏列表</a>
-<button id="btnClear" class="btn" style="font-size:12px;">🗑 清空列表</button>
+<div style="min-width:140px;">
+<label style="font-size:12px;color:var(--text3);display:block;margin-bottom:4px;">📂 按分类加载</label>
+<select id="catSelect" style="width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:22px;font-size:13px;outline:none;cursor:pointer;">
+<option value="">选择分类…</option></select>
+</div>
+<div style="display:flex;gap:6px;align-items:flex-end;padding-bottom:2px;">
+<button id="btnLoadFavs" class="btn" style="font-size:12px;padding:8px 14px;">⭐ 收藏</button>
+<button id="btnClear" class="btn" style="font-size:12px;padding:8px 14px;">🗑 清空</button>
+<button id="btnExport" class="btn" style="font-size:12px;padding:8px 14px;display:none;">📥 导出</button>
 </div>
 </div>
 
@@ -91,6 +96,7 @@
     });
     document.getElementById('selectedSpecs').innerHTML = html;
     document.getElementById('compareResult').innerHTML = renderCompareTable(specs);
+    document.getElementById('btnExport').style.display = specs.length >= 2 ? 'inline-flex' : 'none';
 
     // 更新URL
     if (selectedCodes.length > 0) {
@@ -160,16 +166,45 @@
     renderSelected();
   });
 
-  // 加载收藏按钮
-  document.getElementById('btnLoadFavs').addEventListener('click', function(e) {
-    e.preventDefault();
+  // 分类下拉初始化
+  var catSelect = document.getElementById('catSelect');
+  var allCats = ['general','geometry','pavement','bridge','drainage','safety','rural','materials','seismic','drawings'];
+  allCats.forEach(function(c) {
+    var opt = document.createElement('option');
+    opt.value = c;
+    opt.textContent = CAT_NAMES[c] + ' (' + (getCategoryCounts()[c]||0) + '部)';
+    catSelect.appendChild(opt);
+  });
+  catSelect.addEventListener('change', function() {
+    if (!this.value) return;
+    var catSpecs = getSpecsByCat(this.value).slice(0, 4);
+    selectedCodes = catSpecs.map(function(s) { return s.code; });
+    this.value = '';
+    renderSelected();
+  });
+
+  // 收藏按钮
+  document.getElementById('btnLoadFavs').addEventListener('click', function() {
     var favs = getFavorites();
-    if (favs.length === 0) {
-      alert('收藏夹为空，请先收藏规范');
-      return;
-    }
+    if (favs.length === 0) { alert('收藏夹为空'); return; }
     selectedCodes = favs.slice(0, 4);
     renderSelected();
+  });
+
+  // 导出按钮
+  document.getElementById('btnExport').addEventListener('click', function() {
+    var specs = getSelectedSpecs();
+    if (specs.length < 2) return;
+    var params = specs.map(function(s) { return extractKeyParams(s); });
+    var allKeys = []; params.forEach(function(p) { Object.keys(p).forEach(function(k) { if (allKeys.indexOf(k) < 0) allKeys.push(k); }); });
+    var csv = '参数项,' + specs.map(function(s) { return s.code; }).join(',') + '\n';
+    allKeys.forEach(function(k) {
+      csv += k + ',' + params.map(function(p) { return p[k] || '-'; }).join(',') + '\n';
+    });
+    var blob = new Blob(['﻿' + csv], {type: 'text/csv;charset=utf-8'});
+    var a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+    a.download = '规范对比_' + new Date().toISOString().slice(0,10) + '.csv';
+    a.click();
   });
 
   // 初始渲染

@@ -53,6 +53,18 @@ function extractKeyParams(spec) {
   if (!floodMatch) floodMatch = content.match(/1\/(\d+)/);
   if (floodMatch) params['设计洪水频率'] = '1/' + (floodMatch[1] || floodMatch[0]).replace(/[^0-9]/g, '').trim();
 
+  // 设计使用年限
+  var lifeMatch2 = content.match(/设计使用年限[^<]*<[^>]*>([^<]+)</i);
+  if (lifeMatch2) params['设计使用年限'] = lifeMatch2[1].trim();
+
+  // 汽车荷载等级
+  var loadMatch = content.match(/公路[-—]?[ⅠI一二]级|公路[-—]?[ⅡI二]级/);
+  if (loadMatch) params['汽车荷载'] = loadMatch[0];
+
+  // 路基宽度
+  var widthMatch = content.match(/路基宽度[^<]*<[^>]*>([^<]+)</i);
+  if (widthMatch) params['路基宽度'] = widthMatch[1].trim();
+
   return params;
 }
 
