@@ -18,26 +18,27 @@ function extractKeyParams(spec, matchGrade) {
 
   // === 2. 等级匹配：智能提取对应等级列的数据 ===
   if (matchGrade && grades.length > 1) {
+    p['适用公路等级'] = matchGrade;
     var rows = c.match(/<tr>[\s\S]*?<\/tr>/gi) || [];
-    var gradeCols = {}; // {grade: columnIndex}
+    var gradeCols = {};
 
-    // 方法A：找列式表头 <tr><th>项目</th><th>高速</th><th>一级</th>...</tr>
+    // 方法A：找列式表头
     var bestHeaderIdx = -1, bestColCount = 0;
     for (i = 0; i < rows.length; i++) {
       var hc = (rows[i].match(/<t[dh][^>]*>([^<]*)<\/t[dh]>/gi) || []).map(function (t) { return t.replace(/<[^>]+>/g, '').trim(); });
-      var gradeCount = hc.filter(function (t) { return ['高速', '一级', '二级', '三级', '四级'].indexOf(t) >= 0; }).length;
+      var gradeCount = hc.filter(function (t) { return t.indexOf('高速')>=0||t.indexOf('一级')>=0||t.indexOf('二级')>=0||t.indexOf('三级')>=0||t.indexOf('四级')>=0; }).length;
       if (gradeCount >= 3 && hc.length > bestColCount) { bestHeaderIdx = i; bestColCount = hc.length; }
     }
     if (bestHeaderIdx >= 0) {
       var hc = (rows[bestHeaderIdx].match(/<t[dh][^>]*>([^<]*)<\/t[dh]>/gi) || []).map(function (t) { return t.replace(/<[^>]+>/g, '').trim(); });
-      hc.forEach(function (t, ci) { if (['高速', '一级', '二级', '三级', '四级'].indexOf(t) >= 0) gradeCols[t] = ci; });
+      hc.forEach(function (t, ci) { if (t.indexOf('高速')>=0||t.indexOf('一级')>=0||t.indexOf('二级')>=0||t.indexOf('三级')>=0||t.indexOf('四级')>=0) gradeCols[t] = ci; });
     }
 
     // 方法B：找行式数据 <tr><td>高速</td><td>值1</td><td>值2</td></tr>
     var rowData = {};
     for (i = 0; i < rows.length; i++) {
       var dc = (rows[i].match(/<t[dh][^>]*>([^<]*)<\/t[dh]>/gi) || []).map(function (t) { return t.replace(/<[^>]+>/g, '').trim(); });
-      if (dc.length >= 2 && ['高速', '一级', '二级', '三级', '四级'].indexOf(dc[0]) >= 0) {
+      if (dc.length >= 2 && (dc[0].indexOf('高速')>=0||dc[0].indexOf('一级')>=0||dc[0].indexOf('二级')>=0||dc[0].indexOf('三级')>=0||dc[0].indexOf('四级')>=0)) {
         rowData[dc[0]] = dc.slice(1);
       }
     }
