@@ -68,7 +68,7 @@ function extractKeyParams(spec, matchGrade) {
   var gradeCol = -1;
   if (matchGrade) {
     // 找最好的表头行
-    for (i = 0; i < Math.min(rows.length, 10); i++) {
+    for (i = 0; i < rows.length; i++) {
       var hc = rows[i].match(/<t[dh][^>]*>([^<]*)<\/t[dh]>/gi) || [];
       var gc = hc.map(function(t){return t.replace(/<[^>]+>/g,'').trim();});
       var gradeCount = gc.filter(function(t){return t.indexOf('高速')>=0||t.indexOf('一级')>=0||t.indexOf('二级')>=0||t.indexOf('三级')>=0||t.indexOf('四级')>=0;}).length;
