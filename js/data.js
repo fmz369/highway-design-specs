@@ -1087,8 +1087,8 @@ status:'current',
 tags:["钢筋","材料"],
 pdf:'规范PDF/GBT 1499.3-2022 钢筋混凝土用钢 第3部分：钢筋焊接网.pdf',
 hasPdf:true,
-content:`<h4>📑 适用范围</h4><p>规定钢筋焊接网的分类、技术要求、试验方法。公路路面抗裂、边坡锚喷支护、桥面铺装<span class="hl">钢筋网</span>的选用标准。</p>
-<h4>🔑 主要技术指标</h4><table><tr><th>项目</th><th>要求</th></tr><tr><td>钢筋直径</td><td><span class="hl">5~16mm</span></td></tr><tr><td>网孔尺寸</td><td>100×100~400×400mm</td></tr><tr><td>焊点抗剪力(d≤8mm)</td><td>≥300N</td></tr><tr><td>焊点抗剪力(d>8mm)</td><td>≥500N</td></tr><tr><td>弯曲试验</td><td>弯心4d,180°不裂</td></tr></table><ul><li>常用牌号：CRB550、HRB400</li></ul>`
+content:`<h4>📑 适用范围</h4><p>规定钢筋焊接网的分类、技术要求、试验方法。适用于<span class="hl">公路路面抗裂、边坡锚喷支护、桥面铺装</span>钢筋网。</p>
+<h4>🔩 技术指标</h4><table><tr><th>项目</th><th>要求</th></tr><tr><td>钢筋直径</td><td><span class="hl">5~16mm</span></td></tr><tr><td>网孔尺寸</td><td>100×100~400×400mm</td></tr><tr><td>焊点抗剪力(d≤8mm)</td><td>≥300N</td></tr><tr><td>焊点抗剪力(d>8mm)</td><td>≥500N</td></tr><tr><td>弯曲试验</td><td>弯心直径4d,180°不裂</td></tr></table><ul><li>常用牌号：CRB550（冷轧带肋）、HRB400</li></ul>`
 },
 {
 code:'GB/T 13788-2024',
@@ -1121,9 +1121,9 @@ status:'current',
 tags:["抗震","国家标准"],
 pdf:'规范PDF/GB 50011-2010(2024版) 建筑抗震设计标准.pdf',
 hasPdf:true,
-content:`<h4>📑 适用范围</h4><p>适用于抗震设防烈度<span class="hl">6~9度</span>地区建筑工程的抗震设计。2024年修订版。</p>
-<h4>🔑 抗震设防核心参数</h4><table><tr><th>设防烈度</th><th>6度</th><th>7度</th><th>7.5度</th><th>8度</th><th>8.5度</th><th>9度</th></tr><tr><td>设计基本加速度</td><td>0.05g</td><td>0.10g</td><td>0.15g</td><td>0.20g</td><td>0.30g</td><td>0.40g</td></tr></table>
-<ul><li>设计地震分组：第一/二/三组（影响Tg取值）</li><li>场地类别：Ⅰ₀~Ⅳ类（6级）</li><li>特征周期Tg：<span class="hl">0.20~0.90s</span></li><li>公路桥涵抗震参考JTG/T 2231-01</li></ul>`
+content:`<h4>📑 适用范围</h4><p>适用于抗震设防烈度<span class="hl">6~9度</span>地区建筑工程。2024年修订版。</p>
+<h4>🌍 设防参数</h4><table><tr><th>烈度</th><th>6</th><th>7</th><th>7.5</th><th>8</th><th>8.5</th><th>9</th></tr><tr><td>加速度</td><td>0.05g</td><td>0.10g</td><td>0.15g</td><td>0.20g</td><td>0.30g</td><td>0.40g</td></tr></table>
+<ul><li>设计地震分组：<span class="hl">第一/二/三组</span>（影响Tg）</li><li>场地类别：Ⅰ₀~Ⅳ类</li><li>特征周期Tg：0.20~0.90s</li><li>公路桥涵抗震设计参考JTG/T 2231-01</li></ul>`
 },
 {
 code:'GB 18306-2015',
@@ -1133,8 +1133,9 @@ status:'current',
 tags:["地震","基础数据"],
 pdf:'规范PDF/GB 18306-2015 中国地震参数区划图.pdf',
 hasPdf:true,
-content:`<h4>📑 适用范围</h4><p>给出中国境内<span class="hl">Ⅱ类场地</span>50年超越概率10%的地震动参数。抗震设计的<span class="hl">基础性图件</span>。</p>
-<h4>🗺 核心内容</h4><ul><li>两张区划图：<span class="hl">峰值加速度</span>图 + <span class="hl">特征周期</span>图</li><li>峰值加速度分区：<0.05g~≥0.40g七档</li><li>特征周期分区：0.35s / 0.40s / 0.45s</li><li>公路桥梁按本图取值后乘以<span class="hl">场地调整系数</span></li></ul><ul><li>附录A~D给出全国各乡镇的地震动参数</li></ul>`
+content:`<h4>📑 适用范围</h4><p>给出中国境内<span class="hl">Ⅱ类场地</span>50年超越概率10%的地震动参数。是抗震设计的基础性图件，所有工程抗震必须引用。</p>
+<h4>🗺 两张核心区划图</h4><table><tr><th>图名</th><th>内容</th></tr><tr><td><span class="hl">峰值加速度</span>区划图</td><td>7档：<0.05g / 0.05g / 0.10g / 0.15g / 0.20g / 0.30g / ≥0.40g</td></tr><tr><td><span class="hl">特征周期</span>区划图</td><td>3区：0.35s(1区) / 0.40s(2区) / 0.45s(3区)</td></tr></table>
+<h4>🔑 使用要点</h4><ul><li>查图获取<span class="hl">Ⅱ类场地</span>基本值→按实际场地类别乘以调整系数</li><li>附录A~D给出全国各乡镇的地震动参数表</li><li>公路桥梁抗震设计：按本图取值+JTG/T 2231-01场地调整</li></ul>`
 },
 {
 code:'JGJ 120-2012',
@@ -1144,8 +1145,9 @@ status:'current',
 tags:["基坑","支护"],
 pdf:'规范PDF/JGJ 120-2012 建筑基坑支护技术规程.pdf',
 hasPdf:true,
-content:`<h4>📑 章节目录</h4><div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 基本规定</div><div>4 勘察</div><div>5 支护结构</div><div>6 地下水控制</div><div>7 开挖与监测</div></div>
-<h4>🔑 基坑安全等级</h4><table><tr><th>等级</th><th>破坏后果</th><th>深度条件</th></tr><tr><td><span class="hl">一级</span></td><td>很严重</td><td>≥15m或复杂环境</td></tr><tr><td>二级</td><td>严重</td><td>10~15m</td></tr><tr><td>三级</td><td>不严重</td><td><10m</td></tr></table><ul><li>支护结构：排桩/地下连续墙/土钉墙/锚杆</li><li>公路应用：桥梁深基坑、挡土墙基坑</li></ul>`
+content:`<h4>📑 章节目录（7章）</h4><div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 基本规定</div><div>4 勘察</div><div>5 支护结构</div><div>6 地下水控制</div><div>7 开挖监测</div></div>
+<h4>🏗 安全等级</h4><table><tr><th>等级</th><th>后果</th><th>深度</th></tr><tr><td><span class="hl">一级</span></td><td>很严重</td><td>≥15m</td></tr><tr><td>二级</td><td>严重</td><td>10~15m</td></tr><tr><td>三级</td><td>不严重</td><td><10m</td></tr></table>
+<h4>🔩 支护选型</h4><ul><li>排桩+内支撑：较深基坑</li><li>地下连续墙：超深/邻水基坑</li><li>土钉墙：浅基坑(<12m)</li><li>公路应用：桥梁<span class="hl">承台深基坑</span></li></ul>`
 },
 {
 code:'GB/T 25826-2010',
@@ -1155,8 +1157,8 @@ status:'current',
 tags:["钢筋","防腐"],
 pdf:'规范PDF/GBT 25826-2010 钢筋混凝土用环氧涂层钢筋.pdf',
 hasPdf:true,
-content:`<h4>📑 适用范围</h4><p>规定环氧涂层钢筋的技术要求。用于<span class="hl">海洋环境、除冰盐环境</span>等腐蚀性条件下的钢筋混凝土结构。</p>
-<h4>🔑 关键技术指标</h4><table><tr><th>项目</th><th>要求</th></tr><tr><td>涂层厚度</td><td><span class="hl">0.18~0.30mm</span></td></tr><tr><td>针孔数</td><td>≤3个/m</td></tr><tr><td>180°弯曲</td><td>弯心直径4d，涂层不裂</td></tr><tr><td>粘结强度</td><td>≥设计值的<span class="hl">85%</span></td></tr><tr><td>耐磨性</td><td>≥设计指标</td></tr></table><ul><li>公路应用：跨海大桥/沿海桥梁/撒除冰盐路面桥梁的防腐蚀钢筋</li></ul>`
+content:`<h4>📑 适用范围</h4><p>规定<span class="hl">环氧涂层钢筋</span>的技术要求。用于海洋、除冰盐等腐蚀环境。</p>
+<h4>🔧 关键指标</h4><table><tr><th>项目</th><th>要求</th></tr><tr><td>涂层厚度</td><td><span class="hl">0.18~0.30mm</span></td></tr><tr><td>针孔数</td><td>≤3个/m</td></tr><tr><td>180°弯曲(弯心4d)</td><td>涂层不裂</td></tr><tr><td>粘结强度</td><td>≥设计值<span class="hl">85%</span></td></tr></table><ul><li>公路应用：跨海大桥、沿海桥梁、除冰盐路面桥梁的防腐蚀钢筋</li></ul>`
 },
 {
 code:'GB/T 20933-2021',
@@ -1905,8 +1907,8 @@ tags:["城市桥梁"],
 pdf:null,
 hasPdf:false,
 content:`<h4>📑 章节目录</h4><div class="ch-list"><div>1 总则</div><div>2 分类</div><div>3 荷载</div><div>4 结构设计</div><div>5 附属设施</div></div>
-<h4>🚛 汽车荷载（城-A/城-B）</h4><table><tr><th>荷载等级</th><th>qk(kN/m)</th><th>Pk(kN)</th></tr><tr><td><span class="hl">城-A</span></td><td>10.5</td><td>330~240</td></tr><tr><td>城-B</td><td>7.875</td><td>200~160</td></tr></table>
-<h4>🏙 城市桥梁特殊性</h4><ul><li>需兼顾<span class="hl">机动车+非机动车+行人</span></li><li>管线过桥须设专用管廊</li><li>桥梁<span class="hl">景观</span>须与城市风貌协调</li></ul>`
+<h4>🚛 汽车荷载</h4><table><tr><th>等级</th><th>qk(kN/m)</th><th>Pk(kN)</th></tr><tr><td><span class="hl">城-A</span></td><td>10.5</td><td>330~240</td></tr><tr><td>城-B</td><td>7.875</td><td>200~160</td></tr></table>
+<h4>🏙 特殊要求</h4><ul><li>兼顾<span class="hl">机动车+非机动车+行人</span></li><li>管线过桥设专用管廊</li><li>桥梁<span class="hl">景观</span>与城市风貌协调</li><li>桥下净空满足通航/排洪/通行</li></ul>`
 },
 {
 code:'JTG 3362-2018',
@@ -2432,10 +2434,10 @@ status:'current',
 tags:["城市排水"],
 pdf:null,
 hasPdf:false,
-content:`
-<h4>📑 章节</h4><div class="ch-list"><div>1 总则</div><div>2 管渠维护</div><div>3 泵站维护</div><div>4 安全管理</div></div>
-<h4>🔑 关键规定</h4>
-<ul><li>重要管渠清淤 1~2 年一次</li><li>雨水口应在汛前全面清掏</li><li>有限空间作业（检查井等）需执行安全规程</li></ul>`
+content:`<h4>📑 章节目录（4章）</h4><div class="ch-list"><div>1 总则</div><div>2 管渠维护</div><div>3 泵站维护</div><div>4 安全管理</div></div>
+<h4>🔧 管渠维护要点</h4><ul><li>重要管渠清淤<span class="hl">1~2年/次</span></li><li>雨水口应在<span class="hl">汛前全面清掏</span></li><li>检查井每年检查不少于1次</li><li>管道CCTV检测周期：主干管<span class="hl">3~5年</span></li></ul>
+<h4>⚡ 泵站维护</h4><ul><li>水泵机组每月试运行不少于1次</li><li>汛期<span class="hl">24小时值班</span>，备用电源随时可用</li></ul>
+<h4>⚠ 安全管理</h4><ul><li><span class="hl">有限空间作业</span>必须执行"先通风、再检测、后作业"</li><li>井下作业须配备<span class="hl">气体检测仪</span>和<span class="hl">防毒面具</span></li><li>作业人员须持证上岗</li></ul>`
 },
 {
 code:'GB 50201-2014',
@@ -2543,8 +2545,8 @@ status:'current',
 tags:["发光标志"],
 pdf:null,
 hasPdf:false,
-content:`<h4>📑 适用范围</h4><p>规定<span class="hl">LED主动发光</span>交通标志的技术要求和试验方法。适用于雾区、事故多发路段、夜间重点路段。</p>
-<h4>🔑 核心技术指标</h4><table><tr><th>项目</th><th>要求</th></tr><tr><td>白天亮度</td><td><span class="hl">≥8000cd/m²</span></td></tr><tr><td>夜间亮度</td><td>≥2000cd/m²</td></tr><tr><td>LED波长(红)</td><td>625±5nm</td></tr><tr><td>LED波长(绿)</td><td>505±5nm</td></tr><tr><td>防护等级</td><td>≥IP65</td></tr><tr><td>使用寿命</td><td>≥50000h</td></tr></table><ul><li>供电方式：市电/太阳能+蓄电池</li><li>可视距离：白天≥200m，夜间≥500m</li></ul>`
+content:`<h4>📑 适用范围</h4><p>规定<span class="hl">LED主动发光</span>交通标志的技术要求。适用雾区、事故多发段、夜间重点路段。</p>
+<h4>💡 核心技术指标</h4><table><tr><th>项目</th><th>要求</th></tr><tr><td>白天亮度</td><td><span class="hl">≥8000cd/m²</span></td></tr><tr><td>夜间亮度</td><td>≥2000cd/m²</td></tr><tr><td>红色LED波长</td><td>625±5nm</td></tr><tr><td>绿色LED波长</td><td>505±5nm</td></tr><tr><td>防护等级</td><td>≥IP65</td></tr><tr><td>使用寿命</td><td>≥50000h</td></tr></table><ul><li>供电：市电/太阳能+蓄电池</li><li>可视距离：白天≥200m，夜间≥500m</li></ul>`
 },
 {
 code:'JTG 2182-2020',
