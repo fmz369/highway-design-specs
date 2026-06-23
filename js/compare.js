@@ -72,7 +72,7 @@ function extractKeyParams(spec, matchGrade) {
       var hc = rows[i].match(/<t[dh][^>]*>([^<]*)<\/t[dh]>/gi) || [];
       var gc = hc.map(function(t){return t.replace(/<[^>]+>/g,'').trim();});
       var gradeCount = gc.filter(function(t){return t.indexOf('高速')>=0||t.indexOf('一级')>=0||t.indexOf('二级')>=0||t.indexOf('三级')>=0||t.indexOf('四级')>=0;}).length;
-      if (gradeCount >= 3) {
+      if (gradeCount >= 2) {
         for (j = 0; j < gc.length; j++) {
           if (gc[j].indexOf(matchGrade) >= 0) { gradeCol = j; break; }
         }
@@ -84,7 +84,7 @@ function extractKeyParams(spec, matchGrade) {
       for (i = 0; i < rows.length; i++) {
         var dc = rows[i].match(/<t[dh][^>]*>([^<]*)<\/t[dh]>/gi) || [];
         if (dc.length <= gradeCol + 1) continue;
-        var pair = extractPair(dc, 0, gradeCol + 1);
+        var pair = extractPair(dc, 0, gradeCol);
         if (pair) {
           var nk = normalize(pair.name);
           if (!p[nk]) p[nk] = pair.val;
