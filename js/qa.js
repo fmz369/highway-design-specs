@@ -173,7 +173,7 @@
       }
 
       html += '</div>';
-      html += '<div class="qa-source">📚 来源：<a href="../specs/?code=' + encodeURIComponent(best.spec.code) + '">' + best.spec.code + ' ' + best.spec.title + '</a></div>';
+      html += '<div class="qa-source">📚 <a href="../specs/?code=' + encodeURIComponent(best.spec.code) + '" style="font-weight:600;">' + best.spec.code + ' ' + best.spec.title + '</a> — 点击查看完整规范内容</div>';
       html += '</div>';
 
       // 其他相关规范

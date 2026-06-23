@@ -105,6 +105,18 @@ function extractKeyParams(spec, matchGrade) {
     if (p[r[0]]) return;
     for (i = 0; i < r[1].length; i++) { m = c.match(r[1][i]); if (m) { var v = (m[1] || m[0]).replace(/<[^>]+>/g, '').replace(/[^0-9a-zA-Z\/~%％≥≤:.\-]/g, '').trim(); if (v && v.length < 25) { p[r[0]] = v; break; } } }
   });
+  // li标签中span.hl模式的参数提取（如<li><span class="hl">压实度</span>：≥94%</li>）
+  var liMatches = c.match(/<li>[^<]*<span class=\"hl\">([^<]+)<\/span>[：:]\s*([^<]+)<\/li>/gi) || [];
+  var liMap = { '设计速度': '设计速度(km/h)', '车道宽度': '车道宽度(m)', '路肩宽度': '路肩宽度(m)', '路基宽度': '路基宽度(m)', '路面宽度': '路面宽度(m)', '最大纵坡': '最大纵坡(%)', '最小平曲线半径': '平曲线最小半径一般值(m)', '停车视距': '停车视距(m)', '压实度': '路基压实度(上路床)', '净高': '建筑限界净高(m)', '设计年限': '路面设计年限', '洪水频率': '设计洪水频率', '设计使用年限': '设计使用年限', '车道数': '车道数', '路面设计年限': '路面设计年限', '错车道': '错车道宽度(m)', '弯拉强度': '水泥弯拉强度(MPa)' };
+  liMatches.forEach(function (lm) {
+    var parts = lm.match(/<span class=\"hl\">([^<]+)<\/span>[：:]\s*([^<]+)/i);
+    if (parts) {
+      var lk = parts[1].trim(), lv = parts[2].replace(/<[^>]+>/g, '').replace(/[^0-9a-zA-Z\/~%％≥≤:.\-\s]/g, '').trim();
+      var mapped = lk; Object.keys(liMap).forEach(function (k) { if (lk.indexOf(k) >= 0) mapped = liMap[k]; });
+      if (lv && lv.length < 25 && !p[mapped]) p[mapped] = lv;
+    }
+  });
+
   if (!p['设计洪水频率']) { m = c.match(/1\/(\d+)/); if (m) p['设计洪水频率'] = '1/' + m[1]; }
   if (!p['设计速度(km/h)']) { m = c.match(/(\d+)\s*km\/h/); if (m) p['设计速度(km/h)'] = m[1]; }
   return p;
