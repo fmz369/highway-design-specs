@@ -94,8 +94,9 @@
       var grades = p['适用公路等级'] ? p['适用公路等级'].split('/') : [];
       var selHTML = '';
       if (grades.length > 1) {
+        var curGrade = selectedGrades[s.code] || grades[grades.length - 1];
         selHTML = ' <select onchange="changeGrade(' + i + ',this.value)" style="font-size:11px;border:1px solid var(--border);border-radius:10px;padding:2px 6px;background:#f8f8ff;">';
-        grades.forEach(function(g) { selHTML += '<option value="'+g+'">'+g+'</option>'; });
+        grades.forEach(function(g) { selHTML += '<option value="'+g+'"' + (g===curGrade?' selected':'') + '>'+g+'</option>'; });
         selHTML += '</select>';
       }
       html += '<div style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:13px;">'

@@ -151,21 +151,33 @@ function extractKeyParams(spec, matchGrade) {
     }
   });
 
-  // 适用公路等级
+  // 适用公路等级（只在表格标签中检测，避免参考文字误判）
   if (!params['适用公路等级']) {
     var grades = [];
-    if (c.match(/>高速</)||c.includes('高速公路')) grades.push('高速');
-    if (c.match(/>一级</)||c.includes('一级公路')) grades.push('一级');
-    if (c.match(/>二级</)||c.includes('二级公路')) grades.push('二级');
-    if (c.match(/>三级</)||c.includes('三级公路')) grades.push('三级');
-    // 四级：检查是否是小交通量（Ⅰ/Ⅱ类）
-    if (c.includes('四级公路（Ⅰ类）')||c.includes('四级公路（I类）')) grades.push('四级(Ⅰ类)');
-    else if (c.includes('四级公路（Ⅱ类）')||c.includes('四级公路（II类）')) grades.push('四级(Ⅱ类)');
-    else if (c.match(/>四级</)||c.includes('四级公路')) grades.push('四级');
+    var tds = c.match(/<t[dh][^>]*>/gi) || []; var tdContent = tds.map(function(t){return t.replace(/<[^>]+>/g,'')}).join(' ');
+    // 四级(Ⅰ/Ⅱ类)小交通量
+    if (tdContent.indexOf('四级公路（Ⅰ类）')>=0||tdContent.indexOf('四级公路（I类）')>=0) grades.push('四级(Ⅰ类)');
+    if (tdContent.indexOf('四级公路（Ⅱ类）')>=0||tdContent.indexOf('四级公路（II类）')>=0) grades.push('四级(Ⅱ类)');
+    // 如果没有Ⅰ/Ⅱ类细分，检测普通等级
+    if (grades.length === 0) {
+      if (tdContent.indexOf('高速')>=0) grades.push('高速');
+      if (tdContent.indexOf('一级')>=0) grades.push('一级');
+      if (tdContent.indexOf('二级')>=0) grades.push('二级');
+      if (tdContent.indexOf('三级')>=0) grades.push('三级');
+      if (tdContent.indexOf('四级')>=0&&grades.length===0) grades.push('四级');
+    }
+    // fallback
+    if (grades.length === 0) {
+      if (c.match(/高速[公路]*[^<]*<[^>]*>/)) grades.push('高速');
+      if (c.match(/一级[公路]*[^<]*<[^>]*>/)) grades.push('一级');
+      if (c.match(/二级[公路]*[^<]*<[^>]*>/)) grades.push('二级');
+      if (c.match(/三级[公路]*[^<]*<[^>]*>/)) grades.push('三级');
+      if (c.match(/四级[公路]*[^<]*<[^>]*>/)) grades.push('四级');
+    }
     if (grades.length > 0 && grades.length < 6) params['适用公路等级'] = grades.join('/');
   }
 
-  // 如果指定了匹配等级，优先从表格中取该等级列的值
+// 如果指定了匹配等级，优先从表格中取该等级列的值
   if (matchGrade && params['适用公路等级'] && params['适用公路等级'].split('/').length > 1) {
     // 多等级规范：尝试从表格中提取matchGrade对应列的值
     var rows = c.match(/<tr>[\s\S]*?<\/tr>/gi) || [];
