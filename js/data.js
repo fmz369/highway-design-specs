@@ -1606,15 +1606,14 @@ status:'current',
 tags:["沥青","路面"],
 pdf:null,
 hasPdf:false,
-content:`
-<h4>📑 章节目录（7章+附录）</h4>
+content:`<h4>📑 章节目录（7章+附录）</h4>
 <div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 设计参数</div><div>4 结构组合设计</div><div>5 结构厚度计算</div><div>6 材料设计</div><div>7 排水设计</div><div>附录 设计流程图</div></div>
-<h4>🎯 五大设计指标（验算体系）</h4>
-<ul><li><span class="hl">① 沥青层底拉应变</span> εt≤[εt]（疲劳开裂控制）</li><li><span class="hl">② 无机结合料层底拉应力</span> σt≤[σt]（半刚性基层疲劳）</li><li><span class="hl">③ 路基顶面压应变</span> εz≤[εz]（路基永久变形控制）</li><li><span class="hl">④ 沥青层永久变形量</span> Ra≤[Ra]（车辙控制）</li><li><span class="hl">⑤ 低温开裂指数</span> CI≤[CI]（温缩裂缝控制）</li></ul>
+<h4>🎯 五大设计指标</h4>
+<ul><li>① <span class="hl">沥青层底拉应变</span> εt≤[εt]（疲劳开裂）</li><li>② 无机结合料层底拉应力 σt≤[σt]（半刚性基层疲劳）</li><li>③ 路基顶面压应变 εz≤[εz]（永久变形）</li><li>④ 沥青层永久变形量 Ra≤[Ra]（车辙）</li><li>⑤ 低温开裂指数 CI≤[CI]（温缩裂缝）</li></ul>
 <h4>📊 设计年限与最小厚度</h4>
-<table><tr><th>公路等级</th><th>设计年限</th><th>沥青面层最小厚度</th><th>半刚性基层</th></tr><tr><td>高速</td><td>15年</td><td>12~18cm</td><td>36~45cm</td></tr><tr><td>一级</td><td>15年</td><td>10~15cm</td><td>34~42cm</td></tr><tr><td>二级</td><td>12年</td><td>8~12cm</td><td>30~38cm</td></tr></table>
-<h4>📐 标准轴载</h4><ul><li>BZZ-100：单轴双轮组，轴重<span class="hl">100kN</span>，轮压0.7MPa</li></ul>
-<h4>🧪 第6章 材料设计</h4><ul><li>沥青混合料类型：<span class="hl">AC(密级配)/SMA(沥青玛蹄脂)/SUP(高性能)/OGFC(开级配)</span></li><li>马歇尔试验：稳定度≥8kN、流值1.5~4mm、空隙率3%~6%、VMA按公称粒径</li></ul>\$`
+<table><tr><th>公路等级</th><th>设计年限</th><th>面层最小厚度</th><th>基层厚度</th></tr><tr><td>高速</td><td>15年</td><td>12~18cm</td><td>36~45cm</td></tr><tr><td>一级</td><td>15年</td><td>10~15cm</td><td>34~42cm</td></tr><tr><td>二级</td><td>12年</td><td>8~12cm</td><td>30~38cm</td></tr><tr><td>三级</td><td>8年</td><td>5~8cm</td><td>20~30cm</td></tr></table>
+<h4>📐 标准轴载</h4><ul><li>BZZ-100：单轴双轮组，轴重<span class="hl">100kN</span>，轮压0.7MPa，当量圆直径21.3cm</li></ul>
+<h4>🧪 材料设计</h4><ul><li>沥青混合料：AC(密级配)/SMA(沥青玛蹄脂)/SUP/OGFC(开级配)</li><li>马歇尔指标：稳定度≥8kN、流值1.5~4mm、空隙率3%~6%</li></ul>`
 },
 {
 code:'JTG/T 3331-2018',
@@ -1913,69 +1912,12 @@ status:'current',
 tags:["钢筋混凝土","PC"],
 pdf:null,
 hasPdf:false,
-content:`
-<h4>📑 章节目录（7章）</h4>
-<div class="ch-list">
-<div>1 总则</div><div>2 材料</div><div>3 承载能力极限状态</div><div>4 正常使用极限状态</div>
-<div>5 构造细节</div><div>6 预应力</div><div>7 抗震构造</div>
-</div>
-
-<h4>🧱 第2章 材料</h4>
-<table><tr><th>材料</th><th>常用等级/牌号</th><th>关键指标</th></tr>
-<tr><td>混凝土</td><td>C30~C60（预应力≥C40）</td><td>fck=20.1~38.5MPa</td></tr>
-<tr><td>普通钢筋</td><td><span class="hl">HRB400</span>（主筋首选）</td><td>fsk=400MPa</td></tr>
-<tr><td>高强钢筋</td><td>HRB500</td><td>fsk=500MPa</td></tr>
-<tr><td>预应力钢绞线</td><td>φs15.2（1860MPa级）</td><td>fpk=1860MPa</td></tr>
-<tr><td>精轧螺纹钢筋</td><td>PSB785/830/930</td><td>fpk=785~1080MPa</td></tr></table>
-
-<h4>📐 第3章 承载能力极限状态（ULS）</h4>
-<h4>抗弯承载力</h4>
-<ul>
-<li>基本公式：<span class="hl">γ₀Md ≤ fcd·b·x·(h₀-x/2) + f'sd·A's·(h₀-a's)</span></li>
-<li>受压区高度x应满足：x ≤ ξb·h₀（适筋梁）</li>
-<li>最小配筋率：受弯构件<span class="hl">≥0.2%</span>（C30~C40）或45ftd/fsd取大值</li>
-</ul>
-
-<h4>抗剪承载力</h4>
-<ul>
-<li>V ≤ Vu = Vcs + Vsb + Vpb（混凝土+箍筋+弯起钢筋+预应力）</li>
-<li>Vcs = α1·α2·α3·0.45×10⁻³·b·h₀·√((2+0.6P)·√fcu,k·ρsv·fsv)</li>
-<li>抗剪截面尺寸限制：V ≤ 0.51×10⁻³·√fcu,k·b·h₀</li>
-</ul>
-
-<h4>🔍 第4章 正常使用极限状态（SLS）</h4>
-<h4>裂缝宽度限值</h4>
-<table><tr><th>环境类别</th><th>限值(mm)</th><th>适用条件</th></tr>
-<tr><td>Ⅰ类（一般）</td><td><span class="hl">0.20</span></td><td>普通大气环境</td></tr>
-<tr><td>Ⅱ类（海水/除冰盐）</td><td><span class="hl">0.15</span></td><td>近海/海洋/撒除冰盐</td></tr>
-<tr><td>Ⅲ/Ⅳ类（严重腐蚀）</td><td>0.15~0.10</td><td>化学腐蚀环境</td></tr></table>
-
-<h4>挠度限值</h4>
-<ul>
-<li>汽车荷载（不计冲击力）：L/<span class="hl">600</span></li>
-<li>汽车荷载+人群荷载：L/<span class="hl">500</span></li>
-<li>悬臂端：L/<span class="hl">300</span></li>
-</ul>
-
-<h4>🔩 第5章 构造细节</h4>
-<ul>
-<li>混凝土保护层最小厚度：Ⅰ类环境<span class="hl">30mm</span>（梁）/ 20mm（板）</li>
-<li>钢筋间距：≥max(40mm, 1.25d)</li>
-<li>最小配箍率：R235钢筋0.18%，HRB335钢筋0.12%</li>
-<li>锚固长度：受拉钢筋la = α·(fy/ftd)·d</li>
-<li>搭接长度：ll = ζ·la（ζ=1.2~1.6按接头面积百分率）</li>
-</ul>
-
-<h4>⚡ 第6章 预应力</h4>
-<h4>预应力损失（6项）</h4>
-<table><tr><th>符号</th><th>损失类型</th><th>计算方法</th></tr>
-<tr><td>σl1</td><td>锚具变形和钢筋回缩</td><td>(Δl/L)·Ep</td></tr>
-<tr><td>σl2</td><td>孔道摩擦</td><td><span class="hl">σcon·[1-e^(-μθ+kx)]</span></td></tr>
-<tr><td>σl3</td><td>养护温差</td><td>2Δt（℃温差）</td></tr>
-<tr><td>σl4</td><td>钢筋松弛</td><td>按规范和应力等级折减</td></tr>
-<tr><td>σl5</td><td>混凝土收缩徐变</td><td>按环境湿度和加载龄期查表</td></tr>
-<tr><td>σl6</td><td>弹性压缩</td><td>分批张拉时后批对前批的压缩</td></tr></table>
-\$`
+content:`<h4>📑 章节目录（7章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 材料</div><div>3 承载能力极限状态</div><div>4 正常使用极限状态</div><div>5 构造细节</div><div>6 预应力</div><div>7 抗震构造</div></div>
+<h4>🧱 材料</h4><ul><li>混凝土：C30~C60（预应力≥C40）</li><li>钢筋：<span class="hl">HRB400</span>（主筋首选）、HRB500（高强）</li><li>预应力筋：φs15.2钢绞线，fpk=1860MPa</li></ul>
+<h4>📐 承载能力极限状态</h4><ul><li>抗弯：γ₀Md≤fcd·b·x·(h₀-x/2)+f'sd·A's·(h₀-a's)</li><li>抗剪：V≤Vcs+Vsb+Vpb</li></ul>
+<h4>🔍 裂缝宽度限值</h4><table><tr><th>环境</th><th>限值(mm)</th></tr><tr><td>Ⅰ类(一般)</td><td><span class="hl">0.20</span></td></tr><tr><td>Ⅱ类(海水)</td><td>0.15</td></tr><tr><td>Ⅲ/Ⅳ类</td><td>0.15~0.10</td></tr></table>
+<h4>⚡ 预应力损失</h4><ul><li>σl1锚具变形、σl2孔道摩擦、σl3温差、σl4松弛、σl5收缩徐变、σl6弹性压缩</li></ul>`
 },
 {
 code:'JTG 5120-2021',
@@ -2044,60 +1986,13 @@ status:'current',
 tags:["桥梁","基础"],
 pdf:null,
 hasPdf:false,
-content:`
-<h4>📑 章节目录（7章）</h4>
-<div class="ch-list">
-<div>1 总则</div><div>2 术语</div><div>3 设计荷载</div><div>4 桥梁分类与设计年限</div>
-<div>5 桥涵布置</div><div>6 抗震</div><div>7 构造要求</div>
-</div>
-
-<h4>🚛 第3章 设计荷载</h4>
-<h4>汽车荷载等级</h4>
-<table><tr><th>荷载等级</th><th>均布荷载qk(kN/m)</th><th>集中荷载Pk(kN)</th><th>适用</th></tr>
-<tr><td><span class="hl">公路-Ⅰ级</span></td><td>10.5</td><td>360(L≤5m)→270(L≥50m)</td><td>高速/一级</td></tr>
-<tr><td>公路-Ⅱ级</td><td>7.875</td><td>270(L≤5m)→202.5(L≥50m)</td><td>二级及以下</td></tr></table>
-<ul><li>Pk 在跨径5~50m间直线内插；多车道时按横向折减系数折减</li></ul>
-
-<h4>横向折减系数</h4>
-<table><tr><th>车道数</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
-<tr><td>折减系数</td><td>1.00</td><td>1.00</td><td>0.78</td><td>0.67</td><td>0.60</td><td>0.55</td><td>0.52</td><td>0.50</td></tr></table>
-
-<h4>纵向折减系数</h4>
-<table><tr><th>计算跨径L(m)</th><th>L≤150</th><th>150<L≤400</th><th>400<L≤600</th><th>600<L≤800</th><th>L>800</th></tr>
-<tr><td>折减系数</td><td>1.00</td><td>0.97</td><td>0.96</td><td>0.95</td><td>0.93</td></tr></table>
-
-<h4>人群荷载</h4>
-<ul><li>人群荷载标准值：<span class="hl">3.0kN/m²</span>（一般桥梁）；<span class="hl">2.5kN/m²</span>（人行道专用桥）</li></ul>
-
-<h4>💨 风荷载</h4>
-<ul>
-<li>基本风速重现期：<span class="hl">100年</span></li>
-<li>风压计算：q = 0.5ρV²（ρ=1.25kg/m³）</li>
-<li>横桥向和顺桥向分别计算</li>
-</ul>
-
-<h4>🌡 温度作用</h4>
-<ul>
-<li>均匀温差：±<span class="hl">25℃~35℃</span>（按地区气候分区）</li>
-<li>梯度温差：桥面升温25℃/降温-12.5℃，按截面高度折减</li>
-</ul>
-
-<h4>🏗 第4章 桥梁分类</h4>
-<table><tr><th>分类</th><th>单孔跨径Lk(m)</th><th>多孔总长L(m)</th><th>设计使用年限</th></tr>
-<tr><td>特大桥</td><td>Lk>150</td><td>L>1000</td><td><span class="hl">100年</span></td></tr>
-<tr><td>大桥</td><td>40≤Lk≤150</td><td>100≤L≤1000</td><td>100年</td></tr>
-<tr><td>中桥</td><td>20≤Lk<40</td><td>30≤L<100</td><td>50年</td></tr>
-<tr><td>小桥</td><td>5≤Lk<20</td><td>8≤L<30</td><td>30年</td></tr>
-<tr><td>涵洞</td><td>Lk<5</td><td>—</td><td>30年</td></tr></table>
-
-<h4>📏 第7章 构造要求</h4>
-<ul>
-<li>桥面铺装：沥青混凝土≥5cm；水泥混凝土≥8cm</li>
-<li>伸缩缝：中小桥≤80mm位移量；大桥据温度变形计算</li>
-<li>支座：板式橡胶支座/盆式支座/球型支座（按跨径和反力选用）</li>
-<li>抗震措施：墩梁搭接长度≥70+0.5L(cm)</li>
-</ul>
-\$`
+content:`<h4>📑 章节目录（7章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 设计荷载</div><div>4 桥梁分类与设计年限</div><div>5 桥涵布置</div><div>6 抗震</div><div>7 构造要求</div></div>
+<h4>🚛 汽车荷载</h4>
+<table><tr><th>等级</th><th>qk(kN/m)</th><th>Pk(kN)</th><th>适用</th></tr><tr><td><span class="hl">公路-Ⅰ级</span></td><td>10.5</td><td>360(L≤5m)→270(L≥50m)</td><td>高速/一级</td></tr><tr><td>公路-Ⅱ级</td><td>7.875</td><td>270→202.5</td><td>二级及以下</td></tr></table>
+<h4>🌉 桥梁分类</h4>
+<table><tr><th>分类</th><th>单孔跨径</th><th>总长</th><th>设计年限</th></tr><tr><td>特大桥</td><td>>150m</td><td>>1000m</td><td>100年</td></tr><tr><td>大桥</td><td>40~150m</td><td>100~1000m</td><td>100年</td></tr><tr><td>中桥</td><td>20~40m</td><td>30~100m</td><td>50年</td></tr><tr><td>小桥/涵洞</td><td><20m</td><td><30m</td><td>30年</td></tr></table>
+<h4>💨 风荷载/温度</h4><ul><li>基本风速重现期100年，风压=0.5ρV²</li><li>均匀温差±25~35℃，梯度温差按截面高度折减</li></ul>`
 },
 {
 code:'JTG D61-2005',

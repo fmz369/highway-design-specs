@@ -15,6 +15,64 @@ function extractKeyParams(spec, matchGrade) {
     return m ? m[1].replace(/<[^>]+>/g, '').trim() : null;
   }
 
+
+  // === 等级匹配：如果指定了matchGrade，尝试从表格中提取对应等级列的值 ===
+  function getGradeColumnValue(matchGrade) {
+    // 在所有表格行中查找包含matchGrade的行，提取后续td数值
+    var rows = c.match(/<tr>[\s\S]*?<\/tr>/gi) || [];
+    var result = {};
+    for (var ri = 0; ri < rows.length; ri++) {
+      var row = rows[ri];
+      if (row.indexOf(matchGrade) < 0) continue;
+      // 找到该行中所有td
+      var tds = row.match(/<t[dh][^>]*>([^<]*)<\/t[dh]>/gi) || [];
+      var gradeIdx = -1;
+      for (var ti = 0; ti < tds.length; ti++) {
+        var cellText = tds[ti].replace(/<[^>]+>/g, '').trim();
+        if (cellText.indexOf(matchGrade) >= 0) { gradeIdx = ti; break; }
+      }
+      if (gradeIdx < 0) continue;
+      // 取该行第一个td作为参数名，等级列后的td作为值
+      if (tds.length > gradeIdx + 1 && tds.length >= 2) {
+        var paramName = tds[0].replace(/<[^>]+>/g, '').trim();
+        var paramVal = tds[gradeIdx + 1].replace(/<[^>]+>/g, '').trim();
+        if (paramName && paramVal && paramName.length < 20 && paramVal.length < 20 && /\d/.test(paramVal)) {
+          result[paramName] = paramVal;
+        }
+      }
+    }
+    return result;
+  }
+
+  var gradeValues = matchGrade ? getGradeColumnValue(matchGrade) : {};
+  // 如果提取到了等级特定值，存入params（覆盖通用提取）
+  if (Object.keys(gradeValues).length > 0) {
+    params['_gradeMatched'] = matchGrade;
+    // 将等级特定值映射到参数名
+    var gradeMap = {
+      '车道宽度': '车道宽度(m)',
+      '路肩宽度': '路肩宽度(m)',
+      '设计速度': '设计速度(km/h)',
+      '路基宽度': '路基宽度(m)',
+      '路面宽度': '路面宽度(m)',
+      '停车视距': '停车视距(m)',
+      '最大纵坡': '最大纵坡(%)',
+      '压实度': '路基压实度(上路床)',
+      '最小半径': '平曲线最小半径一般值(m)',
+    };
+    Object.keys(gradeValues).forEach(function(gk) {
+      var mapped = null;
+      Object.keys(gradeMap).forEach(function(mk) {
+        if (gk.indexOf(mk) >= 0) mapped = gradeMap[mk];
+      });
+      if (!mapped) {
+        // 直接使用原始键名
+        if (gk.length < 10) mapped = gk;
+      }
+      if (mapped) params[mapped] = gradeValues[gk];
+    });
+  }
+
   var rules = [
     // === 基本参数 ===
     ['公路等级', /公路等级[^<]*<[^>]*>([^<]+)</i],
