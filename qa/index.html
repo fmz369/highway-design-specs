@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>智能问答 — 公路设计规范</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+.qa-container { max-width: 900px; margin: 0 auto; }
+.qa-input-wrap { display: flex; gap: 10px; margin-bottom: 20px; }
+.qa-input-wrap input { flex: 1; padding: 14px 20px; border: 2px solid var(--border); border-radius: 28px; font-size: 15px; outline: none; transition: border-color .2s; }
+.qa-input-wrap input:focus { border-color: var(--accent); }
+.qa-input-wrap button { padding: 14px 28px; background: var(--accent); color: #fff; border: none; border-radius: 28px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all .2s; }
+.qa-input-wrap button:hover { background: var(--accent-hover); }
+.qa-hints { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.qa-hint { padding: 6px 14px; background: var(--accent-light); color: var(--accent); border-radius: 16px; font-size: 12px; cursor: pointer; border: none; transition: all .2s; }
+.qa-hint:hover { background: var(--accent); color: #fff; }
+.qa-result { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-sm); border: 1px solid var(--border); padding: 20px 24px; margin-bottom: 16px; }
+.qa-result .qa-question { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+.qa-result .qa-answer { font-size: 14px; line-height: 1.8; color: var(--text2); }
+.qa-result .qa-answer .hl { background: #fef3c7; padding: 1px 5px; border-radius: 3px; font-weight: 600; color: #92400e; }
+.qa-result .qa-source { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border); font-size: 11px; color: var(--text3); }
+.qa-result .qa-source a { color: var(--accent); font-weight: 500; }
+.qa-result table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 12px; }
+.qa-result td, .qa-result th { border: 1px solid #e8e8f0; padding: 5px 10px; text-align: center; }
+.qa-result th { background: #f8f9fc; font-weight: 600; }
+.qa-empty { text-align: center; padding: 60px 20px; color: var(--text3); }
+.qa-empty .qa-icon { font-size: 56px; margin-bottom: 14px; }
+[data-theme="dark"] .qa-result { background: #1e1e35; }
+@media (max-width: 600px) { .qa-input-wrap { flex-direction: column; } .qa-input-wrap button { width: 100%; } }
+</style>
+</head>
+<body>
+
+<header class="header">
+<div class="header-inner">
+<div class="header-top">
+<a href="../" class="header-logo" style="text-decoration:none;">🤖</a>
+<div>
+<h1>智能问答</h1>
+<p class="subtitle">基于 89 部规范知识库 — 输入问题，自动检索答案</p>
+</div>
+</div>
+<div id="statsPills"></div>
+</div>
+</header>
+
+<main class="main qa-container">
+<div id="breadcrumb"></div>
+
+<div class="qa-input-wrap">
+<input type="text" id="qaInput" placeholder="例如：平曲线最小半径是多少？四级公路压实度标准？…" autocomplete="off">
+<button id="qaBtn">🔍 搜索答案</button>
+</div>
+
+<div class="qa-hints" id="qaHints">
+<button class="qa-hint">平曲线最小半径</button>
+<button class="qa-hint">最大纵坡标准</button>
+<button class="qa-hint">路基压实度要求</button>
+<button class="qa-hint">设计速度分级</button>
+<button class="qa-hint">车道宽度取值</button>
+<button class="qa-hint">停车视距是多少</button>
+<button class="qa-hint">荷载等级</button>
+<button class="qa-hint">洪水频率</button>
+</div>
+
+<div id="qaResults">
+<div class="qa-empty">
+<div class="qa-icon">🤖</div>
+<div class="empty-title">输入问题，搜索规范答案</div>
+<div class="empty-hint">支持自然语言提问，基于 89 部公路规范知识库</div>
+</div>
+</div>
+
+</main>
+
+<script src="../js/data.js?v=2"></script>
+<script src="../js/router.js?v=2"></script>
+<script src="../js/favorites.js?v=2"></script>
+<script src="../js/components.js?v=2"></script>
+<script src="../js/theme.js?v=2"></script>
+<script src="../js/qa.js"></script>
+</body>
+</html>
