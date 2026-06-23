@@ -36,17 +36,17 @@
 <div class="dashboard" id="dashboard"><div class="pie-wrap" style="justify-content:center;padding:30px;color:var(--text3);">📊 加载中...</div></div>
 
 <!-- 分类导航 -->
-<div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:6px;"><a href="quickref/" class="btn-primary" style="font-size:14px;padding:10px 24px;">📋 参数速查</a><a href="compare/" class="btn-primary" style="font-size:14px;padding:10px 24px;">📊 规范对比</a><a href="qa/" class="btn-primary" style="font-size:14px;padding:10px 24px;">🤖 智能问答</a><a href="favorites/" class="btn-primary" style="font-size:14px;padding:10px 24px;background:#f59e0b;">⭐ 收藏夹</a></div><h2 style="text-align:center;margin-bottom:6px;font-size:20px;">📂 按分类浏览</h2>
-<p style="text-align:center;color:var(--text3);margin-bottom:18px;font-size:13px;">点击分类卡片进入规范列表，或使用顶部搜索框全站检索</p>
+<div class="quick-actions"><div class="section-title">⚡ 快捷功能</div><div class="quick-actions-grid"><a href="quickref/" class="action-card quickref"><div class="action-icon">📋</div><div class="action-name">参数速查</div><div class="action-desc">核心参数快速查阅</div></a><a href="compare/" class="action-card compare"><div class="action-icon">📊</div><div class="action-name">规范对比</div><div class="action-desc">多规范并排对比</div></a><a href="qa/" class="action-card qa"><div class="action-icon">🤖</div><div class="action-name">智能问答</div><div class="action-desc">AI 答疑解惑</div></a><a href="favorites/" class="action-card favorites"><div class="action-icon">⭐</div><div class="action-name">收藏夹</div><div class="action-desc">收藏的规范列表</div></a></div></div><h2 class="section-title" style="margin-bottom:10px;">📂 按分类浏览</h2>
+<p class="section-subtitle">点击分类卡片进入规范列表，或使用顶部搜索框全站检索</p>
 <div class="category-cards" id="categoryCards"></div>
 
 <!-- 推荐规范 -->
-<h2 style="margin-bottom:14px;font-size:18px;">📌 核心规范推荐</h2>
+<h2 class="section-title" style="margin-bottom:14px;">📌 核心规范推荐</h2>
 <div class="grid" id="featuredGrid"></div>
 
 <!-- 最近浏览 -->
 <div id="historySection" style="display:none;">
-<h2 style="margin-bottom:14px;font-size:18px;">📜 最近浏览</h2>
+<h2 class="section-title" style="margin-bottom:14px;">📜 最近浏览</h2>
 <div class="grid" id="historyGrid"></div>
 </div>
 
@@ -145,7 +145,7 @@
 
   var html = '';
   cats.forEach(function(c) {
-    html += '<a href="category/?cat=' + c + '" class="cat-card" >'
+    html += '<a href="category/?cat=' + c + '" class="cat-card ' + c + '" >'
       + '<div class="cat-icon">' + catEmoji[c] + '</div>'
       + '<div class="cat-name">' + CAT_NAMES[c] + '</div>'
       + '<div class="cat-count">' + counts[c] + ' 部规范</div>'
