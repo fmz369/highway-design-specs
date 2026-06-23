@@ -34,7 +34,7 @@
 </div>
 </header>
 <main class="main" style="max-width:1100px;">
-<div style="margin-bottom:16px;"><a href="../" style="font-size:13px;color:var(--accent);">← 返回首页</a></div>
+<div id="breadcrumb"></div>
 <div class="qr-tabs" id="qrTabs">
 <button class="qr-tab active" data-grade="高速">高速</button>
 <button class="qr-tab" data-grade="一级">一级</button>
@@ -49,6 +49,11 @@
 <script src="../js/router.js?v=2"></script>
 <script src="../js/components.js?v=2"></script>
 <script>
+// 面包屑
+document.getElementById('breadcrumb').innerHTML = renderBreadcrumb([
+  { label: '🏠 首页', link: '../' },
+  { label: '📋 设计参数速查' }
+]);
 // ===== 参数速查数据（来源于JTG B01-2014等核心规范） =====
 var PARAMS = {
   '高速': {
