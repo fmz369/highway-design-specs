@@ -1878,9 +1878,10 @@ title:'公路钢筋混凝土及预应力混凝土桥涵设计规范（旧版）'
 cat:'bridge',
 status:'replaced',
 tags:["旧版"],
+replacedBy:'JTG 3362-2018',
 pdf:null,
 hasPdf:false,
-content:`
+content:`<div class="danger-box" style="font-size:14px;"><strong>⛔ 本规范已废止</strong><br>已被 <a href="../specs/?code=JTG%203362-2018" style="font-weight:700;">JTG 3362-2018 公路钢筋混凝土及预应力混凝土桥涵设计规范</a> 替代<br>不得作为设计依据</div>
 <div class="danger-box"><strong>⚠ 已替代</strong>：已被 JTG 3362-2018 替代。旧版仅作设计对比参考，不得作为设计依据。</div>
 <h4>📝 主要变化</h4><ul><li>材料强度等级调整</li><li>荷载组合系数更新</li><li>耐久性设计要求加强</li><li>抗震构造措施完善</li></ul>`
 },
@@ -2171,9 +2172,10 @@ title:'公路桥梁抗震设计细则（旧版）',
 cat:'bridge',
 status:'replaced',
 tags:["抗震","旧版"],
+replacedBy:'JTG/T 2231-01-2020',
 pdf:null,
 hasPdf:false,
-content:`
+content:`<div class="danger-box" style="font-size:14px;"><strong>⛔ 本规范已废止</strong><br>已被 <a href="../specs/?code=JTG%2FT%202231-01-2020" style="font-weight:700;">JTG/T 2231-01-2020 公路桥梁抗震设计规范</a> 替代<br>不得作为设计依据</div>
 	<div class="danger-box"><strong>⚠ 已替代</strong>：已被 JTG/T 2231-01-2020《公路桥梁抗震设计规范》替代。2020年9月1日起废止。旧版仅作历史对比参考，不得作为设计依据。</div>
 	<h4>📑 章节</h4>
 	<div class="ch-list"><div>1 总则</div><div>2 地震作用</div><div>3 反应谱分析</div><div>4 墩柱延性设计</div><div>5 减隔震设计</div><div>6 基础抗震</div></div>
