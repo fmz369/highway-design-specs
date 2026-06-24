@@ -37,10 +37,17 @@
   input.addEventListener('keydown', function (e) { if (e.key === 'Enter') doSearch(); });
   document.addEventListener('keydown', function (e) { if (e.key === '/' && document.activeElement !== input && document.activeElement.tagName !== 'INPUT') { e.preventDefault(); input.focus(); } });
 
+  // Q&A历史记录
+  var QA_HISTORY_KEY = 'qa_history';
+  function getQaHistory() { try { return JSON.parse(localStorage.getItem(QA_HISTORY_KEY) || '[]'); } catch(e) { return []; } }
+  function addQaHistory(q, best) { var h = getQaHistory(); h = h.filter(function(x) { return x.q !== q; }); h.unshift({ q: q, code: best.spec.code, title: best.spec.title, time: Date.now() }); if (h.length > 15) h = h.slice(0, 15); try { localStorage.setItem(QA_HISTORY_KEY, JSON.stringify(h)); } catch(e) {} }
+  function renderHistory() { var h = getQaHistory(); if (h.length === 0) return; var html = '<div style="margin-bottom:16px;"><div class="section-title" style="margin-bottom:10px;">📜 历史问答</div><div style="display:flex;flex-wrap:wrap;gap:6px;">'; h.forEach(function(x) { html += '<a href="../specs/?code=' + encodeURIComponent(x.code) + '" style="font-size:11px;padding:4px 12px;background:var(--accent-light);border-radius:14px;color:var(--accent);text-decoration:none;max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="' + escapeHtml(x.q) + '">' + escapeHtml(x.q.substring(0, 25)) + '</a>'; }); html += '</div></div>'; return html; }
+
   function doSearch() {
     var q = input.value.trim(); if (!q) return;
     var keywords = extractKeywords(q);
     var results = searchAllSpecs(keywords, q);
+    if (results.length > 0) addQaHistory(q, results[0]);
     renderResults(q, results);
   }
 
