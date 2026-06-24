@@ -35,16 +35,6 @@
 </header>
 <main class="main" style="max-width:1100px;">
 <div id="breadcrumb"></div>
-<div style="background:#fff;border-radius:var(--radius);box-shadow:var(--shadow-sm);border:1px solid var(--border);padding:18px 20px;margin-bottom:22px;">
-<h4 style="margin-bottom:12px;font-size:15px;">🧮 参数计算器</h4>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;">
-<div><label style="font-size:11px;color:var(--text3);">计算类型</label><select id="ct" style="width:100%;padding:8px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;margin-bottom:8px;"><option value="lane">路基/车道宽度</option><option value="curve">平曲线最小半径</option><option value="sight">停车视距</option><option value="grade">最大纵坡</option><option value="compact">路基压实度</option><option value="clearance">建筑限界净高</option><option value="curveElem">平曲线要素</option><option value="vertical">竖曲线最小半径</option><option value="super">超高过渡段</option></select></div>
-<div id="calcInputs"></div>
-</div>
-<button onclick="doCalc()" style="margin-top:10px;padding:8px 20px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">计算</button>
-<div id="calcResult" style="margin-top:10px;padding:12px 16px;background:#f0fdf4;border:1px solid #86efac;border-radius:8px;display:none;"></div>
-</div>
-
 <div class="qr-tabs" id="qrTabs">
 <button class="qr-tab active" data-grade="高速">高速</button>
 <button class="qr-tab" data-grade="一级">一级</button>

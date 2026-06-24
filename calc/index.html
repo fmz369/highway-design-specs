@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>专业计算器 — 公路设计规范</title>
+<style>
+:root{--bg:#f0f2f5;--card-bg:#fff;--text:#1a1a2e;--text2:#5a5a7a;--text3:#8888a0;--border:#e8e8f0;--accent:#3b6df0;--ah:#2851d1;--radius:14px;--shadow:0 2px 8px rgba(0,0,0,.06);--shadow-md:0 6px 20px rgba(0,0,0,.1);--t:.2s ease}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{color:var(--accent);text-decoration:none}
+.header{background:linear-gradient(135deg,#0f1d3a,#1a3a6e 30%,#1e4b8f 60%,#1a3a6e);color:#fff;padding:16px 0;box-shadow:0 4px 24px rgba(15,29,58,.35)}
+.header-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:12px}
+.header-logo{width:40px;height:40px;background:rgba(255,255,255,.15);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;text-decoration:none;flex-shrink:0}
+.header h1{font-size:20px}.header .sub{font-size:11px;opacity:.7}
+.main{max-width:1200px;margin:0 auto;padding:20px 24px 60px}
+.back{font-size:13px;color:var(--accent);margin-bottom:14px;display:block}
+.calc-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+.ctab{padding:8px 16px;border-radius:18px;border:1.5px solid var(--border);background:#fff;font-size:13px;cursor:pointer;transition:var(--t);white-space:nowrap}
+.ctab:hover{border-color:var(--accent);color:var(--accent)}
+.ctab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.calc-panel{display:none;background:var(--card-bg);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--border);padding:22px 24px}
+.calc-panel.active{display:block}
+.calc-panel h3{font-size:17px;margin-bottom:14px;padding-bottom:8px;border-bottom:1.5px solid var(--border)}
+.calc-form{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:14px}
+.calc-field label{display:block;font-size:12px;color:var(--text2);margin-bottom:4px}
+.calc-field input,.calc-field select{width:100%;padding:8px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;outline:none}
+.calc-field input:focus,.calc-field select:focus{border-color:var(--accent)}
+.calc-field .unit{font-size:11px;color:var(--text3)}
+.calc-btn{padding:10px 28px;background:var(--accent);color:#fff;border:none;border-radius:22px;font-size:14px;font-weight:600;cursor:pointer;transition:var(--t)}
+.calc-btn:hover{background:var(--ah)}
+.calc-result{margin-top:14px;padding:14px 18px;background:#f0fdf4;border:1px solid #86efac;border-radius:10px;display:none}
+.calc-result h4{font-size:14px;color:#166534;margin-bottom:6px}
+.calc-result .r-row{display:flex;justify-content:space-between;padding:3px 0;font-size:13px;color:#166534;border-bottom:1px solid #dcfce7}
+.calc-result .r-val{font-weight:700}
+.calc-source{font-size:11px;color:var(--text3);margin-top:8px;padding-top:6px;border-top:1px solid #dcfce7}
+.calc-err{color:#ef4444;font-size:12px;margin-top:6px}
+.footer{text-align:center;padding:22px;color:var(--text3);font-size:11px;background:#fff;border-top:1px solid var(--border)}
+[data-theme=dark] .calc-panel{background:#1e1e35}[data-theme=dark] .calc-result{background:#1a3020;border-color:#166534}[data-theme=dark] .calc-result .r-row{color:#4ade80;border-color:#1a3a2a}[data-theme=dark] .calc-result h4{color:#4ade80}
+@media(max-width:600px){.calc-form{grid-template-columns:1fr}.main{padding:12px 10px 40px}}
+</style>
+</head>
+<body>
+<header class="header"><div class="header-inner">
+<a href="../" class="header-logo">🧮</a><div><h1>专业计算器</h1><div class="sub">工程计算 · 公式溯源 · 规范引用</div></div>
+</div></header>
+<main class="main">
+<a href="../" class="back">← 返回首页</a>
+<div class="calc-tabs" id="tabs">
+<button class="ctab active" data-panel="curve">📐 平曲线要素</button>
+<button class="ctab" data-panel="sight">👁 视距计算</button>
+<button class="ctab" data-panel="wall">🧱 挡土墙稳定性</button>
+<button class="ctab" data-panel="axle">🚛 轴载换算</button>
+<button class="ctab" data-panel="drain">💧 涵洞孔径</button>
+</div>
+
+<div id="panels">
+
+<div class="calc-panel active" id="panel-curve"><h3>📐 平曲线要素计算</h3>
+<div class="calc-form">
+<div class="calc-field"><label>圆曲线半径 R (m)</label><input id="crR" value="500" type="number"></div>
+<div class="calc-field"><label>路线转角 α (°)</label><input id="crA" value="30" type="number"></div>
+<div class="calc-field"><label>缓和曲线长度 Ls (m)</label><input id="crLs" value="70" type="number"><span class="unit">无缓和曲线填0</span></div>
+</div>
+<button class="calc-btn" onclick="calcCurve()">计算</button>
+<div class="calc-result" id="r-curve"></div>
+</div>
+
+<div class="calc-panel" id="panel-sight"><h3>👁 视距计算</h3>
+<div class="calc-form">
+<div class="calc-field"><label>设计速度 (km/h)</label><select id="sv"><option value="120">120</option><option value="100">100</option><option value="80">80</option><option value="60">60</option><option value="40">40</option><option value="30">30</option><option value="20">20</option></select></div>
+<div class="calc-field"><label>纵坡坡度 (%)</label><input id="sg" value="0" type="number"><span class="unit">上坡正、下坡负</span></div>
+<div class="calc-field"><label>路面类型</label><select id="st"><option value="asphalt">沥青路面</option><option value="cement">水泥混凝土路面</option></select></div>
+</div>
+<button class="calc-btn" onclick="calcSight()">计算</button>
+<div class="calc-result" id="r-sight"></div>
+</div>
+
+<div class="calc-panel" id="panel-wall"><h3>🧱 重力式挡土墙稳定性验算</h3>
+<div class="calc-form">
+<div class="calc-field"><label>墙高 H (m)</label><input id="wH" value="6" type="number"></div>
+<div class="calc-field"><label>墙背填土重度 γ (kN/m³)</label><input id="wG" value="18" type="number"></div>
+<div class="calc-field"><label>填土内摩擦角 φ (°)</label><input id="wF" value="30" type="number"></div>
+<div class="calc-field"><label>基底摩擦系数 μ</label><input id="wM" value="0.4" type="number"><span class="unit">一般0.3~0.5</span></div>
+<div class="calc-field"><label>墙背倾角 ε (°)</label><input id="wE" value="0" type="number"><span class="unit">直立为0</span></div>
+<div class="calc-field"><label>填土表面坡角 β (°)</label><input id="wB" value="0" type="number"><span class="unit">水平为0</span></div>
+</div>
+<button class="calc-btn" onclick="calcWall()">验算</button>
+<div class="calc-result" id="r-wall"></div>
+</div>
+
+<div class="calc-panel" id="panel-axle"><h3>🚛 轴载换算（BZZ-100标准轴载）</h3>
+<p style="font-size:12px;color:var(--text3);margin-bottom:10px;">输入各轴型的轴重和数量，换算为标准轴载BZZ-100的当量作用次数</p>
+<div class="calc-form" id="axleForm">
+<div style="display:flex;gap:6px;align-items:end;flex-wrap:wrap">
+<div class="calc-field"><label>轴重 Pi (kN)</label><input class="axle-p" value="130" type="number" style="width:80px"></div>
+<div class="calc-field"><label>轴数</label><input class="axle-n" value="2000" type="number" style="width:70px"></div>
+<div class="calc-field"><label>轴型</label><select class="axle-t"><option value="single">单轴双轮</option><option value="double">双轴双轮</option></select></div>
+</div></div>
+<button class="calc-btn" onclick="addAxle()" style="font-size:12px;padding:6px 16px;margin-bottom:10px;">+ 添加轴型</button>
+<button class="calc-btn" onclick="calcAxle()">换算</button>
+<div class="calc-result" id="r-axle"></div>
+</div>
+
+<div class="calc-panel" id="panel-drain"><h3>💧 涵洞孔径试算</h3>
+<div class="calc-form">
+<div class="calc-field"><label>汇水面积 F (km²)</label><input id="dF" value="0.5" type="number"></div>
+<div class="calc-field"><label>设计降雨强度 q (mm/h)</label><input id="dQ" value="60" type="number"></div>
+<div class="calc-field"><label>径流系数 ψ</label><input id="dP" value="0.9" type="number"><span class="unit">沥青路面0.9、土路0.4~0.6</span></div>
+<div class="calc-field"><label>设计洪水频率</label><select id="dFr"><option value="100">1/100</option><option value="50">1/50</option><option value="25">1/25</option><option value="15">1/15</option></select></div>
+</div>
+<button class="calc-btn" onclick="calcDrain()">计算</button>
+<div class="calc-result" id="r-drain"></div>
+</div>
+
+</div></main>
+<footer class="footer"><a href="../">🏠 首页</a> | 计算结果仅供参考，设计以规范为准</footer>
+
+<script>
+// 标签切换
+document.getElementById('tabs').addEventListener('click',function(e){var t=e.target.closest('.ctab');if(!t)return;document.querySelectorAll('.ctab').forEach(function(x){x.classList.remove('active')});t.classList.add('active');document.querySelectorAll('.calc-panel').forEach(function(x){x.classList.remove('active')});document.getElementById('panel-'+t.dataset.panel).classList.add('active');});
+
+function R(id,html,isErr){var e=document.getElementById(id);e.innerHTML=html;e.style.display='block';if(isErr)e.style.background='#fef2f2';else e.style.background='#f0fdf4';}
+
+// ===== 平曲线要素 =====
+function calcCurve(){
+  var Rr=parseFloat(document.getElementById('crR').value)||500;
+  var A=parseFloat(document.getElementById('crA').value)||30;
+  var Ls=parseFloat(document.getElementById('crLs').value)||0;
+  var rad=A*Math.PI/180;
+  var T=Ls?Math.round((Rr+Ls*Ls/(24*Rr))*Math.tan(rad/2)+Ls/2-Ls*Ls*Ls/(240*Rr*Rr)):Math.round(Rr*Math.tan(rad/2));
+  var L=L?Math.round(Rr*rad*(Ls?1:1)):Math.round(Rr*rad);
+  var E=Ls?Math.round((Rr+Ls*Ls/(24*Rr))/Math.cos(rad/2)-Rr):Math.round(Rr*(1/Math.cos(rad/2)-1));
+  var h='<h4>📐 计算结果</h4>';
+  h+='<div class="r-row"><span>切线长 T</span><span class="r-val">'+T+' m</span></div>';
+  h+='<div class="r-row"><span>曲线长 L</span><span class="r-val">'+L+' m</span></div>';
+  h+='<div class="r-row"><span>外距 E</span><span class="r-val">'+E+' m</span></div>';
+  if(Ls>0) h+='<div class="r-row"><span>缓和曲线 Ls</span><span class="r-val">'+Ls+' m</span></div>';
+  h+='<div class="calc-source">📚 公式：T=R·tan(α/2) + Ls/2 | L=R·α(rad) + Ls | E=R·(sec(α/2)-1) | JTG D20-2017</div>';
+  R('r-curve',h);
+}
+
+// ===== 视距 =====
+function calcSight(){
+  var V=parseInt(document.getElementById('sv').value);
+  var g=parseFloat(document.getElementById('sg').value)||0;
+  var t=document.getElementById('st').value==='asphalt'?0.4:0.35;
+  var Ss=Math.round(V*t+V*V/(254*(t+g/100)));
+  var Sc=Math.round(2*Ss);
+  var So=Math.round(V*1.2*t+V*V*1.44/(254*(t+g/100)));
+  var h='<h4>👁 计算结果（设计速度 '+V+'km/h）</h4>';
+  h+='<div class="r-row"><span>停车视距</span><span class="r-val">'+Ss+' m</span></div>';
+  h+='<div class="r-row"><span>会车视距</span><span class="r-val">'+Sc+' m</span></div>';
+  h+='<div class="r-row"><span>超车视距</span><span class="r-val">'+So+' m</span></div>';
+  h+='<div class="calc-source">📚 公式：停车视距=V·t/3.6 + V²/[254(φ+ψ)] | φ(沥青0.4/水泥0.35) | JTG D20-2017</div>';
+  R('r-sight',h);
+}
+
+// ===== 挡土墙 =====
+function calcWall(){
+  var H=parseFloat(document.getElementById('wH').value)||6;
+  var gg=parseFloat(document.getElementById('wG').value)||18;
+  var phi=parseFloat(document.getElementById('wF').value)||30;
+  var mu=parseFloat(document.getElementById('wM').value)||0.4;
+  var eps=parseFloat(document.getElementById('wE').value)||0;
+  var beta=parseFloat(document.getElementById('wB').value)||0;
+  var phr=phi*Math.PI/180,epr=eps*Math.PI/180,btr=beta*Math.PI/180;
+  var Ka=Math.pow(Math.cos(phr-epr),2)/(Math.pow(Math.cos(epr),2)*Math.cos(epr+phr)*Math.pow(1+Math.sqrt(Math.sin(phr+btr)*Math.sin(phr-epr)/(Math.cos(epr+phr)*Math.cos(epr-btr))),2));
+  var Ea=Math.round(0.5*gg*H*H*Ka*10)/10;
+  var W=Math.round(H*2.5*23*10)/10;
+  var Kc=(W*mu/Ea).toFixed(2);
+  var K0=(W*1.2/(Ea*H/3)).toFixed(2);
+  var h='<h4>🧱 计算结果（H='+H+'m，φ='+phi+'°）</h4>';
+  h+='<div class="r-row"><span>主动土压力系数 Ka</span><span class="r-val">'+Ka.toFixed(3)+'</span></div>';
+  h+='<div class="r-row"><span>主动土压力 Ea</span><span class="r-val">'+Ea.toFixed(1)+' kN/m</span></div>';
+  h+='<div class="r-row"><span>抗滑稳定系数 Kc</span><span class="r-val">'+Kc+' '+(Kc>=1.3?'✅ ≥1.3 合格':'⚠️ <1.3 不满足')+'</span></div>';
+  h+='<div class="r-row"><span>抗倾覆系数 K₀</span><span class="r-val">'+K0+' '+(K0>=1.5?'✅ ≥1.5 合格':'⚠️ <1.5 不满足')+'</span></div>';
+  h+='<div class="calc-source">📚 库仑土压力理论 | 抗滑Kc≥1.3 抗倾覆K₀≥1.5 | JTG D30-2015</div>';
+  R('r-wall',h);
+}
+
+// ===== 轴载换算 =====
+function addAxle(){var d=document.createElement('div');d.style.cssText='display:flex;gap:6px;align-items:end;flex-wrap:wrap';d.innerHTML='<div class="calc-field"><label>轴重 Pi (kN)</label><input class="axle-p" value="100" type="number" style="width:80px"></div><div class="calc-field"><label>轴数</label><input class="axle-n" value="1000" type="number" style="width:70px"></div><div class="calc-field"><label>轴型</label><select class="axle-t"><option value="single">单轴双轮</option><option value="double">双轴双轮</option></select></div><button onclick="this.parentElement.remove()" style="background:var(--accent);color:#fff;border:none;border-radius:6px;padding:8px 10px;cursor:pointer;font-size:12px">✕</button>';document.getElementById('axleForm').appendChild(d);}
+
+function calcAxle(){
+  var Ps=document.querySelectorAll('.axle-p');var Ns=document.querySelectorAll('.axle-n');var Ts=document.querySelectorAll('.axle-t');
+  var NsTotal=0;var detail='';
+  for(var i=0;i<Ps.length;i++){
+    var Pi=parseFloat(Ps[i].value)||100;var Ni=parseFloat(Ns[i].value)||0;var Ti=Ts[i].value;
+    var C1=Ti==='single'?1:2.2;var C2=Ti==='single'?1:1;
+    var Ne=Math.round(Ni*C1*C2*Math.pow(Pi/100,4.35));
+    NsTotal+=Ne;
+    detail+='<div class="r-row"><span>'+Pi+'kN ×'+Ni+'次 ('+(Ti=='single'?'单轴':'双轴')+')</span><span class="r-val">→ '+Ne.toLocaleString()+' 次</span></div>';
+  }
+  var h='<h4>🚛 换算结果</h4>'+detail;
+  h+='<div class="r-row" style="font-weight:700;font-size:14px;"><span>累计标准轴载(BZZ-100)</span><span class="r-val">'+NsTotal.toLocaleString()+' 次</span></div>';
+  h+='<div class="calc-source">📚 公式：Ns=ΣC₁·C₂·Ni·(Pi/100)^4.35 | JTG D50-2017</div>';
+  R('r-axle',h);
+}
+
+// ===== 涵洞孔径 =====
+function calcDrain(){
+  var F=parseFloat(document.getElementById('dF').value)||0.5;
+  var q=parseFloat(document.getElementById('dQ').value)||60;
+  var p=parseFloat(document.getElementById('dP').value)||0.9;
+  var fr=parseInt(document.getElementById('dFr').value);
+  var Q=Math.round(0.278*p*q*F*10)/10;
+  var size=Q<0.5?'φ0.75m圆管涵':Q<1?'φ1.0m圆管涵':Q<2?'φ1.5m圆管涵':Q<5?'2.0×2.0m盖板涵':Q<10?'3.0×2.5m盖板涵':'需单独设计';
+  var h='<h4>💧 计算结果</h4>';
+  h+='<div class="r-row"><span>设计流量 Q</span><span class="r-val">'+Q.toFixed(1)+' m³/s</span></div>';
+  h+='<div class="r-row"><span>推荐涵洞孔径</span><span class="r-val">'+size+'</span></div>';
+  h+='<div class="r-row"><span>设计洪水频率</span><span class="r-val">1/'+fr+'</span></div>';
+  h+='<div class="calc-source">📚 推理公式：Q=0.278·ψ·q·F | JTG C30-2015 | 仅供参考，实际以水文计算为准</div>';
+  R('r-drain',h);
+}
+</script>
+</body>
+</html>
