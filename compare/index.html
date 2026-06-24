@@ -43,6 +43,8 @@
 </div>
 </div>
 
+<!-- 规范替代关系提示 -->
+<div id="replacementNotice" style="display:none;background:#fef3c7;padding:8px 14px;border-radius:8px;margin-bottom:14px;font-size:12px;color:#92400e;"></div>
 <!-- 已选规范 -->
 <div id="selectedSpecs" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;"></div>
 
@@ -83,7 +85,16 @@
   }
 
   function getSelectedSpecs() {
-    return selectedCodes.map(function(c) { return getSpecByCode(c); }).filter(Boolean);
+    var specs = selectedCodes.map(function(c) { return getSpecByCode(c); }).filter(Boolean);
+    // 检查废止规范
+    var replaced = specs.filter(function(s) { return s.status === 'replaced' && s.replacedBy; });
+    var notice = document.getElementById('replacementNotice');
+    if (replaced.length > 0) {
+      var msgs = replaced.map(function(s) { return '⛔ <b>' + s.code + '</b> 已废止，请使用 <b>' + s.replacedBy + '</b> 替代'; });
+      notice.innerHTML = msgs.join('<br>');
+      notice.style.display = 'block';
+    } else { notice.style.display = 'none'; }
+    return specs;
   }
 
   function renderSelected() {
