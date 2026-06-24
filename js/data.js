@@ -314,63 +314,111 @@ tags:["基础标准","总体设计"],
 pdf:'规范PDF/JTG B01-2014 公路工程技术标准.pdf',
 hasPdf:true,
 content:`<h4>📑 章节目录（14章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 公路分级</div><div>4 设计速度</div><div>5 车道与硬路肩</div><div>6 建筑限界</div><div>7 公路横断面</div><div>8 路线</div><div>9 路基路面</div><div>10 桥涵</div><div>11 隧道</div><div>12 交叉</div><div>13 沿线设施</div><div>14 环境保护</div></div>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 公路分级</div><div>4 设计速度</div><div>5 车道与硬路肩</div><div>6 建筑限界</div><div>7 公路横断面</div><div>8 路线</div><div>9 路基路面</div><div>10 桥涵</div><div>11 隧道</div><div>12 交叉</div><div>13 交通工程及沿线设施</div><div>14 环境保护</div></div>
 
-<h4>🚗 第3章 公路分级</h4>
-<table><tr><th>等级</th><th>AADT</th><th>出入控制</th><th>设计年限</th></tr>
-<tr><td>高速</td><td>≥15000(单向)</td><td>完全</td><td>20年</td></tr>
-<tr><td>一级</td><td>≥15000(单向)</td><td>部分</td><td>20年</td></tr>
-<tr><td>二级</td><td>5000~15000</td><td>不控</td><td>15年</td></tr>
-<tr><td>三级</td><td>2000~6000</td><td>不控</td><td>10~15年</td></tr>
-<tr><td>四级</td><td>&lt;2000(双)/&lt;400(单)</td><td>不控</td><td>10年</td></tr></table>
+<h4>📜 第1章 总则</h4>
+<ul>
+<li><span class="hl">1.0.1</span> 为规范公路工程建设，统一技术要求，制定本标准</li>
+<li><span class="hl">1.0.2</span> 适用于<span class="hl">新建和改扩建</span>公路工程</li>
+<li><span class="hl">1.0.3</span> 设计应遵循<span class="hl">安全耐久、经济适用、保护环境、节约资源</span>的原则</li>
+<li><span class="hl">1.0.4</span> 交通安全设施、防护设施、排水设施应与主体工程<span class="hl">同时设计、同时施工、同时投入使用</span></li>
+<li><span class="hl">1.0.5</span> 改扩建应合理利用既有工程</li>
+<li><span class="hl">1.0.6</span> 应积极采用新技术、新材料、新工艺、新设备</li>
+</ul>
 
-<h4>⚡ 第4章 设计速度</h4>
-<table><tr><th>等级</th><th>高速</th><th>一级</th><th>二级</th><th>三级</th><th>四级</th></tr><tr><td>设计速度(km/h)</td><td>120/100/80</td><td>100/80/60</td><td>80/60</td><td>40/30</td><td>30/20</td></tr></table>
+<h4>📖 第2章 术语</h4>
+<table><tr><th>术语</th><th>定义</th></tr>
+<tr><td><span class="hl">公路</span></td><td>联结城市、乡村，主要供汽车行驶的公共道路</td></tr>
+<tr><td>高速公路</td><td>专供汽车分向、分车道行驶，<span class="hl">全部控制出入</span>的多车道公路</td></tr>
+<tr><td>一级公路</td><td>供汽车分向、分车道行驶，<span class="hl">部分控制出入</span>的多车道公路</td></tr>
+<tr><td>二级公路</td><td>供汽车行驶的双车道公路</td></tr>
+<tr><td>设计速度</td><td>确定公路几何设计的基本要素并使其相互配合的<span class="hl">速度标准</span></td></tr>
+<tr><td>建筑限界</td><td>为保证车辆和行人安全通行，在公路一定宽度和高度范围内<span class="hl">不允许有任何障碍物</span>的空间界限</td></tr></table>
 
-<h4>📏 第5章 车道与路肩（全等级对照）</h4>
+<h4>🚗 第3章 公路分级（全等级对照）</h4>
+<table><tr><th>等级</th><th>功能定位</th><th>AADT(pcu/d)</th><th>出入控制</th><th>设计年限</th></tr>
+<tr><td><span class="hl">高速</span></td><td>专供汽车分向分道</td><td>≥15000(单向)</td><td>完全</td><td>20年</td></tr>
+<tr><td>一级</td><td>供汽车分向分道</td><td>≥15000(单向)</td><td>部分</td><td>20年</td></tr>
+<tr><td>二级</td><td>供汽车行驶</td><td>5000~15000</td><td>不控</td><td>15年</td></tr>
+<tr><td>三级</td><td>供汽车/非机动车</td><td>2000~6000</td><td>不控</td><td>10~15年</td></tr>
+<tr><td>四级</td><td>供汽车/非机动车</td><td>&lt;2000(双)/&lt;400(单)</td><td>不控</td><td>10年</td></tr></table>
+
+<h4>⚡ 第4章 设计速度（km/h）</h4>
+<table><tr><th>等级</th><th>高速</th><th>一级</th><th>二级</th><th>三级</th><th>四级</th></tr>
+<tr><td>设计速度</td><td>120/100/80</td><td>100/80/60</td><td>80/60</td><td>40/30</td><td>30/20</td></tr></table>
+<ul><li>高速困难路段可用80（地形地质复杂、造价剧增）；一级作<span class="hl">干线</span>宜用100/80，作<span class="hl">集散</span>可用60</li></ul>
+
+<h4>📏 第5章 车道与路肩（全等级）</h4>
 <table><tr><th>项目</th><th>高速</th><th>一级</th><th>二级</th><th>三级</th><th>四级</th></tr>
 <tr><td>车道宽度(m)</td><td>3.75</td><td>3.75/3.50</td><td>3.75/3.50</td><td>3.50/3.25</td><td>3.50/3.00</td></tr>
 <tr><td>车道数</td><td>≥4</td><td>≥4</td><td>≥2</td><td>≥2</td><td>≥2(或1)</td></tr>
-<tr><td>硬路肩(m)</td><td>3.00~3.50</td><td>2.50~3.00</td><td>0.75~1.50</td><td>—</td><td>—</td></tr>
+<tr><td>右侧硬路肩(m)</td><td>3.00~3.50</td><td>2.50~3.00</td><td>0.75~1.50</td><td>—</td><td>—</td></tr>
 <tr><td>土路肩(m)</td><td>0.75</td><td>0.75</td><td>0.50</td><td>0.50</td><td>0.25</td></tr></table>
 
 <h4>🏛 第6章 建筑限界</h4>
 <table><tr><th>项目</th><th>高速</th><th>一级</th><th>二级</th><th>三级</th><th>四级</th></tr>
-<tr><td>净高(m)</td><td>5.00</td><td>5.00</td><td>5.00</td><td>4.50</td><td>4.50</td></tr></table>
+<tr><td>行车道净高(m)</td><td colspan="3">5.00</td><td colspan="2">4.50</td></tr>
+<tr><td>人行道净高(m)</td><td colspan="5">2.50</td></tr></table>
+<ul><li>三/四级公路<span class="hl">沥青表处或砂石路面</span>时净高可4.50m</li><li>建筑限界内<span class="hl">不得有任何障碍物</span>侵入</li></ul>
 
 <h4>📐 第7章 横断面</h4>
 <table><tr><th>项目</th><th>高速</th><th>一级</th><th>二级</th><th>三级</th><th>四级</th></tr>
-<tr><td>中间带宽(m)</td><td>4.50</td><td>3.00~3.50</td><td>—</td><td>—</td><td>—</td></tr></table>
+<tr><td>中央分隔带(m)</td><td>3.00</td><td>2.00</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>左侧路缘带(m)</td><td>0.75</td><td>0.50~0.75</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>中间带总宽(m)</td><td>4.50</td><td>3.00~3.50</td><td>—</td><td>—</td><td>—</td></tr></table>
 
-<h4>📏 第8章 路线（全等级）</h4>
+<h4>📏 第8章 路线（全等级关键参数）</h4>
 <table><tr><th>项目</th><th>高速120</th><th>一级100</th><th>二级80</th><th>三级40</th><th>四级30</th></tr>
 <tr><td>平曲线一般值(m)</td><td>1000</td><td>700</td><td>400</td><td>100</td><td>65</td></tr>
 <tr><td>平曲线极限值(m)</td><td>650</td><td>400</td><td>250</td><td>60</td><td>30</td></tr>
 <tr><td>停车视距(m)</td><td>210</td><td>160</td><td>110</td><td>40</td><td>30</td></tr>
 <tr><td>最大纵坡(%)</td><td>3</td><td>4</td><td>5</td><td>7</td><td>8</td></tr>
 <tr><td>最大超高(%)</td><td>8</td><td>8</td><td>8</td><td>8</td><td>8</td></tr>
-</table>
+<tr><td>最大合成坡度(%)</td><td>10.0</td><td>10.0</td><td>10.5</td><td>10.5</td><td>10.5</td></tr>
+<tr><td>缓和曲线最小长度(m)</td><td>100</td><td>85</td><td>70</td><td>35</td><td>25</td></tr></table>
 
-<h4>🪨 第9章 路基路面（全等级压实度）</h4>
-<table><tr><th>部位</th><th>高速</th><th>一级</th><th>二级</th><th>三级</th><th>四级</th></tr>
-<tr><td>上路床(0~0.3m)</td><td>≥96%</td><td>≥96%</td><td>≥95%</td><td>≥94%</td><td>≥94%</td></tr>
-<tr><td>下路床(0.3~0.8m)</td><td>≥96%</td><td>≥96%</td><td>≥95%</td><td>≥94%</td><td>≥94%</td></tr>
-<tr><td>上路堤(0.8~1.5m)</td><td>≥94%</td><td>≥94%</td><td>≥94%</td><td>≥93%</td><td>≥93%</td></tr>
-<tr><td>下路堤(>1.5m)</td><td>≥93%</td><td>≥93%</td><td>≥92%</td><td>≥90%</td><td>≥90%</td></tr></table>
+<h4>🪨 第9章 路基路面（全等级）</h4>
+<table><tr><th>项目</th><th>高速</th><th>一级</th><th>二级</th><th>三级</th><th>四级</th></tr>
+<tr><td>上路床压实度(%)</td><td>≥96</td><td>≥96</td><td>≥95</td><td>≥94</td><td>≥94</td></tr>
+<tr><td>上路床CBR(%)</td><td>≥8</td><td>≥8</td><td>≥6</td><td>≥5</td><td>≥5</td></tr>
+<tr><td>沥青路面设计年限</td><td>15年</td><td>15年</td><td>12年</td><td>8年</td><td>8年</td></tr>
+<tr><td>水泥路面设计年限</td><td>30年</td><td>30年</td><td>20年</td><td>15年</td><td>10~15年</td></tr></table>
 
 <h4>🌉 第10章 桥涵（全等级）</h4>
-<table><tr><th>分类</th><th>单孔跨径</th><th>总长</th></tr><tr><td>特大桥</td><td>>150m</td><td>>1000m</td></tr><tr><td>大桥</td><td>40~150m</td><td>100~1000m</td></tr><tr><td>中桥</td><td>20~40m</td><td>30~100m</td></tr><tr><td>小桥</td><td>5~20m</td><td>8~30m</td></tr><tr><td>涵洞</td><td><5m</td><td>—</td></tr></table>
+<table><tr><th>分类</th><th>单孔跨径Lk(m)</th><th>多孔总长L(m)</th></tr>
+<tr><td>特大桥</td><td>>150</td><td>>1000</td></tr><tr><td>大桥</td><td>40~150</td><td>100~1000</td></tr>
+<tr><td>中桥</td><td>20~40</td><td>30~100</td></tr><tr><td>小桥</td><td>5~20</td><td>8~30</td></tr>
+<tr><td>涵洞</td><td><5</td><td>—</td></tr></table>
 <table><tr><th>项目</th><th>高速</th><th>一级</th><th>二级</th><th>三级</th><th>四级</th></tr>
-<tr><td>汽车荷载</td><td>Ⅰ级</td><td>Ⅰ级</td><td>Ⅱ级</td><td>Ⅱ级</td><td>Ⅱ级</td></tr>
-<tr><td>特大桥洪水</td><td>1/300</td><td>1/300</td><td>1/100</td><td>1/100</td><td>1/100</td></tr>
-<tr><td>大中桥洪水</td><td>1/100</td><td>1/100</td><td>1/100</td><td>1/50</td><td>1/50</td></tr>
-<tr><td>小桥涵洪水</td><td>1/100</td><td>1/100</td><td>1/50</td><td>1/25</td><td>1/25</td></tr>
-<tr><td>路基洪水</td><td>1/100</td><td>1/100</td><td>1/50</td><td>1/25</td><td>1/15</td></tr></table>
+<tr><td>汽车荷载</td><td>公路-Ⅰ级</td><td>公路-Ⅰ级</td><td>公路-Ⅱ级</td><td>公路-Ⅱ级</td><td>公路-Ⅱ级</td></tr>
+<tr><td>特大桥洪水频率</td><td>1/300</td><td>1/300</td><td>1/100</td><td>1/100</td><td>1/100</td></tr>
+<tr><td>大中桥洪水频率</td><td>1/100</td><td>1/100</td><td>1/100</td><td>1/50</td><td>1/50</td></tr>
+<tr><td>小桥涵洪水频率</td><td>1/100</td><td>1/100</td><td>1/50</td><td>1/25</td><td>1/25</td></tr>
+<tr><td>路基洪水频率</td><td>1/100</td><td>1/100</td><td>1/50</td><td>1/25</td><td>1/15</td></tr></table>
 
-<h4>🕳 第11章 隧道 / 🔀 第12章 交叉</h4>
-<ul><li>隧道分类：特长>3000m / 长1000~3000 / 中500~1000 / 短≤500</li><li>高速与其他公路相交<span class="hl">必须立交</span>；互通立交间距≥5km</li></ul>
-<div class="note-box"><strong>💡 母标准</strong><br>所有公路规范的指标均源于本标准，设计时<span class="hl">首先查阅</span>本标准确定等级和参数。</div>
-<h4>📄 规范原文</h4><ul><li>📥 <a href="./规范PDF/JTG B01-2014 公路工程技术标准.pdf" target="_blank" style="color:#2563eb;font-weight:600;">打开 PDF 原文</a></li></ul>`
+<h4>🕳 第11章 隧道</h4>
+<table><tr><th>分类</th><th>长度L(m)</th></tr><tr><td>特长隧道</td><td>>3000</td></tr><tr><td>长隧道</td><td>1000~3000</td></tr><tr><td>中隧道</td><td>500~1000</td></tr><tr><td>短隧道</td><td>≤500</td></tr></table>
+<ul><li>隧道建筑限界净高：高速/一级<span class="hl">5.00m</span>；二级及以下4.50m</li><li>隧道内最大纵坡<span class="hl">≤3%</span>（短于100m可放宽）</li><li>隧道防水等级：一级防水（不允许渗水）</li></ul>
+
+<h4>🔀 第12章 交叉</h4>
+<ul><li>高速公路与其他公路相交<span class="hl">必须采用立体交叉</span></li><li>一级公路与高速相交：立体交叉</li><li>互通式立交最小间距：高速<span class="hl">≥5km</span>；一级≥4km</li><li>平面交叉口间距：一级公路作为干线≥1000m；作为集散≥500m</li><li>分离式立交净空满足被交道路建筑限界要求</li></ul>
+
+<h4>📋 第13章 交通工程及沿线设施</h4>
+<table><tr><th>设施类型</th><th>高速</th><th>一级</th><th>二级</th><th>三级</th><th>四级</th></tr>
+<tr><td>交通安全设施</td><td>●</td><td>●</td><td>●</td><td>●</td><td>●</td></tr>
+<tr><td>服务设施(服务区)</td><td>●</td><td>●</td><td>○</td><td>—</td><td>—</td></tr>
+<tr><td>管理设施</td><td>●</td><td>●</td><td>○</td><td>—</td><td>—</td></tr>
+<tr><td>收费设施</td><td>●</td><td>○</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>监控设施</td><td>●</td><td>○</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>通信设施</td><td>●</td><td>○</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>照明设施</td><td>●</td><td>○</td><td>—</td><td>—</td><td>—</td></tr></table>
+<p>●必须设置 ○可选设置 —不要求</p>
+
+<h4>🌿 第14章 环境保护</h4>
+<ul><li>公路选线应<span class="hl">避让</span>自然保护区、水源保护区、风景名胜区</li><li>设置<span class="hl">声屏障</span>控制交通噪声（敏感点超标时）</li><li>边坡<span class="hl">绿化防护</span>防止水土流失</li><li>服务区、收费站污水须处理达标后排放</li><li>取土场、弃土场应复垦或恢复植被</li><li>野生动物通道：穿越栖息地时应设置</li></ul>
+
+<div class="note-box"><strong>💡 母标准地位</strong><br>JTG B01-2014 是公路工程的<span class="hl">"母标准"</span>——所有路线、路基路面、桥涵、隧道、交安规范的技术指标均源于本标准。设计时必须<span class="hl">首先查阅</span>本标准确定技术等级和基本参数，再查阅各专业规范。</div>
+<h4>📄 规范原文获取</h4><ul><li>📥 <a href="./规范PDF/JTG B01-2014 公路工程技术标准.pdf" target="_blank" style="color:#2563eb;font-weight:600;">打开 PDF 原文</a></li></ul>`
 },
 {
 code:'JTG B05-2015',
