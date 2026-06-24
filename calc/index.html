@@ -3,17 +3,8 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>专业计算器 — 公路设计规范</title>
+<link rel="stylesheet" href="../css/site.css?v=c">
 <style>
-:root{--bg:#f0f2f5;--card-bg:#fff;--text:#1a1a2e;--text2:#5a5a7a;--text3:#8888a0;--border:#e8e8f0;--accent:#3b6df0;--ah:#2851d1;--radius:14px;--shadow:0 2px 8px rgba(0,0,0,.06);--shadow-md:0 6px 20px rgba(0,0,0,.1);--t:.2s ease}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-a{color:var(--accent);text-decoration:none}
-.header{background:linear-gradient(135deg,#0f1d3a,#1a3a6e 30%,#1e4b8f 60%,#1a3a6e);color:#fff;padding:16px 0;box-shadow:0 4px 24px rgba(15,29,58,.35)}
-.header-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:12px}
-.header-logo{width:40px;height:40px;background:rgba(255,255,255,.15);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;text-decoration:none;flex-shrink:0}
-.header h1{font-size:20px}.header .sub{font-size:11px;opacity:.7}
-.main{max-width:1200px;margin:0 auto;padding:20px 24px 60px}
-.back{font-size:13px;color:var(--accent);margin-bottom:14px;display:block}
 .calc-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
 .ctab{padding:8px 16px;border-radius:18px;border:1.5px solid var(--border);background:#fff;font-size:13px;cursor:pointer;transition:var(--t);white-space:nowrap}
 .ctab:hover{border-color:var(--accent);color:var(--accent)}
@@ -40,10 +31,10 @@ a{color:var(--accent);text-decoration:none}
 </style>
 </head>
 <body>
-<header class="header"><div class="header-inner">
-<a href="../" class="header-logo">🧮</a><div><h1>专业计算器</h1><div class="sub">工程计算 · 公式溯源 · 规范引用</div></div>
-</div></header>
-<main class="main">
+<header class="header"><div class="header-inner"><div class="header-top">
+<a href="../" class="header-logo" style="text-decoration:none;">🧮</a><div><h1>专业计算器</h1><p class="subtitle">工程计算 · 公式溯源 · 规范引用</p></div>
+</div></div></header>
+<main class="main" style="max-width:1200px;">
 <div id="breadcrumb"></div>
 <div class="calc-tabs" id="tabs">
 <button class="ctab active" data-panel="curve">📐 平曲线要素</button>
@@ -119,6 +110,7 @@ a{color:var(--accent);text-decoration:none}
 <script src="../js/data.js?v=2"></script>
 <script src="../js/router.js?v=2"></script>
 <script src="../js/components.js?v=2"></script>
+<script src="../js/theme.js?v=2"></script>
 <script>
 // 面包屑
 document.getElementById('breadcrumb').innerHTML = renderBreadcrumb([{label:'🏠 首页',link:'../'},{label:'🧮 专业计算器'}]);
