@@ -97,7 +97,7 @@ var SCENES = [
 
 var html = '';
 SCENES.forEach(function(scene){
-  html += '<div class="scene-card"><h3>'+scene.icon+' '+scene.name+'</h3><p>'+scene.desc+'</p><div class="scene-links">';
+  html += '<div class="scene-card"><h3>'+scene.icon+' '+scene.name+'</h3><p></p><div style="font-size:11px;color:#92400e;background:#fef3c7;padding:6px 10px;border-radius:6px;margin-bottom:8px;line-height:1.5;"></div><div class="scene-links">';
   scene.specs.forEach(function(sp){
     html += '<a href="../specs/?code='+encodeURIComponent(sp.code)+'" class="scene-link'+(sp.key?' key':'')+'" title="'+ (sp.note||'') +'">'+sp.code.substring(0,18)+'</a>';
   });
