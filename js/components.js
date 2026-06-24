@@ -6,7 +6,7 @@
 function renderCard(s, linkToDetail, basePath) {
   var icon = CAT_ICONS[s.cat] || '📋';
   var sc = s.status === 'current' ? 'status-current' : 'status-replaced';
-  var st = s.status === 'current' ? '现行' : '已替代';
+  var st = s.status === 'current' ? '现行' : (s.replacedBy ? '⛔已废止→' + s.replacedBy : '已替代');
   var tags = s.tags.map(function(t) {
     return '<span class="card-tag tag-' + s.cat + '">' + t + '</span>';
   }).join('');
