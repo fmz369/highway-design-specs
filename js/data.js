@@ -11,7 +11,13 @@ pdf:null,
 hasPdf:false,
 content:`<h4>📑 章节目录（9章）</h4>
 <div class="ch-list"><div>1~3 总则/术语/规定</div><div>4 路基</div><div>5 基层</div><div>6 沥青面层</div><div>7 水泥混凝土面层</div><div>8 附属构筑物</div><div>9 验收</div></div>
-<h4>🔑 关键验收指标</h4><table><tr><th>项目</th><th>快速/主干路</th><th>次干路</th><th>支路</th></tr><tr><td>路基压实度(0~80cm)</td><td><span class="hl">≥96%</span></td><td>≥95%</td><td>≥93%</td></tr><tr><td>沥青面层压实度</td><td colspan="3">≥96%（马歇尔标准密度）</td></tr><tr><td>弯沉值</td><td colspan="3">≤设计弯沉值</td></tr><tr><td>水泥混凝土抗弯拉强度</td><td colspan="3">≥设计值</td></tr></table>`
+<h4>🔑 关键验收指标（全等级）</h4>
+<table><tr><th>项目</th><th>快速/主干路</th><th>次干路</th><th>支路</th></tr>
+<tr><td>路基压实度(0~80cm)</td><td><span class="hl">≥96%</span></td><td>≥95%</td><td>≥93%</td></tr>
+<tr><td>沥青面层压实度</td><td colspan="3">≥96%（马歇尔标准密度）</td></tr>
+<tr><td>弯沉值</td><td colspan="3">≤设计弯沉值</td></tr>
+<tr><td>水泥混凝土抗弯拉强度</td><td colspan="3">≥设计值</td></tr>
+<tr><td>平整度(σ)</td><td>≤1.8mm</td><td>≤2.5mm</td><td>—</td></tr></table>`
 },
 {
 code:'CJJ 37-2012（2016版）',
@@ -207,10 +213,14 @@ status:'current',
 tags:["标准体系"],
 pdf:null,
 hasPdf:false,
-content:`<h4>📑 章节目录（5章+附录）</h4>
+content:`<h4>📑 章节目录</h4>
 <div class="ch-list"><div>1 范围</div><div>2 术语</div><div>3 体系结构</div><div>4 标准编号规则</div><div>5 标准体系表</div><div>附录A 标准明细表</div></div>
-<h4>🏗 第3章 体系结构</h4><ul><li>公路工程标准体系分<span class="hl">三层</span>：<span class="hl">基础标准→通用标准→专用标准</span></li><li>基础标准：术语、符号、计量单位</li><li>通用标准：勘测、设计、施工、养护、检测</li><li>专用标准：针对特定工程或材料</li></ul>
-<h4>📋 第4章 编号规则</h4><ul><li><span class="hl">JTG</span>：强制性行业标准（如 JTG B01-2014）</li><li><span class="hl">JTG/T</span>：推荐性行业标准（如 JTG/T 3311-2021）</li><li>编号 = 分类号 + 序号 + 发布年份</li></ul>`
+<h4>🏗 三层标准体系</h4>
+<table><tr><th>层级</th><th>内容</th><th>示例</th></tr>
+<tr><td><span class="hl">基础标准</span></td><td>术语、符号、计量单位</td><td>JTG B01-2014</td></tr>
+<tr><td>通用标准</td><td>勘测、设计、施工、养护等共性要求</td><td>JTG D20-2017、JTG D30-2015</td></tr>
+<tr><td>专用标准</td><td>针对特定工程或材料的具体要求</td><td>JTG/T D31-2008（软基）</td></tr></table>
+<h4>📋 编号规则</h4><ul><li><span class="hl">JTG</span>：强制性行业标准</li><li><span class="hl">JTG/T</span>：推荐性行业标准（带T为推荐）</li><li>编号格式：JTG + 分类号 + 序号 + 发布年份</li></ul>`
 },
 {
 code:'JTG 2111-2019',
@@ -446,11 +456,15 @@ status:'current',
 tags:["造价"],
 pdf:null,
 hasPdf:false,
-content:`<h4>📑 章节目录</h4>
+content:`<h4>📑 章节目录（5章+附录）</h4>
 <div class="ch-list"><div>1 总则</div><div>2 概预算编制</div><div>3 费用组成</div><div>4 费用标准</div><div>5 预备费</div><div>附录 计费表格</div></div>
 <h4>💰 费用构成公式</h4><ul><li><span class="hl">建筑安装工程费</span> = 直接费 + 间接费 + 利润 + 税金</li><li>直接费 = 直接工程费(人材机) + 措施费</li><li>间接费 = 企业管理费 + 规费</li></ul>
-<h4>📊 工程建设其他费用</h4><ul><li>土地使用费 / 拆迁补偿费</li><li>建设单位管理费</li><li>勘察设计费 / 监理费</li><li>研究试验费 / 专项评价费</li></ul>
-<h4>🔑 预备费</h4><ul><li><span class="hl">基本预备费</span>：按工程费用5%~10%计取</li><li>涨价预备费：按建设期和物价指数计算</li></ul>`
+<h4>📊 工程建设其他费用</h4><table><tr><th>费用项目</th><th>内容</th></tr>
+<tr><td>土地使用费</td><td>征地拆迁补偿</td></tr>
+<tr><td>建设管理费</td><td>建设单位管理费、监理费</td></tr>
+<tr><td>勘察设计费</td><td>可行性研究、初步设计、施工图设计</td></tr>
+<tr><td>专项评价费</td><td>环评、水保、地灾评估</td></tr></table>
+<h4>🔑 预备费</h4><ul><li>基本预备费：按工程费用<span class="hl">5%~10%</span>计取</li><li>涨价预备费：按建设期和物价指数计算</li></ul>`
 },
 {
 code:'JTG/T 3311-2021',
@@ -1021,20 +1035,14 @@ status:'current',
 tags:["钢筋","材料"],
 pdf:'规范PDF/GBT 13788-2024 冷轧带肋钢筋.pdf',
 hasPdf:true,
-content:`
-<h4>📑 适用范围</h4>
-<p>规定了冷轧带肋钢筋的术语、分类、技术要求等。2024年新版（替代GB/T 13788-2017）。</p>
-<h4>🔑 牌号与力学性能</h4>
-<table><tr><th>牌号</th><th>屈服强度(MPa)</th><th>抗拉强度(MPa)</th><th>伸长率(%)</th></tr>
+content:`<h4>📑 适用范围</h4><p>规定<span class="hl">冷轧带肋钢筋</span>的技术要求。2024年新版（替代2017版）。</p>
+<h4>🔩 牌号与力学性能</h4>
+<table><tr><th>牌号</th><th>屈服(MPa)</th><th>抗拉(MPa)</th><th>伸长率(%)</th></tr>
 <tr><td>CRB550</td><td>≥500</td><td>≥550</td><td>≥8.0</td></tr>
-<tr><td>CRB600H</td><td>≥540</td><td>≥600</td><td>≥14.0</td></tr>
+<tr><td><span class="hl">CRB600H</span></td><td>≥540</td><td>≥600</td><td>≥14.0</td></tr>
 <tr><td>CRB680H</td><td>≥600</td><td>≥680</td><td>≥14.0</td></tr>
 <tr><td>CRB800H</td><td>≥720</td><td>≥800</td><td>≥12.0</td></tr></table>
-<ul>
-<li>直径范围：4~12mm</li>
-<li><span class="hl">CRB600H</span>为高延性冷轧带肋钢筋，广泛用于板类构件配筋</li>
-<li>公路应用：路面钢筋网、桥面铺装、预制构件</li>
-</ul>`
+<ul><li>直径范围：4~12mm</li><li><span class="hl">CRB600H</span>为高延性牌号，广泛用于板类构件配筋、路面钢筋网</li></ul>`
 },
 {
 code:'GB 50011-2010(2024版)',
@@ -1044,9 +1052,18 @@ status:'current',
 tags:["抗震","国家标准"],
 pdf:'规范PDF/GB 50011-2010(2024版) 建筑抗震设计标准.pdf',
 hasPdf:true,
-content:`<h4>📑 适用范围</h4><p>适用于抗震设防烈度<span class="hl">6~9度</span>地区建筑工程。2024年修订版。</p>
-<h4>🌍 设防参数</h4><table><tr><th>烈度</th><th>6</th><th>7</th><th>7.5</th><th>8</th><th>8.5</th><th>9</th></tr><tr><td>加速度</td><td>0.05g</td><td>0.10g</td><td>0.15g</td><td>0.20g</td><td>0.30g</td><td>0.40g</td></tr></table>
-<ul><li>设计地震分组：<span class="hl">第一/二/三组</span>（影响Tg）</li><li>场地类别：Ⅰ₀~Ⅳ类</li><li>特征周期Tg：0.20~0.90s</li><li>公路桥涵抗震设计参考JTG/T 2231-01</li></ul>`
+content:`<h4>📑 适用范围</h4><p>适用于抗震设防烈度<span class="hl">6~9度</span>地区建筑工程的抗震设计。2024年修订版。</p>
+<h4>🌍 抗震设防核心参数</h4>
+<table><tr><th>设防烈度</th><th>6度</th><th>7度</th><th>7.5度</th><th>8度</th><th>8.5度</th><th>9度</th></tr>
+<tr><td>设计基本加速度</td><td>0.05g</td><td>0.10g</td><td>0.15g</td><td>0.20g</td><td>0.30g</td><td>0.40g</td></tr></table>
+<h4>📐 设计地震分组与特征周期</h4>
+<table><tr><th>场地类别</th><th>第一组</th><th>第二组</th><th>第三组</th></tr>
+<tr><td>Ⅰ₀</td><td>0.20</td><td>0.25</td><td>0.30</td></tr>
+<tr><td>Ⅰ₁</td><td>0.25</td><td>0.30</td><td>0.35</td></tr>
+<tr><td>Ⅱ</td><td>0.35</td><td>0.40</td><td>0.45</td></tr>
+<tr><td>Ⅲ</td><td>0.45</td><td>0.55</td><td>0.65</td></tr>
+<tr><td>Ⅳ</td><td>0.65</td><td>0.75</td><td>0.90</td></tr></table>
+<ul><li>公路桥涵抗震设计参考JTG/T 2231-01-2020</li><li>两水准设防：小震不坏(E1)、大震不倒(E2)</li></ul>`
 },
 {
 code:'GB 18306-2015',
@@ -1091,8 +1108,13 @@ status:'current',
 tags:["钢板桩","材料"],
 pdf:'规范PDF/GBT 20933-2021 热轧钢板桩.pdf',
 hasPdf:true,
-content:`<h4>📑 适用范围</h4><p>规定热轧钢板桩的分类、技术要求。2021年新版，适用于<span class="hl">桥梁围堰、深基坑支护、挡土墙</span>等工程。</p>
-<h4>🔑 常见型号与截面特性</h4><table><tr><th>类型</th><th>宽度(mm)</th><th>高度(mm)</th><th>截面模量(cm³/m)</th><th>适用</th></tr><tr><td><span class="hl">U型</span></td><td>400~750</td><td>75~450</td><td>500~3800</td><td>一般支护/围堰</td></tr><tr><td>Z型</td><td>500~800</td><td>180~420</td><td>1000~4500</td><td>深基坑/深水围堰</td></tr><tr><td>直线型</td><td>500~800</td><td>—</td><td>—</td><td>圆形围堰/格型结构</td></tr></table><ul><li>常用牌号：SY295、SY390</li><li>公路应用：桥梁<span class="hl">承台围堰</span>、深基坑支护、挡土墙</li></ul>`
+content:`<h4>📑 适用范围</h4><p>规定<span class="hl">热轧钢板桩</span>的分类和技术要求。用于桥梁围堰、深基坑支护、挡土墙。</p>
+<h4>🔑 常见型号与截面特性</h4>
+<table><tr><th>类型</th><th>宽度(mm)</th><th>截面模量(cm³/m)</th><th>适用</th></tr>
+<tr><td><span class="hl">U型</span></td><td>400~750</td><td>500~3800</td><td>一般支护/围堰</td></tr>
+<tr><td>Z型</td><td>500~800</td><td>1000~4500</td><td>深基坑/深水围堰</td></tr>
+<tr><td>直线型</td><td>500~800</td><td>—</td><td>圆形围堰/格型结构</td></tr></table>
+<ul><li>常用牌号：SY295、SY390</li><li>公路应用：桥梁<span class="hl">承台围堰</span>、深基坑支护</li></ul>`
 },
 {
 code:'CJJ 129-2009',
@@ -1602,7 +1624,12 @@ pdf:null,
 hasPdf:false,
 content:`<h4>📑 章节目录（7章）</h4>
 <div class="ch-list"><div>1 总则</div><div>2 材料分类</div><div>3 加筋</div><div>4 防渗</div><div>5 反滤与排水</div><div>6 隔离</div><div>7 防护</div></div>
-<h4>🧵 材料分类及应用</h4><table><tr><th>类型</th><th>用途</th><th>关键参数</th></tr><tr><td><span class="hl">土工布</span></td><td>反滤/隔离/防护</td><td>单位质量100~800g/m²</td></tr><tr><td><span class="hl">土工格栅</span></td><td>加筋</td><td>抗拉强度30~200kN/m</td></tr><tr><td>土工膜</td><td>防渗</td><td>厚度0.5~3mm</td></tr><tr><td>土工格室</td><td>边坡防护/地基加固</td><td>高度50~200mm</td></tr></table>`
+<h4>🧵 四种土工材料及应用</h4>
+<table><tr><th>类型</th><th>主要功能</th><th>关键参数</th><th>公路应用</th></tr>
+<tr><td><span class="hl">土工布</span></td><td>反滤/隔离/防护</td><td>单位质量100~800g/m²</td><td>路基隔离层/反滤层</td></tr>
+<tr><td>土工格栅</td><td>加筋</td><td>抗拉强度30~200kN/m</td><td>软基加筋/边坡加筋</td></tr>
+<tr><td>土工膜</td><td>防渗</td><td>厚度0.5~3mm</td><td>路基防渗/膨胀土隔水</td></tr>
+<tr><td>土工格室</td><td>地基加固/边坡防护</td><td>高度50~200mm</td><td>边坡绿化/地基加固</td></tr></table>`
 },
 {
 code:'JTG/T D33-2012',
@@ -2238,10 +2265,11 @@ status:'current',
 tags:["城市排水"],
 pdf:null,
 hasPdf:false,
-content:`<h4>📑 章节目录（4章）</h4><div class="ch-list"><div>1 总则</div><div>2 管渠维护</div><div>3 泵站维护</div><div>4 安全管理</div></div>
-<h4>🔧 管渠维护要点</h4><ul><li>重要管渠清淤<span class="hl">1~2年/次</span></li><li>雨水口应在<span class="hl">汛前全面清掏</span></li><li>检查井每年检查不少于1次</li><li>管道CCTV检测周期：主干管<span class="hl">3~5年</span></li></ul>
-<h4>⚡ 泵站维护</h4><ul><li>水泵机组每月试运行不少于1次</li><li>汛期<span class="hl">24小时值班</span>，备用电源随时可用</li></ul>
-<h4>⚠ 安全管理</h4><ul><li><span class="hl">有限空间作业</span>必须执行"先通风、再检测、后作业"</li><li>井下作业须配备<span class="hl">气体检测仪</span>和<span class="hl">防毒面具</span></li><li>作业人员须持证上岗</li></ul>`
+content:`<h4>📑 章节目录（4章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 管渠维护</div><div>3 泵站维护</div><div>4 安全管理</div></div>
+<h4>🔧 管渠维护要点</h4><ul><li>重要管渠清淤<span class="hl">1~2年/次</span></li><li>雨水口应在<span class="hl">汛前全面清掏</span></li><li>检查井每年检查≥1次</li><li>管道CCTV检测周期：主干管<span class="hl">3~5年</span></li></ul>
+<h4>⚡ 泵站维护</h4><ul><li>水泵机组每月试运行≥1次</li><li>汛期<span class="hl">24小时值班</span>，备用电源随时可用</li></ul>
+<h4>⚠ 安全管理</h4><ul><li>有限空间作业必须执行<span class="hl">"先通风、再检测、后作业"</span></li><li>井下作业须配气体检测仪和防毒面具</li><li>作业人员须持证上岗</li></ul>`
 },
 {
 code:'GB 50201-2014',
@@ -2251,14 +2279,15 @@ status:'current',
 tags:["防洪","水文"],
 pdf:null,
 hasPdf:false,
-content:`
-<h4>📑 章节</h4><div class="ch-list"><div>1 总则</div><div>2 城市防洪</div><div>3 乡村防洪</div><div>4 工矿企业防洪</div><div>5 交通设施防洪</div></div>
-<h4>🌊 公路防洪标准（设计洪水频率）</h4>
+content:`<h4>📑 章节目录（5章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 城市防洪</div><div>3 乡村防洪</div><div>4 工矿企业防洪</div><div>5 交通设施防洪</div></div>
+<h4>🌊 公路桥涵防洪标准（设计洪水频率）</h4>
 <table><tr><th>工程部位</th><th>高速/一级</th><th>二级</th><th>三级</th><th>四级</th></tr>
-<tr><td>特大桥</td><td>1/300</td><td>1/100</td><td>1/100</td><td>1/100</td></tr>
+<tr><td>特大桥</td><td><span class="hl">1/300</span></td><td>1/100</td><td>1/100</td><td>1/100</td></tr>
 <tr><td>大中桥</td><td>1/100</td><td>1/100</td><td>1/50</td><td>1/50</td></tr>
 <tr><td>小桥涵</td><td>1/100</td><td>1/50</td><td>1/25</td><td>1/25</td></tr>
-<tr><td>路基</td><td>1/100</td><td>1/50</td><td>1/25</td><td>1/15</td></tr></table>`
+<tr><td>路基</td><td>1/100</td><td>1/50</td><td>1/25</td><td>1/15</td></tr></table>
+<ul><li>城市防洪标准：大城市≥200年一遇；中等城市100~200年；小城市50~100年</li></ul>`
 },
 {
 code:'JTG C30-2015',
@@ -2365,11 +2394,14 @@ status:'current',
 tags:["机电","质检"],
 pdf:null,
 hasPdf:false,
-content:`
-<h4>📑 章节目录（7章）</h4>
+content:`<h4>📑 章节目录（7章）</h4>
 <div class="ch-list"><div>1 总则</div><div>2 监控设施</div><div>3 收费设施</div><div>4 通信设施</div><div>5 照明设施</div><div>6 通风/消防</div><div>7 供配电</div></div>
-<h4>📊 评定规则</h4><table><tr><th>项目</th><th>要求</th></tr><tr><td>合格率</td><td><span class="hl">≥95%</span>为合格工程</td></tr><tr><td>关键项目(标★)</td><td>不合格<span class="hl">一票否决</span></td></tr></table>
-<h4>🔑 各系统关键指标</h4><ul><li>监控：车辆检测器计数误差<span class="hl">≤2%</span></li><li>收费：ETC交易成功率<span class="hl">≥99%</span></li><li>照明：照度均匀度<span class="hl">≥0.4</span></li><li>通风：CO浓度正常≤150ppm</li></ul>`
+<h4>📊 评定规则</h4><ul><li>合格率<span class="hl">≥95%</span>为合格工程</li><li>关键项目（标★）不合格<span class="hl">一票否决</span></li></ul>
+<h4>🔑 各系统关键指标</h4><table><tr><th>系统</th><th>关键指标</th><th>标准</th></tr>
+<tr><td>监控</td><td>车辆检测器计数精度</td><td>误差<span class="hl">≤2%</span></td></tr>
+<tr><td>收费</td><td>ETC交易成功率</td><td><span class="hl">≥99%</span></td></tr>
+<tr><td>照明</td><td>路面照度均匀度</td><td><span class="hl">≥0.4</span></td></tr>
+<tr><td>通风</td><td>CO浓度</td><td>正常≤150ppm</td></tr></table>`
 },
 {
 code:'JTG D70/2-2014',
