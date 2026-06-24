@@ -133,16 +133,32 @@
       var best = results[0];
       html += '<div class="qa-result"><div class="qa-question">🤖 关于"' + escapeHtml(question) + '"</div><div class="qa-answer">';
       if (best.excerpts.length > 0) {
-        best.excerpts.forEach(function (ex, ei) {
-          if (ei === 0) {
-            // 高亮答案
-            var highlighted = escapeHtml(ex.text);
-            best.matches.forEach(function (kw) { highlighted = highlighted.replace(new RegExp(kw.replace(/[.*+?^${}()|[\]\\\/]/g, '\\$&'), 'g'), '<span class="hl">' + kw + '</span>'); });
-            html += '<p style="font-size:14px;margin-bottom:8px;">' + highlighted + '</p>';
-          } else if (ei === 1 && ex.text.match(/\d/)) {
-            html += '<p style="font-size:12px;color:var(--text2);margin-top:4px;">' + escapeHtml(ex.text.substring(0, 200)) + '</p>';
+        var mainExcerpt = best.excerpts[0].text;
+        // 提取关键数值对
+        var valuePairs = mainExcerpt.match(/([一-龥]+(?:宽度|速度|半径|坡度|视距|年限|厚度|强度|等级|频率|荷载|超高|加宽|压实度|CBR|净高)[^\d]*)([\d.]+[~\-/]?[\d.]*\s*[mMkPp年%％]*)/g);
+        if (!valuePairs || valuePairs.length === 0) {
+          valuePairs = mainExcerpt.match(/[一-龥]{2,8}[：:]*\s*([\d.]+[~\-/]?[\d.]*\s*[mMkPp年%％≥≤]*)/g);
+        }
+        var highlighted = escapeHtml(mainExcerpt);
+        best.matches.forEach(function (kw) { highlighted = highlighted.replace(new RegExp(kw.replace(/[.*+?^${}()|[\]\\\/]/g, '\\$&'), 'g'), '<span class="hl">' + kw + '</span>'); });
+        html += '<p style="font-size:14px;margin-bottom:8px;">' + highlighted.substring(0, 300) + '</p>';
+        // 精确参数卡片
+        if (valuePairs && valuePairs.length > 0) {
+          html += '<div style="background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:10px 14px;margin-top:8px;"><div style="font-size:11px;color:#166534;margin-bottom:4px;">📌 精确参数</div>';
+          var shown = 0;
+          valuePairs.forEach(function (vp) {
+            if (shown >= 4) return;
+            var clean = vp.replace(/<[^>]+>/g, '').trim();
+            if (clean.length > 5 && clean.length < 60) { html += '<span style="display:inline-block;background:#fff;border:1px solid #bbf7d0;border-radius:6px;padding:4px 10px;margin:3px;font-size:13px;font-weight:600;color:#166534;">' + escapeHtml(clean) + '</span>'; shown++; }
+          });
+          html += '</div>';
+        }
+        // 补充段落
+        for (var ei = 1; ei < Math.min(best.excerpts.length, 3); ei++) {
+          if (best.excerpts[ei].text.match(/\d/)) {
+            html += '<p style="font-size:12px;color:var(--text2);margin-top:6px;">' + escapeHtml(best.excerpts[ei].text.substring(0, 180)) + '</p>';
           }
-        });
+        }
       }
       html += '</div><div class="qa-source">📚 <a href="../specs/?code=' + encodeURIComponent(best.spec.code) + '" style="font-weight:600;">' + best.spec.code + ' ' + best.spec.title + '</a> — 点击查看完整规范</div></div>';
       if (results.length > 1) {
@@ -159,6 +175,10 @@
   }
 
   function escapeHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  // 初始化显示历史
+  var initHistory = renderHistory();
+  if (initHistory) { document.getElementById('qaResults').innerHTML = initHistory; }
 
   var bt = document.createElement('button'); bt.className = 'back-top'; bt.id = 'backTop'; bt.textContent = '↑'; document.body.appendChild(bt);
   window.addEventListener('scroll', function () { bt.classList.toggle('visible', window.scrollY > 700); });
