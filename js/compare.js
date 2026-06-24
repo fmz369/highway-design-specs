@@ -67,18 +67,19 @@ function extractKeyParams(spec, matchGrade) {
   var rows = c.match(/<tr>[\s\S]*?<\/tr>/gi) || [];
   var gradeCol = -1;
   if (matchGrade) {
-    // 找最好的表头行
+    // 找最好的表头行（选最多等级列的那个）
+    var bestGradeCol = -1, bestGradeCount = 0;
     for (i = 0; i < rows.length; i++) {
       var hc = rows[i].match(/<t[dh][^>]*>([^<]*)<\/t[dh]>/gi) || [];
       var gc = hc.map(function(t){return t.replace(/<[^>]+>/g,'').trim();});
       var gradeCount = gc.filter(function(t){return t.indexOf('高速')>=0||t.indexOf('一级')>=0||t.indexOf('二级')>=0||t.indexOf('三级')>=0||t.indexOf('四级')>=0;}).length;
-      if (gradeCount >= 2) {
+      if (gradeCount >= 2 && gradeCount > bestGradeCount) {
         for (j = 0; j < gc.length; j++) {
-          if (gc[j].indexOf(matchGrade) >= 0) { gradeCol = j; break; }
+          if (gc[j].indexOf(matchGrade) >= 0) { bestGradeCol = j; bestGradeCount = gradeCount; break; }
         }
-        if (gradeCol >= 0) break;
       }
     }
+    gradeCol = bestGradeCol;
     // 从该列提取数据
     if (gradeCol >= 0) {
       for (i = 0; i < rows.length; i++) {
