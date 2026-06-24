@@ -84,7 +84,7 @@ function extractKeyParams(spec, matchGrade) {
     if (gradeCol >= 0) {
       for (i = 0; i < rows.length; i++) {
         var dc = rows[i].match(/<t[dh][^>]*>([^<]*)<\/t[dh]>/gi) || [];
-        if (dc.length <= gradeCol + 1) continue;
+        if (dc.length <= gradeCol) continue;
         var pair = extractPair(dc, 0, gradeCol);
         if (pair) {
           var nk = normalize(pair.name);
