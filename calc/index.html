@@ -44,7 +44,7 @@ a{color:var(--accent);text-decoration:none}
 <a href="../" class="header-logo">🧮</a><div><h1>专业计算器</h1><div class="sub">工程计算 · 公式溯源 · 规范引用</div></div>
 </div></header>
 <main class="main">
-<a href="../" class="back">← 返回首页</a>
+<div id="breadcrumb"></div>
 <div class="calc-tabs" id="tabs">
 <button class="ctab active" data-panel="curve">📐 平曲线要素</button>
 <button class="ctab" data-panel="sight">👁 视距计算</button>
@@ -113,9 +113,15 @@ a{color:var(--accent);text-decoration:none}
 </div>
 
 </div></main>
-<footer class="footer"><a href="../">🏠 首页</a> | 计算结果仅供参考，设计以规范为准</footer>
+<div id="pageFooter"></div>
+<script>document.getElementById('pageFooter').innerHTML = renderFooter();</script>
 
+<script src="../js/data.js?v=2"></script>
+<script src="../js/router.js?v=2"></script>
+<script src="../js/components.js?v=2"></script>
 <script>
+// 面包屑
+document.getElementById('breadcrumb').innerHTML = renderBreadcrumb([{label:'🏠 首页',link:'../'},{label:'🧮 专业计算器'}]);
 // 标签切换
 document.getElementById('tabs').addEventListener('click',function(e){var t=e.target.closest('.ctab');if(!t)return;document.querySelectorAll('.ctab').forEach(function(x){x.classList.remove('active')});t.classList.add('active');document.querySelectorAll('.calc-panel').forEach(function(x){x.classList.remove('active')});document.getElementById('panel-'+t.dataset.panel).classList.add('active');});
 
