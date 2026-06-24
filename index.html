@@ -83,6 +83,30 @@
   var favs = getFavoriteCount();
   var curentPct = Math.round(current / total * 100);
 
+
+  // 每日一条
+  function dailyCard(){
+    var day = Math.floor(Date.now() / 86400000);
+    var idx = day % SPECS.length;
+    var sp = SPECS[idx];
+    while (sp.status !== 'current') { idx = (idx + 1) % SPECS.length; sp = SPECS[idx]; }
+    var c = sp.content;
+    var lis = c.match(/<li>(?!.*href)([^<]+(?:<span[^>]*>[^<]*<\/span>)?[^<]*)<\/li>/gi) || [];
+    var best = '';
+    for (var li = 0; li < lis.length; li++) {
+      var clean = lis[li].replace(/<[^>]+>/g, '').trim();
+      if (clean.length > 25 && clean.length < 130 && !best) { best = clean; break; }
+    }
+    if (!best) best = '公路设计应遵循安全耐久、经济适用、保护环境、节约资源的原则。';
+    var today = new Date().toDateString();
+    try {
+      var stored = localStorage.getItem('daily_seen');
+      var seen = stored ? JSON.parse(stored) : {};
+      var isNew = !seen[today];
+    } catch(e) { var isNew = true; }
+    return '<div class="daily-card"><div class="daily-card-header"><span class="daily-card-title">✨ 每日一条</span>' + (isNew ? '<span class="daily-badge">NEW</span>' : '') + '</div><div class="daily-spec">' + sp.code + '</div><div class="daily-text">' + best.substring(0, 140) + '</div><a href="specs/?code=' + encodeURIComponent(sp.code) + '" class="daily-link">查看规范 →</a></div>';
+  }
+
   var dashHTML = '';
   // 统计卡片
   
@@ -120,7 +144,7 @@
   dashHTML += '<div class="pie-wrap"><div class="donut-box"><svg viewBox="0 0 210 210" class="donut-svg">' + svgParts + '</svg><div class="donut-center"><span class="donut-num">' + totalAll + '</span><span class="donut-label">部规范</span></div></div><div class="pie-legend">' + legendHTML + '</div></div>';
 
 
-  document.getElementById('dashboard').innerHTML = dashHTML;
+  document.getElementById('dashboard').innerHTML = '<div class="dashboard-grid">'+dashHTML+dailyCard()+'</div>';
   } catch(e) {
     document.getElementById('dashboard').innerHTML = '<div class="pie-wrap" style="justify-content:center;padding:30px;color:#ef4444;">⚠️ 看板加载失败：' + e.message + '</div>';
   }
