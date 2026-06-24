@@ -134,11 +134,26 @@
       html += '<div class="qa-result"><div class="qa-question">🤖 关于"' + escapeHtml(question) + '"</div><div class="qa-answer">';
       if (best.excerpts.length > 0) {
         var mainExcerpt = best.excerpts[0].text;
-        // 提取关键数值对
-        var valuePairs = mainExcerpt.match(/([一-龥]+(?:宽度|速度|半径|坡度|视距|年限|厚度|强度|等级|频率|荷载|超高|加宽|压实度|CBR|净高)[^\d]*)([\d.]+[~\-/]?[\d.]*\s*[mMkPp年%％]*)/g);
-        if (!valuePairs || valuePairs.length === 0) {
-          valuePairs = mainExcerpt.match(/[一-龥]{2,8}[：:]*\s*([\d.]+[~\-/]?[\d.]*\s*[mMkPp年%％≥≤]*)/g);
+        // 提取关键数值对（按参数类型匹配正确单位）
+        var unitMap = { '压实度':'[≥≤]*\\s*\\d+\\s*%', '宽度':'[\\d.]+[~\\-]?[\\d.]*\\s*m', '速度':'[\\d.]+[~\\/]?[\\d.]*\\s*km', '半径':'[\\d.]+\\s*m', '坡度':'[\\d.]+\\s*%', '视距':'[\\d.]+\\s*m', '厚度':'[\\d.]+[~\\-]?[\\d.]*\\s*cm', '强度':'[\\d.]+\\s*MPa', '频率':'1\\/\\d+', 'CBR':'[≥]*\\s*\\d+\\s*%', '净高':'[\\d.]+\\s*m', '年限':'[\\d.]+[~\\-]?[\\d.]*\\s*年' };
+        var allPairs = [];
+        Object.keys(unitMap).forEach(function (key) {
+          if (mainExcerpt.indexOf(key) >= 0) {
+            var re = new RegExp('(' + key + '[^<]{0,15}?)(' + unitMap[key] + ')', 'g');
+            var m; while ((m = re.exec(mainExcerpt)) !== null) { allPairs.push(m[0]); }
+          }
+        });
+        // 如果没找到，回退到宽松匹配
+        if (allPairs.length === 0) {
+          var vp = mainExcerpt.match(/[一-龥]{2,8}[：:]*\s*([\d.≥≤]+[~\-/]?[\d.]*\s*[mMkPp年%％]*)/g);
+          if (vp) allPairs = vp;
         }
+        // 去重+过滤无效值
+        var seen = {}; var valuePairs = [];
+        allPairs.forEach(function (p) {
+          var clean = p.replace(/<[^>]+>/g, '').replace(/^\s+/, '').trim();
+          if (clean.length > 5 && clean.length < 60 && !seen[clean] && !clean.match(/^\d+$/)) { seen[clean] = true; valuePairs.push(clean); }
+        });
         var highlighted = escapeHtml(mainExcerpt);
         best.matches.forEach(function (kw) { highlighted = highlighted.replace(new RegExp(kw.replace(/[.*+?^${}()|[\]\\\/]/g, '\\$&'), 'g'), '<span class="hl">' + kw + '</span>'); });
         html += '<p style="font-size:14px;margin-bottom:8px;">' + highlighted.substring(0, 300) + '</p>';
