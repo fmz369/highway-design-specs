@@ -126,6 +126,40 @@
   }
 
   function renderResults(question, results) {
+  // 条款对照数据：从所有相关规范中提取匹配的li条文
+  var clauseRefs = [];
+  results.forEach(function(r) {
+    var c = r.spec.content;
+    // 提取含关键词的li条文
+    var lis = c.match(/<li>(?!.*href)([\s\S]*?)<\/li>/gi) || [];
+    lis.forEach(function(li) {
+      var clean = li.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+      if (clean.length > 15 && clean.length < 200) {
+        var score = 0;
+        r.matches.forEach(function(kw) { if (clean.indexOf(kw) >= 0) score += 2; });
+        if (score >= 4) {
+          clauseRefs.push({ spec: r.spec, text: clean, score: score });
+        }
+      }
+    });
+    // 也提取span.hl标注的关键参数
+    var hls = c.match(/<span class="hl">([^<]+)<\/span>[：:]?\s*([^<]{5,80})/gi) || [];
+    hls.forEach(function(hl) {
+      var clean = hl.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+      if (clean.length > 10) {
+        var score = 0;
+        r.matches.forEach(function(kw) { if (clean.indexOf(kw) >= 0) score += 2; });
+        if (score >= 2) clauseRefs.push({ spec: r.spec, text: clean, score: score });
+      }
+    });
+  });
+  // 去重+排序
+  var seen = {};
+  clauseRefs = clauseRefs.filter(function(x) {
+    var k = x.spec.code + x.text.substring(0, 30);
+    if (seen[k]) return false; seen[k] = true; return true;
+  }).sort(function(a,b) { return b.score - a.score; }).slice(0, 12);
+
     var html = '';
     if (results.length === 0) {
       html = '<div class="qa-empty"><div class="qa-icon">🔍</div><div class="empty-title">未找到相关规范</div><div class="empty-hint">试试换个问法，如"四级公路压实度多少"或"平曲线最小半径"</div></div>';
@@ -186,7 +220,22 @@
         }
       }
     }
-    resultsDiv.innerHTML = html; resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // 插入条款对照区
+  if (clauseRefs.length > 0) {
+    html += '<div style="margin-top:20px;"><div class="section-title" style="margin-bottom:12px;">📋 相关条文对照（' + clauseRefs.length + '条）</div>';
+    var lastSpec = '';
+    clauseRefs.forEach(function(cr) {
+      if (cr.spec.code !== lastSpec) {
+        if (lastSpec) html += '</div>';
+        html += '<div style="margin-bottom:10px;"><div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px;"><a href="../specs/?code=' + encodeURIComponent(cr.spec.code) + '">' + cr.spec.code + '</a> ' + cr.spec.title + '</div>';
+        lastSpec = cr.spec.code;
+      }
+      html += '<div style="font-size:12px;color:var(--text2);padding:4px 0 4px 16px;border-left:2px solid var(--border);margin-bottom:3px;line-height:1.6;">' + escapeHtml(cr.text) + '</div>';
+    });
+    html += '</div></div>';
+  }
+
+  resultsDiv.innerHTML = html; resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   function escapeHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
