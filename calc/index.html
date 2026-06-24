@@ -3,145 +3,102 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>参数计算器 — 公路设计规范</title>
-<link rel="stylesheet" href="../css/site.css">
 <style>
-.calc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 16px; }
-.calc-card { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-sm); border: 1px solid var(--border); padding: 20px; }
-.calc-card h4 { font-size: 15px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
-.calc-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 13px; }
-.calc-row label { width: 80px; flex-shrink: 0; color: var(--text2); text-align: right; }
-.calc-row select, .calc-row input { flex: 1; padding: 6px 12px; border: 1.5px solid var(--border); border-radius: 8px; font-size: 13px; outline: none; }
-.calc-row select:focus, .calc-row input:focus { border-color: var(--accent); }
-.calc-result { margin-top: 12px; padding: 12px 16px; background: #f0fdf4; border-radius: 8px; border: 1px solid #86efac; }
-.calc-result strong { font-size: 18px; color: #166534; }
-.calc-result .calc-source { font-size: 11px; color: var(--text3); margin-top: 4px; }
-.calc-card button { width: 100%; padding: 8px; background: var(--accent); color: #fff; border: none; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; margin-top: 8px; }
-.calc-card button:hover { background: var(--accent-hover); }
-[data-theme="dark"] .calc-card { background: #1e1e35; }
-[data-theme="dark"] .calc-result { background: #1a3020; border-color: #166534; }
-[data-theme="dark"] .calc-result strong { color: #4ade80; }
+:root { --bg:#f0f2f5; --card-bg:#fff; --text:#1a1a2e; --text2:#5a5a7a; --text3:#8888a0; --border:#e8e8f0; --accent:#3b6df0; --accent-hover:#2851d1; --radius:14px; --shadow-sm:0 1px 2px rgba(0,0,0,.04); --shadow:0 2px 8px rgba(0,0,0,.06); --shadow-md:0 6px 20px rgba(0,0,0,.10); --transition:0.2s ease; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{color:var(--accent);text-decoration:none}
+.header{background:linear-gradient(135deg,#0f1d3a,#1a3a6e 30%,#1e4b8f 60%,#1a3a6e);color:#fff;padding:16px 0;box-shadow:0 4px 24px rgba(15,29,58,.35)}
+.header-inner{max-width:1100px;margin:0 auto;padding:0 28px;display:flex;align-items:center;gap:12px}
+.header-logo{width:40px;height:40px;background:rgba(255,255,255,.15);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;text-decoration:none}
+.header h1{font-size:20px}
+.main{max-width:1100px;margin:0 auto;padding:24px 28px 60px}
+.back-link{font-size:13px;color:var(--accent);margin-bottom:16px;display:block}
+.calc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
+.calc-card{background:var(--card-bg);border-radius:var(--radius);box-shadow:var(--shadow-sm);border:1px solid var(--border);padding:18px 20px}
+.calc-card h4{font-size:15px;margin-bottom:10px}
+.calc-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:13px}
+.calc-row label{width:75px;flex-shrink:0;color:var(--text2);text-align:right}
+.calc-row select{padding:7px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;outline:none;flex:1}
+.calc-row select:focus{border-color:var(--accent)}
+.calc-result{margin-top:10px;padding:12px 16px;background:#f0fdf4;border-radius:8px;border:1px solid #86efac;display:none}
+.calc-result strong{font-size:17px;color:#166534}
+.calc-source{font-size:11px;color:var(--text3);margin-top:4px}
+.calc-card button{width:100%;padding:8px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;margin-top:8px}
+.calc-card button:hover{background:var(--accent-hover)}
+.footer{text-align:center;padding:24px;color:var(--text3);font-size:11px;background:#fff;border-top:1px solid var(--border)}
+@media(max-width:600px){.calc-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<header class="header"><div class="header-inner"><div class="header-top">
-<a href="../" class="header-logo" style="text-decoration:none;">🧮</a>
-<div><h1>参数计算器</h1><p class="subtitle">输入条件 → 自动计算 → 规范出处</p></div>
-</div></div></header>
-<main class="main" style="max-width:1100px;">
-<div id="breadcrumb"></div>
-<div class="calc-grid" id="calcGrid"></div>
-</main>
-<script src="../js/data.js?v=9"></script>
-<script src="../js/router.js?v=9"></script>
-<script src="../js/components.js?v=9"></script>
-<script src="../js/theme.js?v=9"></script>
+
+<header class="header"><div class="header-inner">
+<a href="../" class="header-logo">🧮</a>
+<div><h1>参数计算器</h1><div style="font-size:11px;opacity:.75">输入条件 → 自动计算 → 规范出处</div></div>
+</div></header>
+
+<main class="main">
+<a href="../" class="back-link">← 返回首页</a>
+<div class="calc-grid">
+
+<div class="calc-card"><h4>🛣 路基/车道宽度</h4>
+<div class="calc-row"><label>公路等级</label><select id="g1"><option value="高速">高速</option><option value="一级">一级</option><option value="二级">二级</option><option value="三级">三级</option><option value="四级">四级</option></select></div>
+<div class="calc-row"><label>设计速度</label><select id="s1"><option value="120">120 km/h</option><option value="100">100 km/h</option><option value="80">80 km/h</option></select></div>
+<button onclick="calc1()">计算</button><div class="calc-result" id="r1"></div></div>
+
+<div class="calc-card"><h4>📐 平曲线最小半径</h4>
+<div class="calc-row"><label>设计速度</label><select id="s2"><option value="120">120</option><option value="100">100</option><option value="80">80</option><option value="60">60</option><option value="40">40</option><option value="30">30</option><option value="20">20</option></select><span style="font-size:12px;color:var(--text3)">km/h</span></div>
+<button onclick="calc2()">计算</button><div class="calc-result" id="r2"></div></div>
+
+<div class="calc-card"><h4>👁 停车视距</h4>
+<div class="calc-row"><label>设计速度</label><select id="s3"><option value="120">120</option><option value="100">100</option><option value="80">80</option><option value="60">60</option><option value="40">40</option><option value="30">30</option><option value="20">20</option></select><span style="font-size:12px;color:var(--text3)">km/h</span></div>
+<button onclick="calc3()">计算</button><div class="calc-result" id="r3"></div></div>
+
+<div class="calc-card"><h4>⛰ 最大纵坡</h4>
+<div class="calc-row"><label>设计速度</label><select id="s4"><option value="120">120</option><option value="100">100</option><option value="80">80</option><option value="60">60</option><option value="40">40</option><option value="30">30</option><option value="20">20</option></select><span style="font-size:12px;color:var(--text3)">km/h</span></div>
+<button onclick="calc4()">计算</button><div class="calc-result" id="r4"></div></div>
+
+<div class="calc-card"><h4>🪨 路基压实度标准</h4>
+<div class="calc-row"><label>公路等级</label><select id="g5"><option value="高速">高速/一级</option><option value="二级">二级</option><option value="三级">三级及以下</option></select></div>
+<button onclick="calc5()">计算</button><div class="calc-result" id="r5"></div></div>
+
+<div class="calc-card"><h4>🏛 建筑限界净高</h4>
+<div class="calc-row"><label>公路等级</label><select id="g6"><option value="高速">高速/一级</option><option value="二级">二级</option><option value="三级">三级及以下</option></select></div>
+<button onclick="calc6()">计算</button><div class="calc-result" id="r6"></div></div>
+
+</div></main>
+
+<footer class="footer">
+<a href="../">🏠 首页</a> | <a href="../quickref/">📋 参数速查</a> | <a href="../compare/">📊 规范对比</a><br>
+⚠ 本网站为设计辅助工具，设计请以官方规范正本为准
+</footer>
+
 <script>
-document.getElementById('breadcrumb').innerHTML = renderBreadcrumb([{label:'🏠 首页',link:'../'},{label:'🧮 参数计算器'}]);
-
-var HTML = '';
-
-// ===== 1. 路基宽度计算器 =====
-HTML += '<div class="calc-card"><h4>🛣 路基/车道宽度速查</h4>';
-HTML += '<div class="calc-row"><label>公路等级</label><select id="c1_grade"><option value="高速">高速</option><option value="一级">一级</option><option value="二级">二级</option><option value="三级">三级</option><option value="四级">四级</option></select></div>';
-HTML += '<div class="calc-row"><label>设计速度</label><select id="c1_speed"><option value="120">120 km/h</option><option value="100">100 km/h</option><option value="80">80 km/h</option></select></div>';
-HTML += '<button onclick="calcLane()">计算</button><div class="calc-result" id="c1_result" style="display:none;"></div></div>';
-
-// ===== 2. 平曲线最小半径 =====
-HTML += '<div class="calc-card"><h4>📐 平曲线最小半径</h4>';
-HTML += '<div class="calc-row"><label>设计速度</label><select id="c2_speed"><option value="120">120 km/h</option><option value="100">100 km/h</option><option value="80">80 km/h</option><option value="60">60 km/h</option><option value="40">40 km/h</option><option value="30">30 km/h</option><option value="20">20 km/h</option></select></div>';
-HTML += '<button onclick="calcRadius()">计算</button><div class="calc-result" id="c2_result" style="display:none;"></div></div>';
-
-// ===== 3. 停车视距 =====
-HTML += '<div class="calc-card"><h4>👁 停车视距</h4>';
-HTML += '<div class="calc-row"><label>设计速度</label><select id="c3_speed"><option value="120">120 km/h</option><option value="100">100 km/h</option><option value="80">80 km/h</option><option value="60">60 km/h</option><option value="40">40 km/h</option><option value="30">30 km/h</option><option value="20">20 km/h</option></select></div>';
-HTML += '<button onclick="calcSight()">计算</button><div class="calc-result" id="c3_result" style="display:none;"></div></div>';
-
-// ===== 4. 最大纵坡 =====
-HTML += '<div class="calc-card"><h4>⛰ 最大纵坡</h4>';
-HTML += '<div class="calc-row"><label>设计速度</label><select id="c4_speed"><option value="120">120 km/h</option><option value="100">100 km/h</option><option value="80">80 km/h</option><option value="60">60 km/h</option><option value="40">40 km/h</option><option value="30">30 km/h</option><option value="20">20 km/h</option></select></div>';
-HTML += '<button onclick="calcGrade()">计算</button><div class="calc-result" id="c4_result" style="display:none;"></div></div>';
-
-// ===== 5. 压实度标准 =====
-HTML += '<div class="calc-card"><h4>🪨 路基压实度标准</h4>';
-HTML += '<div class="calc-row"><label>公路等级</label><select id="c5_grade"><option value="高速">高速/一级</option><option value="二级">二级</option><option value="三级">三级及以下</option></select></div>';
-HTML += '<button onclick="calcCompact()">计算</button><div class="calc-result" id="c5_result" style="display:none;"></div></div>';
-
-// ===== 6. 建筑限界净高 =====
-HTML += '<div class="calc-card"><h4>🏛 建筑限界净高</h4>';
-HTML += '<div class="calc-row"><label>公路等级</label><select id="c6_grade"><option value="高速">高速/一级</option><option value="二级">二级</option><option value="三级">三级及以下</option></select></div>';
-HTML += '<button onclick="calcClearance()">计算</button><div class="calc-result" id="c6_result" style="display:none;"></div></div>';
-
-document.getElementById('calcGrid').innerHTML = HTML;
-
 // 路基宽度数据
-var laneData = {
-  '高速':{'120':{w:'3.75',n:'≥4',h:'3.00~3.50',m:'4.50'},'100':{w:'3.75',n:'≥4',h:'2.50~3.00',m:'3.50'},'80':{w:'3.75',n:'≥4',h:'1.50~2.50',m:'3.00'}},
-  '一级':{'100':{w:'3.75',n:'≥4',h:'2.50~3.00',m:'3.50'},'80':{w:'3.75',n:'≥4',h:'1.50~2.50',m:'3.00'},'60':{w:'3.50',n:'≥4',h:'0.75~1.50',m:'2.50'}},
-  '二级':{'80':{w:'3.75',n:'≥2',h:'0.75~1.50'},'60':{w:'3.50',n:'≥2',h:'0.75~1.50'}},
-  '三级':{'40':{w:'3.50',n:'≥2'},'30':{w:'3.25',n:'≥2'}},
-  '四级':{'30':{w:'3.50',n:'≥2(或1)'},'20':{w:'3.00',n:'≥2(或1)'}},
-};
-var curveData = {'120':{g:1000,l:650,s:5500},'100':{g:700,l:400,s:4000},'80':{g:400,l:250,s:2500},'60':{g:200,l:125,s:1500},'40':{g:100,l:60,s:600},'30':{g:65,l:30,s:350},'20':{g:30,l:15,s:150}};
-var sightData = {'120':210,'100':160,'80':110,'60':75,'40':40,'30':30,'20':20};
-var gradeData = {'120':3,'100':4,'80':5,'60':6,'40':7,'30':8,'20':9};
-var compactData = {'高速':{b:'≥96%',s:'≥94%',t:'≥93%'},'二级':{b:'≥95%',s:'≥94%',t:'≥92%'},'三级':{b:'≥94%',s:'≥93%',t:'≥90%'}};
-var clearanceData = {'高速':'5.00m','二级':'5.00m','三级':'4.50m(砂石路面)'};
+var LD={'高速':{'120':{w:'3.75',n:'≥4',h:'3.00~3.50',m:'4.50'},'100':{w:'3.75',n:'≥4',h:'2.50~3.00',m:'3.50'},'80':{w:'3.75',n:'≥4',h:'1.50~2.50',m:'3.00'}},'一级':{'100':{w:'3.75',n:'≥4',h:'2.50~3.00',m:'3.50'},'80':{w:'3.75',n:'≥4',h:'1.50~2.50',m:'3.00'},'60':{w:'3.50',n:'≥4',h:'0.75~1.50',m:'2.50'}},'二级':{'80':{w:'3.75',n:'≥2',h:'0.75~1.50'},'60':{w:'3.50',n:'≥2',h:'0.75~1.50'}},'三级':{'40':{w:'3.50',n:'≥2'},'30':{w:'3.25',n:'≥2'}},'四级':{'30':{w:'3.50',n:'≥2(或1)'},'20':{w:'3.00',n:'≥2(或1)'}}};
+var CD={'120':{g:1000,l:650},'100':{g:700,l:400},'80':{g:400,l:250},'60':{g:200,l:125},'40':{g:100,l:60},'30':{g:65,l:30},'20':{g:30,l:15}};
+var SD={'120':210,'100':160,'80':110,'60':75,'40':40,'30':30,'20':20};
+var GD={'120':3,'100':4,'80':5,'60':6,'40':7,'30':8,'20':9};
+var CPD={'高速':{a:'≥96%',b:'≥94%',c:'≥93%'},'二级':{a:'≥95%',b:'≥94%',c:'≥92%'},'三级':{a:'≥94%',b:'≥93%',c:'≥90%'}};
+var CLD={'高速':'5.00m','二级':'5.00m','三级':'4.50m'};
 
-function showResult(id,html){var e=document.getElementById(id);e.innerHTML=html;e.style.display='block';}
+function S(id){return document.getElementById(id);}
+function R(id,html){var e=S(id);e.innerHTML=html;e.style.display='block';}
 
-function updateSpeedOptions(gradeId,speedId){
-  var g=document.getElementById(gradeId).value;
-  var s=document.getElementById(speedId);
-  var speeds={'高速':['120','100','80'],'一级':['100','80','60'],'二级':['80','60'],'三级':['40','30'],'四级':['30','20']};
-  s.innerHTML=speeds[g].map(function(v){return '<option value=\"'+v+'\">'+v+' km/h</option>';}).join('');
+function updateSpeeds(){
+  var g=S('g1').value;
+  var ss={'高速':['120','100','80'],'一级':['100','80','60'],'二级':['80','60'],'三级':['40','30'],'四级':['30','20']};
+  var o='';ss[g].forEach(function(v){o+='<option value=\"'+v+'\">'+v+' km/h</option>';});
+  S('s1').innerHTML=o;
 }
+S('g1').addEventListener('change',updateSpeeds);
 
-document.getElementById('c1_grade').addEventListener('change',function(){updateSpeedOptions('c1_grade','c1_speed');});
-
-window.calcLane = function(){
-  var g=document.getElementById('c1_grade').value;
-  var s=document.getElementById('c1_speed').value;
-  var d=laneData[g]&&laneData[g][s];
-  if(d) showResult('c1_result','车道宽度 <strong>'+d.w+'m</strong> | 车道数 <strong>'+d.n+'</strong>'+(d.h?' | 硬路肩 <strong>'+d.h+'m</strong>':'')+(d.m?' | 中间带 <strong>'+d.m+'m</strong>':'')+'<div class=\"calc-source\">📚 JTG B01-2014 公路工程技术标准</div>');
-};
-
-window.calcRadius = function(){
-  var s=document.getElementById('c2_speed').value;
-  var d=curveData[s];
-  if(d) showResult('c2_result','一般值 <strong>'+d.g+'m</strong> | 极限值 <strong>'+d.l+'m</strong> | 不设超高 <strong>'+d.s+'m</strong><div class=\"calc-source\">📚 JTG D20-2017 公路路线设计规范</div>');
-};
-
-window.calcSight = function(){
-  var s=document.getElementById('c3_speed').value;
-  var v=sightData[s];
-  if(v) showResult('c3_result','停车视距 <strong>'+v+'m</strong><div class=\"calc-source\">📚 JTG B01-2014 / JTG D20-2017</div>');
-};
-
-window.calcGrade = function(){
-  var s=document.getElementById('c4_speed').value;
-  var v=gradeData[s];
-  if(v) showResult('c4_result','最大纵坡 <strong>'+v+'%</strong><div class=\"calc-source\">📚 JTG B01-2014 / JTG D20-2017</div>');
-};
-
-window.calcCompact = function(){
-  var g=document.getElementById('c5_grade').value;
-  var d=compactData[g];
-  if(d) showResult('c5_result','上路床(0~0.3m) <strong>'+d.b+'</strong> | 上路堤(0.8~1.5m) <strong>'+d.s+'</strong> | 下路堤(>1.5m) <strong>'+d.t+'</strong><div class=\"calc-source\">📚 JTG D30-2015 公路路基设计规范</div>');
-};
-
-window.calcClearance = function(){
-  var g=document.getElementById('c6_grade').value;
-  var v=clearanceData[g];
-  if(v) showResult('c6_result','建筑限界净高 <strong>'+v+'</strong><div class=\"calc-source\">📚 JTG B01-2014 公路工程技术标准</div>');
-};
-
-// 初始化
-updateSpeedOptions('c1_grade','c1_speed');
-
-var bt=document.createElement('button');bt.className='back-top';bt.id='backTop';bt.textContent='↑';document.body.appendChild(bt);
-window.addEventListener('scroll',function(){bt.classList.toggle('visible',window.scrollY>700);});
-bt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
-var ft=document.createElement('footer');ft.className='footer';ft.innerHTML=renderFooter().replace(/<footer class=\"footer\">|<\\/footer>/g,'');document.querySelector('.main').after(ft);
+function calc1(){var g=S('g1').value,s=S('s1').value,d=LD[g]&&LD[g][s];if(d)R('r1','车道宽度 <strong>'+d.w+'m</strong> | 车道数 <strong>'+d.n+'</strong>'+(d.h?' | 硬路肩 <strong>'+d.h+'m</strong>':'')+(d.m?' | 中间带 <strong>'+d.m+'m</strong>':'')+'<div class=\"calc-source\">📚 JTG B01-2014</div>');}
+function calc2(){var s=S('s2').value,d=CD[s];if(d)R('r2','一般值 <strong>'+d.g+'m</strong> | 极限值 <strong>'+d.l+'m</strong><div class=\"calc-source\">📚 JTG D20-2017</div>');}
+function calc3(){var s=S('s3').value,v=SD[s];if(v)R('r3','停车视距 <strong>'+v+'m</strong><div class=\"calc-source\">📚 JTG B01-2014</div>');}
+function calc4(){var s=S('s4').value,v=GD[s];if(v)R('r4','最大纵坡 <strong>'+v+'%</strong><div class=\"calc-source\">📚 JTG B01-2014</div>');}
+function calc5(){var g=S('g5').value,d=CPD[g];if(d)R('r5','上路床(0~0.3m) <strong>'+d.a+'</strong> | 上路堤(0.8~1.5m) <strong>'+d.b+'</strong> | 下路堤(>1.5m) <strong>'+d.c+'</strong><div class=\"calc-source\">📚 JTG D30-2015</div>');}
+function calc6(){var g=S('g6').value,v=CLD[g];if(v)R('r6','建筑限界净高 <strong>'+v+'</strong><div class=\"calc-source\">📚 JTG B01-2014</div>');}
 </script>
 </body>
 </html>
