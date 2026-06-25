@@ -40,8 +40,8 @@
   // Q&A历史记录
   var QA_HISTORY_KEY = 'qa_history';
   function getQaHistory() { try { return JSON.parse(localStorage.getItem(QA_HISTORY_KEY) || '[]'); } catch(e) { return []; } }
-  function addQaHistory(q, best) { var h = getQaHistory(); h = h.filter(function(x) { return x.q !== q; }); h.unshift({ q: q, code: best.spec.code, title: best.spec.title, time: Date.now() }); if (h.length > 15) h = h.slice(0, 15); try { localStorage.setItem(QA_HISTORY_KEY, JSON.stringify(h)); } catch(e) {} }
-  function renderHistory() { var h = getQaHistory(); if (h.length === 0) return; var html = '<div style="margin-bottom:16px;"><div class="section-title" style="margin-bottom:10px;">📜 历史问答</div><div style="display:flex;flex-wrap:wrap;gap:6px;">'; h.forEach(function(x) { html += '<a href="../specs/?code=' + encodeURIComponent(x.code) + '" style="font-size:11px;padding:4px 12px;background:var(--accent-light);border-radius:14px;color:var(--accent);text-decoration:none;max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="' + escapeHtml(x.q) + '">' + escapeHtml(x.q.substring(0, 25)) + '</a>'; }); html += '</div></div>'; return html; }
+  function addQaHistory(q) { var h = getQaHistory(); h = h.filter(function(x) { return x.q !== q; }); h.unshift({ q: q, time: Date.now() }); if (h.length > 15) h = h.slice(0, 15); try { localStorage.setItem(QA_HISTORY_KEY, JSON.stringify(h)); } catch(e) {} }
+  function renderHistory() { var h = getQaHistory(); if (h.length === 0) return ''; var html = '<div style="margin-bottom:16px;"><div class="section-title" style="margin-bottom:10px;">📜 历史问答</div><div style="display:flex;flex-wrap:wrap;gap:6px;">'; h.forEach(function(x) { html += '<button onclick="document.getElementById(\'qaInput\').value=\'' + x.q.replace(/'/g,"\\'") + '\';doSearch();" style="font-size:11px;padding:4px 12px;background:var(--accent-light);border-radius:14px;color:var(--accent);border:none;cursor:pointer;max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:left;" title="点击重新搜索：' + escapeHtml(x.q) + '">' + escapeHtml(x.q.substring(0, 25)) + '</button>'; }); html += '</div></div>'; return html; }
 
   function doSearch() {
     var q = input.value.trim(); if (!q) return;
@@ -86,7 +86,7 @@
         });
         results.sort(function(a,b){return b.score-a.score;});
       }
-      if (results.length > 0) addQaHistory(q, results[0]);
+      if (results.length > 0) addQaHistory(q);
       renderResults(q, results);
     }
   }
