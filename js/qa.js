@@ -45,10 +45,50 @@
 
   function doSearch() {
     var q = input.value.trim(); if (!q) return;
-    var keywords = extractKeywords(q);
-    var results = searchAllSpecs(keywords, q);
-    if (results.length > 0) addQaHistory(q, results[0]);
-    renderResults(q, results);
+    // 检测问题类型
+    var isCompare = /(区别|对比|不同|差异|vs\.?|哪个更|哪一个|还是)/i.test(q);
+    var isWhy = /(为什么|为何|原因|怎么|如何|why)/i.test(q);
+    var isWhich = /(哪个|哪一种|多少|多大|几)/.test(q);
+
+    if (isCompare) {
+      // 对比模式：拆分关键词分别搜索
+      var parts = q.split(/[和与跟、]|vs|VS|对比|比较/);
+      var allResults = [];
+      parts.forEach(function(part) {
+        var kw = extractKeywords(part);
+        if (kw.length > 0) {
+          var r = searchAllSpecs(kw, part);
+          allResults = allResults.concat(r);
+        }
+      });
+      // 去重按分数排序
+      var seen = {};
+      allResults = allResults.filter(function(r) { var k = r.spec.code; if (seen[k]) return false; seen[k] = true; return r.score > 0; });
+      allResults.sort(function(a,b){return b.score-a.score;});
+      renderResults(q, allResults.slice(0, 4), isCompare);
+    } else {
+      var keywords = extractKeywords(q);
+      var results = searchAllSpecs(keywords, q);
+      // 如果是"为什么"类问题，优先展示说明性内容
+      if (isWhy) {
+        results.forEach(function(r) {
+          // 提升含note-box内容的权重
+          if (r.spec.content.indexOf('note-box') >= 0) r.score += 8;
+          if (r.spec.content.indexOf('条文说明') >= 0) r.score += 5;
+        });
+        results.sort(function(a,b){return b.score-a.score;});
+      }
+      // 如果是具体数值问题，优先表格
+      if (isWhich) {
+        results.forEach(function(r) {
+          var tdCount = (r.spec.content.match(/<td/g) || []).length;
+          if (tdCount > 10) r.score += Math.min(tdCount / 2, 15);
+        });
+        results.sort(function(a,b){return b.score-a.score;});
+      }
+      if (results.length > 0) addQaHistory(q, results[0]);
+      renderResults(q, results);
+    }
   }
 
   function extractKeywords(q) {
@@ -125,7 +165,21 @@
     return excerpts.slice(0, 4);
   }
 
-  function renderResults(question, results) {
+  function renderResults(question, results, isCompare) {
+  // 对比模式特殊渲染
+  if (isCompare && results.length >= 1) {
+    var compHTML = '<div class="qa-result"><div class="qa-question">🤖 对比："' + escapeHtml(question) + '"</div><div class="qa-answer">';
+    compHTML += '<div style="font-size:13px;color:var(--text);margin-bottom:10px;">📊 以下规范涉及相关内容，请参考对比：</div>';
+    compHTML += '<table style="width:100%;font-size:12px;border-collapse:collapse;"><tr style="background:#f8f9fc;"><th style="padding:6px 10px;text-align:left;border:1px solid var(--border);">规范</th><th style="padding:6px 10px;text-align:left;border:1px solid var(--border);">关键内容</th></tr>';
+    results.forEach(function(r) {
+      var txt = r.excerpts.length > 0 ? r.excerpts[0].text.substring(0, 100) : '详见规范原文';
+      compHTML += '<tr><td style="padding:6px 10px;border:1px solid var(--border);"><a href="../specs/?code=' + encodeURIComponent(r.spec.code) + '" style="font-weight:600;">' + r.spec.code + '</a></td><td style="padding:6px 10px;border:1px solid var(--border);">' + escapeHtml(txt) + '…</td></tr>';
+    });
+    compHTML += '</table></div><div class="qa-source">📚 点击规范编号查看完整内容</div></div>';
+    resultsDiv.innerHTML = compHTML;
+    resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    return;
+  }
   // 条款对照数据：从所有相关规范中提取匹配的li条文
   var clauseRefs = [];
   results.forEach(function(r) {
