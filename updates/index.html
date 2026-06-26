@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>规范更新日历 — 公路设计规范</title>
+<link rel="stylesheet" href="../css/site.css">
+<style>
+.uc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.uc-year{margin-bottom:22px}
+.uc-year h3{font-size:16px;margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid var(--accent)}
+.uc-card{background:var(--card-bg);border-radius:var(--radius);box-shadow:var(--shadow-sm);border:1px solid var(--border);padding:12px 16px;display:flex;gap:12px;align-items:center;transition:all var(--transition)}
+.uc-card:hover{box-shadow:var(--shadow-md)}
+.uc-badge{min-width:60px;text-align:center;padding:6px 10px;border-radius:10px;font-size:11px;font-weight:700}
+.uc-badge.new{background:#dcfce7;color:#166534}
+.uc-badge.upcoming{background:#fef3c7;color:#92400e}
+.uc-badge.recent{background:#e0f2fe;color:#075985}
+.uc-info{flex:1;min-width:0}
+.uc-code{font-size:13px;font-weight:700;color:var(--text);font-family:SF Mono,Consolas,monospace}
+.uc-title{font-size:12px;color:var(--text2)}
+.uc-date{font-size:11px;color:var(--text3)}
+.uc-link{font-size:11px;color:var(--accent);text-decoration:none;white-space:nowrap}
+.uc-link:hover{text-decoration:underline}
+[data-theme=dark] .uc-card{background:#1e1e35}[data-theme=dark] .uc-badge.new{background:#1a3020;color:#4ade80}[data-theme=dark] .uc-badge.upcoming{background:#302810;color:#fbbf24}
+</style>
+</head>
+<body>
+<header class="header"><div class="header-inner"><div class="header-top">
+<a href="../" class="header-logo" style="text-decoration:none;">📅</a><div><h1>规范更新日历</h1><p class="subtitle">标注每部规范的实施日期 · 提醒即将更新</p></div>
+</div></div></header>
+<main class="main" style="max-width:1100px">
+<div id="breadcrumb"></div>
+<div style="display:flex;gap:8px;margin-bottom:18px;font-size:13px;flex-wrap:wrap">
+<span style="display:inline-flex;align-items:center;gap:4px"><span class="uc-badge new" style="font-size:10px;padding:2px 8px">2025+新规</span> 近年新实施</span>
+<span style="display:inline-flex;align-items:center;gap:4px"><span class="uc-badge upcoming" style="font-size:10px;padding:2px 8px">即将实施</span> 未来6个月</span>
+</div>
+<div id="updateContent"></div>
+</main>
+<script src="../js/data.js?v=2"></script>
+<script src="../js/router.js?v=2"></script>
+<script src="../js/components.js?v=2"></script>
+<script src="../js/theme.js?v=2"></script>
+<script>
+document.getElementById('breadcrumb').innerHTML = renderBreadcrumb([{label:'🏠 首页',link:'../'},{label:'📅 规范更新日历'}]);
+
+// 规范实施日期数据（手动整理，持续补充）
+var DATES = {
+  'JTG/T 5431-2025':'2026-04-01','JTG/T 5531-2025':'2026-04-01','JTG/T 5123-2025':'2026-04-01',
+  'JTG/T 3351-2024':'2024-08-01','JTG 5211-2024':'2024-08-01','JTG/T 3381-03-2024':'2024-08-01',
+  'GB 55011-2021':'2022-01-01','JTG/T 3311-2021':'2021-11-01','JTG 5120-2021':'2021-06-01',
+  'JTG 5110-2023':'2023-06-01','JTG 5142-2019':'2019-06-01','JTG D50-2017':'2017-09-01',
+  'JTG D20-2017':'2017-09-01','JTG D81-2017':'2017-11-01','JTG D30-2015':'2015-05-01',
+  'JTG D60-2015':'2015-05-01','JTG B05-2015':'2015-05-01','JTG B01-2014':'2015-01-01',
+  'JTG 3362-2018':'2018-11-01','JTG/T 2231-01-2020':'2020-09-01',
+  'JTG 2112-2021':'2021-11-01','JTG 2111-2019':'2019-06-01',
+  'GB 5768.2-2022':'2022-10-01','GB/T 51224-2017':'2017-10-01',
+  'JTG/T 3392-2022':'2022-11-01','JTG/T 3365-2022':'2022-11-01',
+  'GB/T 1499.1-2024':'2024-09-25','GB/T 1499.2-2024':'2024-09-25','GB/T 13788-2024':'2024-09-25',
+};
+
+var now = new Date();
+var sixMonths = new Date(now.getTime() + 180*86400000);
+
+// 按年份分组
+var years = {};
+var noDate = [];
+SPECS.forEach(function(sp) {
+  var d = DATES[sp.code];
+  if (d) {
+    var year = d.substring(0,4);
+    if (!years[year]) years[year] = [];
+    years[year].push({spec:sp,date:d});
+  } else {
+    noDate.push(sp);
+  }
+});
+
+var html = '';
+
+// 即将实施的(未来6个月)
+var upcoming = [];
+Object.keys(years).forEach(function(y) {
+  years[y].forEach(function(item) {
+    var itemDate = new Date(item.date);
+    if (itemDate > now && itemDate < sixMonths) upcoming.push(item);
+  });
+});
+if (upcoming.length > 0) {
+  html += '<div class="uc-year"><h3>🔔 即将实施（未来6个月）</h3><div class="uc-grid">';
+  upcoming.forEach(function(item) {
+    html += '<a href="../specs/?code='+encodeURIComponent(item.spec.code)+'" class="uc-card"><span class="uc-badge upcoming">'+item.date+'</span><div class="uc-info"><div class="uc-code">'+item.spec.code+'</div><div class="uc-title">'+item.spec.title+'</div></div><span class="uc-link">查看 →</span></a>';
+  });
+  html += '</div></div>';
+}
+
+// 按年份降序
+var sortedYears = Object.keys(years).sort(function(a,b){return b.localeCompare(a);});
+sortedYears.forEach(function(y) {
+  var items = years[y].sort(function(a,b){return b.date.localeCompare(a.date);});
+  html += '<div class="uc-year"><h3>'+y+' 年（'+items.length+'部）</h3><div class="uc-grid">';
+  items.forEach(function(item) {
+    var isNew = y >= '2024' ? 'new' : (y >= '2020' ? 'recent' : '');
+    html += '<a href="../specs/?code='+encodeURIComponent(item.spec.code)+'" class="uc-card"><span class="uc-badge '+(isNew||'')+'">'+item.date.substring(5)+'</span><div class="uc-info"><div class="uc-code">'+item.spec.code+'</div><div class="uc-title">'+item.spec.title+'</div></div><span class="uc-link">查看 →</span></a>';
+  });
+  html += '</div></div>';
+});
+
+html += '<div class="uc-year"><h3>📚 待补充日期（'+noDate.length+'部）</h3><p style="font-size:12px;color:var(--text3);margin-bottom:8px;">以下规范尚未收录实施日期，欢迎反馈补充</p><div style="display:flex;flex-wrap:wrap;gap:4px;">';
+noDate.slice(0,30).forEach(function(sp) {
+  html += '<span style="font-size:11px;color:var(--text3);padding:2px 8px;background:var(--bg);border-radius:6px;">'+sp.code+'</span>';
+});
+if (noDate.length > 30) html += '<span style="font-size:11px;color:var(--text3);">…等'+(noDate.length-30)+'部</span>';
+html += '</div></div>';
+
+document.getElementById('updateContent').innerHTML = html;
+
+var bt=document.createElement('button');bt.className='back-top';bt.id='backTop';bt.textContent='↑';document.body.appendChild(bt);
+window.addEventListener('scroll',function(){bt.classList.toggle('visible',window.scrollY>700);});
+bt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+var ft=document.createElement('footer');ft.className='footer';ft.innerHTML=renderFooter();document.querySelector('.main').after(ft);
+</script>
+</body>
+</html>
