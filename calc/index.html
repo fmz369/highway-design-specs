@@ -18,7 +18,7 @@
 .calc-field input:focus,.calc-field select:focus{border-color:var(--accent)}
 .calc-field .unit{font-size:11px;color:var(--text3)}
 .calc-btn{padding:10px 28px;background:var(--accent);color:#fff;border:none;border-radius:22px;font-size:14px;font-weight:600;cursor:pointer;transition:var(--t)}
-.calc-btn:hover{background:var(--ah)}
+.calc-btn:hover{background:#1d4ed8;box-shadow:0 4px 14px rgba(59,109,240,.35)}
 .calc-result{margin-top:14px;padding:14px 18px;background:#f0fdf4;border:1px solid #86efac;border-radius:10px;display:none}
 .calc-result h4{font-size:14px;color:#166534;margin-bottom:6px}
 .calc-result .r-row{display:flex;justify-content:space-between;padding:3px 0;font-size:13px;color:#166534;border-bottom:1px solid #dcfce7}
@@ -52,6 +52,7 @@
 <div class="calc-field"><label>路线转角 α (°)</label><input id="crA" value="30" type="number"></div>
 <div class="calc-field"><label>缓和曲线长度 Ls (m)</label><input id="crLs" value="70" type="number"><span class="unit">无缓和曲线填0</span></div>
 </div>
+<div style="font-size:14px;color:var(--text2);margin:8px 0;padding:8px 12px;background:#f8f9fc;border-radius:8px;font-family:SF Mono,Consolas,monospace;">📐 T=R·tan(α/2)+Ls/2 &nbsp; L=R·α(rad)+Ls &nbsp; E=R·(sec(α/2)-1)</div>
 <button class="calc-btn" onclick="calcCurve()">计算</button>
 <div class="calc-result" id="r-curve"></div>
 </div>
@@ -62,6 +63,7 @@
 <div class="calc-field"><label>纵坡坡度 (%)</label><input id="sg" value="0" type="number"><span class="unit">上坡正、下坡负</span></div>
 <div class="calc-field"><label>路面类型</label><select id="st"><option value="asphalt">沥青路面</option><option value="cement">水泥混凝土路面</option></select></div>
 </div>
+<div style="font-size:14px;color:var(--text2);margin:8px 0;padding:8px 12px;background:#f8f9fc;border-radius:8px;font-family:SF Mono,Consolas,monospace;">👁 S=V·t/3.6 + V²/[254(φ+ψ)] &nbsp; 会车视距=2S &nbsp; 超车视距=1.2V·t/3.6+(1.2V)²/[254(φ+ψ)]</div>
 <button class="calc-btn" onclick="calcSight()">计算</button>
 <div class="calc-result" id="r-sight"></div>
 </div>
@@ -78,7 +80,8 @@
 <div class="calc-field" id="wfAnchors" style="display:none"><label>锚杆间距(m)</label><input id="wSp" value="2" type="number"><span class="unit">锚杆式参数</span></div>
 <div class="calc-field" id="wfReinf" style="display:none"><label>筋材长度(m)</label><input id="wLr" value="5" type="number"><span class="unit">加筋土式参数</span></div>
 </div>
-<div id="wallTips" style="font-size:11px;color:#92400e;background:#fef3c7;padding:6px 10px;border-radius:6px;margin-bottom:8px;">💡 重力式：适用H≤12m，石料丰富地区 | 悬臂式：适用H≤15m，地基较弱 | 扶壁式：适用H>10m | 锚杆式：岩质边坡 | 加筋土式：缺乏石料</div>
+<div id="wallTips" style="font-size:11px;color:#92400e;background:#fef3c7;padding:6px 10px;border-radius:6px;margin-bottom:8px;">💡 重力式≤12m | 悬臂式≤15m | 扶壁式>10m | 锚杆式岩质边坡 | 加筋土式缺乏石料</div>
+<div style="font-size:14px;color:var(--text2);margin:8px 0;padding:8px 12px;background:#f8f9fc;border-radius:8px;font-family:SF Mono,Consolas,monospace;">🧱 Ea=½γH²Ka &nbsp; Kc=Wμ/Ea≥1.3 &nbsp; K₀=W·b/(Ea·H/3)≥1.5</div>
 <button class="calc-btn" onclick="calcWall()">验算</button>
 <div class="calc-result" id="r-wall"></div></div>
 
@@ -91,6 +94,7 @@
 <div class="calc-field"><label>轴型</label><select class="axle-t"><option value="single">单轴双轮</option><option value="double">双轴双轮</option></select></div>
 </div></div>
 <button class="calc-btn" onclick="addAxle()" style="font-size:12px;padding:6px 16px;margin-bottom:10px;">+ 添加轴型</button>
+<div style="font-size:14px;color:var(--text2);margin:8px 0;padding:8px 12px;background:#f8f9fc;border-radius:8px;font-family:SF Mono,Consolas,monospace;">🚛 Ns=Σ C₁·C₂·Ni·(Pi/100)^4.35 &nbsp; 单轴C₁=1 双轴C₁=2.2</div>
 <button class="calc-btn" onclick="calcAxle()">换算</button>
 <div class="calc-result" id="r-axle"></div>
 </div>
@@ -102,6 +106,7 @@
 <div class="calc-field"><label>径流系数 ψ</label><input id="dP" value="0.9" type="number"><span class="unit">沥青路面0.9、土路0.4~0.6</span></div>
 <div class="calc-field"><label>设计洪水频率</label><select id="dFr"><option value="100">1/100</option><option value="50">1/50</option><option value="25">1/25</option><option value="15">1/15</option></select></div>
 </div>
+<div style="font-size:14px;color:var(--text2);margin:8px 0;padding:8px 12px;background:#f8f9fc;border-radius:8px;font-family:SF Mono,Consolas,monospace;">💧 Q=0.278·ψ·q·F &nbsp; （推理公式法，小流域<500km²）</div>
 <button class="calc-btn" onclick="calcDrain()">计算</button>
 <div class="calc-result" id="r-drain"></div>
 </div>
