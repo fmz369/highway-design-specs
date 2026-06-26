@@ -103,7 +103,7 @@ function renderHeader(title, subtitle, showSearch, searchPlaceholder) {
     + '<div class="header-top">'
     + '<a href="../" class="header-logo" style="text-decoration:none;">🛣️</a>'
     + '<div>'
-    + '<h1>' + (title || '公路道路设计规范 · 深度查阅手册') + '</h1>'
+    + '<h1>' + (title || '公路道路设计规范 · 在线设计辅助平台') + '</h1>'
     + '<p class="subtitle">' + sub + '</p>'
     + '</div></div>'
     + (showSearch !== false
