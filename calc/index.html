@@ -5,29 +5,53 @@
 <title>专业计算器 — 公路设计规范</title>
 <link rel="stylesheet" href="../css/site.css?v=c">
 <style>
-.calc-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
-.ctab{padding:8px 16px;border-radius:18px;border:1.5px solid var(--border);background:#fff;font-size:13px;cursor:pointer;transition:var(--t);white-space:nowrap}
-.ctab:hover{border-color:var(--accent);color:var(--accent)}
-.ctab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
-.calc-panel{display:none;background:var(--card-bg);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--border);padding:22px 24px}
+.calc-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.ctab{padding:9px 18px;border-radius:22px;border:2px solid var(--border);background:var(--card-bg);font-size:13px;cursor:pointer;transition:all .25s ease;white-space:nowrap}
+.ctab:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+.ctab.active{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 4px 14px rgba(59,109,240,.3)}
+.calc-panel{display:none;background:var(--card-bg);border-radius:18px;box-shadow:var(--shadow);border:1px solid var(--border);padding:24px 26px}
 .calc-panel.active{display:block}
-.calc-panel h3{font-size:17px;margin-bottom:14px;padding-bottom:8px;border-bottom:1.5px solid var(--border)}
-.calc-form{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:14px}
-.calc-field label{display:block;font-size:12px;color:var(--text2);margin-bottom:4px}
-.calc-field input,.calc-field select{width:100%;padding:8px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;outline:none}
-.calc-field input:focus,.calc-field select:focus{border-color:var(--accent)}
+.calc-panel h3{font-size:17px;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--border)}
+.calc-form{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-bottom:16px}
+.calc-field label{display:block;font-size:12px;color:var(--text2);margin-bottom:4px;font-weight:500}
+.calc-field input,.calc-field select{width:100%;padding:9px 12px;border:2px solid var(--border);border-radius:10px;font-size:13px;outline:none;transition:border-color .2s ease;box-sizing:border-box}
+.calc-field input:focus,.calc-field select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(59,109,240,.1)}
+.calc-field input.invalid{border-color:#ef4444;box-shadow:0 0 0 3px rgba(239,68,68,.1)}
 .calc-field .unit{font-size:11px;color:var(--text3)}
-.calc-btn{padding:10px 28px;background:var(--accent);color:#fff;border:none;border-radius:22px;font-size:14px;font-weight:600;cursor:pointer;transition:var(--t)}
-.calc-btn:hover{background:#1d4ed8;box-shadow:0 4px 14px rgba(59,109,240,.35)}
-.calc-result{margin-top:14px;padding:14px 18px;background:#f0fdf4;border:1px solid #86efac;border-radius:10px;display:none}
-.calc-result h4{font-size:14px;color:#166534;margin-bottom:6px}
-.calc-result .r-row{display:flex;justify-content:space-between;padding:3px 0;font-size:13px;color:#166534;border-bottom:1px solid #dcfce7}
-.calc-result .r-val{font-weight:700}
-.calc-source{font-size:11px;color:var(--text3);margin-top:8px;padding-top:6px;border-top:1px solid #dcfce7}
-.calc-err{color:#ef4444;font-size:12px;margin-top:6px}
+.calc-field .err-msg{font-size:11px;color:#ef4444;margin-top:2px;display:none}
+.calc-field input.invalid+.unit+.err-msg,.calc-field input.invalid~.err-msg{display:block}
+.calc-btn-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.calc-btn{padding:10px 28px;background:var(--accent);color:#fff;border:none;border-radius:22px;font-size:14px;font-weight:600;cursor:pointer;transition:all .25s ease}
+.calc-btn:hover{background:#1d4ed8;box-shadow:0 6px 18px rgba(59,109,240,.35);transform:translateY(-1px)}
+.calc-btn.reset{background:#fff;color:var(--text2);border:2px solid var(--border)}
+.calc-btn.reset:hover{background:var(--bg);border-color:var(--text3);transform:translateY(-1px);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.calc-result{margin-top:16px;padding:16px 20px;background:#f0fdf4;border:2px solid #86efac;border-radius:12px;display:none;animation:fadeIn .3s ease}
+.calc-result.warn{background:#fefce8;border-color:#facc15}
+.calc-result.error{background:#fef2f2;border-color:#fca5a5}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.calc-result h4{font-size:15px;color:#166534;margin-bottom:8px}
+.calc-result.warn h4{color:#92400e}
+.calc-result.error h4{color:#991b1b}
+.calc-result .r-row{display:flex;justify-content:space-between;padding:4px 0;font-size:13px;color:#166534;border-bottom:1px solid #dcfce7}
+.calc-result.warn .r-row{color:#92400e;border-color:#fef3c7}
+.calc-result.error .r-row{color:#991b1b;border-color:#fecaca}
+.calc-result .r-row:last-child{border-bottom:none}
+.calc-result .r-val{font-weight:700;font-family:'SF Mono',Consolas,monospace}
+.calc-result .r-val.pass{color:#16a34a}
+.calc-result .r-val.fail{color:#dc2626}
+.calc-source{font-size:11px;color:var(--text3);margin-top:10px;padding-top:8px;border-top:1px solid #dcfce7}
+/* 计算历史 */
+.calc-history{margin-top:24px}
+.calc-history h3{font-size:15px;font-weight:700;color:var(--text);margin-bottom:10px}
+.calc-history .h-item{padding:10px 14px;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;margin-bottom:8px;font-size:12px;display:flex;justify-content:space-between;align-items:center}
+.calc-history .h-type{font-weight:600;color:var(--accent)}
+.calc-history .h-time{font-size:11px;color:var(--text3)}
+.calc-history .h-del{background:none;border:none;color:var(--text3);cursor:pointer;font-size:14px}
+.calc-history .h-del:hover{color:#ef4444}
+.calc-history .h-empty{text-align:center;padding:20px;color:var(--text3);font-size:13px}
 .footer{text-align:center;padding:22px;color:var(--text3);font-size:11px;background:#fff;border-top:1px solid var(--border)}
-[data-theme=dark] .calc-panel{background:#1e1e35}[data-theme=dark] .calc-result{background:#1a3020;border-color:#166534}[data-theme=dark] .calc-result .r-row{color:#4ade80;border-color:#1a3a2a}[data-theme=dark] .calc-result h4{color:#4ade80}
-@media(max-width:600px){.calc-form{grid-template-columns:1fr}.main{padding:12px 10px 40px}}
+[data-theme=dark] .calc-panel{background:#1e1e35}[data-theme=dark] .calc-result{background:#1a3020;border-color:#166534}[data-theme=dark] .calc-result h4{color:#4ade80}[data-theme=dark] .calc-result .r-row{color:#4ade80;border-color:#1a3a2a}[data-theme=dark] .calc-result.warn{background:#2d2810;border-color:#854d0e}[data-theme=dark] .calc-result.warn h4{color:#fbbf24}[data-theme=dark] .calc-result.error{background:#2d1515;border-color:#7f1d1d}[data-theme=dark] .calc-result.error h4{color:#fca5a5}[data-theme=dark] .calc-btn.reset{background:#1e1e35;color:#a0a0c0}[data-theme=dark] .calc-btn.reset:hover{background:#252540}[data-theme=dark] .calc-field input.invalid{border-color:#f87171}
+@media(max-width:600px){.calc-form{grid-template-columns:1fr}.calc-panel{padding:16px 12px}.main{padding:12px 10px 40px}}
 </style>
 </head>
 <body>
@@ -53,7 +77,7 @@
 <div class="calc-field"><label>缓和曲线长度 Ls (m)</label><input id="crLs" value="70" type="number"><span class="unit">无缓和曲线填0</span></div>
 </div>
 <div style="font-size:14px;color:var(--text2);margin:8px 0;padding:8px 12px;background:#f8f9fc;border-radius:8px;font-family:SF Mono,Consolas,monospace;">📐 T=R·tan(α/2)+Ls/2 &nbsp; L=R·α(rad)+Ls &nbsp; E=R·(sec(α/2)-1)</div>
-<button class="calc-btn" onclick="calcCurve()">计算</button>
+<div class="calc-btn-row"><button class="calc-btn" onclick="calcCurve()">计算</button><button class="calc-btn reset" onclick="resetCurve()">重置</button></div>
 <div class="calc-result" id="r-curve"></div>
 </div>
 
@@ -64,7 +88,7 @@
 <div class="calc-field"><label>路面类型</label><select id="st"><option value="asphalt">沥青路面</option><option value="cement">水泥混凝土路面</option></select></div>
 </div>
 <div style="font-size:14px;color:var(--text2);margin:8px 0;padding:8px 12px;background:#f8f9fc;border-radius:8px;font-family:SF Mono,Consolas,monospace;">👁 S=V·t/3.6 + V²/[254(φ+ψ)] &nbsp; 会车视距=2S &nbsp; 超车视距=1.2V·t/3.6+(1.2V)²/[254(φ+ψ)]</div>
-<button class="calc-btn" onclick="calcSight()">计算</button>
+<div class="calc-btn-row"><button class="calc-btn" onclick="calcSight()">计算</button><button class="calc-btn reset" onclick="resetSight()">重置</button></div>
 <div class="calc-result" id="r-sight"></div>
 </div>
 
@@ -82,7 +106,7 @@
 </div>
 <div id="wallTips" style="font-size:11px;color:#92400e;background:#fef3c7;padding:6px 10px;border-radius:6px;margin-bottom:8px;">💡 重力式≤12m | 悬臂式≤15m | 扶壁式>10m | 锚杆式岩质边坡 | 加筋土式缺乏石料</div>
 <div style="font-size:14px;color:var(--text2);margin:8px 0;padding:8px 12px;background:#f8f9fc;border-radius:8px;font-family:SF Mono,Consolas,monospace;">🧱 Ea=½γH²Ka &nbsp; Kc=Wμ/Ea≥1.3 &nbsp; K₀=W·b/(Ea·H/3)≥1.5</div>
-<button class="calc-btn" onclick="calcWall()">验算</button>
+<div class="calc-btn-row"><button class="calc-btn" onclick="calcWall()">验算</button><button class="calc-btn reset" onclick="resetWall()">重置</button></div>
 <div class="calc-result" id="r-wall"></div></div>
 
 <div class="calc-panel" id="panel-axle"><h3>🚛 轴载换算（BZZ-100标准轴载）</h3>
@@ -95,7 +119,7 @@
 </div></div>
 <button class="calc-btn" onclick="addAxle()" style="font-size:12px;padding:6px 16px;margin-bottom:10px;">+ 添加轴型</button>
 <div style="font-size:14px;color:var(--text2);margin:8px 0;padding:8px 12px;background:#f8f9fc;border-radius:8px;font-family:SF Mono,Consolas,monospace;">🚛 Ns=Σ C₁·C₂·Ni·(Pi/100)^4.35 &nbsp; 单轴C₁=1 双轴C₁=2.2</div>
-<button class="calc-btn" onclick="calcAxle()">换算</button>
+<div class="calc-btn-row"><button class="calc-btn" onclick="calcAxle()">换算</button><button class="calc-btn reset" onclick="resetAxle()">重置</button></div>
 <div class="calc-result" id="r-axle"></div>
 </div>
 
@@ -107,7 +131,7 @@
 <div class="calc-field"><label>设计洪水频率</label><select id="dFr"><option value="100">1/100</option><option value="50">1/50</option><option value="25">1/25</option><option value="15">1/15</option></select></div>
 </div>
 <div style="font-size:14px;color:var(--text2);margin:8px 0;padding:8px 12px;background:#f8f9fc;border-radius:8px;font-family:SF Mono,Consolas,monospace;">💧 Q=0.278·ψ·q·F &nbsp; （推理公式法，小流域<500km²）</div>
-<button class="calc-btn" onclick="calcDrain()">计算</button>
+<div class="calc-btn-row"><button class="calc-btn" onclick="calcDrain()">计算</button><button class="calc-btn reset" onclick="resetDrain()">重置</button></div>
 <div class="calc-result" id="r-drain"></div>
 </div>
 
@@ -125,41 +149,116 @@ document.getElementById('breadcrumb').innerHTML = renderBreadcrumb([{label:'🏠
 // 标签切换
 document.getElementById('tabs').addEventListener('click',function(e){var t=e.target.closest('.ctab');if(!t)return;document.querySelectorAll('.ctab').forEach(function(x){x.classList.remove('active')});t.classList.add('active');document.querySelectorAll('.calc-panel').forEach(function(x){x.classList.remove('active')});document.getElementById('panel-'+t.dataset.panel).classList.add('active');});
 
-function R(id,html,isErr){var e=document.getElementById(id);e.innerHTML=html;e.style.display='block';if(isErr)e.style.background='#fef2f2';else e.style.background='#f0fdf4';}
+// 结果渲染（支持警告/错误状态）
+function R(id,html,status){
+  var e=document.getElementById(id);
+  e.innerHTML=html;e.style.display='block';
+  e.classList.remove('warn','error');
+  if(status==='warn')e.classList.add('warn');
+  if(status==='error')e.classList.add('error');
+}
+
+// 输入验证
+function validate(el, min, max, name){
+  var v=parseFloat(el.value);
+  if(isNaN(v)||v<min||v>max){
+    el.classList.add('invalid');
+    var msg=el.parentElement.querySelector('.err-msg');
+    if(!msg){msg=document.createElement('div');msg.className='err-msg';el.parentElement.appendChild(msg);}
+    msg.textContent='⚠ '+name+'应在 '+min+'~'+max+' 范围内';
+    return false;
+  }
+  el.classList.remove('invalid');
+  var msg=el.parentElement.querySelector('.err-msg');
+  if(msg)msg.textContent='';
+  return true;
+}
+
+// 计算历史
+var CALC_HISTORY_KEY='calc_history';
+function saveHistory(type,summary){
+  try{
+    var h=JSON.parse(localStorage.getItem(CALC_HISTORY_KEY)||'[]');
+    h.unshift({type:type,summary:summary,time:Date.now()});
+    if(h.length>20)h=h.slice(0,20);
+    localStorage.setItem(CALC_HISTORY_KEY,JSON.stringify(h));
+    if(document.getElementById('historyList'))renderHistory();
+  }catch(e){}
+}
+function clearHistory(){
+  try{localStorage.removeItem(CALC_HISTORY_KEY);renderHistory();}catch(e){}
+}
+function renderHistory(){
+  try{
+    var h=JSON.parse(localStorage.getItem(CALC_HISTORY_KEY)||'[]');
+    var el=document.getElementById('historyList');
+    if(!el)return;
+    if(h.length===0){el.innerHTML='<div class="h-empty">暂无计算记录，开始使用后将自动保存</div>';return;}
+    var html='';
+    h.forEach(function(item,i){
+      var d=new Date(item.time);
+      var ts=d.getMonth()+1+'/'+d.getDate()+' '+d.getHours()+':'+String(d.getMinutes()).padStart(2,'0');
+      html+='<div class="h-item"><div><span class="h-type">'+item.type+'</span> '+item.summary+'</div><div style="display:flex;align-items:center;gap:8px;"><span class="h-time">'+ts+'</span><button class="h-del" onclick="delHistory('+i+')" title="删除">✕</button></div></div>';
+    });
+    el.innerHTML=html;
+  }catch(e){}
+}
+function delHistory(i){
+  try{
+    var h=JSON.parse(localStorage.getItem(CALC_HISTORY_KEY)||'[]');
+    h.splice(i,1);localStorage.setItem(CALC_HISTORY_KEY,JSON.stringify(h));renderHistory();
+  }catch(e){}
+}
+// 初始化历史
+setTimeout(function(){
+  var hdiv=document.createElement('div');
+  hdiv.className='calc-history';
+  hdiv.innerHTML='<h3>📜 计算历史 <button onclick="clearHistory()" style="font-size:11px;background:none;border:none;color:var(--text3);cursor:pointer;margin-left:8px;">清空</button></h3><div id="historyList"></div>';
+  document.getElementById('panels').after(hdiv);
+  renderHistory();
+},100);
 
 // ===== 平曲线要素 =====
 function calcCurve(){
   var Rr=parseFloat(document.getElementById('crR').value)||500;
   var A=parseFloat(document.getElementById('crA').value)||30;
   var Ls=parseFloat(document.getElementById('crLs').value)||0;
+  if(!validate(document.getElementById('crR'),10,50000,'圆曲线半径'))return;
+  if(!validate(document.getElementById('crA'),1,180,'路线转角'))return;
   var rad=A*Math.PI/180;
   var T=Ls?Math.round((Rr+Ls*Ls/(24*Rr))*Math.tan(rad/2)+Ls/2-Ls*Ls*Ls/(240*Rr*Rr)):Math.round(Rr*Math.tan(rad/2));
-  var L=L?Math.round(Rr*rad*(Ls?1:1)):Math.round(Rr*rad);
+  var L=Math.round(Rr*rad+Ls);
   var E=Ls?Math.round((Rr+Ls*Ls/(24*Rr))/Math.cos(rad/2)-Rr):Math.round(Rr*(1/Math.cos(rad/2)-1));
-  var h='<h4>📐 计算结果</h4>';
-  h+='<div class="r-row"><span>切线长 T</span><span class="r-val">'+T+' m</span></div>';
-  h+='<div class="r-row"><span>曲线长 L</span><span class="r-val">'+L+' m</span></div>';
-  h+='<div class="r-row"><span>外距 E</span><span class="r-val">'+E+' m</span></div>';
+  var h='<h4>📐 计算结果（R='+Rr+'m, α='+A+'°）</h4>';
+  h+='<div class="r-row"><span>切线长 T</span><span class="r-val">'+T.toLocaleString()+' m</span></div>';
+  h+='<div class="r-row"><span>曲线长 L</span><span class="r-val">'+L.toLocaleString()+' m</span></div>';
+  h+='<div class="r-row"><span>外距 E</span><span class="r-val">'+E.toLocaleString()+' m</span></div>';
   if(Ls>0) h+='<div class="r-row"><span>缓和曲线 Ls</span><span class="r-val">'+Ls+' m</span></div>';
   h+='<div class="calc-source">📚 公式：T=R·tan(α/2) + Ls/2 | L=R·α(rad) + Ls | E=R·(sec(α/2)-1) | JTG D20-2017</div>';
   R('r-curve',h);
+  saveHistory('平曲线','R='+Rr+'m α='+A+'° → T='+T+'m L='+L+'m');
 }
+function resetCurve(){document.getElementById('crR').value='500';document.getElementById('crA').value='30';document.getElementById('crLs').value='70';document.getElementById('r-curve').style.display='none';}
 
 // ===== 视距 =====
 function calcSight(){
   var V=parseInt(document.getElementById('sv').value);
   var g=parseFloat(document.getElementById('sg').value)||0;
+  if(!validate(document.getElementById('sv'),1,240,'设计速度'))return;
   var t=document.getElementById('st').value==='asphalt'?0.4:0.35;
   var Ss=Math.round(V*t+V*V/(254*(t+g/100)));
   var Sc=Math.round(2*Ss);
   var So=Math.round(V*1.2*t+V*V*1.44/(254*(t+g/100)));
-  var h='<h4>👁 计算结果（设计速度 '+V+'km/h）</h4>';
+  var status=Ss<30?'warn':'';
+  var h='<h4>👁 计算结果（设计速度 '+V+'km/h, '+(document.getElementById('st').value==='asphalt'?'沥青':'水泥')+'路面）</h4>';
   h+='<div class="r-row"><span>停车视距</span><span class="r-val">'+Ss+' m</span></div>';
   h+='<div class="r-row"><span>会车视距</span><span class="r-val">'+Sc+' m</span></div>';
   h+='<div class="r-row"><span>超车视距</span><span class="r-val">'+So+' m</span></div>';
   h+='<div class="calc-source">📚 公式：停车视距=V·t/3.6 + V²/[254(φ+ψ)] | φ(沥青0.4/水泥0.35) | JTG D20-2017</div>';
-  R('r-sight',h);
+  R('r-sight',h,status);
+  saveHistory('视距','V='+V+'km/h → 停车视距'+Ss+'m');
 }
+function resetSight(){document.getElementById('sv').value='80';document.getElementById('sg').value='0';document.getElementById('st').value='asphalt';document.getElementById('r-sight').style.display='none';}
 
 // ===== 挡土墙 =====
 function updateWallFields(){var t=document.getElementById('wType').value;document.getElementById('wfAnchors').style.display=t==='anchored'?'block':'none';document.getElementById('wfReinf').style.display=t==='re'?'block':'none';}
@@ -172,13 +271,12 @@ function calcWall(){
   var eps=parseFloat(document.getElementById('wE').value)||0;
   var beta=parseFloat(document.getElementById('wB').value)||0;
   var type=document.getElementById('wType').value;
+  if(!validate(document.getElementById('wH'),1,30,'墙高'))return;
   var phr=phi*Math.PI/180,epr=eps*Math.PI/180,btr=beta*Math.PI/180;
 
-  // 库仑主动土压力系数
   var Ka=Math.pow(Math.cos(phr-epr),2)/(Math.pow(Math.cos(epr),2)*Math.cos(epr+phr)*Math.pow(1+Math.sqrt(Math.sin(phr+btr)*Math.sin(phr-epr)/(Math.cos(epr+phr)*Math.cos(epr-btr))),2));
   var Ea=Math.round(0.5*gg*H*H*Ka*10)/10;
 
-  // 不同墙型的自重估算
   var widths={gravity:H*0.5,cantilever:H*0.4,counterfort:H*0.5,anchored:H*0.3,re:H*0.7};
   var bw=widths[type]||H*0.5;
   var W=Math.round(H*bw*23*10)/10;
@@ -187,37 +285,49 @@ function calcWall(){
 
   var typeNames={gravity:'重力式',cantilever:'悬臂式',counterfort:'扶壁式',anchored:'锚杆式',re:'加筋土式'};
   var typeLimits={gravity:'≤12m',cantilever:'≤15m',counterfort:'≤15m',anchored:'单级≤8m',re:'≤20m'};
+  var status=Kc<1.3||K0<1.5?'warn':'';
   var h='<h4>🧱 '+typeNames[type]+'挡土墙验算（H='+H+'m, 限高'+typeLimits[type]+'）</h4>';
   h+='<div class="r-row"><span>库仑土压力系数 Ka</span><span class="r-val">'+Ka.toFixed(3)+'</span></div>';
   h+='<div class="r-row"><span>主动土压力 Ea</span><span class="r-val">'+Ea.toFixed(1)+' kN/m</span></div>';
   h+='<div class="r-row"><span>墙体估算自重 W</span><span class="r-val">'+W.toFixed(0)+' kN/m（底宽≈'+bw.toFixed(1)+'m）</span></div>';
-  h+='<div class="r-row"><span>抗滑稳定 Kc</span><span class="r-val">'+Kc+' '+(Kc>=1.3?'✅ ≥1.3':'⚠️ <1.3')+'</span></div>';
-  h+='<div class="r-row"><span>抗倾覆 K₀</span><span class="r-val">'+K0+' '+(K0>=1.5?'✅ ≥1.5':'⚠️ <1.5')+'</span></div>';
-  // 加筋土特有
+  h+='<div class="r-row"><span>抗滑稳定 Kc</span><span class="r-val '+ (Kc>=1.3?'pass':'fail') +'">'+Kc+' '+(Kc>=1.3?'✅ ≥1.3':'⚠️ <1.3')+'</span></div>';
+  h+='<div class="r-row"><span>抗倾覆 K₀</span><span class="r-val '+ (K0>=1.5?'pass':'fail') +'">'+K0+' '+(K0>=1.5?'✅ ≥1.5':'⚠️ <1.5')+'</span></div>';
   if(type==='re'){var Lr=parseFloat(document.getElementById('wLr').value)||5;h+='<div class="r-row"><span>筋材长度</span><span class="r-val">'+Lr+'m（≥0.7H='+(0.7*H).toFixed(1)+'m）</span></div>';}
-  // 锚杆特有
   if(type==='anchored'){var Sp=parseFloat(document.getElementById('wSp').value)||2;var Ta=Math.round(Ea*Sp*10)/10;h+='<div class="r-row"><span>锚杆间距</span><span class="r-val">'+Sp+'m</span></div>';h+='<div class="r-row"><span>单根锚杆拉力</span><span class="r-val">≈'+Ta.toFixed(0)+'kN</span></div>';}
   h+='<div class="calc-source">📚 库仑土压力理论 | JTG D30-2015 第5章 | 抗滑Kc≥1.3 抗倾覆K₀≥1.5</div>';
-  R('r-wall',h);
+  R('r-wall',h,status);
+  saveHistory('挡土墙',typeNames[type]+' H='+H+'m → Kc='+Kc+' K₀='+K0);
 }
+function resetWall(){document.getElementById('wH').value='6';document.getElementById('wG').value='18';document.getElementById('wF').value='30';document.getElementById('wM').value='0.4';document.getElementById('wE').value='0';document.getElementById('wB').value='0';document.getElementById('wType').value='gravity';updateWallFields();document.getElementById('r-wall').style.display='none';}
 
 // ===== 轴载换算 =====
 function addAxle(){var d=document.createElement('div');d.style.cssText='display:flex;gap:6px;align-items:end;flex-wrap:wrap';d.innerHTML='<div class="calc-field"><label>轴重 Pi (kN)</label><input class="axle-p" value="100" type="number" style="width:80px"></div><div class="calc-field"><label>轴数</label><input class="axle-n" value="1000" type="number" style="width:70px"></div><div class="calc-field"><label>轴型</label><select class="axle-t"><option value="single">单轴双轮</option><option value="double">双轴双轮</option></select></div><button onclick="this.parentElement.remove()" style="background:var(--accent);color:#fff;border:none;border-radius:6px;padding:8px 10px;cursor:pointer;font-size:12px">✕</button>';document.getElementById('axleForm').appendChild(d);}
 
 function calcAxle(){
   var Ps=document.querySelectorAll('.axle-p');var Ns=document.querySelectorAll('.axle-n');var Ts=document.querySelectorAll('.axle-t');
-  var NsTotal=0;var detail='';
+  var NsTotal=0;var detail='';var allValid=true;
   for(var i=0;i<Ps.length;i++){
     var Pi=parseFloat(Ps[i].value)||100;var Ni=parseFloat(Ns[i].value)||0;var Ti=Ts[i].value;
+    if(Pi<10||Pi>500){Ps[i].classList.add('invalid');allValid=false;}
     var C1=Ti==='single'?1:2.2;var C2=Ti==='single'?1:1;
     var Ne=Math.round(Ni*C1*C2*Math.pow(Pi/100,4.35));
     NsTotal+=Ne;
-    detail+='<div class="r-row"><span>'+Pi+'kN ×'+Ni+'次 ('+(Ti=='single'?'单轴':'双轴')+')</span><span class="r-val">→ '+Ne.toLocaleString()+' 次</span></div>';
+    detail+='<div class="r-row"><span>'+Pi+'kN ×'+Ni.toLocaleString()+'次 ('+(Ti=='single'?'单轴':'双轴')+')</span><span class="r-val">→ '+Ne.toLocaleString()+' 次</span></div>';
   }
+  if(!allValid)return;
   var h='<h4>🚛 换算结果</h4>'+detail;
-  h+='<div class="r-row" style="font-weight:700;font-size:14px;"><span>累计标准轴载(BZZ-100)</span><span class="r-val">'+NsTotal.toLocaleString()+' 次</span></div>';
+  h+='<div class="r-row" style="font-weight:700;font-size:14px;border-top:2px solid #86efac;padding-top:6px;"><span>累计标准轴载(BZZ-100)</span><span class="r-val">'+NsTotal.toLocaleString()+' 次</span></div>';
   h+='<div class="calc-source">📚 公式：Ns=ΣC₁·C₂·Ni·(Pi/100)^4.35 | JTG D50-2017</div>';
   R('r-axle',h);
+  saveHistory('轴载换算',NsTotal.toLocaleString()+'次 (BZZ-100)');
+}
+function resetAxle(){
+  var form=document.getElementById('axleForm');
+  var rows=form.querySelectorAll('div[style]');
+  for(var i=rows.length-1;i>=0;i--){if(rows[i].querySelector('.axle-p')&&i>0)rows[i].remove();}
+  var firstP=form.querySelector('.axle-p');var firstN=form.querySelector('.axle-n');
+  if(firstP)firstP.value='130';if(firstN)firstN.value='2000';
+  document.getElementById('r-axle').style.display='none';
 }
 
 // ===== 涵洞孔径 =====
@@ -226,15 +336,20 @@ function calcDrain(){
   var q=parseFloat(document.getElementById('dQ').value)||60;
   var p=parseFloat(document.getElementById('dP').value)||0.9;
   var fr=parseInt(document.getElementById('dFr').value);
+  if(!validate(document.getElementById('dF'),0.01,500,'汇水面积'))return;
+  if(!validate(document.getElementById('dP'),0.1,1,'径流系数'))return;
   var Q=Math.round(0.278*p*q*F*10)/10;
   var size=Q<0.5?'φ0.75m圆管涵':Q<1?'φ1.0m圆管涵':Q<2?'φ1.5m圆管涵':Q<5?'2.0×2.0m盖板涵':Q<10?'3.0×2.5m盖板涵':'需单独设计';
+  var status=size==='需单独设计'?'warn':'';
   var h='<h4>💧 计算结果</h4>';
   h+='<div class="r-row"><span>设计流量 Q</span><span class="r-val">'+Q.toFixed(1)+' m³/s</span></div>';
   h+='<div class="r-row"><span>推荐涵洞孔径</span><span class="r-val">'+size+'</span></div>';
   h+='<div class="r-row"><span>设计洪水频率</span><span class="r-val">1/'+fr+'</span></div>';
   h+='<div class="calc-source">📚 推理公式：Q=0.278·ψ·q·F | JTG C30-2015 | 仅供参考，实际以水文计算为准</div>';
-  R('r-drain',h);
+  R('r-drain',h,status);
+  saveHistory('涵洞孔径','Q='+Q.toFixed(1)+'m³/s → '+size);
 }
+function resetDrain(){document.getElementById('dF').value='0.5';document.getElementById('dQ').value='60';document.getElementById('dP').value='0.9';document.getElementById('dFr').value='100';document.getElementById('r-drain').style.display='none';}
 </script>
 </body>
 </html>
