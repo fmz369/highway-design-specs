@@ -93,20 +93,28 @@
 
   function extractKeywords(q) {
     var found = [];
-    // 同义词映射
-    Object.keys(SYNONYMS).forEach(function (kw) {
+    // 同义词映射（长词优先）
+    var synKeys = Object.keys(SYNONYMS).sort(function(a,b){return b.length-a.length;});
+    synKeys.forEach(function (kw) {
       if (q.indexOf(kw) >= 0) { var mapped = SYNONYMS[kw]; if (found.indexOf(mapped) < 0) found.push(mapped); }
     });
     // 等级关键词
     if (q.indexOf('高速') >= 0) found.push('高速');
-    if (q.indexOf('一级公路') >= 0 || q.indexOf('一级') >= 0) found.push('一级');
-    if (q.indexOf('二级公路') >= 0 || q.indexOf('二级') >= 0) found.push('二级');
-    if (q.indexOf('三级公路') >= 0 || q.indexOf('三级') >= 0) found.push('三级');
-    if (q.indexOf('四级') >= 0 || q.indexOf('农村公路') >= 0 || q.indexOf('小交通') >= 0) found.push('四级');
+    if (q.indexOf('一级公路') >= 0) found.push('一级公路');
+    else if (q.indexOf('一级') >= 0 && q.indexOf('一级公路')<0) found.push('一级');
+    if (q.indexOf('二级公路') >= 0) found.push('二级公路');
+    else if (q.indexOf('二级') >= 0 && q.indexOf('二级公路')<0) found.push('二级');
+    if (q.indexOf('四级公路') >= 0 || q.indexOf('小交通') >= 0) found.push('四级公路');
+    else if (q.indexOf('四级') >= 0) found.push('四级');
+    if (q.indexOf('三级公路') >= 0) found.push('三级公路');
+    else if (q.indexOf('三级') >= 0 && q.indexOf('三级公路')<0) found.push('三级');
     if (q.indexOf('乡村') >= 0) found.push('干路');
-    // 补充全词匹配
-    var dict = ['路基压实度','压实度','设计速度','车道宽度','路肩宽度','路基宽度','路面宽度','平曲线','圆曲线','停车视距','最大纵坡','压实度','CBR','设计年限','洪水频率','汽车荷载','建筑限界','面层厚度','基层厚度','超高','加宽','缓和曲线','竖曲线','错车道','护栏','标志','标线','桥梁','隧道','排水','挡土墙','边坡'];
-    dict.forEach(function (w) { if (q.indexOf(w) >= 0 && found.indexOf(w) < 0) found.push(w); });
+    // 补充全词匹配（去重+长词优先）
+    var dict = ['路基压实度','压实度','设计速度','车道宽度','路肩宽度','路基宽度','路面宽度','平曲线最小半径','圆曲线最小半径','停车视距','最大纵坡','CBR','设计年限','洪水频率','汽车荷载','建筑限界净高','面层厚度','基层厚度','最大超高','圆曲线加宽','缓和曲线','竖曲线','错车道','护栏防撞等级','标志汉字高度','标线宽度'];
+    var uniq = {}; dict.forEach(function(w){if(!uniq[w])uniq[w]=true;});
+    Object.keys(uniq).sort(function(a,b){return b.length-a.length;}).forEach(function(w){
+      if(q.indexOf(w) >= 0 && found.indexOf(w) < 0) found.push(w);
+    });
     if (found.length === 0) { for (var i = 0; i < q.length - 1; i++) { var w2 = q.substring(i, i + 2); if (!/[，。？?！!\s]/.test(w2) && found.indexOf(w2) < 0) found.push(w2); } }
     return found.slice(0, 10);
   }
