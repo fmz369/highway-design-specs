@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>设计检查清单 — 公路设计规范</title>
+<link rel="stylesheet" href="../css/site.css">
+<style>
+.cl-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+.ctab{padding:8px 16px;border-radius:18px;border:1.5px solid var(--border);background:var(--card-bg);font-size:13px;cursor:pointer;transition:all var(--transition);white-space:nowrap}
+.ctab:hover{border-color:var(--accent);color:var(--accent)}
+.ctab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.cl-panel{display:none}
+.cl-panel.active{display:block}
+.cl-progress{background:var(--card-bg);border-radius:var(--radius);box-shadow:var(--shadow-sm);border:1px solid var(--border);padding:14px 18px;margin-bottom:16px;display:flex;align-items:center;gap:14px}
+.cl-bar{flex:1;height:10px;background:#e8e8f0;border-radius:5px;overflow:hidden}
+.cl-fill{height:100%;background:linear-gradient(90deg,#22c55e,#16a34a);border-radius:5px;transition:width .3s}
+.cl-pct{font-weight:700;font-size:14px;color:#16a34a;min-width:40px}
+.cl-section{margin-bottom:16px}
+.cl-section h4{font-size:14px;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid var(--border)}
+.cl-item{display:flex;align-items:flex-start;gap:10px;padding:8px 12px;margin-bottom:4px;border-radius:8px;transition:background .15s;cursor:pointer}
+.cl-item:hover{background:var(--accent-light)}
+.cl-item input[type=checkbox]{margin-top:3px;width:18px;height:18px;cursor:pointer;accent-color:var(--accent)}
+.cl-item.checked .cl-text{text-decoration:line-through;color:var(--text3)}
+.cl-text{font-size:13px;color:var(--text2);flex:1}
+.cl-ref{font-size:10px;color:var(--accent);white-space:nowrap;font-weight:500}
+.cl-btn{padding:6px 16px;border:1.5px solid var(--border);border-radius:16px;background:var(--card-bg);font-size:12px;cursor:pointer;color:var(--text2)}
+.cl-btn:hover{border-color:#ef4444;color:#ef4444}
+[data-theme=dark] .cl-bar{background:#2a2a45}[data-theme=dark] .cl-item:hover{background:#1e1e35}
+</style>
+</head>
+<body>
+<header class="header"><div class="header-inner"><div class="header-top">
+<a href="../" class="header-logo" style="text-decoration:none;">✅</a><div><h1>设计检查清单</h1><p class="subtitle">按设计阶段逐项核查，防止漏项 — 进度自动保存</p></div>
+</div></div></header>
+<main class="main" style="max-width:900px">
+<div id="breadcrumb"></div>
+<div class="cl-tabs" id="tabs">
+<button class="ctab active" data-panel="route">📐 路线设计</button>
+<button class="ctab" data-panel="subgrade">🪨 路基设计</button>
+<button class="ctab" data-panel="pavement">🛣 路面设计</button>
+<button class="ctab" data-panel="bridge">🌉 桥梁设计</button>
+<button class="ctab" data-panel="drainage">💧 排水设计</button>
+<button class="ctab" data-panel="safety">🛡 交安设计</button>
+</div>
+<div class="cl-progress"><span style="font-size:13px;color:var(--text2)">完成进度</span><div class="cl-bar"><div class="cl-fill" id="progBar" style="width:0%"></div></div><span class="cl-pct" id="progPct">0%</span><button class="cl-btn" onclick="resetCurrent()">🔄 重置当前</button></div>
+<div id="panels"></div>
+</main>
+
+<script src="../js/data.js?v=2"></script>
+<script src="../js/router.js?v=2"></script>
+<script src="../js/components.js?v=2"></script>
+<script src="../js/theme.js?v=2"></script>
+<script>
+document.getElementById('breadcrumb').innerHTML = renderBreadcrumb([{label:'🏠 首页',link:'../'},{label:'✅ 设计检查清单'}]);
+
+var STORAGE_KEY = 'cl_checked';
+function getChecked(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');}catch(e){return{};}}
+function saveChecked(obj){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(obj));}catch(e){}}
+
+var CHECKLISTS = {
+route:{name:'📐 路线设计',items:[
+  {s:'技术标准',t:'确定公路技术等级和设计速度',r:'JTG B01-2014'},
+  {s:'基本参数',t:'确定车道数、车道宽度、路肩宽度',r:'JTG B01-2014'},
+  {s:'平面设计',t:'平曲线半径满足一般值/极限值要求',r:'JTG D20-2017'},
+  {s:'平面设计',t:'缓和曲线长度满足最小长度要求',r:'JTG D20-2017'},
+  {s:'平面设计',t:'圆曲线超高值不超过最大超高(一般8%)',r:'JTG D20-2017'},
+  {s:'平面设计',t:'圆曲线加宽值满足规范要求',r:'JTG D20-2017'},
+  {s:'纵断面',t:'最大纵坡不超过规范限值',r:'JTG D20-2017'},
+  {s:'纵断面',t:'坡长不超过最大坡长限制',r:'JTG D20-2017'},
+  {s:'纵断面',t:'竖曲线半径满足最小要求',r:'JTG D20-2017'},
+  {s:'视距',t:'停车视距满足规范要求',r:'JTG D20-2017'},
+  {s:'视距',t:'会车视距满足规范要求(双车道)',r:'JTG D20-2017'},
+  {s:'平纵组合',t:'平纵组合满足平包竖原则',r:'JTG D20-2017'},
+  {s:'平纵组合',t:'合成坡度不超过10%~10.5%',r:'JTG D20-2017'},
+  {s:'横断面',t:'建筑限界净高满足要求',r:'JTG B01-2014'},
+  {s:'交叉口',t:'交叉口视距三角形内无障碍物',r:'JTG D20-2017'},
+]},
+subgrade:{name:'🪨 路基设计',items:[
+  {s:'总体',t:'路基宽度满足车道+路肩+设施需求',r:'JTG B01-2014'},
+  {s:'填料',t:'填料CBR值满足规范最小要求',r:'JTG D30-2015'},
+  {s:'压实',t:'上路床压实度达标(高速≥96%)',r:'JTG D30-2015'},
+  {s:'压实',t:'下路床、路堤压实度分层达标',r:'JTG D30-2015'},
+  {s:'边坡',t:'填方边坡坡率不超过规范值',r:'JTG D30-2015'},
+  {s:'边坡',t:'挖方边坡坡率根据岩土性质确定',r:'JTG D30-2015'},
+  {s:'边坡',t:'高边坡(>20m)进行稳定性分析',r:'JTG D30-2015'},
+  {s:'排水',t:'边沟底宽≥0.4m,深度≥0.4m',r:'JTG/T D33-2012'},
+  {s:'排水',t:'边沟纵坡≥0.3%',r:'JTG/T D33-2012'},
+  {s:'防护',t:'填方路段防护设施满足要求',r:'JTG D30-2015'},
+  {s:'支挡',t:'挡土墙抗滑Kc≥1.3,抗倾覆K0≥1.5',r:'JTG D30-2015'},
+  {s:'特殊路基',t:'软土/黄土/膨胀土等特殊路基处理方案合理',r:'JTG D30-2015'},
+  {s:'台背',t:'桥涵台背回填压实度≥96%',r:'JTG/T 3331-2018'},
+  {s:'改扩建',t:'新旧路基拼接处设置台阶+土工材料',r:'JTG D30-2015'},
+]},
+pavement:{name:'🛣 路面设计',items:[
+  {s:'交通量',t:'累计当量轴次计算正确',r:'JTG D50-2017'},
+  {s:'结构组合',t:'面层+基层+底基层组合合理',r:'JTG D50-2017'},
+  {s:'验算',t:'沥青层底拉应变≤容许值',r:'JTG D50-2017'},
+  {s:'验算',t:'路基顶面压应变≤容许值',r:'JTG D50-2017'},
+  {s:'验算',t:'沥青层永久变形量≤容许值',r:'JTG D50-2017'},
+  {s:'厚度',t:'面层厚度≥最小厚度要求',r:'JTG D50-2017'},
+  {s:'厚度',t:'基层厚度满足规范推荐范围',r:'JTG D50-2017'},
+  {s:'材料',t:'沥青混合料马歇尔指标满足要求',r:'JTG D50-2017'},
+  {s:'排水',t:'路面结构排水设计完善',r:'JTG D50-2017'},
+  {s:'水泥路面',t:'水泥混凝土弯拉强度≥4.0~5.0MPa',r:'JTG D40-2011'},
+  {s:'水泥路面',t:'接缝设计(缩缝/胀缝/施工缝)完整',r:'JTG D40-2011'},
+  {s:'水泥路面',t:'传力杆尺寸满足规范要求',r:'JTG D40-2011'},
+]},
+bridge:{name:'🌉 桥梁设计',items:[
+  {s:'总体',t:'桥梁分类(特大桥/大/中/小桥)正确',r:'JTG D60-2015'},
+  {s:'荷载',t:'汽车荷载等级正确(Ⅰ级/Ⅱ级)',r:'JTG D60-2015'},
+  {s:'荷载',t:'人群荷载3.0kN/m²',r:'JTG D60-2015'},
+  {s:'荷载',t:'风荷载、温度作用考虑齐全',r:'JTG D60-2015'},
+  {s:'结构',t:'承载能力极限状态验算通过',r:'JTG 3362-2018'},
+  {s:'结构',t:'正常使用极限状态验算通过',r:'JTG 3362-2018'},
+  {s:'裂缝',t:'裂缝宽度≤0.20mm(Ⅰ类环境)',r:'JTG 3362-2018'},
+  {s:'挠度',t:'挠度≤L/600',r:'JTG 3362-2018'},
+  {s:'基础',t:'桩基础承载力满足要求,桩距≥2.5d',r:'JTG D63-2007'},
+  {s:'基础',t:'基础埋深在冲刷线以下≥2m',r:'JTG D63-2007'},
+  {s:'抗震',t:'E1地震弹性验算,E2地震延性验算',r:'JTG/T 2231-01-2020'},
+  {s:'附属',t:'伸缩缝、支座、桥面铺装设计完整',r:'JTG D60-2015'},
+]},
+drainage:{name:'💧 排水设计',items:[
+  {s:'水文',t:'设计洪水流量计算正确',r:'JTG C30-2015'},
+  {s:'水文',t:'设计降雨重现期正确(3~15年按等级)',r:'JTG/T D33-2012'},
+  {s:'边沟',t:'边沟断面尺寸满足排水需求',r:'JTG/T D33-2012'},
+  {s:'截水沟',t:'截水沟距坡顶≥5m',r:'JTG/T D33-2012'},
+  {s:'涵洞',t:'涵洞孔径满足设计流量要求',r:'JTG C30-2015'},
+  {s:'冲刷',t:'一般冲刷+局部冲刷计算完整',r:'JTG C30-2015'},
+  {s:'村镇',t:'村镇路段排水与既有系统协调',r:'JTG/T D33-2012'},
+  {s:'农田',t:'排水系统与农田水利衔接',r:'JTG/T D33-2012'},
+]},
+safety:{name:'🛡 交安设计',items:[
+  {s:'护栏',t:'护栏防撞等级正确(C~SS级)',r:'JTG D81-2017'},
+  {s:'护栏',t:'路侧填高≥3m处设护栏',r:'JTG D81-2017'},
+  {s:'护栏',t:'中央分隔带护栏设置完整',r:'JTG D81-2017'},
+  {s:'标志',t:'指路标志前置距离正确',r:'JTG D82-2009'},
+  {s:'标志',t:'汉字高度满足设计速度要求',r:'GB 5768.2-2022'},
+  {s:'标线',t:'车道边缘线、分界线宽度正确',r:'GB 5768.3-2009'},
+  {s:'标线',t:'分界线实空比正确(划6空9或划2空4)',r:'GB 5768.3-2009'},
+  {s:'视线诱导',t:'轮廓标间距弯道≤8m/直线≤20m',r:'JTG D81-2017'},
+  {s:'防眩',t:'防眩设施设置满足要求',r:'JTG D81-2017'},
+  {s:'隔离',t:'隔离栅/防护网设置完整',r:'JTG D81-2017'},
+]},
+};
+
+var checked = getChecked();
+var activePanel = 'route';
+
+function renderPanel(panelId) {
+  var cl = CHECKLISTS[panelId]; if (!cl) return '';
+  var total = 0, done = 0;
+  var h = '';
+  // 按section分组
+  var sections = {};
+  cl.items.forEach(function(item) {
+    if (!sections[item.s]) sections[item.s] = [];
+    sections[item.s].push(item);
+  });
+  Object.keys(sections).forEach(function(sec) {
+    h += '<div class="cl-section"><h4>'+sec+'</h4>';
+    sections[sec].forEach(function(item, idx) {
+      var key = panelId + '_' + total;
+      var isChecked = checked[key];
+      if (isChecked) done++;
+      total++;
+      h += '<div class="cl-item'+(isChecked?' checked':'')+'" data-key="'+key+'" onclick="toggleItem(this)"><input type="checkbox" '+(isChecked?'checked':'')+' tabindex="-1"><span class="cl-text">'+item.t+'</span><span class="cl-ref">'+item.r+'</span></div>';
+    });
+    h += '</div>';
+  });
+  var pct = total > 0 ? Math.round(done / total * 100) : 0;
+  document.getElementById('progBar').style.width = pct + '%';
+  document.getElementById('progPct').textContent = pct + '%';
+  return h;
+}
+
+function toggleItem(el) {
+  var key = el.dataset.key;
+  if (checked[key]) { delete checked[key]; el.classList.remove('checked'); el.querySelector('input').checked = false; }
+  else { checked[key] = true; el.classList.add('checked'); el.querySelector('input').checked = true; }
+  saveChecked(checked);
+  renderAll();
+}
+
+function resetCurrent() {
+  Object.keys(checked).forEach(function(k) { if (k.startsWith(activePanel + '_')) delete checked[k]; });
+  saveChecked(checked);
+  renderAll();
+}
+
+function renderAll() {
+  document.getElementById('panels').innerHTML = '<div class="cl-panel active">'+renderPanel(activePanel)+'</div>';
+}
+
+document.getElementById('tabs').addEventListener('click', function(e) {
+  var t = e.target.closest('.ctab'); if (!t) return;
+  document.querySelectorAll('.ctab').forEach(function(x){x.classList.remove('active')});
+  t.classList.add('active');
+  activePanel = t.dataset.panel;
+  renderAll();
+});
+
+renderAll();
+
+var bt=document.createElement('button');bt.className='back-top';bt.id='backTop';bt.textContent='↑';document.body.appendChild(bt);
+window.addEventListener('scroll',function(){bt.classList.toggle('visible',window.scrollY>700);});
+bt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+var ft=document.createElement('footer');ft.className='footer';ft.innerHTML=renderFooter().replace(/<footer class=\"footer\">|<\\/footer>/g,'');document.querySelector('.main').after(ft);
+</script>
+</body>
+</html>

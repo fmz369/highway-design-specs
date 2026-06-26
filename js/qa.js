@@ -105,7 +105,7 @@
     if (q.indexOf('四级') >= 0 || q.indexOf('农村公路') >= 0 || q.indexOf('小交通') >= 0) found.push('四级');
     if (q.indexOf('乡村') >= 0) found.push('干路');
     // 补充全词匹配
-    var dict = ['设计速度','车道宽度','路肩宽度','路基宽度','路面宽度','平曲线','圆曲线','停车视距','最大纵坡','压实度','CBR','设计年限','洪水频率','汽车荷载','建筑限界','面层厚度','基层厚度','超高','加宽','缓和曲线','竖曲线','错车道','护栏','标志','标线','桥梁','隧道','排水','挡土墙','边坡'];
+    var dict = ['路基压实度','压实度','设计速度','车道宽度','路肩宽度','路基宽度','路面宽度','平曲线','圆曲线','停车视距','最大纵坡','压实度','CBR','设计年限','洪水频率','汽车荷载','建筑限界','面层厚度','基层厚度','超高','加宽','缓和曲线','竖曲线','错车道','护栏','标志','标线','桥梁','隧道','排水','挡土墙','边坡'];
     dict.forEach(function (w) { if (q.indexOf(w) >= 0 && found.indexOf(w) < 0) found.push(w); });
     if (found.length === 0) { for (var i = 0; i < q.length - 1; i++) { var w2 = q.substring(i, i + 2); if (!/[，。？?！!\s]/.test(w2) && found.indexOf(w2) < 0) found.push(w2); } }
     return found.slice(0, 10);
@@ -119,7 +119,7 @@
     SPECS.forEach(function (spec) {
       var c = spec.content || '', score = 0, matches = [];
       keywords.forEach(function (kw) {
-        var idx = c.indexOf(kw); if (idx >= 0) { score += kw.length * 3; matches.push(kw); }
+        var idx = c.indexOf(kw); if (idx >= 0) { score += kw.length * 4; matches.push(kw); /* 表格中的精确匹配额外加分 */ if (c.substring(Math.max(0,idx-50),idx+50).indexOf('<td')>=0) score += 8; }
         if (spec.code.indexOf(kw) >= 0) score += 5;
         if (spec.title.indexOf(kw) >= 0) score += 4;
       });
@@ -134,6 +134,14 @@
         var excerpts = extractExcerpts(c, keywords, isValueQuery);
         results.push({ spec: spec, score: score, matches: matches, excerpts: excerpts });
       }
+    });
+    // 硬过滤：问题中的核心术语不匹配则大幅降分
+    var mustHaves = [];
+    keywords.forEach(function(kw) { if (kw.length >= 3) mustHaves.push(kw); });
+    results.forEach(function(r) {
+      var missCount = 0;
+      mustHaves.forEach(function(mh) { if (r.spec.content.indexOf(mh) < 0) missCount++; });
+      if (missCount > 0 && missCount === mustHaves.length) r.score -= 100; // 全部核心词都不匹配→排除
     });
     results.sort(function (a, b) { return b.score - a.score; });
     return results.slice(0, 6);
