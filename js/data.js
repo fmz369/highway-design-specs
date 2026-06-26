@@ -30,21 +30,59 @@ hasPdf:true,
 content:`<h4>📑 章节目录（11章）</h4>
 <div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 基本规定</div><div>4 通行能力与服务水平</div><div>5 横断面</div><div>6 平面与纵断面</div><div>7 交叉</div><div>8 路基路面</div><div>9 公共交通</div><div>10 行人与非机动车</div><div>11 管线及设施</div></div>
 
+<h4>📜 第1章 总则</h4>
+<ul><li>适用于<span class="hl">新建和改建</span>城市道路工程设计</li><li>设计原则：安全可靠、技术先进、经济合理、保护环境</li></ul>
+
 <h4>🚗 第3章 基本规定</h4>
 <h4>道路分级与设计速度</h4>
-<table><tr><th>道路等级</th><th>设计速度(km/h)</th><th>设计年限(年)</th></tr><tr><td><span class="hl">快速路</span></td><td>100/80/60</td><td>20</td></tr><tr><td>主干路</td><td>60/50/40</td><td>20</td></tr><tr><td>次干路</td><td>50/40/30</td><td>15</td></tr><tr><td>支路</td><td>40/30/20</td><td>10~15</td></tr></table>
+<table><tr><th>道路等级</th><th>设计速度(km/h)</th><th>设计年限(年)</th><th>一条车道通行能力(pcu/h)</th></tr>
+<tr><td><span class="hl">快速路</span></td><td>100/80/60</td><td>20</td><td>1800~2000</td></tr>
+<tr><td>主干路</td><td>60/50/40</td><td>20</td><td>1650~1800</td></tr>
+<tr><td>次干路</td><td>50/40/30</td><td>15</td><td>1550~1700</td></tr>
+<tr><td>支路</td><td>40/30/20</td><td>10~15</td><td>1400~1600</td></tr></table>
 
-<h4>通行能力</h4>
-<table><tr><th>道路等级</th><th>一条车道通行能力(pcu/h)</th></tr><tr><td>快速路</td><td><span class="hl">1800~2000</span></td></tr><tr><td>主干路</td><td>1650~1800</td></tr><tr><td>次干路</td><td>1550~1700</td></tr><tr><td>支路</td><td>1400~1600</td></tr></table>
+<h4>📏 第4章 通行能力与服务水平</h4>
+<ul><li>快速路设计服务水平：<span class="hl">三级</span>（稳定车流）</li><li>主干路：三级或四级</li><li>次干路/支路：四级（可接受延误）</li></ul>
 
-<h4>📏 第5章 横断面</h4><ul><li>机动车道宽度：<span class="hl">3.25~3.50m</span>（小客车道可3.00m）</li><li>非机动车道宽度：2.5~3.5m（单向）</li><li>人行道最小宽度：<span class="hl">2.0m</span></li><li>设施带宽度：0.5~1.5m</li></ul>
+<h4>📏 第5章 横断面</h4>
+<table><tr><th>项目</th><th>快速路</th><th>主干路</th><th>次干路</th><th>支路</th></tr>
+<tr><td>机动车道宽度(m)</td><td><span class="hl">3.25~3.75</span></td><td>3.25~3.50</td><td>3.25~3.50</td><td>3.00~3.50</td></tr>
+<tr><td>小客车道(m)</td><td>3.00~3.50</td><td>3.00~3.50</td><td>3.00</td><td>3.00</td></tr>
+<tr><td>非机动车道宽(m)</td><td>—</td><td>2.5~3.5</td><td>2.5~3.5</td><td>1.5~2.5</td></tr>
+<tr><td>人行道最小宽(m)</td><td>—</td><td>3.0</td><td>2.0</td><td>2.0</td></tr>
+<tr><td>设施带宽(m)</td><td>0.5~1.5</td><td>0.5~1.5</td><td>0.5~1.0</td><td>0.5~1.0</td></tr></table>
 
-<h4>🔀 第7章 交叉</h4><ul><li>平面交叉口视距三角形内<span class="hl">不得有任何障碍物</span></li><li>立体交叉设置条件：快速路与快速路/主干路相交</li></ul>
+<h4>📐 第6章 平面与纵断面</h4>
+<h4>平曲线最小半径</h4>
+<table><tr><th>设计速度(km/h)</th><th>100</th><th>80</th><th>60</th><th>50</th><th>40</th><th>30</th><th>20</th></tr>
+<tr><td>不设超高(m)</td><td>1600</td><td>1000</td><td>600</td><td>400</td><td>300</td><td>150</td><td>70</td></tr>
+<tr><td>设超高一般值(m)</td><td><span class="hl">650</span></td><td>400</td><td>300</td><td>200</td><td>150</td><td>85</td><td>40</td></tr>
+<tr><td>设超高极限值(m)</td><td>400</td><td>250</td><td>150</td><td>100</td><td>70</td><td>40</td><td>20</td></tr></table>
+<h4>最大纵坡</h4>
+<table><tr><th>设计速度(km/h)</th><th>100</th><th>80</th><th>60</th><th>50</th><th>40</th><th>30</th><th>20</th></tr>
+<tr><td>最大纵坡(%)</td><td><span class="hl">4</span></td><td>5</td><td>6</td><td>6.5</td><td>7</td><td>8</td><td>8</td></tr></table>
+<h4>停车视距</h4>
+<table><tr><th>设计速度(km/h)</th><th>100</th><th>80</th><th>60</th><th>50</th><th>40</th><th>30</th><th>20</th></tr>
+<tr><td>停车视距(m)</td><td><span class="hl">160</span></td><td>110</td><td>75</td><td>55</td><td>40</td><td>30</td><td>20</td></tr></table>
 
-<h4>🚌 第9章 公共交通</h4><ul><li>公交专用道宽度：<span class="hl">3.5~3.75m</span></li><li>公交停靠站间距：市区500~800m；郊区800~1000m</li></ul>
+<h4>🔀 第7章 交叉</h4>
+<ul><li>交叉口视距三角形内<span class="hl">不得有任何障碍物</span></li><li>快速路与各级道路相交必须采用立体交叉</li><li>平面交叉口转角缘石半径：主干路<span class="hl">20~25m</span>；次干路15~20m；支路10~15m</li></ul>
 
-<h4>🚶 第10章 行人与非机动车</h4><ul><li>人行道必须设置<span class="hl">盲道</span>，满足无障碍要求</li><li>非机动车道与机动车道之间应有<span class="hl">隔离设施</span></li></ul>
-<h4>📄 规范原文获取</h4><ul><li>📥 <a href="./规范PDF/CJJ 37-2012 城市道路工程设计规范.pdf" target="_blank" style="color:#2563eb;font-weight:600;">打开 PDF 原文</a></li></ul>`
+<h4>🪨 第8章 路基路面</h4>
+<ul><li>路基压实度参照CJJ 1-2008执行</li><li>路面设计年限：快速路/主干路<span class="hl">15年</span>；次干路10~12年；支路8~10年</li><li>需考虑检查井、雨水口对路面结构的影响，薄弱处补强</li></ul>
+
+<h4>🚌 第9章 公共交通</h4>
+<ul><li>公交专用道宽度：<span class="hl">3.5~3.75m</span></li><li>公交停靠站：市区<span class="hl">500~800m</span>；郊区800~1000m</li><li>港湾式停靠站：减速段≥20m+站台≥30m+加速段≥30m</li></ul>
+
+<h4>🚶 第10章 行人与非机动车</h4>
+<ul><li>人行道必须设置<span class="hl">盲道</span>，满足无障碍要求</li><li>非机动车道与机动车道之间应有隔离设施</li><li>人行横道宽度≥4m，间距250~300m</li></ul>
+
+<h4>🔧 第11章 管线及设施</h4>
+<ul><li>管线应综合规划，减少重复开挖</li><li>照明标准：快速路平均照度<span class="hl">20~30lx</span></li></ul>
+
+<div class="note-box"><strong>💡 与JTG D20-2017的关键差异</strong><br>① CJJ适用于<span class="hl">城市道路</span>（需考虑管线/公交/行人/盲道），JTG适用于<span class="hl">公路</span><br>② CJJ设计速度分7档(100~20)，比JTG多50km/h档<br>③ CJJ平曲线半径偏小（城市用地受限），最大纵坡偏小1%<br>④ CJJ强制性要求盲道和无障碍设施</div>
+<h4>📄 规范原文获取</h4>
+<ul><li>📥 <a href="./规范PDF/CJJ 37-2012 城市道路工程设计规范.pdf" target="_blank" style="color:#2563eb;font-weight:600;">打开 PDF 原文</a></li></ul>`
 },
 {
 code:'GB 5768.1-2009',
