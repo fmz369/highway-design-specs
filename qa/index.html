@@ -7,27 +7,41 @@
 <link rel="stylesheet" href="../css/style.css">
 <style>
 .qa-container { max-width: 900px; margin: 0 auto; }
-.qa-input-wrap { display: flex; gap: 10px; margin-bottom: 20px; }
-.qa-input-wrap input { flex: 1; padding: 14px 20px; border: 2px solid var(--border); border-radius: 28px; font-size: 15px; outline: none; transition: border-color .2s; }
-.qa-input-wrap input:focus { border-color: var(--accent); }
-.qa-input-wrap button { padding: 14px 28px; background: var(--accent); color: #fff; border: none; border-radius: 28px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all .2s; }
-.qa-input-wrap button:hover { background: var(--accent-hover); }
+.qa-input-wrap { display: flex; gap: 10px; margin-bottom: 24px; }
+.qa-input-wrap input { flex: 1; padding: 15px 22px; border: 2px solid var(--border); border-radius: 28px; font-size: 15px; outline: none; transition: all .25s; background:var(--card-bg) }
+.qa-input-wrap input:focus { border-color: var(--accent); box-shadow:0 0 0 4px rgba(59,109,240,.1) }
+.qa-input-wrap button { padding: 15px 30px; background: var(--accent); color: #fff; border: none; border-radius: 28px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all .25s; white-space:nowrap }
+.qa-input-wrap button:hover { background: var(--accent-hover); box-shadow:0 4px 14px rgba(59,109,240,.35); transform:translateY(-1px) }
+.qa-hints-group { margin-bottom: 12px }
+.qa-hints-label { font-size: 11px; color: var(--text3); margin-bottom: 6px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px }
 .qa-hints { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
-.qa-hint { padding: 6px 14px; background: var(--accent-light); color: var(--accent); border-radius: 16px; font-size: 12px; cursor: pointer; border: none; transition: all .2s; }
-.qa-hint:hover { background: var(--accent); color: #fff; }
-.qa-result { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-sm); border: 1px solid var(--border); padding: 20px 24px; margin-bottom: 16px; }
-.qa-result .qa-question { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+.qa-hint { padding: 8px 16px; background: var(--accent-light); color: var(--accent); border-radius: 20px; font-size: 12px; cursor: pointer; border: none; transition: all .2s; font-weight: 500 }
+.qa-hint:hover { background: var(--accent); color: #fff; transform: translateY(-1px) }
+.qa-result { background: var(--card-bg); border-radius: 14px; box-shadow: var(--shadow-sm); border: 1px solid var(--border); padding: 20px 24px; margin-bottom: 14px; animation: fadeIn .3s ease }
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.qa-result .qa-question { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); display:flex;align-items:center;gap:8px }
 .qa-result .qa-answer { font-size: 14px; line-height: 1.8; color: var(--text2); }
-.qa-result .qa-answer .hl { background: #fef3c7; padding: 1px 5px; border-radius: 3px; font-weight: 600; color: #92400e; }
-.qa-result .qa-source { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border); font-size: 11px; color: var(--text3); }
-.qa-result .qa-source a { color: var(--accent); font-weight: 500; }
+.qa-result .qa-answer .hl { background: #fef3c7; padding: 2px 6px; border-radius: 4px; font-weight: 600; color: #92400e; }
+.qa-result .qa-answer .clause-link { display: inline-block; padding: 1px 6px; background: #e0f2fe; border-radius: 4px; font-size: 11px; color: #0369a1; text-decoration:none; font-weight:600; margin:0 2px; cursor:pointer }
+.qa-result .qa-answer .clause-link:hover { background: #7dd3fc; text-decoration:underline }
+.qa-result .qa-source { margin-top: 14px; padding-top: 12px; border-top: 2px solid var(--accent-light); font-size: 12px; color: var(--text3); display:flex;align-items:center;gap:8px;flex-wrap:wrap }
+.qa-result .qa-source a { color: var(--accent); font-weight: 600; text-decoration:none }
+.qa-result .qa-source a:hover { text-decoration:underline }
 .qa-result table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 12px; }
-.qa-result td, .qa-result th { border: 1px solid #e8e8f0; padding: 5px 10px; text-align: center; }
-.qa-result th { background: #f8f9fc; font-weight: 600; }
+.qa-result td, .qa-result th { border: 1px solid var(--border); padding: 6px 10px; text-align: center; }
+.qa-result th { background: #f8f9fc; font-weight: 600; font-size:12px }
+.qa-followup { margin-top: 14px; padding-top: 10px; border-top: 1px dashed var(--border) }
+.qa-followup-label { font-size: 11px; color: var(--text3); margin-bottom: 6px }
+.qa-followup .qa-hint { font-size: 11px; padding: 5px 12px }
 .qa-empty { text-align: center; padding: 60px 20px; color: var(--text3); }
 .qa-empty .qa-icon { font-size: 56px; margin-bottom: 14px; }
+.qa-match-badge { font-size: 10px; padding: 2px 8px; border-radius: 8px; font-weight: 600 }
+.qa-match-badge.high { background: #dcfce7; color: #166534 }
+.qa-match-badge.medium { background: #fef3c7; color: #92400e }
+.qa-match-badge.low { background: #fee2e2; color: #991b1b }
 [data-theme="dark"] .qa-result { background: #1e1e35; }
-@media (max-width: 600px) { .qa-input-wrap { flex-direction: column; } .qa-input-wrap button { width: 100%; } }
+[data-theme="dark"] .qa-result th { background: #1e1e35; }
+@media (max-width: 600px) { .qa-input-wrap { flex-direction: column; } .qa-input-wrap button { width: 100%; } .qa-result { padding: 14px 16px } }
 </style>
 </head>
 <body>
@@ -53,13 +67,23 @@
 <button id="qaBtn">🔍 搜索答案</button>
 </div>
 
-<div class="qa-hints" id="qaHints">
+<div class="qa-hints-group"><div class="qa-hints-label">🔥 高频问题</div>
+<div class="qa-hints" id="qaHintsFreq">
 <button class="qa-hint">平曲线最小半径</button>
 <button class="qa-hint">最大纵坡标准</button>
 <button class="qa-hint">路基压实度要求</button>
 <button class="qa-hint">设计速度分级</button>
 <button class="qa-hint">车道宽度取值</button>
 <button class="qa-hint">停车视距是多少</button>
+</div></div>
+<div class="qa-hints-group"><div class="qa-hints-label">📋 规范对比</div>
+<div class="qa-hints" id="qaHintsCmp">
+<button class="qa-hint">JTG和CJJ有什么区别</button>
+<button class="qa-hint">沥青路面 vs 水泥路面设计年限</button>
+<button class="qa-hint">高速和一级公路宽度对比</button>
+<button class="qa-hint">国标和行业标准哪个更严</button>
+</div></div>
+<div class="qa-hints" id="qaHints" style="display:none">
 <button class="qa-hint">荷载等级</button>
 <button class="qa-hint">洪水频率</button>
 </div>
@@ -68,7 +92,7 @@
 <div class="qa-empty">
 <div class="qa-icon">🤖</div>
 <div class="empty-title">输入问题，搜索规范答案</div>
-<div class="empty-hint">支持自然语言提问，基于 89 部公路规范知识库</div>
+<div class="empty-hint">支持自然语言提问，基于 89 部公路规范知识库<br>试试：平曲线最小半径 | 最大纵坡标准 | JTG和CJJ区别</div>
 </div>
 </div>
 

@@ -230,12 +230,37 @@
     if (seen[k]) return false; seen[k] = true; return true;
   }).sort(function(a,b) { return b.score - a.score; }).slice(0, 12);
 
+    // 匹配质量辅助函数
+    function matchLevel(score) { if (score >= 60) return 'high'; if (score >= 30) return 'medium'; return 'low'; }
+    function matchLabel(level) { return level === 'high' ? '高匹配' : (level === 'medium' ? '中匹配' : '低匹配'); }
+
+    // 追问建议生成
+    function genFollowup(keywords, bestSpec) {
+      var suggestions = [];
+      var kwSet = {};
+      keywords.forEach(function(k) { kwSet[k] = true; });
+      if (bestSpec) {
+        if (!kwSet['设计速度'] && bestSpec.content.indexOf('设计速度') >= 0) suggestions.push('设计速度分级');
+        if (!kwSet['压实度'] && bestSpec.content.indexOf('压实度') >= 0) suggestions.push('压实度标准');
+      }
+      if (keywords.length >= 1) {
+        var k = keywords[0];
+        if (k.indexOf('半径') >= 0) { suggestions.push(k.replace('半径','超高')); suggestions.push(k.replace('最小','一般')); }
+        else if (k.indexOf('坡度') >= 0 || k.indexOf('纵坡') >= 0) { suggestions.push('坡长限制'); suggestions.push('合成坡度'); }
+        else if (k.indexOf('压实') >= 0) { suggestions.push('CBR要求'); suggestions.push('填料要求'); }
+        else if (k.indexOf('宽度') >= 0) { suggestions.push('路肩宽度'); suggestions.push('建筑限界'); }
+        else if (k.indexOf('视距') >= 0) { suggestions.push('会车视距'); suggestions.push('超车视距'); }
+      }
+      return suggestions.slice(0, 4);
+    }
+
     var html = '';
     if (results.length === 0) {
       html = '<div class="qa-empty"><div class="qa-icon">🔍</div><div class="empty-title">未找到相关规范</div><div class="empty-hint">试试换个问法，如"四级公路压实度多少"或"平曲线最小半径"</div></div>';
     } else {
       var best = results[0];
-      html += '<div class="qa-result"><div class="qa-question">🤖 关于"' + escapeHtml(question) + '"</div><div class="qa-answer">';
+      var level = matchLevel(best.score);
+      html += '<div class="qa-result"><div class="qa-question">🤖 ' + escapeHtml(question) + '<span class="qa-match-badge ' + level + '" title="匹配度">' + matchLabel(level) + '</span></div><div class="qa-answer">';
       if (best.excerpts.length > 0) {
         var mainExcerpt = best.excerpts[0].text;
         // 提取关键数值对（按参数类型匹配正确单位）
@@ -303,6 +328,18 @@
       html += '<div style="font-size:12px;color:var(--text2);padding:4px 0 4px 16px;border-left:2px solid var(--border);margin-bottom:3px;line-height:1.6;">' + escapeHtml(cr.text) + '</div>';
     });
     html += '</div></div>';
+  }
+
+  // 追问建议
+  if (keywords.length > 0) {
+    var followups = genFollowup(keywords, best.spec);
+    if (followups.length > 0) {
+      html += '<div class="qa-followup"><div class="qa-followup-label">💡 你可能还想问</div><div style="display:flex;flex-wrap:wrap;gap:6px;">';
+      followups.forEach(function(f) {
+        html += '<button class="qa-hint" onclick="document.getElementById(\'qaInput\').value=\'' + f.replace(/'/g,"\\'") + '\';doSearch();" style="font-size:11px;padding:4px 12px;">' + f + '</button>';
+      });
+      html += '</div></div>';
+    }
   }
 
   resultsDiv.innerHTML = html; resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
