@@ -129,7 +129,7 @@
     if (n === 0) return;
     var len = Math.round(n / totalAll * circ);
     if (len < 2) len = 2;
-    svgParts += '<a href="category/?cat=' + c + '"><circle cx="105" cy="105" r="' + R + '" fill="none" stroke="' + catColors[c] + '" stroke-width="' + sw + '" stroke-dasharray="' + len + ' ' + (circ - len) + '" stroke-dashoffset="' + (-cumLen) + '" stroke-linecap="round" style="cursor:pointer" onmouseover="this.style.strokeWidth=\'28\'" onmouseout="this.style.strokeWidth=\'24\'"><title>' + catNames[c] + ': ' + n + '部（点击查看）</title></circle></a>';
+    svgParts += '<a href="category/?cat=' + c + '"><circle cx="105" cy="105" r="' + R + '" fill="none" stroke="' + catColors[c] + '" stroke-width="' + sw + '" stroke-dasharray="' + len + ' ' + (circ - len) + '" stroke-dashoffset="' + (-cumLen) + '" stroke-linecap="round" style="cursor:pointer;transition:stroke-width 0.2s ease" onmouseover="this.style.strokeWidth=\'36\'" onmouseout="this.style.strokeWidth=\'30\'"><title>' + catNames[c] + ': ' + n + '部（点击查看）</title></circle></a>';
     cumLen += len;
   });
   svgParts += '</g>';
