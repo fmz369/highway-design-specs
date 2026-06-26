@@ -204,7 +204,7 @@ renderAll();
 var bt=document.createElement('button');bt.className='back-top';bt.id='backTop';bt.textContent='↑';document.body.appendChild(bt);
 window.addEventListener('scroll',function(){bt.classList.toggle('visible',window.scrollY>700);});
 bt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
-var ft=document.createElement('footer');ft.className='footer';ft.innerHTML='<div class=\"footer-links\"><a href=\"../\">🏠 首页</a> | <a href=\"../quickref/\">📋 参数速查</a> | <a href=\"../compare/\">📊 规范对比</a> | <a href=\"../qa/\">🤖 智能问答</a></div><p style=\"font-size:11px;color:var(--text3);\">⚠ 设计以官方规范正本为准</p>';document.querySelector('.main').after(ft);
+var ft=document.createElement('footer');ft.className='footer';ft.innerHTML=renderFooter();document.querySelector('.main').after(ft);
 </script>
 </body>
 </html>
