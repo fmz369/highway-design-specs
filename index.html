@@ -44,6 +44,12 @@
 <h2 class="section-title" style="margin-bottom:14px;">📌 核心规范推荐</h2>
 <div class="grid" id="featuredGrid"></div>
 
+<!-- 规范更新动态 -->
+<div id="updateSection">
+<h2 class="section-title" style="margin-bottom:14px;">📅 规范更新动态 <a href="updates/" style="font-size:12px;font-weight:400;color:var(--accent);margin-left:8px;">查看全部 →</a></h2>
+<div class="update-grid" id="updateGrid"></div>
+</div>
+
 <!-- 最近浏览 -->
 <div id="historySection" style="display:none;">
 <h2 class="section-title" style="margin-bottom:14px;">📜 最近浏览</h2>
@@ -200,6 +206,82 @@
     html += renderCard(s, true, 'specs/');
   });
   document.getElementById('featuredGrid').innerHTML = html;
+})();
+
+// ===== 规范更新动态 =====
+(function() {
+  var DATES = {
+    'JTG/T 5431-2025':'2026-04-01','JTG/T 5531-2025':'2026-04-01','JTG/T 5123-2025':'2026-04-01',
+    'JTG/T 3351-2024':'2024-08-01','JTG 5211-2024':'2024-08-01','JTG/T 3381-03-2024':'2024-08-01',
+    'GB 55011-2021':'2022-01-01','JTG/T 3311-2021':'2021-11-01','JTG 5120-2021':'2021-06-01',
+    'JTG 5110-2023':'2023-06-01','JTG 5142-2019':'2019-06-01','JTG D50-2017':'2017-09-01',
+    'JTG D20-2017':'2017-09-01','JTG D81-2017':'2017-11-01','JTG D30-2015':'2015-05-01',
+    'JTG D60-2015':'2015-05-01','JTG B05-2015':'2015-05-01','JTG B01-2014':'2015-01-01',
+    'JTG 3362-2018':'2018-11-01','JTG/T 2231-01-2020':'2020-09-01',
+    'JTG 2112-2021':'2021-11-01','JTG 2111-2019':'2019-06-01',
+    'GB 5768.2-2022':'2022-10-01','GB/T 51224-2017':'2017-10-01',
+    'JTG/T 3392-2022':'2022-11-01','JTG/T 3365-2022':'2022-11-01',
+    'GB/T 1499.1-2024':'2024-09-25','GB/T 1499.2-2024':'2024-09-25','GB/T 13788-2024':'2024-09-25',
+  };
+  var now = new Date();
+  var twelveMonthsAgo = new Date(now.getTime() - 365*86400000);
+  var sixMonthsLater = new Date(now.getTime() + 180*86400000);
+
+  var upcoming = []; // 即将实施
+  var recent = [];   // 近一年新实施
+  var replacedShown = []; // 已废止有替代
+  SPECS.forEach(function(sp) {
+    var d = DATES[sp.code];
+    if (d) {
+      var itemDate = new Date(d);
+      if (itemDate > now && itemDate < sixMonthsLater) {
+        upcoming.push({ spec: sp, date: d });
+      } else if (itemDate > twelveMonthsAgo && itemDate <= now) {
+        recent.push({ spec: sp, date: d });
+      }
+    }
+    // 已废止规范（有替代关系，提示用户关注新版）
+    if (sp.status === 'replaced' && replacedShown.length < 2) {
+      replacedShown.push({ spec: sp });
+    }
+  });
+  // 按日期排序：即将实施的升序，近期实施的降序
+  upcoming.sort(function(a,b) { return a.date.localeCompare(b.date); });
+  recent.sort(function(a,b) { return b.date.localeCompare(a.date); });
+
+  var html = '';
+  // 即将实施（黄色标签）
+  if (upcoming.length > 0) {
+    upcoming.forEach(function(item) {
+      html += '<a href="specs/?code=' + encodeURIComponent(item.spec.code) + '" class="update-card">'
+        + '<span class="update-badge upcoming">' + item.date + '</span>'
+        + '<div class="update-info"><div class="update-code">' + item.spec.code + '</div>'
+        + '<div class="update-title">' + item.spec.title + '</div></div></a>';
+    });
+  }
+  // 近期新实施（蓝色标签）
+  if (recent.length > 0) {
+    recent.forEach(function(item) {
+      html += '<a href="specs/?code=' + encodeURIComponent(item.spec.code) + '" class="update-card">'
+        + '<span class="update-badge recent">' + item.date.substring(5) + ' 实施</span>'
+        + '<div class="update-info"><div class="update-code">' + item.spec.code + '</div>'
+        + '<div class="update-title">' + item.spec.title + '</div></div></a>';
+    });
+  }
+  // 已废止（红色标签，提醒关注替代规范）
+  if (replacedShown.length > 0) {
+    replacedShown.forEach(function(item) {
+      html += '<a href="specs/?code=' + encodeURIComponent(item.spec.code) + '" class="update-card">'
+        + '<span class="update-badge replaced">⚠ 已废止</span>'
+        + '<div class="update-info"><div class="update-code">' + item.spec.code + '</div>'
+        + '<div class="update-title">' + item.spec.title + '</div></div></a>';
+    });
+  }
+  if (html) {
+    document.getElementById('updateGrid').innerHTML = html;
+  } else {
+    document.getElementById('updateSection').innerHTML = '<h2 class="section-title" style="margin-bottom:14px;">📅 规范更新动态 <a href="updates/" style="font-size:12px;font-weight:400;color:var(--accent);margin-left:8px;">查看全部 →</a></h2><div class="update-empty">✅ 所有规范均为现行有效版本，暂无临近更新计划。<br><span style="font-size:11px;">最新数据以官方发布为准，请定期关注交通运输部公告。</span></div>';
+  }
 })();
 
 // ===== 浏览记录 =====
