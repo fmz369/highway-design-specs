@@ -67,7 +67,7 @@ pressure: {title:'⚡ 压力/应力换算', pairs:[
   {a:'kPa',b:'kN/m²', f:function(v){return v*1}, r:function(v){return v}},
 ]},
 angle: {title:'📐 角度/坡度换算', pairs:[
-  {a:'度 (°)',b:'弧度 (rad)', f:function(v){return v*Math.PI/180}, r:function(v){return v*180/Math.PI},
+  {a:'度 (°)',b:'弧度 (rad)', f:function(v){return v*Math.PI/180}, r:function(v){return v*180/Math.PI}},
   {a:'坡度 (%)',b:'度 (°)', f:function(v){return Math.atan(v/100)*180/Math.PI}, r:function(v){return Math.tan(v*Math.PI/180)*100}},
   {a:'坡度 (%)',b:'坡比 (1:n)', f:function(v){return 100/v}, r:function(v){return 100/v}},
 ]},
