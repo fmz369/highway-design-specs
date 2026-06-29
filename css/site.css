@@ -628,14 +628,14 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 
 /* ====== 复制按钮 + Toast ====== */
 .spec-content li { position: relative; padding-right: 26px; }
-.spec-content .copy-btn { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 14px; height: 14px; border-radius: 3px; border: 1.5px solid #ccc; background: #fafafa; cursor: pointer; opacity: 0; transition: all .2s; padding: 0; }
-.spec-content .copy-btn::after { content: ''; position: absolute; right: -3px; bottom: -3px; width: 5px; height: 5px; border-radius: 1px; background: #ccc; border: 1.5px solid #fafafa; }
-.spec-content li:hover .copy-btn { opacity: .5; }
+.spec-content .copy-btn { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 14px; height: 14px; border-radius: 3px; border: 1.5px solid #ddd; background: #fafafa; cursor: pointer; opacity: .15; transition: all .2s; padding: 0; }
+.spec-content .copy-btn::after { content: ''; position: absolute; right: -3px; bottom: -3px; width: 5px; height: 5px; border-radius: 1px; background: #bbb; border: 1.5px solid #fafafa; }
+.spec-content li:hover .copy-btn { opacity: .55; }
 .spec-content li .copy-btn:hover { opacity: 1; border-color: var(--accent); background: var(--accent-light); }
 .spec-content li .copy-btn:hover::after { background: var(--accent); }
-.spec-content .tbl-copy-btn { position: absolute; right: 6px; top: 4px; width: 14px; height: 14px; border-radius: 3px; border: 1.5px solid #ccc; background: #fafafa; cursor: pointer; opacity: 0; transition: all .2s; padding: 0; }
-.spec-content .tbl-copy-btn::after { content: ''; position: absolute; right: -3px; bottom: -3px; width: 5px; height: 5px; border-radius: 1px; background: #ccc; border: 1.5px solid #fafafa; }
-.spec-content .tbl-wrap:hover .tbl-copy-btn { opacity: .5; }
+.spec-content .tbl-copy-btn { position: absolute; right: 6px; top: 4px; width: 14px; height: 14px; border-radius: 3px; border: 1.5px solid #ddd; background: #fafafa; cursor: pointer; opacity: .15; transition: all .2s; padding: 0; }
+.spec-content .tbl-copy-btn::after { content: ''; position: absolute; right: -3px; bottom: -3px; width: 5px; height: 5px; border-radius: 1px; background: #bbb; border: 1.5px solid #fafafa; }
+.spec-content .tbl-wrap:hover .tbl-copy-btn { opacity: .55; }
 .spec-content .tbl-copy-btn:hover { opacity: 1; border-color: var(--accent); background: var(--accent-light); }
 .spec-content .tbl-copy-btn:hover::after { background: var(--accent); }
 [data-theme="dark"] .spec-content .copy-btn { border-color: #555; background: #2a2a3a; }
