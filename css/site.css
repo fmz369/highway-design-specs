@@ -619,6 +619,10 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 .spec-content .sel-cb { display: none; margin-right: 8px; width: 16px; height: 16px; cursor: pointer; accent-color: var(--accent); flex-shrink: 0; }
 .spec-content.select-mode .sel-cb { display: inline-block; }
 .spec-content.select-mode li { display: flex; align-items: flex-start; }
+/* 标注模式 */
+.spec-content.hl-mode li { cursor: pointer; }
+.spec-content li.highlighted { background: #fef3c7; border-radius: 4px; }
+[data-theme="dark"] .spec-content li.highlighted { background: #3d2e0a; }
 
 /* ====== 页内搜索 ====== */
 .inline-search { display: flex; align-items: center; gap: 6px; margin-left: auto; }

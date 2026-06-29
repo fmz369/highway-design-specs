@@ -75,6 +75,7 @@ function renderToolbar(spec) {
       ? '<a href="../' + spec.pdf + '" target="_blank" class="btn btn-pdf" title="查看PDF原文">📖 PDF原文</a>'
       : '')
     + '<a href="../compare/?codes=' + encodeURIComponent(spec.code) + '" class="btn" title="对比">📊 对比</a>'
+    + '<button class="btn" id="btnHighlight" title="标注条文">🖍 标注</button>'
     + '<button class="btn" id="btnSelectExport" title="选择条文导出">☑ 选择导出</button>'
     + '<button class="btn" id="btnDoExport" title="导出选中条文" style="display:none">📄 导出(<span id="exportCount">0</span>)</button>'
     + '<div class="inline-search" id="inlineSearchBox">'

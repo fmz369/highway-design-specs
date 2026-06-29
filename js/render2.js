@@ -370,6 +370,47 @@
       t._tid = setTimeout(function() { t.remove(); }, 1800);
     }
 
+    // ===== 条文标注 =====
+    var HL_KEY = 'hl_' + spec.code;
+    function getHighlights() { try { return JSON.parse(localStorage.getItem(HL_KEY)||'[]'); } catch(e) { return []; } }
+    function saveHighlights(list) { try { localStorage.setItem(HL_KEY, JSON.stringify(list)); } catch(e) {} }
+    var hlItems = getHighlights();
+    // 恢复已保存的高亮
+    if (contentEl) {
+      var allLis2 = contentEl.querySelectorAll('li');
+      allLis2.forEach(function(li, i) {
+        if (hlItems.indexOf(i) >= 0) li.classList.add('highlighted');
+      });
+    }
+    var hlMode = false;
+    var btnHL = document.getElementById('btnHighlight');
+    if (btnHL && contentEl) {
+      btnHL.addEventListener('click', function() {
+        hlMode = !hlMode;
+        contentEl.classList.toggle('hl-mode', hlMode);
+        btnHL.style.background = hlMode ? '#fef3c7' : '';
+        btnHL.style.color = hlMode ? '#92400e' : '';
+        if (hlMode) {
+          // 关闭选择模式
+          if (selectMode) { selectMode = false; contentEl.classList.remove('select-mode'); btnSel.textContent = '☑ 选择导出'; btnExp.style.display = 'none'; }
+        }
+      });
+      contentEl.addEventListener('click', function(e) {
+        if (!hlMode) return;
+        var li = e.target.closest('li');
+        if (!li) return;
+        var idx = Array.prototype.indexOf.call(contentEl.querySelectorAll('li'), li);
+        if (idx < 0) return;
+        li.classList.toggle('highlighted');
+        if (li.classList.contains('highlighted')) {
+          if (hlItems.indexOf(idx) < 0) hlItems.push(idx);
+        } else {
+          hlItems = hlItems.filter(function(i) { return i !== idx; });
+        }
+        saveHighlights(hlItems);
+      });
+    }
+
     // ===== 条文选择导出 =====
     var selectMode = false;
     var btnSel = document.getElementById('btnSelectExport');
@@ -400,6 +441,8 @@
         contentEl.classList.toggle('select-mode', selectMode);
         btnSel.textContent = selectMode ? '☑ 取消选择' : '☑ 选择导出';
         if (!selectMode) { btnExp.style.display = 'none'; }
+        // 关闭标注模式
+        if (selectMode && hlMode) { hlMode = false; contentEl.classList.remove('hl-mode'); btnHL.style.background = ''; btnHL.style.color = ''; }
       });
     }
 
