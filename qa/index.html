@@ -1,108 +1,181 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>智能问答 — 公路设计规范</title>
-<link rel="stylesheet" href="../css/style.css">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>深度检索 — 公路设计规范</title>
+<link rel="stylesheet" href="../css/site.css">
 <style>
-.qa-container { max-width: 900px; margin: 0 auto; }
-.qa-input-wrap { display: flex; gap: 10px; margin-bottom: 24px; }
-.qa-input-wrap input { flex: 1; padding: 15px 22px; border: 2px solid var(--border); border-radius: 28px; font-size: 15px; outline: none; transition: all .25s; background:var(--card-bg) }
-.qa-input-wrap input:focus { border-color: var(--accent); box-shadow:0 0 0 4px rgba(59,109,240,.1) }
-.qa-input-wrap button { padding: 15px 30px; background: var(--accent); color: #fff; border: none; border-radius: 28px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all .25s; white-space:nowrap }
-.qa-input-wrap button:hover { background: var(--accent-hover); box-shadow:0 4px 14px rgba(59,109,240,.35); transform:translateY(-1px) }
-.qa-hints-group { margin-bottom: 12px }
-.qa-hints-label { font-size: 11px; color: var(--text3); margin-bottom: 6px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px }
-.qa-hints { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
-.qa-hint { padding: 8px 16px; background: var(--accent-light); color: var(--accent); border-radius: 20px; font-size: 12px; cursor: pointer; border: none; transition: all .2s; font-weight: 500 }
-.qa-hint:hover { background: var(--accent); color: #fff; transform: translateY(-1px) }
-.qa-result { background: var(--card-bg); border-radius: 14px; box-shadow: var(--shadow-sm); border: 1px solid var(--border); padding: 20px 24px; margin-bottom: 14px; animation: fadeIn .3s ease }
+.ds-wrap{max-width:960px;margin:0 auto}
+.ds-input-area{display:flex;gap:10px;margin-bottom:12px}
+.ds-input-area textarea{flex:1;padding:14px 18px;border:2px solid var(--border);border-radius:16px;font-size:14px;outline:none;resize:vertical;min-height:50px;font-family:inherit;background:var(--card-bg)}
+.ds-input-area textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(59,109,240,.08)}
+.ds-btn-row{display:flex;gap:8px;align-items:center;margin-bottom:16px}
+.ds-btn{padding:10px 24px;border-radius:22px;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .15s}
+.ds-btn.search{background:var(--accent);color:#fff}
+.ds-btn.search:hover{background:#1d4ed8}
+.ds-hints-group{margin-bottom:8px}
+.ds-hints-label{font-size:10px;color:var(--text3);margin-bottom:5px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.ds-hints{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.ds-hint{padding:7px 14px;background:var(--accent-light);color:var(--accent);border-radius:18px;font-size:11px;cursor:pointer;border:none;transition:.15s;font-weight:500}
+.ds-hint:hover{background:var(--accent);color:#fff}
+.ds-result{background:var(--card-bg);border-radius:14px;border:1px solid var(--border);padding:18px 22px;margin-bottom:12px;animation:fadeIn .3s}
+.ds-result h4{font-size:14px;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.ds-score{font-size:10px;padding:2px 8px;border-radius:8px;font-weight:600}
+.ds-score.high{background:#dcfce7;color:#166534}
+.ds-score.mid{background:#fef3c7;color:#92400e}
+.ds-score.low{background:#fee2e2;color:#991b1b}
+.ds-clause{padding:8px 12px;margin:4px 0;background:var(--bg);border-radius:8px;border-left:3px solid var(--accent);font-size:12px;line-height:1.7;color:var(--text2)}
+.ds-clause .ds-hl{background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:600}
+.ds-clause a{color:var(--accent);text-decoration:none;font-weight:500}
+.ds-clause a:hover{text-decoration:underline}
+.ds-summary{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:2px solid #86efac;border-radius:14px;padding:16px 20px;margin-bottom:16px}
+.ds-summary h4{color:#166534;margin-bottom:6px}
+.ds-summary p{font-size:13px;color:#166534;line-height:1.7}
+.ds-empty{text-align:center;padding:50px 20px;color:var(--text3)}
+.ds-empty .ds-icon{font-size:48px;margin-bottom:10px}
+.ds-history{margin-top:20px}
+.ds-history-item{display:inline-block;padding:4px 12px;background:var(--bg);border-radius:14px;font-size:11px;color:var(--text2);cursor:pointer;margin:2px;border:none}
+.ds-history-item:hover{background:var(--accent-light);color:var(--accent)}
+[data-theme="dark"] .ds-result{background:#1e1e35}
+[data-theme="dark"] .ds-clause{background:#252540}
+[data-theme="dark"] .ds-summary{background:linear-gradient(135deg,#1a3020,#1a3a28);border-color:#166534}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.qa-result .qa-question { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); display:flex;align-items:center;gap:8px }
-.qa-result .qa-answer { font-size: 14px; line-height: 1.8; color: var(--text2); }
-.qa-result .qa-answer .hl { background: #fef3c7; padding: 2px 6px; border-radius: 4px; font-weight: 600; color: #92400e; }
-.qa-result .qa-answer .clause-link { display: inline-block; padding: 1px 6px; background: #e0f2fe; border-radius: 4px; font-size: 11px; color: #0369a1; text-decoration:none; font-weight:600; margin:0 2px; cursor:pointer }
-.qa-result .qa-answer .clause-link:hover { background: #7dd3fc; text-decoration:underline }
-.qa-result .qa-source { margin-top: 14px; padding-top: 12px; border-top: 2px solid var(--accent-light); font-size: 12px; color: var(--text3); display:flex;align-items:center;gap:8px;flex-wrap:wrap }
-.qa-result .qa-source a { color: var(--accent); font-weight: 600; text-decoration:none }
-.qa-result .qa-source a:hover { text-decoration:underline }
-.qa-result table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 12px; }
-.qa-result td, .qa-result th { border: 1px solid var(--border); padding: 6px 10px; text-align: center; }
-.qa-result th { background: #f8f9fc; font-weight: 600; font-size:12px }
-.qa-followup { margin-top: 14px; padding-top: 10px; border-top: 1px dashed var(--border) }
-.qa-followup-label { font-size: 11px; color: var(--text3); margin-bottom: 6px }
-.qa-followup .qa-hint { font-size: 11px; padding: 5px 12px }
-.qa-empty { text-align: center; padding: 60px 20px; color: var(--text3); }
-.qa-empty .qa-icon { font-size: 56px; margin-bottom: 14px; }
-.qa-match-badge { font-size: 10px; padding: 2px 8px; border-radius: 8px; font-weight: 600 }
-.qa-match-badge.high { background: #dcfce7; color: #166534 }
-.qa-match-badge.medium { background: #fef3c7; color: #92400e }
-.qa-match-badge.low { background: #fee2e2; color: #991b1b }
-[data-theme="dark"] .qa-result { background: #1e1e35; }
-[data-theme="dark"] .qa-result th { background: #1e1e35; }
-@media (max-width: 600px) { .qa-input-wrap { flex-direction: column; } .qa-input-wrap button { width: 100%; } .qa-result { padding: 14px 16px } }
+@media(max-width:600px){.ds-input-area{flex-direction:column}}
 </style>
 </head>
 <body>
-
-<header class="header">
-<div class="header-inner">
-<div class="header-top">
-<a href="../" class="header-logo" style="text-decoration:none;">🤖</a>
-<div>
-<h1>智能问答</h1>
-<p class="subtitle">基于 89 部规范知识库 — 输入问题，自动检索答案</p>
-</div>
-</div>
-<div id="statsPills"></div>
-</div>
-</header>
-
-<main class="main qa-container">
+<header class="header"><div class="header-inner"><div class="header-top">
+<a href="../" class="header-logo" style="text-decoration:none;">⚡</a><div><h1>深度检索</h1><p class="subtitle">基于104部规范数据库 · 同义词理解 · 跨规范交叉对比</p></div>
+</div></div></header>
+<main class="main ds-wrap">
 <div id="breadcrumb"></div>
 
-<div class="qa-input-wrap">
-<input type="text" id="qaInput" placeholder="例如：平曲线最小半径是多少？四级公路压实度标准？…" autocomplete="off">
-<button id="qaBtn">🔍 搜索答案</button>
+<div class="ds-input-area">
+<textarea id="dsInput" placeholder="输入问题或关键词…&#10;例如：平曲线最小半径 | 四级公路压实度多少 | JTG和CJJ有什么区别"></textarea>
 </div>
 
-<div class="qa-hints-group"><div class="qa-hints-label">🔥 高频问题</div>
-<div class="qa-hints" id="qaHintsFreq">
-<button class="qa-hint">平曲线最小半径</button>
-<button class="qa-hint">最大纵坡标准</button>
-<button class="qa-hint">路基压实度要求</button>
-<button class="qa-hint">设计速度分级</button>
-<button class="qa-hint">车道宽度取值</button>
-<button class="qa-hint">停车视距是多少</button>
+<div class="ds-hints-group"><div class="ds-hints-label">🔥 高频查询</div>
+<div class="ds-hints">
+<button class="ds-hint" onclick="quickAsk('平曲线最小半径 各等级对比')">📐 平曲线最小半径</button>
+<button class="ds-hint" onclick="quickAsk('最大纵坡 各等级 标准')">📏 最大纵坡标准</button>
+<button class="ds-hint" onclick="quickAsk('路基压实度 各等级 CBR要求')">🪨 路基压实度CBR</button>
+<button class="ds-hint" onclick="quickAsk('设计速度 车道宽度 路肩宽度 对比')">🛣 设计速度/车道宽度</button>
+<button class="ds-hint" onclick="quickAsk('停车视距 会车视距 超车视距')">👁 视距标准</button>
+<button class="ds-hint" onclick="quickAsk('挡土墙 抗滑 抗倾覆 安全系数 各类型')">🧱 挡土墙验算</button>
 </div></div>
-<div class="qa-hints-group"><div class="qa-hints-label">📋 规范对比</div>
-<div class="qa-hints" id="qaHintsCmp">
-<button class="qa-hint">JTG和CJJ有什么区别</button>
-<button class="qa-hint">沥青路面 vs 水泥路面设计年限</button>
-<button class="qa-hint">高速和一级公路宽度对比</button>
-<button class="qa-hint">国标和行业标准哪个更严</button>
+
+<div class="ds-hints-group"><div class="ds-hints-label">📋 规范对比</div>
+<div class="ds-hints">
+<button class="ds-hint" onclick="quickAsk('JTG B01 CJJ 37 公路 城市道路 设计速度 车道 区别')">🔄 公路vs城市道路</button>
+<button class="ds-hint" onclick="quickAsk('沥青路面 水泥路面 设计年限 厚度对比')">🛣 沥青vs水泥路面</button>
+<button class="ds-hint" onclick="quickAsk('高速 一级 二级 三级 四级 路基 路面 参数对比')">📊 各等级参数全对比</button>
+<button class="ds-hint" onclick="quickAsk('JTG D60 CJJ 11 桥梁 荷载 区别')">🌉 公路vs城市桥梁</button>
 </div></div>
-<div class="qa-hints" id="qaHints" style="display:none">
-<button class="qa-hint">荷载等级</button>
-<button class="qa-hint">洪水频率</button>
+
+<div class="ds-btn-row">
+<button class="ds-btn search" onclick="deepSearch()">🔍 深度检索</button>
+<span style="font-size:11px;color:var(--text3)">💡 基于104部规范数据库 | 同义词智能理解 | 完全离线可用 | Ctrl+Enter快捷搜索</span>
 </div>
 
-<div id="qaResults">
-<div class="qa-empty">
-<div class="qa-icon">🤖</div>
-<div class="empty-title">输入问题，搜索规范答案</div>
-<div class="empty-hint">支持自然语言提问，基于 89 部公路规范知识库<br>试试：平曲线最小半径 | 最大纵坡标准 | JTG和CJJ区别</div>
+<div id="dsHistory" class="ds-history"></div>
+<div id="dsResults">
+<div class="ds-empty"><div class="ds-icon">⚡</div>输入问题，跨规范深度检索<br><span style="font-size:12px">支持自然语言，自动理解同义词，秒级返回结果</span></div>
 </div>
-</div>
-
 </main>
 
 <script src="../js/data.js?v=2"></script>
-<script src="../js/router.js?v=2"></script>
-<script src="../js/favorites.js?v=2"></script>
 <script src="../js/components.js?v=2"></script>
 <script src="../js/theme.js?v=2"></script>
-<script src="../js/qa.js"></script>
+<script>
+document.getElementById('breadcrumb').innerHTML = renderBreadcrumb([{label:'🏠 首页',link:'../'},{label:'⚡ 深度检索'}]);
+
+// 同义词映射
+var SYNS={
+  '坡度':'最大纵坡','纵坡':'最大纵坡','半径':'平曲线最小半径','弯道':'平曲线最小半径',
+  '压实':'路基压实度','压实度':'路基压实度','速度':'设计速度','车速':'设计速度',
+  '视距':'停车视距','多远能停':'停车视距','刹车距离':'停车视距',
+  '宽度':'车道宽度','路面多宽':'路面宽度','路基多宽':'路基宽度',
+  '洪水':'设计洪水频率','荷载':'汽车荷载','标高':'建筑限界净高','净高':'建筑限界净高',
+  '四级公路':'四级','小交通':'四级','农村公路':'四级','错车':'错车道宽度',
+  '面层厚度':'面层厚度','沥青多厚':'面层厚度','水泥路面多厚':'面层厚度',
+};
+function expandTerms(q){
+  var found=q.split(/[\s,，、。；;]+/).filter(function(t){return t.length>=1});
+  var synKeys=Object.keys(SYNS).sort(function(a,b){return b.length-a.length});
+  synKeys.forEach(function(k){if(q.indexOf(k)>=0&&found.indexOf(SYNS[k])<0)found.push(SYNS[k])});
+  // 等级关键词
+  if(q.indexOf('高速')>=0||q.indexOf('高速')>=0)found.push('高速');
+  if(q.indexOf('一级公路')>=0)found.push('一级公路');else if(q.indexOf('一级')>=0)found.push('一级');
+  if(q.indexOf('二级公路')>=0)found.push('二级公路');else if(q.indexOf('二级')>=0)found.push('二级');
+  if(q.indexOf('三级公路')>=0)found.push('三级公路');else if(q.indexOf('三级')>=0)found.push('三级');
+  if(q.indexOf('四级公路')>=0||q.indexOf('小交通')>=0)found.push('四级公路');else if(q.indexOf('四级')>=0)found.push('四级');
+  return found.filter(function(t){return t.length>=2});
+}
+
+// 搜索历史
+var HIST_KEY='ds_history';
+function getHist(){try{return JSON.parse(localStorage.getItem(HIST_KEY)||'[]')}catch(e){return[]}}
+function addHist(q){var h=getHist();h=h.filter(function(x){return x!==q});h.unshift(q);if(h.length>12)h.pop();localStorage.setItem(HIST_KEY,JSON.stringify(h));renderHist()}
+function renderHist(){var h=getHist();var el=document.getElementById('dsHistory');if(h.length===0){el.innerHTML='';return}el.innerHTML=h.map(function(x){return '<button class="ds-history-item" onclick="quickAsk(\''+x.replace(/'/g,"\\'")+'\')">'+x+'</button>'}).join('')}
+renderHist();
+
+function quickAsk(q){document.getElementById('dsInput').value=q;deepSearch()}
+
+function deepSearch(){
+  var q=document.getElementById('dsInput').value.trim();if(!q)return;
+  addHist(q);
+  var terms=expandTerms(q);
+  var results=[];
+  SPECS.forEach(function(spec){
+    var c=spec.content||'';var score=0;
+    terms.forEach(function(t){var idx=c.indexOf(t);if(idx>=0){score+=t.length*3;if(c.substring(Math.max(0,idx-60),idx+60).indexOf('<td')>=0)score+=10}if(spec.code.indexOf(t)>=0)score+=5;if(spec.title.indexOf(t)>=0)score+=4});
+    if(score>0)results.push({spec:spec,score:score});
+  });
+  results=results.filter(function(r){return r.spec.status!=='replaced'||q.indexOf(r.spec.code)>=0});
+  results.sort(function(a,b){return b.score-a.score});if(results.length>15)results=results.slice(0,15);
+
+  // 提取条文
+  results.forEach(function(r){var clauses=[];var c=r.spec.content;
+    var lis=c.match(/<li>(?!.*href)([\s\S]*?)<\/li>/gi)||[];
+    lis.forEach(function(li){var clean=li.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();if(clean.length<15||clean.length>250)return;var s=0;terms.forEach(function(t){if(clean.indexOf(t)>=0)s+=2});if(s>=2)clauses.push({text:clean,score:s})});
+    var hls=c.match(/<span class="hl">([^<]+)<\/span>[：:]?\s*([^<]{5,120})/gi)||[];
+    hls.forEach(function(hl){var clean=hl.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();if(clean.length>8){var s=0;terms.forEach(function(t){if(clean.indexOf(t)>=0)s+=2});if(s>=2)clauses.push({text:clean,score:s})}});
+    clauses.sort(function(a,b){return b.score-a.score});r.clauses=clauses.slice(0,5);
+  });
+
+  // 跨规范交叉对比
+  var sumHTML='';var top=results.filter(function(r){return r.score>=20});
+  if(top.length>=2){var numDict={};
+    terms.forEach(function(t){top.forEach(function(r){var c=r.spec.content;var idx=c.indexOf(t);
+      while(idx>=0){var ctx=c.substring(Math.max(0,idx-30),idx+t.length+80);var nums=ctx.match(/([≥≤]*\s*\d+[\.\d]*\s*[%mMkKNPpaA年月次]*)/g);
+        if(nums)nums.forEach(function(n){if(!numDict[n])numDict[n]=[];if(numDict[n].indexOf(r.spec.code)<0)numDict[n].push(r.spec.code)});
+        idx=c.indexOf(t,idx+1)}})
+    });
+    var keys=Object.keys(numDict).filter(function(k){return numDict[k].length>=2}).sort(function(a,b){return numDict[b].length-numDict[a].length}).slice(0,10);
+    if(keys.length>0){
+      sumHTML='<div class="ds-summary"><h4>📊 跨规范交叉对比（'+top.length+'部规范共同参数）</h4><p>';
+      keys.forEach(function(nk){sumHTML+='<span style="display:inline-block;background:#fff;border:1px solid #bbf7d0;border-radius:6px;padding:3px 8px;margin:2px;font-size:12px;font-weight:600;color:#166534">'+nk+'</span> '});
+      sumHTML+='</p></div>';
+    }
+  }
+
+  var h=sumHTML;
+  if(results.length===0)h='<div class="ds-empty"><div class="ds-icon">🔍</div>未找到相关内容<br><span style="font-size:12px">试试换个表述，如"路基压实度标准"或"平曲线最小半径"</span></div>';
+  else results.forEach(function(r){
+    var lv=r.score>=50?'high':r.score>=25?'mid':'low';var lb=r.score>=50?'高相关':r.score>=25?'中相关':'低相关';
+    h+='<div class="ds-result"><h4>'+r.spec.code+' '+r.spec.title+' <span class="ds-score '+lv+'">'+lb+'</span></h4>';
+    if(r.clauses.length>0)r.clauses.forEach(function(cl){var t=cl.text;terms.forEach(function(k){t=t.replace(new RegExp(k.replace(/[.*+?^${}()|[\]\\\/]/g,'\\$&'),'g'),'<span class="ds-hl">'+k+'</span>')});h+='<div class="ds-clause">'+t+' <a href="../specs/?code='+encodeURIComponent(r.spec.code)+'" target="_blank">查看 →</a></div>'});
+    h+='</div>';
+  });
+  document.getElementById('dsResults').innerHTML=h;
+  document.getElementById('dsResults').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key==='Enter'){e.preventDefault();deepSearch()}});
+var bt=document.createElement('button');bt.className='back-top';bt.id='backTop';bt.textContent='↑';document.body.appendChild(bt);
+window.addEventListener('scroll',function(){bt.classList.toggle('visible',window.scrollY>700)});
+bt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+var ft=document.createElement('footer');ft.className='footer';ft.innerHTML=renderFooter();document.querySelector('.main').after(ft);
+</script>
 </body>
 </html>
