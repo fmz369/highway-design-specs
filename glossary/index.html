@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>术语词典 — 公路设计规范</title>
+<link rel="stylesheet" href="../css/site.css">
+<style>
+.gl-wrap{max-width:960px;margin:0 auto}
+.gl-search{margin-bottom:18px}
+.gl-search input{width:100%;padding:12px 18px;border:2px solid var(--border);border-radius:24px;font-size:14px;outline:none;box-sizing:border-box}
+.gl-search input:focus{border-color:var(--accent)}
+.gl-cats{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.gl-cat-btn{padding:7px 16px;border-radius:18px;border:2px solid var(--border);background:var(--card-bg);font-size:12px;cursor:pointer;transition:all .15s;font-weight:500}
+.gl-cat-btn.active,.gl-cat-btn:hover{border-color:var(--accent);color:#fff;background:var(--accent)}
+.gl-group{margin-bottom:24px}
+.gl-group h3{font-size:15px;margin-bottom:10px;padding-bottom:6px;border-bottom:2px solid var(--accent);display:flex;align-items:center;gap:8px}
+.gl-item{padding:10px 14px;margin:4px 0;border-radius:10px;background:var(--card-bg);border:1px solid var(--border);transition:all .15s}
+.gl-item:hover{border-color:var(--accent);box-shadow:var(--shadow-sm)}
+.gl-term{font-weight:700;font-size:14px;color:var(--text);margin-bottom:2px}
+.gl-term .gl-en{font-weight:400;font-size:11px;color:var(--text3);margin-left:6px}
+.gl-def{font-size:13px;color:var(--text2);line-height:1.6}
+.gl-empty{text-align:center;padding:40px;color:var(--text3)}
+[data-theme="dark"] .gl-item{background:#1e1e35}
+@media(max-width:600px){.gl-cat-btn{font-size:11px;padding:5px 12px}}
+</style>
+</head>
+<body>
+<header class="header"><div class="header-inner"><div class="header-top">
+<a href="../" class="header-logo" style="text-decoration:none;">📖</a><div><h1>术语词典</h1><p class="subtitle">公路工程设计常用专业术语速查</p></div>
+</div></div></header>
+<main class="main gl-wrap">
+<div id="breadcrumb"></div>
+<div class="gl-search"><input type="text" id="glSearch" placeholder="搜索术语…（如：压实度、CBR、停车视距）"></div>
+<div class="gl-cats" id="glCats">
+<button class="gl-cat-btn active" data-cat="all">📋 全部</button>
+<button class="gl-cat-btn" data-cat="geometry">📐 线形设计</button>
+<button class="gl-cat-btn" data-cat="subgrade">🪨 路基工程</button>
+<button class="gl-cat-btn" data-cat="pavement">🛣 路面工程</button>
+<button class="gl-cat-btn" data-cat="bridge">🌉 桥梁工程</button>
+<button class="gl-cat-btn" data-cat="safety">🛡 交安设施</button>
+<button class="gl-cat-btn" data-cat="drainage">💧 排水工程</button>
+<button class="gl-cat-btn" data-cat="general">📋 通用术语</button>
+</div>
+<div id="glContent"></div>
+</main>
+
+<script src="../js/components.js?v=2"></script>
+<script src="../js/theme.js?v=2"></script>
+<script>
+document.getElementById('breadcrumb').innerHTML = renderBreadcrumb([{label:'🏠 首页',link:'../'},{label:'📖 术语词典'}]);
+
+var GLOSSARY = {
+geometry: [
+  {t:'平曲线',e:'Horizontal Curve',d:'道路平面线形中的曲线段，包括圆曲线和缓和曲线。曲线要素包括半径R、切线长T、曲线长L、外距E。'},
+  {t:'竖曲线',e:'Vertical Curve',d:'道路纵断面变坡点处设置的曲线，分为凸形和凹形。用二次抛物线过渡，主要参数为半径R和切线长T。'},
+  {t:'缓和曲线',e:'Transition Curve',d:'连接直线与圆曲线的过渡曲线，常用回旋线。使离心加速度渐变，便于驾驶员转向操作。'},
+  {t:'停车视距',e:'Stopping Sight Distance',d:'驾驶员发现障碍物到车辆完全停止所需的最短距离。由反应距离+制动距离组成。'},
+  {t:'会车视距',e:'Meeting Sight Distance',d:'两车相向行驶时从发现对方到安全停止的距离，约为停车视距的2倍。'},
+  {t:'超车视距',e:'Overtaking Sight Distance',d:'车辆超越前车所需的安全视距，分为加速段+对向段+安全段。'},
+  {t:'最大纵坡',e:'Maximum Grade',d:'道路纵断面设计的最大坡度限值，由公路等级和设计速度确定，一般3%~9%。'},
+  {t:'合成坡度',e:'Resultant Grade',d:'路线纵坡与横坡的矢量和，公路合成坡度一般不超过10%~10.5%。'},
+  {t:'超高',e:'Superelevation',d:'弯道外侧路面抬高形成的单向横坡，抵消离心力。一般地区最大超高8%，积雪地区6%。'},
+  {t:'加宽',e:'Widening',d:'弯道路段为适应车辆转弯轨迹而增加的额外宽度，设计速度越低、半径越小则加宽越多。'},
+  {t:'平包竖',e:'Horizontal-Vertical Coordination',d:'平曲线与竖曲线一一对应且平曲线比竖曲线长的组合原则。'},
+  {t:'建筑限界',e:'Structure Gauge',d:'为保证车辆安全通行而规定的最小净空，包括净高和净宽。'},
+],
+subgrade: [
+  {t:'压实度',e:'Compaction Degree',d:'路基压实后干密度与室内标准最大干密度的比值(%)。上路床高速≥96%，四级≥94%。'},
+  {t:'CBR',e:'California Bearing Ratio',d:'加州承载比，衡量路基填料强度的指标。路床最小CBR值：高速8%，四级3~5%。'},
+  {t:'路床',e:'Roadbed',d:'路面结构层底面以下0~0.8m范围内的路基部分，分为上路床(0~0.3m)和下路床(0.3~0.8m)。'},
+  {t:'路堤',e:'Embankment',d:'填方路基。分为上路堤(0.8~1.5m)和下路堤(>1.5m)，各层有不同的压实度要求。'},
+  {t:'路堑',e:'Cutting',d:'挖方路基。边坡坡率根据岩土性质和风化程度确定。'},
+  {t:'挡土墙',e:'Retaining Wall',d:'支挡路基填土或山坡土体的结构物。类型包括重力式、悬臂式、扶壁式、锚杆式、加筋土式。'},
+  {t:'库仑土压力',e:'Coulomb Earth Pressure',d:'计算挡土墙土压力的经典理论。主动土压力系数Ka取决于填土内摩擦角、墙背倾角等因素。'},
+  {t:'抗滑稳定系数',e:'Kc - Sliding Stability',d:'基底摩阻力与土压力水平分力的比值，通常要求≥1.3。'},
+  {t:'抗倾覆系数',e:'K₀ - Overturning Stability',d:'稳定力矩与倾覆力矩的比值，通常要求≥1.5。'},
+  {t:'软土路基',e:'Soft Soil Subgrade',d:'天然含水量高、孔隙比大、压缩性高、承载力低的土质路基。常用处理：排水固结、桩基复合地基。'},
+  {t:'湿陷性黄土',e:'Collapsible Loess',d:'遇水结构破坏产生显著沉降的黄土。常用处理：强夯、灰土挤密桩、预浸水。'},
+  {t:'台背回填',e:'Bridge Approach Backfill',d:'桥台背后的填土，应使用透水性材料，压实度≥96%，防止桥头跳车。'},
+],
+pavement: [
+  {t:'BZZ-100',e:'Standard Axle Load',d:'中国路面设计的标准轴载：双轮组单轴，轴重100kN。所有交通量均换算为此标准轴载的当量作用次数。'},
+  {t:'轴载换算',e:'Axle Load Conversion',d:'将不同轴重、轴型的车辆换算为标准轴载BZZ-100当量次数的过程。公式：Ns=C₁·C₂·Ni·(Pi/100)^4.35。'},
+  {t:'沥青面层',e:'Asphalt Surface Course',d:'路面最上层，直接承受车轮荷载和自然因素作用。高速/一级厚120~180mm，三/四级40~100mm。'},
+  {t:'半刚性基层',e:'Semi-rigid Base',d:'以水泥或石灰稳定粒料为主要材料的基层。强度高、板体性好，是中国公路路面的主要基层形式。'},
+  {t:'路面设计年限',e:'Pavement Design Life',d:'路面结构设计的使用基准期。高速/一级15年，二级12年，三级8年，四级6年。'},
+  {t:'马歇尔稳定度',e:'Marshall Stability',d:'沥青混合料抵抗荷载破坏的能力指标，以kN计。用于评价高温稳定性。'},
+  {t:'弯沉值',e:'Deflection',d:'路面在荷载作用下的竖向位移，是评价路面结构承载力的重要指标，单位0.01mm。'},
+  {t:'水泥混凝土弯拉强度',e:'Flexural Strength of Concrete',d:'水泥混凝土路面设计的关键强度指标，标准值4.0~5.0MPa。'},
+],
+bridge: [
+  {t:'公路-Ⅰ级',e:'Highway Class I Load',d:'高速公路和一级公路的设计汽车荷载等级。均布荷载10.5kN/m，集中荷载270~360kN。'},
+  {t:'冲击系数',e:'Impact Factor',d:'汽车荷载的动力放大系数μ，与结构基频有关，范围0.05~0.45。'},
+  {t:'承载能力极限状态',e:'Ultimate Limit State',d:'结构或构件达到最大承载力或不适于继续承载的变形的状态。必须进行验算。'},
+  {t:'裂缝宽度限值',e:'Crack Width Limit',d:'钢筋混凝土构件容许的最大裂缝宽度。Ⅰ类环境≤0.20mm，Ⅱ类≤0.15mm。'},
+  {t:'桩基础',e:'Pile Foundation',d:'由桩和承台组成的深基础。桩距≥2.5d，嵌岩深度≥0.5m，埋深在冲刷线以下≥2m。'},
+  {t:'E1/E2地震',e:'Seismic Levels',d:'E1为475年一遇地震(弹性验算)，E2为2000年一遇地震(延性验算)。'},
+  {t:'伸缩缝',e:'Expansion Joint',d:'为适应桥梁温度变形和混凝土收缩徐变而设置的缝隙。常用模数式、梳齿板式。'},
+  {t:'支座',e:'Bearing',d:'传递上部结构荷载并允许位移和转动的装置。常见类型：板式橡胶、盆式、球型。'},
+],
+safety: [
+  {t:'护栏防撞等级',e:'Barrier Crash Rating',d:'护栏抵抗车辆碰撞的能力等级，从低到高：C→B→A→SB→SA→SS，碰撞能量40~520kJ。'},
+  {t:'标志汉字高度',e:'Sign Character Height',d:'按设计速度确定：120km/h时60~70cm，80km/h时40~50cm，30km/h时20cm。'},
+  {t:'轮廓标',e:'Delineator',d:'诱导驾驶员视线的小型反光设施。弯道间距≤8m，直线段≤20m。'},
+  {t:'防眩设施',e:'Anti-glare Screen',d:'防止对向车灯眩光的设施。设置高度1.6~1.7m，间距50~100cm。'},
+  {t:'减速标线',e:'Rumble Strips',d:'通过振动和噪声提醒驾驶员减速的标线。振动标线高度5~7mm。'},
+],
+drainage: [
+  {t:'设计洪水频率',e:'Design Flood Frequency',d:'路基/桥涵设计采用洪水出现的概率。高速1/100，一级1/100，二级1/50，三级1/25。'},
+  {t:'径流系数',e:'Runoff Coefficient',d:'降雨转化为地表径流的比例。沥青路面0.9，水泥路面0.85，土路0.4~0.6。'},
+  {t:'推理公式法',e:'Rational Method',d:'小流域(<500km²)设计洪峰流量计算方法：Q=0.278·ψ·q·F。'},
+  {t:'边沟',e:'Side Ditch',d:'路堑边坡坡脚或路堤坡脚的纵向排水沟。底宽≥0.4m，深度≥0.4m，纵坡≥0.3%。'},
+  {t:'截水沟',e:'Catchwater Ditch',d:'拦截山坡坡面径流的排水设施。距路堑坡顶≥5m。'},
+],
+general: [
+  {t:'设计速度',e:'Design Speed',d:'确定公路几何设计参数的基本速度。高速120~80km/h，一级100~60km/h，二级80~40km/h。'},
+  {t:'车道宽度',e:'Lane Width',d:'单条机动车道的宽度。设计速度≥80km/h时3.75m，60km/h时3.5m，≤40km/h时3.25m。'},
+  {t:'路肩宽度',e:'Shoulder Width',d:'行车道外侧到路基边缘的带状部分。硬路肩：高速≥3.0m，一级≥2.5m。'},
+  {t:'现行/已替代',e:'Current / Replaced',d:'规范状态标识。现行表示目前有效，已替代表示已被新版规范取代，应使用替代规范。'},
+  {t:'三同时',e:'Three Simultaneities',d:'交通安全设施、防护设施、排水设施应与主体工程"同时设计、同时施工、同时投入使用"。'},
+]
+};
+
+var activeCat = 'all';
+
+function renderGlossary(filter){
+  var html = '';
+  Object.keys(GLOSSARY).forEach(function(cat){
+    if(filter!=='all' && cat!==filter) return;
+    var items = GLOSSARY[cat];
+    var catNames = {geometry:'📐 线形设计',subgrade:'🪨 路基工程',pavement:'🛣 路面工程',bridge:'🌉 桥梁工程',safety:'🛡 交安设施',drainage:'💧 排水工程',general:'📋 通用术语'};
+    html += '<div class="gl-group"><h3>'+catNames[cat]+' <span style="font-size:11px;color:var(--text3);font-weight:400">（'+items.length+'条）</span></h3>';
+    items.forEach(function(item){
+      html += '<div class="gl-item"><div class="gl-term">'+item.t+'<span class="gl-en">'+item.e+'</span></div><div class="gl-def">'+item.d+'</div></div>';
+    });
+    html += '</div>';
+  });
+  document.getElementById('glContent').innerHTML = html || '<div class="gl-empty">未找到匹配术语</div>';
+}
+
+document.getElementById('glSearch').addEventListener('input',function(){
+  var q = this.value.trim().toLowerCase();
+  if(!q){ renderGlossary(activeCat); return; }
+  // 搜索
+  var html = '';
+  Object.keys(GLOSSARY).forEach(function(cat){
+    var items = GLOSSARY[cat].filter(function(item){
+      return item.t.toLowerCase().indexOf(q)>=0 || item.e.toLowerCase().indexOf(q)>=0 || item.d.indexOf(q)>=0;
+    });
+    if(items.length===0) return;
+    var catNames = {geometry:'📐 线形设计',subgrade:'🪨 路基工程',pavement:'🛣 路面工程',bridge:'🌉 桥梁工程',safety:'🛡 交安设施',drainage:'💧 排水工程',general:'📋 通用术语'};
+    html += '<div class="gl-group"><h3>'+catNames[cat]+' <span style="font-size:11px;color:var(--text3);font-weight:400">（匹配'+items.length+'条）</span></h3>';
+    items.forEach(function(item){
+      html += '<div class="gl-item"><div class="gl-term">'+item.t+'<span class="gl-en">'+item.e+'</span></div><div class="gl-def">'+item.d+'</div></div>';
+    });
+    html += '</div>';
+  });
+  document.getElementById('glContent').innerHTML = html || '<div class="gl-empty">未找到匹配术语</div>';
+});
+
+document.getElementById('glCats').addEventListener('click',function(e){
+  var btn = e.target.closest('.gl-cat-btn'); if(!btn) return;
+  document.querySelectorAll('.gl-cat-btn').forEach(function(b){b.classList.remove('active')});
+  btn.classList.add('active');
+  activeCat = btn.dataset.cat;
+  document.getElementById('glSearch').value = '';
+  renderGlossary(activeCat);
+});
+
+renderGlossary('all');
+
+var bt=document.createElement('button');bt.className='back-top';bt.id='backTop';bt.textContent='↑';document.body.appendChild(bt);
+window.addEventListener('scroll',function(){bt.classList.toggle('visible',window.scrollY>700)});
+bt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+var ft=document.createElement('footer');ft.className='footer';ft.innerHTML=renderFooter();document.querySelector('.main').after(ft);
+</script>
+</body>
+</html>

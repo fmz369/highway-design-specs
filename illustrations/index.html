@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>构造示意图 — 公路设计规范</title>
+<link rel="stylesheet" href="../css/site.css">
+<style>
+.il-wrap{max-width:900px;margin:0 auto}
+.il-card{background:var(--card-bg);border-radius:14px;padding:20px 24px;margin-bottom:18px;border:1px solid var(--border)}
+.il-card h3{font-size:15px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.il-card svg{max-width:100%;height:auto;display:block;margin:0 auto}
+.il-desc{font-size:12px;color:var(--text3);margin-top:10px;line-height:1.6}
+.il-desc b{color:var(--text)}
+[data-theme="dark"] .il-card{background:#1e1e35}
+[data-theme="dark"] .il-card svg text{fill:#e0e0f0}
+[data-theme="dark"] .il-card svg line,[data-theme="dark"] .il-card svg path{stroke:#5a5a7a}
+</style>
+</head>
+<body>
+<header class="header"><div class="header-inner"><div class="header-top">
+<a href="../" class="header-logo" style="text-decoration:none;">🖼</a><div><h1>构造示意图</h1><p class="subtitle">公路工程关键构造与设计要素图示</p></div>
+</div></div></header>
+<main class="main il-wrap">
+<div id="breadcrumb"></div>
+
+<div class="il-card">
+<h3>📐 平曲线要素</h3>
+<svg viewBox="0 0 700 280" xmlns="http://www.w3.org/2000/svg">
+  <defs><marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="none" stroke="#3b6df0" stroke-width="1.5"/></marker></defs>
+  <!-- 切线 -->
+  <line x1="50" y1="240" x2="280" y2="130" stroke="#3b6df0" stroke-width="2" stroke-dasharray="8,4"/>
+  <line x1="420" y1="130" x2="650" y2="240" stroke="#3b6df0" stroke-width="2" stroke-dasharray="8,4"/>
+  <!-- 圆曲线 -->
+  <path d="M260,122 A200,200 0 0,1 440,122" fill="none" stroke="#3b6df0" stroke-width="3"/>
+  <!-- 缓和曲线 -->
+  <path d="M230,132 Q245,125 260,122" fill="none" stroke="#f59e0b" stroke-width="2.5"/>
+  <path d="M440,122 Q455,125 470,132" fill="none" stroke="#f59e0b" stroke-width="2.5"/>
+  <!-- 交点JD -->
+  <circle cx="350" cy="95" r="5" fill="#ef4444"/>
+  <text x="355" y="88" font-size="11" fill="#ef4444" font-weight="700">JD</text>
+  <!-- 圆心 -->
+  <circle cx="350" cy="270" r="4" fill="#6b7280"/>
+  <text x="320" y="275" font-size="10" fill="#6b7280">O</text>
+  <line x1="260" y1="122" x2="350" y2="270" stroke="#ccc" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="440" y1="122" x2="350" y2="270" stroke="#ccc" stroke-width="1" stroke-dasharray="4,3"/>
+  <!-- 标注 -->
+  <text x="340" y="45" font-size="12" fill="#3b6df0" font-weight="700">α — 路线转角</text>
+  <text x="310" y="200" font-size="11" fill="#f59e0b">T — 切线长</text>
+  <text x="100" y="175" font-size="11" fill="#f59e0b">L — 曲线长</text>
+  <text x="450" y="190" font-size="10" fill="#f59e0b">Ls — 缓和曲线</text>
+  <text x="170" y="200" font-size="10" fill="#6b7280">E — 外距</text>
+  <text x="400" y="265" font-size="10" fill="#6b7280">R — 半径</text>
+  <!-- E线 -->
+  <line x1="350" y1="95" x2="350" y2="220" stroke="#6b7280" stroke-width="1" stroke-dasharray="3,3"/>
+</svg>
+<div class="il-desc"><b>关键参数：</b>R(半径)、α(转角)、T=R·tan(α/2)+Ls/2、L=R·α(rad)+Ls、E=R·(sec(α/2)-1) | 缓和曲线提供离心力渐变，使行车更舒适</div>
+</div>
+
+<div class="il-card">
+<h3>📏 竖曲线要素</h3>
+<svg viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg">
+  <!-- 坡度线 -->
+  <line x1="50" y1="220" x2="300" y2="120" stroke="#3b6df0" stroke-width="2"/>
+  <line x1="300" y1="120" x2="650" y2="60" stroke="#3b6df0" stroke-width="2"/>
+  <text x="160" y="180" font-size="11" fill="#3b6df0">i₁ = +4%</text>
+  <text x="460" y="100" font-size="11" fill="#3b6df0">i₂ = -2%</text>
+  <!-- 变坡点 -->
+  <circle cx="300" cy="120" r="4" fill="#ef4444"/>
+  <text x="308" y="115" font-size="11" fill="#ef4444" font-weight="700">变坡点</text>
+  <!-- 竖曲线 -->
+  <path d="M230,148 Q270,125 300,120 Q340,113 380,105" fill="none" stroke="#16a34a" stroke-width="3"/>
+  <text x="280" y="155" font-size="10" fill="#16a34a">竖曲线 R=10000</text>
+  <!-- 切线长 -->
+  <line x1="230" y1="148" x2="230" y2="240" stroke="#6b7280" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="300" y1="120" x2="300" y2="240" stroke="#6b7280" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="250" y="250" font-size="11" fill="#6b7280">T — 切线长</text>
+  <text x="440" y="130" font-size="10" fill="#6b7280">ω=|i₁-i₂| — 坡度差</text>
+</svg>
+<div class="il-desc"><b>凸形竖曲线</b>（i₁>i₂）：保证夜间行车视距 | <b>凹形竖曲线</b>（i₁<i₂）：缓和冲击、保证排水 | T=R·ω/2</div>
+</div>
+
+<div class="il-card">
+<h3>🛣 公路横断面（高速/一级）</h3>
+<svg viewBox="0 0 700 180" xmlns="http://www.w3.org/2000/svg">
+  <!-- 路面 -->
+  <rect x="0" y="60" width="700" height="80" fill="#e5e7eb" rx="2"/>
+  <!-- 中央分隔带 -->
+  <rect x="330" y="55" width="40" height="90" fill="#86efac"/>
+  <text x="340" y="100" font-size="9" fill="#166534">中分带</text>
+  <!-- 行车道 -->
+  <rect x="60" y="60" width="270" height="80" fill="#d1d5db"/>
+  <rect x="370" y="60" width="270" height="80" fill="#d1d5db"/>
+  <!-- 车道线 -->
+  <line x1="130" y1="60" x2="130" y2="140" stroke="#fff" stroke-width="1" stroke-dasharray="8,4"/>
+  <line x1="200" y1="60" x2="200" y2="140" stroke="#fff" stroke-width="1" stroke-dasharray="8,4"/>
+  <line x1="440" y1="60" x2="440" y2="140" stroke="#fff" stroke-width="1" stroke-dasharray="8,4"/>
+  <line x1="510" y1="60" x2="510" y2="140" stroke="#fff" stroke-width="1" stroke-dasharray="8,4"/>
+  <!-- 硬路肩 -->
+  <rect x="0" y="60" width="60" height="80" fill="#fca5a5"/>
+  <rect x="640" y="60" width="60" height="80" fill="#fca5a5"/>
+  <!-- 土路肩 -->
+  <rect x="0" y="120" width="40" height="20" fill="#fed7aa"/>
+  <rect x="660" y="120" width="40" height="20" fill="#fed7aa"/>
+  <!-- 标注 -->
+  <text x="10" y="50" font-size="11" fill="#dc2626">硬路肩</text>
+  <text x="80" y="50" font-size="11" fill="#374151">行车道</text>
+  <text x="350" y="45" font-size="10" fill="#16a34a">中央分隔带</text>
+  <text x="400" y="50" font-size="11" fill="#374151">行车道</text>
+  <text x="645" y="50" font-size="11" fill="#dc2626">硬路肩</text>
+  <text x="10" y="155" font-size="10" fill="#c2410c">土路肩</text>
+  <text x="670" y="155" font-size="10" fill="#c2410c">土路肩</text>
+</svg>
+<div class="il-desc"><b>车道宽3.75m</b>（设计速度≥80km/h）| <b>硬路肩≥3.0m</b>（高速）| <b>土路肩≥0.75m</b> | 中央分隔带含路缘带</div>
+</div>
+
+<div class="il-card">
+<h3>🧱 挡土墙类型</h3>
+<svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg">
+  <text x="350" y="18" font-size="12" font-weight="700" fill="#374151" text-anchor="middle">五种常用挡土墙类型示意</text>
+  <!-- 重力式 -->
+  <rect x="30" y="40" width="80" height="130" fill="#fef3c7" stroke="#d97706" stroke-width="2" rx="2"/>
+  <text x="70" y="190" font-size="10" fill="#92400e" text-anchor="middle">重力式</text>
+  <text x="70" y="205" font-size="9" fill="#6b7280" text-anchor="middle">H≤12m</text>
+  <!-- 悬臂式 -->
+  <rect x="140" y="120" width="80" height="50" fill="#fef3c7" stroke="#d97706" stroke-width="2" rx="2"/>
+  <rect x="140" y="170" width="100" height="18" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="190" y="205" font-size="10" fill="#92400e" text-anchor="middle">悬臂式 H≤15m</text>
+  <!-- 扶壁式 -->
+  <rect x="270" y="120" width="80" height="50" fill="#fef3c7" stroke="#d97706" stroke-width="2" rx="2"/>
+  <rect x="270" y="170" width="100" height="18" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <line x1="290" y1="120" x2="290" y2="170" stroke="#d97706" stroke-width="2"/>
+  <line x1="310" y1="120" x2="310" y2="170" stroke="#d97706" stroke-width="2"/>
+  <line x1="330" y1="120" x2="330" y2="170" stroke="#d97706" stroke-width="2"/>
+  <text x="320" y="205" font-size="10" fill="#92400e" text-anchor="middle">扶壁式 H≤15m</text>
+  <!-- 锚杆式 -->
+  <rect x="420" y="100" width="60" height="60" fill="#fef3c7" stroke="#d97706" stroke-width="2" rx="2"/>
+  <line x1="460" y1="110" x2="530" y2="80" stroke="#ef4444" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="460" y1="130" x2="530" y2="110" stroke="#ef4444" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="530" y="75" font-size="8" fill="#ef4444">锚杆</text>
+  <text x="450" y="190" font-size="10" fill="#92400e" text-anchor="middle">锚杆式</text>
+  <text x="450" y="205" font-size="9" fill="#6b7280" text-anchor="middle">单级≤8m</text>
+  <!-- 加筋土式 -->
+  <rect x="580" y="50" width="80" height="120" fill="#fef3c7" stroke="#d97706" stroke-width="2" rx="2"/>
+  <line x1="580" y1="80" x2="660" y2="80" stroke="#8b5cf6" stroke-width="1.5"/>
+  <line x1="580" y1="105" x2="660" y2="105" stroke="#8b5cf6" stroke-width="1.5"/>
+  <line x1="580" y1="130" x2="660" y2="130" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="650" y="75" font-size="8" fill="#8b5cf6">筋材</text>
+  <text x="620" y="190" font-size="10" fill="#92400e" text-anchor="middle">加筋土式</text>
+  <text x="620" y="205" font-size="9" fill="#6b7280" text-anchor="middle">≤20m</text>
+  <!-- 地面线 -->
+  <line x1="10" y1="188" x2="690" y2="188" stroke="#9ca3af" stroke-width="1.5"/>
+  <!-- 土压力箭头 -->
+  <line x1="65" y1="80" x2="65" y2="170" stroke="#ef4444" stroke-width="2" marker-end="url(#a)"/>
+  <defs><marker id="a" markerWidth="6" markerHeight="6" refX="3" refY="3"><circle cx="3" cy="3" r="2" fill="#ef4444"/></marker></defs>
+</svg>
+<div class="il-desc"><b>重力式</b>靠自重抵抗土压力 | <b>悬臂/扶壁式</b>利用钢筋混凝土结构 | <b>锚杆式</b>用锚杆将墙与岩体连接 | <b>加筋土式</b>在填土中铺设筋材增加稳定性</div>
+</div>
+
+<div class="il-card">
+<h3>🛣 路面结构层</h3>
+<svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- 面层 -->
+  <rect x="0" y="20" width="700" height="35" fill="#4b5563"/>
+  <text x="350" y="42" font-size="12" fill="#fff" text-anchor="middle" font-weight="700">沥青面层 120~180mm</text>
+  <!-- 基层 -->
+  <rect x="0" y="55" width="700" height="35" fill="#9ca3af"/>
+  <text x="350" y="77" font-size="12" fill="#fff" text-anchor="middle" font-weight="700">水泥稳定碎石基层 180~200mm</text>
+  <!-- 底基层 -->
+  <rect x="0" y="90" width="700" height="25" fill="#d1d5db"/>
+  <text x="350" y="107" font-size="11" fill="#374151" text-anchor="middle">水泥稳定碎石/石灰土底基层 150~200mm</text>
+  <!-- 垫层 -->
+  <rect x="0" y="115" width="700" height="15" fill="#e5e7eb"/>
+  <text x="350" y="126" font-size="10" fill="#6b7280" text-anchor="middle">级配碎石/砂砾垫层（需要时） ≥150mm</text>
+  <!-- 路基 -->
+  <rect x="0" y="130" width="700" height="70" fill="#fef3c7"/>
+  <text x="350" y="170" font-size="12" fill="#92400e" text-anchor="middle" font-weight="700">路 基（压实度逐层控制）</text>
+  <!-- 路床分界 -->
+  <line x1="0" y1="155" x2="700" y2="155" stroke="#f59e0b" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="695" y="163" font-size="9" fill="#b45309">上路床 0~0.3m（压实度≥96%）</text>
+</svg>
+<div class="il-desc"><b>路面结构自上而下：</b>面层→基层→底基层→（垫层）→路基 | 高速/一级面层≥120mm | 各层厚度和材料按交通等级和规范确定</div>
+</div>
+
+<div class="il-card">
+<h3>🔍 交叉口视距三角形</h3>
+<svg viewBox="0 0 500 350" xmlns="http://www.w3.org/2000/svg">
+  <!-- 道路 -->
+  <rect x="60" y="150" width="380" height="50" fill="#d1d5db" rx="2"/>
+  <rect x="210" y="10" width="50" height="330" fill="#d1d5db" rx="2"/>
+  <!-- 中心线 -->
+  <line x1="235" y1="150" x2="235" y2="200" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <line x1="210" y1="175" x2="260" y2="175" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <!-- 视距三角形 -->
+  <polygon points="180,115 180,175 235,175" fill="#fef3c7" fill-opacity="0.5" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6,3"/>
+  <text x="180" y="140" font-size="10" fill="#92400e" transform="rotate(-50,180,140)">视距三角形</text>
+  <text x="185" y="90" font-size="9" fill="#ef4444">🚫 禁止障碍物</text>
+  <!-- 标注 -->
+  <text x="140" y="200" font-size="10" fill="#374151">停车视距</text>
+  <text x="240" y="200" font-size="10" fill="#374151">停车视距</text>
+</svg>
+<div class="il-desc"><b>视距三角形：</b>交叉口范围内由两方向停车视距构成的三角形区域内不得有任何阻碍视线的障碍物（建筑物、树木、广告牌等）</div>
+</div>
+
+</main>
+
+<script src="../js/components.js?v=2"></script>
+<script src="../js/theme.js?v=2"></script>
+<script>
+document.getElementById('breadcrumb').innerHTML = renderBreadcrumb([{label:'🏠 首页',link:'../'},{label:'🖼 构造示意图'}]);
+var bt=document.createElement('button');bt.className='back-top';bt.id='backTop';bt.textContent='↑';document.body.appendChild(bt);
+window.addEventListener('scroll',function(){bt.classList.toggle('visible',window.scrollY>700)});
+bt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+var ft=document.createElement('footer');ft.className='footer';ft.innerHTML=renderFooter();document.querySelector('.main').after(ft);
+</script>
+</body>
+</html>
