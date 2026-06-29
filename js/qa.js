@@ -90,6 +90,7 @@
       renderResults(q, results);
     }
   }
+  window.doSearch = doSearch; // 暴露全局，供历史/追问按钮onclick调用
 
   function extractKeywords(q) {
     var found = [];
