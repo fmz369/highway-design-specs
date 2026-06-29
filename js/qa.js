@@ -331,15 +331,18 @@
     html += '</div></div>';
   }
 
-  // 追问建议（仅在有搜索结果时生成）
-  if (results.length > 0 && keywords.length > 0) {
-    var followups = genFollowup(keywords, results[0].spec);
-    if (followups.length > 0) {
-      html += '<div class="qa-followup"><div class="qa-followup-label">💡 你可能还想问</div><div style="display:flex;flex-wrap:wrap;gap:6px;">';
-      followups.forEach(function(f) {
-        html += '<button class="qa-hint" onclick="document.getElementById(\'qaInput\').value=\'' + f.replace(/'/g,"\\'") + '\';doSearch();" style="font-size:11px;padding:4px 12px;">' + f + '</button>';
-      });
-      html += '</div></div>';
+  // 追问建议（基于第一个结果的匹配关键词生成）
+  if (results.length > 0) {
+    var bestMatches = results[0].matches || [];
+    if (bestMatches.length > 0) {
+      var followups = genFollowup(bestMatches, results[0].spec);
+      if (followups.length > 0) {
+        html += '<div class="qa-followup"><div class="qa-followup-label">💡 你可能还想问</div><div style="display:flex;flex-wrap:wrap;gap:6px;">';
+        followups.forEach(function(f) {
+          html += '<button class="qa-hint" onclick="document.getElementById(\'qaInput\').value=\'' + f.replace(/'/g,"\\'") + '\';doSearch();" style="font-size:11px;padding:4px 12px;">' + f + '</button>';
+        });
+        html += '</div></div>';
+      }
     }
   }
 
