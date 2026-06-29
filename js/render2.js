@@ -287,11 +287,12 @@
         btn.title = '复制';
         btn.addEventListener('click', function(e) {
           e.stopPropagation();
-          var text = spec.code + '：' + li.textContent.replace(/\s+/g, ' ').trim();
-          // 限制长度
+          var clone = li.cloneNode(true);
+          var cb = clone.querySelector('.copy-btn'); if (cb) cb.remove();
+          var text = spec.code + '：' + clone.textContent.replace(/\s+/g, ' ').trim();
           if (text.length > 300) text = text.substring(0, 297) + '...';
           copyToClipboard(text);
-          showToast('✅ 已复制：' + text.substring(0, 50) + '…');
+          showToast('✅ 已复制');
         });
         li.appendChild(btn);
       });

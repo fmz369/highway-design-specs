@@ -627,13 +627,12 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 .spec-content mark.active { background: #f59e0b; color: #fff; }
 
 /* ====== 复制按钮 + Toast ====== */
-.spec-content li { position: relative; }
-.spec-content .copy-btn { position: absolute; right: 2px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; border-radius: 3px; border: none; background: transparent; cursor: pointer; font-size: 10px; opacity: 0; transition: opacity .2s; display: flex; align-items: center; justify-content: center; color: var(--text3); line-height: 1; }
-.spec-content li:hover .copy-btn { opacity: .5; }
+.spec-content li { position: relative; padding-right: 20px; }
+.spec-content .copy-btn { position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 12px; height: 12px; border-radius: 2px; border: none; background: transparent; cursor: pointer; font-size: 8px; opacity: 0; transition: opacity .2s; display: flex; align-items: center; justify-content: center; color: var(--text3); line-height: 1; }
+.spec-content li:hover .copy-btn { opacity: .35; }
 .spec-content li .copy-btn:hover { opacity: 1; color: var(--accent); background: var(--accent-light); }
-/* 表格复制按钮同样低调 */
-.spec-content .tbl-copy-btn { position: absolute; right: 4px; top: 4px; width: 18px; height: 18px; border-radius: 3px; border: none; background: transparent; cursor: pointer; font-size: 10px; opacity: 0; transition: opacity .2s; display: flex; align-items: center; justify-content: center; color: var(--text3); }
-.spec-content .tbl-wrap:hover .tbl-copy-btn { opacity: .5; }
+.spec-content .tbl-copy-btn { position: absolute; right: 2px; top: 2px; width: 12px; height: 12px; border-radius: 2px; border: none; background: transparent; cursor: pointer; font-size: 8px; opacity: 0; transition: opacity .2s; display: flex; align-items: center; justify-content: center; color: var(--text3); }
+.spec-content .tbl-wrap:hover .tbl-copy-btn { opacity: .35; }
 .spec-content .tbl-copy-btn:hover { opacity: 1; color: var(--accent); background: var(--accent-light); }
 .copy-toast { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: #1a1a2e; color: #fff; padding: 8px 20px; border-radius: 20px; font-size: 13px; z-index: 999; animation: toastIn .3s ease; pointer-events: none; }
 @keyframes toastIn { from { opacity: 0; transform: translateX(-50%) translateY(10px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
