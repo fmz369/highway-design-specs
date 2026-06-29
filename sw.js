@@ -1,5 +1,5 @@
 // 公路设计规范 — Service Worker（离线缓存）
-var CACHE_NAME = 'highway-specs-v2';
+var CACHE_NAME = 'highway-specs-v3';
 var URLS = [
   './',
   'index.html',
@@ -10,7 +10,6 @@ var URLS = [
   'js/favorites.js',
   'js/components.js',
   'js/theme.js',
-  'js/qa.js',
   'js/render.js',
   'js/render2.js',
   'js/serialize.js',
