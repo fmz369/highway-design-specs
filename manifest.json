@@ -1,0 +1,14 @@
+{
+  "name": "公路设计规范在线辅助平台",
+  "short_name": "公路规范",
+  "description": "104部公路设计规范在线查阅、计算、对比、问答",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f0f2f5",
+  "theme_color": "#3b6df0",
+  "icons": [{
+    "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛣️</text></svg>",
+    "sizes": "100x100",
+    "type": "image/svg+xml"
+  }]
+}
