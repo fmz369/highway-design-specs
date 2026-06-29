@@ -1,5 +1,5 @@
 // 公路设计规范 — Service Worker（离线缓存）
-var CACHE_NAME = 'highway-specs-v3';
+var CACHE_NAME = 'highway-specs-v4';
 var URLS = [
   './',
   'index.html',
@@ -31,6 +31,7 @@ var URLS = [
 ];
 
 self.addEventListener('install', function(e) {
+  self.skipWaiting();
   e.waitUntil(
     caches.open(CACHE_NAME).then(function(cache) {
       return cache.addAll(URLS);
@@ -53,9 +54,10 @@ self.addEventListener('fetch', function(e) {
 });
 
 self.addEventListener('activate', function(e) {
+  self.clients.claim();
   e.waitUntil(
     caches.keys().then(function(keys) {
-      return Promise.all(keys.filter(function(k) { return k !== CACHE_NAME; }).map(function(k) { return caches.delete(k); }));
+      return Promise.all(keys.map(function(k) { return caches.delete(k); }));
     })
   );
 });
