@@ -75,6 +75,12 @@ function renderToolbar(spec) {
       ? '<a href="../' + spec.pdf + '" target="_blank" class="btn btn-pdf" title="查看PDF原文">📖 PDF原文</a>'
       : '')
     + '<a href="../compare/?codes=' + encodeURIComponent(spec.code) + '" class="btn" title="对比">📊 对比</a>'
+    + '<div class="inline-search" id="inlineSearchBox">'
+    + '<input type="text" id="inlineSearchInput" placeholder="页内搜索…" title="在规范内搜索（Ctrl+F）">'
+    + '<span class="is-count" id="isCount"></span>'
+    + '<button class="is-btn" id="isPrev" disabled title="上一个">↑</button>'
+    + '<button class="is-btn" id="isNext" disabled title="下一个">↓</button>'
+    + '</div>'
     + '</div>';
 }
 

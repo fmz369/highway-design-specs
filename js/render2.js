@@ -276,6 +276,178 @@
       });
     }
 
+    // ===== 条文一键复制 =====
+    var contentEl = document.querySelector('.spec-content');
+    if (contentEl) {
+      var lis = contentEl.querySelectorAll('li');
+      lis.forEach(function(li) {
+        var btn = document.createElement('button');
+        btn.className = 'copy-btn';
+        btn.textContent = '📋';
+        btn.title = '复制条文';
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var text = spec.code + '：' + li.textContent.replace(/\s+/g, ' ').trim();
+          // 限制长度
+          if (text.length > 300) text = text.substring(0, 297) + '...';
+          copyToClipboard(text);
+          showToast('✅ 已复制：' + text.substring(0, 50) + '…');
+        });
+        li.appendChild(btn);
+      });
+      // 表格也加复制
+      var tables = contentEl.querySelectorAll('table');
+      tables.forEach(function(tbl) {
+        var btn = document.createElement('button');
+        btn.className = 'copy-btn';
+        btn.textContent = '📋';
+        btn.title = '复制表格';
+        btn.style.cssText = 'position:absolute;right:4px;top:4px;z-index:5;opacity:0;';
+        var wrap = document.createElement('div');
+        wrap.style.cssText = 'position:relative;';
+        tbl.parentNode.insertBefore(wrap, tbl);
+        wrap.appendChild(tbl);
+        wrap.appendChild(btn);
+        wrap.addEventListener('mouseenter', function() { btn.style.opacity = '1'; });
+        wrap.addEventListener('mouseleave', function() { btn.style.opacity = '0'; });
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var rows = tbl.querySelectorAll('tr');
+          var text = spec.code + '\n';
+          rows.forEach(function(r) {
+            var cells = r.querySelectorAll('th,td');
+            var rowText = [];
+            cells.forEach(function(c) { rowText.push(c.textContent.trim()); });
+            text += rowText.join('\t') + '\n';
+          });
+          copyToClipboard(text);
+          showToast('✅ 已复制表格');
+        });
+      });
+    }
+    function copyToClipboard(text) {
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.style.cssText = 'position:fixed;left:-9999px';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); } catch(e) {}
+      document.body.removeChild(ta);
+    }
+    function showToast(msg) {
+      var t = document.getElementById('copyToast');
+      if (t) { t.textContent = msg; clearTimeout(t._tid); }
+      else {
+        t = document.createElement('div'); t.id = 'copyToast'; t.className = 'copy-toast'; t.textContent = msg;
+        document.body.appendChild(t);
+      }
+      t._tid = setTimeout(function() { t.remove(); }, 1800);
+    }
+
+    // ===== 页内搜索 =====
+    var isInput = document.getElementById('inlineSearchInput');
+    var isCount = document.getElementById('isCount');
+    var isPrev = document.getElementById('isPrev');
+    var isNext = document.getElementById('isNext');
+    var searchMarks = [];
+    var searchIdx = -1;
+
+    function clearSearch() {
+      searchMarks.forEach(function(m) { m.remove(); });
+      searchMarks = []; searchIdx = -1;
+      isCount.textContent = '';
+      isPrev.disabled = true; isNext.disabled = true;
+    }
+
+    function doInlineSearch(q) {
+      clearSearch();
+      if (!q || !contentEl) return;
+      // 遍历文本节点创建高亮
+      var walker = document.createTreeWalker(contentEl, NodeFilter.SHOW_TEXT, null, false);
+      var textNodes = [];
+      while (walker.nextNode()) { textNodes.push(walker.currentNode); }
+      var total = 0;
+      textNodes.forEach(function(tn) {
+        var text = tn.textContent;
+        var idx = text.toLowerCase().indexOf(q.toLowerCase());
+        if (idx < 0) return;
+        var frag = document.createDocumentFragment();
+        var last = 0;
+        while (idx >= 0) {
+          if (idx > last) frag.appendChild(document.createTextNode(text.substring(last, idx)));
+          var mark = document.createElement('mark');
+          mark.textContent = text.substring(idx, idx + q.length);
+          frag.appendChild(mark);
+          searchMarks.push(mark);
+          total++;
+          last = idx + q.length;
+          idx = text.substring(last).toLowerCase().indexOf(q.toLowerCase());
+          if (idx >= 0) idx += last;
+        }
+        if (last < text.length) frag.appendChild(document.createTextNode(text.substring(last)));
+        tn.parentNode.replaceChild(frag, tn);
+      });
+      if (total > 0) {
+        isCount.textContent = '1/' + total;
+        searchIdx = 0;
+        searchMarks[0].classList.add('active');
+        searchMarks[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        isPrev.disabled = false; isNext.disabled = false;
+      } else {
+        isCount.textContent = '0';
+      }
+    }
+
+    function moveSearch(dir) {
+      if (searchMarks.length === 0) return;
+      searchMarks[searchIdx].classList.remove('active');
+      searchIdx = (searchIdx + dir + searchMarks.length) % searchMarks.length;
+      searchMarks[searchIdx].classList.add('active');
+      searchMarks[searchIdx].scrollIntoView({ behavior: 'smooth', block: 'center' });
+      isCount.textContent = (searchIdx + 1) + '/' + searchMarks.length;
+    }
+
+    if (isInput) {
+      isInput.addEventListener('input', function() { doInlineSearch(this.value.trim()); });
+      isInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') { e.preventDefault(); moveSearch(e.shiftKey ? -1 : 1); }
+      });
+      isPrev.addEventListener('click', function() { moveSearch(-1); });
+      isNext.addEventListener('click', function() { moveSearch(1); });
+    }
+
+    // Ctrl+F 聚焦页内搜索
+    document.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
+        if (isInput && document.querySelector('.spec-detail')) {
+          e.preventDefault(); isInput.focus(); isInput.select();
+        }
+      }
+    });
+
+    // ===== 快捷键面板 =====
+    document.addEventListener('keydown', function(e) {
+      if (e.key === '?' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+        e.preventDefault();
+        showKbPanel();
+      }
+      if (e.key === 'Escape') {
+        var overlay = document.getElementById('kbOverlay');
+        if (overlay) overlay.remove();
+      }
+    });
+    function showKbPanel() {
+      var old = document.getElementById('kbOverlay'); if (old) { old.remove(); return; }
+      var overlay = document.createElement('div'); overlay.id = 'kbOverlay'; overlay.className = 'kb-overlay';
+      overlay.innerHTML = '<div class="kb-panel"><h3>⌨️ 快捷键</h3>'
+        + '<div class="kb-row"><span class="kb-key">/</span><span class="kb-desc">聚焦全站搜索</span></div>'
+        + '<div class="kb-row"><span class="kb-key">Ctrl+F</span><span class="kb-desc">页内搜索（规范详情页）</span></div>'
+        + '<div class="kb-row"><span class="kb-key">?</span><span class="kb-desc">显示/隐藏快捷键帮助</span></div>'
+        + '<div class="kb-row"><span class="kb-key">Esc</span><span class="kb-desc">关闭弹窗</span></div>'
+        + '<div class="kb-row"><span class="kb-key">←</span><span class="kb-desc">返回上一页</span></div>'
+        + '<div class="kb-row" style="padding-top:8px;color:var(--text3);font-size:11px;">点击背景或按 Esc 关闭</div></div>';
+      overlay.addEventListener('click', function(e) { if (e.target === overlay) overlay.remove(); });
+      document.body.appendChild(overlay);
+    }
+
     // 收藏按钮交互
     var btnFav = document.getElementById('btnFavorite');
     if (btnFav) {
