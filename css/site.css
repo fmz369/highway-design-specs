@@ -616,8 +616,8 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 }
 
 /* ====== 条文选择导出 ====== */
-.spec-content .sel-cb { display: none; margin-right: 8px; width: 16px; height: 16px; cursor: pointer; accent-color: var(--accent); flex-shrink: 0; }
-.spec-content.select-mode .sel-cb { display: inline-block; }
+.spec-content .sel-cb { display: none !important; margin-right: 8px; width: 16px; height: 16px; cursor: pointer; accent-color: var(--accent); flex-shrink: 0; }
+.spec-content.select-mode .sel-cb { display: inline-block !important; }
 .spec-content.select-mode li { display: flex; align-items: flex-start; }
 /* 标注模式 */
 .spec-content.hl-mode li { cursor: pointer; }
