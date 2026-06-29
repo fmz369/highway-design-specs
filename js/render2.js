@@ -283,8 +283,8 @@
       lis.forEach(function(li) {
         var btn = document.createElement('button');
         btn.className = 'copy-btn';
-        btn.textContent = '📋';
-        btn.title = '复制条文';
+        btn.textContent = '▸';
+        btn.title = '复制';
         btn.addEventListener('click', function(e) {
           e.stopPropagation();
           var text = spec.code + '：' + li.textContent.replace(/\s+/g, ' ').trim();
@@ -299,17 +299,15 @@
       var tables = contentEl.querySelectorAll('table');
       tables.forEach(function(tbl) {
         var btn = document.createElement('button');
-        btn.className = 'copy-btn';
-        btn.textContent = '📋';
+        btn.className = 'tbl-copy-btn';
+        btn.textContent = '▸';
         btn.title = '复制表格';
-        btn.style.cssText = 'position:absolute;right:4px;top:4px;z-index:5;opacity:0;';
         var wrap = document.createElement('div');
+        wrap.className = 'tbl-wrap';
         wrap.style.cssText = 'position:relative;';
         tbl.parentNode.insertBefore(wrap, tbl);
         wrap.appendChild(tbl);
         wrap.appendChild(btn);
-        wrap.addEventListener('mouseenter', function() { btn.style.opacity = '1'; });
-        wrap.addEventListener('mouseleave', function() { btn.style.opacity = '0'; });
         btn.addEventListener('click', function(e) {
           e.stopPropagation();
           var rows = tbl.querySelectorAll('tr');
