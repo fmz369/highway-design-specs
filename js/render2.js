@@ -276,8 +276,37 @@
       });
     }
 
-    // ===== 条文一键复制 =====
+    // ===== 规范交叉引用：自动将规范编号转为可点击链接 =====
     var contentEl = document.querySelector('.spec-content');
+    if (contentEl) {
+      // 匹配规范编号的正则：JTG系列、GB系列、CJJ系列、JGJ系列
+      var specRefRe = /\b(JTG\/T?\s?[A-Z]?\d{2,4}[.\d]*-?\d{4})\b|\b(GB\/?T?\s?\d{4,6}(?:\.\d+)?-?\d{4})\b|\b(CJJ\s?\d{1,3}-?\d{4})\b|\b(JGJ\s?\d{1,3}-?\d{4})\b/g;
+      var walker = document.createTreeWalker(contentEl, NodeFilter.SHOW_TEXT, null, false);
+      var textNodes = [];
+      while (walker.nextNode()) textNodes.push(walker.currentNode);
+      textNodes.forEach(function(tn) {
+        var text = tn.textContent;
+        if (!specRefRe.test(text)) return;
+        specRefRe.lastIndex = 0;
+        var frag = document.createDocumentFragment();
+        var last = 0, m;
+        while ((m = specRefRe.exec(text)) !== null) {
+          if (m.index > last) frag.appendChild(document.createTextNode(text.substring(last, m.index)));
+          var code = m[0].replace(/\s+/g, ' ').trim();
+          var a = document.createElement('a');
+          a.href = '../specs/?code=' + encodeURIComponent(code);
+          a.textContent = code;
+          a.style.cssText = 'color:var(--accent);font-weight:600;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px';
+          a.title = '查看 ' + code;
+          frag.appendChild(a);
+          last = specRefRe.lastIndex;
+        }
+        if (last < text.length) frag.appendChild(document.createTextNode(text.substring(last)));
+        tn.parentNode.replaceChild(frag, tn);
+      });
+    }
+
+    // ===== 条文一键复制 =====
     if (contentEl) {
       var lis = contentEl.querySelectorAll('li');
       lis.forEach(function(li) {
