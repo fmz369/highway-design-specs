@@ -670,3 +670,28 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 [data-theme="dark"] .spec-content mark { background: #854d0e; color: #fef3c7; }
 [data-theme="dark"] .spec-content mark.active { background: #d97706; color: #fff; }
 [data-theme="dark"] .copy-toast { background: #e5e7eb; color: #1a1a2e; }
+
+/* ====== 导出预览弹窗 ====== */
+.ep-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 9999; display: flex; align-items: center; justify-content: center; animation: fadeIn .2s; }
+.ep-dialog { background: var(--card-bg); border-radius: 18px; width: 90%; max-width: 650px; max-height: 85vh; display: flex; flex-direction: column; box-shadow: 0 20px 60px rgba(0,0,0,.25); }
+.ep-header { padding: 18px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+.ep-header h3 { font-size: 16px; margin: 0; }
+.ep-close { background: none; border: none; font-size: 22px; cursor: pointer; color: var(--text3); padding: 4px 8px; border-radius: 6px; }
+.ep-close:hover { background: var(--bg); color: var(--text); }
+.ep-body { padding: 16px 24px; overflow-y: auto; flex: 1; font-size: 13px; line-height: 1.7; color: var(--text2); }
+.ep-body .ep-clause { padding: 6px 10px; margin: 4px 0; background: var(--bg); border-radius: 6px; border-left: 3px solid var(--accent); }
+.ep-body .ep-table { width: 100%; border-collapse: collapse; font-size: 11px; margin: 8px 0; }
+.ep-body .ep-table td, .ep-body .ep-table th { border: 1px solid var(--border); padding: 4px 8px; text-align: center; }
+.ep-body .ep-table th { background: var(--bg); font-weight: 600; }
+.ep-body .ep-params { display: grid; grid-template-columns: repeat(2,1fr); gap: 4px 12px; font-size: 12px; }
+.ep-body .ep-params span { color: var(--text3); } .ep-body .ep-params b { color: var(--text); }
+.ep-body .ep-check-group { display: flex; flex-wrap: wrap; gap: 8px; }
+.ep-body .ep-check-label { display: flex; align-items: center; gap: 6px; font-size: 13px; padding: 8px 12px; background: var(--bg); border-radius: 8px; cursor: pointer; }
+.ep-body .ep-check-label input { accent-color: var(--accent); width: 16px; height: 16px; }
+.ep-footer { padding: 14px 24px; border-top: 1px solid var(--border); display: flex; gap: 8px; justify-content: flex-end; }
+.ep-btn { padding: 9px 22px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; transition: all .15s; }
+.ep-btn.primary { background: var(--accent); color: #fff; }
+.ep-btn.primary:hover { background: #1d4ed8; }
+.ep-btn.secondary { background: var(--bg); color: var(--text2); border: 1.5px solid var(--border); }
+.ep-btn.secondary:hover { border-color: var(--accent); color: var(--accent); }
+@media(max-width:600px){.ep-dialog{width:95%;max-height:90vh}.ep-body .ep-params{grid-template-columns:1fr}}

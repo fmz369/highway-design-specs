@@ -135,22 +135,37 @@ else pjs.forEach(function(pj){
 document.getElementById('projList').innerHTML = phtml;
 }catch(e){}
 
-// 导出全部数据
+// 导出数据 → 预览弹窗+选择类别
 function exportAll(){
-  var data = {};
-  for(var i=0;i<localStorage.length;i++){
-    var key = localStorage.key(i);
-    if(key.indexOf('hl_')>=0||key.indexOf('calc_')>=0||key.indexOf('spec_')>=0||key.indexOf('cl_')>=0||key.indexOf('qa_')>=0||key.indexOf('saved_')>=0||key.indexOf('favorites')>=0||key.indexOf('daily_')>=0){
-      data[key] = localStorage.getItem(key);
+  var cats = [
+    {key:'favorites', label:'⭐ 收藏规范', count:getFavoriteCodes().length},
+    {key:'spec_history', label:'📜 浏览记录', count:(function(){try{return JSON.parse(localStorage.getItem('spec_history')||'[]').length}catch(e){return 0}})()},
+    {key:'calc_history', label:'🧮 计算历史', count:(function(){try{return JSON.parse(localStorage.getItem('calc_history')||'[]').length}catch(e){return 0}})()},
+    {key:'saved_projects', label:'🏗 项目数据', count:(function(){try{return JSON.parse(localStorage.getItem('saved_projects')||'[]').length}catch(e){return 0}})()},
+    {key:'cl_checked', label:'✅ 检查清单', count:(function(){try{return Object.keys(JSON.parse(localStorage.getItem('cl_checked')||'{}')).length}catch(e){return 0}})()},
+    {key:'hl_*', label:'🖍 条文标注', count:(function(){var n=0;Object.keys(localStorage).forEach(function(k){if(k.indexOf('hl_')===0)n+=JSON.parse(localStorage.getItem(k)||'[]').length});return n})()},
+  ];
+  var body = '<p style="margin-bottom:12px;">请选择要导出的数据类别（默认全选）：</p><div class="ep-check-group">';
+  cats.forEach(function(c){
+    body += '<label class="ep-check-label"><input type="checkbox" value="'+c.key+'" checked> '+c.label+' <span style="font-size:10px;color:var(--text3)">（'+c.count+'条）</span></label>';
+  });
+  body += '</div>';
+
+  showExportDialog({
+    icon: '💾', title: '导出个人数据',
+    body: body,
+    onDownload: function(overlay){
+      var checks = overlay.querySelectorAll('input:checked');
+      var keys = []; checks.forEach(function(cb){ if(cb.value==='hl_*'){ Object.keys(localStorage).forEach(function(k){if(k.indexOf('hl_')===0)keys.push(k)}) } else keys.push(cb.value); });
+      var data = {}; keys.forEach(function(k){ data[k] = localStorage.getItem(k); });
+      var blob = new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+      var a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+      a.download = '公路规范_个人数据备份_'+new Date().toISOString().substring(0,10)+'.json';
+      a.click(); overlay.remove(); showToast('✅ 已导出');
     }
-  }
-  var blob = new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
-  var a = document.createElement('a'); a.href = URL.createObjectURL(blob);
-  a.download = '公路规范_个人数据备份_'+new Date().toISOString().substring(0,10)+'.json';
-  a.click(); showToast('✅ 数据已导出');
+  });
 }
 
-// 导入数据
 function importData(){ document.getElementById('importFile').click(); }
 function handleImport(e){
   var file = e.target.files[0]; if(!file)return;
@@ -158,8 +173,9 @@ function handleImport(e){
   reader.onload = function(ev){
     try{
       var data = JSON.parse(ev.target.result);
+      var n = Object.keys(data).length;
       Object.keys(data).forEach(function(k){ localStorage.setItem(k,data[k]); });
-      showToast('✅ 数据已导入，刷新页面查看');
+      showToast('✅ 已导入 '+n+' 项数据，刷新查看');
       setTimeout(function(){location.reload()},1000);
     }catch(ex){alert('文件格式错误')}
   };
@@ -167,15 +183,23 @@ function handleImport(e){
 }
 
 function clearAll(){
-  if(!confirm('确定清空所有个人数据？\n包括：收藏、浏览记录、计算历史、标注、检查清单进度、项目\n\n此操作不可恢复！'))return;
-  var keys = [];
-  for(var i=0;i<localStorage.length;i++){
-    var k = localStorage.key(i);
-    if(k.indexOf('hl_')>=0||k.indexOf('calc_')>=0||k.indexOf('spec_')>=0||k.indexOf('cl_')>=0||k.indexOf('qa_')>=0||k.indexOf('saved_')>=0||k.indexOf('favorites')>=0||k.indexOf('daily_')>=0) keys.push(k);
-  }
-  keys.forEach(function(k){localStorage.removeItem(k)});
-  showToast('✅ 已清空，刷新查看');
-  setTimeout(function(){location.reload()},800);
+  // 使用弹窗确认而非原生alert
+  var body = '<p style="text-align:center;padding:20px;">⚠️ 确定清空所有个人数据？</p>';
+  body += '<p style="text-align:center;font-size:12px;color:var(--text3);">包括：收藏、浏览记录、计算历史、标注、<br>检查清单进度、项目数据</p>';
+  showExportDialog({
+    icon: '🗑', title: '清空数据确认',
+    body: body, danger: true, downloadLabel: '🗑 确认清空',
+    onDownload: function(overlay){
+      var keys = [];
+      for(var i=0;i<localStorage.length;i++){
+        var k = localStorage.key(i);
+        if(k.indexOf('hl_')>=0||k.indexOf('calc_')>=0||k.indexOf('spec_')>=0||k.indexOf('cl_')>=0||k.indexOf('qa_')>=0||k.indexOf('saved_')>=0||k.indexOf('favorites')>=0||k.indexOf('daily_')>=0) keys.push(k);
+      }
+      keys.forEach(function(k){localStorage.removeItem(k)});
+      overlay.remove(); showToast('✅ 已清空，刷新查看');
+      setTimeout(function(){location.reload()},800);
+    }
+  });
 }
 
 function showToast(msg){

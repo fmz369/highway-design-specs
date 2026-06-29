@@ -454,17 +454,42 @@
         checked.forEach(function(cb) {
           var li = cb.parentElement;
           var clone = li.cloneNode(true);
-          var cbs = clone.querySelectorAll('.sel-cb,.copy-btn'); cbs.forEach(function(el){el.remove();});
+          clone.querySelectorAll('.sel-cb,.copy-btn').forEach(function(el){el.remove();});
           clauses.push(clone.textContent.replace(/\s+/g,' ').trim());
         });
-        var w = window.open('','_blank','width=800,height=700');
-        w.document.write('<!DOCTYPE html><html lang=zh-CN><head><meta charset=UTF-8><title>导出条文</title>');
-        w.document.write('<style>body{font-family:SimSun,serif;max-width:700px;margin:30px auto;padding:20px;line-height:2;font-size:14px}h1{font-size:18px;border-bottom:2px solid #333;padding-bottom:8px;margin-bottom:16px}.clause{margin:8px 0;padding:6px 12px;border-left:3px solid #3b6df0;background:#f8f9fc}.clause-num{color:#3b6df0;font-weight:700;font-size:12px}@media print{body{margin:0;padding:15px}}</style></head><body>');
-        w.document.write('<h1>'+spec.code+' '+spec.title+'</h1><p style="color:#666;font-size:12px">共导出 '+clauses.length+' 条 | '+new Date().toLocaleDateString()+'</p>');
-        clauses.forEach(function(c,i){ w.document.write('<div class="clause"><span class="clause-num">第'+(i+1)+'条</span><br>'+c+'</div>'); });
-        w.document.write('<script>setTimeout(function(){window.print();},500)<\/script></body></html>');
-        w.document.close();
+
+        var bodyHTML = '<p style="font-size:12px;color:var(--text3);margin-bottom:12px;">共 <b>'+clauses.length+'</b> 条条文 ｜ '+spec.code+' '+spec.title+'</p>';
+        clauses.forEach(function(c,i){
+          bodyHTML += '<div class="ep-clause"><span style="color:var(--accent);font-weight:600;font-size:11px;">第'+(i+1)+'条</span><br>'+c+'</div>';
+        });
+
+        showExportDialog({
+          icon: '📦', title: '导出条文预览',
+          body: bodyHTML,
+          onDownload: function(){
+            var html = buildClausePrintPage(spec, clauses);
+            var blob = new Blob([html],{type:'text/html;charset=utf-8'});
+            var a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = spec.code+'_条文导出_'+new Date().toISOString().substring(0,10)+'.html';
+            a.click();
+          },
+          onPrint: function(){
+            var w = window.open('','_blank');
+            w.document.write(buildClausePrintPage(spec, clauses));
+            w.document.write('<script>setTimeout(function(){window.print()},400)<\/script>');
+            w.document.close();
+          }
+        });
       });
+    }
+    function buildClausePrintPage(spec, clauses) {
+      var h = '<!DOCTYPE html><html lang=zh-CN><head><meta charset=UTF-8><title>'+spec.code+' 条文导出</title>';
+      h += '<style>body{font-family:SimSun,serif;max-width:700px;margin:30px auto;padding:20px;line-height:2;font-size:14px}h1{font-size:18px;border-bottom:2px solid #333;padding-bottom:8px;margin-bottom:16px}.clause{margin:8px 0;padding:6px 12px;border-left:3px solid #3b6df0;background:#f8f9fc}.clause-num{color:#3b6df0;font-weight:700;font-size:12px}@media print{body{margin:0;padding:15px}}</style></head><body>';
+      h += '<h1>'+spec.code+' '+spec.title+'</h1><p style="color:#666;font-size:12px">共导出 '+clauses.length+' 条 | '+new Date().toLocaleDateString()+'</p>';
+      clauses.forEach(function(c,i){ h += '<div class="clause"><span class="clause-num">第'+(i+1)+'条</span><br>'+c+'</div>'; });
+      h += '</body></html>';
+      return h;
     }
 
     // ===== 页内搜索 =====

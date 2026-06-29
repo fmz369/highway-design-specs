@@ -133,3 +133,30 @@ function renderHeader(title, subtitle, showSearch, searchPlaceholder) {
 function renderBackTop() {
   return '<button class="back-top" id="backTop" title="回到顶部">↑</button>';
 }
+
+/** 通用导出预览弹窗 */
+function showExportDialog(opts) {
+  // 移除旧弹窗
+  var old = document.getElementById('epOverlay'); if (old) old.remove();
+
+  var overlay = document.createElement('div'); overlay.id = 'epOverlay'; overlay.className = 'ep-overlay';
+  var html = '<div class="ep-dialog">';
+  html += '<div class="ep-header"><h3>'+ (opts.icon||'📄') +' '+ (opts.title||'导出预览') +'</h3><button class="ep-close" id="epClose">✕</button></div>';
+  html += '<div class="ep-body">' + (opts.body||'') + '</div>';
+  html += '<div class="ep-footer">';
+  if (opts.onDownload) html += '<button class="ep-btn '+(opts.danger?'primary':'primary')+'" id="epDownload" style="'+(opts.danger?'background:#ef4444':'')+'">'+(opts.downloadLabel||'💾 下载文件')+'</button>';
+  if (opts.onPrint) html += '<button class="ep-btn secondary" id="epPrint">🖨 打印</button>';
+  html += '<button class="ep-btn secondary" id="epCancel">关闭</button></div></div>';
+  overlay.innerHTML = html;
+  document.body.appendChild(overlay);
+
+  document.getElementById('epClose').onclick = function(){ overlay.remove(); };
+  document.getElementById('epCancel').onclick = function(){ overlay.remove(); };
+  overlay.addEventListener('click', function(e){ if(e.target===overlay) overlay.remove(); });
+  if (opts.onDownload) document.getElementById('epDownload').onclick = function(){ opts.onDownload(overlay); };
+  if (opts.onPrint) document.getElementById('epPrint').onclick = function(){
+    opts.onPrint();
+    // 打印后不自动关闭弹窗，让用户决定
+  };
+  return overlay;
+}

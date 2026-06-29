@@ -159,33 +159,47 @@ function R(id,html,status){
   if(status==='error')e.classList.add('error');
 }
 
-// 导出计算书
+// 导出计算书 → 预览弹窗
 function exportReport(resultId){
   var panel=document.getElementById(resultId).closest('.calc-panel');
   if(!panel)return;
-  var h3=panel.querySelector('h3'); var title=h3?h3.textContent:'计算书';
-  var params=panel.querySelector('.calc-form'); var paramHTML=params?params.innerHTML:'';
+  var h3=panel.querySelector('h3'); var title=h3?h3.textContent.replace(/[📐👁🧱🚛💧]/g,'').trim():'计算书';
+  var fields=panel.querySelectorAll('.calc-field');
+  var phtml='';
+  fields.forEach(function(f){
+    var label=f.querySelector('label'); var input=f.querySelector('input,select');
+    if(label&&input) phtml+='<span>'+label.textContent+'</span><b>'+input.value+(f.querySelector('.unit')?' '+f.querySelector('.unit').textContent:'')+'</b>';
+  });
   var result=document.getElementById(resultId).cloneNode(true);
-  // 去掉导出按钮
-  var btns=result.querySelectorAll('button'); btns.forEach(function(b){b.remove();});
-  var source=result.querySelector('.calc-source'); var sourceText=source?source.textContent:'';
-  if(source)source.remove();
-  var resHTML=result.innerHTML;
+  result.querySelectorAll('button').forEach(function(b){b.remove();});
+  var source=result.querySelector('.calc-source');
+  var sourceText=source?source.textContent:''; if(source)source.remove();
 
-  var w=window.open('','_blank','width=800,height=700');
-  w.document.write('<!DOCTYPE html><html lang=zh-CN><head><meta charset=UTF-8><title>'+title+'</title>');
-  w.document.write('<style>body{font-family:SimSun,serif;max-width:700px;margin:40px auto;padding:20px;color:#1a1a2e;line-height:1.8}h1{text-align:center;font-size:18px;border-bottom:2px solid #1a1a2e;padding-bottom:10px;margin-bottom:20px}h2{font-size:14px;margin:20px 0 10px;border-bottom:1px solid #ccc;padding-bottom:4px}');
-  w.document.write('table{width:100%;border-collapse:collapse;margin:10px 0;font-size:12px}td,th{border:1px solid #ccc;padding:4px 8px;text-align:center}th{background:#f0f0f0}');
-   w.document.write('.params{background:#f9f9f9;padding:12px;border-radius:6px;font-size:12px;margin:10px 0}.params label{color:#666;margin-right:4px}.params input,.params select{border:1px solid #ddd;padding:2px 6px;border-radius:3px;background:#fff;font-size:11px}');
-  w.document.write('.result-row{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px dotted #ddd;font-size:13px}.result-val{font-weight:700}.footer{text-align:center;margin-top:30px;padding-top:15px;border-top:1px solid #ccc;font-size:11px;color:#999}@media print{body{margin:0;padding:15px}}</style></head><body>');
-  w.document.write('<h1>'+title+'</h1>');
-  w.document.write('<p style="text-align:center;font-size:12px;color:#666;">计算日期：'+new Date().toLocaleDateString()+' ｜ 公路设计规范在线辅助平台</p>');
-  w.document.write('<h2>📐 输入参数</h2><div class="params">'+paramHTML+'</div>');
-  w.document.write('<h2>📊 计算结果</h2><div class="result-rows">'+resHTML+'</div>');
-  w.document.write('<h2>📚 规范依据</h2><p style="font-size:12px;color:#444;">'+sourceText+'</p>');
-  w.document.write('<div class="footer">本计算书由公路设计规范在线辅助平台自动生成 ｜ 仅供参考，正式设计应以手工复核为准</div>');
-  w.document.write('<script>setTimeout(function(){window.print();},500)<\/script></body></html>');
-  w.document.close();
+  var body = '<div style="font-size:12px;color:var(--text3);margin-bottom:12px;">📅 '+new Date().toLocaleDateString()+' ｜ 公路设计规范在线辅助平台</div>';
+  body += '<h4 style="margin:10px 0 6px;font-size:13px;">📐 输入参数</h4><div class="ep-params">'+phtml+'</div>';
+  body += '<h4 style="margin:14px 0 6px;font-size:13px;">📊 计算结果</h4><div style="font-size:13px;">'+result.innerHTML+'</div>';
+  body += '<h4 style="margin:14px 0 6px;font-size:13px;">📚 规范依据</h4><div style="font-size:12px;color:var(--text2);">'+sourceText+'</div>';
+
+  showExportDialog({
+    icon: '📄', title: title,
+    body: body,
+    onDownload: function(){ downloadText(title+'.html', buildPrintPage(title, phtml, result.innerHTML, sourceText)); },
+    onPrint: function(){ printContent(title, phtml, result.innerHTML, sourceText); }
+  });
+}
+
+function buildPrintPage(title, params, result, source){
+  return '<!DOCTYPE html><html lang=zh-CN><head><meta charset=UTF-8><title>'+title+'</title><style>body{font-family:SimSun,serif;max-width:700px;margin:40px auto;padding:20px;line-height:1.8;font-size:14px}h1{text-align:center;border-bottom:2px solid #333;padding-bottom:10px}h2{font-size:14px;border-bottom:1px solid #ccc;padding-bottom:4px;margin-top:20px}table{width:100%;border-collapse:collapse}td,th{border:1px solid #ccc;padding:4px 8px}th{background:#f0f0f0}.footer{text-align:center;margin-top:30px;padding-top:15px;border-top:1px solid #ccc;font-size:11px;color:#999}@media print{body{margin:0;padding:15px}}</style></head><body><h1>'+title+'</h1><p style=text-align:center;color:#666>'+new Date().toLocaleDateString()+' ｜ 公路设计规范在线辅助平台</p><h2>📐 输入参数</h2><div style=background:#f9f9f9;padding:12px;border-radius:6px;font-size:12px>'+params+'</div><h2>📊 计算结果</h2>'+result+'<h2>📚 规范依据</h2><p>'+source+'</p><div class=footer>本计算书由公路设计规范在线辅助平台自动生成 ｜ 仅供参考，正式设计以手工复核为准</div></body></html>';
+}
+
+function printContent(title, params, result, source){
+  var w=window.open('','_blank'); w.document.write(buildPrintPage(title, params, result, source));
+  w.document.write('<script>setTimeout(function(){window.print()},400)<\/script>'); w.document.close();
+}
+
+function downloadText(filename, content){
+  var blob=new Blob([content],{type:'text/html;charset=utf-8'});
+  var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=filename; a.click();
 }
 
 // 输入验证
