@@ -24,7 +24,9 @@ var URLS = [
   'favorites/index.html',
   'specs/index.html',
   'updates/index.html',
-  'category/index.html'
+  'category/index.html',
+  'projects/index.html',
+  'account/index.html'
 ];
 
 self.addEventListener('install', function(e) {

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>个人中心 — 公路设计规范</title>
+<link rel="stylesheet" href="../css/site.css">
+<style>
+.ac-wrap{max-width:800px;margin:0 auto}
+.ac-card{background:var(--card-bg);border-radius:16px;padding:18px 22px;margin-bottom:16px;border:1px solid var(--border)}
+.ac-card h3{font-size:15px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.ac-stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.ac-stat{text-align:center;padding:12px 8px;background:var(--bg);border-radius:12px}
+.ac-stat .ac-num{font-size:26px;font-weight:800;color:var(--accent)}
+.ac-stat .ac-label{font-size:11px;color:var(--text3);margin-top:2px}
+.ac-btn{padding:8px 18px;border:2px solid var(--border);border-radius:20px;background:var(--card-bg);font-size:12px;cursor:pointer;color:var(--text2);font-weight:500;transition:all .15s}
+.ac-btn:hover{border-color:var(--accent);color:var(--accent)}
+.ac-btn.danger{border-color:#ef4444;color:#ef4444}
+.ac-btn.danger:hover{background:#fef2f2}
+.ac-list-item{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;margin:4px 0;border-radius:8px;background:var(--bg);font-size:13px}
+.ac-list-item a{color:var(--accent);text-decoration:none;font-weight:500}
+.ac-list-item .ac-del{background:none;border:none;color:var(--text3);cursor:pointer;font-size:14px}
+.ac-list-item .ac-del:hover{color:#ef4444}
+.ac-empty{text-align:center;padding:20px;color:var(--text3);font-size:13px}
+@media(max-width:600px){.ac-stat-row{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<header class="header"><div class="header-inner"><div class="header-top">
+<a href="../" class="header-logo" style="text-decoration:none;">👤</a><div><h1>个人中心</h1><p class="subtitle">收藏 · 历史 · 计算记录 · 标注 · 项目 — 数据均在本地存储</p></div>
+</div></div></header>
+<main class="main ac-wrap">
+<div id="breadcrumb"></div>
+
+<div class="ac-card">
+<h3>📊 数据概览</h3>
+<div class="ac-stat-row">
+<div class="ac-stat"><div class="ac-num" id="statFav">0</div><div class="ac-label">⭐ 收藏规范</div></div>
+<div class="ac-stat"><div class="ac-num" id="statHist">0</div><div class="ac-label">📜 浏览记录</div></div>
+<div class="ac-stat"><div class="ac-num" id="statCalc">0</div><div class="ac-label">🧮 计算记录</div></div>
+<div class="ac-stat"><div class="ac-num" id="statHL">0</div><div class="ac-label">🖍 标注条文</div></div>
+</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<button class="ac-btn" onclick="exportAll()">💾 导出全部数据</button>
+<button class="ac-btn" onclick="importData()">📥 导入数据</button>
+<button class="ac-btn danger" onclick="clearAll()">🗑 清空所有数据</button>
+</div>
+<input type="file" id="importFile" accept=".json" style="display:none" onchange="handleImport(event)">
+</div>
+
+<div class="ac-card" id="favSection">
+<h3>⭐ 收藏规范 <span style="font-size:11px;color:var(--text3);font-weight:400">（共 <span id="favCount">0</span> 部）</span></h3>
+<div id="favList"></div>
+</div>
+
+<div class="ac-card">
+<h3>📜 浏览记录</h3>
+<div id="histList"></div>
+</div>
+
+<div class="ac-card">
+<h3>🧮 计算历史</h3>
+<div id="calcList"></div>
+</div>
+
+<div class="ac-card">
+<h3>🏗 项目列表</h3>
+<div id="projList"></div>
+</div>
+</main>
+
+<script src="../js/data.js?v=2"></script>
+<script src="../js/router.js?v=2"></script>
+<script src="../js/favorites.js?v=2"></script>
+<script src="../js/components.js?v=2"></script>
+<script src="../js/theme.js?v=2"></script>
+<script>
+document.getElementById('breadcrumb').innerHTML = renderBreadcrumb([{label:'🏠 首页',link:'../'},{label:'👤 个人中心'}]);
+
+// 统计数据
+document.getElementById('statFav').textContent = getFavoriteCodes().length;
+document.getElementById('favCount').textContent = getFavoriteCodes().length;
+
+// 浏览历史
+try{
+var hist = JSON.parse(localStorage.getItem('spec_history')||'[]');
+document.getElementById('statHist').textContent = hist.length;
+var hhtml = '';
+if(hist.length===0) hhtml = '<div class="ac-empty">暂无浏览记录</div>';
+else hist.slice(0,10).forEach(function(code){
+  var s = SPECS.find(function(x){return x.code===code});
+  if(s) hhtml += '<div class="ac-list-item"><span>'+s.code+' '+s.title+'</span><a href="../specs/?code='+encodeURIComponent(s.code)+'">查看 →</a></div>';
+});
+document.getElementById('histList').innerHTML = hhtml;
+}catch(e){}
+
+// 计算历史
+try{
+var ch = JSON.parse(localStorage.getItem('calc_history')||'[]');
+document.getElementById('statCalc').textContent = ch.length;
+var chtml = '';
+if(ch.length===0) chtml = '<div class="ac-empty">暂无计算记录</div>';
+else ch.slice(0,10).forEach(function(item){
+  var d = new Date(item.time);
+  chtml += '<div class="ac-list-item"><span><b>'+item.type+'</b> '+item.summary+'</span><span style="font-size:11px;color:var(--text3)">'+(d.getMonth()+1)+'/'+d.getDate()+'</span></div>';
+});
+document.getElementById('calcList').innerHTML = chtml;
+}catch(e){}
+
+// 标注统计
+try{
+var hlTotal = 0;
+var hlKeys = Object.keys(localStorage).filter(function(k){return k.indexOf('hl_')===0});
+hlKeys.forEach(function(k){hlTotal += JSON.parse(localStorage.getItem(k)||'[]').length});
+document.getElementById('statHL').textContent = hlTotal;
+}catch(e){}
+
+// 收藏列表
+var favCodes = getFavoriteCodes();
+var fhtml = '';
+if(favCodes.length===0) fhtml = '<div class="ac-empty">暂无收藏</div>';
+else favCodes.forEach(function(code){
+  var s = SPECS.find(function(x){return x.code===code});
+  if(s) fhtml += '<div class="ac-list-item"><span>⭐ '+s.code+' '+s.title+'</span><a href="../specs/?code='+encodeURIComponent(s.code)+'">查看 →</a></div>';
+});
+document.getElementById('favList').innerHTML = fhtml;
+
+// 项目列表
+try{
+var pjs = JSON.parse(localStorage.getItem('saved_projects')||'[]');
+var phtml = '';
+if(pjs.length===0) phtml = '<div class="ac-empty">暂无项目  <a href="../projects/" style="color:var(--accent)">去创建 →</a></div>';
+else pjs.forEach(function(pj){
+  phtml += '<div class="ac-list-item"><span>🏗 '+pj.name+' ('+pj.speed+'km/h)</span><span style="font-size:11px;color:var(--text3)">'+new Date(pj.created).toLocaleDateString()+'</span></div>';
+});
+document.getElementById('projList').innerHTML = phtml;
+}catch(e){}
+
+// 导出全部数据
+function exportAll(){
+  var data = {};
+  for(var i=0;i<localStorage.length;i++){
+    var key = localStorage.key(i);
+    if(key.indexOf('hl_')>=0||key.indexOf('calc_')>=0||key.indexOf('spec_')>=0||key.indexOf('cl_')>=0||key.indexOf('qa_')>=0||key.indexOf('saved_')>=0||key.indexOf('favorites')>=0||key.indexOf('daily_')>=0){
+      data[key] = localStorage.getItem(key);
+    }
+  }
+  var blob = new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  var a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = '公路规范_个人数据备份_'+new Date().toISOString().substring(0,10)+'.json';
+  a.click(); showToast('✅ 数据已导出');
+}
+
+// 导入数据
+function importData(){ document.getElementById('importFile').click(); }
+function handleImport(e){
+  var file = e.target.files[0]; if(!file)return;
+  var reader = new FileReader();
+  reader.onload = function(ev){
+    try{
+      var data = JSON.parse(ev.target.result);
+      Object.keys(data).forEach(function(k){ localStorage.setItem(k,data[k]); });
+      showToast('✅ 数据已导入，刷新页面查看');
+      setTimeout(function(){location.reload()},1000);
+    }catch(ex){alert('文件格式错误')}
+  };
+  reader.readAsText(file);
+}
+
+function clearAll(){
+  if(!confirm('确定清空所有个人数据？\n包括：收藏、浏览记录、计算历史、标注、检查清单进度、项目\n\n此操作不可恢复！'))return;
+  var keys = [];
+  for(var i=0;i<localStorage.length;i++){
+    var k = localStorage.key(i);
+    if(k.indexOf('hl_')>=0||k.indexOf('calc_')>=0||k.indexOf('spec_')>=0||k.indexOf('cl_')>=0||k.indexOf('qa_')>=0||k.indexOf('saved_')>=0||k.indexOf('favorites')>=0||k.indexOf('daily_')>=0) keys.push(k);
+  }
+  keys.forEach(function(k){localStorage.removeItem(k)});
+  showToast('✅ 已清空，刷新查看');
+  setTimeout(function(){location.reload()},800);
+}
+
+function showToast(msg){
+  var t = document.createElement('div');
+  t.style.cssText = 'position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#1a1a2e;color:#fff;padding:8px 20px;border-radius:20px;font-size:13px;z-index:999';
+  t.textContent = msg; document.body.appendChild(t);
+  setTimeout(function(){t.remove()},2000);
+}
+
+var bt=document.createElement('button');bt.className='back-top';bt.id='backTop';bt.textContent='↑';document.body.appendChild(bt);
+window.addEventListener('scroll',function(){bt.classList.toggle('visible',window.scrollY>700)});
+bt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+var ft=document.createElement('footer');ft.className='footer';ft.innerHTML=renderFooter();document.querySelector('.main').after(ft);
+</script>
+</body>
+</html>
