@@ -38,6 +38,15 @@
 .pj-spec-tag{font-size:10px;padding:3px 10px;border-radius:8px;background:var(--bg);color:var(--text2);text-decoration:none}
 .pj-spec-tag:hover{background:var(--accent-light);color:var(--accent)}
 .da-empty{text-align:center;padding:30px;color:var(--text3);font-size:13px}
+/* 检查清单 */
+.cl-section{margin-bottom:14px;background:var(--card-bg);border-radius:12px;border:1px solid var(--border);padding:12px 14px}
+.cl-section h4{font-size:13px;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between}
+.cl-item{display:flex;align-items:flex-start;gap:8px;padding:6px 8px;margin:2px 0;border-radius:6px;cursor:pointer;transition:background .15s;font-size:12px}
+.cl-item:hover{background:var(--accent-light)}
+.cl-item.checked .cl-text{text-decoration:line-through;color:var(--text3)}
+.cl-text{flex:1;color:var(--text2)}
+.cl-ref{font-size:9px;color:var(--accent);white-space:nowrap}
+.cl-item input[type=checkbox]{margin-top:2px;width:16px;height:16px;cursor:pointer;accent-color:var(--accent)}
 [data-theme="dark"] .scene-card,[data-theme="dark"] .pj-card,[data-theme="dark"] .pj-form{background:#1e1e35}
 @media(max-width:600px){.scene-grid{grid-template-columns:1fr}.pj-form{grid-template-columns:1fr}}
 </style>
@@ -51,6 +60,7 @@
 <div class="da-tabs">
 <button class="da-tab active" data-panel="scenes">📋 场景导航</button>
 <button class="da-tab" data-panel="projects">🏗 项目工作台</button>
+<button class="da-tab" data-panel="checklist">✅ 检查清单</button>
 </div>
 
 <div class="da-panel active" id="panel-scenes">
@@ -65,6 +75,23 @@
 <div class="pj-field"><label>地形类别</label><select id="pjTerrain"><option value="plain">平原微丘</option><option value="hill">山岭重丘</option></select></div>
 <button class="pj-btn" onclick="addProject()">➕ 创建项目</button></div>
 <div id="pjList"></div>
+</div>
+
+<div class="da-panel" id="panel-checklist">
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap">
+<div style="flex:1;height:10px;background:#e8e8f0;border-radius:5px;overflow:hidden;min-width:100px"><div id="clProgBar" style="height:100%;background:var(--accent);border-radius:5px;transition:width .3s;width:0%"></div></div>
+<span style="font-weight:700;font-size:14px;color:var(--accent);min-width:40px" id="clPct">0%</span>
+<button class="pj-btn del" onclick="resetChecklist()" style="font-size:11px;padding:5px 12px">🔄 重置当前</button>
+</div>
+<div class="da-tabs" style="margin-bottom:14px" id="clTabs">
+<button class="da-tab active" data-cl="route" style="font-size:11px;padding:6px 14px">📐 路线</button>
+<button class="da-tab" data-cl="subgrade" style="font-size:11px;padding:6px 14px">🪨 路基</button>
+<button class="da-tab" data-cl="pavement" style="font-size:11px;padding:6px 14px">🛣 路面</button>
+<button class="da-tab" data-cl="bridge" style="font-size:11px;padding:6px 14px">🌉 桥梁</button>
+<button class="da-tab" data-cl="drainage" style="font-size:11px;padding:6px 14px">💧 排水</button>
+<button class="da-tab" data-cl="safety" style="font-size:11px;padding:6px 14px">🛡 交安</button>
+</div>
+<div id="clPanel"></div>
 </div>
 </main>
 
@@ -95,6 +122,40 @@ function addProject(){var name=document.getElementById('pjName').value.trim();if
 function delProject(idx){var list=getProjects();list.splice(idx,1);saveProjects(list);renderProjects()}
 function renderProjects(){var list=getProjects();var h='';if(list.length===0){h='<div class="da-empty">🏗 暂无项目，创建后自动推荐适用规范</div>'}list.forEach(function(pj,i){var codes=gradeSpecs[pj.grade]||[];var tags='';codes.forEach(function(c){var s=SPECS.find(function(x){return x.code===c});if(s)tags+='<a href="../specs/?code='+encodeURIComponent(c)+'" class="pj-spec-tag" target="_blank">'+c+'</a>'});h+='<div class="pj-card"><div class="pj-header"><div><span class="pj-name">'+pj.name+'</span> <span class="pj-grade">'+gradeNames[pj.grade]+' · '+pj.speed+'km/h · '+terrainNames[pj.terrain]+'</span></div><button class="pj-btn del" onclick="delProject('+i+')">🗑</button></div><div class="pj-specs">'+tags+'</div><div style="margin-top:6px;font-size:10px;color:var(--text3)">📅 '+new Date(pj.created).toLocaleDateString()+' | 🔗 <a href="../quickref/">参数速查</a> | <a href="../calc/">计算器</a> | <a href="../checklist/">检查清单</a></div></div>'});document.getElementById('pjList').innerHTML=h}
 renderProjects();
+
+// ===== 检查清单 =====
+var CL_KEY='cl_checked';
+function getChecked(){try{return JSON.parse(localStorage.getItem(CL_KEY)||'{}')}catch(e){return{}}}
+function saveChecked(o){try{localStorage.setItem(CL_KEY,JSON.stringify(o))}catch(e){}}
+var checked=getChecked();var activeCl='route';
+var CHECKLISTS={route:{name:'📐 路线设计',items:[{s:'技术标准',t:'确定技术等级和设计速度',r:'JTG B01-2014'},{s:'平面',t:'平曲线半径满足一般值/极限值',r:'JTG D20-2017'},{s:'平面',t:'缓和曲线长度满足最小要求',r:'JTG D20-2017'},{s:'平面',t:'圆曲线加宽值满足要求',r:'JTG D20-2017'},{s:'纵断面',t:'最大纵坡不超过限值',r:'JTG D20-2017'},{s:'纵断面',t:'坡长不超过最大限制',r:'JTG D20-2017'},{s:'纵断面',t:'竖曲线半径满足最小要求',r:'JTG D20-2017'},{s:'视距',t:'停车视距满足要求',r:'JTG D20-2017'},{s:'平纵组合',t:'满足平包竖原则',r:'JTG D20-2017'},{s:'横断面',t:'车道/路肩宽度符合标准',r:'JTG B01-2014'},{s:'交叉口',t:'视距三角形无障碍物',r:'JTG D20-2017'}]},subgrade:{name:'🪨 路基设计',items:[{s:'填料',t:'CBR值满足最小要求',r:'JTG D30-2015'},{s:'压实',t:'上路床压实度达标(高速≥96%)',r:'JTG D30-2015'},{s:'压实',t:'下路床/路堤分层达标',r:'JTG D30-2015'},{s:'边坡',t:'填方边坡坡率不超标',r:'JTG D30-2015'},{s:'边坡',t:'高边坡(>20m)稳定性分析',r:'JTG D30-2015'},{s:'排水',t:'边沟底宽≥0.4m,深度≥0.4m',r:'JTG/T D33-2012'},{s:'支挡',t:'挡土墙Kc≥1.3 K₀≥1.5',r:'JTG D30-2015'},{s:'台背',t:'桥涵台背压实度≥96%',r:'JTG/T 3331-2018'}]},pavement:{name:'🛣 路面设计',items:[{s:'交通量',t:'累计当量轴次计算正确',r:'JTG D50-2017'},{s:'结构',t:'面层+基层+底基层组合合理',r:'JTG D50-2017'},{s:'厚度',t:'面层≥最小厚度要求',r:'JTG D50-2017'},{s:'材料',t:'沥青马歇尔指标满足要求',r:'JTG D50-2017'},{s:'水泥',t:'弯拉强度≥4.0~5.0MPa',r:'JTG D40-2011'},{s:'水泥',t:'接缝设计完整',r:'JTG D40-2011'}]},bridge:{name:'🌉 桥梁设计',items:[{s:'荷载',t:'汽车荷载等级正确',r:'JTG D60-2015'},{s:'荷载',t:'人群荷载3.0kN/m²',r:'JTG D60-2015'},{s:'结构',t:'承载能力极限状态验算',r:'JTG 3362-2018'},{s:'裂缝',t:'裂缝≤0.20mm(Ⅰ类)',r:'JTG 3362-2018'},{s:'挠度',t:'挠度≤L/600',r:'JTG 3362-2018'},{s:'基础',t:'桩距≥2.5d,埋深≥2m',r:'JTG D63-2007'},{s:'抗震',t:'E1弹性/E2延性验算',r:'JTG/T 2231-01-2020'}]},drainage:{name:'💧 排水设计',items:[{s:'水文',t:'洪水流量计算正确',r:'JTG C30-2015'},{s:'边沟',t:'断面尺寸满足排水需求',r:'JTG/T D33-2012'},{s:'涵洞',t:'孔径满足设计流量',r:'JTG C30-2015'},{s:'冲刷',t:'冲刷计算完整',r:'JTG C30-2015'}]},safety:{name:'🛡 交安设计',items:[{s:'护栏',t:'防撞等级正确(C~SS)',r:'JTG D81-2017'},{s:'护栏',t:'路侧填高≥3m处设护栏',r:'JTG D81-2017'},{s:'标志',t:'汉字高度满足要求',r:'GB 5768.2-2022'},{s:'标线',t:'线宽/实空比正确',r:'GB 5768.3-2009'},{s:'轮廓标',t:'弯道≤8m/直线≤20m',r:'JTG D81-2017'}]}};
+
+function renderChecklist(){
+  var cl=CHECKLISTS[activeCl];if(!cl)return;
+  var total=0,done=0;var h='';
+  var sections={},secNames=[];
+  cl.items.forEach(function(item){if(!sections[item.s]){sections[item.s]=[];secNames.push(item.s)}sections[item.s].push(item)});
+  var gIdx=0;
+  secNames.forEach(function(sec){
+    var items=sections[sec];var secT=items.length,secD=0;var secH='';
+    items.forEach(function(item){
+      var key=activeCl+'_'+gIdx;var isC=checked[key];if(isC){secD++;done++}gIdx++;total++;
+      secH+='<div class="cl-item'+(isC?' checked':'')+'" data-key="'+key+'" onclick="toggleCl(this)"><input type="checkbox" '+(isC?'checked':'')+' tabindex="-1"><span class="cl-text">'+item.t+'</span><span class="cl-ref">'+item.r+'</span></div>';
+    });
+    var pct=secT>0?Math.round(secD/secT*100):0;
+    h+='<div class="cl-section"><h4>'+sec+' <span style="font-size:10px;color:var(--text3);font-weight:400">'+secD+'/'+secT+'</span></h4>'+secH+'</div>';
+  });
+  var pct=total>0?Math.round(done/total*100):0;
+  document.getElementById('clProgBar').style.width=pct+'%';
+  document.getElementById('clPct').textContent=pct+'%';
+  document.getElementById('clPanel').innerHTML=h;
+}
+function toggleCl(el){var key=el.dataset.key;if(checked[key]){delete checked[key];el.classList.remove('checked');el.querySelector('input').checked=false}else{checked[key]=true;el.classList.add('checked');el.querySelector('input').checked=true}saveChecked(checked);renderChecklist()}
+function resetChecklist(){Object.keys(checked).forEach(function(k){if(k.indexOf(activeCl+'_')===0)delete checked[k]});saveChecked(checked);renderChecklist()}
+document.getElementById('clTabs').addEventListener('click',function(e){var t=e.target.closest('[data-cl]');if(!t)return;document.querySelectorAll('#clTabs .da-tab').forEach(function(x){x.classList.remove('active')});t.classList.add('active');activeCl=t.dataset.cl;renderChecklist()});
+// 初始渲染（延迟到面板首次显示时）
+var clReady=false;
+document.querySelector('.da-tabs').addEventListener('click',function(e){var t=e.target.closest('.da-tab');if(!t)return;if(t.dataset.panel==='checklist'&&!clReady){clReady=true;renderChecklist()}});
 
 var bt=document.createElement('button');bt.className='back-top';bt.id='backTop';bt.textContent='↑';document.body.appendChild(bt);
 window.addEventListener('scroll',function(){bt.classList.toggle('visible',window.scrollY>700)});
