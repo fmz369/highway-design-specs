@@ -45,7 +45,7 @@
 </head>
 <body>
 <header class="header"><div class="header-inner"><div class="header-top">
-<a href="../" class="header-logo" style="text-decoration:none;">⚡</a><div><h1>深度检索</h1><p class="subtitle">基于104部规范数据库 · 同义词理解 · 跨规范交叉对比</p></div>
+<a href="../" class="header-logo" style="text-decoration:none;">⚡</a><div><h1>深度检索</h1><p class="subtitle">智能检索发现规范 → 勾选 → 送对比页并排对比 · 与规范对比功能互补</p></div>
 </div></div></header>
 <main class="main ds-wrap">
 <div id="breadcrumb"></div>
@@ -74,7 +74,8 @@
 
 <div class="ds-btn-row">
 <button class="ds-btn search" onclick="deepSearch()">🔍 深度检索</button>
-<span style="font-size:11px;color:var(--text3)">💡 基于104部规范数据库 | 同义词智能理解 | 完全离线可用 | Ctrl+Enter快捷搜索</span>
+<button class="ds-btn search" id="dsCompareBtn" style="display:none;background:#16a34a" onclick="goCompare()">📊 对比选中 (<span id="dsCmpCount">0</span>)</button>
+<span style="font-size:11px;color:var(--text3)">💡 深度检索发现相关规范 → 勾选 → 送对比页深入对比 | Ctrl+Enter搜索</span>
 </div>
 
 <div id="dsHistory" class="ds-history"></div>
@@ -161,16 +162,29 @@ function deepSearch(){
 
   var h=sumHTML;
   if(results.length===0)h='<div class="ds-empty"><div class="ds-icon">🔍</div>未找到相关内容<br><span style="font-size:12px">试试换个表述，如"路基压实度标准"或"平曲线最小半径"</span></div>';
-  else results.forEach(function(r){
-    var lv=r.score>=50?'high':r.score>=25?'mid':'low';var lb=r.score>=50?'高相关':r.score>=25?'中相关':'低相关';
-    h+='<div class="ds-result"><h4>'+r.spec.code+' '+r.spec.title+' <span class="ds-score '+lv+'">'+lb+'</span></h4>';
-    if(r.clauses.length>0)r.clauses.forEach(function(cl){var t=cl.text;terms.forEach(function(k){t=t.replace(new RegExp(k.replace(/[.*+?^${}()|[\]\\\/]/g,'\\$&'),'g'),'<span class="ds-hl">'+k+'</span>')});h+='<div class="ds-clause">'+t+' <a href="../specs/?code='+encodeURIComponent(r.spec.code)+'" target="_blank">查看 →</a></div>'});
-    h+='</div>';
-  });
+  else {
+    var cmpBtn=document.getElementById('dsCompareBtn');var cmpCount=document.getElementById('dsCmpCount');
+    cmpBtn.style.display='';cmpCount.textContent='0';
+    results.forEach(function(r){
+      var lv=r.score>=50?'high':r.score>=25?'mid':'low';var lb=r.score>=50?'高相关':r.score>=25?'中相关':'低相关';
+      h+='<div class="ds-result"><h4><input type="checkbox" class="ds-cmp-cb" data-code="'+r.spec.code+'" onchange="updateCmpCount()" style="width:18px;height:18px;cursor:pointer;accent-color:#16a34a;margin-right:4px"> '+r.spec.code+' '+r.spec.title+' <span class="ds-score '+lv+'">'+lb+'</span></h4>';
+      if(r.clauses.length>0)r.clauses.forEach(function(cl){var t=cl.text;terms.forEach(function(k){t=t.replace(new RegExp(k.replace(/[.*+?^${}()|[\]\\\/]/g,'\\$&'),'g'),'<span class="ds-hl">'+k+'</span>')});h+='<div class="ds-clause">'+t+' <a href="../specs/?code='+encodeURIComponent(r.spec.code)+'" target="_blank">查看 →</a></div>'});
+      h+='</div>';
+    });
+  }
   document.getElementById('dsResults').innerHTML=h;
   document.getElementById('dsResults').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
+function updateCmpCount(){
+  var n=document.querySelectorAll('.ds-cmp-cb:checked').length;
+  document.getElementById('dsCmpCount').textContent=n;
+}
+function goCompare(){
+  var codes=[];document.querySelectorAll('.ds-cmp-cb:checked').forEach(function(cb){codes.push(cb.dataset.code)});
+  if(codes.length<2){alert('请至少勾选2部规范进行对比');return}
+  window.location.href='../compare/?codes='+codes.join(',');
+}
 document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key==='Enter'){e.preventDefault();deepSearch()}});
 var bt=document.createElement('button');bt.className='back-top';bt.id='backTop';bt.textContent='↑';document.body.appendChild(bt);
 window.addEventListener('scroll',function(){bt.classList.toggle('visible',window.scrollY>700)});
