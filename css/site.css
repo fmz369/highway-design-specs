@@ -615,6 +615,11 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   h4 { font-size: 13px; }
 }
 
+/* ====== 条文选择导出 ====== */
+.spec-content .sel-cb { display: none; margin-right: 8px; width: 16px; height: 16px; cursor: pointer; accent-color: var(--accent); flex-shrink: 0; }
+.spec-content.select-mode .sel-cb { display: inline-block; }
+.spec-content.select-mode li { display: flex; align-items: flex-start; }
+
 /* ====== 页内搜索 ====== */
 .inline-search { display: flex; align-items: center; gap: 6px; margin-left: auto; }
 .inline-search input { width: 180px; padding: 6px 12px; border: 1.5px solid var(--border); border-radius: 16px; font-size: 12px; outline: none; background: var(--card-bg); }

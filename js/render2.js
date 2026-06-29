@@ -370,6 +370,60 @@
       t._tid = setTimeout(function() { t.remove(); }, 1800);
     }
 
+    // ===== 条文选择导出 =====
+    var selectMode = false;
+    var btnSel = document.getElementById('btnSelectExport');
+    var btnExp = document.getElementById('btnDoExport');
+    var expCount = document.getElementById('exportCount');
+
+    // 给所有li添加复选框
+    if (contentEl) {
+      var allLis = contentEl.querySelectorAll('li');
+      allLis.forEach(function(li) {
+        var cb = document.createElement('input');
+        cb.type = 'checkbox'; cb.className = 'sel-cb';
+        cb.addEventListener('change', updateExportCount);
+        li.insertBefore(cb, li.firstChild);
+      });
+    }
+
+    function updateExportCount() {
+      var checked = contentEl.querySelectorAll('.sel-cb:checked');
+      var n = checked.length;
+      expCount.textContent = n;
+      btnExp.style.display = n > 0 ? '' : 'none';
+    }
+
+    if (btnSel) {
+      btnSel.addEventListener('click', function() {
+        selectMode = !selectMode;
+        contentEl.classList.toggle('select-mode', selectMode);
+        btnSel.textContent = selectMode ? '☑ 取消选择' : '☑ 选择导出';
+        if (!selectMode) { btnExp.style.display = 'none'; }
+      });
+    }
+
+    if (btnExp) {
+      btnExp.addEventListener('click', function() {
+        var checked = contentEl.querySelectorAll('.sel-cb:checked');
+        if (checked.length === 0) return;
+        var clauses = [];
+        checked.forEach(function(cb) {
+          var li = cb.parentElement;
+          var clone = li.cloneNode(true);
+          var cbs = clone.querySelectorAll('.sel-cb,.copy-btn'); cbs.forEach(function(el){el.remove();});
+          clauses.push(clone.textContent.replace(/\s+/g,' ').trim());
+        });
+        var w = window.open('','_blank','width=800,height=700');
+        w.document.write('<!DOCTYPE html><html lang=zh-CN><head><meta charset=UTF-8><title>导出条文</title>');
+        w.document.write('<style>body{font-family:SimSun,serif;max-width:700px;margin:30px auto;padding:20px;line-height:2;font-size:14px}h1{font-size:18px;border-bottom:2px solid #333;padding-bottom:8px;margin-bottom:16px}.clause{margin:8px 0;padding:6px 12px;border-left:3px solid #3b6df0;background:#f8f9fc}.clause-num{color:#3b6df0;font-weight:700;font-size:12px}@media print{body{margin:0;padding:15px}}</style></head><body>');
+        w.document.write('<h1>'+spec.code+' '+spec.title+'</h1><p style="color:#666;font-size:12px">共导出 '+clauses.length+' 条 | '+new Date().toLocaleDateString()+'</p>');
+        clauses.forEach(function(c,i){ w.document.write('<div class="clause"><span class="clause-num">第'+(i+1)+'条</span><br>'+c+'</div>'); });
+        w.document.write('<script>setTimeout(function(){window.print();},500)<\/script></body></html>');
+        w.document.close();
+      });
+    }
+
     // ===== 页内搜索 =====
     var isInput = document.getElementById('inlineSearchInput');
     var isCount = document.getElementById('isCount');
