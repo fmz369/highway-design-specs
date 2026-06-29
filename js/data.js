@@ -2980,4 +2980,469 @@ content:`
 <li>适用于设计人员学习标准出图格式</li>
 </ul>`
 }
+,
+{
+  code:'JTG 3370.1-2018',
+  title:'公路隧道设计规范 第一册 土建工程',
+  cat:'general',
+  status:'current',
+  tags:["隧道","土建"],
+  content:`<h4>📑 章节目录（17章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 隧道调查与围岩分级</div><div>4 总体设计</div><div>5 建筑材料</div><div>6 隧道荷载</div><div>7 洞口与洞门</div><div>8 衬砌结构</div><div>9 辅助施工措施</div><div>10 特殊地质隧道</div><div>11 隧道防排水</div><div>12 隧道路面</div><div>13 通风与照明</div><div>14 消防与救援</div><div>15 监控</div><div>16 改扩建</div><div>17 风险评估</div></div>
+
+<h4>📜 第1章 总则</h4>
+<ul>
+<li><span class="hl">1.0.1</span> 为规范公路隧道设计，保证隧道工程安全适用、技术先进、经济合理，制定本规范</li>
+<li><span class="hl">1.0.2</span> 适用于<span class="hl">新建和改扩建</span>各等级公路隧道设计</li>
+</ul>
+
+<h4>🪨 第3章 围岩分级</h4>
+<table><tr><th>围岩级别</th><th>BQ值</th><th>稳定性特征</th></tr>
+<tr><td>Ⅰ</td><td>>550</td><td>稳定，无坍塌</td></tr>
+<tr><td>Ⅱ</td><td>550~451</td><td>基本稳定，局部掉块</td></tr>
+<tr><td>Ⅲ</td><td>450~351</td><td>暂时稳定，局部崩塌</td></tr>
+<tr><td>Ⅳ</td><td class="hl">350~251</td><td>不稳定，易变形坍塌</td></tr>
+<tr><td>Ⅴ</td><td class="hl">≤250</td><td>极不稳定，极易坍塌</td></tr>
+<tr><td>Ⅵ</td><td>—</td><td>特殊（软土、断层破碎带等）</td></tr>
+</table>
+
+<h4>📐 第4章 总体设计</h4>
+<ul>
+<li>隧道分类：特长隧道L><span class="hl">3000m</span>，长隧道1000~3000m，中隧道500~1000m，短隧道L<500m</li>
+<li>隧道线形：平面线形宜为直线或大半径曲线，纵坡宜≤<span class="hl">3%</span>，短隧道可适当放宽</li>
+<li>隧道横断面：车道宽度同主线，侧向宽度≥<span class="hl">0.5m</span>（设计速度80km/h）</li>
+<li>建筑限界净高：<span class="hl">5.0m</span>（高速/一级）、<span class="hl">4.5m</span>（二级及以下）</li>
+</ul>
+
+<h4>🏛 第8章 衬砌结构</h4>
+<table><tr><th>衬砌类型</th><th>适用条件</th><th>厚度范围(cm)</th></tr>
+<tr><td>复合式衬砌</td><td>各级围岩通用</td><td>初期支护5~25，二次衬砌30~60</td></tr>
+<tr><td>整体式衬砌</td><td>Ⅰ~Ⅲ级围岩</td><td>30~50</td></tr>
+<tr><td>喷锚衬砌</td><td>Ⅰ~Ⅱ级围岩</td><td>喷层5~15</td></tr>
+<tr><td>明洞衬砌</td><td>洞口段、浅埋段</td><td>拱部≥60，边墙≥50</td></tr>
+</table>
+
+<h4>💧 第11章 防排水</h4>
+<ul>
+<li>隧道防排水应遵循<span class="hl">"防、排、截、堵"</span>相结合原则</li>
+<li>防水等级：一级（不允许渗水）、二级（允许少量湿渍）</li>
+<li>防水层：隧道衬砌背后设<span class="hl">防水板</span>（厚度≥1.2mm）</li>
+<li>排水系统：环向盲管→纵向排水管→横向导水管→中央排水沟</li>
+</ul>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2018年11月1日实施。替代JTG D70-2004。共17章，公路隧道设计的核心规范。</div>`
+},
+{
+  code:'JTG F80/1-2017',
+  title:'公路工程质量检验评定标准 第一册 土建工程',
+  cat:'general',
+  status:'current',
+  tags:["质检","土建"],
+  content:`<h4>📑 章节目录（12章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 路基工程</div><div>4 路面工程</div><div>5 桥梁工程</div><div>6 涵洞工程</div><div>7 隧道工程</div><div>8 交通安全设施</div><div>9 绿化工程</div><div>10 环保工程</div><div>11 管理设施</div><div>12 机电工程</div></div>
+
+<h4>📜 第1章 总则</h4>
+<ul>
+<li><span class="hl">1.0.1</span> 为统一公路工程质量检验评定标准，保证工程质量，制定本标准</li>
+<li><span class="hl">1.0.2</span> 适用于<span class="hl">新建和改扩建</span>各等级公路工程质量的检验评定</li>
+<li>评定等级分为<span class="hl">合格、不合格</span>两个等级</li>
+</ul>
+
+<h4>🪨 第3章 路基工程 — 关键检测项目</h4>
+<table><tr><th>检测项目</th><th>规定值/允许偏差</th><th>检测频率</th></tr>
+<tr><td>压实度</td><td class="hl">≥96%（上路床高速）</td><td>每200m每层4处</td></tr>
+<tr><td>弯沉值</td><td>≤设计容许值</td><td>每车道每20m 1点</td></tr>
+<tr><td>纵断高程</td><td>+10/-15mm</td><td>每200m 4断面</td></tr>
+<tr><td>宽度</td><td>≥设计值</td><td>每200m 4处</td></tr>
+<tr><td>平整度</td><td>≤15mm（3m直尺）</td><td>每200m 2处×10尺</td></tr>
+</table>
+
+<h4>🛣 第4章 路面工程 — 沥青路面关键项目</h4>
+<table><tr><th>检测项目</th><th>规定值</th><th>说明</th></tr>
+<tr><td>厚度</td><td class="hl">代表值≥设计值-8%H</td><td>每200m 1点/车道</td></tr>
+<tr><td>压实度</td><td>≥96%（马歇尔标准）</td><td>每200m 1点/车道</td></tr>
+<tr><td>平整度</td><td>σ≤1.2mm（高速）</td><td>连续检测</td></tr>
+<tr><td>弯沉值</td><td>≤竣工验收弯沉值</td><td>每车道每20m 1点</td></tr>
+<tr><td>抗滑</td><td>SFC≥40（高速）</td><td>每200m 1点/车道</td></tr>
+</table>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2018年5月1日实施。公路土建工程交竣工验收的法定依据。</div>`
+},
+{
+  code:'JTG 5210-2018',
+  title:'公路技术状况评定标准',
+  cat:'general',
+  status:'current',
+  tags:["评定","养护"],
+  content:`<h4>📑 章节目录（9章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 一般规定</div><div>4 路基技术状况</div><div>5 路面技术状况</div><div>6 桥梁技术状况</div><div>7 隧道技术状况</div><div>8 沿线设施技术状况</div><div>9 综合评定</div></div>
+
+<h4>公路技术状况评定等级（MQI）</h4>
+<table><tr><th>评定等级</th><th>MQI值</th><th>对应措施</th></tr>
+<tr><td>优</td><td class="hl">≥90</td><td>日常养护</td></tr>
+<tr><td>良</td><td>80~89</td><td>日常养护</td></tr>
+<tr><td>中</td><td>70~79</td><td>预防性养护</td></tr>
+<tr><td>次</td><td>60~69</td><td>修复性养护</td></tr>
+<tr><td>差</td><td class="hl"><60</td><td>大修或改建</td></tr>
+</table>
+
+<h4>路面使用性能指数（PQI）</h4>
+<p>PQI = wPCI·PCI + wRQI·RQI + wRDI·RDI + wSRI·SRI</p>
+<table><tr><th>分项指标</th><th>含义</th><th>检测方式</th></tr>
+<tr><td>PCI</td><td>路面损坏状况指数</td><td>人工或自动检测</td></tr>
+<tr><td>RQI</td><td>路面行驶质量指数</td><td>IRI（国际平整度）</td></tr>
+<tr><td>RDI</td><td>路面车辙深度指数</td><td>车辙深度检测</td></tr>
+<tr><td>SRI</td><td>路面抗滑性能指数</td><td>SFC或BPN检测</td></tr>
+</table>
+
+<h4>桥梁技术状况等级</h4>
+<table><tr><th>等级</th><th>评定分数</th><th>状态描述</th></tr>
+<tr><td>1类</td><td class="hl">≥95</td><td>全新状态，功能完好</td></tr>
+<tr><td>2类</td><td>80~94</td><td>轻微缺损，不影响使用</td></tr>
+<tr><td>3类</td><td>60~79</td><td>中等缺损，需维修</td></tr>
+<tr><td>4类</td><td>40~59</td><td>主要构件缺损，影响承载</td></tr>
+<tr><td>5类</td><td class="hl"><40</td><td>危险状态，需封闭</td></tr>
+</table>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2018年6月1日实施。替代JTG H20-2007。公路养护决策的基础标准。</div>`
+},
+{
+  code:'JTG F90-2015',
+  title:'公路工程施工安全技术规范',
+  cat:'safety',
+  status:'current',
+  tags:["施工安全"],
+  content:`<h4>📑 章节目录（13章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 基本规定</div><div>4 路基工程</div><div>5 路面工程</div><div>6 桥梁工程</div><div>7 隧道工程</div><div>8 交通安全设施</div><div>9 临时工程</div><div>10 特种设备</div><div>11 爆破作业</div><div>12 特殊季节</div><div>13 应急管理</div></div>
+
+<h4>📜 第3章 基本规定</h4>
+<ul>
+<li>施工单位应建立<span class="hl">安全生产责任制</span>和应急预案</li>
+<li>危险性较大工程应编制<span class="hl">专项施工方案</span>并组织专家论证</li>
+<li>特种作业人员必须取得<span class="hl">特种作业操作资格证</span></li>
+<li>施工现场应设置安全警示标志和防护设施</li>
+</ul>
+
+<h4>🌉 第6章 桥梁施工安全要点</h4>
+<ul>
+<li>高处作业（≥<span class="hl">2m</span>）必须系安全带，设安全网</li>
+<li>T梁/箱梁架设时作业半径内严禁站人</li>
+<li>支架搭设应按方案进行，基础承载力经验算</li>
+<li>挂篮施工应进行<span class="hl">预压试验</span>，行走时下方禁行</li>
+</ul>
+
+<h4>🏔 第7章 隧道施工安全要点</h4>
+<ul>
+<li>瓦斯隧道必须进行<span class="hl">瓦斯检测</span>，浓度≥0.5%时撤人</li>
+<li>Ⅳ/Ⅴ级围岩段应控制开挖进尺（≤<span class="hl">1榀钢架间距</span>）</li>
+<li>隧道内照明电压宜用<span class="hl">36V</span>安全电压</li>
+<li>逃生管道：长度≤500m隧道设≥1根φ≥600mm钢管</li>
+</ul>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2015年7月1日实施。公路施工安全管理的强制性规范。</div>`
+},
+{
+  code:'JTG H10-2009',
+  title:'公路养护技术规范',
+  cat:'general',
+  status:'current',
+  tags:["养护"],
+  content:`<h4>📑 章节目录（12章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 路基养护</div><div>4 路面养护</div><div>5 桥梁养护</div><div>6 隧道养护</div><div>7 交通安全设施养护</div><div>8 绿化养护</div><div>9 灾害防治</div><div>10 养护作业安全</div><div>11 养护管理</div><div>12 检查与评定</div></div>
+
+<h4>📜 第3章 路基养护</h4>
+<ul>
+<li>路基应保持<span class="hl">稳定、密实、排水通畅</span></li>
+<li>边坡冲刷、坍塌、滑坡应及时处理</li>
+<li>排水沟、边沟、截水沟应保持<span class="hl">畅通无淤塞</span></li>
+<li>挡土墙出现裂缝、外鼓、倾覆迹象时应加固或重建</li>
+</ul>
+
+<h4>🛣 第4章 路面养护</h4>
+<table><tr><th>养护类型</th><th>适用条件</th><th>措施</th></tr>
+<tr><td>日常养护</td><td>轻微病害</td><td>清扫、灌缝、坑槽修补</td></tr>
+<tr><td>预防性养护</td><td>PQI≥80</td><td>微表处、薄层罩面、封层</td></tr>
+<tr><td>修复性养护</td><td>PQI 60~80</td><td>铣刨重铺、基层挖补</td></tr>
+<tr><td>大修</td><td>PQI<60</td><td>结构性重建</td></tr>
+</table>
+
+<h4>⚠ 第10章 养护作业安全</h4>
+<ul>
+<li>养护作业区应设置<span class="hl">警告区→上游过渡区→缓冲区→工作区→下游过渡区→终止区</span></li>
+<li>作业人员须穿<span class="hl">反光背心</span></li>
+<li>夜间作业应设<span class="hl">警示灯</span>和反光标志</li>
+</ul>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2010年2月1日实施。公路养护工作的纲领性规范。</div>`
+},
+{
+  code:'CJJ 45-2015',
+  title:'城市道路照明设计标准',
+  cat:'safety',
+  status:'current',
+  tags:["照明"],
+  content:`<h4>📑 章节目录（8章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 照明标准</div><div>4 光源灯具</div><div>5 照明方式</div><div>6 照明设计</div><div>7 节能</div><div>8 供电与控制</div></div>
+
+<h4>道路照明标准值</h4>
+<table><tr><th>道路级别</th><th>平均照度(lx)</th><th>均匀度</th><th>眩光限制</th></tr>
+<tr><td>快速路</td><td class="hl">20~30</td><td>≥0.4</td><td>G≥5</td></tr>
+<tr><td>主干路</td><td class="hl">15~20</td><td>≥0.35</td><td>G≥5</td></tr>
+<tr><td>次干路</td><td>10~15</td><td>≥0.3</td><td>G≥4</td></tr>
+<tr><td>支路</td><td>8~10</td><td>≥0.3</td><td>—</td></tr>
+</table>
+
+<h4>灯具选择</h4>
+<ul>
+<li>快速路/主干路宜采用<span class="hl">LED灯</span>或高压钠灯</li>
+<li>灯具防护等级≥<span class="hl">IP65</span></li>
+<li>灯杆高度：快速路<span class="hl">10~15m</span>，主干路8~12m，次干路6~10m</li>
+<li>灯杆间距：宜为灯杆高度的<span class="hl">3.5~4倍</span></li>
+</ul>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2016年6月1日实施。替代CJJ 45-2006。</div>`
+},
+{
+  code:'CJJ 152-2010',
+  title:'城市道路交叉口设计规程',
+  cat:'geometry',
+  status:'current',
+  tags:["交叉口"],
+  content:`<h4>📑 章节目录（9章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 平面交叉</div><div>4 立体交叉</div><div>5 交叉口渠化</div><div>6 交通岛</div><div>7 人行过街</div><div>8 非机动车过街</div><div>9 附属设施</div></div>
+
+<h4>📐 第3章 平面交叉设计</h4>
+<ul>
+<li>交叉口间距：主干路<span class="hl">≥500m</span>，次干路≥300m</li>
+<li>交叉口转角缘石半径：主干路<span class="hl">15~25m</span>，次干路10~15m，支路5~10m</li>
+<li>交叉口视距三角形：按设计速度停车视距确定，三角形内<span class="hl">不得有障碍物</span></li>
+</ul>
+
+<h4>🚶 第7章 人行过街设施</h4>
+<ul>
+<li>人行横道宽度宜为<span class="hl">4~6m</span>，间距250~300m</li>
+<li>路段人行横道应设<span class="hl">人行横道标志</span>和标线</li>
+<li>过街长度>16m时应设<span class="hl">安全岛</span>，宽度≥1.5m</li>
+<li>主干路人行横道宜设<span class="hl">信号灯</span></li>
+</ul>
+
+<h4>🔄 第5章 交叉口渠化</h4>
+<ul>
+<li>左转车道渐变段长度：设计速度60km/h≥<span class="hl">70m</span></li>
+<li>右转专用车道宽度：<span class="hl">3.5m</span>（大型车4.0m）</li>
+<li>导流岛面积≥<span class="hl">7m²</span>（城区5m²）</li>
+</ul>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2011年3月1日实施。城市道路交叉口设计的核心规程。</div>`
+},
+{
+  code:'CJJ 194-2013',
+  title:'城市道路路基设计规范',
+  cat:'pavement',
+  status:'current',
+  tags:["路基","城市"],
+  content:`<h4>📑 章节目录（9章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 一般规定</div><div>4 路基填料</div><div>5 路基压实</div><div>6 路基防护</div><div>7 路基排水</div><div>8 特殊路基</div><div>9 既有路基利用</div></div>
+
+<h4>🪨 第5章 路基压实标准</h4>
+<table><tr><th>路基部位</th><th>快速路</th><th>主干路</th><th>次干路</th><th>支路</th></tr>
+<tr><td>路床(0~0.8m)</td><td class="hl">≥96</td><td>≥95</td><td>≥94</td><td>≥92</td></tr>
+<tr><td>上路堤(0.8~1.5m)</td><td>≥94</td><td>≥94</td><td>≥93</td><td>≥90</td></tr>
+<tr><td>下路堤(>1.5m)</td><td>≥93</td><td>≥92</td><td>≥90</td><td>≥90</td></tr>
+</table>
+
+<h4>💧 第7章 路基排水</h4>
+<ul>
+<li>城市道路应与<span class="hl">市政排水系统</span>协调衔接</li>
+<li>路面横坡一般<span class="hl">1.5%~2.0%</span></li>
+<li>地下管线应在路基施工<span class="hl">前</span>完成</li>
+</ul>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2014年3月1日实施。城市道路路基设计的专用规范。</div>`
+},
+{
+  code:'CJJ 36-2016',
+  title:'城镇道路养护技术规范',
+  cat:'general',
+  status:'current',
+  tags:["养护","城市"],
+  content:`<h4>📑 章节目录（10章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 基本规定</div><div>4 道路检测与评价</div><div>5 路基养护</div><div>6 路面养护</div><div>7 人行道养护</div><div>8 附属设施养护</div><div>9 掘路修复</div><div>10 养护作业安全</div></div>
+
+<h4>📜 第4章 道路检测与评价</h4>
+<ul>
+<li>快速路/主干路应<span class="hl">每年</span>进行一次常规检测</li>
+<li>路面损坏状况评价等级：A/B/C/D四级</li>
+<li>结构承载能力：<span class="hl">3~5年</span>检测一次</li>
+</ul>
+
+<h4>🛣 第6章 路面养护</h4>
+<table><tr><th>病害类型</th><th>养护措施</th></tr>
+<tr><td>裂缝（宽度<5mm）</td><td>灌缝或贴缝</td></tr>
+<tr><td>裂缝（宽度≥5mm）</td><td>开槽灌缝+贴缝带</td></tr>
+<tr><td>坑槽</td><td>挖补修补，分层压实</td></tr>
+<tr><td>车辙</td><td>铣刨加铺或微表处</td></tr>
+<tr><td>拥包/推移</td><td>铲除重铺</td></tr>
+</table>
+
+<h4>⚠ 第10章 养护作业安全</h4>
+<ul>
+<li>城区养护作业应<span class="hl">避开交通高峰</span>时段</li>
+<li>占路施工应取得<span class="hl">交管部门</span>审批</li>
+</ul>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2017年5月1日实施。替代CJJ 36-2006。</div>`
+},
+{
+  code:'JTG/T 3660-2020',
+  title:'公路隧道施工技术规范',
+  cat:'general',
+  status:'current',
+  tags:["隧道","施工"],
+  content:`<h4>📑 章节目录（15章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 施工准备</div><div>4 洞口工程</div><div>5 明洞工程</div><div>6 暗挖法</div><div>7 钻爆法</div><div>8 TBM法</div><div>9 支护与衬砌</div><div>10 防排水施工</div><div>11 路面施工</div><div>12 通风与防尘</div><div>13 监控量测</div><div>14 超前地质预报</div><div>15 工程质量</div></div>
+
+<h4>📜 第6章 暗挖法 — 新奥法（NATM）</h4>
+<ul>
+<li>开挖方法选择：全断面法（Ⅰ~Ⅲ级）、台阶法（Ⅲ~Ⅳ级）、环形开挖预留核心土法（Ⅳ~Ⅴ级）、双侧壁导坑法（Ⅴ级）</li>
+<li>Ⅳ级围岩台阶长度≤<span class="hl">1.5倍洞径</span></li>
+<li>初期支护应在开挖后<span class="hl">及时施作</span>，软弱围岩应及早封闭</li>
+</ul>
+
+<h4>📊 第13章 监控量测</h4>
+<table><tr><th>量测项目</th><th>频率</th><th>预警值</th></tr>
+<tr><td>拱顶下沉</td><td>1~2次/天</td><td>位移速率>5mm/d</td></tr>
+<tr><td>周边收敛</td><td>1~2次/天</td><td>位移速率>5mm/d</td></tr>
+<tr><td>地表沉降</td><td>1次/天（浅埋段）</td><td>累计沉降>30mm</td></tr>
+</table>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2020年9月1日实施。公路隧道施工的核心技术规范。</div>`
+},
+{
+  code:'JTG/T J21-2011',
+  title:'公路桥梁承载能力检测评定规程',
+  cat:'bridge',
+  status:'current',
+  tags:["桥梁检测"],
+  content:`<h4>📑 章节目录（8章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 一般规定</div><div>4 外观调查</div><div>5 无损检测</div><div>6 静载试验</div><div>7 动载试验</div><div>8 承载能力评定</div></div>
+
+<h4>📜 第6章 静载试验</h4>
+<ul>
+<li>试验荷载效率η：<span class="hl">0.85~1.05</span></li>
+<li>加载方式：<span class="hl">重车加载</span>或<span class="hl">千斤顶+反力架</span></li>
+<li>加载分级：不少于<span class="hl">3级</span>，每级持荷≥10min</li>
+<li>挠度测点：最大挠度处、L/4、L/2、3L/4</li>
+</ul>
+
+<h4>📊 第8章 承载能力评定</h4>
+<table><tr><th>评定指标</th><th>计算公式</th><th>合格标准</th></tr>
+<tr><td>校验系数 η</td><td>η=Se/Ss</td><td class="hl">≤1.0（≤0.8优良）</td></tr>
+<tr><td>相对残余变形</td><td>Sp/St×100%</td><td class="hl">≤20%</td></tr>
+<tr><td>裂缝扩展</td><td>实测/限值</td><td>≤规范限值</td></tr>
+</table>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2012年3月1日实施。桥梁技术状况和承载能力评定的重要技术规程。</div>`
+},
+{
+  code:'JTG/T 3364-02-2019',
+  title:'公路钢桥面铺装设计与施工技术规范',
+  cat:'bridge',
+  status:'current',
+  tags:["钢桥","铺装"],
+  content:`<h4>📑 章节目录（7章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 铺装结构</div><div>4 材料要求</div><div>5 设计</div><div>6 施工</div><div>7 质量检验</div></div>
+
+<h4>📜 第3章 铺装结构</h4>
+<ul>
+<li>铺装结构类型：<span class="hl">浇筑式沥青</span>（GA）、<span class="hl">环氧沥青</span>（EA）、<span class="hl">SMA</span></li>
+<li>铺装总厚度：<span class="hl">55~80mm</span></li>
+<li>防水粘结层：必须设置，粘结强度≥<span class="hl">0.3MPa</span>（25℃）</li>
+</ul>
+
+<h4>🔩 第4章 材料要求</h4>
+<table><tr><th>材料</th><th>关键指标</th><th>要求</th></tr>
+<tr><td>环氧沥青结合料</td><td>拉伸强度</td><td class="hl">≥2.0MPa</td></tr>
+<tr><td>浇筑式沥青混合料</td><td>贯入度（60℃）</td><td>1~4mm</td></tr>
+<tr><td>SMA</td><td>空隙率</td><td>3%~4%</td></tr>
+</table>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2019年9月1日实施。正交异性钢桥面铺装的专用规范。</div>`
+},
+{
+  code:'CJJ 221-2015',
+  title:'城市地下道路工程设计规范',
+  cat:'geometry',
+  status:'current',
+  tags:["地下道路","城市"],
+  content:`<h4>📑 章节目录（10章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 总体设计</div><div>4 线形设计</div><div>5 横断面</div><div>6 洞口设计</div><div>7 结构设计</div><div>8 通风与排烟</div><div>9 照明</div><div>10 消防与救援</div></div>
+
+<h4>📐 第4章 线形设计</h4>
+<ul>
+<li>设计速度：<span class="hl">40~60km/h</span></li>
+<li>最大纵坡：<span class="hl">5%</span>（特别困难≤6%，长度≤300m）</li>
+<li>最小纵坡：<span class="hl">0.3%</span>（排水分水点除外）</li>
+<li>平曲线最小半径：设计速度60km/h时<span class="hl">150m</span>（一般值）</li>
+</ul>
+
+<h4>🌬 第8章 通风与排烟</h4>
+<ul>
+<li>长度><span class="hl">500m</span>应设机械通风</li>
+<li>火灾排烟风速：<span class="hl">≥2.0m/s</span>（临界风速）</li>
+<li>安全疏散间距：<span class="hl">≤250m</span></li>
+</ul>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2016年6月1日实施。城市下穿道路和地下快速路设计的核心规范。</div>`
+},
+{
+  code:'JTG/T 2420-2021',
+  title:'公路工程信息模型应用统一标准',
+  cat:'general',
+  status:'current',
+  tags:["BIM"],
+  content:`<h4>📑 章节目录（8章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 基本规定</div><div>4 模型分类与编码</div><div>5 模型创建</div><div>6 模型应用</div><div>7 模型交付</div><div>8 数据交换</div></div>
+
+<h4>📜 第3章 基本规定</h4>
+<ul>
+<li>信息模型应覆盖<span class="hl">设计、施工、运维</span>全生命周期</li>
+<li>模型精细度等级：LOD1.0~LOD4.0</li>
+<li>初步设计阶段≥<span class="hl">LOD2.0</span>，施工图设计≥<span class="hl">LOD3.0</span></li>
+</ul>
+
+<h4>📦 第7章 模型交付</h4>
+<ul>
+<li>交付格式：优先采用<span class="hl">IFC</span>（Industry Foundation Classes）</li>
+<li>交付应包含：模型文件、属性信息表、应用报告</li>
+<li>坐标系统：2000国家大地坐标系（CGCS2000）</li>
+</ul>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2021年11月1日实施。公路行业BIM应用的纲领性标准，推动数字化设计转型。</div>`
+},
+{
+  code:'JTG/T 5612-2020',
+  title:'公路桥梁养护工程预算定额',
+  cat:'bridge',
+  status:'current',
+  tags:["预算","养护"],
+  content:`<h4>📑 章节目录（8章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 一般规定</div><div>4 上部结构养护</div><div>5 下部结构养护</div><div>6 桥面系养护</div><div>7 附属设施养护</div><div>8 专项养护</div></div>
+
+<h4>📜 第4章 上部结构养护定额要点</h4>
+<ul>
+<li>梁体裂缝封闭：按裂缝长度计，单价含表面处理和封闭材料</li>
+<li>支座更换：含<span class="hl">顶升、拆除、安装、落梁</span>全工序</li>
+<li>体外预应力加固：按钢束重量计，含锚固、张拉、防腐</li>
+</ul>
+
+<h4>📊 第6章 桥面系养护</h4>
+<ul>
+<li>桥面铺装铣刨重铺：按面积计，含铣刨、清理、粘结层、摊铺</li>
+<li>伸缩装置更换：按长度计，含凿除、安装、锚固、养护</li>
+<li>防水层重做：含基面处理、防水涂料、保护层</li>
+</ul>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2021年1月1日实施。桥梁养护工程计价的重要依据。</div>`
+}
 ];
