@@ -627,15 +627,15 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 .spec-content mark.active { background: #f59e0b; color: #fff; }
 
 /* ====== 复制按钮 + Toast ====== */
-.spec-content li { position: relative; padding-right: 24px; }
-.spec-content .copy-btn { position: absolute; right: 4px; top: 50%; transform: translateY(-50%); width: 14px; height: 14px; border-radius: 3px; border: 1.5px solid #c8cdd8; background: #fff; cursor: pointer; opacity: 0; transition: all .2s; padding: 0; }
-.spec-content .copy-btn::after { content: ''; position: absolute; right: -3px; bottom: -3px; width: 5px; height: 5px; border-radius: 1px; background: #c8cdd8; border: 1.5px solid #fff; }
-.spec-content li:hover .copy-btn { opacity: .65; }
+.spec-content li { position: relative; padding-right: 26px; }
+.spec-content .copy-btn { position: absolute; right: 3px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; border-radius: 4px; border: 1.5px solid #ccd0d8; background: #fff; cursor: pointer; opacity: .15; transition: all .2s; padding: 0; }
+.spec-content .copy-btn::after { content: ''; position: absolute; right: -3px; bottom: -3px; width: 5px; height: 5px; border-radius: 1px; background: #ccd0d8; border: 1.5px solid #fff; }
+.spec-content li:hover .copy-btn { opacity: .7; }
 .spec-content li .copy-btn:hover { opacity: 1; border-color: var(--accent); background: #eef2ff; }
 .spec-content li .copy-btn:hover::after { background: var(--accent); border-color: #eef2ff; }
-.spec-content .tbl-copy-btn { position: absolute; right: 4px; top: 5px; width: 14px; height: 14px; border-radius: 3px; border: 1.5px solid #c8cdd8; background: #fff; cursor: pointer; opacity: 0; transition: all .2s; padding: 0; }
-.spec-content .tbl-copy-btn::after { content: ''; position: absolute; right: -3px; bottom: -3px; width: 5px; height: 5px; border-radius: 1px; background: #c8cdd8; border: 1.5px solid #fff; }
-.spec-content .tbl-wrap:hover .tbl-copy-btn { opacity: .65; }
+.spec-content .tbl-copy-btn { position: absolute; right: 3px; top: 5px; width: 16px; height: 16px; border-radius: 4px; border: 1.5px solid #ccd0d8; background: #fff; cursor: pointer; opacity: .15; transition: all .2s; padding: 0; }
+.spec-content .tbl-copy-btn::after { content: ''; position: absolute; right: -3px; bottom: -3px; width: 5px; height: 5px; border-radius: 1px; background: #ccd0d8; border: 1.5px solid #fff; }
+.spec-content .tbl-wrap:hover .tbl-copy-btn { opacity: .7; }
 .spec-content .tbl-copy-btn:hover { opacity: 1; border-color: var(--accent); background: #eef2ff; }
 .spec-content .tbl-copy-btn:hover::after { background: var(--accent); border-color: #eef2ff; }
 [data-theme="dark"] .spec-content .copy-btn, [data-theme="dark"] .spec-content .tbl-copy-btn { border-color: #5a5a7a; background: #2a2a40; }
