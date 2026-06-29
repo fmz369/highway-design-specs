@@ -251,14 +251,31 @@ status:'current',
 tags:["标准体系"],
 pdf:null,
 hasPdf:false,
-content:`<h4>📑 章节目录</h4>
-<div class="ch-list"><div>1 范围</div><div>2 术语</div><div>3 体系结构</div><div>4 标准编号规则</div><div>5 标准体系表</div><div>附录A 标准明细表</div></div>
-<h4>🏗 三层标准体系</h4>
-<table><tr><th>层级</th><th>内容</th><th>示例</th></tr>
-<tr><td><span class="hl">基础标准</span></td><td>术语、符号、计量单位</td><td>JTG B01-2014</td></tr>
-<tr><td>通用标准</td><td>勘测、设计、施工、养护等共性要求</td><td>JTG D20-2017、JTG D30-2015</td></tr>
-<tr><td>专用标准</td><td>针对特定工程或材料的具体要求</td><td>JTG/T D31-2008（软基）</td></tr></table>
-<h4>📋 编号规则</h4><ul><li><span class="hl">JTG</span>：强制性行业标准</li><li><span class="hl">JTG/T</span>：推荐性行业标准（带T为推荐）</li><li>编号格式：JTG + 分类号 + 序号 + 发布年份</li></ul>`
+content:`<h4>📑 章节目录（7章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 标准体系架构</div><div>4 综合标准</div><div>5 专业标准</div><div>6 地方标准</div><div>7 团体标准与企业标准</div></div>
+
+<h4>📊 第3章 标准体系架构</h4>
+<p style="font-size:13px;padding:8px 12px;background:#f8f9fc;border-radius:8px;">公路工程标准体系按<span class="hl">综合标准→专业标准→地方标准→团体/企业标准</span>四个层次构建</p>
+<table><tr><th>层次</th><th>标准类型</th><th>编号规则</th><th>示例</th></tr>
+<tr><td>第一层</td><td>综合标准</td><td>JTG + 分类号</td><td>JTG B01-2014</td></tr>
+<tr><td>第二层</td><td>专业标准</td><td>JTG + 子类号</td><td>JTG D20-2017</td></tr>
+<tr><td>第三层</td><td>地方标准</td><td>DBXX/T</td><td>DB11/T 1063-2014</td></tr>
+<tr><td>第四层</td><td>团体/企业标准</td><td>T/CHTS或Q/XX</td><td>—</td></tr>
+</table>
+
+<h4>📂 第4章 综合标准 — 标准分类号</h4>
+<table><tr><th>分类号</th><th>专业类别</th><th>代表规范</th></tr>
+<tr><td>A</td><td>综合</td><td>JTG A01 标准体系</td></tr>
+<tr><td>B</td><td>基础</td><td>JTG B01 技术标准</td></tr>
+<tr><td>C</td><td>勘测</td><td>JTG C30 水文勘测</td></tr>
+<tr><td>D</td><td>设计</td><td>JTG D20 路线设计</td></tr>
+<tr><td>E</td><td>检测</td><td>JTG E20 沥青试验</td></tr>
+<tr><td>F</td><td>施工</td><td>JTG F80 质量检验</td></tr>
+<tr><td>G</td><td>养护</td><td>JTG 5210 技术状况评定</td></tr>
+<tr><td>H</td><td>安全</td><td>JTG F90 施工安全</td></tr>
+</table>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2017年8月1日实施。公路工程标准<span class="hl">"标准的标准"</span>，规定了公路标准体系的框架和编号规则。</div>`
 },
 {
 code:'JTG 2111-2019',
@@ -977,26 +994,31 @@ status:'current',
 tags:["城市道路","强制性规范"],
 pdf:'规范PDF/GB 55011-2021 城市道路交通工程项目规范.pdf',
 hasPdf:true,
-content:`
-<h4>📑 章节目录</h4>
-<div class="ch-list">
-<div>1 总则</div><div>2 基本规定</div><div>3 道路工程</div><div>4 桥梁工程</div>
-<div>5 隧道工程</div><div>6 交通安全设施</div><div>7 排水工程</div><div>8 照明工程</div>
-</div>
-<h4>🔑 规范定位</h4>
+content:`<h4>📑 章节目录（8章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 基本规定</div><div>3 道路工程</div><div>4 桥梁工程</div><div>5 隧道工程</div><div>6 交通安全设施</div><div>7 排水工程</div><div>8 照明工程</div></div>
+
+<h4>📜 第2章 基本规定</h4>
 <ul>
-<li><span class="hl">强制性工程建设规范</span>——城市道路领域的技术法规</li>
-<li>2022年1月1日实施，是城市道路交通工程的<span class="hl">"母规范"</span></li>
-<li>涵盖设计、施工、验收全过程，其他规范与本规范抵触时<span class="hl">以本规范为准</span></li>
+<li>GB 55011-2021为<span class="hl">全文强制性</span>规范，必须严格执行</li>
+<li>城市道路工程应满足<span class="hl">安全、适用、耐久、环保</span>基本要求</li>
+<li>设计使用年限：快速路/主干路<span class="hl">20年</span>，次干路/支路15年</li>
 </ul>
-<h4>📏 核心强制性要求</h4>
+
+<h4>🚗 第3章 道路工程 — 强制条文</h4>
 <ul>
-<li>道路设计使用年限：快速路≥20年；主干路≥15年</li>
-<li>桥梁设计使用年限：特大桥100年；大桥100年；中小桥50年</li>
-<li>隧道设计使用年限≥100年</li>
-<li>必须满足<span class="hl">无障碍</span>通行要求</li>
-<li>必须设置<span class="hl">交通安全设施</span>和<span class="hl">照明设施</span></li>
-</ul>`
+<li><span class="hl">3.0.1</span> 道路应按规划确定的<span class="hl">红线宽度</span>和等级建设</li>
+<li><span class="hl">3.0.3</span> 道路应设置<span class="hl">无障碍设施</span></li>
+<li><span class="hl">3.0.5</span> 人行道有效通行宽度≥<span class="hl">1.5m</span></li>
+<li><span class="hl">3.0.6</span> 道路排水应与城市排水系统衔接</li>
+</ul>
+
+<h4>🌉 第4章 桥梁工程 — 强制条文</h4>
+<ul>
+<li><span class="hl">4.0.1</span> 桥梁应进行<span class="hl">承载能力极限状态</span>和正常使用极限状态验算</li>
+<li><span class="hl">4.0.3</span> 桥梁应满足<span class="hl">抗震设防</span>要求</li>
+</ul>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2022年1月1日实施。城市道路工程的<span class="hl">全文强制规范</span>，具有法律效力。</div>`
 },
 {
 code:'JTJ 002-87',
@@ -1162,13 +1184,32 @@ status:'current',
 tags:["快速路","城市"],
 pdf:null,
 hasPdf:false,
-content:`
-<h4>📑 章节目录（9章）</h4>
-<div class="ch-list"><div>1~3 总则/术语/规定</div><div>4 横断面</div><div>5 平面与纵断面</div><div>6 出入口</div><div>7 立交</div><div>8 路基路面</div><div>9 附属设施</div></div>
-<h4>🔑 核心特征</h4><ul><li>全线<span class="hl">控制出入</span>，主线无信号交叉</li><li>设计速度：100/80/60km/h</li></ul>
-<h4>📏 出入口最小间距（m）</h4>
-<table><tr><th>设计速度(km/h)</th><th>出入口间距(m)</th></tr><tr><td>100</td><td><span class="hl">1020</span></td></tr><tr><td>80</td><td>760</td></tr><tr><td>60</td><td>510</td></tr></table>
-<h4>🛣 横断面</h4><ul><li>主线车道宽度：<span class="hl">3.50~3.75m</span></li><li>辅道设计速度：30~40km/h</li><li>紧急停车带间距：<span class="hl">≤500m</span></li></ul>`
+content:`<h4>📑 章节目录（10章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 基本规定</div><div>4 线形设计</div><div>5 横断面</div><div>6 立交</div><div>7 出入口</div><div>8 铺道与集散车道</div><div>9 路基路面</div><div>10 附属设施</div></div>
+
+<h4>📜 第3章 基本规定</h4>
+<ul>
+<li>快速路设计速度：<span class="hl">60~100km/h</span></li>
+<li>快速路应为<span class="hl">全部控制出入</span>，中央分隔</li>
+<li>车道数：<span class="hl">4~8车道</span>（双向）</li>
+</ul>
+
+<h4>🚗 第7章 出入口设计</h4>
+<ul>
+<li>互通立交间距：<span class="hl">1.5~3.0km</span>（城区最小值0.8km）</li>
+<li>加速车道长度：设计速度80km/h≥<span class="hl">200m</span></li>
+<li>减速车道长度：设计速度80km/h≥<span class="hl">100m</span></li>
+<li>出入口应避免设在<span class="hl">主线左侧</span></li>
+</ul>
+
+<h4>🛣 第9章 路基路面</h4>
+<ul>
+<li>路基压实度：路床<span class="hl">≥96%</span></li>
+<li>路面设计使用年限：<span class="hl">15年</span></li>
+<li>路面结构组合：面层+基层+底基层+（垫层）</li>
+</ul>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2010年3月1日实施。城市快速路设计的核心规程。</div>`
 },
 {
 code:'CJJ 193-2012',
@@ -1178,9 +1219,37 @@ status:'current',
 tags:["城市道路","线形"],
 pdf:null,
 hasPdf:false,
-content:`<h4>📑 章节目录（7章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 一般规定</div><div>4 横断面</div><div>5 平面</div><div>6 纵断面</div><div>7 线形组合</div></div>
-<h4>🔑 与公路路线规范的关键差异</h4><table><tr><th>项目</th><th>城市道路</th><th>公路</th></tr><tr><td>平曲线半径(100km/h)</td><td><span class="hl">650m</span></td><td>700m</td></tr><tr><td>最大纵坡</td><td>一般比公路<span class="hl">小1%</span></td><td>—</td></tr><tr><td>交叉口视距</td><td>必须保证<span class="hl">视距三角区</span>无障碍</td><td>—</td></tr><tr><td>公交专用道</td><td>须考虑</td><td>一般不设</td></tr></table>`
+content:`<h4>📑 章节目录（9章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 基本规定</div><div>4 平面设计</div><div>5 纵断面设计</div><div>6 横断面设计</div><div>7 交叉口</div><div>8 立体交叉</div><div>9 交通组织</div></div>
+
+<h4>📐 第4章 平面设计</h4>
+<table><tr><th>设计速度(km/h)</th><th>平曲线最小半径一般值(m)</th><th>极限值(m)</th><th>不设超高最小半径(m)</th></tr>
+<tr><td>100</td><td>650</td><td class="hl">400</td><td>3000</td></tr>
+<tr><td>80</td><td>400</td><td class="hl">250</td><td>1500</td></tr>
+<tr><td>60</td><td>200</td><td class="hl">125</td><td>800</td></tr>
+<tr><td>50</td><td>130</td><td>85</td><td>500</td></tr>
+<tr><td>40</td><td>70</td><td>50</td><td>300</td></tr>
+<tr><td>30</td><td>40</td><td>25</td><td>150</td></tr>
+</table>
+
+<h4>📏 第5章 纵断面设计</h4>
+<table><tr><th>设计速度(km/h)</th><th>最大纵坡(%)</th><th>最小纵坡(%)</th><th>竖曲线最小半径(m)</th></tr>
+<tr><td>100</td><td class="hl">4</td><td>0.3</td><td>10000</td></tr>
+<tr><td>80</td><td class="hl">5</td><td>0.3</td><td>4500</td></tr>
+<tr><td>60</td><td class="hl">6</td><td>0.3</td><td>2000</td></tr>
+<tr><td>50</td><td>6.5</td><td>0.3</td><td>1200</td></tr>
+<tr><td>40</td><td>7</td><td>0.3</td><td>600</td></tr>
+</table>
+
+<h4>🛣 第6章 横断面设计</h4>
+<ul>
+<li>机动车道宽度：<span class="hl">3.25~3.75m</span>/车道</li>
+<li>公交专用道宽度：<span class="hl">3.5m</span></li>
+<li>路缘带宽度：快速路<span class="hl">0.5m</span>，主干路0.25m</li>
+<li>侧向净宽：快速路<span class="hl">1.0m</span>，其他0.5m</li>
+</ul>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2013年5月1日实施。城市道路线形设计的核心规范。</div>`
 },
 {
 code:'JTG 2112-2021',
@@ -1190,11 +1259,30 @@ status:'current',
 tags:["城镇化","路线"],
 pdf:null,
 hasPdf:false,
-content:`
-<h4>📑 章节目录（8章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 分级</div><div>4 横断面</div><div>5 路线</div><div>6 路基路面</div><div>7 交叉</div><div>8 交安及沿线设施</div></div>
-<h4>🏙 核心特点</h4><ul><li>兼顾<span class="hl">公路功能</span>和<span class="hl">城市道路功能</span></li><li>适用于<span class="hl">城镇化地区</span>的公路新建和改扩建</li></ul>
-<h4>📏 横断面特点</h4><table><tr><th>项目</th><th>城镇化公路</th><th>普通公路</th></tr><tr><td>慢行系统</td><td>应综合设置<span class="hl">非机动车道+人行道</span></td><td>一般不设</td></tr><tr><td>交叉间距</td><td>可适当缩小</td><td>按规范最小间距</td></tr><tr><td>排水</td><td>与城市排水系统协调</td><td>公路边沟排水</td></tr><tr><td>照明</td><td>应设置</td><td>一般不设</td></tr></table>`
+content:`<h4>📑 章节目录（9章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 公路分级与功能</div><div>4 线形设计</div><div>5 横断面</div><div>6 交叉</div><div>7 路基路面</div><div>8 交通安全设施</div><div>9 管线综合</div></div>
+
+<h4>📜 第3章 公路分级</h4>
+<ul>
+<li>城镇化公路按功能分为：<span class="hl">主干路、次干路、支路</span></li>
+<li>设计速度：主干路<span class="hl">60~80km/h</span>，次干路40~60km/h，支路30km/h</li>
+</ul>
+
+<h4>🛣 第5章 横断面</h4>
+<table><tr><th>类型</th><th>车道宽(m)</th><th>侧向净宽(m)</th><th>人行道(m)</th></tr>
+<tr><td>主干路</td><td class="hl">3.5~3.75</td><td>0.75~1.0</td><td>≥3.0</td></tr>
+<tr><td>次干路</td><td>3.25~3.5</td><td>0.5~0.75</td><td>≥2.0</td></tr>
+<tr><td>支路</td><td>3.0~3.25</td><td>0.5</td><td>≥1.5</td></tr>
+</table>
+
+<h4>🚸 第8章 交通安全设施</h4>
+<ul>
+<li>城镇化公路应兼顾<span class="hl">机动交通与非机动交通</span>安全</li>
+<li>与城市道路衔接处应设过渡段限速标志</li>
+<li>非机动车道与机动车道间宜设<span class="hl">隔离设施</span></li>
+</ul>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2021年11月1日实施。填补城镇化地区公路设计标准空白。</div>`
 },
 {
 code:'JTG D20-2017',
@@ -1347,12 +1435,34 @@ status:'current',
 tags:["城市道路","路面"],
 pdf:null,
 hasPdf:false,
-content:`
-<h4>📑 章节目录（7章）</h4>
-<div class="ch-list"><div>1~3 总则/术语/规定</div><div>4 沥青路面</div><div>5 水泥路面</div><div>6 砌块路面</div><div>7 人行道</div></div>
-<h4>📊 设计年限</h4>
-<table><tr><th>道路等级</th><th>沥青路面</th><th>水泥路面</th></tr><tr><td>快速路</td><td><span class="hl">15年</span></td><td>30年</td></tr><tr><td>主干路</td><td>15年</td><td>30年</td></tr><tr><td>次干路</td><td>10~12年</td><td>20年</td></tr><tr><td>支路</td><td>8~10年</td><td>15年</td></tr></table>
-<h4>🏙 城市道路路面特点</h4><ul><li>需考虑<span class="hl">检查井、雨水口</span>影响（路面减薄处补强）</li><li>人行道铺装：必须设置<span class="hl">盲道</span>，符合无障碍要求</li><li>砌块路面：联锁砌块/石材，适用于支路、广场、人行道</li><li>公交站台路面需加强抗车辙设计</li></ul>`
+content:`<h4>📑 章节目录（9章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 基本规定</div><div>4 沥青路面</div><div>5 水泥混凝土路面</div><div>6 砌块路面</div><div>7 路面排水</div><div>8 旧路加铺</div><div>9 人行道铺装</div></div>
+
+<h4>🛣 第4章 沥青路面</h4>
+<table><tr><th>交通等级</th><th>BZZ-100累计轴次</th><th>面层推荐厚度(mm)</th></tr>
+<tr><td>轻交通</td><td><3×10⁶</td><td class="hl">50~80</td></tr>
+<tr><td>中等交通</td><td>3×10⁶~2×10⁷</td><td class="hl">80~120</td></tr>
+<tr><td>重交通</td><td>2×10⁷~5×10⁷</td><td class="hl">120~180</td></tr>
+<tr><td>特重交通</td><td>>5×10⁷</td><td class="hl">≥180</td></tr>
+</table>
+
+<h4>🪨 第5章 水泥混凝土路面</h4>
+<ul>
+<li>弯拉强度标准值：快速路<span class="hl">5.0MPa</span>，主干路<span class="hl">4.5MPa</span></li>
+<li>板厚：快速路≥<span class="hl">260mm</span>，主干路≥240mm</li>
+<li>接缝间距：<span class="hl">4~6m</span>，长宽比≤1.5</li>
+<li>传力杆：φ<span class="hl">32~36mm</span>光圆钢筋</li>
+</ul>
+
+<h4>🧱 第6章 砌块路面</h4>
+<ul>
+<li>适用于广场、步行街、支路、停车场</li>
+<li>砌块强度：人行道≥Cc50，车行道≥Cc60</li>
+<li>垫层砂厚：<span class="hl">30~50mm</span>（中粗砂）</li>
+<li>基层厚度≥<span class="hl">150mm</span>（水泥稳定碎石）</li>
+</ul>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2013年5月1日实施。城市道路路面设计的专用规范。</div>`
 },
 {
 code:'JTG 5142-2019',
@@ -1770,14 +1880,34 @@ status:'current',
 tags:["土工材料"],
 pdf:null,
 hasPdf:false,
-content:`<h4>📑 章节目录（7章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 材料分类</div><div>3 加筋</div><div>4 防渗</div><div>5 反滤与排水</div><div>6 隔离</div><div>7 防护</div></div>
-<h4>🧵 四种土工材料及应用</h4>
-<table><tr><th>类型</th><th>主要功能</th><th>关键参数</th><th>公路应用</th></tr>
-<tr><td><span class="hl">土工布</span></td><td>反滤/隔离/防护</td><td>单位质量100~800g/m²</td><td>路基隔离层/反滤层</td></tr>
-<tr><td>土工格栅</td><td>加筋</td><td>抗拉强度30~200kN/m</td><td>软基加筋/边坡加筋</td></tr>
-<tr><td>土工膜</td><td>防渗</td><td>厚度0.5~3mm</td><td>路基防渗/膨胀土隔水</td></tr>
-<tr><td>土工格室</td><td>地基加固/边坡防护</td><td>高度50~200mm</td><td>边坡绿化/地基加固</td></tr></table>`
+content:`<h4>📑 章节目录（8章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 材料分类与性能</div><div>4 路基加筋</div><div>5 路基防排水</div><div>6 路基防护</div><div>7 路面工程应用</div><div>8 质量检验</div></div>
+
+<h4>🧵 第3章 材料分类</h4>
+<table><tr><th>类别</th><th>名称</th><th>主要用途</th></tr>
+<tr><td>土工格栅</td><td>单向/双向/多向</td><td class="hl">路基加筋、边坡稳定</td></tr>
+<tr><td>土工布</td><td>短纤/长丝/编织</td><td>过滤、隔离、排水</td></tr>
+<tr><td>土工膜</td><td>HDPE/LDPE/PVC</td><td class="hl">防渗、隔水</td></tr>
+<tr><td>土工格室</td><td>焊接/插接式</td><td>边坡防护、基层加固</td></tr>
+<tr><td>土工网垫</td><td>三维/二维</td><td>坡面植草防护</td></tr>
+</table>
+
+<h4>🪨 第4章 路基加筋</h4>
+<ul>
+<li>筋材抗拉强度设计值=极限抗拉强度/分项系数（<span class="hl">1.25~1.5</span>）</li>
+<li>加筋土挡墙筋材长度≥<span class="hl">0.7H</span>（H为墙高）且≥3m</li>
+<li>层间距≤<span class="hl">0.6m</span>（压实后才能敷设上层筋材）</li>
+<li>新旧路拼接处应<span class="hl">分层铺设土工格栅</span></li>
+</ul>
+
+<h4>💧 第5章 路基防排水</h4>
+<ul>
+<li>土工布过滤层：等效孔径O90≤<span class="hl">0.15~0.3mm</span></li>
+<li>土工膜防渗层厚≥<span class="hl">0.3mm</span>（HDPE膜≥0.5mm）</li>
+<li>复合排水网：排水芯板厚<span class="hl">5~10mm</span></li>
+</ul>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2013年2月1日实施。公路土工合成材料应用的主要技术依据。</div>`
 },
 {
 code:'JTG/T D33-2012',
@@ -1943,9 +2073,42 @@ status:'current',
 tags:["城市桥梁"],
 pdf:null,
 hasPdf:false,
-content:`<h4>📑 章节目录</h4><div class="ch-list"><div>1 总则</div><div>2 分类</div><div>3 荷载</div><div>4 结构设计</div><div>5 附属设施</div></div>
-<h4>🚛 汽车荷载</h4><table><tr><th>等级</th><th>qk(kN/m)</th><th>Pk(kN)</th></tr><tr><td><span class="hl">城-A</span></td><td>10.5</td><td>330~240</td></tr><tr><td>城-B</td><td>7.875</td><td>200~160</td></tr></table>
-<h4>🏙 特殊要求</h4><ul><li>兼顾<span class="hl">机动车+非机动车+行人</span></li><li>管线过桥设专用管廊</li><li>桥梁<span class="hl">景观</span>与城市风貌协调</li><li>桥下净空满足通航/排洪/通行</li></ul>`
+content:`<h4>📑 章节目录（11章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 基本规定</div><div>4 桥梁总体</div><div>5 桥梁结构</div><div>6 桥梁基础</div><div>7 桥梁抗震</div><div>8 人行天桥</div><div>9 桥梁附属</div><div>10 桥梁景观</div><div>11 检测与监测</div></div>
+
+<h4>📜 第1章 总则</h4>
+<ul>
+<li><span class="hl">1.0.1</span> 为规范城市桥梁设计，保证桥梁工程安全适用、经济合理，制定本规范</li>
+<li><span class="hl">1.0.2</span> 适用于城市<span class="hl">新建和改扩建</span>桥梁设计</li>
+<li>2019版主要修订：增加<span class="hl">人行天桥</span>专章、更新抗震要求、增加检测监测内容</li>
+</ul>
+
+<h4>🌉 第4章 桥梁总体</h4>
+<ul>
+<li>桥梁分类：特大桥(L>1000m/Lk>150m)、大桥、中桥、小桥</li>
+<li>设计使用年限：特大桥<span class="hl">100年</span>，大中桥<span class="hl">50~100年</span></li>
+<li>桥下净空：跨快速路≥<span class="hl">5.0m</span>，跨主干路≥<span class="hl">4.5m</span></li>
+<li>桥梁宽度：≥<span class="hl">规划道路红线宽度</span></li>
+</ul>
+
+<h4>🏗 第5章 桥梁结构</h4>
+<table><tr><th>结构形式</th><th>适用跨径(m)</th><th>特点</th></tr>
+<tr><td>简支梁</td><td>10~50</td><td>结构简单，施工方便</td></tr>
+<tr><td>连续梁</td><td class="hl">30~120</td><td>整体性好，行车舒适</td></tr>
+<tr><td>连续刚构</td><td>60~200</td><td>适用于高墩大跨</td></tr>
+<tr><td>拱桥</td><td>50~300</td><td>造型优美，适合景观要求</td></tr>
+<tr><td>斜拉桥</td><td>>200</td><td>大跨径首选</td></tr>
+</table>
+
+<h4>🚶 第8章 人行天桥</h4>
+<ul>
+<li>天桥净宽≥<span class="hl">3.0m</span>（主通道≥4.0m）</li>
+<li>梯道宽度≥<span class="hl">2.5m</span>（公共建筑连接≥3.0m）</li>
+<li>桥下净高：跨快速路≥<span class="hl">5.0m</span>，跨主干路≥4.5m</li>
+<li>宜设置<span class="hl">顶棚</span>（雨棚），有条件的设电梯</li>
+</ul>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2012年4月1日实施，2019年局部修订。城市桥梁设计的核心规范，与JTG D60互补。</div>`
 },
 {
 code:'JTG 3362-2018',
