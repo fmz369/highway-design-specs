@@ -94,7 +94,7 @@ function renderFooter() {
     + '<a href="../">🏠 首页</a>'
     + '<a href="../quickref/">📋 参数速查</a>'
     + '<a href="../compare/">📊 规范对比</a>'
-    + '<a href="../qa/">🤖 智能问答</a>'
+    + '<a href="../qa/">⚡ 深度检索</a>'
     + '<a href="../favorites/">⭐ 收藏夹</a>'
     + '<a href="../converter/">📏 换算</a>'
     + '<a href="../knowledge/">📚 知识库</a>'

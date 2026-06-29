@@ -1,6 +1,6 @@
-/* 智能问答 v2 — 自然语言理解 + 同义词映射 + 结构化答案 */
+/* 深度检索 — 同义词理解 + 跨规范全文检索（新版qa/index.html已不再使用此文件） */
 (function () {
-  document.getElementById('breadcrumb').innerHTML = renderBreadcrumb([{ label: '🏠 首页', link: '../' }, { label: '🤖 智能问答' }]);
+  document.getElementById('breadcrumb').innerHTML = renderBreadcrumb([{ label: '🏠 首页', link: '../' }, { label: '⚡ 深度检索' }]);
   document.getElementById('statsPills').innerHTML = renderStatsPills();
   var input = document.getElementById('qaInput'), btn = document.getElementById('qaBtn'), resultsDiv = document.getElementById('qaResults');
 
