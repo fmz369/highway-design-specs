@@ -94,6 +94,19 @@
 <line x1="10" y1="161" x2="690" y2="161" stroke="#9ca3af" stroke-width="1.5"/>
 </svg><div class="kb-ill-desc">选用原则：石料多→重力式 | 地基弱→悬臂/扶壁式 | 岩质边坡→锚杆式 | 缺石料→加筋土式</div></div>
 
+<div class="kb-ill-card"><h3>🔀 水泥混凝土路面接缝</h3>
+<svg viewBox="0 0 700 150">
+<rect x="20" y="30" width="200" height="90" fill="#d1d5db" stroke="#6b7280" stroke-width="1"/><text x="120" y="80" font-size="10" fill="#374151" text-anchor="middle">混凝土板</text>
+<line x1="220" y1="30" x2="220" y2="120" stroke="#ef4444" stroke-width="3"/><text x="218" y="25" font-size="9" fill="#ef4444">缩缝</text>
+<rect x="225" y="30" width="15" height="90" fill="#fef3c7" stroke="#f59e0b" stroke-width="1"/><text x="232" y="80" font-size="8" fill="#92400e" text-anchor="middle">填缝料</text>
+<rect x="245" y="30" width="200" height="90" fill="#d1d5db" stroke="#6b7280" stroke-width="1"/><text x="345" y="80" font-size="10" fill="#374151" text-anchor="middle">混凝土板</text>
+<line x1="445" y1="30" x2="445" y2="120" stroke="#3b6df0" stroke-width="3"/><text x="443" y="25" font-size="9" fill="#3b6df0">胀缝 20~30mm</text>
+<rect x="450" y="30" width="25" height="90" fill="#fef3c7" stroke="#f59e0b" stroke-width="1"/><text x="462" y="80" font-size="8" fill="#92400e">填缝板</text>
+<rect x="480" y="30" width="200" height="90" fill="#d1d5db" stroke="#6b7280" stroke-width="1"/><text x="580" y="80" font-size="10" fill="#374151" text-anchor="middle">混凝土板</text>
+<text x="120" y="140" font-size="9" fill="#6b7280">间距4~6m</text><text x="345" y="140" font-size="9" fill="#6b7280">间距4~6m</text><text x="580" y="140" font-size="9" fill="#6b7280">传力杆φ32~36</text>
+</svg>
+<div class="kb-ill-desc"><b>缩缝</b>控制收缩裂缝 | <b>胀缝</b>容许热膨胀 | <b>传力杆</b>传递荷载到相邻板块</div></div>
+
 <div class="kb-ill-card"><h3>🛣 路面结构层</h3>
 <svg viewBox="0 0 700 180"><rect x="0" y="15" width="700" height="30" fill="#4b5563"/><text x="350" y="35" font-size="11" fill="#fff" text-anchor="middle" font-weight="700">沥青面层 120~180mm</text>
 <rect x="0" y="45" width="700" height="30" fill="#9ca3af"/><text x="350" y="65" font-size="11" fill="#fff" text-anchor="middle" font-weight="700">水泥稳定碎石基层 180~200mm</text>
@@ -107,6 +120,17 @@
 <polygon points="180,110 180,165 230,165" fill="#fef3c7" fill-opacity="0.5" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6,3"/>
 <text x="180" y="135" font-size="9" fill="#92400e">视距三角形</text><text x="185" y="88" font-size="9" fill="#ef4444">禁止障碍物</text>
 </svg><div class="kb-ill-desc">由两方向停车视距构成，三角形区域内不得有任何阻碍视线的障碍物</div></div>
+
+<div class="kb-ill-card"><h3>🔄 超高与加宽</h3>
+<svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg">
+<rect x="30" y="60" width="640" height="90" fill="#e5e7eb" rx="2"/>
+<line x1="30" y1="60" x2="350" y2="120" stroke="#3b6df0" stroke-width="2"/><line x1="350" y1="120" x2="670" y2="60" stroke="#3b6df0" stroke-width="2"/>
+<text x="180" y="80" font-size="10" fill="#3b6df0">超高横坡 2%~8%</text><text x="450" y="80" font-size="10" fill="#3b6df0">超高横坡</text>
+<rect x="25" y="150" width="650" height="30" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4,3"/>
+<text x="350" y="175" font-size="9" fill="#ef4444" text-anchor="middle">弯道内侧路面加宽（随半径减小而增大）</text>
+<text x="350" y="190" font-size="9" fill="#6b7280" text-anchor="middle">最大超高：一般8%（积雪6%）| 加宽值：设计速度越低、半径越小则越大</text>
+</svg>
+<div class="kb-ill-desc"><b>超高</b>抵消离心力 | <b>加宽</b>适应转弯轨迹 | 缓和段实现渐变过渡</div></div>
 </div>
 </main>
 
@@ -127,10 +151,10 @@ document.querySelector('.kb-tabs').addEventListener('click',function(e){
 var GL={geometry:[{t:'平曲线',e:'Horizontal Curve',d:'道路平面线形中的曲线段，包括圆曲线和缓和曲线。R-半径、T-切线长、L-曲线长、E-外距。'},{t:'竖曲线',e:'Vertical Curve',d:'道路纵断面变坡点处设置的曲线，分凸形和凹形。用二次抛物线过渡，半径R、切线长T。'},{t:'缓和曲线',e:'Transition Curve',d:'连接直线与圆曲线的过渡曲线，常用回旋线。使离心加速度渐变，行车更舒适。'},{t:'停车视距',e:'Stopping Sight Distance',d:'发现障碍物到车辆完全停止的最短距离。反应距离+制动距离。'},{t:'会车视距',e:'Meeting Sight Distance',d:'两车相向行驶安全停止距离，约为停车视距的2倍。'},{t:'最大纵坡',e:'Maximum Grade',d:'道路纵断面最大坡度限值，高速3~5%，三/四级可达7~9%。'},{t:'超高',e:'Superelevation',d:'弯道外侧路面抬高形成单向横坡抵消离心力。最大超高一般8%，积雪6%。'},{t:'加宽',e:'Widening',d:'弯道路段为适应车辆转弯轨迹增加的额外宽度。'},{t:'平包竖',e:'HV Coordination',d:'平曲线与竖曲线一一对应且平曲线比竖曲线长的组合原则。'},{t:'合成坡度',e:'Resultant Grade',d:'路线纵坡与横坡矢量和，一般不超过10%~10.5%。'}],
 subgrade:[{t:'压实度',e:'Compaction Degree',d:'路基压实后干密度与标准最大干密度的比值(%)。上路床高速≥96%，四级≥94%。'},{t:'CBR',e:'California Bearing Ratio',d:'加州承载比。路床最小CBR值：高速8%，四级3~5%。不满足应换填或掺灰。'},{t:'路床',e:'Roadbed',d:'路面结构层底面以下0~0.8m。上路床0~0.3m，下路床0.3~0.8m。'},{t:'路堤',e:'Embankment',d:'填方路基。上路堤0.8~1.5m，下路堤>1.5m，各层有不同压实度要求。'},{t:'挡土墙',e:'Retaining Wall',d:'支挡填土或山体结构物。重力式≤12m、悬臂式≤15m、扶壁式≤15m、锚杆式≤8m、加筋土式≤20m。'},{t:'抗滑稳定Kc',e:'Sliding Stability',d:'基底摩阻力/土压力水平分力，通常要求≥1.3。'},{t:'抗倾覆K₀',e:'Overturning Stability',d:'稳定力矩/倾覆力矩，通常要求≥1.5。'},{t:'软土路基',e:'Soft Soil Subgrade',d:'高含水量、高压缩性土质。处理：排水固结、桩基、换填。'},{t:'湿陷性黄土',e:'Collapsible Loess',d:'遇水显著沉降的黄土。处理：强夯、灰土挤密桩、预浸水。'},{t:'台背回填',e:'Bridge Approach Backfill',d:'桥台背后填土，透水性材料，压实度≥96%，防桥头跳车。'}],
 pavement:[{t:'BZZ-100',e:'Standard Axle Load',d:'标准轴载：双轮组单轴100kN。所有交通量换算为此轴载当量次数。'},{t:'轴载换算',e:'Axle Load Conversion',d:'Ns=C₁·C₂·Ni·(Pi/100)^4.35。单轴C₁=1，双轴C₁=2.2。'},{t:'沥青面层',e:'Asphalt Surface',d:'路面最上层。高速/一级厚120~180mm，三级40~100mm。'},{t:'设计年限',e:'Design Life',d:'高速/一级15年，二级12年，三级8年，四级6年。'},{t:'弯沉值',e:'Deflection',d:'路面在荷载下的竖向位移，评价结构承载力，单位0.01mm。'},{t:'水泥弯拉强度',e:'Concrete Flexural Strength',d:'水泥路面设计关键指标，标准值4.0~5.0MPa。'}],
-bridge:[{t:'公路-Ⅰ级',e:'Highway Class I Load',d:'高速/一级汽车荷载。均布10.5kN/m，集中270~360kN。'},{t:'冲击系数',e:'Impact Factor',d:'动力放大系数μ，与结构基频有关，0.05~0.45。'},{t:'裂缝宽度',e:'Crack Width',d:'Ⅰ类环境≤0.20mm，Ⅱ类≤0.15mm。'},{t:'桩基础',e:'Pile Foundation',d:'桩距≥2.5d，嵌岩≥0.5m，埋深在冲刷线以下≥2m。'},{t:'E1/E2地震',e:'Seismic Levels',d:'E1(475年)弹性验算，E2(2000年)延性验算。'}],
+bridge:[{t:'公路-Ⅰ级',e:'Highway Class I Load',d:'高速/一级汽车荷载。均布10.5kN/m，集中270~360kN。'},{t:'冲击系数',e:'Impact Factor',d:'动力放大系数μ，与结构基频有关，0.05~0.45。'},{t:'裂缝宽度',e:'Crack Width',d:'Ⅰ类环境≤0.20mm，Ⅱ类≤0.15mm。'},{t:'挠度限值',e:'Deflection Limit',d:'梁式桥主梁≤L/600，悬臂端≤L/300。'},{t:'桩基础',e:'Pile Foundation',d:'桩距≥2.5d，嵌岩≥0.5m，埋深在冲刷线以下≥2m。'},{t:'E1/E2地震',e:'Seismic Levels',d:'E1(475年)弹性验算，E2(2000年)延性验算。'},{t:'伸缩缝',e:'Expansion Joint',d:'适应温度变形和混凝土收缩的装置，常用模数式、梳齿板式。'},{t:'支座',e:'Bearing',d:'传递荷载并允许位移/转动的装置。板式橡胶、盆式、球型。'}],
 safety:[{t:'护栏防撞等级',e:'Barrier Crash Rating',d:'C(40kJ)→B(70)→A(160)→SB(280)→SA(400)→SS(520)。'},{t:'标志汉字高度',e:'Sign Character Height',d:'120km/h→60~70cm，80→40~50cm，30→20cm。'},{t:'轮廓标',e:'Delineator',d:'弯道间距≤8m，直线≤20m。'},{t:'防眩设施',e:'Anti-glare Screen',d:'高度1.6~1.7m，间距50~100cm。'}],
-drainage:[{t:'设计洪水频率',e:'Design Flood Frequency',d:'高速1/100，一级1/100，二级1/50，三级1/25。'},{t:'径流系数',e:'Runoff Coefficient',d:'沥青路面0.9，水泥0.85，土路0.4~0.6。'},{t:'推理公式法',e:'Rational Method',d:'Q=0.278·ψ·q·F，小流域<500km²。'}],
-general:[{t:'设计速度',e:'Design Speed',d:'高速120~80km/h，一级100~60km/h，二级80~40km/h。'},{t:'车道宽度',e:'Lane Width',d:'≥80km/h→3.75m，60→3.5m，≤40→3.25m。'},{t:'路肩宽度',e:'Shoulder Width',d:'硬路肩：高速≥3.0m，一级≥2.5m。'},{t:'三同时',e:'Three Simultaneities',d:'安全设施、防护设施、排水设施与主体工程同时设计/施工/使用。'}]};
+drainage:[{t:'设计洪水频率',e:'Design Flood Frequency',d:'高速1/100，一级1/100，二级1/50，三级1/25。'},{t:'径流系数',e:'Runoff Coefficient',d:'沥青路面0.9，水泥0.85，土路0.4~0.6。'},{t:'推理公式法',e:'Rational Method',d:'Q=0.278·ψ·q·F，小流域<500km²。'},{t:'边沟',e:'Side Ditch',d:'底宽≥0.4m，深度≥0.4m，纵坡≥0.3%。'},{t:'截水沟',e:'Catchwater Ditch',d:'距路堑坡顶≥5m，拦截坡面径流。'},{t:'急流槽',e:'Chute',d:'每级跌水高度≤2.0m，用于陡坡段排水消能。'}],
+general:[{t:'设计速度',e:'Design Speed',d:'高速120~80km/h，一级100~60km/h，二级80~40km/h。'},{t:'车道宽度',e:'Lane Width',d:'≥80km/h→3.75m，60→3.5m，≤40→3.25m。'},{t:'路肩宽度',e:'Shoulder Width',d:'硬路肩：高速≥3.0m，一级≥2.5m。'},{t:'三同时',e:'Three Simultaneities',d:'安全设施、防护设施、排水设施与主体工程同时设计/施工/使用。'},{t:'建筑限界',e:'Structure Gauge',d:'保证车辆安全通行的最小净空。高速/一级净高5.0m，三/四级4.5m。'},{t:'设计使用年限',e:'Design Service Life',d:'特大桥100年，大桥100年，中桥50年，小桥30年。路面按等级6~15年。'}]};
 var catNames={geometry:'📐 线形设计',subgrade:'🪨 路基工程',pavement:'🛣 路面工程',bridge:'🌉 桥梁工程',safety:'🛡 交安设施',drainage:'💧 排水工程',general:'📋 通用术语'};
 var activeCat='all';
 
