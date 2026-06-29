@@ -2,157 +2,182 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>多模型AI问答 — 公路设计规范</title>
+<title>深度检索 — 公路设计规范</title>
 <link rel="stylesheet" href="../css/site.css">
 <style>
-.ai-wrap{max-width:1000px;margin:0 auto}
-.ai-setup{background:var(--card-bg);border-radius:14px;padding:16px 20px;margin-bottom:16px;border:1px solid var(--border);display:none}
-.ai-setup h4{font-size:13px;margin-bottom:10px}
-.ai-keys{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px}
-.ai-key-row{display:flex;align-items:center;gap:8px;font-size:12px}
-.ai-key-row input{flex:1;padding:6px 10px;border:1.5px solid var(--border);border-radius:8px;font-size:11px;outline:none}
-.ai-key-row input:focus{border-color:var(--accent)}
-.ai-key-row label{white-space:nowrap;min-width:50px;font-weight:500}
-.ai-input-area{display:flex;gap:10px;margin-bottom:16px}
-.ai-input-area textarea{flex:1;padding:12px 16px;border:2px solid var(--border);border-radius:14px;font-size:14px;outline:none;resize:vertical;min-height:60px;font-family:inherit}
-.ai-input-area textarea:focus{border-color:var(--accent)}
-.ai-models{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
-.ai-model-btn{padding:8px 16px;border-radius:20px;border:2px solid var(--border);background:var(--card-bg);font-size:12px;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:6px}
-.ai-model-btn:hover{border-color:var(--accent)}
-.ai-model-btn.selected{border-color:var(--accent);background:var(--accent-light);color:var(--accent);font-weight:600}
-.ai-btn-row{display:flex;gap:8px;align-items:center}
-.ai-btn{padding:10px 24px;border-radius:22px;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .15s}
-.ai-btn.ask{background:var(--accent);color:#fff}
-.ai-btn.ask:hover{background:#1d4ed8}
-.ai-btn.ask:disabled{opacity:.6;cursor:default}
-.ai-btn.setup{background:var(--bg);color:var(--text2);border:2px solid var(--border)}
-.ai-results{display:grid;grid-template-columns:repeat(auto-fill,minmax(460px,1fr));gap:14px;margin-top:16px}
-.ai-card{background:var(--card-bg);border-radius:14px;border:1px solid var(--border);overflow:hidden}
-.ai-card-header{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;font-weight:600;font-size:13px}
-.ai-card-header .dot{width:8px;height:8px;border-radius:50%}
-.ai-card-body{padding:14px 16px;font-size:13px;line-height:1.7;color:var(--text2);min-height:60px;white-space:pre-wrap;word-break:break-word}
-.ai-card-body.loading{color:var(--text3);font-style:italic}
-.ai-card-body.error{color:#ef4444}
-.ai-hint{font-size:11px;color:var(--text3);margin-top:8px}
-[data-theme="dark"] .ai-card{background:#1e1e35}
-@media(max-width:700px){.ai-results{grid-template-columns:1fr}.ai-keys{grid-template-columns:1fr}}
+.ds-wrap{max-width:960px;margin:0 auto}
+.ds-input-area{display:flex;gap:10px;margin-bottom:12px}
+.ds-input-area textarea{flex:1;padding:14px 18px;border:2px solid var(--border);border-radius:16px;font-size:14px;outline:none;resize:vertical;min-height:50px;font-family:inherit}
+.ds-input-area textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(59,109,240,.08)}
+.ds-btn-row{display:flex;gap:8px;align-items:center;margin-bottom:16px}
+.ds-btn{padding:10px 24px;border-radius:22px;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .15s}
+.ds-btn.search{background:var(--accent);color:#fff}
+.ds-btn.search:hover{background:#1d4ed8}
+.ds-hints{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.ds-hint{padding:6px 14px;background:var(--accent-light);color:var(--accent);border-radius:16px;font-size:11px;cursor:pointer;border:none;transition:.15s}
+.ds-hint:hover{background:var(--accent);color:#fff}
+.ds-result{background:var(--card-bg);border-radius:14px;border:1px solid var(--border);padding:18px 22px;margin-bottom:12px;animation:fadeIn .3s}
+.ds-result h4{font-size:14px;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.ds-result h4 .ds-score{font-size:10px;padding:2px 8px;border-radius:8px;font-weight:600}
+.ds-score.high{background:#dcfce7;color:#166534}
+.ds-score.mid{background:#fef3c7;color:#92400e}
+.ds-score.low{background:#fee2e2;color:#991b1b}
+.ds-clause{padding:8px 12px;margin:4px 0;background:var(--bg);border-radius:8px;border-left:3px solid var(--accent);font-size:12px;line-height:1.7;color:var(--text2)}
+.ds-clause .ds-hl{background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:600}
+.ds-clause .ds-code{color:var(--accent);font-weight:600;font-size:10px}
+.ds-clause a{color:var(--accent);text-decoration:none}
+.ds-clause a:hover{text-decoration:underline}
+.ds-summary{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:2px solid #86efac;border-radius:14px;padding:16px 20px;margin-bottom:16px}
+.ds-summary h4{color:#166534;margin-bottom:6px}
+.ds-summary p{font-size:13px;color:#166534;line-height:1.7}
+.ds-empty{text-align:center;padding:40px;color:var(--text3)}
+[data-theme="dark"] .ds-result{background:#1e1e35}
+[data-theme="dark"] .ds-clause{background:#252540}
+[data-theme="dark"] .ds-summary{background:linear-gradient(135deg,#1a3020,#1a3a28);border-color:#166534}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:600px){.ds-input-area{flex-direction:column}}
 </style>
 </head>
 <body>
 <header class="header"><div class="header-inner"><div class="header-top">
-<a href="../" class="header-logo" style="text-decoration:none;">🤖</a><div><h1>多模型AI问答</h1><p class="subtitle">同时向豆包/DeepSeek/千问/智谱提问，对比回答</p></div>
+<a href="../" class="header-logo" style="text-decoration:none;">⚡</a><div><h1>深度检索</h1><p class="subtitle">基于104部规范数据库 · 全文本智能检索 · 跨规范交叉对比</p></div>
 </div></div></header>
-<main class="main ai-wrap">
+<main class="main ds-wrap">
 <div id="breadcrumb"></div>
 
-<div class="ai-setup" id="aiSetup">
-<h4>🔑 API Key 设置（保存在本地浏览器，不上传）</h4>
-<div class="ai-keys">
-<div class="ai-key-row"><label>🫘 豆包</label><input id="keyDoubao" placeholder="sk-..." type="password"></div>
-<div class="ai-key-row"><label>🔍 DeepSeek</label><input id="keyDS" placeholder="sk-..." type="password"></div>
-<div class="ai-key-row"><label>💡 千问</label><input id="keyQwen" placeholder="sk-..." type="password"></div>
-<div class="ai-key-row"><label>🧠 智谱</label><input id="keyGLM" placeholder="..." type="password"></div>
+<div class="ds-input-area">
+<textarea id="dsInput" placeholder="输入问题或关键词…&#10;例如：四级公路路基压实度标准 各等级对比 | 挡土墙抗滑系数 不同规范差异"></textarea>
 </div>
-<div class="ai-hint">💡 Key仅存在你浏览器中。获取方式：豆包控制台/DeepSeek开放平台/阿里百炼/智谱开放平台注册后即可免费领取。</div>
+<div class="ds-hints">
+<button class="ds-hint" onclick="quickAsk('四级公路 路基压实度 CBR 各等级对比')">🪨 各等级压实度/CBR对比</button>
+<button class="ds-hint" onclick="quickAsk('挡土墙 抗滑 抗倾覆 安全系数')">🧱 挡土墙安全系数</button>
+<button class="ds-hint" onclick="quickAsk('沥青路面 设计年限 面层厚度 高速公路 一级公路')">🛣 路面设计参数</button>
+<button class="ds-hint" onclick="quickAsk('桥梁 设计荷载 公路Ⅰ级 冲击系数')">🌉 桥梁荷载标准</button>
+<button class="ds-hint" onclick="quickAsk('护栏 防撞等级 C B A SB SA SS')">🛡 护栏等级全览</button>
+<button class="ds-hint" onclick="quickAsk('设计速度 车道宽度 路肩宽度 不同等级')">📏 横断面参数</button>
+<button class="ds-hint" onclick="quickAsk('JTG和CJJ 城市道路 公路 区别')">🔄 国标vs行标差异</button>
 </div>
-
-<div class="ai-models" id="aiModels">
-<button class="ai-model-btn selected" data-model="doubao"><span class="dot" style="background:#10b981"></span>🫘 豆包</button>
-<button class="ai-model-btn selected" data-model="ds"><span class="dot" style="background:#3b82f6"></span>🔍 DeepSeek</button>
-<button class="ai-model-btn" data-model="qwen"><span class="dot" style="background:#8b5cf6"></span>💡 千问</button>
-<button class="ai-model-btn" data-model="glm"><span class="dot" style="background:#f59e0b"></span>🧠 智谱</button>
-</div>
-
-<div class="ai-input-area">
-<textarea id="aiInput" placeholder="输入你的问题…（基于公路工程知识库）例如：四级公路的路基压实度标准和填料CBR要求是什么？"></textarea>
-</div>
-<div class="ai-btn-row">
-<button class="ai-btn ask" id="aiAsk" onclick="askAI()">🚀 同时提问</button>
-<button class="ai-btn setup" onclick="toggleSetup()">🔑 设置Key</button>
-<button class="ai-btn setup" onclick="fillDemo()">📋 示例问题</button>
+<div class="ds-btn-row">
+<button class="ds-btn search" onclick="deepSearch()">🔍 深度检索</button>
+<span style="font-size:11px;color:var(--text3)">💡 输入关键词或自然语言，检索104部规范中相关内容并交叉对比</span>
 </div>
 
-<div class="ai-results" id="aiResults">
-<div class="ai-card"><div class="ai-card-header"><span class="dot" style="background:#ccc"></span>选择模型并提问，回答将显示在这里</div><div class="ai-card-body" style="color:var(--text3)">支持同时对比多个AI模型的回答，帮你判断哪个答案更准确全面。</div></div>
+<div id="dsResults">
+<div class="ds-empty">⚡ 输入问题，基于104部规范数据库深度检索<br><span style="font-size:12px">完全离线可用，无需网络，秒级响应</span></div>
 </div>
 </main>
 
+<script src="../js/data.js?v=2"></script>
 <script src="../js/components.js?v=2"></script>
 <script src="../js/theme.js?v=2"></script>
 <script>
-document.getElementById('breadcrumb').innerHTML = renderBreadcrumb([{label:'🏠 首页',link:'../'},{label:'🤖 多模型AI问答'}]);
+document.getElementById('breadcrumb').innerHTML = renderBreadcrumb([{label:'🏠 首页',link:'../'},{label:'⚡ 深度检索'}]);
 
-// API配置
-var API_CONFIG = {
-  doubao: {name:'豆包',emoji:'🫘',color:'#10b981',url:'https://ark.cn-beijing.volces.com/api/v3/chat/completions',model:'doubao-1-5-pro-32k-250115'},
-  ds: {name:'DeepSeek',emoji:'🔍',color:'#3b82f6',url:'https://api.deepseek.com/v1/chat/completions',model:'deepseek-chat'},
-  qwen: {name:'千问',emoji:'💡',color:'#8b5cf6',url:'https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions',model:'qwen-plus'},
-  glm: {name:'智谱',emoji:'🧠',color:'#f59e0b',url:'https://open.bigmodel.cn/api/paas/v4/chat/completions',model:'glm-4-flash'}
-};
+function quickAsk(q){document.getElementById('dsInput').value=q;deepSearch()}
 
-// 从localStorage读取Key
-function getKey(model){return localStorage.getItem('ai_key_'+model)||''}
-function setKey(model,val){localStorage.setItem('ai_key_'+model,val)}
-// 保存页面加载时恢复Key
-['doubao','ds','qwen','glm'].forEach(function(m){document.getElementById('key'+m.charAt(0).toUpperCase()+m.slice(1)).value=getKey(m)});
-// 监听Key输入
-['doubao','ds','qwen','glm'].forEach(function(m){
-  var el=document.getElementById('key'+m.charAt(0).toUpperCase()+m.slice(1)); if(!el)return;
-  // 修正ID映射
-});
-// 由于ID命名不一致，手动绑定
-var keyMap={doubao:'keyDoubao',ds:'keyDS',qwen:'keyQwen',glm:'keyGLM'};
-Object.keys(keyMap).forEach(function(m){
-  var el=document.getElementById(keyMap[m]);if(!el)return;
-  el.value=getKey(m);
-  el.addEventListener('change',function(){setKey(m,el.value)});
-});
-
-function toggleSetup(){var s=document.getElementById('aiSetup');s.style.display=s.style.display==='block'?'none':'block'}
-function fillDemo(){document.getElementById('aiInput').value='四级公路的路基压实度标准和填料CBR要求是什么？请按公路等级详细列出，并引用JTG D30-2015规范条文。'}
-
-// 模型选择
-document.getElementById('aiModels').addEventListener('click',function(e){var b=e.target.closest('.ai-model-btn');if(!b)return;b.classList.toggle('selected')});
-
-async function askAI(){
-  var q=document.getElementById('aiInput').value.trim();if(!q){alert('请输入问题');return}
-  var selected=[];document.querySelectorAll('.ai-model-btn.selected').forEach(function(b){selected.push(b.dataset.model)});
-  if(selected.length===0){alert('请至少选择一个模型');return}
-
-  // 渲染卡片
-  var html='';
-  selected.forEach(function(m){var c=API_CONFIG[m];
-    html+='<div class="ai-card" id="card-'+m+'"><div class="ai-card-header"><span class="dot" style="background:'+c.color+'"></span>'+c.emoji+' '+c.name+'</div><div class="ai-card-body loading">⏳ 请求中…</div></div>';
+function deepSearch(){
+  var q=document.getElementById('dsInput').value.trim();if(!q)return;
+  // 分词
+  var terms=q.split(/[\s,，、。；;]+/).filter(function(t){return t.length>=2});
+  if(terms.length===0) terms=[q];
+  // 搜索所有规范
+  var results=[];
+  SPECS.forEach(function(spec){
+    var c=spec.content||'';var score=0;var matches=[];
+    terms.forEach(function(t){
+      var idx=c.indexOf(t);if(idx>=0){
+        score+=t.length*3;
+        // 表格内容加分
+        if(c.substring(Math.max(0,idx-60),idx+60).indexOf('<td')>=0) score+=10;
+      }
+      if(spec.code.indexOf(t)>=0) score+=5;
+      if(spec.title.indexOf(t)>=0) score+=4;
+    });
+    if(score>0) results.push({spec:spec,score:score});
   });
-  document.getElementById('aiResults').innerHTML=html;
-  document.getElementById('aiAsk').disabled=true;
+  // 排除已替代的旧版
+  results=results.filter(function(r){return r.spec.status!=='replaced'||q.indexOf(r.spec.code)>=0});
+  results.sort(function(a,b){return b.score-a.score});
+  if(results.length>12) results=results.slice(0,12);
 
-  // 构建系统提示词（结合公路规范知识）
-  var sysMsg='你是公路工程设计领域的AI助手，熟悉中国公路规范体系（JTG/CJJ/GB）。请基于专业知识回答用户问题，尽可能引用具体规范编号和条文。回答简洁准确。';
-
-  // 并发请求所有选中的模型
-  var promises=selected.map(function(m){
-    var cfg=API_CONFIG[m];var key=getKey(m);
-    if(!key) return Promise.resolve({model:m,error:'未设置API Key，请点击"设置Key"输入'});
-    return fetch(cfg.url,{
-      method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+key},
-      body:JSON.stringify({model:cfg.model,messages:[{role:'system',content:sysMsg},{role:'user',content:q}],max_tokens:1024,temperature:0.3})
-    }).then(function(r){return r.json()}).then(function(data){
-      if(data.error) return {model:m,error:data.error.message||JSON.stringify(data.error)};
-      if(data.choices&&data.choices[0]) return {model:m,text:data.choices[0].message.content};
-      return {model:m,error:'未知响应格式'};
-    }).catch(function(e){return {model:m,error:e.message||'网络错误'}});
-  });
-
-  var results=await Promise.all(promises);
+  // 提取每个结果的匹配条文
   results.forEach(function(r){
-    var card=document.getElementById('card-'+r.model);if(!card)return;
-    var body=card.querySelector('.ai-card-body');
-    if(r.error){body.className='ai-card-body error';body.textContent='❌ '+r.error}
-    else{body.className='ai-card-body';body.textContent=r.text}
+    var clauses=[];var c=r.spec.content;
+    // 提取li
+    var lis=c.match(/<li>(?!.*href)([\s\S]*?)<\/li>/gi)||[];
+    lis.forEach(function(li){
+      var clean=li.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
+      if(clean.length<15||clean.length>250) return;
+      var s=0;terms.forEach(function(t){if(clean.indexOf(t)>=0)s+=2});
+      if(s>=2) clauses.push({text:clean,score:s});
+    });
+    // 提取含hl的行
+    var hls=c.match(/<span class="hl">([^<]+)<\/span>[：:]?\s*([^<]{5,120})/gi)||[];
+    hls.forEach(function(hl){
+      var clean=hl.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
+      if(clean.length>8){var s=0;terms.forEach(function(t){if(clean.indexOf(t)>=0)s+=2});if(s>=2)clauses.push({text:clean,score:s})}
+    });
+    clauses.sort(function(a,b){return b.score-a.score});
+    r.clauses=clauses.slice(0,6);
   });
-  document.getElementById('aiAsk').disabled=false;
+
+  // 生成汇总：找到所有规范中关于同一关键词的数值
+  var summaryHTML='';
+  var topResults=results.filter(function(r){return r.score>=20});
+  if(topResults.length>=2){
+    // 提取共同的数值型参数
+    var numPatterns={};
+    terms.forEach(function(t){
+      topResults.forEach(function(r){
+        var c=r.spec.content;var idx=c.indexOf(t);
+        while(idx>=0){
+          var ctx=c.substring(Math.max(0,idx-30),idx+t.length+80);
+          var nums=ctx.match(/([≥≤]*\s*\d+[\.\d]*\s*[%mMkKkNPpaA年月次]*)/g);
+          if(nums){nums.forEach(function(n){
+            if(!numPatterns[n])numPatterns[n]=[];
+            if(numPatterns[n].indexOf(r.spec.code)<0)numPatterns[n].push(r.spec.code);
+          })}
+          idx=c.indexOf(t,idx+1);
+        }
+      });
+    });
+    // 取前6个最常见的数值
+    var numKeys=Object.keys(numPatterns).filter(function(k){return numPatterns[k].length>=2}).sort(function(a,b){return numPatterns[b].length-numPatterns[a].length}).slice(0,8);
+    if(numKeys.length>0){
+      summaryHTML='<div class="ds-summary"><h4>📊 跨规范交叉对比</h4><p>在 '+topResults.length+' 部规范中找到的<b>共同关键参数</b>：<br>';
+      numKeys.forEach(function(nk){
+        summaryHTML+='<span style="display:inline-block;background:#fff;border:1px solid #bbf7d0;border-radius:6px;padding:3px 8px;margin:2px;font-size:12px;font-weight:600;color:#166534">'+nk+'</span> ';
+      });
+      summaryHTML+='<br><span style="font-size:11px">点击下方规范链接查看完整条文</span></p></div>';
+    }
+  }
+
+  // 渲染
+  var h=summaryHTML;
+  if(results.length===0){h='<div class="ds-empty">🔍 未找到相关内容<br><span style="font-size:12px">试试换个表述或更具体的关键词</span></div>'}
+  else{
+    results.forEach(function(r,i){
+      var level=r.score>=50?'high':r.score>=25?'mid':'low';
+      var label=r.score>=50?'高相关':r.score>=25?'中相关':'低相关';
+      h+='<div class="ds-result"><h4>'+r.spec.code+' '+r.spec.title+' <span class="ds-score '+level+'">'+label+' ('+r.score+')</span></h4>';
+      if(r.clauses.length>0){
+        r.clauses.forEach(function(cl){
+          var txt=cl.text;
+          terms.forEach(function(t){txt=txt.replace(new RegExp(t.replace(/[.*+?^${}()|[\]\\\/]/g,'\\$&'),'g'),'<span class="ds-hl">'+t+'</span>')});
+          h+='<div class="ds-clause">'+txt+' <a href="../specs/?code='+encodeURIComponent(r.spec.code)+'" target="_blank">查看 →</a></div>';
+        });
+      }
+      h+='</div>';
+    });
+  }
+  document.getElementById('dsResults').innerHTML=h;
+  document.getElementById('dsResults').scrollIntoView({behavior:'smooth',block:'start'});
 }
+
+// 快捷键
+document.addEventListener('keydown',function(e){
+  if((e.ctrlKey||e.metaKey)&&e.key==='Enter'){e.preventDefault();deepSearch()}
+});
 
 var bt=document.createElement('button');bt.className='back-top';bt.id='backTop';bt.textContent='↑';document.body.appendChild(bt);
 window.addEventListener('scroll',function(){bt.classList.toggle('visible',window.scrollY>700)});
