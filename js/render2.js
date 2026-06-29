@@ -283,6 +283,7 @@
       lis.forEach(function(li) {
         var btn = document.createElement('button');
         btn.className = 'copy-btn';
+        btn.textContent = '⧉';
         btn.title = '复制';
         btn.addEventListener('click', function(e) {
           e.stopPropagation();
@@ -300,6 +301,7 @@
       tables.forEach(function(tbl) {
         var btn = document.createElement('button');
         btn.className = 'tbl-copy-btn';
+        btn.textContent = '⧉';
         btn.title = '复制表格';
         var wrap = document.createElement('div');
         wrap.className = 'tbl-wrap';
