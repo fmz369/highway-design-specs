@@ -32,7 +32,10 @@
     { re: /(如何|怎么|怎样|how)/i, type: 'how_to', weight: 1 },
   ];
 
-  document.getElementById('qaHints').addEventListener('click', function (e) { if (e.target.classList.contains('qa-hint')) { input.value = e.target.textContent; doSearch(); } });
+  function hintClick(e) { if (e.target.classList.contains('qa-hint')) { input.value = e.target.textContent; doSearch(); } }
+  var hintsEl = document.getElementById('qaHints'); if (hintsEl) hintsEl.addEventListener('click', hintClick);
+  var hintsFreq = document.getElementById('qaHintsFreq'); if (hintsFreq) hintsFreq.addEventListener('click', hintClick);
+  var hintsCmp = document.getElementById('qaHintsCmp'); if (hintsCmp) hintsCmp.addEventListener('click', hintClick);
   btn.addEventListener('click', doSearch);
   input.addEventListener('keydown', function (e) { if (e.key === 'Enter') doSearch(); });
   document.addEventListener('keydown', function (e) { if (e.key === '/' && document.activeElement !== input && document.activeElement.tagName !== 'INPUT') { e.preventDefault(); input.focus(); } });
