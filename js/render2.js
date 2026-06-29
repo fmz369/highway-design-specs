@@ -417,7 +417,7 @@
     var btnExp = document.getElementById('btnDoExport');
     var expCount = document.getElementById('exportCount');
 
-    // 给所有li添加复选框
+    // 给所有li添加复选框（默认隐藏，select-mode才显示）
     if (contentEl) {
       var allLis = contentEl.querySelectorAll('li');
       allLis.forEach(function(li) {
@@ -439,7 +439,7 @@
       btnSel.addEventListener('click', function() {
         selectMode = !selectMode;
         contentEl.classList.toggle('select-mode', selectMode);
-        btnSel.textContent = selectMode ? '☑ 取消选择' : '☑ 选择导出';
+        btnSel.textContent = selectMode ? '✕ 取消' : '☑ 条文导出';
         if (!selectMode) { btnExp.style.display = 'none'; }
         // 关闭标注模式
         if (selectMode && hlMode) { hlMode = false; contentEl.classList.remove('hl-mode'); btnHL.style.background = ''; btnHL.style.color = ''; }

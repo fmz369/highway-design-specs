@@ -76,8 +76,8 @@ function renderToolbar(spec) {
       : '')
     + '<a href="../compare/?codes=' + encodeURIComponent(spec.code) + '" class="btn" title="对比">📊 对比</a>'
     + '<button class="btn" id="btnHighlight" title="标注条文">🖍 标注</button>'
-    + '<button class="btn" id="btnSelectExport" title="选择条文导出">☑ 选择导出</button>'
-    + '<button class="btn" id="btnDoExport" title="导出选中条文" style="display:none">📄 导出(<span id="exportCount">0</span>)</button>'
+    + '<button class="btn" id="btnSelectExport" title="勾选条文批量导出">☑ 条文导出</button>'
+    + '<button class="btn" id="btnDoExport" title="导出选中条文" style="display:none;background:#fef3c7;color:#92400e;border-color:#facc15"><span id="exportCount">0</span>条 → 导出</button>'
     + '<div class="inline-search" id="inlineSearchBox">'
     + '<input type="text" id="inlineSearchInput" placeholder="页内搜索…" title="在规范内搜索（Ctrl+F）">'
     + '<span class="is-count" id="isCount"></span>'
