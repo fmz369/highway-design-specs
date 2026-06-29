@@ -96,6 +96,7 @@ function renderFooter() {
     + '<a href="../compare/">📊 规范对比</a>'
     + '<a href="../qa/">🤖 智能问答</a>'
     + '<a href="../favorites/">⭐ 收藏夹</a>'
+    + '<a href="../converter/">📏 换算</a>'
     + '<a href="../knowledge/">📚 知识库</a>'
     + '<a href="../design-assistant/">🧭 设计助手</a>'
     + '<a href="../account/">👤 个人</a>'

@@ -27,7 +27,8 @@ var URLS = [
   'category/index.html',
   'account/index.html',
   'knowledge/index.html',
-  'design-assistant/index.html'
+  'design-assistant/index.html',
+  'converter/index.html'
 ];
 
 self.addEventListener('install', function(e) {

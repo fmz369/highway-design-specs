@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>单位换算 — 公路设计规范</title>
+<link rel="stylesheet" href="../css/site.css">
+<style>
+.cv-wrap{max-width:700px;margin:0 auto}
+.cv-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+.cv-tab{padding:8px 16px;border-radius:20px;border:2px solid var(--border);background:var(--card-bg);font-size:12px;cursor:pointer;transition:all .2s;font-weight:500}
+.cv-tab:hover,.cv-tab.active{border-color:var(--accent);color:#fff;background:var(--accent)}
+.cv-panel{display:none}
+.cv-panel.active{display:block}
+.cv-card{background:var(--card-bg);border-radius:16px;padding:20px 24px;border:1px solid var(--border);margin-bottom:12px}
+.cv-row{display:flex;align-items:center;gap:12px;margin:10px 0;flex-wrap:wrap}
+.cv-row label{font-size:11px;color:var(--text3);width:50px;flex-shrink:0;font-weight:500}
+.cv-row input{flex:1;min-width:120px;padding:10px 14px;border:2px solid var(--border);border-radius:12px;font-size:14px;outline:none;background:var(--bg);font-family:'SF Mono',Consolas,monospace}
+.cv-row input:focus{border-color:var(--accent);background:var(--card-bg)}
+.cv-row .cv-unit{font-size:12px;color:var(--text2);width:55px;flex-shrink:0}
+.cv-row .cv-eq{font-size:11px;color:var(--text3);width:20px;text-align:center}
+.cv-title{font-size:14px;font-weight:700;margin-bottom:8px;padding-bottom:6px;border-bottom:1.5px solid var(--border)}
+[data-theme="dark"] .cv-row input{background:#1e1e35}
+@media(max-width:500px){.cv-row{flex-direction:column;align-items:stretch;gap:4px}.cv-row label{width:auto}}
+</style>
+</head>
+<body>
+<header class="header"><div class="header-inner"><div class="header-top">
+<a href="../" class="header-logo" style="text-decoration:none;">📏</a><div><h1>单位换算器</h1><p class="subtitle">公路工程常用单位即时换算</p></div>
+</div></div></header>
+<main class="main cv-wrap">
+<div id="breadcrumb"></div>
+<div class="cv-tabs">
+<button class="cv-tab active" data-panel="length">📏 长度</button>
+<button class="cv-tab" data-panel="speed">🚗 速度</button>
+<button class="cv-tab" data-panel="pressure">⚡ 压力/应力</button>
+<button class="cv-tab" data-panel="angle">📐 角度/坡度</button>
+<button class="cv-tab" data-panel="force">🏋️ 力/重量</button>
+<button class="cv-tab" data-panel="flow">💧 流量</button>
+</div>
+<div id="cvPanels"></div>
+</main>
+
+<script src="../js/components.js?v=2"></script>
+<script src="../js/theme.js?v=2"></script>
+<script>
+document.getElementById('breadcrumb').innerHTML = renderBreadcrumb([{label:'🏠 首页',link:'../'},{label:'📏 单位换算器'}]);
+
+// 换算器定义
+var converters = {
+length: {title:'📏 长度换算', pairs:[
+  {a:'米 (m)',b:'千米 (km)', f:function(v){return v/1000}, r:function(v){return v*1000}},
+  {a:'米 (m)',b:'英尺 (ft)', f:function(v){return v*3.28084}, r:function(v){return v/3.28084}},
+  {a:'米 (m)',b:'厘米 (cm)', f:function(v){return v*100}, r:function(v){return v/100}},
+  {a:'千米 (km)',b:'英里 (mile)', f:function(v){return v*0.621371}, r:function(v){return v/0.621371}},
+  {a:'毫米 (mm)',b:'英寸 (in)', f:function(v){return v/25.4}, r:function(v){return v*25.4}},
+]},
+speed: {title:'🚗 速度换算', pairs:[
+  {a:'km/h',b:'m/s', f:function(v){return v/3.6}, r:function(v){return v*3.6}},
+  {a:'km/h',b:'mph(英里/时)', f:function(v){return v*0.621371}, r:function(v){return v/0.621371}},
+  {a:'m/s',b:'mph', f:function(v){return v*2.23694}, r:function(v){return v/2.23694}},
+]},
+pressure: {title:'⚡ 压力/应力换算', pairs:[
+  {a:'MPa',b:'kPa', f:function(v){return v*1000}, r:function(v){return v/1000}},
+  {a:'MPa',b:'Pa', f:function(v){return v*1e6}, r:function(v){return v/1e6}},
+  {a:'MPa',b:'psi', f:function(v){return v*145.038}, r:function(v){return v/145.038}},
+  {a:'MPa',b:'kgf/cm²', f:function(v){return v*10.1972}, r:function(v){return v/10.1972}},
+  {a:'kPa',b:'kN/m²', f:function(v){return v*1}, r:function(v){return v}},
+]},
+angle: {title:'📐 角度/坡度换算', pairs:[
+  {a:'度 (°)',b:'弧度 (rad)', f:function(v){return v*Math.PI/180}, r:function(v){return v*180/Math.PI},
+  {a:'坡度 (%)',b:'度 (°)', f:function(v){return Math.atan(v/100)*180/Math.PI}, r:function(v){return Math.tan(v*Math.PI/180)*100}},
+  {a:'坡度 (%)',b:'坡比 (1:n)', f:function(v){return 100/v}, r:function(v){return 100/v}},
+]},
+force: {title:'🏋️ 力/重量换算', pairs:[
+  {a:'千牛 (kN)',b:'牛 (N)', f:function(v){return v*1000}, r:function(v){return v/1000}},
+  {a:'千牛 (kN)',b:'吨力 (tf)', f:function(v){return v*0.101972}, r:function(v){return v/0.101972}},
+  {a:'千牛 (kN)',b:'公斤力 (kgf)', f:function(v){return v*101.972}, r:function(v){return v/101.972}},
+  {a:'吨 (t)',b:'公斤 (kg)', f:function(v){return v*1000}, r:function(v){return v/1000}},
+  {a:'吨 (t)',b:'磅 (lb)', f:function(v){return v*2204.62}, r:function(v){return v/2204.62}},
+]},
+flow: {title:'💧 流量换算', pairs:[
+  {a:'m³/s',b:'L/s', f:function(v){return v*1000}, r:function(v){return v/1000}},
+  {a:'m³/s',b:'m³/h', f:function(v){return v*3600}, r:function(v){return v/3600}},
+  {a:'L/s',b:'m³/h', f:function(v){return v*3.6}, r:function(v){return v/3.6}},
+]}};
+
+function renderPanel(key){
+  var c=converters[key];if(!c)return'';
+  var h='<div class="cv-card"><div class="cv-title">'+c.title+'</div>';
+  c.pairs.forEach(function(p,i){
+    h+='<div class="cv-row"><label>'+p.a+'</label><input type="number" id="cv_'+key+'_a'+i+'" placeholder="输入值…" oninput="convert(\''+key+'\','+i+',\'a\')"><span class="cv-eq">=</span><input type="number" id="cv_'+key+'_b'+i+'" placeholder="输入值…" oninput="convert(\''+key+'\','+i+',\'b\')"><label style="text-align:right">'+p.b+'</label></div>';
+  });
+  h+='</div>';
+  return h;
+}
+
+function convert(key,i,from){
+  var c=converters[key];var p=c.pairs[i];
+  var elA=document.getElementById('cv_'+key+'_a'+i);
+  var elB=document.getElementById('cv_'+key+'_b'+i);
+  if(from==='a'){
+    var v=parseFloat(elA.value);if(isNaN(v)){elB.value='';return}
+    elB.value=Math.round(p.f(v)*1e6)/1e6;
+  }else{
+    var v=parseFloat(elB.value);if(isNaN(v)){elA.value='';return}
+    elA.value=Math.round(p.r(v)*1e6)/1e6;
+  }
+}
+
+// 标签
+var activePanel='length';
+document.querySelector('.cv-tabs').addEventListener('click',function(e){
+  var t=e.target.closest('.cv-tab');if(!t)return;
+  document.querySelectorAll('.cv-tab').forEach(function(x){x.classList.remove('active')});
+  t.classList.add('active');activePanel=t.dataset.panel;
+  document.getElementById('cvPanels').innerHTML='<div class="cv-panel active">'+renderPanel(activePanel)+'</div>';
+});
+document.getElementById('cvPanels').innerHTML='<div class="cv-panel active">'+renderPanel('length')+'</div>';
+
+var bt=document.createElement('button');bt.className='back-top';bt.id='backTop';bt.textContent='↑';document.body.appendChild(bt);
+window.addEventListener('scroll',function(){bt.classList.toggle('visible',window.scrollY>700)});
+bt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+var ft=document.createElement('footer');ft.className='footer';ft.innerHTML=renderFooter();document.querySelector('.main').after(ft);
+</script>
+</body>
+</html>
