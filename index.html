@@ -95,7 +95,7 @@
   var curentPct = Math.round(current / total * 100);
 
 
-  // 每日一条
+  // 每日一记
   function dailyCard(){
     var day = Math.floor(Date.now() / 86400000);
     var idx = day % SPECS.length;
@@ -115,7 +115,7 @@
       var seen = stored ? JSON.parse(stored) : {};
       var isNew = !seen[today];
     } catch(e) { var isNew = true; }
-    return '<div class="daily-card"><div class="daily-card-header"><span class="daily-card-title">✨ 每日一条</span>' + (isNew ? '<span class="daily-badge">NEW</span>' : '') + '</div><div class="daily-spec">' + sp.code + '</div><div class="daily-text">' + best.substring(0, 140) + '</div><a href="specs/?code=' + encodeURIComponent(sp.code) + '" class="daily-link">查看规范 →</a></div>';
+    return '<div class="daily-card"><div class="daily-card-header"><span class="daily-card-title">📝 每日一记</span>' + (isNew ? '<span class="daily-badge">NEW</span>' : '') + '</div><div class="daily-spec">' + sp.code + '</div><div class="daily-text">' + best.substring(0, 140) + '</div><a href="specs/?code=' + encodeURIComponent(sp.code) + '" class="daily-link">查看规范 →</a></div>';
   }
 
   var dashHTML = '';
