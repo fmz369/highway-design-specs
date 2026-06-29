@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>知识库 — 公路设计规范</title>
+<link rel="stylesheet" href="../css/site.css">
+<style>
+.kb-wrap{max-width:960px;margin:0 auto}
+.kb-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.kb-tab{padding:9px 20px;border-radius:22px;border:2px solid var(--border);background:var(--card-bg);font-size:13px;cursor:pointer;transition:all .25s;font-weight:500}
+.kb-tab:hover,.kb-tab.active{border-color:var(--accent);color:#fff;background:var(--accent)}
+.kb-panel{display:none}
+.kb-panel.active{display:block}
+/* 术语 */
+.kb-search{margin-bottom:16px}
+.kb-search input{width:100%;padding:12px 18px;border:2px solid var(--border);border-radius:24px;font-size:14px;outline:none;box-sizing:border-box}
+.kb-search input:focus{border-color:var(--accent)}
+.kb-cats{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.kb-cat-btn{padding:6px 14px;border-radius:16px;border:1.5px solid var(--border);background:var(--card-bg);font-size:11px;cursor:pointer;transition:all .15s}
+.kb-cat-btn.active,.kb-cat-btn:hover{border-color:var(--accent);color:#fff;background:var(--accent)}
+.kb-term{padding:10px 14px;margin:4px 0;border-radius:10px;background:var(--card-bg);border:1px solid var(--border);transition:.15s}
+.kb-term:hover{border-color:var(--accent);box-shadow:var(--shadow-sm)}
+.kb-term .kb-tname{font-weight:700;font-size:13px;margin-bottom:2px}
+.kb-term .kb-en{font-weight:400;font-size:10px;color:var(--text3);margin-left:6px}
+.kb-term .kb-def{font-size:12px;color:var(--text2);line-height:1.6}
+.kb-empty{text-align:center;padding:40px;color:var(--text3)}
+/* 示意图 */
+.kb-ill-card{background:var(--card-bg);border-radius:14px;padding:18px 22px;margin-bottom:16px;border:1px solid var(--border)}
+.kb-ill-card h3{font-size:15px;margin-bottom:10px}
+.kb-ill-card svg{max-width:100%;height:auto;display:block;margin:0 auto}
+.kb-ill-desc{font-size:11px;color:var(--text3);margin-top:8px;line-height:1.6}
+[data-theme="dark"] .kb-term{background:#1e1e35}[data-theme="dark"] .kb-ill-card{background:#1e1e35}
+@media(max-width:600px){.kb-tab{font-size:11px;padding:7px 14px}}
+</style>
+</head>
+<body>
+<header class="header"><div class="header-inner"><div class="header-top">
+<a href="../" class="header-logo" style="text-decoration:none;">📚</a><div><h1>知识库</h1><p class="subtitle">术语词典 · 构造示意图 — 公路设计必备知识</p></div>
+</div></div></header>
+<main class="main kb-wrap">
+<div id="breadcrumb"></div>
+<div class="kb-tabs">
+<button class="kb-tab active" data-panel="glossary">📖 术语词典</button>
+<button class="kb-tab" data-panel="illustrations">🖼 构造示意图</button>
+</div>
+
+<div class="kb-panel active" id="panel-glossary">
+<div class="kb-search"><input type="text" id="kbSearch" placeholder="搜索术语…（如：压实度、CBR、停车视距）"></div>
+<div class="kb-cats" id="kbCats">
+<button class="kb-cat-btn active" data-cat="all">全部</button>
+<button class="kb-cat-btn" data-cat="geometry">📐 线形</button>
+<button class="kb-cat-btn" data-cat="subgrade">🪨 路基</button>
+<button class="kb-cat-btn" data-cat="pavement">🛣 路面</button>
+<button class="kb-cat-btn" data-cat="bridge">🌉 桥梁</button>
+<button class="kb-cat-btn" data-cat="safety">🛡 交安</button>
+<button class="kb-cat-btn" data-cat="drainage">💧 排水</button>
+<button class="kb-cat-btn" data-cat="general">📋 通用</button>
+</div>
+<div id="kbGlossary"></div>
+</div>
+
+<div class="kb-panel" id="panel-illustrations">
+<div class="kb-ill-card"><h3>📐 平曲线要素</h3>
+<svg viewBox="0 0 700 260"><defs><marker id="ar" markerWidth="6" markerHeight="5" refX="6" refY="2.5" orient="auto"><path d="M0,0 L6,2.5 L0,5" fill="none" stroke="#3b6df0" stroke-width="1"/></marker></defs>
+<line x1="50" y1="220" x2="280" y2="120" stroke="#3b6df0" stroke-width="2" stroke-dasharray="8,4"/><line x1="420" y1="120" x2="650" y2="220" stroke="#3b6df0" stroke-width="2" stroke-dasharray="8,4"/>
+<path d="M240,115 A220,220 0 0,1 460,115" fill="none" stroke="#3b6df0" stroke-width="3"/><path d="M210,126 Q230,117 240,115" fill="none" stroke="#f59e0b" stroke-width="2.5"/><path d="M460,115 Q470,117 490,126" fill="none" stroke="#f59e0b" stroke-width="2.5"/>
+<circle cx="350" cy="85" r="5" fill="#ef4444"/><text x="358" y="80" font-size="11" fill="#ef4444" font-weight="700">JD</text><circle cx="350" cy="280" r="4" fill="#6b7280"/>
+<line x1="240" y1="115" x2="350" y2="280" stroke="#ccc" stroke-width="1" stroke-dasharray="4,3"/><line x1="460" y1="115" x2="350" y2="280" stroke="#ccc" stroke-width="1" stroke-dasharray="4,3"/>
+<text x="340" y="40" font-size="12" fill="#3b6df0" font-weight="700">α — 路线转角</text><text x="330" y="195" font-size="10" fill="#f59e0b">T</text><text x="90" y="170" font-size="10" fill="#f59e0b">L</text><text x="470" y="185" font-size="9" fill="#f59e0b">Ls</text><text x="170" y="195" font-size="9" fill="#6b7280">E</text><text x="380" y="275" font-size="9" fill="#6b7280">R</text><line x1="350" y1="85" x2="350" y2="210" stroke="#6b7280" stroke-width="1" stroke-dasharray="3,3"/>
+</svg><div class="kb-ill-desc"><b>R</b>(半径) <b>α</b>(转角) <b>T</b>=R·tan(α/2)+Ls/2 <b>L</b>=R·α(rad)+Ls <b>E</b>=R·(sec(α/2)-1)</div></div>
+
+<div class="kb-ill-card"><h3>📏 竖曲线要素</h3>
+<svg viewBox="0 0 700 230"><line x1="50" y1="200" x2="300" y2="110" stroke="#3b6df0" stroke-width="2"/><line x1="300" y1="110" x2="650" y2="60" stroke="#3b6df0" stroke-width="2"/>
+<text x="160" y="165" font-size="11" fill="#3b6df0">i₁=+4%</text><text x="460" y="90" font-size="11" fill="#3b6df0">i₂=-2%</text><circle cx="300" cy="110" r="4" fill="#ef4444"/><text x="308" y="105" font-size="11" fill="#ef4444" font-weight="700">变坡点</text>
+<path d="M230,136 Q270,113 300,110 Q340,104 380,97" fill="none" stroke="#16a34a" stroke-width="3"/><text x="275" y="145" font-size="10" fill="#16a34a">R=10000</text>
+</svg><div class="kb-ill-desc"><b>ω</b>=|i₁-i₂| <b>T</b>=R·ω/2 凸形保证视距，凹形缓和冲击</div></div>
+
+<div class="kb-ill-card"><h3>🛣 公路横断面</h3>
+<svg viewBox="0 0 700 150"><rect x="0" y="50" width="700" height="70" fill="#e5e7eb"/><rect x="330" y="45" width="40" height="80" fill="#86efac"/><text x="340" y="85" font-size="9" fill="#166534">中分带</text>
+<rect x="60" y="50" width="270" height="70" fill="#d1d5db"/><rect x="370" y="50" width="270" height="70" fill="#d1d5db"/>
+<line x1="130" y1="50" x2="130" y2="120" stroke="#fff" stroke-width="1" stroke-dasharray="6,3"/><line x1="200" y1="50" x2="200" y2="120" stroke="#fff" stroke-width="1" stroke-dasharray="6,3"/>
+<line x1="440" y1="50" x2="440" y2="120" stroke="#fff" stroke-width="1" stroke-dasharray="6,3"/><line x1="510" y1="50" x2="510" y2="120" stroke="#fff" stroke-width="1" stroke-dasharray="6,3"/>
+<rect x="0" y="50" width="60" height="70" fill="#fca5a5"/><rect x="640" y="50" width="60" height="70" fill="#fca5a5"/>
+<text x="10" y="40" font-size="10" fill="#dc2626">硬路肩</text><text x="65" y="40" font-size="10" fill="#374151">行车道 3.75m</text><text x="400" y="40" font-size="10" fill="#374151">行车道</text><text x="645" y="40" font-size="10" fill="#dc2626">硬路肩</text>
+</svg><div class="kb-ill-desc">高速/一级公路标准横断面 | 车道宽3.75m | 硬路肩≥3.0m | 土路肩≥0.75m</div></div>
+
+<div class="kb-ill-card"><h3>🧱 挡土墙类型</h3>
+<svg viewBox="0 0 700 230"><text x="350" y="16" font-size="12" font-weight="700" fill="#374151" text-anchor="middle">五种常用挡土墙</text>
+<rect x="30" y="35" width="70" height="110" fill="#fef3c7" stroke="#d97706" stroke-width="2"/><text x="65" y="160" font-size="9" fill="#92400e" text-anchor="middle">重力式≤12m</text>
+<rect x="140" y="100" width="70" height="45" fill="#fef3c7" stroke="#d97706" stroke-width="2"/><rect x="140" y="145" width="90" height="16" fill="#fef3c7" stroke="#d97706" stroke-width="2"/><text x="185" y="175" font-size="9" fill="#92400e" text-anchor="middle">悬臂式≤15m</text>
+<rect x="270" y="100" width="70" height="45" fill="#fef3c7" stroke="#d97706" stroke-width="2"/><rect x="270" y="145" width="90" height="16" fill="#fef3c7" stroke="#d97706" stroke-width="2"/><line x1="285" y1="100" x2="285" y2="145" stroke="#d97706" stroke-width="2"/><line x1="305" y1="100" x2="305" y2="145" stroke="#d97706" stroke-width="2"/><text x="315" y="175" font-size="9" fill="#92400e" text-anchor="middle">扶壁式≤15m</text>
+<rect x="420" y="85" width="55" height="55" fill="#fef3c7" stroke="#d97706" stroke-width="2"/><line x1="455" y1="95" x2="520" y2="65" stroke="#ef4444" stroke-width="2" stroke-dasharray="5,3"/><line x1="455" y1="115" x2="520" y2="95" stroke="#ef4444" stroke-width="2" stroke-dasharray="5,3"/><text x="515" y="60" font-size="8" fill="#ef4444">锚杆</text><text x="447" y="160" font-size="9" fill="#92400e" text-anchor="middle">锚杆式≤8m</text>
+<rect x="580" y="45" width="70" height="100" fill="#fef3c7" stroke="#d97706" stroke-width="2"/><line x1="580" y1="70" x2="650" y2="70" stroke="#8b5cf6" stroke-width="1.5"/><line x1="580" y1="95" x2="650" y2="95" stroke="#8b5cf6" stroke-width="1.5"/><text x="645" y="65" font-size="8" fill="#8b5cf6">筋材</text><text x="615" y="160" font-size="9" fill="#92400e" text-anchor="middle">加筋土≤20m</text>
+<line x1="10" y1="161" x2="690" y2="161" stroke="#9ca3af" stroke-width="1.5"/>
+</svg><div class="kb-ill-desc">选用原则：石料多→重力式 | 地基弱→悬臂/扶壁式 | 岩质边坡→锚杆式 | 缺石料→加筋土式</div></div>
+
+<div class="kb-ill-card"><h3>🛣 路面结构层</h3>
+<svg viewBox="0 0 700 180"><rect x="0" y="15" width="700" height="30" fill="#4b5563"/><text x="350" y="35" font-size="11" fill="#fff" text-anchor="middle" font-weight="700">沥青面层 120~180mm</text>
+<rect x="0" y="45" width="700" height="30" fill="#9ca3af"/><text x="350" y="65" font-size="11" fill="#fff" text-anchor="middle" font-weight="700">水泥稳定碎石基层 180~200mm</text>
+<rect x="0" y="75" width="700" height="22" fill="#d1d5db"/><text x="350" y="90" font-size="10" fill="#374151" text-anchor="middle">底基层 150~200mm</text>
+<rect x="0" y="97" width="700" height="13" fill="#e5e7eb"/><text x="350" y="107" font-size="9" fill="#6b7280" text-anchor="middle">垫层（需要时）≥150mm</text>
+<rect x="0" y="110" width="700" height="70" fill="#fef3c7"/><text x="350" y="148" font-size="12" fill="#92400e" text-anchor="middle" font-weight="700">路 基（压实度逐层控制）</text>
+</svg><div class="kb-ill-desc">自上而下：面层→基层→底基层→垫层→路基 | 高速/一级面层≥120mm</div></div>
+
+<div class="kb-ill-card"><h3>🔍 交叉口视距三角形</h3>
+<svg viewBox="0 0 500 320"><rect x="60" y="140" width="380" height="45" fill="#d1d5db"/><rect x="210" y="10" width="45" height="300" fill="#d1d5db"/>
+<polygon points="180,110 180,165 230,165" fill="#fef3c7" fill-opacity="0.5" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6,3"/>
+<text x="180" y="135" font-size="9" fill="#92400e">视距三角形</text><text x="185" y="88" font-size="9" fill="#ef4444">禁止障碍物</text>
+</svg><div class="kb-ill-desc">由两方向停车视距构成，三角形区域内不得有任何阻碍视线的障碍物</div></div>
+</div>
+</main>
+
+<script src="../js/components.js?v=2"></script>
+<script src="../js/theme.js?v=2"></script>
+<script>
+document.getElementById('breadcrumb').innerHTML = renderBreadcrumb([{label:'🏠 首页',link:'../'},{label:'📚 知识库'}]);
+
+// 标签切换
+document.querySelector('.kb-tabs').addEventListener('click',function(e){
+  var t=e.target.closest('.kb-tab');if(!t)return;
+  document.querySelectorAll('.kb-tab').forEach(function(x){x.classList.remove('active')});
+  t.classList.add('active');
+  document.querySelectorAll('.kb-panel').forEach(function(x){x.classList.remove('active')});
+  document.getElementById('panel-'+t.dataset.panel).classList.add('active');
+});
+
+var GL={geometry:[{t:'平曲线',e:'Horizontal Curve',d:'道路平面线形中的曲线段，包括圆曲线和缓和曲线。R-半径、T-切线长、L-曲线长、E-外距。'},{t:'竖曲线',e:'Vertical Curve',d:'道路纵断面变坡点处设置的曲线，分凸形和凹形。用二次抛物线过渡，半径R、切线长T。'},{t:'缓和曲线',e:'Transition Curve',d:'连接直线与圆曲线的过渡曲线，常用回旋线。使离心加速度渐变，行车更舒适。'},{t:'停车视距',e:'Stopping Sight Distance',d:'发现障碍物到车辆完全停止的最短距离。反应距离+制动距离。'},{t:'会车视距',e:'Meeting Sight Distance',d:'两车相向行驶安全停止距离，约为停车视距的2倍。'},{t:'最大纵坡',e:'Maximum Grade',d:'道路纵断面最大坡度限值，高速3~5%，三/四级可达7~9%。'},{t:'超高',e:'Superelevation',d:'弯道外侧路面抬高形成单向横坡抵消离心力。最大超高一般8%，积雪6%。'},{t:'加宽',e:'Widening',d:'弯道路段为适应车辆转弯轨迹增加的额外宽度。'},{t:'平包竖',e:'HV Coordination',d:'平曲线与竖曲线一一对应且平曲线比竖曲线长的组合原则。'},{t:'合成坡度',e:'Resultant Grade',d:'路线纵坡与横坡矢量和，一般不超过10%~10.5%。'}],
+subgrade:[{t:'压实度',e:'Compaction Degree',d:'路基压实后干密度与标准最大干密度的比值(%)。上路床高速≥96%，四级≥94%。'},{t:'CBR',e:'California Bearing Ratio',d:'加州承载比。路床最小CBR值：高速8%，四级3~5%。不满足应换填或掺灰。'},{t:'路床',e:'Roadbed',d:'路面结构层底面以下0~0.8m。上路床0~0.3m，下路床0.3~0.8m。'},{t:'路堤',e:'Embankment',d:'填方路基。上路堤0.8~1.5m，下路堤>1.5m，各层有不同压实度要求。'},{t:'挡土墙',e:'Retaining Wall',d:'支挡填土或山体结构物。重力式≤12m、悬臂式≤15m、扶壁式≤15m、锚杆式≤8m、加筋土式≤20m。'},{t:'抗滑稳定Kc',e:'Sliding Stability',d:'基底摩阻力/土压力水平分力，通常要求≥1.3。'},{t:'抗倾覆K₀',e:'Overturning Stability',d:'稳定力矩/倾覆力矩，通常要求≥1.5。'},{t:'软土路基',e:'Soft Soil Subgrade',d:'高含水量、高压缩性土质。处理：排水固结、桩基、换填。'},{t:'湿陷性黄土',e:'Collapsible Loess',d:'遇水显著沉降的黄土。处理：强夯、灰土挤密桩、预浸水。'},{t:'台背回填',e:'Bridge Approach Backfill',d:'桥台背后填土，透水性材料，压实度≥96%，防桥头跳车。'}],
+pavement:[{t:'BZZ-100',e:'Standard Axle Load',d:'标准轴载：双轮组单轴100kN。所有交通量换算为此轴载当量次数。'},{t:'轴载换算',e:'Axle Load Conversion',d:'Ns=C₁·C₂·Ni·(Pi/100)^4.35。单轴C₁=1，双轴C₁=2.2。'},{t:'沥青面层',e:'Asphalt Surface',d:'路面最上层。高速/一级厚120~180mm，三级40~100mm。'},{t:'设计年限',e:'Design Life',d:'高速/一级15年，二级12年，三级8年，四级6年。'},{t:'弯沉值',e:'Deflection',d:'路面在荷载下的竖向位移，评价结构承载力，单位0.01mm。'},{t:'水泥弯拉强度',e:'Concrete Flexural Strength',d:'水泥路面设计关键指标，标准值4.0~5.0MPa。'}],
+bridge:[{t:'公路-Ⅰ级',e:'Highway Class I Load',d:'高速/一级汽车荷载。均布10.5kN/m，集中270~360kN。'},{t:'冲击系数',e:'Impact Factor',d:'动力放大系数μ，与结构基频有关，0.05~0.45。'},{t:'裂缝宽度',e:'Crack Width',d:'Ⅰ类环境≤0.20mm，Ⅱ类≤0.15mm。'},{t:'桩基础',e:'Pile Foundation',d:'桩距≥2.5d，嵌岩≥0.5m，埋深在冲刷线以下≥2m。'},{t:'E1/E2地震',e:'Seismic Levels',d:'E1(475年)弹性验算，E2(2000年)延性验算。'}],
+safety:[{t:'护栏防撞等级',e:'Barrier Crash Rating',d:'C(40kJ)→B(70)→A(160)→SB(280)→SA(400)→SS(520)。'},{t:'标志汉字高度',e:'Sign Character Height',d:'120km/h→60~70cm，80→40~50cm，30→20cm。'},{t:'轮廓标',e:'Delineator',d:'弯道间距≤8m，直线≤20m。'},{t:'防眩设施',e:'Anti-glare Screen',d:'高度1.6~1.7m，间距50~100cm。'}],
+drainage:[{t:'设计洪水频率',e:'Design Flood Frequency',d:'高速1/100，一级1/100，二级1/50，三级1/25。'},{t:'径流系数',e:'Runoff Coefficient',d:'沥青路面0.9，水泥0.85，土路0.4~0.6。'},{t:'推理公式法',e:'Rational Method',d:'Q=0.278·ψ·q·F，小流域<500km²。'}],
+general:[{t:'设计速度',e:'Design Speed',d:'高速120~80km/h，一级100~60km/h，二级80~40km/h。'},{t:'车道宽度',e:'Lane Width',d:'≥80km/h→3.75m，60→3.5m，≤40→3.25m。'},{t:'路肩宽度',e:'Shoulder Width',d:'硬路肩：高速≥3.0m，一级≥2.5m。'},{t:'三同时',e:'Three Simultaneities',d:'安全设施、防护设施、排水设施与主体工程同时设计/施工/使用。'}]};
+var catNames={geometry:'📐 线形设计',subgrade:'🪨 路基工程',pavement:'🛣 路面工程',bridge:'🌉 桥梁工程',safety:'🛡 交安设施',drainage:'💧 排水工程',general:'📋 通用术语'};
+var activeCat='all';
+
+function renderGlossary(filter){
+  var html='';
+  Object.keys(GL).forEach(function(cat){
+    if(filter!=='all'&&cat!==filter)return;
+    var items=GL[cat];
+    html+='<div style="margin-bottom:18px"><h3 style="font-size:14px;margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid var(--accent)">'+catNames[cat]+'（'+items.length+'条）</h3>';
+    items.forEach(function(item){html+='<div class="kb-term"><div class="kb-tname">'+item.t+'<span class="kb-en">'+item.e+'</span></div><div class="kb-def">'+item.d+'</div></div>';});
+    html+='</div>';
+  });
+  document.getElementById('kbGlossary').innerHTML=html||'<div class="kb-empty">未找到匹配术语</div>';
+}
+
+document.getElementById('kbSearch').addEventListener('input',function(){
+  var q=this.value.trim().toLowerCase();if(!q){renderGlossary(activeCat);return;}
+  var html='';
+  Object.keys(GL).forEach(function(cat){
+    var items=GL[cat].filter(function(item){return item.t.indexOf(q)>=0||item.e.toLowerCase().indexOf(q)>=0||item.d.indexOf(q)>=0});
+    if(!items.length)return;
+    html+='<div style="margin-bottom:18px"><h3 style="font-size:14px;margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid var(--accent)">'+catNames[cat]+'（匹配'+items.length+'条）</h3>';
+    items.forEach(function(item){html+='<div class="kb-term"><div class="kb-tname">'+item.t+'<span class="kb-en">'+item.e+'</span></div><div class="kb-def">'+item.d+'</div></div>';});
+    html+='</div>';
+  });
+  document.getElementById('kbGlossary').innerHTML=html||'<div class="kb-empty">未找到匹配术语</div>';
+});
+
+document.getElementById('kbCats').addEventListener('click',function(e){
+  var btn=e.target.closest('.kb-cat-btn');if(!btn)return;
+  document.querySelectorAll('.kb-cat-btn').forEach(function(b){b.classList.remove('active')});
+  btn.classList.add('active');activeCat=btn.dataset.cat;
+  document.getElementById('kbSearch').value='';renderGlossary(activeCat);
+});
+
+renderGlossary('all');
+
+var bt=document.createElement('button');bt.className='back-top';bt.id='backTop';bt.textContent='↑';document.body.appendChild(bt);
+window.addEventListener('scroll',function(){bt.classList.toggle('visible',window.scrollY>700)});
+bt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+var ft=document.createElement('footer');ft.className='footer';ft.innerHTML=renderFooter();document.querySelector('.main').after(ft);
+</script>
+</body>
+</html>
