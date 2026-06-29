@@ -66,6 +66,7 @@
 <button class="ctab" data-panel="wall">🧱 挡土墙稳定性</button>
 <button class="ctab" data-panel="axle">🚛 轴载换算</button>
 <button class="ctab" data-panel="drain">💧 涵洞孔径</button>
+<button class="ctab" data-panel="convert">📏 单位换算</button>
 </div>
 
 <div id="panels">
@@ -134,6 +135,17 @@
 <div class="calc-btn-row"><button class="calc-btn" onclick="calcDrain()">计算</button><button class="calc-btn reset" onclick="resetDrain()">重置</button></div>
 <div class="calc-result" id="r-drain"></div>
 </div>
+
+<div class="calc-panel" id="panel-convert"><h3>📏 单位换算</h3>
+<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px">
+<button class="ctab active" data-cv="length" style="font-size:11px;padding:5px 12px" onclick="switchCv('length')">📏 长度</button>
+<button class="ctab" data-cv="speed" style="font-size:11px;padding:5px 12px" onclick="switchCv('speed')">🚗 速度</button>
+<button class="ctab" data-cv="pressure" style="font-size:11px;padding:5px 12px" onclick="switchCv('pressure')">⚡ 压力</button>
+<button class="ctab" data-cv="angle" style="font-size:11px;padding:5px 12px" onclick="switchCv('angle')">📐 角度</button>
+<button class="ctab" data-cv="force" style="font-size:11px;padding:5px 12px" onclick="switchCv('force')">🏋️ 力</button>
+<button class="ctab" data-cv="flow" style="font-size:11px;padding:5px 12px" onclick="switchCv('flow')">💧 流量</button>
+</div>
+<div id="cvPanel" style="background:var(--card-bg);border-radius:12px;padding:14px 18px;border:1px solid var(--border)"></div></div>
 
 </div></main>
 <div id="pageFooter"></div>
@@ -394,6 +406,28 @@ function calcDrain(){
   saveHistory('涵洞孔径','Q='+Q.toFixed(1)+'m³/s → '+size);
 }
 function resetDrain(){document.getElementById('dF').value='0.5';document.getElementById('dQ').value='60';document.getElementById('dP').value='0.9';document.getElementById('dFr').value='100';document.getElementById('r-drain').style.display='none';}
+
+// ===== 单位换算 =====
+var CV={length:{pairs:[{a:'米(m)',b:'千米(km)',f:function(v){return v/1000},r:function(v){return v*1000}},{a:'米(m)',b:'英尺(ft)',f:function(v){return v*3.28084},r:function(v){return v/3.28084}},{a:'米(m)',b:'厘米(cm)',f:function(v){return v*100},r:function(v){return v/100}},{a:'千米(km)',b:'英里(mile)',f:function(v){return v*0.621371},r:function(v){return v/0.621371}}]},speed:{pairs:[{a:'km/h',b:'m/s',f:function(v){return v/3.6},r:function(v){return v*3.6}},{a:'km/h',b:'mph',f:function(v){return v*0.621371},r:function(v){return v/0.621371}}]},pressure:{pairs:[{a:'MPa',b:'kPa',f:function(v){return v*1000},r:function(v){return v/1000}},{a:'MPa',b:'psi',f:function(v){return v*145.038},r:function(v){return v/145.038}},{a:'MPa',b:'kgf/cm²',f:function(v){return v*10.1972},r:function(v){return v/10.1972}}]},angle:{pairs:[{a:'度(°)',b:'弧度(rad)',f:function(v){return v*Math.PI/180},r:function(v){return v*180/Math.PI}},{a:'坡度(%)',b:'度(°)',f:function(v){return Math.atan(v/100)*180/Math.PI},r:function(v){return Math.tan(v*Math.PI/180)*100}},{a:'坡度(%)',b:'坡比(1:n)',f:function(v){return 100/v},r:function(v){return 100/v}}]},force:{pairs:[{a:'千牛(kN)',b:'吨力(tf)',f:function(v){return v*0.101972},r:function(v){return v/0.101972}},{a:'千牛(kN)',b:'公斤力(kgf)',f:function(v){return v*101.972},r:function(v){return v/101.972}},{a:'吨(t)',b:'磅(lb)',f:function(v){return v*2204.62},r:function(v){return v/2204.62}}]},flow:{pairs:[{a:'m³/s',b:'L/s',f:function(v){return v*1000},r:function(v){return v/1000}},{a:'m³/s',b:'m³/h',f:function(v){return v*3600},r:function(v){return v/3600}}]}};
+var cvActive='length';
+function renderCv(){
+  var c=CV[cvActive];var h='';
+  c.pairs.forEach(function(p,i){
+    h+='<div style="display:flex;align-items:center;gap:10px;margin:10px 0;flex-wrap:wrap"><span style="font-size:12px;color:var(--text2);width:70px">'+p.a+'</span><input type="number" id="cv_a'+i+'" placeholder="输入…" oninput="cvConvert('+i+',\'a\')" style="flex:1;min-width:100px;padding:9px 12px;border:2px solid var(--border);border-radius:10px;font-size:14px;outline:none;background:var(--bg);font-family:SF Mono,Consolas,monospace"><span style="font-size:12px">=</span><input type="number" id="cv_b'+i+'" placeholder="输入…" oninput="cvConvert('+i+',\'b\')" style="flex:1;min-width:100px;padding:9px 12px;border:2px solid var(--border);border-radius:10px;font-size:14px;outline:none;background:var(--bg);font-family:SF Mono,Consolas,monospace"><span style="font-size:12px;color:var(--text2);width:80px;text-align:right">'+p.b+'</span></div>';
+  });
+  document.getElementById('cvPanel').innerHTML=h;
+}
+function cvConvert(i,from){
+  var p=CV[cvActive].pairs[i];var a=document.getElementById('cv_a'+i);var b=document.getElementById('cv_b'+i);
+  if(from==='a'){var v=parseFloat(a.value);if(isNaN(v)){b.value='';return}b.value=Math.round(p.f(v)*1e6)/1e6}
+  else{var v=parseFloat(b.value);if(isNaN(v)){a.value='';return}a.value=Math.round(p.r(v)*1e6)/1e6}
+}
+function switchCv(key){
+  cvActive=key;renderCv();
+  document.querySelectorAll('#panel-convert .ctab').forEach(function(x){x.classList.remove('active')});
+  document.querySelector('#panel-convert .ctab[data-cv="'+key+'"]').classList.add('active');
+}
+renderCv();
 </script>
 </body>
 </html>
