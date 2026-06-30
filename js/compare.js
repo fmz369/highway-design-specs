@@ -226,7 +226,10 @@ function renderCompareTable(specs, gradesArr) {
 
   // 先用新解析器提取全部参数
   var fullParams=specs.map(function(s,i){
-    return extractByKeywords(s);
+    var params=extractByKeywords(s);
+    // 用户选了等级→覆盖适用公路等级
+    if(gradesArr&&gradesArr[i]) params['适用公路等级']=gradesArr[i];
+    return params;
   });
 
   // 筛选出分类固定参数中有值的项
@@ -238,7 +241,8 @@ function renderCompareTable(specs, gradesArr) {
     var allKeys=[];fullParams.forEach(function(p){Object.keys(p).forEach(function(k){if(k!=='适用公路等级'&&allKeys.indexOf(k)<0)allKeys.push(k)})});
     displayKeys=allKeys.slice(0,10);
   }
-  if(displayKeys.indexOf('适用公路等级')<0&&fullParams.some(function(p){return p['适用公路等级']})){
+  // 适用等级始终在最前
+  if(displayKeys.indexOf('适用公路等级')<0){
     displayKeys.unshift('适用公路等级');
   }
 
