@@ -1099,16 +1099,21 @@ var SPECS = [
     tags:["设计管理","文件编制"],
     pdf:'规范PDF/公路工程基本建设项目设计文件编制办法.pdf',
     hasPdf:true,
-    content:`
-<h4>📑 内容简介</h4>
-<p>规定了公路工程<span class="hl">初步设计、施工图设计</span>文件的组成、内容、深度要求。交通运输部发布。</p>
-<h4>🔑 核心内容</h4>
-<ul>
-<li>初步设计文件：设计说明书、工程概算、设计图纸</li>
-<li>施工图设计文件：设计说明书、工程预算、施工图纸</li>
-<li>各专业（路线、路基路面、桥涵、隧道、交安）的编制深度要求</li>
-<li>设计文件格式、签署、归档规定</li>
-</ul>`
+    content:`<h4>📑 内容概要</h4>
+<p>规定了<span class="hl">公路工程基本建设项目设计文件</span>的组成、内容、深度要求。适用于不同等级公路各设计阶段。</p>
+
+<h4>设计文件组成</h4>
+<table><tr><th>篇章</th><th>内容</th></tr>
+<tr><td>第一篇 总说明书</td><td>地理位置图、工程概况、技术标准</td></tr>
+<tr><td>第二篇 总体设计</td><td>路线方案比选、总体布置图</td></tr>
+<tr><td>第三篇 路线</td><td>平面、纵断面、交叉口设计</td></tr>
+<tr><td>第四篇 路基路面</td><td>路基、路面、排水、防护</td></tr>
+<tr><td>第五篇 桥梁涵洞</td><td>桥型布置、结构设计、基础</td></tr>
+<tr><td>第六篇 隧道</td><td>洞门、衬砌、通风、照明</td></tr>
+<tr><td>第七篇 交通工程</td><td>标志、标线、护栏、监控</td></tr>
+</table>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2007年发布。公路工程勘察设计招标和设计文件编制的基本依据。</div>`
   },
   {
     code:'建城[2025]XX号',
@@ -1118,14 +1123,25 @@ var SPECS = [
     tags:["设计管理","市政"],
     pdf:'规范PDF/市政公用工程设计文件编制深度规定（2025）.pdf',
     hasPdf:true,
-    content:`
-<h4>📑 内容简介</h4>
-<p>规定了<span class="hl">市政公用工程</span>（道路、桥梁、隧道、给排水等）设计文件的编制深度要求。2025年新版。</p>
-<h4>🔑 与公路工程的关系</h4>
+    content:`<h4>📑 内容概要</h4>
+<p>规定了<span class="hl">市政公用工程</span>设计文件的编制深度要求。适用于道路、桥梁、隧道、给排水等。2025年新版。</p>
+
+<h4>设计阶段划分</h4>
+<table><tr><th>阶段</th><th>内容要求</th><th>深度</th></tr>
+<tr><td>方案设计</td><td>论证技术可行性和经济合理性</td><td>满足方案比选</td></tr>
+<tr><td>初步设计</td><td>确定工程方案、主要技术标准</td><td>满足概算编制</td></tr>
+<tr><td>施工图设计</td><td>详细构造、尺寸、材料、工艺</td><td>满足施工要求</td></tr>
+</table>
+
+<h4>道路专业设计文件要求</h4>
 <ul>
-<li>城镇化地区公路可参照市政道路编制深度</li>
-<li>公路与市政道路衔接段的设计文件参考</li>
-</ul>`
+<li>设计说明：工程概况、技术标准、主要工程量</li>
+<li>平面图：<span class="hl">1:500~1:2000</span>，含中线、红线、交叉口</li>
+<li>纵断面图：水平<span class="hl">1:500~1:2000</span>，垂直<span class="hl">1:50~1:200</span></li>
+<li>横断面图：<span class="hl">1:100~1:200</span>，每20m一断面</li>
+</ul>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2025年发布。市政公用工程设计的纲领性文件编制规定。</div>`
   },
   {
     code:'GB/T 1499.3-2022',
@@ -1241,9 +1257,25 @@ var SPECS = [
     tags:["基坑","支护"],
     pdf:'规范PDF/JGJ 120-2012 建筑基坑支护技术规程.pdf',
     hasPdf:true,
-    content:`<h4>📑 章节目录（7章）</h4><div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 基本规定</div><div>4 勘察</div><div>5 支护结构</div><div>6 地下水控制</div><div>7 开挖监测</div></div>
-<h4>🏗 安全等级</h4><table><tr><th>等级</th><th>后果</th><th>深度</th></tr><tr><td><span class="hl">一级</span></td><td>很严重</td><td>≥15m</td></tr><tr><td>二级</td><td>严重</td><td>10~15m</td></tr><tr><td>三级</td><td>不严重</td><td><10m</td></tr></table>
-<h4>🔩 支护选型</h4><ul><li>排桩+内支撑：较深基坑</li><li>地下连续墙：超深/邻水基坑</li><li>土钉墙：浅基坑(<12m)</li><li>公路应用：桥梁<span class="hl">承台深基坑</span></li></ul>`
+    content:`<h4>📑 章节目录（8章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 基本规定</div><div>4 支护结构选型</div><div>5 土压力计算</div><div>6 稳定性验算</div><div>7 变形控制</div><div>8 监测</div></div>
+
+<h4>📜 第4章 支护结构选型</h4>
+<table><tr><th>支护类型</th><th>适用深度(m)</th><th>适用土质</th></tr>
+<tr><td>放坡开挖</td><td><span class="hl"><5</span></td><td>各类土质，需场地允许</td></tr>
+<tr><td>土钉墙</td><td>5~12</td><td>可成孔的填土、粘性土</td></tr>
+<tr><td>排桩+锚杆</td><td>8~18</td><td>各类土质</td></tr>
+<tr><td>地下连续墙</td><td>>10</td><td>各类土质，深大基坑</td></tr>
+</table>
+
+<h4>📊 第6章 稳定性验算</h4>
+<ul>
+<li>整体稳定性：圆弧滑动法，安全系数≥<span class="hl">1.3</span></li>
+<li>抗倾覆：安全系数≥<span class="hl">1.2</span></li>
+<li>抗隆起：安全系数≥<span class="hl">1.6</span>（软土≥1.4）</li>
+</ul>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2012年10月1日实施。桥梁承台基坑、涵洞基坑设计的参考规范。</div>`
   },
   {
     code:'GB/T 25826-2010',
@@ -1253,8 +1285,18 @@ var SPECS = [
     tags:["钢筋","防腐"],
     pdf:'规范PDF/GBT 25826-2010 钢筋混凝土用环氧涂层钢筋.pdf',
     hasPdf:true,
-    content:`<h4>📑 适用范围</h4><p>规定<span class="hl">环氧涂层钢筋</span>的技术要求。用于海洋、除冰盐等腐蚀环境。</p>
-<h4>🔧 关键指标</h4><table><tr><th>项目</th><th>要求</th></tr><tr><td>涂层厚度</td><td><span class="hl">0.18~0.30mm</span></td></tr><tr><td>针孔数</td><td>≤3个/m</td></tr><tr><td>180°弯曲(弯心4d)</td><td>涂层不裂</td></tr><tr><td>粘结强度</td><td>≥设计值<span class="hl">85%</span></td></tr></table><ul><li>公路应用：跨海大桥、沿海桥梁、除冰盐路面桥梁的防腐蚀钢筋</li></ul>`
+    content:`<h4>📑 内容概要</h4>
+<p>规定了<span class="hl">钢筋混凝土用环氧涂层钢筋</span>的技术要求。用于腐蚀环境下的混凝土结构。</p>
+
+<h4>技术要求</h4>
+<ul>
+<li>涂层厚度：<span class="hl">0.18~0.30mm</span></li>
+<li>涂层连续性：针孔数≤<span class="hl">3个/m</span>（出厂检测）</li>
+<li>涂层可弯性：弯芯直径4d，弯后无裂纹</li>
+<li>适用于海洋环境、除冰盐环境等<span class="hl">强腐蚀</span>条件</li>
+</ul>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2011年6月1日实施。海工结构和化冰盐地区桥梁的标配材料标准。</div>`
   },
   {
     code:'GB/T 20933-2021',
@@ -1264,13 +1306,24 @@ var SPECS = [
     tags:["钢板桩","材料"],
     pdf:'规范PDF/GBT 20933-2021 热轧钢板桩.pdf',
     hasPdf:true,
-    content:`<h4>📑 适用范围</h4><p>规定<span class="hl">热轧钢板桩</span>的分类和技术要求。用于桥梁围堰、深基坑支护、挡土墙。</p>
-<h4>🔑 常见型号与截面特性</h4>
-<table><tr><th>类型</th><th>宽度(mm)</th><th>截面模量(cm³/m)</th><th>适用</th></tr>
-<tr><td><span class="hl">U型</span></td><td>400~750</td><td>500~3800</td><td>一般支护/围堰</td></tr>
-<tr><td>Z型</td><td>500~800</td><td>1000~4500</td><td>深基坑/深水围堰</td></tr>
-<tr><td>直线型</td><td>500~800</td><td>—</td><td>圆形围堰/格型结构</td></tr></table>
-<ul><li>常用牌号：SY295、SY390</li><li>公路应用：桥梁<span class="hl">承台围堰</span>、深基坑支护</li></ul>`
+    content:`<h4>📑 内容概要</h4>
+<p>规定了<span class="hl">热轧钢板桩</span>的分类、尺寸、技术要求。2021年新版。</p>
+
+<h4>常用截面形式</h4>
+<table><tr><th>型号</th><th>宽度(mm)</th><th>高度(mm)</th><th>每米重量(kg/m)</th></tr>
+<tr><td>SP-Ⅱ</td><td>400</td><td>100</td><td>48</td></tr>
+<tr><td>SP-Ⅲ</td><td>400</td><td>125</td><td>60</td></tr>
+<tr><td>SP-Ⅳ</td><td>400</td><td>170</td><td>76</td></tr>
+</table>
+
+<h4>应用场景</h4>
+<ul>
+<li>桥梁围堰、基坑支护、码头岸壁</li>
+<li>防渗墙、挡土墙</li>
+<li>屈服强度≥<span class="hl">295MPa</span>(SY295)</li>
+</ul>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2022年3月1日实施。替代GB/T 20933-2014。</div>`
   },
   {
     code:'CJJ 129-2009',
@@ -2648,12 +2701,25 @@ var SPECS = [
     status:'current',
     tags:["钢结构","养护"],
     hasPdf:false,
-    content:`
-	<h4>📑 章节目录</h4>
-	<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 检查</div><div>4 涂层养护</div><div>5 焊缝维修</div><div>6 螺栓维护</div><div>7 构件更换</div><div>8 疲劳裂纹处治</div></div>
-	<h4>🔑 核心养护要点</h4>
-	<ul><li>定期检查周期：通车≤5年→1次/3年；>5年→1次/2年</li><li><span class="hl">涂层劣化评级</span>：Ⅰ级(完好)~Ⅴ级(严重锈蚀)，Ⅲ级启动维修</li><li>高强螺栓扭矩检查：松动率>5%时全桥复拧</li><li>疲劳裂纹：发现后立即评定，>临界长度时<span class="hl">限载/临时加固</span></li><li>钢结构涂装体系设计年限：普通环境15年；沿海/工业环境10年</li></ul>
-	<div class="note-box"><strong>📅 实施信息</strong><br>2026年4月1日实施，首次系统性规定钢桥养护技术标准。</div>`
+    content:`<h4>📑 内容概要</h4>
+<p>规定了<span class="hl">公路钢结构桥梁养护</span>的技术要求。2025年发布，2026年4月1日实施。</p>
+
+<h4>钢桥主要病害</h4>
+<table><tr><th>病害类型</th><th>检测方法</th><th>处治措施</th></tr>
+<tr><td>钢材腐蚀</td><td>目视+膜厚仪+电位检测</td><td>除锈+重涂防腐体系</td></tr>
+<tr><td>疲劳裂纹</td><td>磁粉/超声波/渗透检测</td><td>止裂孔+补强钢板</td></tr>
+<tr><td>螺栓松动</td><td>扭矩检测</td><td>复拧或更换</td></tr>
+<tr><td>焊缝开裂</td><td>超声波+射线检测</td><td>打磨重焊</td></tr>
+</table>
+
+<h4>防腐涂装体系</h4>
+<ul>
+<li>底涂层：环氧富锌底漆≥<span class="hl">80μm</span></li>
+<li>中间层：环氧云铁中间漆≥<span class="hl">100μm</span></li>
+<li>面涂层：聚氨酯/氟碳面漆≥<span class="hl">80μm</span></li>
+</ul>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2026年4月1日实施。首次系统性规定钢桥养护技术标准。</div>`
   },
   {
     code:'JTG/T 5431-2025',
@@ -2712,11 +2778,25 @@ var SPECS = [
     status:'current',
     tags:["城市排水"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（4章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 管渠维护</div><div>3 泵站维护</div><div>4 安全管理</div></div>
-<h4>🔧 管渠维护要点</h4><ul><li>重要管渠清淤<span class="hl">1~2年/次</span></li><li>雨水口应在<span class="hl">汛前全面清掏</span></li><li>检查井每年检查≥1次</li><li>管道CCTV检测周期：主干管<span class="hl">3~5年</span></li></ul>
-<h4>⚡ 泵站维护</h4><ul><li>水泵机组每月试运行≥1次</li><li>汛期<span class="hl">24小时值班</span>，备用电源随时可用</li></ul>
-<h4>⚠ 安全管理</h4><ul><li>有限空间作业必须执行<span class="hl">"先通风、再检测、后作业"</span></li><li>井下作业须配气体检测仪和防毒面具</li><li>作业人员须持证上岗</li></ul>`
+    content:`<h4>📑 章节目录（8章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 基本规定</div><div>4 管渠运行</div><div>5 管渠维护</div><div>6 泵站运行</div><div>7 泵站维护</div><div>8 安全管理</div></div>
+
+<h4>📜 第4章 管渠运行</h4>
+<ul>
+<li>排水管渠应保持<span class="hl">畅通</span>，定期检查淤积情况</li>
+<li>雨水口应<span class="hl">及时清捞</span>，雨季前全面检查</li>
+<li>检查井井盖应完好，无缺失、无破损</li>
+</ul>
+
+<h4>🔧 第5章 管渠维护</h4>
+<table><tr><th>病害</th><th>修复方法</th></tr>
+<tr><td>管道破裂</td><td>开挖更换或非开挖内衬修复(CIPP)</td></tr>
+<tr><td>接口渗漏</td><td>注浆止水、橡胶圈更换</td></tr>
+<tr><td>管壁腐蚀</td><td>喷涂砂浆或环氧涂层</td></tr>
+<tr><td>检查井破损</td><td>井壁修补、井盖更换</td></tr>
+</table>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2017年5月1日实施。城镇排水设施运维的核心规程。</div>`
   },
   {
     code:'GB 50201-2014',
@@ -2774,9 +2854,25 @@ var SPECS = [
     tags:["施工排水"],
     pdf:'规范PDF/JTG T 3610-2019 公路路基施工技术规范.pdf',
     hasPdf:true,
-    content:`<h4>📑 章节目录</h4><div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 施工准备</div><div>4 一般路基施工</div><div>5 特殊路基施工</div><div>6 排水设施施工</div><div>7 防护与支挡施工</div></div>
-<h4>⚙ 路基施工核心要求</h4><ul><li>分层填筑：松铺厚度<span class="hl">≤30cm</span>（振动压路机）</li><li>填挖交界：台阶宽度<span class="hl">≥2m</span>，反向横坡≥3%</li><li>冲击碾压补强：H>4m段落每填2m冲碾一次（25kJ）</li><li><span class="hl">台背回填</span>：透水性材料，每层15~20cm，压实度≥96%</li></ul>
-<h4>💧 排水设施施工要点</h4><ul><li>永久排水设施<span class="hl">先行施工</span>（路堤填筑前先建排水沟）</li><li>雨季施工：临时截水沟+集水井+水泵抽排</li><li>地下水位高路段：井点降水或排水砂沟</li></ul>`
+    content:`<h4>📑 内容概要</h4>
+<p>规定了<span class="hl">公路路基施工</span>中排水设施的技术要求。</p>
+
+<h4>施工要点</h4>
+<ul>
+<li>边沟：开挖后及时<span class="hl">铺砌</span>，防止冲刷</li>
+<li>盲沟：反滤层级配要求<span class="hl">D15/d85<5</span></li>
+<li>渗沟：底部设不透水层，纵坡≥<span class="hl">1%</span></li>
+<li>排水管：PVC/PE双壁波纹管，环刚度≥<span class="hl">8kN/m²</span></li>
+</ul>
+
+<h4>质量控制</h4>
+<ul>
+<li>沟底高程偏差≤<span class="hl">±20mm</span></li>
+<li>沟底纵坡偏差≤<span class="hl">±0.1%</span></li>
+<li>断面尺寸偏差≤<span class="hl">±30mm</span></li>
+</ul>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2019年6月1日实施。配合JTG/T D33-2012排水设计规范使用。</div>`
   },
   {
     code:'GB 5768.2-2022',
@@ -2836,8 +2932,19 @@ var SPECS = [
     status:'current',
     tags:["发光标志"],
     hasPdf:false,
-    content:`<h4>📑 适用范围</h4><p>规定<span class="hl">LED主动发光</span>交通标志的技术要求。适用雾区、事故多发段、夜间重点路段。</p>
-<h4>💡 核心技术指标</h4><table><tr><th>项目</th><th>要求</th></tr><tr><td>白天亮度</td><td><span class="hl">≥8000cd/m²</span></td></tr><tr><td>夜间亮度</td><td>≥2000cd/m²</td></tr><tr><td>红色LED波长</td><td>625±5nm</td></tr><tr><td>绿色LED波长</td><td>505±5nm</td></tr><tr><td>防护等级</td><td>≥IP65</td></tr><tr><td>使用寿命</td><td>≥50000h</td></tr></table><ul><li>供电：市电/太阳能+蓄电池</li><li>可视距离：白天≥200m，夜间≥500m</li></ul>`
+    content:`<h4>📑 内容概要</h4>
+<p>规定了<span class="hl">LED主动发光道路交通标志</span>的技术要求和试验方法。</p>
+
+<h4>技术要求</h4>
+<ul>
+<li>发光均匀性：亮度均匀度≥<span class="hl">0.7</span></li>
+<li>视认距离：≥<span class="hl">200m</span>（正常天气）</li>
+<li>防护等级：<span class="hl">IP65</span>（户外型）</li>
+<li>工作温度：<span class="hl">-20℃~+60℃</span></li>
+<li>适用场景：急弯、事故多发段、学校区域</li>
+</ul>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2015年8月1日实施。主动发光标志在夜间和恶劣天气下效果显著。</div>`
   },
   {
     code:'JTG 2182-2020',
@@ -3099,11 +3206,18 @@ var SPECS = [
     status:'current',
     tags:["机电","隧道机电"],
     hasPdf:false,
-    content:`
-<h4>📑 章节目录（7章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 监控</div><div>3 收费</div><div>4 通信</div><div>5 照明</div><div>6 通风</div><div>7 供配电</div></div>
-<h4>🔑 各系统测试要点</h4>
-<table><tr><th>系统</th><th>测试项目</th><th>标准</th></tr><tr><td>车辆检测器</td><td>计数精度</td><td>误差<span class="hl">≤2%</span></td></tr><tr><td>可变情报板</td><td>像素完好率</td><td>失效点<span class="hl">≤3‰</span></td></tr><tr><td>ETC</td><td>交易成功率</td><td><span class="hl">≥99%</span></td></tr><tr><td>照明</td><td>照度/亮度均匀度</td><td><span class="hl">≥0.4</span></td></tr><tr><td>通风</td><td>风速/CO浓度</td><td>按设计值</td></tr></table>`
+    content:`<h4>📑 内容概要</h4>
+<p>规定了<span class="hl">公路机电工程</span>的测试方法和评定标准。</p>
+
+<h4>测试范围</h4>
+<ul>
+<li>监控系统：车辆检测器精度、CCTV图像质量、VMS显示</li>
+<li>通信系统：光缆衰耗≤<span class="hl">0.4dB/km</span>(1310nm)</li>
+<li>收费系统：ETC交易成功率≥<span class="hl">99.5%</span></li>
+<li>照明系统：平均照度≥<span class="hl">20lx</span>(隧道入口段)</li>
+</ul>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2021年11月1日实施。机电工程交工验收测试的技术依据。</div>`
   },
   {
     code:'JTG/T D81-2017',
