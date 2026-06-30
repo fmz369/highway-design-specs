@@ -1091,22 +1091,13 @@ var SPECS = [
     pdf:'规范PDF/GBT 1499.3-2022 钢筋混凝土用钢 第3部分：钢筋焊接网.pdf',
     hasPdf:true,
     content:`<h4>📑 内容概要</h4>
-<p>规定了<span class="hl">钢筋混凝土用钢筋焊接网</span>的技术要求。2022年新版。</p>
+<p><span class="hl">钢筋混凝土用钢 第3部分：钢筋焊接网</span>。2022年新版。</p>
 
-<h4>规格参数</h4>
-<ul>
-<li>钢筋直径：<span class="hl">5~16mm</span>(标准网)</li>
-<li>网孔尺寸：100×100~300×300mm</li>
-<li>焊点抗剪力≥<span class="hl">0.3×As×fyk</span></li>
-<li>网面平整度≤<span class="hl">10mm/m</span></li>
-</ul>
+<h4>规格</h4>
+<ul><li>钢筋直径：<span class="hl">5~16mm</span>(标准网)</li><li>网孔：100×100~300×300mm</li><li>焊点抗剪力≥<span class="hl">0.3As·fyk</span></li></ul>
 
-<h4>主要应用</h4>
-<ul>
-<li>路面和桥面铺装配筋</li>
-<li>隧道衬砌钢筋网</li>
-<li>边坡喷射混凝土加筋</li>
-</ul>
+<h4>应用</h4>
+<ul><li>路面/桥面铺装配筋</li><li>隧道衬砌钢筋网</li><li>边坡喷混加筋</li></ul>
 
 <div class="note-box"><strong>📅</strong>2022年10月1日实施。替代GB/T 1499.3-2010。</div>`
   },
@@ -1119,16 +1110,19 @@ var SPECS = [
     pdf:'规范PDF/GBT 13788-2024 冷轧带肋钢筋.pdf',
     hasPdf:true,
     content:`<h4>📑 内容概要</h4>
-<p>规定了<span class="hl">冷轧带肋钢筋</span>的技术要求。2024年新版。</p>
+<p><span class="hl">冷轧带肋钢筋</span>。2024年新版。</p>
 
-<h4>牌号与强度</h4>
-<table><tr><th>牌号</th><th>屈服MPa</th><th>抗拉MPa</th><th>直径mm</th></tr>
-<tr><td>CRB550</td><td class="hl">500</td><td>≥550</td><td>4~12</td></tr>
-<tr><td>CRB600H</td><td>540</td><td>≥600</td><td>5~16</td></tr>
-<tr><td>CRB680H</td><td>610</td><td>≥680</td><td>5~14</td></tr>
+<h4>牌号</h4>
+<table><tr><th>牌号</th><th>屈服MPa</th><th>抗拉MPa</th></tr>
+<tr><td>CRB550</td><td class="hl">500</td><td>≥550</td></tr>
+<tr><td>CRB600H</td><td>540</td><td>≥600</td></tr>
+<tr><td>CRB680H</td><td>610</td><td>≥680</td></tr>
 </table>
 
-<div class="note-box"><strong>📅</strong>2024年9月25日实施。2024版新增CRB680H高强牌号。</div>`
+<h4>2024版变化</h4>
+<ul><li>新增<span class="hl">CRB680H</span>高强牌号</li><li>CRB600H可替代HRB400用于配筋</li></ul>
+
+<div class="note-box"><strong>📅</strong>2024年9月25日实施。替代GB/T 13788-2017。</div>`
   },
   {
     code:'GB 50011-2010(2024版)',
@@ -1142,19 +1136,17 @@ var SPECS = [
 <p><span class="hl">建筑抗震设计标准</span>。2024年局部修订。</p>
 
 <h4>抗震设防三水准</h4>
-<ul>
-<li><span class="hl">小震不坏</span>：多遇地震下弹性工作</li>
-<li><span class="hl">中震可修</span>：设防地震下有限损伤</li>
-<li><span class="hl">大震不倒</span>：罕遇地震下不倒塌</li>
-</ul>
+<ul><li><span class="hl">小震不坏</span>：多遇地震弹性工作</li><li><span class="hl">中震可修</span>：设防地震有限损伤</li><li><span class="hl">大震不倒</span>：罕遇地震不倒塌</li></ul>
 
-<h4>场地类别</h4>
-<ul>
-<li>Ⅰ类(岩石)~Ⅳ类(软土)</li>
-<li>特征周期Tg：0.25s~0.90s(按场地和分组)</li>
-</ul>
+<h4>设防分类</h4>
+<table><tr><th>类别</th><th>标准</th></tr>
+<tr><td>甲类(特殊)</td><td>特殊设防</td></tr>
+<tr><td>乙类(重点)</td><td class="hl">高于本地区</td></tr>
+<tr><td>丙类(标准)</td><td>按本地区</td></tr>
+<tr><td>丁类(适度)</td><td>低于本地区</td></tr>
+</table>
 
-<div class="note-box"><strong>📅</strong>2010年实施，2024年局部修订。桥梁抗震参考依据。</div>`
+<div class="note-box"><strong>📅</strong>2010年12月实施，2024年局部修订。公路桥梁抗震参考。</div>`
   },
   {
     code:'GB 18306-2015',
@@ -1165,14 +1157,22 @@ var SPECS = [
     pdf:'规范PDF/GB 18306-2015 中国地震参数区划图.pdf',
     hasPdf:true,
     content:`<h4>📑 内容概要</h4>
-<p><span class="hl">中国地震动参数区划图</span>。地震区划的基础标准。</p>
+<p><span class="hl">中国地震动参数区划图</span>。国家标准，公路桥梁抗震设计的基础性依据。</p>
 
-<h4>烈度-峰值加速度</h4>
+<h4>地震动峰值加速度区划</h4>
 <table><tr><th>烈度</th><th>Ⅵ</th><th>Ⅶ</th><th>Ⅷ</th><th>Ⅸ</th></tr>
 <tr><td>加速度(g)</td><td class="hl">0.05</td><td>0.10/0.15</td><td>0.20/0.30</td><td>0.40</td></tr>
 </table>
 
-<div class="note-box"><strong>📅</strong>2016年6月1日实施。替代GB 18306-2001。含两幅区划图。</div>`
+<h4>反应谱特征周期</h4>
+<table><tr><th>场地类别</th><th>Ⅰ₀</th><th>Ⅰ₁</th><th>Ⅱ</th><th>Ⅲ</th><th>Ⅳ</th></tr>
+<tr><td>Tg(s)</td><td>0.20~0.25</td><td>0.25~0.35</td><td>0.35~0.45</td><td>0.45~0.65</td><td>0.65~0.90</td></tr>
+</table>
+
+<h4>公路桥梁应用</h4>
+<ul><li>查图确定桥址的峰值加速度和Tg</li><li>E1地震(475年)弹性验算，E2地震(2000年)延性验算</li><li>Ⅵ度以下可不进行抗震设防</li></ul>
+
+<div class="note-box"><strong>📅</strong>2016年6月1日实施。替代GB 18306-2001。含两幅1:400万区划图。</div>`
   },
   {
     code:'JGJ 120-2012',
@@ -1183,15 +1183,18 @@ var SPECS = [
     pdf:'规范PDF/JGJ 120-2012 建筑基坑支护技术规程.pdf',
     hasPdf:true,
     content:`<h4>📑 内容概要</h4>
-<p><span class="hl">建筑基坑支护技术规程</span>。适用于桥梁承台和涵洞基坑。</p>
+<p><span class="hl">建筑基坑支护技术规程</span>。桥梁承台和涵洞基坑设计参考。</p>
 
 <h4>支护选型</h4>
-<table><tr><th>类型</th><th>深度</th><th>土质</th></tr>
-<tr><td>放坡</td><td><5m</td><td>场地允许时</td></tr>
+<table><tr><th>类型</th><th>深度</th><th>适用</th></tr>
+<tr><td>放坡</td><td><5m</td><td>场地允许</td></tr>
 <tr><td>土钉墙</td><td>5~12m</td><td>可成孔土质</td></tr>
-<tr><td>排桩+锚杆</td><td>8~18m</td><td>各类</td></tr>
+<tr><td>排桩+锚杆</td><td>8~18m</td><td>各类土质</td></tr>
 <tr><td>地连墙</td><td>>10m</td><td>深大基坑</td></tr>
 </table>
+
+<h4>稳定性验算</h4>
+<ul><li>整体稳定≥<span class="hl">1.3</span></li><li>抗倾覆≥<span class="hl">1.2</span></li><li>抗隆起≥<span class="hl">1.6</span>(软土≥1.4)</li></ul>
 
 <div class="note-box"><strong>📅</strong>2012年10月1日实施。</div>`
   },
@@ -1225,19 +1228,15 @@ var SPECS = [
     content:`<h4>📑 内容概要</h4>
 <p><span class="hl">热轧钢板桩</span>。2021年新版。</p>
 
-<h4>主要型号</h4>
-<table><tr><th>型号</th><th>宽mm</th><th>高mm</th><th>kg/m</th></tr>
-<tr><td>SP-Ⅱ</td><td>400</td><td>100</td><td>48</td></tr>
-<tr><td>SP-Ⅲ</td><td>400</td><td>125</td><td>60</td></tr>
-<tr><td>SP-Ⅳ</td><td>400</td><td>170</td><td>76</td></tr>
+<h4>常用型号</h4>
+<table><tr><th>型号</th><th>宽度</th><th>高度</th><th>kg/m</th></tr>
+<tr><td>SP-Ⅱ</td><td>400mm</td><td>100mm</td><td>48</td></tr>
+<tr><td>SP-Ⅲ</td><td>400mm</td><td>125mm</td><td>60</td></tr>
+<tr><td>SP-Ⅳ</td><td>400mm</td><td>170mm</td><td>76</td></tr>
 </table>
 
-<h4>应用</h4>
-<ul>
-<li>桥梁围堰、基坑支护</li>
-<li>防渗墙、挡土墙</li>
-<li>屈服≥<span class="hl">295MPa</span></li>
-</ul>
+<h4>工程应用</h4>
+<ul><li>桥梁围堰、基坑支护</li><li>防渗墙、码头岸壁</li><li>屈服≥<span class="hl">295MPa</span>(SY295)</li></ul>
 
 <div class="note-box"><strong>📅</strong>2022年3月1日实施。</div>`
   },
@@ -1446,18 +1445,15 @@ var SPECS = [
     tags:["改扩建"],
     hasPdf:false,
     content:`<h4>📑 内容概要</h4>
-<p>规定了<span class="hl">高速公路改扩建交通工程及沿线设施</span>的设计要求。</p>
+<p><span class="hl">高速公路改扩建交通工程及沿线设施设计细则</span>。</p>
 
-<h4>主要内容</h4>
-<ul>
-<li>交通安全设施：护栏<span class="hl">过渡段</span>设计、临时标志标线</li>
-<li>监控设施：施工区视频监控、交通事件检测</li>
-<li>通信设施：施工期保通通信方案</li>
-<li>收费设施：ETC/MTC车道改扩建方案</li>
-<li>服务设施：服务区改扩建期间功能保障</li>
-</ul>
+<h4>改扩建期设施</h4>
+<ul><li>临时标志标线：<span class="hl">黄底黑字</span>，尺寸同永久标志</li><li>施工区<span class="hl">视频监控</span>全覆盖</li><li>ETC/MTC车道分段改造方案</li></ul>
 
-<div class="note-box"><strong>📅 实施信息</strong><br>2014年12月1日实施。配合JTG/T 3392-2022使用。</div>`
+<h4>交通安全</h4>
+<ul><li>护栏<span class="hl">过渡段</span>：不同等级护栏间设过渡≥15m</li><li>夜间施工设<span class="hl">太阳能警示灯</span></li></ul>
+
+<div class="note-box"><strong>📅</strong>2014年12月1日实施。</div>`
   },
   {
     code:'CJJ 169-2012',
@@ -2201,14 +2197,16 @@ var SPECS = [
 <p><span class="hl">公路圬工桥涵设计规范</span>。</p>
 
 <h4>适用范围</h4>
-<ul>
-<li>石拱桥：L≤<span class="hl">60m</span></li>
-<li>混凝土预制块拱桥：L≤<span class="hl">50m</span></li>
-<li>矢跨比：<span class="hl">1/3~1/8</span>，拱圈厚≥40cm</li>
-<li>石料≥MU50，砂浆≥M10</li>
-</ul>
+<table><tr><th>结构类型</th><th>最大跨径(m)</th><th>材料</th></tr>
+<tr><td>石拱桥</td><td class="hl">60</td><td>石料≥MU50</td></tr>
+<tr><td>混凝土预制块拱</td><td>50</td><td>砂浆≥M10</td></tr>
+<tr><td>砖拱桥(四级)</td><td>10</td><td>砖≥MU20</td></tr>
+</table>
 
-<div class="note-box"><strong>📅</strong>2005年8月1日实施。</div>`
+<h4>拱圈设计</h4>
+<ul><li>拱轴线：<span class="hl">悬链线</span>或抛物线</li><li>矢跨比：<span class="hl">1/3~1/8</span></li><li>拱圈厚≥<span class="hl">40cm</span>(主拱)</li></ul>
+
+<div class="note-box"><strong>📅</strong>2005年8月1日实施。圬工结构在景观桥和乡村桥中仍有应用。</div>`
   },
   {
     code:'JTG D62-2004',
@@ -2405,16 +2403,18 @@ var SPECS = [
     tags:["钢结构","制造安装"],
     hasPdf:false,
     content:`<h4>📑 内容概要</h4>
-<p><span class="hl">公路钢结构桥梁制造和安装施工规范</span>。2022年新版。</p>
+<p><span class="hl">公路钢结构桥梁制造和安装施工规范</span>。</p>
 
-<h4>精度要求</h4>
-<ul>
-<li>板面平面度≤<span class="hl">1mm/1m</span></li>
-<li>杆件长±2mm(L≤10m)</li>
-<li>节段错边≤<span class="hl">2mm</span></li>
-<li>焊温≥<span class="hl">5℃</span>，湿度≤80%</li>
-<li>高强螺栓终拧<span class="hl">24h</span>内扭矩检查</li>
-</ul>
+<h4>制造精度</h4>
+<table><tr><th>项目</th><th>允许偏差</th></tr>
+<tr><td>板单元平面度</td><td>≤<span class="hl">1mm/1m</span></td></tr>
+<tr><td>杆件长度(L≤10m)</td><td>±2mm</td></tr>
+<tr><td>节段匹配错边</td><td>≤<span class="hl">2mm</span></td></tr>
+<tr><td>焊缝咬边深度</td><td>≤0.5mm</td></tr>
+</table>
+
+<h4>安装条件</h4>
+<ul><li>吊装前<span class="hl">预拼装</span>验收</li><li>焊接环境：≥<span class="hl">5℃</span>，湿度≤80%</li><li>高强螺栓终拧<span class="hl">24h</span>内扭矩检查</li></ul>
 
 <div class="note-box"><strong>📅</strong>2022年11月1日实施。</div>`
   },
@@ -2426,17 +2426,20 @@ var SPECS = [
     tags:["钢结构","养护"],
     hasPdf:false,
     content:`<h4>📑 内容概要</h4>
-<p><span class="hl">公路钢结构桥梁养护技术规范</span>。2026年4月1日实施。</p>
+<p><span class="hl">公路钢结构桥梁养护技术规范</span>。首次系统化规定钢桥养护。</p>
 
-<h4>主要病害与处治</h4>
-<ul>
-<li>腐蚀→除锈+重涂(底漆≥80μm+中间≥100μm+面≥80μm)</li>
-<li>疲劳裂纹→止裂孔+补强钢板</li>
-<li>螺栓松动→扭矩复检+更换</li>
-<li>焊缝开裂→打磨重焊+无损检测</li>
-</ul>
+<h4>主要病害检查</h4>
+<table><tr><th>病害</th><th>检测方法</th></tr>
+<tr><td>涂层劣化</td><td>目视+膜厚仪+电位</td></tr>
+<tr><td>钢材腐蚀</td><td>超声波测厚</td></tr>
+<tr><td>疲劳裂纹</td><td>磁粉/超声波/渗透</td></tr>
+<tr><td>螺栓松动</td><td>扭矩扳手抽检</td></tr>
+</table>
 
-<div class="note-box"><strong>📅</strong>2026年4月1日实施。首部系统化钢桥养护标准。</div>`
+<h4>防腐涂装体系</h4>
+<ul><li>底漆(环氧富锌)≥<span class="hl">80μm</span></li><li>中间漆(环氧云铁)≥<span class="hl">100μm</span></li><li>面漆(聚氨酯/氟碳)≥<span class="hl">80μm</span></li></ul>
+
+<div class="note-box"><strong>📅</strong>2026年4月1日实施。</div>`
   },
   {
     code:'JTG/T 5431-2025',
@@ -2503,14 +2506,17 @@ var SPECS = [
     tags:["城市排水"],
     hasPdf:false,
     content:`<h4>📑 内容概要</h4>
-<p><span class="hl">城镇排水管渠与泵站</span>运行维护规程。</p>
+<p><span class="hl">城镇排水管渠与泵站运行维护规程</span>。</p>
 
 <h4>管渠维护</h4>
-<table><tr><th>病害</th><th>方法</th></tr>
-<tr><td>破裂</td><td>开挖更换或CIPP内衬</td></tr>
-<tr><td>渗漏</td><td>注浆止水</td></tr>
-<tr><td>腐蚀</td><td>喷涂砂浆/环氧</td></tr>
+<table><tr><th>病害</th><th>修复方法</th></tr>
+<tr><td>管道破裂</td><td>开挖更换或<span class="hl">CIPP内衬</span></td></tr>
+<tr><td>接口渗漏</td><td>注浆止水+橡胶圈更换</td></tr>
+<tr><td>管壁腐蚀</td><td>喷涂砂浆/环氧涂层</td></tr>
 </table>
+
+<h4>检查频率</h4>
+<ul><li>主干管：<span class="hl">每年1次</span>内窥检查</li><li>雨水口：<span class="hl">每季度</span>清捞</li><li>检查井：井盖完好，无缺失</li></ul>
 
 <div class="note-box"><strong>📅</strong>2017年5月1日实施。</div>`
   },
@@ -2576,16 +2582,17 @@ var SPECS = [
     pdf:'规范PDF/JTG T 3610-2019 公路路基施工技术规范.pdf',
     hasPdf:true,
     content:`<h4>📑 内容概要</h4>
-<p>公路路基排水设施施工技术要点。</p>
+<p>公路路基排水设施<span class="hl">施工技术</span>要求。</p>
 
 <h4>质量控制</h4>
-<ul>
-<li>沟底高程偏差≤<span class="hl">±20mm</span></li>
-<li>纵坡偏差≤<span class="hl">±0.1%</span></li>
-<li>断面偏差≤<span class="hl">±30mm</span></li>
-<li>盲沟反滤层D15/d85<5</li>
-<li>排水管环刚度≥<span class="hl">8kN/m²</span></li>
-</ul>
+<table><tr><th>项目</th><th>允许偏差</th></tr>
+<tr><td>沟底高程</td><td>±<span class="hl">20mm</span></td></tr>
+<tr><td>沟底纵坡</td><td>±<span class="hl">0.1%</span></td></tr>
+<tr><td>断面尺寸</td><td>±<span class="hl">30mm</span></td></tr>
+</table>
+
+<h4>材料要求</h4>
+<ul><li>盲沟反滤层：<span class="hl">D15/d85<5</span></li><li>排水管环刚度≥<span class="hl">8kN/m²</span></li></ul>
 
 <div class="note-box"><strong>📅</strong>2019年6月1日实施。</div>`
   },
@@ -3335,17 +3342,19 @@ var SPECS = [
     tags:["钢桥","铺装"],
     hasPdf:false,
     content:`<h4>📑 内容概要</h4>
-<p>规定了<span class="hl">公路钢桥面铺装</span>的设计与施工要求。</p>
+<p><span class="hl">公路钢桥面铺装设计与施工技术规范</span>。</p>
 
-<h4>铺装结构</h4>
-<ul>
-<li>浇筑式沥青(GA)：厚<span class="hl">35~40mm</span>，适用大跨径</li>
-<li>环氧沥青(EA)：厚<span class="hl">25~30mm</span>，耐久性优</li>
-<li>SMA：厚<span class="hl">35~40mm</span>，通用型</li>
-<li>防水粘结层必须设置，粘结强度≥<span class="hl">0.3MPa</span>(25℃)</li>
-</ul>
+<h4>铺装类型</h4>
+<table><tr><th>类型</th><th>厚度(mm)</th><th>特点</th></tr>
+<tr><td>浇筑式沥青GA</td><td class="hl">35~40</td><td>大跨径首选</td></tr>
+<tr><td>环氧沥青EA</td><td>25~30</td><td>耐久性优</td></tr>
+<tr><td>SMA</td><td>35~40</td><td>通用型</td></tr>
+</table>
 
-<div class="note-box"><strong>📅 实施信息</strong><br>2019年9月1日实施。正交异性钢桥面板铺装专用规范。</div>`
+<h4>防水粘结层</h4>
+<ul><li>必须设置，粘结≥<span class="hl">0.3MPa</span>(25℃)</li><li>环氧树脂或MMA材料</li></ul>
+
+<div class="note-box"><strong>📅</strong>2019年9月1日实施。</div>`
   },
   {
     code:'CJJ 221-2015',
@@ -3355,23 +3364,15 @@ var SPECS = [
     tags:["地下道路","城市"],
     hasPdf:false,
     content:`<h4>📑 内容概要</h4>
-<p>规定了<span class="hl">城市地下道路工程</span>的设计要求。</p>
+<p><span class="hl">城市地下道路工程设计规范</span>。</p>
 
-<h4>设计标准</h4>
-<ul>
-<li>设计速度：<span class="hl">40~60km/h</span></li>
-<li>车道宽度：<span class="hl">3.25~3.5m</span></li>
-<li>最大纵坡≤<span class="hl">5%</span>（特别困难≤6%且≤300m）</li>
-</ul>
+<h4>设计参数</h4>
+<ul><li>设计速度：<span class="hl">40~60km/h</span></li><li>最大纵坡≤<span class="hl">5%</span>(特别≤6%,≤300m)</li><li>平曲线Rmin=150m(V=60)</li></ul>
 
-<h4>安全设施</h4>
-<ul>
-<li>火灾排烟风速≥<span class="hl">2.0m/s</span>(临界风速)</li>
-<li>安全疏散口间距≤<span class="hl">250m</span></li>
-<li>长度>500m设机械通风</li>
-</ul>
+<h4>通风排烟</h4>
+<ul><li>L><span class="hl">500m</span>设机械通风</li><li>火灾排烟风速≥<span class="hl">2.0m/s</span></li><li>安全疏散≤<span class="hl">250m</span></li></ul>
 
-<div class="note-box"><strong>📅 实施信息</strong><br>2016年6月1日实施。</div>`
+<div class="note-box"><strong>📅</strong>2016年6月1日实施。</div>`
   },
   {
     code:'JTG/T 2420-2021',
@@ -3381,24 +3382,20 @@ var SPECS = [
     tags:["BIM"],
     hasPdf:false,
     content:`<h4>📑 内容概要</h4>
-<p>规定了<span class="hl">公路工程信息模型(BIM)</span>的创建、应用和交付标准。</p>
+<p><span class="hl">公路工程信息模型应用统一标准(BIM)</span>。</p>
 
-<h4>模型精细度(LOD)</h4>
-<ul>
-<li>LOD1.0：概念设计</li>
-<li>LOD2.0：<span class="hl">初步设计</span></li>
-<li>LOD3.0：<span class="hl">施工图设计</span></li>
-<li>LOD4.0：施工深化+运维</li>
-</ul>
+<h4>模型精细度LOD</h4>
+<table><tr><th>等级</th><th>阶段</th></tr>
+<tr><td>LOD1.0</td><td>概念设计</td></tr>
+<tr><td>LOD2.0</td><td class="hl">初步设计</td></tr>
+<tr><td>LOD3.0</td><td class="hl">施工图设计</td></tr>
+<tr><td>LOD4.0</td><td>施工深化+运维</td></tr>
+</table>
 
 <h4>交付要求</h4>
-<ul>
-<li>格式：优先<span class="hl">IFC</span>标准格式</li>
-<li>坐标系：<span class="hl">CGCS2000</span>国家大地坐标系</li>
-<li>含模型文件+属性信息表+应用报告</li>
-</ul>
+<ul><li>格式：优先<span class="hl">IFC</span>标准</li><li>坐标系：<span class="hl">CGCS2000</span></li><li>含模型+属性表+应用报告</li></ul>
 
-<div class="note-box"><strong>📅 实施信息</strong><br>2021年11月1日实施。公路行业BIM应用的纲领性标准。</div>`
+<div class="note-box"><strong>📅</strong>2021年11月1日实施。</div>`
   },
   {
     code:'JTG/T 5612-2020',
