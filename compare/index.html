@@ -101,7 +101,7 @@
     var specs = getSelectedSpecs();
     var html = '';
     specs.forEach(function(s, i) {
-      var p = extractByKeywords(s);
+      var p = extractHybrid(s);
       var grades = p['适用公路等级'] ? p['适用公路等级'].split('/') : [];
       var selHTML = '';
       if (grades.length > 1) {
@@ -226,7 +226,7 @@
   document.getElementById('btnExport').addEventListener('click', function() {
     var specs = getSelectedSpecs();
     if (specs.length < 2) return;
-    var params = specs.map(function(s) { return extractByKeywords(s); });
+    var params = specs.map(function(s) { return extractHybrid(s); });
     var allKeys = []; params.forEach(function(p) { Object.keys(p).forEach(function(k) { if (allKeys.indexOf(k) < 0) allKeys.push(k); }); });
     var csv = '参数项,' + specs.map(function(s) { return s.code; }).join(',') + '\n';
     allKeys.forEach(function(k) {

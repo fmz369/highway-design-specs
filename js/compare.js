@@ -233,6 +233,19 @@ function extractByKeywords(spec) {
   return p;
 }
 
+/** 混合提取：新解析器+旧解析器合并，各取所长 */
+function extractHybrid(spec, matchGrade) {
+  var p1=extractByKeywords(spec);          // 新：文本关键词
+  var p2=extractKeyParams(spec, matchGrade); // 旧：表格+li标签解析
+  // 合并：p1优先，p2补充
+  var p={};
+  Object.keys(p2).forEach(function(k){p[k]=p2[k]});
+  Object.keys(p1).forEach(function(k){p[k]=p1[k]}); // p1覆盖p2
+  // 用户选了等级→覆盖
+  if(matchGrade)p['适用公路等级']=matchGrade;
+  return p;
+}
+
 function renderCompareTable(specs, gradesArr) {
   if (!specs || specs.length === 0) return '';
   // 确定主导分类
@@ -241,12 +254,9 @@ function renderCompareTable(specs, gradesArr) {
   var catLabel=CAT_NAMES[domCat]||'通用';
   var catParams=CAT_PARAMS[domCat]||CAT_PARAMS['general'];
 
-  // 先用新解析器提取全部参数
+  // 混合提取
   var fullParams=specs.map(function(s,i){
-    var params=extractByKeywords(s);
-    // 用户选了等级→覆盖适用公路等级
-    if(gradesArr&&gradesArr[i]) params['适用公路等级']=gradesArr[i];
-    return params;
+    return extractHybrid(s,gradesArr?gradesArr[i]:null);
   });
 
   // 筛选出分类固定参数中有值的项
