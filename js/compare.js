@@ -150,46 +150,88 @@ function extractKeyParams(spec, matchGrade) {
   return p;
 }
 
+// 分类固定参数模板
+var CAT_PARAMS = {
+  geometry: ['适用公路等级','设计速度(km/h)','车道宽度(m)','车道数','路肩宽度(m)','路基宽度(m)','平曲线最小半径一般值(m)','平曲线最小半径极限值(m)','停车视距(m)','最大纵坡(%)','最大超高(%)','最大合成坡度(%)','缓和曲线最小长度(m)','建筑限界净高(m)'],
+  pavement: ['适用公路等级','设计速度(km/h)','路基压实度(上路床)','填料CBR(%)','路面设计年限','面层最小厚度(cm)','基层厚度(mm)','水泥弯拉强度(MPa)','路拱坡度(%)','最大纵坡(%)','汽车荷载'],
+  bridge: ['适用公路等级','汽车荷载','设计洪水频率','桥梁设计使用年限','设计速度(km/h)','建筑限界净高(m)','车道宽度(m)','裂缝宽度限值','挠度限值','支座类型','抗震设防等级'],
+  drainage: ['适用公路等级','设计洪水频率','径流系数','边沟尺寸','最小纵坡','截水沟距离','设计降雨重现期'],
+  safety: ['适用公路等级','设计速度(km/h)','护栏防撞等级','标志汉字高度(cm)','标线宽度(cm)','轮廓标间距(m)','防眩设施高度(m)','避险车道要求'],
+  rural: ['适用公路等级','设计速度(km/h)','车道宽度(m)','路基宽度(m)','AADT','错车道宽度(m)','路面设计年限','面层最小厚度(cm)','最大纵坡(%)'],
+  materials: ['材料牌号/等级','屈服强度(MPa)','抗拉强度(MPa)','适用直径(mm)','涂层厚度','伸长率(%)','应用场景'],
+  seismic: ['抗震设防烈度','地震动峰值加速度(g)','特征周期Tg(s)','场地类别','弹性/延性验算','E1/E2地震水准'],
+  general: ['适用公路等级','设计速度(km/h)','车道宽度(m)','车道数','路基宽度(m)','路面设计年限','汽车荷载','设计洪水频率','建筑限界净高(m)'],
+  drawings: ['图集编号','收录内容','配合规范','图样类型','适用范围'],
+};
+
+// 根据spec内容直接提取分类相关参数值
+function extractCatParams(spec, catParams, grade) {
+  var p = {}, c = spec.content||'';
+  if (!c) return p;
+  // 从content中提取li标签中的参数
+  var lis = c.match(/<li>[\s\S]*?<\/li>/gi) || [];
+  // 也从表格中提取
+  var tbls = c.match(/<td[^>]*>[\s\S]*?<\/td>/gi) || [];
+  var allText = lis.concat(tbls).map(function(x){return x.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim()}).join(' ');
+
+  catParams.forEach(function(key){
+    // 根据不同key搜索不同模式
+    var patterns = {
+      '适用公路等级':/(高速[公路]?|一级[公路]?|二级[公路]?|三级[公路]?|四级[公路]?)/g,
+      '设计速度(km/h)':/(\d{2,3})\s*km\/h/,
+      '车道宽度(m)':/(\d+\.?\d*)\s*m[（(]?车道/,
+      '路基宽度(m)':/路基宽度[^0-9]*(\d+\.?\d*)/,
+      '路基压实度(上路床)':/压实度[≥]*\s*(\d+)/,
+      '填料CBR(%)':/CBR[≥]*\s*(\d+)/,
+      '路面设计年限':/(\d+)\s*年[^限]*[设计使用]/,
+      '最大纵坡(%)':/最大纵坡[^0-9]*(\d+)/,
+      '汽车荷载':/(公路[-—]?[ⅠIⅡ]级)/,
+      '设计洪水频率':/(1\/\d+)/,
+      '建筑限界净高(m)':/净高[^0-9]*(\d+\.?\d*)/,
+      '护栏防撞等级':/([ABCSSabcss]+级)/,
+      'AADT':/(\d+)\s*[辆小]/,
+      '设计使用年限':/(\d+)\s*年[^，。]*设计使用/,
+    };
+    var re=patterns[key];
+    if(re){
+      var m=allText.match(re);
+      if(m){p[key]=Array.isArray(m)?[...new Set(m)].join('/'):m[1]||m[0]}
+    }
+  });
+  // 也调用原有的extractKeyParams补一些通用参数
+  var legacy = extractKeyParams(spec, grade);
+  catParams.forEach(function(k){if(!p[k]&&legacy[k])p[k]=legacy[k]});
+  return p;
+}
+
 function renderCompareTable(specs, gradesArr) {
   if (!specs || specs.length === 0) return '';
-  var specParams = specs.map(function(s,i){return extractKeyParams(s,gradesArr?gradesArr[i]:null);});
-  var allKeys = []; specParams.forEach(function(p){Object.keys(p).forEach(function(k){if(k!=='适用公路等级'&&allKeys.indexOf(k)<0)allKeys.push(k);});});
-  if (allKeys.length === 0) return '<div class="empty-state"><div class="empty-icon">📊</div><div class="empty-title">无可对比参数</div></div>';
-  // === 工程师视角过滤：只保留核心设计参数 ===
-  var ENGINEER_PARAMS = [
-    '适用公路等级','设计速度(km/h)','车道宽度(m)','车道数',
-    '路肩宽度(m)','路基宽度(m)','路面宽度(m)','中间带宽度(m)',
-    '平曲线最小半径一般值(m)','平曲线最小半径极限值(m)',
-    '停车视距(m)','会车视距(m)','缓和曲线最小长度(m)',
-    '最大纵坡(%)','最小坡长(m)','最大坡长(m)',
-    '凸竖曲线一般值(m)','凹竖曲线一般值(m)',
-    '最大超高(%)','最大合成坡度(%)',
-    '建筑限界净高(m)',
-    '路基压实度(上路床)','填料CBR(%)',
-    '路面设计年限','面层最小厚度(cm)','基层厚度(mm)','水泥弯拉强度(MPa)','路拱坡度(%)',
-    '汽车荷载','设计洪水频率','桥梁设计使用年限',
-    '护栏防撞等级','AADT',
-    '错车道宽度(m)','圆曲线加宽值(m)',
-    '设计使用年限',
-  ];
-  // 只保留工程师关心的参数
-  var filteredKeys = [];
-  allKeys.forEach(function(k) {
-    if (ENGINEER_PARAMS.indexOf(k) >= 0) filteredKeys.push(k);
-  });
-  // 补回适用等级
-  if (filteredKeys.indexOf('适用公路等级') < 0) filteredKeys.unshift('适用公路等级');
-  allKeys = filteredKeys;
-  var info = specs.map(function(s,i){return '<b>'+s.code+'</b>: '+(specParams[i]['适用公路等级']||'未识别');}).join(' | ');
-  var html = '<div style="background:#fef3c7;padding:8px 14px;border-radius:6px;margin-bottom:10px;font-size:12px;color:#92400e;">📌 '+info+'</div>';
-  html += '<div class="compare-table-wrap"><table class="compare-table"><thead><tr><th>参数项</th>';
-  specs.forEach(function(s){html+='<th>'+s.code.substring(0,18)+'</th>';});
-  html += '</tr></thead><tbody>';
-  allKeys.forEach(function(key){
-    html += '<tr><td>'+key+'</td>';
-    var vals=specParams.map(function(p){return p[key]||'—';});
-    var diff=!vals.every(function(v){return v===vals[0];})&&vals.length>1;
-    vals.forEach(function(v){html+='<td'+(diff?' class="diff"':'')+'>'+v+'</td>';});
+  // 确定主导分类（多部规范中占比最多的分类）
+  var catCount={};specs.forEach(function(s){catCount[s.cat]=(catCount[s.cat]||0)+1});
+  var domCat=Object.keys(catCount).sort(function(a,b){return catCount[b]-catCount[a]})[0]||'general';
+  var catLabel=CAT_NAMES[domCat]||'通用';
+  var catParams=CAT_PARAMS[domCat]||CAT_PARAMS['general'];
+
+  // 提取参数
+  var specParams=specs.map(function(s,i){return extractCatParams(s,catParams,gradesArr?gradesArr[i]:null)});
+
+  // 过滤出至少有一个值的参数
+  var displayKeys=catParams.filter(function(k){return specParams.some(function(p){return p[k]})});
+  if(displayKeys.length===0)displayKeys=catParams.slice(0,8);
+
+  // 渲染
+  var catIconMap={general:'📐',geometry:'📏',pavement:'🛣',bridge:'🌉',drainage:'💧',safety:'🛡',rural:'🏘',materials:'🔩',seismic:'🏔',drawings:'📚'};
+  var info=specs.map(function(s){return '<b>'+s.code+'</b> '+s.title}).join(' | ');
+  var html='<div style="background:#eef2ff;padding:10px 16px;border-radius:8px;margin-bottom:12px;font-size:12px;color:var(--accent);">'+(catIconMap[domCat]||'📋')+' <b>'+catLabel+'</b> 对比 | 参数项固定 | '+info+'</div>';
+
+  html+='<div class="compare-table-wrap"><table class="compare-table"><thead><tr><th>参数项</th>';
+  specs.forEach(function(s){html+='<th>'+s.code.substring(0,20)+'</th>'});
+  html+='</tr></thead><tbody>';
+  displayKeys.forEach(function(key){
+    html+='<tr><td style="font-weight:600">'+key+'</td>';
+    var vals=specParams.map(function(p){return p[key]||'—'});
+    var diff=vals.length>1&&!vals.every(function(v){return v===vals[0]});
+    vals.forEach(function(v){html+='<td'+(diff?' class="diff"':'')+'>'+v+'</td>'});
     html+='</tr>';
   });
   html+='</tbody></table></div>';
