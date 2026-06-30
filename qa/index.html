@@ -74,8 +74,8 @@
 
 <div class="ds-btn-row">
 <button class="ds-btn search" onclick="deepSearch()">🔍 深度检索</button>
-<button class="ds-btn search" id="dsCompareBtn" style="display:none;background:#16a34a" onclick="goCompare()">📊 对比选中 (<span id="dsCmpCount">0</span>)</button>
-<span style="font-size:11px;color:var(--text3)">💡 深度检索发现相关规范 → 勾选 → 送对比页深入对比 | Ctrl+Enter搜索</span>
+<button class="ds-btn search" id="dsCompareBtn" style="display:none;background:#16a34a" onclick="doInlineCompare()">📊 对比选中 (<span id="dsCmpCount">0</span>)</button>
+<span style="font-size:11px;color:var(--text3)">💡 深度检索发现规范 → 勾选2~4部 → 点对比选中内联显示对比表 | Ctrl+Enter搜索</span>
 </div>
 
 <div id="dsHistory" class="ds-history"></div>
@@ -176,14 +176,57 @@ function deepSearch(){
   document.getElementById('dsResults').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
+// ===== 固定参数库（核心规范精确数据） =====
+var SPEC_PARAMS = {
+  'JTG B01-2014':{高速:{'设计速度(km/h)':'120','车道宽度(m)':'3.75','车道数':'≥4','硬路肩(m)':'3.00~3.50','停车视距(m)':'210','最大纵坡(%)':'3','最大超高(%)':'8','净高(m)':'5.00','荷载':'公路-Ⅰ级','洪水频率':'1/100'},一级:{'设计速度(km/h)':'100','车道宽度(m)':'3.75','车道数':'≥4','硬路肩(m)':'2.50~3.00','停车视距(m)':'160','最大纵坡(%)':'4','最大超高(%)':'8','净高(m)':'5.00','荷载':'公路-Ⅰ级','洪水频率':'1/100'},二级:{'设计速度(km/h)':'80','车道宽度(m)':'3.75','车道数':'2','硬路肩(m)':'1.50~2.50','停车视距(m)':'110','最大纵坡(%)':'5','最大超高(%)':'8','净高(m)':'5.00','荷载':'公路-Ⅰ/Ⅱ级','洪水频率':'1/50'},三级:{'设计速度(km/h)':'40','车道宽度(m)':'3.50','车道数':'2','停车视距(m)':'40','最大纵坡(%)':'7','净高(m)':'4.50','荷载':'公路-Ⅱ级','洪水频率':'1/25'},四级:{'设计速度(km/h)':'30','车道宽度(m)':'3.25','车道数':'2/1','停车视距(m)':'30','最大纵坡(%)':'8','净高(m)':'4.50','荷载':'公路-Ⅱ级','洪水频率':'按情况'}},
+  'JTG D20-2017':{高速:{'平曲线一般半径(m)':'1000','平曲线极限半径(m)':'650','缓和曲线最小长(m)':'100','最大纵坡(%)':'3','停车视距(m)':'210','会车视距(m)':'420'},一级:{'平曲线一般半径(m)':'700','平曲线极限半径(m)':'400','缓和曲线最小长(m)':'85','最大纵坡(%)':'4','停车视距(m)':'160'},二级:{'平曲线一般半径(m)':'400','平曲线极限半径(m)':'250','缓和曲线最小长(m)':'70','最大纵坡(%)':'5','停车视距(m)':'110'},三级:{'平曲线一般半径(m)':'100','平曲线极限半径(m)':'60','最大纵坡(%)':'7','停车视距(m)':'40'},四级:{'平曲线一般半径(m)':'65','平曲线极限半径(m)':'30','最大纵坡(%)':'8','停车视距(m)':'30'}},
+  'JTG D30-2015':{高速:{'上路床压实度(%)':'≥96','下路床压实度(%)':'≥96','上路床CBR(%)':'≥8','下路床CBR(%)':'≥5','抗滑Kc':'≥1.3','抗倾覆K₀':'≥1.5'},二级:{'上路床压实度(%)':'≥95','下路床压实度(%)':'≥95','上路床CBR(%)':'≥6','下路床CBR(%)':'≥4'},四级:{'上路床压实度(%)':'≥94','上路床CBR(%)':'≥5'}},
+  'JTG D50-2017':{高速:{'设计年限':'15年','面层厚度(cm)':'12~18','基层厚度(cm)':'36~45'},二级:{'设计年限':'12年','面层厚度(cm)':'8~15'},四级:{'设计年限':'6年','面层厚度(cm)':'4~8'}},
+  'JTG D60-2015':{通用:{'汽车荷载':'公路-Ⅰ级','冲击系数':'0.05~0.45','裂缝≤(mm)':'0.20','挠度≤':'L/600','桩距≥':'2.5d'}},
+  'JTG D81-2017':{高速:{'护栏等级':'A级','轮廓标间距':'≤20m','标志字高':'60~70cm'},二级:{'护栏等级':'B级','标志字高':'30~40cm'},四级:{'护栏等级':'C级','标志字高':'10~15cm'}},
+  'JTG/T 3311-2021':{'四级(Ⅰ类)':{'设计速度':'30km/h','路基宽度':'≥6.5m','车道数':'2','AADT':'400~1500','设计年限':'8年'},'四级(Ⅱ类)':{'设计速度':'15~20km/h','路基宽度':'≥4.5m','车道数':'1+错车道','AADT':'<400','设计年限':'6年'}},
+};
+
+function getSpecParam(spec, grade){
+  if(!SPEC_PARAMS[spec.code])return null;
+  var grades=SPEC_PARAMS[spec.code];
+  if(grades[grade])return grades[grade];
+  var g=grade||'';
+  var found=null;
+  Object.keys(grades).forEach(function(k){if(g.indexOf(k)>=0||k.indexOf(g)>=0)found=k});
+  if(!found)found=Object.keys(grades)[0];
+  return grades[found]||null;
+}
+
+function doInlineCompare(){
+  var cbs=document.querySelectorAll('.ds-cmp-cb:checked');
+  if(cbs.length<2){alert('请至少勾选2部');return}
+  var specs=[];cbs.forEach(function(cb){var s=SPECS.find(function(x){return x.code===cb.dataset.code});if(s)specs.push(s)});
+  if(specs.length<2)return;
+  // 收集所有参数键
+  var grade='二级'; // 默认等级，后续可加选择
+  var params=specs.map(function(s){return getSpecParam(s,grade)||{}});
+  var allKeys=[];params.forEach(function(p){Object.keys(p).forEach(function(k){if(allKeys.indexOf(k)<0)allKeys.push(k)})});
+  if(allKeys.length===0){alert('所选规范暂不支持对比，请选B01/D20/D30等核心规范');return}
+  // 渲染对比表
+  var h='<div style="margin-top:18px;background:var(--card-bg);border-radius:14px;border:2px solid #16a34a;padding:18px;animation:fadeIn .3s"><h4 style="margin-bottom:12px">📊 参数对比 <span style="font-size:11px;color:var(--text3);font-weight:400">（默认二级公路，可调整）</span></h4>';
+  h+='<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:13px"><thead><tr><th style="padding:6px 10px;border-bottom:2px solid #16a34a;text-align:left">参数项</th>';
+  specs.forEach(function(s){h+='<th style="padding:6px 10px;border-bottom:2px solid #16a34a;text-align:left">'+s.code+'</th>'});
+  h+='</tr></thead><tbody>';
+  allKeys.forEach(function(k){
+    h+='<tr><td style="padding:5px 10px;border-bottom:1px solid var(--border);font-weight:600">'+k+'</td>';
+    var vals=params.map(function(p){return p[k]||'—'});
+    var diff=vals.length>1&&!vals.every(function(v){return v===vals[0]});
+    vals.forEach(function(v){h+='<td style="padding:5px 10px;border-bottom:1px solid var(--border)'+(diff?';background:#fef3c7;font-weight:700':'')+'">'+v+'</td>'});
+    h+='</tr>';
+  });
+  h+='</tbody></table></div></div>';
+  document.getElementById('dsResults').insertAdjacentHTML('beforeend',h);
+}
+
 function updateCmpCount(){
   var n=document.querySelectorAll('.ds-cmp-cb:checked').length;
   document.getElementById('dsCmpCount').textContent=n;
-}
-function goCompare(){
-  var codes=[];document.querySelectorAll('.ds-cmp-cb:checked').forEach(function(cb){codes.push(cb.dataset.code)});
-  if(codes.length<2){alert('请至少勾选2部规范进行对比');return}
-  window.location.href='../compare/?codes='+codes.join(',');
 }
 document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key==='Enter'){e.preventDefault();deepSearch()}});
 var bt=document.createElement('button');bt.className='back-top';bt.id='backTop';bt.textContent='↑';document.body.appendChild(bt);
