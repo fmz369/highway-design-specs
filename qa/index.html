@@ -127,36 +127,54 @@ function deepSearch(){
   addHist(q);
   var terms=expandTerms(q);
   var results=[];
+
+  // 全文搜索：纯文本匹配+评分
   SPECS.forEach(function(spec){
-    var c=spec.content||'';var score=0;
-    terms.forEach(function(t){var idx=c.indexOf(t);if(idx>=0){score+=t.length*3;if(c.substring(Math.max(0,idx-60),idx+60).indexOf('<td')>=0)score+=10}if(spec.code.indexOf(t)>=0)score+=5;if(spec.title.indexOf(t)>=0)score+=4});
-    if(score>0)results.push({spec:spec,score:score});
+    var raw=spec.content||'',pt=raw.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ');
+    var score=0;
+    terms.forEach(function(t){
+      var re=new RegExp(t.replace(/[.*+?^${}()|[\]\\\/]/g,'\\$&'),'gi'),cnt=0;
+      while(re.exec(pt)!==null)cnt++;
+      if(cnt>0)score+=cnt*t.length*2;
+      if(spec.code.indexOf(t)>=0)score+=8;
+      if(spec.title.indexOf(t)>=0)score+=6;
+    });
+    if(score>0)results.push({spec:spec,score:score,plainText:pt});
   });
   results=results.filter(function(r){return r.spec.status!=='replaced'||q.indexOf(r.spec.code)>=0});
   results.sort(function(a,b){return b.score-a.score});if(results.length>15)results=results.slice(0,15);
 
-  // 提取条文
-  results.forEach(function(r){var clauses=[];var c=r.spec.content;
-    var lis=c.match(/<li>(?!.*href)([\s\S]*?)<\/li>/gi)||[];
-    lis.forEach(function(li){var clean=li.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();if(clean.length<15||clean.length>250)return;var s=0;terms.forEach(function(t){if(clean.indexOf(t)>=0)s+=2});if(s>=2)clauses.push({text:clean,score:s})});
-    var hls=c.match(/<span class="hl">([^<]+)<\/span>[：:]?\s*([^<]{5,120})/gi)||[];
-    hls.forEach(function(hl){var clean=hl.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();if(clean.length>8){var s=0;terms.forEach(function(t){if(clean.indexOf(t)>=0)s+=2});if(s>=2)clauses.push({text:clean,score:s})}});
-    clauses.sort(function(a,b){return b.score-a.score});r.clauses=clauses.slice(0,5);
+  // 条文提取：从纯文本中截取关键词周围的上下文
+  results.forEach(function(r){
+    var clauses=[],pt=r.plainText;
+    terms.forEach(function(t){
+      var re=new RegExp(t.replace(/[.*+?^${}()|[\]\\\/]/g,'\\$&'),'gi'),idx;
+      while((idx=re.exec(pt))!==null&&clauses.length<10){
+        var start=Math.max(0,idx-80),end=Math.min(pt.length,idx+t.length+150);
+        var ctx=pt.substring(start,end).trim();
+        if(ctx.length>15)clauses.push({text:ctx,score:t.length*2});
+      }
+    });
+    var seen={};clauses=clauses.filter(function(c){var k=c.text.substring(0,30);if(seen[k])return false;seen[k]=true;return true});
+    clauses.sort(function(a,b){return b.score-a.score});r.clauses=clauses.slice(0,6);
   });
 
-  // ===== 答案摘要（最佳匹配条文聚合） =====
+  // ===== 答案摘要 =====
   var answerHTML='';
-  var top3=results.slice(0,3).filter(function(r){return r.score>=20&&r.clauses&&r.clauses.length>0});
+  var top3=results.slice(0,3).filter(function(r){return r.score>=15&&r.clauses&&r.clauses.length>0});
   if(top3.length>0){
-    answerHTML='<div class="ds-summary"><h4>📝 规范答案</h4>';
+    answerHTML='<div class="ds-summary"><h4>📝 规范答案（共匹配'+results.length+'部规范）</h4>';
     top3.forEach(function(r,i){
-      var best=r.clauses[0].text;
-      if(best.length>200)best=best.substring(0,197)+'...';
-      terms.forEach(function(k){best=best.replace(new RegExp(k.replace(/[.*+?^${}()|[\]\\\/]/g,'\\$&'),'g'),'<span class="ds-hl">'+k+'</span>')});
-      answerHTML+='<p style="font-size:13px;margin:6px 0;line-height:1.7"><b>'+r.spec.code+'</b>：'+best+' <a href="../specs/?code='+encodeURIComponent(r.spec.code)+'" target="_blank" style="font-size:11px">查看原文 →</a></p>';
+      var clauses=r.clauses.slice(0,2); // 取前2条
+      answerHTML+='<p style="font-size:13px;margin:8px 0;line-height:1.8"><b>'+r.spec.code+' '+r.spec.title+'</b></p>';
+      clauses.forEach(function(cl){
+        var txt=cl.text;if(txt.length>250)txt=txt.substring(0,247)+'...';
+        terms.forEach(function(k){txt=txt.replace(new RegExp(k.replace(/[.*+?^${}()|[\]\\\/]/g,'\\$&'),'gi'),'<span class="ds-hl">'+k+'</span>')});
+        answerHTML+='<div class="ds-clause">'+txt+' <a href="../specs/?code='+encodeURIComponent(r.spec.code)+'" target="_blank">查看 →</a></div>';
+      });
     });
     answerHTML+='</div>';
-  }
+  }else{answerHTML='<div style="text-align:center;padding:10px;color:var(--text3);font-size:12px">🔍 搜索完成，未找到匹配条文。试试更具体的关键词</div>';}
 
   // 跨规范交叉对比
   var sumHTML='';var top=results.filter(function(r){return r.score>=20});
