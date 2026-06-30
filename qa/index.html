@@ -144,6 +144,20 @@ function deepSearch(){
     clauses.sort(function(a,b){return b.score-a.score});r.clauses=clauses.slice(0,5);
   });
 
+  // ===== 答案摘要（最佳匹配条文聚合） =====
+  var answerHTML='';
+  var top3=results.slice(0,3).filter(function(r){return r.score>=20&&r.clauses&&r.clauses.length>0});
+  if(top3.length>0){
+    answerHTML='<div class="ds-summary"><h4>📝 规范答案</h4>';
+    top3.forEach(function(r,i){
+      var best=r.clauses[0].text;
+      if(best.length>200)best=best.substring(0,197)+'...';
+      terms.forEach(function(k){best=best.replace(new RegExp(k.replace(/[.*+?^${}()|[\]\\\/]/g,'\\$&'),'g'),'<span class="ds-hl">'+k+'</span>')});
+      answerHTML+='<p style="font-size:13px;margin:6px 0;line-height:1.7"><b>'+r.spec.code+'</b>：'+best+' <a href="../specs/?code='+encodeURIComponent(r.spec.code)+'" target="_blank" style="font-size:11px">查看原文 →</a></p>';
+    });
+    answerHTML+='</div>';
+  }
+
   // 跨规范交叉对比
   var sumHTML='';var top=results.filter(function(r){return r.score>=20});
   if(top.length>=2){var numDict={};
@@ -160,7 +174,7 @@ function deepSearch(){
     }
   }
 
-  var h=sumHTML;
+  var h=answerHTML+sumHTML;
   if(results.length===0)h='<div class="ds-empty"><div class="ds-icon">🔍</div>未找到相关内容<br><span style="font-size:12px">试试换个表述，如"路基压实度标准"或"平曲线最小半径"</span></div>';
   else {
     var cmpBtn=document.getElementById('dsCompareBtn');var cmpCount=document.getElementById('dsCmpCount');
