@@ -353,18 +353,22 @@ var SPECS = [
     status:'current',
     tags:["养护","基础标准"],
     hasPdf:false,
-    content:`<h4>📑 内容概要</h4>
-<p><span class="hl">公路养护技术标准</span>。替代JTG H10-2009。</p>
+    content:`<h4>📑 章节目录（10章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 养护分级</div><div>4 日常养护</div><div>5 预防性养护</div><div>6 修复性养护</div><div>7 专项养护</div><div>8 应急养护</div><div>9 养护管理</div><div>10 养护评价</div></div>
 
-<h4>养护分级</h4>
-<table><tr><th>类型</th><th>MQI</th></tr>
-<tr><td>日常养护</td><td>≥80</td></tr>
-<tr><td>预防性养护</td><td>75~90</td></tr>
-<tr><td>修复性养护</td><td>60~80</td></tr>
-<tr><td>专项/应急</td><td><60或灾后</td></tr>
+<h4>养护分级决策（MQI=公路技术状况指数）</h4>
+<table><tr><th>养护类型</th><th>MQI范围</th><th>适用条件</th><th>典型措施</th></tr>
+<tr><td>日常养护</td><td class="hl">≥80</td><td>技术状况良好</td><td>清扫、灌缝、坑槽修补</td></tr>
+<tr><td>预防性养护</td><td>75~90</td><td>轻微病害</td><td>微表处、薄层罩面、封层</td></tr>
+<tr><td>修复性养护</td><td>60~80</td><td>明显病害</td><td>铣刨重铺、基层挖补</td></tr>
+<tr><td>专项养护</td><td><60</td><td>结构性损坏</td><td>大修或改建</td></tr>
+<tr><td>应急养护</td><td>—（灾后）</td><td>自然灾害损毁</td><td>抢通、保畅</td></tr>
 </table>
 
-<div class="note-box"><strong>📅</strong>2023年6月1日实施。</div>`
+<h4>养护决策流程</h4>
+<ul><li>检测评定→<span class="hl">划分养护段落</span>→选定养护方案→设计→施工→验收</li><li>高速/一级应<span class="hl">每年</span>进行一次全面检测评定</li><li>养护工程按<span class="hl">"一路一策"</span>编制方案</li></ul>
+
+<div class="note-box"><strong>📅</strong>2023年6月1日实施。替代JTG H10-2009。养护决策的纲领性标准。</div>`
   },
   {
     code:'JTG 5211-2024',
@@ -2256,56 +2260,25 @@ var SPECS = [
     status:'current',
     tags:["养护","桥梁"],
     hasPdf:false,
-    content:`
-<h4>📑 章节目录（6章）</h4>
-<div class="ch-list">
-<div>1 总则</div><div>2 术语</div><div>3 检查</div><div>4 评定</div>
-<div>5 养护</div><div>6 维修加固</div>
-</div>
+    content:`<h4>📑 章节目录（9章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 检查与评定</div><div>4 上部结构养护</div><div>5 下部结构养护</div><div>6 桥面系养护</div><div>7 附属设施养护</div><div>8 特殊养护</div><div>9 养护管理</div></div>
 
-<h4>🔍 第3章 检查</h4>
-<h4>检查分类及频率</h4>
-<table><tr><th>检查类型</th><th>频率</th><th>内容</th></tr>
-<tr><td>日常巡查</td><td><span class="hl">≥1次/月</span></td><td>桥面系、伸缩缝、支座外观</td></tr>
-<tr><td>经常检查</td><td><span class="hl">≥1次/季度</span></td><td>上部结构、下部结构、附属设施</td></tr>
-<tr><td>定期检查</td><td><span class="hl">≥1次/3年</span></td><td>全面详细检查各部件的技术状况</td></tr>
-<tr><td>特殊检查</td><td>按需</td><td>灾害后/加固前/超重车通行后</td></tr>
+<h4>桥梁技术状况评定</h4>
+<table><tr><th>等级</th><th>评分</th><th>状态</th><th>措施</th></tr>
+<tr><td>1类</td><td class="hl">≥95</td><td>全新完好</td><td>日常养护</td></tr>
+<tr><td>2类</td><td>80~94</td><td>轻微缺损</td><td>小修保养</td></tr>
+<tr><td>3类</td><td>60~79</td><td>中等缺损</td><td>中修</td></tr>
+<tr><td>4类</td><td>40~59</td><td>主要缺损</td><td>大修或限载</td></tr>
+<tr><td>5类</td><td class="hl"><40</td><td>危险</td><td>封闭或拆除</td></tr>
 </table>
 
-<h4>📊 第4章 技术状况评定</h4>
-<table><tr><th>等级</th><th>状态</th><th>措施</th></tr>
-<tr><td><span class="hl">1类</span></td><td>完好/轻微缺损</td><td>正常保养</td></tr>
-<tr><td>2类</td><td>轻微缺损/对使用无影响</td><td>小修保养</td></tr>
-<tr><td>3类</td><td>中等缺损/需维修</td><td>中修工程</td></tr>
-<tr><td>4类</td><td>严重缺损/影响承载力</td><td><span class="hl">大修/限载限速</span></td></tr>
-<tr><td>5类</td><td>危险状态</td><td><span class="hl">封闭交通/拆除重建</span></td></tr></table>
+<h4>上部结构养护</h4>
+<ul><li>裂缝：<0.15mm封闭，≥0.15mm<span class="hl">灌浆或注胶</span></li><li>混凝土剥落：凿除松动层+<span class="hl">聚合物砂浆</span>修补</li><li>预应力：锚头防腐、压浆密实度检测</li></ul>
 
-<h4>评分子项权重</h4>
-<table><tr><th>部件</th><th>权重</th><th>部件</th><th>权重</th></tr>
-<tr><td>上部结构</td><td><span class="hl">0.40</span></td><td>桥面系</td><td>0.15</td></tr>
-<tr><td>下部结构</td><td>0.30</td><td>附属设施</td><td>0.15</td></tr></table>
-<ul><li>桥梁总体技术状况评分：Dr = Σ(部件得分×权重)</li></ul>
+<h4>桥面系养护</h4>
+<ul><li>铺装：坑槽即时修补，车辙>15mm铣刨加铺</li><li>伸缩缝：清理杂物，变形量<设计值<span class="hl">±20%</span>时更换</li><li>支座：位移超限或老化开裂应更换</li></ul>
 
-<h4>🔧 第5章 养护</h4>
-<h4>日常养护要点</h4>
-<table><tr><th>部位</th><th>日常养护</th><th>小修</th></tr>
-<tr><td>桥面铺装</td><td>清扫/疏通泄水管</td><td>裂缝灌缝/坑槽修补</td></tr>
-<tr><td>伸缩缝</td><td>清理杂物/检查密封</td><td>更换止水带/型钢修复</td></tr>
-<tr><td>支座</td><td>清洁/检查位移</td><td>防腐涂装/更换</td></tr>
-<tr><td>墩台</td><td>检查裂缝/冲刷</td><td>裂缝封闭/表面修补</td></tr>
-<tr><td>锥坡护坡</td><td>检查完整性</td><td>砌体修补/勾缝</td></tr>
-</table>
-
-<h4>🏗 第6章 维修加固</h4>
-<table><tr><th>加固方法</th><th>适用病害</th></tr>
-<tr><td>增大截面法</td><td>承载力严重不足</td></tr>
-<tr><td>粘贴钢板</td><td>受弯/受剪承载力不足</td></tr>
-<tr><td>粘贴碳纤维</td><td>受弯/抗震补强</td></tr>
-<tr><td>体外预应力</td><td>梁体下挠/裂缝</td></tr>
-<tr><td>改变结构体系</td><td>简支变连续/增设支点</td></tr>
-<tr><td>支座更换</td><td>支座老化/失效</td></tr>
-</table>
-`
+<div class="note-box"><strong>📅</strong>2021年6月1日实施。桥涵养护的核心规范。</div>`
   },
   {
     code:'JTG D60-2015',
@@ -2477,23 +2450,24 @@ var SPECS = [
     status:'current',
     tags:["钢结构","桥梁"],
     hasPdf:false,
-    content:`<h4>📑 内容概要</h4>
-<p><span class="hl">公路钢结构桥梁设计规范</span>。</p>
+    content:`<h4>📑 章节目录（10章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 材料</div><div>4 结构分析</div><div>5 连接</div><div>6 钢板梁</div><div>7 钢箱梁</div><div>8 钢桁梁</div><div>9 钢拱桥</div><div>10 钢塔与缆索</div></div>
 
-<h4>钢材</h4>
-<table><tr><th>牌号</th><th>屈服MPa</th></tr>
-<tr><td>Q345qD</td><td class="hl">≥345</td></tr>
-<tr><td>Q370qD</td><td>≥370</td></tr>
-<tr><td>Q420qD</td><td>≥420</td></tr>
+<h4>钢材牌号</h4>
+<table><tr><th>牌号</th><th>屈服MPa</th><th>抗拉MPa</th><th>适用部位</th></tr>
+<tr><td>Q345qD</td><td class="hl">≥345</td><td>≥490</td><td>主梁、横梁</td></tr>
+<tr><td>Q370qD</td><td>≥370</td><td>≥510</td><td>大跨主梁</td></tr>
+<tr><td>Q420qD</td><td>≥420</td><td>≥540</td><td>关键构件</td></tr>
+<tr><td>Q500qD</td><td>≥500</td><td>≥630</td><td>特大桥关键</td></tr>
 </table>
 
-<h4>连接</h4>
-<ul>
-<li>高强螺栓M20~M30，10.9S级</li>
-<li>摩擦面抗滑移≥<span class="hl">0.45</span></li>
-</ul>
+<h4>连接设计</h4>
+<ul><li>高强螺栓：M20~M30，<span class="hl">10.9S级</span></li><li>摩擦面抗滑移≥<span class="hl">0.45</span>(喷砂)</li><li>角焊缝：h≥<span class="hl">1.5√t</span>(t为较厚板厚)</li><li>对接焊缝：全熔透，<span class="hl">100%UT</span>检测</li></ul>
 
-<div class="note-box"><strong>📅</strong>2015年5月1日实施。</div>`
+<h4>结构分析要点</h4>
+<ul><li>计入<span class="hl">剪力滞效应</span>（有效宽度法）</li><li>薄壁构件考虑<span class="hl">局部屈曲</span>和畸变</li><li>正交异性桥面板需验算疲劳</li></ul>
+
+<div class="note-box"><strong>📅</strong>2015年5月1日实施。公路钢桥设计的核心规范。</div>`
   },
   {
     code:'JTG D65-2015',
@@ -2502,16 +2476,21 @@ var SPECS = [
     status:'current',
     tags:["钢混组合","桥梁"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（6章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 材料</div><div>3 承载能力极限状态</div><div>4 正常使用极限状态</div><div>5 剪力连接件</div><div>6 施工</div></div>
+    content:`<h4>📑 章节目录（8章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 材料</div><div>4 组合梁</div><div>5 组合桥面板</div><div>6 剪力连接件</div><div>7 施工</div><div>8 耐久性</div></div>
 
-<h4>🏗 三种组合梁类型</h4>
-<table><tr><th>类型</th><th>构造</th><th>适用跨径</th></tr><tr><td><span class="hl">工字钢组合梁</span></td><td>I形钢梁+混凝土桥面板</td><td>20~60m</td></tr><tr><td>钢箱组合梁</td><td>钢箱+混凝土面板</td><td>40~100m</td></tr><tr><td>钢桁组合梁</td><td>钢桁+混凝土面板</td><td>60~200m</td></tr></table>
+<h4>钢混组合梁类型</h4>
+<table><tr><th>类型</th><th>适用跨径(m)</th><th>特点</th></tr>
+<tr><td>钢板梁+混凝土桥面板</td><td>20~60</td><td>最常用</td></tr>
+<tr><td>钢箱梁+混凝土桥面板</td><td>40~150</td><td>大跨径</td></tr>
+<tr><td>波形钢腹板PC梁</td><td>30~160</td><td>减轻自重</td></tr>
+<tr><td>钢管混凝土拱</td><td>100~500</td><td>超大跨径</td></tr>
+</table>
 
-<h4>🔩 第5章 剪力连接件（栓钉）</h4>
-<table><tr><th>参数</th><th>要求</th></tr><tr><td>直径</td><td><span class="hl">16~25mm</span></td></tr><tr><td>高度</td><td>≥4d</td></tr><tr><td>间距</td><td>纵向≤300mm；横向≥4d</td></tr><tr><td>保护层</td><td>≥25mm</td></tr></table>
+<h4>剪力连接件</h4>
+<ul><li>圆柱头焊钉：直径<span class="hl">19~25mm</span>，高径比≥4</li><li>开孔钢板(PBL)：孔径40~60mm，穿钢筋</li><li>抗剪承载力：<span class="hl">0.7·As·fu</span></li></ul>
 
-<h4>📐 关键设计要点</h4><ul><li>收缩徐变效应需<span class="hl">分阶段</span>考虑（施工/使用阶段截面特性不同）</li><li>温度梯度：钢梁与混凝土板的温差效应</li><li>施工阶段钢梁<span class="hl">稳定性验算</span>（侧向失稳）</li><li>负弯矩区混凝土板裂缝宽度控制≤0.2mm</li></ul>`
+<div class="note-box"><strong>📅</strong>2015年5月1日实施。钢混组合结构设计的核心规范。</div>`
   },
   {
     code:'JTG/T 2231-01-2020',
@@ -2577,26 +2556,16 @@ var SPECS = [
     status:'current',
     tags:["施工","钢筋"],
     hasPdf:false,
-    content:`
-	<h4>📑 章节目录</h4>
-	<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 施工准备</div><div>4 钢筋</div><div>5 预应力</div><div>6 混凝土</div><div>7 模板与支架</div><div>8 基础施工</div><div>9 墩台与盖梁</div><div>10 上部结构</div><div>附录A~N</div></div>
-	<h4>🔩 第4章 钢筋工程 — 核心规定</h4>
-	<table><tr><th>项目</th><th>规定</th><th>依据标准</th></tr>
-	<tr><td>钢筋连接方式</td><td>宜采用<span class="hl">焊接或机械连接</span>；绑扎仅用于构造复杂处（d≤28mm）</td><td>4.3.1</td></tr>
-	<tr><td>焊接方法</td><td>闪光对焊优先；电弧焊（双面≥5d、单面≥10d）；电渣压力焊（仅竖向）</td><td>JGJ 18-2012</td></tr>
-	<tr><td>机械连接类型</td><td>镦粗直螺纹 / 滚轧直螺纹 / 套筒挤压</td><td>JGJ 107-2016</td></tr>
-	<tr><td>接头等级</td><td>Ⅰ级或Ⅱ级</td><td>附录B</td></tr>
-	<tr><td>接头位置</td><td>设在内力较小区段，<span class="hl">同一根钢筋不得有两个接头</span></td><td>4.3.2</td></tr>
-	<tr><td>保护层最小厚度</td><td>连接件≥20mm；横向净距≥25mm</td><td>4.3.4</td></tr></table>
-	<h4>🔑 原材料质量标准（第4章）</h4>
-	<table><tr><th>钢筋牌号</th><th>类型</th><th>屈服强度(MPa)</th><th>引用国标</th></tr>
-	<tr><td>HPB300</td><td>热轧光圆</td><td>≥300</td><td>GB/T 1499.1</td></tr>
-	<tr><td>HRB400</td><td>热轧带肋</td><td>≥400</td><td>GB/T 1499.2</td></tr>
-	<tr><td>HRB500</td><td>热轧带肋</td><td>≥500</td><td>GB/T 1499.2</td></tr>
-	<tr><td>HRBF400</td><td>细晶粒带肋</td><td>≥400</td><td>GB/T 1499.2</td></tr></table>
-	<h4>🧪 接头检验制度</h4>
-	<ul><li>焊接：每批焊接前先试焊→检验外观+力学性能（拉伸+弯曲）</li><li>机械连接：<span class="hl">500个接头为一验收批</span>，随机截取3个做抗拉试验</li><li>连续10批一次合格→验收批数量可扩大1倍</li><li>型式检验、工艺检验、现场检验三层次</li></ul>
-	<div class="note-box"><strong>⚙ 与旧版（JTG/T F50-2011）主要变化</strong><br>① 钢筋机械连接接头等级提升至Ⅰ/Ⅱ级<br>② 新增HRB500高强钢筋应用<br>③ 桩基钢筋笼对接明确要求机械连接<br>④ 焊接工艺评定要求细化</div>`
+    content:`<h4>📑 章节目录（12章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 施工准备</div><div>4 基础施工</div><div>5 墩台施工</div><div>6 梁式桥施工</div><div>7 拱桥施工</div><div>8 斜拉桥施工</div><div>9 悬索桥施工</div><div>10 预应力施工</div><div>11 支座与伸缩缝</div><div>12 质量控制</div></div>
+
+<h4>预应力张拉</h4>
+<ul><li>张拉控制应力：<span class="hl">0.70~0.75fpk</span></li><li>张拉程序：0→初应力(10%)→控制应力→持荷5min→锚固</li><li>张拉伸长值校核：实测与理论偏差≤<span class="hl">±6%</span></li></ul>
+
+<h4>孔道压浆</h4>
+<ul><li>压浆材料：专用<span class="hl">预应力孔道压浆料</span></li><li>水胶比≤<span class="hl">0.28</span></li><li>压浆压力：<span class="hl">0.5~0.7MPa</span></li><li>稳压时间≥<span class="hl">3min</span></li></ul>
+
+<div class="note-box"><strong>📅</strong>2020年9月1日实施。桥涵施工质量的核心技术规范。</div>`
   },
   {
     code:'JTG/T 3651-2022',
@@ -2748,24 +2717,28 @@ var SPECS = [
     status:'current',
     tags:["水文","勘测"],
     hasPdf:false,
-    content:`<h4>📑 内容概要</h4>
-<p><span class="hl">公路工程水文勘测设计规范</span>。</p>
+    content:`<h4>📑 章节目录（9章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 水文调查</div><div>4 设计洪水</div><div>5 桥涵水文</div><div>6 路基排水水文</div><div>7 冲刷计算</div><div>8 特殊地区</div><div>9 水文观测</div></div>
 
-<h4>设计洪水</h4>
-<ul>
-<li>小流域(<500km²)：<span class="hl">推理公式Q=0.278ψqF</span></li>
-<li>中流域：地区经验公式/水文比拟</li>
-<li>大流域：频率分析(P-Ⅲ曲线)</li>
-</ul>
+<h4>设计洪水频率</h4>
+<table><tr><th>公路等级</th><th>路基</th><th>特大桥</th><th>大中桥</th><th>小桥涵</th></tr>
+<tr><td>高速</td><td class="hl">1/100</td><td>1/300</td><td>1/100</td><td>1/100</td></tr>
+<tr><td>一级</td><td>1/100</td><td>1/300</td><td>1/100</td><td>1/100</td></tr>
+<tr><td>二级</td><td>1/50</td><td>1/100</td><td>1/100</td><td>1/50</td></tr>
+<tr><td>三级</td><td>1/25</td><td>1/100</td><td>1/50</td><td>1/25</td></tr>
+</table>
 
-<h4>冲刷</h4>
-<ul>
-<li>一般冲刷：64-1/64-2公式</li>
-<li>局部冲刷：65-1/65-2公式</li>
-<li>总冲刷=一般+局部</li>
-</ul>
+<h4>设计洪水计算方法</h4>
+<ul><li>小流域(<500km²)：<span class="hl">推理公式Q=0.278·ψ·q·F</span></li><li>中等流域：地区经验公式或水文比拟法</li><li>大流域：频率分析（<span class="hl">P-Ⅲ型曲线</span>）</li></ul>
 
-<div class="note-box"><strong>📅</strong>2015年5月1日实施。</div>`
+<h4>冲刷计算</h4>
+<table><tr><th>类型</th><th>公式</th><th>参数</th></tr>
+<tr><td>一般冲刷</td><td>64-1/64-2式</td><td>Q、B、h、d₅₀</td></tr>
+<tr><td>局部冲刷</td><td>65-1/65-2式</td><td>V、h、d、Kξ</td></tr>
+<tr><td>总冲刷</td><td>一般+局部</td><td>叠加后+安全值</td></tr>
+</table>
+
+<div class="note-box"><strong>📅</strong>2015年5月1日实施。桥涵水文设计的核心规范。</div>`
   },
   {
     code:'JTG/T 3610-2019',
@@ -2898,18 +2871,21 @@ var SPECS = [
     tags:["机电","质检"],
     hasPdf:false,
     content:`<h4>📑 内容概要</h4>
-<p><span class="hl">公路工程质量检验评定标准 第二册 机电工程</span>。</p>
+<p><span class="hl">公路工程质量检验评定标准 第二册 机电工程</span>。规定了机电工程检测项目和评定标准。</p>
 
-<h4>机电五大系统</h4>
-<ul>
-<li>监控：车辆检测/VMS/CCTV</li>
-<li>通信：光纤/程控/紧急电话</li>
-<li>收费：车道/ETC/计重</li>
-<li>隧道机电：通风/照明/消防</li>
-<li>供配电：变电/配电/电缆</li>
-</ul>
+<h4>机电工程五大系统</h4>
+<table><tr><th>系统</th><th>主要设备</th><th>关键检测项目</th></tr>
+<tr><td>监控设施</td><td>车辆检测器、VMS、CCTV</td><td>检测精度≥95%、图像清晰度</td></tr>
+<tr><td>通信设施</td><td>光纤传输、程控交换、紧急电话</td><td>光缆衰耗≤0.4dB/km</td></tr>
+<tr><td>收费设施</td><td>车道设备、ETC系统</td><td>交易成功率≥99.5%</td></tr>
+<tr><td>隧道机电</td><td>通风机、照明灯、消防</td><td>照度≥20lx(入口段)</td></tr>
+<tr><td>供配电</td><td>变电所、配电箱、电缆</td><td>绝缘电阻≥0.5MΩ</td></tr>
+</table>
 
-<div class="note-box"><strong>📅</strong>2020年9月1日实施。</div>`
+<h4>评定等级</h4>
+<ul><li><span class="hl">合格</span>：主控项目全部合格+一般项目≥80%</li><li><span class="hl">不合格</span>：任一项主控不合格或一般项目<80%</li></ul>
+
+<div class="note-box"><strong>📅</strong>2020年9月1日实施。机电工程交竣工验收法定依据。</div>`
   },
   {
     code:'JTG D70/2-2014',
@@ -3012,18 +2988,21 @@ var SPECS = [
     status:'current',
     tags:["标志","标线"],
     hasPdf:false,
-    content:`<h4>📑 内容概要</h4>
-<p><span class="hl">公路交通标志和标线设置规范</span>。</p>
+    content:`<h4>📑 章节目录（8章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 一般规定</div><div>4 指路标志</div><div>5 警告禁令标志</div><div>6 标线设置</div><div>7 服务设施标志</div><div>8 养护管理</div></div>
 
-<h4>设置要点</h4>
-<ul>
-<li>指路标志：交叉口前300~500m预告</li>
-<li>高速出口：<span class="hl">2km→1km→500m→0m</span>四级预告</li>
-<li>警告标志前置：高速200~250m</li>
-<li>地名标志：标注前方3个目的地</li>
-</ul>
+<h4>指路标志设置</h4>
+<ul><li>交叉口预告：距交叉口<span class="hl">300~500m</span></li><li>高速出口：<span class="hl">2km→1km→500m→0m</span>四级预告</li><li>地点距离：标注前方3个目的地及距离</li></ul>
 
-<div class="note-box"><strong>📅</strong>2009年12月1日实施。</div>`
+<h4>警告标志前置距离</h4>
+<table><tr><th>设计速度</th><th>高速公路</th><th>一级公路</th><th>二级公路</th></tr>
+<tr><td>120</td><td class="hl">200~250m</td><td>—</td><td>—</td></tr>
+<tr><td>100</td><td>150~200m</td><td class="hl">150~200m</td><td>—</td></tr>
+<tr><td>80</td><td>100~150m</td><td>100~150m</td><td>100~150m</td></tr>
+<tr><td>60</td><td>—</td><td>80~120m</td><td>80~120m</td></tr>
+</table>
+
+<div class="note-box"><strong>📅</strong>2009年12月1日实施。与GB 5768配套的公路行业标准。</div>`
   },
   {
     code:'JTG/T 3381-03-2024',
@@ -3291,34 +3270,28 @@ var SPECS = [
     tags:["质检","土建"],
     hasPdf:false,
     content:`<h4>📑 章节目录（12章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 路基工程</div><div>4 路面工程</div><div>5 桥梁工程</div><div>6 涵洞工程</div><div>7 隧道工程</div><div>8 交通安全设施</div><div>9 绿化工程</div><div>10 环保工程</div><div>11 管理设施</div><div>12 机电工程</div></div>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 路基工程</div><div>4 路面工程</div><div>5 桥梁工程</div><div>6 涵洞工程</div><div>7 隧道工程</div><div>8 交安设施</div><div>9 绿化</div><div>10 环保</div><div>11 管理设施</div><div>12 机电工程</div></div>
 
-<h4>📜 第1章 总则</h4>
-<ul>
-<li><span class="hl">1.0.1</span> 为统一公路工程质量检验评定标准，保证工程质量，制定本标准</li>
-<li><span class="hl">1.0.2</span> 适用于<span class="hl">新建和改扩建</span>各等级公路工程质量的检验评定</li>
-<li>评定等级分为<span class="hl">合格、不合格</span>两个等级</li>
-</ul>
-
-<h4>🪨 第3章 路基工程 — 关键检测项目</h4>
-<table><tr><th>检测项目</th><th>规定值/允许偏差</th><th>检测频率</th></tr>
-<tr><td>压实度</td><td class="hl">≥96%（上路床高速）</td><td>每200m每层4处</td></tr>
-<tr><td>弯沉值</td><td>≤设计容许值</td><td>每车道每20m 1点</td></tr>
-<tr><td>纵断高程</td><td>+10/-15mm</td><td>每200m 4断面</td></tr>
-<tr><td>宽度</td><td>≥设计值</td><td>每200m 4处</td></tr>
-<tr><td>平整度</td><td>≤15mm（3m直尺）</td><td>每200m 2处×10尺</td></tr>
+<h4>路基关键检测项目</h4>
+<table><tr><th>项目</th><th>规定值</th><th>频率</th></tr>
+<tr><td>压实度</td><td class="hl">≥96%(上路床高速)</td><td>每200m每层4处</td></tr>
+<tr><td>弯沉值</td><td>≤设计容许值</td><td>每车道每20m1点</td></tr>
+<tr><td>纵断高程</td><td>+10/-15mm</td><td>每200m4断面</td></tr>
+<tr><td>宽度</td><td>≥设计值</td><td>每200m4处</td></tr>
 </table>
 
-<h4>🛣 第4章 路面工程 — 沥青路面关键项目</h4>
-<table><tr><th>检测项目</th><th>规定值</th><th>说明</th></tr>
-<tr><td>厚度</td><td class="hl">代表值≥设计值-8%H</td><td>每200m 1点/车道</td></tr>
-<tr><td>压实度</td><td>≥96%（马歇尔标准）</td><td>每200m 1点/车道</td></tr>
-<tr><td>平整度</td><td>σ≤1.2mm（高速）</td><td>连续检测</td></tr>
-<tr><td>弯沉值</td><td>≤竣工验收弯沉值</td><td>每车道每20m 1点</td></tr>
-<tr><td>抗滑</td><td>SFC≥40（高速）</td><td>每200m 1点/车道</td></tr>
+<h4>沥青路面关键项目</h4>
+<table><tr><th>项目</th><th>规定值</th><th>频率</th></tr>
+<tr><td>厚度</td><td class="hl">代表值≥设计值-8%H</td><td>200m/车道</td></tr>
+<tr><td>压实度</td><td>≥96%(马歇尔)</td><td>200m/车道</td></tr>
+<tr><td>平整度</td><td>σ≤<span class="hl">1.2mm</span>(高速)</td><td>连续检测</td></tr>
+<tr><td>抗滑SFC</td><td>≥40(高速)</td><td>200m/车道</td></tr>
 </table>
 
-<div class="note-box"><strong>📅 实施信息</strong><br>2018年5月1日实施。公路土建工程交竣工验收的法定依据。</div>`
+<h4>评定等级</h4>
+<ul><li>分项工程→分部工程→单位工程逐级评定</li><li>等级：<span class="hl">合格/不合格</span></li><li>主控项目<span class="hl">100%</span>合格，一般项目≥80%</li></ul>
+
+<div class="note-box"><strong>📅</strong>2018年5月1日实施。公路土建工程交竣工验收的法定依据。</div>`
   },
   {
     code:'JTG 5210-2018',
@@ -3328,36 +3301,26 @@ var SPECS = [
     tags:["评定","养护"],
     hasPdf:false,
     content:`<h4>📑 章节目录（9章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 一般规定</div><div>4 路基技术状况</div><div>5 路面技术状况</div><div>6 桥梁技术状况</div><div>7 隧道技术状况</div><div>8 沿线设施技术状况</div><div>9 综合评定</div></div>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 一般规定</div><div>4 路基技术状况SCI</div><div>5 路面技术状况PQI</div><div>6 桥梁技术状况BCI</div><div>7 隧道技术状况TCI</div><div>8 设施技术状况</div><div>9 综合评定MQI</div></div>
 
-<h4>公路技术状况评定等级（MQI）</h4>
+<h4>MQI综合评定</h4>
 <table><tr><th>评定等级</th><th>MQI值</th><th>对应措施</th></tr>
 <tr><td>优</td><td class="hl">≥90</td><td>日常养护</td></tr>
-<tr><td>良</td><td>80~89</td><td>日常养护</td></tr>
+<tr><td>良</td><td>80~89</td><td>日常养护为主</td></tr>
 <tr><td>中</td><td>70~79</td><td>预防性养护</td></tr>
 <tr><td>次</td><td>60~69</td><td>修复性养护</td></tr>
 <tr><td>差</td><td class="hl"><60</td><td>大修或改建</td></tr>
 </table>
 
-<h4>路面使用性能指数（PQI）</h4>
-<p>PQI = wPCI·PCI + wRQI·RQI + wRDI·RDI + wSRI·SRI</p>
-<table><tr><th>分项指标</th><th>含义</th><th>检测方式</th></tr>
-<tr><td>PCI</td><td>路面损坏状况指数</td><td>人工或自动检测</td></tr>
-<tr><td>RQI</td><td>路面行驶质量指数</td><td>IRI（国际平整度）</td></tr>
-<tr><td>RDI</td><td>路面车辙深度指数</td><td>车辙深度检测</td></tr>
-<tr><td>SRI</td><td>路面抗滑性能指数</td><td>SFC或BPN检测</td></tr>
+<h4>路面PQI分项</h4>
+<table><tr><th>分项</th><th>指标</th><th>检测方式</th><th>权重</th></tr>
+<tr><td>PCI</td><td>路面损坏</td><td>人工/自动检测</td><td class="hl">0.35</td></tr>
+<tr><td>RQI</td><td>行驶质量(IRI)</td><td>激光断面仪</td><td>0.40</td></tr>
+<tr><td>RDI</td><td>车辙深度</td><td>车辙仪</td><td>0.15</td></tr>
+<tr><td>SRI</td><td>抗滑性能</td><td>SFC/摆式仪</td><td>0.10</td></tr>
 </table>
 
-<h4>桥梁技术状况等级</h4>
-<table><tr><th>等级</th><th>评定分数</th><th>状态描述</th></tr>
-<tr><td>1类</td><td class="hl">≥95</td><td>全新状态，功能完好</td></tr>
-<tr><td>2类</td><td>80~94</td><td>轻微缺损，不影响使用</td></tr>
-<tr><td>3类</td><td>60~79</td><td>中等缺损，需维修</td></tr>
-<tr><td>4类</td><td>40~59</td><td>主要构件缺损，影响承载</td></tr>
-<tr><td>5类</td><td class="hl"><40</td><td>危险状态，需封闭</td></tr>
-</table>
-
-<div class="note-box"><strong>📅 实施信息</strong><br>2018年6月1日实施。替代JTG H20-2007。公路养护决策的基础标准。</div>`
+<div class="note-box"><strong>📅</strong>2018年6月1日实施。替代JTG H20-2007。公路养护决策的基础标准。</div>`
   },
   {
     code:'JTG F90-2015',
@@ -3366,34 +3329,22 @@ var SPECS = [
     status:'current',
     tags:["施工安全"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（13章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 基本规定</div><div>4 路基工程</div><div>5 路面工程</div><div>6 桥梁工程</div><div>7 隧道工程</div><div>8 交通安全设施</div><div>9 临时工程</div><div>10 特种设备</div><div>11 爆破作业</div><div>12 特殊季节</div><div>13 应急管理</div></div>
+    content:`<h4>📑 章节目录（12章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 基本规定</div><div>4 路基施工安全</div><div>5 路面施工安全</div><div>6 桥梁施工安全</div><div>7 隧道施工安全</div><div>8 交安施工安全</div><div>9 临时工程安全</div><div>10 特种设备</div><div>11 爆破作业</div><div>12 应急管理</div></div>
 
-<h4>📜 第3章 基本规定</h4>
-<ul>
-<li>施工单位应建立<span class="hl">安全生产责任制</span>和应急预案</li>
-<li>危险性较大工程应编制<span class="hl">专项施工方案</span>并组织专家论证</li>
-<li>特种作业人员必须取得<span class="hl">特种作业操作资格证</span></li>
-<li>施工现场应设置安全警示标志和防护设施</li>
-</ul>
+<h4>基本规定</h4>
+<ul><li>危险性较大工程应编<span class="hl">专项施工方案</span>并专家论证</li><li>特种作业人员持证上岗</li><li>施工区设置安全警示标志和防护设施</li></ul>
 
-<h4>🌉 第6章 桥梁施工安全要点</h4>
-<ul>
-<li>高处作业（≥<span class="hl">2m</span>）必须系安全带，设安全网</li>
-<li>T梁/箱梁架设时作业半径内严禁站人</li>
-<li>支架搭设应按方案进行，基础承载力经验算</li>
-<li>挂篮施工应进行<span class="hl">预压试验</span>，行走时下方禁行</li>
-</ul>
+<h4>关键安全要点</h4>
+<table><tr><th>工程类型</th><th>关键安全要求</th></tr>
+<tr><td>高处作业(≥2m)</td><td>安全带+安全网+防护栏杆</td></tr>
+<tr><td>桥梁架设</td><td>吊装半径内禁站人，限位装置</td></tr>
+<tr><td>支架搭设</td><td>基础承载力验算+预压试验</td></tr>
+<tr><td>隧道瓦斯</td><td>瓦斯浓度≥0.5%撤人，防爆设备</td></tr>
+<tr><td>爆破作业</td><td>爆破器材专用库房，安全距离≥300m</td></tr>
+</table>
 
-<h4>🏔 第7章 隧道施工安全要点</h4>
-<ul>
-<li>瓦斯隧道必须进行<span class="hl">瓦斯检测</span>，浓度≥0.5%时撤人</li>
-<li>Ⅳ/Ⅴ级围岩段应控制开挖进尺（≤<span class="hl">1榀钢架间距</span>）</li>
-<li>隧道内照明电压宜用<span class="hl">36V</span>安全电压</li>
-<li>逃生管道：长度≤500m隧道设≥1根φ≥600mm钢管</li>
-</ul>
-
-<div class="note-box"><strong>📅 实施信息</strong><br>2015年7月1日实施。公路施工安全管理的强制性规范。</div>`
+<div class="note-box"><strong>📅</strong>2015年7月1日实施。公路施工安全的强制性规范。</div>`
   },
   {
     code:'JTG H10-2009',
@@ -3403,32 +3354,20 @@ var SPECS = [
     tags:["养护"],
     hasPdf:false,
     content:`<h4>📑 章节目录（12章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 路基养护</div><div>4 路面养护</div><div>5 桥梁养护</div><div>6 隧道养护</div><div>7 交通安全设施养护</div><div>8 绿化养护</div><div>9 灾害防治</div><div>10 养护作业安全</div><div>11 养护管理</div><div>12 检查与评定</div></div>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 路基养护</div><div>4 路面养护</div><div>5 桥梁养护</div><div>6 隧道养护</div><div>7 交安设施养护</div><div>8 绿化养护</div><div>9 灾害防治</div><div>10 养护作业安全</div><div>11 养护管理</div><div>12 检查评定</div></div>
 
-<h4>📜 第3章 路基养护</h4>
-<ul>
-<li>路基应保持<span class="hl">稳定、密实、排水通畅</span></li>
-<li>边坡冲刷、坍塌、滑坡应及时处理</li>
-<li>排水沟、边沟、截水沟应保持<span class="hl">畅通无淤塞</span></li>
-<li>挡土墙出现裂缝、外鼓、倾覆迹象时应加固或重建</li>
-</ul>
+<h4>养护作业安全</h4>
+<ul><li>作业区：<span class="hl">警告区→上游过渡区→缓冲区→工作区→下游过渡区→终止区</span></li><li>高速/一级警告区≥<span class="hl">1000m</span></li><li>作业人员穿<span class="hl">反光背心</span>，夜间设警示灯</li></ul>
 
-<h4>🛣 第4章 路面养护</h4>
-<table><tr><th>养护类型</th><th>适用条件</th><th>措施</th></tr>
-<tr><td>日常养护</td><td>轻微病害</td><td>清扫、灌缝、坑槽修补</td></tr>
-<tr><td>预防性养护</td><td>PQI≥80</td><td>微表处、薄层罩面、封层</td></tr>
-<tr><td>修复性养护</td><td>PQI 60~80</td><td>铣刨重铺、基层挖补</td></tr>
-<tr><td>大修</td><td>PQI<60</td><td>结构性重建</td></tr>
+<h4>路面养护措施选择</h4>
+<table><tr><th>PCI范围</th><th>养护类型</th><th>措施</th></tr>
+<tr><td>≥85</td><td>日常养护</td><td>灌缝、小修</td></tr>
+<tr><td>80~85</td><td>预防性养护</td><td>微表处、薄层罩面</td></tr>
+<tr><td>60~80</td><td>修复性养护</td><td>铣刨重铺</td></tr>
+<tr><td><60</td><td>大修</td><td>结构性重建</td></tr>
 </table>
 
-<h4>⚠ 第10章 养护作业安全</h4>
-<ul>
-<li>养护作业区应设置<span class="hl">警告区→上游过渡区→缓冲区→工作区→下游过渡区→终止区</span></li>
-<li>作业人员须穿<span class="hl">反光背心</span></li>
-<li>夜间作业应设<span class="hl">警示灯</span>和反光标志</li>
-</ul>
-
-<div class="note-box"><strong>📅 实施信息</strong><br>2010年2月1日实施。公路养护工作的纲领性规范。</div>`
+<div class="note-box"><strong>📅</strong>2010年2月1日实施。已被JTG 5110-2023替代，仍有参考价值。</div>`
   },
   {
     code:'CJJ 45-2015',
