@@ -235,13 +235,13 @@ function extractByKeywords(spec) {
 
 /** 混合提取：新解析器+旧解析器合并，各取所长 */
 function extractHybrid(spec, matchGrade) {
-  var p1=extractByKeywords(spec);          // 新：文本关键词
-  var p2=extractKeyParams(spec, matchGrade); // 旧：表格+li标签解析
-  // 合并：p1优先，p2补充
+  var p1=extractByKeywords(spec);             // 通用文本提取
+  var p2=extractKeyParams(spec, matchGrade);   // 表格+等级过滤提取
+  // 合并：p2(带等级过滤)优先，p1补充空缺
   var p={};
-  Object.keys(p2).forEach(function(k){p[k]=p2[k]});
-  Object.keys(p1).forEach(function(k){p[k]=p1[k]}); // p1覆盖p2
-  // 用户选了等级→覆盖
+  Object.keys(p1).forEach(function(k){p[k]=p1[k]});
+  Object.keys(p2).forEach(function(k){p[k]=p2[k]}); // p2覆盖p1——等级相关值优先
+  // 用户选了等级→显示选中的等级
   if(matchGrade)p['适用公路等级']=matchGrade;
   return p;
 }
