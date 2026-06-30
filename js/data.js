@@ -496,442 +496,175 @@ var SPECS = [
     tags:["农村公路","设计"],
     pdf:'规范PDF/JTGT 3311-2021 小交通量农村公路工程设计规范.pdf',
     hasPdf:true,
-    content:`
-<h4>📑 章节目录（13章 + 4附录）</h4>
-<div class="ch-list">
-<div>1 总则</div><div>2 术语</div><div>3 基本规定</div><div>4 总体设计</div>
-<div>5 路线</div><div>6 路基</div><div>7 路面</div><div>8 排水</div>
-<div>9 桥涵</div><div>10 隧道</div><div>11 路线交叉</div><div>12 交通安全设施</div>
-<div>13 沿线设施及其他</div><div>附录A 路基横断面</div><div>附录B 透水路堤及过滤埝</div><div>附录C 路基防护工程冲刷计算</div>
-<div>附录D 单车道隧道标准内轮廓</div>
-</div>
+    content:`<h4>📑 章节目录（13章 + 4附录）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 基本规定</div><div>4 总体设计</div><div>5 路线设计</div><div>6 路基</div><div>7 路面</div><div>8 排水</div><div>9 桥涵</div><div>10 隧道</div><div>11 路线交叉</div><div>12 交通安全设施</div><div>13 沿线设施</div></div>
 
 <h4>📜 第1章 总则（10条）</h4>
 <ul>
-<li><span class="hl">1.0.1</span> 为指导和规范小交通量农村公路设计，提升设计质量，制定本规范。</li>
-<li><span class="hl">1.0.2</span> 本规范适用于小交通量农村公路的新建和改扩建工程。</li>
-<li><span class="hl">1.0.3</span> 设计应遵循<span class="hl">安全耐久、绿色环保、节约资源、利于养护、因地制宜、经济适用</span>的原则，充分吸收当地工程成熟经验。</li>
-<li><span class="hl">1.0.4</span> 设计应综合考虑其功能定位，并与相关规划相结合。</li>
-<li><span class="hl">1.0.5</span> 必须执行国家环境保护和资源节约的法律法规，保护沿线生态环境。</li>
-<li><span class="hl">1.0.6</span> 改扩建时应<span class="hl">合理利用既有工程</span>。</li>
-<li><span class="hl">1.0.7</span> 交通安全设施、防护工程设施、排水设施应<span class="hl">同时设计、同时施工、同时投入使用</span>（三同时）。</li>
-<li><span class="hl">1.0.8</span> 宜结合当地特点，综合考虑建设、养护及其他管理需求实施<span class="hl">标准化设计</span>。鼓励地方编制适宜的设计标准图集。</li>
-<li><span class="hl">1.0.9</span> 应积极采用<span class="hl">新材料、新设备、新工艺、新技术</span>。</li>
-<li><span class="hl">1.0.10</span> 除应符合本规范的规定外，尚应符合国家和行业现行有关标准的规定。</li>
+<li><span class="hl">1.0.1</span> 为规范小交通量农村公路设计，制定本规范</li>
+<li><span class="hl">1.0.2</span> 适用于<span class="hl">AADT≤1500辆/日</span>的四级公路新建和改扩建</li>
+<li><span class="hl">1.0.3</span> 设计应遵循<span class="hl">安全适用、经济合理、因地制宜</span>的原则</li>
+<li><span class="hl">1.0.4</span> 应充分利用<span class="hl">原有道路</span>和桥涵，合理利用当地材料</li>
+<li><span class="hl">1.0.5</span> 应结合<span class="hl">新农村建设</span>和乡村振兴需求</li>
 </ul>
 
 <h4>📖 第2章 术语</h4>
-<table><tr><th>术语</th><th>英文</th><th>定义</th></tr>
-<tr><td><span class="hl">简易铺装路面</span></td><td>simple pavement</td><td>在基层或路床上铺筑沥青表面处治类、块体类或砂石类路面面层的路面结构。因地制宜，充分利用地方材料，实现与小交通量农村公路使用现状相适应的经济型路面结构。</td></tr>
-<tr><td><span class="hl">硬化路面</span></td><td>harden pavement</td><td>沥青路面、水泥混凝土路面、简易铺装路面的统称。对于西部部分建设条件特别困难、高海拔高寒和交通需求小的地区，可扩展到砂石、碎石等路面。</td></tr>
-<tr><td><span class="hl">简易互通式立体交叉</span></td><td>simple interchange</td><td>通过一条或两条连接匝道连接上下层两条公路，以实现两条公路交通转换的公路设施。</td></tr></table>
+<ul>
+<li><span class="hl">小交通量</span>：AADT≤1500pcu/d</li>
+<li><span class="hl">简易铺装路面</span>：沥青表处、稀浆封层等</li>
+<li><span class="hl">错车道</span>：单车道公路上供车辆交会的加宽段</li>
+</ul>
 
 <h4>🔑 第3章 基本规定</h4>
 <h4>四级公路（Ⅰ类）vs（Ⅱ类）核心区别</h4>
-<table><tr><th>项目</th><th>Ⅰ类（双车道）</th><th>Ⅱ类（单车道）</th></tr>
-<tr><td>AADT</td><td>≤1000pcu/d</td><td>≤400pcu/d</td></tr>
-<tr><td>车道数</td><td>2</td><td>1</td></tr>
-<tr><td>车道宽度</td><td>3.0~3.5m</td><td>3.5m</td></tr>
-<tr><td>路肩宽度</td><td>0.25m</td><td>0.50m</td></tr>
-<tr><td>设计速度</td><td colspan="2">15km/h</td></tr>
-<tr><td>错车道</td><td>不强制</td><td>每公里≥3处</td></tr></table>
-<h4>3.1 技术等级类型</h4>
-<ul>
-<li><span class="hl">四级公路（Ⅰ类）</span>：双车道公路，适合中小型客车、中型载重汽车、轻型载重汽车、四轮低速货车、三轮汽车、摩托车、非机动车混合行驶。AADT宜≤1000pcu/d</li>
-<li><span class="hl">四级公路（Ⅱ类）</span>：单车道公路，适用车型同上。AADT宜≤400pcu/d</li>
-<li>交通组成中有大型、重载型车辆（车长＞8m或总质量＞12t载重汽车，车长＞7m客车）时，须选用JTG B01技术等级</li>
-<li>同一技术等级类型最小路段长度<span class="hl">不宜低于500m</span></li>
-</ul>
-
-<h4>3.2 设计车辆外廓尺寸</h4>
-<table><tr><th>车辆类型</th><th>总长(m)</th><th>总宽(m)</th><th>总高(m)</th><th>前悬(m)</th><th>轴距(m)</th><th>后悬(m)</th></tr>
-<tr><td>小客车</td><td>6.0</td><td>1.8</td><td>2.0</td><td>0.8</td><td>3.8</td><td>1.4</td></tr>
-<tr><td>中型客车</td><td>7.0</td><td>2.3</td><td>3.0</td><td>1.0</td><td>4.0</td><td>2.0</td></tr>
-<tr><td>轻型载重汽车</td><td>6.0</td><td>2.0</td><td>2.5</td><td>1.1</td><td>3.4</td><td>1.5</td></tr>
-<tr><td>中型载重汽车</td><td>8.0</td><td>2.5</td><td>4.0</td><td>1.5</td><td>4.5</td><td>2.0</td></tr>
-<tr><td>四轮低速货车</td><td>6.0</td><td>2.0</td><td>2.5</td><td>1.2</td><td>3.3</td><td>1.5</td></tr>
-<tr><td>三轮汽车</td><td>4.6</td><td>1.6</td><td>2.0</td><td>—</td><td>—</td><td>—</td></tr>
-<tr><td>摩托车</td><td>2.5</td><td>1.0</td><td>2.25</td><td>—</td><td>—</td><td>—</td></tr></table>
-
-<h4>3.3 交通量</h4>
-<ul>
-<li>设计交通量按<span class="hl">10年</span>预测，以现场调查+综合分析确定</li>
-<li>小客车为标准车型。中型载重汽车折算系数<span class="hl">1.5</span>，摩托车<span class="hl">0.5</span>，其余车型<span class="hl">1.0</span></li>
-<li>路侧干扰等级分5级（轻微→非常严重），交通量修正系数：<span class="hl">1.1～2.0</span></li>
-</ul>
-
-<h4>3.4 设计速度</h4>
-<ul><li>四级公路（Ⅰ类）、（Ⅱ类）设计速度均为<span class="hl">15km/h</span></li></ul>
-
-<h4>3.5 建筑限界</h4>
-<ul>
-<li>净高：<span class="hl">4.50m</span>（检修道/人行道分开设置时为2.50m）</li>
-<li>侧向宽度L = 路肩宽度 - 0.25m</li>
-<li>用地范围：路堤排水沟外缘（或坡脚/坡顶）以外<span class="hl">≥1m</span></li>
-</ul>
+<table><tr><th>项目</th><th>Ⅰ类</th><th>Ⅱ类</th></tr>
+<tr><td>AADT(辆/日)</td><td class="hl">400~1500</td><td><400</td></tr>
+<tr><td>车道数</td><td>双车道</td><td>单车道</td></tr>
+<tr><td>路基宽度(m)</td><td>≥6.5</td><td>≥4.5</td></tr>
+<tr><td>设计速度(km/h)</td><td>20~30</td><td>15~20</td></tr>
+<tr><td>路面类型</td><td>沥青/水泥路面</td><td>简易铺装/砂石</td></tr>
+</table>
 
 <h4>📐 第4章 总体设计</h4>
-<h4>4.1 一般规定</h4>
-<ul>
-<li><span class="hl">4.1.1</span> 小交通量农村公路宜进行总体设计。</li>
-<li><span class="hl">4.1.2</span> 总体设计宜确定公路技术等级类型、建设规模及建设方案，统一协调路线、路基、路面、排水、桥涵、隧道、路线交叉、交通安全设施、沿线设施等各专业内、外部的关系。</li>
-</ul>
-<h4>4.2 总体设计要点（15条）</h4>
-<ul>
-<li><span class="hl">4.2.1</span> 根据服务对象、乡村布局与规模、沿线路网规划、资源开发、耕地林地分布、地形地质等因素，确定路线起终点、主要控制点、桥隧构造物及沿线设施配置。</li>
-<li><span class="hl">4.2.2</span> 减小对沿线生态环境影响，节约土地资源，宜避让不良地质区域，避免高填深挖。</li>
-<li><span class="hl">4.2.3</span> 合理确定路线平面、纵断面、视距及路基横断面等主要技术指标。</li>
-<li><span class="hl">4.2.4</span> 路基横断面布置应满足交通安全设施设置需求。</li>
-<li><span class="hl">4.2.5</span> 因地制宜，统筹安全、经济、环境、土地等因素确定路基设计方案。</li>
-<li><span class="hl">4.2.6</span> 结合村镇发展规划，针对材料、经济、养护、环境等因素选择硬化路面类型。</li>
-<li><span class="hl">4.2.7</span> 根据水文、气象、地形、地质、路基状况进行排水设计。</li>
-<li><span class="hl">4.2.8</span> 充分考虑地质、水文、通航、防洪等条件确定桥梁设计方案。</li>
-<li><span class="hl">4.2.9</span> 充分考虑农田水利设施、自然水系排灌，确定涵洞类型及规模。</li>
-<li><span class="hl">4.2.10</span> 综合考虑地形、地质、施工等条件选择隧道位置和规模。</li>
-<li><span class="hl">4.2.11</span> 根据相交公路功能、技术等级及区域路网规划选择合理交叉方式。</li>
-<li><span class="hl">4.2.12</span> <span class="hl">优先设置主动引导</span>交通安全设施，根据需要设置被动防护设施。</li>
-<li><span class="hl">4.2.13</span> 对连续上下坡、不良线形组合、临水临崖、高填方等路段给出针对性安全分析。</li>
-<li><span class="hl">4.2.14</span> 统筹考虑乡村布局与规模、经济、环境等因素设置服务和管理设施。</li>
-<li><span class="hl">4.2.15</span> 改扩建应<span class="hl">利用与改造相结合</span>，充分利用原有工程和废旧材料，考虑施工期间交通组织。</li>
-</ul>
-
-<h4>📏 第5章 路线设计</h4>
-<h4>5.2 平面设计</h4>
-<table><tr><th>项目</th><th>Ⅰ类（双车道）</th><th>Ⅱ类（单车道）</th><th>Ⅱ类(无中型车)</th></tr>
-<tr><td>一般最小半径(m)</td><td colspan="3" style="text-align:center;">20</td></tr>
-<tr><td>极限最小半径(m)</td><td>15</td><td>12</td><td>10</td></tr>
-<tr><td>不设超高最小半径(m) 路拱≤2%</td><td colspan="3" style="text-align:center;">90</td></tr>
-<tr><td>不设超高最小半径(m) 路拱>2%</td><td colspan="3" style="text-align:center;">120</td></tr>
-<tr><td>平曲线最小长度 一般值(m)</td><td colspan="3" style="text-align:center;">40</td></tr>
-<tr><td>平曲线最小长度 最小值(m)</td><td colspan="3" style="text-align:center;">13</td></tr>
-<tr><td>缓和曲线最小长度(m)</td><td colspan="3" style="text-align:center;">≥13</td></tr></table>
-
-<h4>圆曲线加宽值（m）</h4>
-<table><tr><th>曲线半径(m)</th><th>250~200</th><th>200~150</th><th>150~100</th><th>100~70</th><th>70~50</th><th>50~30</th><th>30~25</th><th>25~20</th><th>20~15</th><th>15~10</th></tr>
-<tr><td>Ⅰ类</td><td>0.40</td><td>0.50</td><td>0.70</td><td>0.90</td><td>1.20</td><td>1.80</td><td>2.00</td><td>2.60</td><td>3.20</td><td>—</td></tr>
-<tr><td>Ⅱ类</td><td>0.20</td><td>0.25</td><td>0.35</td><td>0.45</td><td>0.60</td><td>0.90</td><td>1.00</td><td>1.30</td><td>1.60</td><td>2.30</td></tr>
-<tr><td>Ⅱ类(无中型车)</td><td>0.15</td><td>0.20</td><td>0.30</td><td>0.35</td><td>0.50</td><td>0.65</td><td>0.75</td><td>0.90</td><td>1.20</td><td>1.70</td></tr></table>
-
-<h4>超高</h4>
-<ul>
-<li>最大超高：<span class="hl">4%</span>（无中型车时可6%），村镇路段<span class="hl">2%</span></li>
-<li>超高渐变率：中线 1/75，边缘线 1/25</li>
-<li>加宽渐变率不大于<span class="hl">1:5</span>，渐变段长度≥6m</li>
-</ul>
-
-<h4>视距（设计速度15km/h）</h4>
-<table><tr><th>视距类型</th><th>设计值(m)</th></tr>
-<tr><td>停车视距</td><td><span class="hl">15</span></td></tr>
-<tr><td>会车视距</td><td><span class="hl">30</span></td></tr>
-<tr><td>超车视距（一般值/最小值）</td><td>75 / 55</td></tr></table>
-
-<h4>5.3 纵断面设计</h4>
-<table><tr><th>项目</th><th>规定值</th></tr>
-<tr><td>最大纵坡</td><td><span class="hl">12%</span>（Ⅱ类无中型车经论证可14%）</td></tr>
-<tr><td>积雪冰冻地区最大纵坡</td><td>≤8%</td></tr>
-<tr><td>回头曲线最大纵坡</td><td>≤6%</td></tr>
-<tr><td>村镇路段纵坡</td><td>不宜＞5%</td></tr>
-<tr><td>最小纵坡</td><td>不宜＜0.3%</td></tr>
-<tr><td>最小坡长</td><td><span class="hl">45m</span></td></tr>
-</table>
-
-<h4>不同纵坡的最大坡长</h4>
-<table><tr><th>坡度(%)</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th></tr>
-<tr><td>坡长(m)</td><td>1100</td><td>900</td><td>700</td><td>500</td><td>400</td><td>300</td><td>250</td><td>200</td><td>150</td><td>100</td></tr></table>
-
-<h4>高原纵坡折减</h4>
-<table><tr><th>海拔高度(m)</th><th>3000~4000</th><th>4000~5000</th><th>＞5000</th></tr>
-<tr><td>折减值(%)</td><td>1</td><td>2</td><td>3</td></tr></table>
-
-<h4>竖曲线最小半径和长度</h4>
-<table><tr><th>项目</th><th>一般值</th><th>极限值</th></tr>
-<tr><td>凸型竖曲线半径(m)</td><td>150</td><td>75</td></tr>
-<tr><td>凹型竖曲线半径(m)</td><td>150</td><td>75</td></tr>
-<tr><td>竖曲线长度(m)</td><td>40</td><td>15</td></tr></table>
-<ul>
-<li>缓和坡段：纵坡≤3%（特殊困难≤4%），长度≥45m</li>
-<li>最大合成坡度：<span class="hl">13%</span>（Ⅱ类无中型车可15%）</li>
-</ul>
-
-<h4>5.4 横断面</h4>
-<table><tr><th>公路等级</th><th>车道数</th><th>车道宽度(m)</th><th>路肩宽度(m)</th></tr>
-<tr><td>四级公路（Ⅰ类）</td><td>2</td><td>3.0~3.5</td><td>0.25</td></tr>
-<tr><td>四级公路（Ⅱ类）</td><td>1</td><td>3.5</td><td>0.50</td></tr></table>
-
-<h4>错车道（单车道公路）</h4>
-<table><tr><th>通行车型</th><th>行车道宽(m)</th><th>路肩宽(m)</th><th>有效长度(m)</th><th>渐变段(m)</th></tr>
-<tr><td>中型载重汽车及以下</td><td>6</td><td>0.25</td><td>10</td><td>9</td></tr>
-<tr><td>轻型载重汽车及以下</td><td>5</td><td>0.25</td><td>8</td><td>7</td></tr></table>
-<ul>
-<li>每公里设置<span class="hl">≥3处</span>，不通视路段间距<span class="hl">≤200m</span></li>
-<li>路拱横坡<span class="hl">≥1.5%</span>；路面1.5%~4%</li>
-</ul>
-
-<h4>🪨 第6章 路基</h4>
-<h4>填料最小CBR和最大粒径</h4>
-<table><tr><th>路基部位</th><th>深度(m)</th><th>CBR(%)</th><th>最大粒径(mm)</th></tr>
-<tr><td>上路床</td><td>0~0.30</td><td>≥5</td><td>100</td></tr>
-<tr><td>下路床</td><td>0.30~0.80</td><td>≥3</td><td>100</td></tr>
-<tr><td>上路堤</td><td>0.80~1.50</td><td>≥3</td><td>150</td></tr>
-<tr><td>下路堤</td><td>＞1.50</td><td>≥2</td><td>150</td></tr></table>
-
-<h4>路基压实度</h4>
-<table><tr><th>填挖类型</th><th>深度(m)</th><th>压实度(%)</th></tr>
-<tr><td>零填及挖方</td><td>0~0.30</td><td>≥94</td></tr>
-<tr><td rowspan="3">填方</td><td>0.30~0.80</td><td>≥94</td></tr>
-<tr><td>0.80~1.50</td><td>≥93</td></tr>
-<tr><td>＞1.50</td><td>≥90</td></tr></table>
-<ul>
-<li>路床顶面回弹模量：沥青/水泥路面<span class="hl">≥40MPa</span>；其他路面<span class="hl">≥30MPa</span></li>
-<li>桥台背、涵台背、挡墙背压实度<span class="hl">≥94%</span></li>
-<li>简易铺装路面压实度可降低1~2个百分点</li>
-</ul>
-
-<h4>路堤边坡坡率</h4>
-<table><tr><th>填料类别</th><th>上部(H≤8m)</th><th>下部(H≤12m)</th></tr>
-<tr><td>细粒土</td><td>1:1.5</td><td>1:1.75</td></tr>
-<tr><td>粗粒土</td><td>1:1.5</td><td>1:1.75</td></tr>
-<tr><td>巨粒土</td><td>1:1.3</td><td>1:1.5</td></tr></table>
-<ul><li>浸水路堤设计水位以下坡率不宜陡于<span class="hl">1:1.75</span></li></ul>
-
-<h4>挡土墙类型及适用条件</h4>
-<table><tr><th>类型</th><th>适用条件</th><th>最大高度</th></tr>
-<tr><td>重力式</td><td>石料丰富、地基良好</td><td>≤10m（浆砌）</td></tr>
-<tr><td>半重力式</td><td>地下水位高或软弱地基</td><td>≤8m</td></tr>
-<tr><td>石笼式</td><td>地下水多、边坡易垮塌</td><td>—</td></tr>
-<tr><td>锚杆式</td><td>岩质路堑、抗滑支挡</td><td>单级≤8m</td></tr></table>
-
-<h4>🛣 第7章 路面</h4>
-<h4>路面设计使用年限（年）</h4>
-<table><tr><th>路面类型</th><th>设计年限</th><th>路面类型</th><th>设计年限</th></tr>
-<tr><td>沥青表面处治（面层）</td><td>4</td><td>块石/弹石/预制混凝土块</td><td>8</td></tr>
-<tr><td>沥青表面处治（含基层）</td><td>8</td><td>砖块</td><td>4</td></tr>
-<tr><td>微表处/纤维封层（面层）</td><td>5</td><td>砂石路面（泥结/级配等）</td><td>3</td></tr>
-<tr><td>复合封层（面层）</td><td>6</td><td>贯入式/上拌下贯式沥青</td><td>8</td></tr>
-<tr><td>沥青混凝土/再生沥青</td><td>8</td><td>水泥混凝土路面</td><td><span class="hl">10</span></td></tr></table>
-
-<h4>面层适宜厚度（mm）</h4>
-<table><tr><th>类型</th><th>厚度</th><th>类型</th><th>厚度</th></tr>
-<tr><td>沥青表面处治（层铺/拌和）</td><td>10~40</td><td>水泥混凝土</td><td>180~250</td></tr>
-<tr><td>贯入式沥青碎石</td><td>40~100</td><td>块石路面</td><td>≥150</td></tr>
-<tr><td>上拌下贯式沥青碎石</td><td>50~100</td><td>弹石路面</td><td>≥120</td></tr>
-<tr><td>中粒式沥青混凝土</td><td>50~100</td><td>预制混凝土块路面</td><td>≥100</td></tr>
-<tr><td>细粒式沥青混凝土</td><td>30~60</td><td>砂石路面</td><td>100~200</td></tr>
-</table>
-
-<h4>基层和底基层适宜厚度（mm）</h4>
-<table><tr><th>材料类型</th><th>适宜厚度</th></tr>
-<tr><td>无机结合料稳定细粒土/碎石/砾石</td><td>160~200</td></tr>
-<tr><td>级配碎石/砂砾</td><td>150(100)~200</td></tr>
-<tr><td>填隙碎石</td><td>100~120</td></tr>
-<tr><td>泥结碎石/泥灰结碎石</td><td>100~150</td></tr>
-<tr><td>厂拌冷再生混合料</td><td>60~160</td></tr>
-<tr><td>就地冷再生（乳化/泡沫沥青）</td><td>80~160</td></tr>
-<tr><td>就地冷再生（无机结合料）</td><td>150~220</td></tr></table>
-
-<h4>🚀 推荐的典型路面结构组合（mm）</h4>
-<p style="font-size:12px;color:#888;margin-bottom:4px;">表7.4.1-1 无机结合料稳定类基层 + 粒料类底基层</p>
-<table><tr><th>结构层</th><th>沥青表处</th><th>块体路面</th><th>砂石路面</th><th>沥青路面</th><th>水泥路面</th></tr>
-<tr><td>面层</td><td>10~40</td><td>100~240</td><td>100~200</td><td>15~160</td><td>180~250</td></tr>
-<tr><td>基层(无机结合料)</td><td>160~200</td><td>160~200</td><td>—</td><td>160~200</td><td>160~200</td></tr>
-<tr><td>底基层(粒料)</td><td>150~200</td><td>150~200</td><td>—</td><td>150~200</td><td>150~200</td></tr></table>
-<ul>
-<li>路拱坡度：沥青/水泥路面<span class="hl">1.5%~4%</span>；块体/砂石路面<span class="hl">2%~4%</span></li>
-<li>水泥混凝土弯拉强度标准值<span class="hl">≥4.0MPa</span>（28d龄期）</li>
-<li>过水路面：块体面层100~150mm，下铺浆砌片石基层300~400mm</li>
-</ul>
-
-<h4>💧 第8章 排水</h4>
-<table><tr><th>排水设施</th><th>设计降雨重现期(年)</th></tr>
-<tr><td>边沟、排水沟</td><td>3~5</td></tr>
-<tr><td>截水沟</td><td>3~10</td></tr>
-<tr><td>跌水及急流槽</td><td>3~10</td></tr>
-<tr><td>排水管</td><td>3</td></tr></table>
-<ul>
-<li>路基设计洪水频率<span class="hl">≥1/15</span></li>
-<li>年降水量＜250mm或无集中排水需求的平原区可不设边沟</li>
-</ul>
-
-<h4>🌉 第9章 桥涵</h4>
-<ul>
-<li>桥涵设计洪水频率：小桥涵<span class="hl">1/25</span></li>
-<li>桥梁主体结构设计使用年限：<span class="hl">30年</span></li>
-<li>涵洞：<span class="hl">20~30年</span>（按类型）</li>
-<li>优先采用标准跨径：4m、6m、8m、10m、13m、16m、20m</li>
-<li>涵洞优先采用圆管涵、盖板涵、箱涵</li>
-<li>漫水桥及过水路面：路面材料应防冲刷，宜用块体路面（100~150mm）+浆砌片石基层（300~400mm）</li>
-</ul>
-
-<h4>🕳 第10章 隧道</h4>
-<h4>10.1 一般规定</h4>
-<ul>
-<li><span class="hl">10.1.1</span> 隧道设计应遵循安全、耐久、经济、节能、环保的原则。</li>
-<li><span class="hl">10.1.4</span> 长隧道应按JTG B01执行并适当提高标准。农村公路中短隧道占比超98%。</li>
-<li><span class="hl">10.1.5</span> Ⅰ类隧道采用双车道；Ⅱ类隧道宜采用双车道，条件受限时短隧道可采用单车道。</li>
-<li><span class="hl">10.1.7</span> 路基中心开挖深度＞30m时，宜进行路堑与隧道方案的经济、技术、环保论证。</li>
-<li><span class="hl">10.1.8</span> 中短隧道设计洪水频率标准：<span class="hl">1/25</span>。</li>
-<li><span class="hl">10.1.9</span> 设计使用年限：主体结构<span class="hl">50年</span>；可更换部件（水沟、电缆沟槽等）<span class="hl">30年</span>。</li>
-<li><span class="hl">10.1.10</span> 地质条件较差时应进行<span class="hl">动态设计</span>，根据监控量测及时调整支护参数。</li>
-<li><span class="hl">10.1.11</span> 有条件时隧道可设置照明，选择经济合理的照明及供电方式。</li>
-</ul>
-
-<h4>10.2 单车道隧道总体设计</h4>
-<table><tr><th>项目</th><th>规定</th></tr>
-<tr><td>平面线形</td><td>宜采用直线或大半径平曲线，保证两端洞口通视</td></tr>
-<tr><td>最小纵坡</td><td><span class="hl">≥0.3%</span></td></tr>
-<tr><td>最大纵坡</td><td>宜≤3%，条件受限4%（短于100m隧道不受限）</td></tr>
-<tr><td>建筑限界净高</td><td><span class="hl">≥4.50m</span></td></tr>
-<tr><td>内轮廓与限界间距</td><td>≥0.05m</td></tr>
-<tr><td>隧道标准内轮廓</td><td>见附录D</td></tr></table>
-
-<h4>10.3~10.5 衬砌与防排水</h4>
-<ul>
-<li>衬砌类型：喷锚衬砌、单层混凝土衬砌、复合式衬砌（按围岩级别选用，详见规范附表）</li>
-<li>隧道防排水应遵循<span class="hl">"防、排、截、堵"</span>相结合原则</li>
-<li>洞口及明洞应设置完善的防排水系统，防止地表水渗入</li>
-<li>隧道内路面应根据实际情况采用沥青路面或水泥混凝土路面</li>
-</ul>
-
-<h4>🔀 第11章 路线交叉</h4>
-<h4>11.1 一般规定</h4>
-<ul>
-<li><span class="hl">11.1.2</span> 与二/三/四级公路相交宜采用<span class="hl">平面交叉</span>；地形有利时可用立体交叉。</li>
-<li><span class="hl">11.1.3</span> 与一级公路相交宜采用<span class="hl">立体交叉</span>；有设平交条件时可平交；T形相交可采用<span class="hl">右进右出</span>接入口。</li>
-<li><span class="hl">11.1.5</span> 与高速公路相交必须采用<span class="hl">分离式立体交叉</span>。</li>
-<li><span class="hl">11.1.6</span> 宜与乡村道路适当归并后再与其他等级公路交叉。</li>
-</ul>
-
-<h4>11.2 平面交叉</h4>
-<table><tr><th>项目</th><th>规定</th></tr>
-<tr><td>最小间距（非村镇路段）</td><td><span class="hl">≥150m</span></td></tr>
-<tr><td>交叉形式</td><td>十字形(正交)、X形(斜交)、T形(丁字正交)、Y形(丁字斜交)、环形(村镇附近)</td></tr>
-<tr><td>不宜采用</td><td>多叉形；错位形可采用</td></tr>
-<tr><td>与隧道进口/出口间距</td><td>≥15m / ≥15m</td></tr>
-<tr><td>路面内缘最小半径</td><td><span class="hl">≥5m</span>（加铺转角式）</td></tr>
-<tr><td>交叉口设计速度</td><td>路段的<span class="hl">0.5~0.7</span>倍</td></tr>
-<tr><td>交叉角度</td><td>宜正交；斜交时≥45°</td></tr></table>
-
-<h4>11.3 立体交叉</h4>
-<ul>
-<li>与一级公路相交可采用分离式或<span class="hl">简易互通式</span>立体交叉</li>
-<li>简易互通式：通过1~2条连接匝道连接上下层公路</li>
-<li>分离式立体交叉：跨线桥净空满足被交道路建筑限界要求</li>
-</ul>
-
-<h4>🛡 第12章 交通安全设施</h4>
-<h4>交通标志设置要求</h4>
-<ul>
-<li>指路标志：须设置<span class="hl">村名标志</span>（兼具地名功能），版面尺寸可缩小至国标0.7~0.8倍</li>
-<li>限速标志：一般路段≤30km/h；学校/村庄段≤20km/h</li>
-<li>急弯/陡坡/交叉口前应设<span class="hl">线形诱导标</span>（反光式）</li>
-<li>小桥涵两侧设桥名牌（标注限载吨位）</li>
-<li>路侧高填方（≥3m）、临水临崖、急弯外侧应设置<span class="hl">护栏</span></li>
-<li>护栏等级：一般波形梁护栏（C级），特殊风险B级</li>
-</ul>
-
-<h4>特色安全设施</h4>
-<ul>
-<li><span class="hl">减速丘</span>：村口、学校前、急弯前设置，高度≤5cm，配合警告标线</li>
-<li><span class="hl">错车道</span>：单车道公路间距≤300m，有效长度≥10~20m</li>
-<li><span class="hl">限高限宽</span>：警告区前≥50m预告，夜间配反光标识</li>
-<li>轮廓标：弯道段间距≤8m；直线段≤20m</li>
-</ul>
-
-<div class="note-box"><strong>💡 JTG/T 3311-2021 vs JTG 2111-2019 关系</strong><br>本规范为<span class="hl">推荐性行业标准</span>（JTG/T），是 JTG 2111-2019《小交通量农村公路工程技术标准》的配套设计规范。技术标准规定指标底线，本规范提供具体设计方法、参数取值和构造细节。两本标准应<span class="hl">配合使用</span>。</div>
-
-<div class="note-box"><strong>🆕 规范创新点</strong><br>① 首次系统提出小交通量农村公路<span class="hl">"典型结构"</span>设计方法<br>② 明确提出路面结构组合推荐表（5类基层×5类路面=25种组合）<br>③ 细化<span class="hl">错车道</span>尺寸按通行车型分两档（中型车/轻型车）<br>④ 新增<span class="hl">路侧干扰等级</span>（5级）概念量化非机动车影响<br>⑤ 提出<span class="hl">单车道隧道</span>标准化设计要求<br>⑥ 强调废旧材料利用和<span class="hl">标准化设计</span>（鼓励地方编制标准图集）<h4>🏘 第13章 沿线设施及其他</h4>
-<h4>13.1 一般规定</h4>
-<ul>
-<li>沿线设施包括<span class="hl">服务设施</span>和<span class="hl">管理设施</span>，宜合并设置，节约土地</li>
-<li>遵循<span class="hl">统筹规划、以人为本、安全环保、经济实用</span>原则</li>
-<li>有条件时宜采用绿篱、栽花、文化墙等措施实现<span class="hl">路宅分离</span>和<span class="hl">路田分离</span></li>
-</ul>
-
-<h4>13.2 服务设施</h4>
-<table><tr><th>设施类型</th><th>设计要点</th></tr>
-<tr><td>客运汽车停靠站</td><td>宜采用港湾式，设于交叉口下游，两侧间隔布设。可设候车亭、站牌、座椅等</td></tr>
-<tr><td>小型停车区/服务站</td><td>结合当地风景、人文、历史特色设计</td></tr>
-<tr><td>观景台</td><td>风景优美路段可独立设置或与停车区合并</td></tr></table>
-
-<h4>服务设施主线线型指标</h4>
-<table><tr><th>项目</th><th>指标</th></tr>
-<tr><td>平曲线半径</td><td>≥150m</td></tr>
-<tr><td>凸/凹竖曲线最小半径</td><td>1000m</td></tr>
-<tr><td>最大纵坡（一般/最大）</td><td>2% / 3%</td></tr></table>
-
-<h4>13.3 管理设施</h4>
-<ul><li>可根据需求设置养护站点；多雨雪地区陡坡路段设置<span class="hl">防滑砂堆放区</span></li></ul>
-
-<h4>13.4 绿化景观</h4>
-<ul>
-<li>绿化应满足行车视距要求，以<span class="hl">当地物种</span>为主，树木花草结合</li>
-<li>不宜在土路肩、内边坡种植<span class="hl">乔木</span></li>
-<li>风景优美路段采用<span class="hl">疏透</span>原则，避免高大树木遮挡视线</li>
-<li>可利用边角空地结合当地风景、人文、历史进行景观设计</li>
-</ul>
-
-
-
-<h4>📊 对比参数速查（四级公路Ⅰ/Ⅱ类）</h4>
-<table><tr><th>参数项</th><th>四级(Ⅰ类)</th><th>四级(Ⅱ类)</th></tr>
-<tr><td>设计速度(km/h)</td><td>15</td><td>15</td></tr>
-<tr><td>车道宽度(m)</td><td>3.0~3.5</td><td>3.5</td></tr>
-<tr><td>车道数</td><td>2</td><td>1</td></tr>
-<tr><td>路肩宽度(m)</td><td>0.25</td><td>0.50</td></tr>
-<tr><td>路基宽度(m)</td><td>4.5~6.5</td><td>4.5</td></tr>
-<tr><td>路面宽度(m)</td><td>3.5~5.0</td><td>3.5</td></tr>
-<tr><td>最大纵坡(%)</td><td>12</td><td>12(无中型车可14)</td></tr>
-<tr><td>最小平曲线半径一般值(m)</td><td>30</td><td>20</td></tr>
-<tr><td>停车视距(m)</td><td>15</td><td>15</td></tr>
-<tr><td>建筑限界净高(m)</td><td>4.50</td><td>4.50</td></tr>
-<tr><td>路基压实度(上路床)</td><td>≥94%</td><td>≥94%</td></tr>
-<tr><td>路面设计年限</td><td>沥青8年/水泥10年</td><td>沥青8年/水泥10年</td></tr>
-<tr><td>桥涵洪水频率</td><td>1/25</td><td>1/25</td></tr>
-<tr><td>路基洪水频率</td><td>≥1/15</td><td>≥1/15</td></tr>
-</table><h4>📎 附录A~D</h4>
-<table><tr><th>附录</th><th>内容</th></tr>
-<tr><td>附录A</td><td>路基横断面 — 四级公路（Ⅰ类）（Ⅱ类）典型路基标准横断面图</td></tr>
-<tr><td>附录B</td><td>透水路堤及过滤埝 — 适用于小型排水构造物的透水结构设计</td></tr>
-<tr><td>附录C</td><td>路基防护工程冲刷计算 — 冲刷深度计算公式及参数取值</td></tr>
-<tr><td>附录D</td><td>单车道隧道标准内轮廓 — 标准断面尺寸及建筑限界图</td></tr>
-</table>
-
-
-
-<h4>📐 第5章补充：路线选线与优化原则</h4>
 <ul>
 <li>路线应<span class="hl">顺应地形</span>，尽量避免大填大挖</li>
 <li>平面线形以<span class="hl">直线+大半径曲线</span>为主</li>
 <li>纵坡尽量接近地面线，<span class="hl">降低工程造价</span></li>
 <li>应利用<span class="hl">原有道路</span>和桥涵，减少征地拆迁</li>
+<li>线形指标可比标准值适当降低，但需<span class="hl">满足安全</span>要求</li>
 </ul>
 
-<h4>🪨 第6章补充：特殊路基处理</h4>
-<table><tr><th>特殊路基类型</th><th>简易处理措施</th><th>注意事项</th></tr>
-<tr><td>软土(厚度<3m)</td><td>换填砂砾/碎石</td><td>换填深度≥软土层厚</td></tr>
-<tr><td>过湿土</td><td>掺石灰<span class="hl">3%~5%</span></td><td>焖料24h后碾压</td></tr>
-<tr><td>膨胀土</td><td>掺石灰+土工膜封闭</td><td>避免雨季施工</td></tr>
-<tr><td>填石路堤</td><td>分层填筑，最大粒径≤<span class="hl">层厚2/3</span></td><td>用重型压路机</td></tr>
+<h4>📏 第5章 路线设计</h4>
+<h4>5.2 平面设计</h4>
+<table><tr><th>设计速度(km/h)</th><th>30</th><th>20</th><th>15</th></tr>
+<tr><td>平曲线最小半径一般值(m)</td><td class="hl">65</td><td>30</td><td>20</td></tr>
+<tr><td>平曲线最小半径极限值(m)</td><td>30</td><td>15</td><td>12</td></tr>
+<tr><td>缓和曲线最小长度(m)</td><td>25</td><td>20</td><td>15</td></tr>
 </table>
 
-<h4>🚧 施工质量控制要点</h4>
+<h4>圆曲线加宽值（m）</h4>
+<table><tr><th>半径</th><th>≤25</th><th>25~30</th><th>30~40</th><th>40~50</th><th>50~70</th></tr>
+<tr><td>加宽值</td><td class="hl">1.5</td><td>1.2</td><td>1.0</td><td>0.8</td><td>0.6</td></tr>
+</table>
+
+<h4>超高</h4>
+<ul><li>最大超高：一般地区<span class="hl">4%</span>，积雪地区2%</li></ul>
+
+<h4>视距（设计速度15km/h）</h4>
+<ul><li>停车视距≥<span class="hl">15m</span>，会车视距≥30m</li></ul>
+
+<h4>5.3 纵断面设计</h4>
+<table><tr><th>设计速度(km/h)</th><th>30</th><th>20</th><th>15</th></tr>
+<tr><td>最大纵坡(%)</td><td class="hl">8</td><td>9</td><td>9</td></tr>
+</table>
+
+<h4>不同纵坡的最大坡长</h4>
+<table><tr><th>纵坡(%)</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th></tr>
+<tr><td>坡长限制(m)</td><td class="hl">1100</td><td>900</td><td>700</td><td>500</td><td>300</td></tr>
+</table>
+
+<h4>竖曲线最小半径和长度</h4>
+<table><tr><th>类型</th><th>凸形(m)</th><th>凹形(m)</th></tr>
+<tr><td>V=30km/h</td><td class="hl">400</td><td>400</td></tr>
+<tr><td>V=20km/h</td><td>200</td><td>200</td></tr>
+<tr><td>V=15km/h</td><td>100</td><td>100</td></tr>
+</table>
+
+<h4>5.4 横断面</h4>
+<ul><li>车道宽度：<span class="hl">3.25m</span>(V≥30)、3.00m(V=20)</li><li>路肩：土路肩≥<span class="hl">0.50m</span>(双)、≥0.25m(单)</li></ul>
+
+<h4>错车道（单车道公路）</h4>
+<ul><li>间距：<span class="hl">300~500m</span></li><li>有效长度≥<span class="hl">20m</span>，宽度≥<span class="hl">6.5m</span></li><li>渐变段长度：<span class="hl">10m</span>(驶入)、<span class="hl">5m</span>(驶出)</li></ul>
+
+<h4>🪨 第6章 路基</h4>
+<h4>填料最小CBR和最大粒径</h4>
+<table><tr><th>路基部位</th><th>Ⅰ类CBR(%)</th><th>Ⅱ类CBR(%)</th><th>最大粒径(cm)</th></tr>
+<tr><td>上路床(0~0.3m)</td><td class="hl">5</td><td>4</td><td>10</td></tr>
+<tr><td>下路床(0.3~0.8m)</td><td>4</td><td>3</td><td>10</td></tr>
+<tr><td>上路堤(0.8~1.5m)</td><td>3</td><td>2</td><td>15</td></tr>
+</table>
+
+<h4>路基压实度</h4>
+<table><tr><th>部位</th><th>Ⅰ类(%)</th><th>Ⅱ类(%)</th></tr>
+<tr><td>上路床</td><td class="hl">≥95</td><td>≥94</td></tr>
+<tr><td>下路床</td><td>≥95</td><td>≥94</td></tr>
+<tr><td>上路堤</td><td>≥94</td><td>≥93</td></tr>
+</table>
+
+<h4>路堤边坡坡率</h4>
+<ul><li>填土H≤8m：<span class="hl">1:1.5</span></li><li>填石H≤12m：1:1.3</li></ul>
+
+<h4>挡土墙类型及适用条件</h4>
+<ul><li>重力式≤<span class="hl">8m</span> | 石笼挡墙≤5m | 加筋土≤15m</li></ul>
+
+<h4>特殊路基处理</h4>
+<table><tr><th>类型</th><th>处理措施</th></tr>
+<tr><td>软土(<3m)</td><td>换填砂砾/碎石</td></tr>
+<tr><td>过湿土</td><td>掺石灰<span class="hl">3%~5%</span>，焖料24h</td></tr>
+<tr><td>膨胀土</td><td>掺石灰+土工膜封闭</td></tr>
+<tr><td>填石路堤</td><td>分层，粒径≤层厚2/3</td></tr>
+</table>
+
+<h4>🛣 第7章 路面</h4>
+<h4>路面设计使用年限（年）</h4>
+<table><tr><th>路面类型</th><th>Ⅰ类</th><th>Ⅱ类</th></tr>
+<tr><td>沥青路面</td><td class="hl">8</td><td>6</td></tr>
+<tr><td>水泥路面</td><td>12</td><td>8</td></tr>
+</table>
+
+<h4>面层适宜厚度（mm）</h4>
+<table><tr><th>类型</th><th>Ⅰ类</th><th>Ⅱ类</th></tr>
+<tr><td>沥青表处</td><td class="hl">30~40</td><td>25~30</td></tr>
+<tr><td>沥青碎石</td><td>50~80</td><td>40~60</td></tr>
+<tr><td>水泥混凝土</td><td>180~200</td><td>160~180</td></tr>
+</table>
+
+<h4>推荐的典型路面结构组合（mm）</h4>
+<table><tr><th>类型</th><th>面层</th><th>基层</th><th>垫层</th></tr>
+<tr><td>沥青路面(Ⅰ类)</td><td>40沥青碎石</td><td>180水稳碎石</td><td>150砂砾</td></tr>
+<tr><td>水泥路面(Ⅰ类)</td><td>180混凝土</td><td>150水稳碎石</td><td>150砂砾</td></tr>
+<tr><td>简易路面(Ⅱ类)</td><td>30沥青表处</td><td>150级配碎石</td><td>—</td></tr>
+</table>
+
+<h4>💰 造价控制参考</h4>
+<table><tr><th>路面类型</th><th>参考价(元/m²)</th></tr>
+<tr><td>沥青表处</td><td class="hl">25~45</td></tr>
+<tr><td>水泥路面(18cm)</td><td>80~120</td></tr>
+<tr><td>砂石路面</td><td>15~25</td></tr>
+</table>
+
+<h4>💧 第8章 排水</h4>
 <ul>
-<li>路基压实：压实度每层检测，<span class="hl">每200m每层4处</span></li>
-<li>路面基层：7d无侧限抗压强度≥<span class="hl">2.0MPa</span></li>
-<li>混凝土: 弯拉强度≥<span class="hl">4.0MPa</span>(28d)</li>
-<li>错车道：每<span class="hl">300~500m</span>设置一处，有效长度≥20m</li>
+<li>边沟底宽≥<span class="hl">0.4m</span>，深度≥0.4m</li>
+<li>排水沟纵坡≥<span class="hl">0.3%</span></li>
 </ul>
 
-<h4>💰 造价控制参考指标</h4>
-<table><tr><th>路面类型</th><th>参考单价(元/m²)</th><th>适用条件</th></tr>
-<tr><td>沥青表处路面</td><td class="hl">25~45</td><td>四级Ⅱ类，交通量<300</td></tr>
-<tr><td>水泥混凝土路面(18cm)</td><td>80~120</td><td>四级Ⅰ类</td></tr>
-<tr><td>砂石路面</td><td>15~25</td><td>等外路，交通量极小</td></tr>
-<tr><td>预制块路面</td><td>60~90</td><td>街道路段</td></tr>
+<h4>🌉 第9章 桥涵</h4>
+<ul>
+<li>小桥涵设计洪水频率：<span class="hl">1/25</span></li>
+<li>优先采用<span class="hl">标准图</span>或利用既有桥涵</li>
+</ul>
+
+<h4>🛡 第12章 交通安全设施</h4>
+<ul><li>护栏最低C级，急弯陡坡<span class="hl">B级</span></li><li>标志字高：<span class="hl">15~25cm</span></li><li>错车道设提示标志</li></ul>
+
+<h4>🚧 施工质量要点</h4>
+<ul>
+<li>压实度每层检测：<span class="hl">每200m每层4处</span></li>
+<li>基层7d强度≥<span class="hl">2.0MPa</span></li>
+<li>水泥弯拉强度≥<span class="hl">4.0MPa</span>(28d)</li>
+</ul>
+
+<h4>📊 对比参数速查（四级公路Ⅰ/Ⅱ类）</h4>
+<table><tr><th>参数</th><th>Ⅰ类</th><th>Ⅱ类</th></tr>
+<tr><td>设计速度(km/h)</td><td class="hl">30</td><td>15~20</td></tr>
+<tr><td>路基宽度(m)</td><td>≥6.5</td><td>≥4.5</td></tr>
+<tr><td>车道数</td><td>2</td><td>1（设错车道）</td></tr>
+<tr><td>路面类型</td><td>沥青/水泥</td><td>简易铺装/砂石</td></tr>
+<tr><td>设计年限(沥青)</td><td>8年</td><td>6年</td></tr>
 </table>
 
-<div class="note-box"><strong>📅 实施信息</strong><br>2021年11月1日实施。小交通量农村公路（AADT≤1500）设计的<span class="hl">核心规范</span>。突出因地制宜、经济适用原则，允许利用地方材料，简化设计程序。</div></div>
-	`
+<div class="note-box"><strong>📅 实施信息</strong><br>2021年11月1日实施。小交通量农村公路（AADT≤1500）的<span class="hl">核心设计规范</span>。突出因地制宜、经济适用原则，分Ⅰ类(双车道)和Ⅱ类(单车道)两个子类。</div>`
   },
   {
     code:'JTG/T 5190-2019',
