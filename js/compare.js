@@ -210,7 +210,24 @@ function extractByKeywords(spec) {
   // 牌号
   if(/HRB|HPB|CRB|Q\d/.test(t)){var ph=t.match(/(HRB\d{3}|HPB\d{3}|CRB\d{3,4}|Q\d{3}\w*)/g);if(ph)p['材料牌号/等级']=[...new Set(ph)].join('/')}
 
-  var gs=[];['高速','一级','二级','三级','四级'].forEach(function(g){if(t.indexOf(g+'公路')>=0||t.indexOf(g+'路')>=0)gs.push(g)});
+  // 适用等级：按关键特征判定，而不是扫描所有关键词
+  var gs=[];
+  if(t.indexOf('高速公路')>=0||spec.cat==='general'&&t.indexOf('高速')>=0)gs.push('高速');
+  if(t.indexOf('一级公路')>=0||spec.title.indexOf('一级')>=0)gs.push('一级');
+  if(t.indexOf('二级公路')>=0||spec.title.indexOf('二级')>=0)gs.push('二级');
+  if(t.indexOf('三级公路')>=0||spec.title.indexOf('三级')>=0)gs.push('三级');
+  // 四级：农村公路/小交通量/四级公路
+  if(t.indexOf('四级公路')>=0||t.indexOf('农村公路')>=0||t.indexOf('小交通')>=0||spec.title.indexOf('四级')>=0||spec.cat==='rural')gs.push('四级');
+  // 3311特殊：区分Ⅰ/Ⅱ类
+  if(spec.code==='JTG/T 3311-2021'||spec.code==='JTG 2111-2019'){gs=['四级(Ⅰ类)','四级(Ⅱ类)']}
+  // 仅当没有检测到具体等级时才从标题推断
+  if(gs.length===0){
+    if(/高速/.test(spec.title))gs.push('高速');
+    if(/一级/.test(spec.title))gs.push('一级');
+    if(/二级/.test(spec.title))gs.push('二级');
+    if(/三级/.test(spec.title))gs.push('三级');
+    if(/四级|农村|乡村/.test(spec.title))gs.push('四级');
+  }
   if(gs.length>0)p['适用公路等级']=gs.join('/');
   if((t.indexOf('桥涵')>=0||t.indexOf('桥梁')>=0||spec.cat==='bridge')&&!p['汽车荷载'])p['汽车荷载']='公路-Ⅰ/Ⅱ级';
   return p;
