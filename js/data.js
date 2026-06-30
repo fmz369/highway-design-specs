@@ -1390,11 +1390,8 @@ var SPECS = [
     status:'current',
     tags:["改扩建","高速"],
     hasPdf:false,
-    content:`<h4>📑 内容概要</h4>
-<p><span class="hl">高速公路改扩建设计细则</span>。</p>
-
-<h4>拼宽方式</h4>
-<ul><li>单侧拼宽：一侧新建，方案简单</li><li>双侧拼宽：两侧各加宽，占地多</li><li>分离式增建：保持间距，独立运行</li></ul>
+    content:`<h4>📑 拼宽方式</h4>
+<ul><li>单侧拼宽：一侧新建</li><li>双侧拼宽：两侧各加宽</li><li>分离式增建：独立运行</li></ul>
 
 <h4>拼接技术</h4>
 <ul><li>路基：台阶+土工格栅+冲击碾压</li><li>桥梁：同跨径拼宽或分离增建</li><li>路面：铣刨搭接≥<span class="hl">30cm</span></li></ul>
@@ -1493,19 +1490,16 @@ var SPECS = [
     status:'current',
     tags:["路基","养护"],
     hasPdf:false,
-    content:`<h4>📑 内容概要</h4>
-<p><span class="hl">公路路基养护技术规范</span>。</p>
-
-<h4>日常养护要点</h4>
-<ul><li>路基应保持<span class="hl">稳定密实排水通畅</span></li><li>路肩平整坚实，横坡适度</li><li>边坡无坍塌冲沟滑坡</li></ul>
-
-<h4>路基病害处治</h4>
+    content:`<h4>📑 路基病害处治</h4>
 <table><tr><th>病害</th><th>处治措施</th></tr>
-<tr><td>路基沉陷</td><td>注浆加固、换填、桩基托换</td></tr>
-<tr><td>路基翻浆</td><td>增设盲沟、换填砂砾</td></tr>
+<tr><td>路基沉陷</td><td>注浆加固/换填/桩基托换</td></tr>
+<tr><td>翻浆</td><td>增设盲沟/换填砂砾</td></tr>
 <tr><td>边坡滑塌</td><td>卸载+锚固+排水</td></tr>
 <tr><td>挡墙开裂</td><td>灌浆修补+锚杆加固</td></tr>
 </table>
+
+<h4>日常养护</h4>
+<ul><li>路基保持<span class="hl">稳定密实排水通畅</span></li><li>路肩平整坚实，横坡适度</li></ul>
 
 <div class="note-box"><strong>📅</strong>2020年6月1日实施。</div>`
   },
@@ -1756,19 +1750,16 @@ var SPECS = [
     status:'current',
     tags:["路基","施工"],
     hasPdf:false,
-    content:`<h4>📑 内容概要</h4>
-<p><span class="hl">公路路基施工技术规范</span>。</p>
-
-<h4>填方路基施工</h4>
-<table><tr><th>工序</th><th>控制要点</th><th>标准</th></tr>
-<tr><td>清表</td><td>清除草皮树根腐殖土</td><td>厚≥30cm</td></tr>
-<tr><td>分层填筑</td><td>松铺≤<span class="hl">30cm</span></td><td>虚铺系数1.2~1.4</td></tr>
-<tr><td>含水量</td><td>最佳含水量<span class="hl">±2%</span></td><td>超出时洒水/翻晒</td></tr>
-<tr><td>碾压</td><td>先轻后重、先慢后快</td><td>6~8遍</td></tr>
+    content:`<h4>📑 填方路基施工</h4>
+<table><tr><th>工序</th><th>要点</th></tr>
+<tr><td>清表</td><td>清除草皮树根腐殖土，厚≥30cm</td></tr>
+<tr><td>分层填筑</td><td>松铺≤<span class="hl">30cm</span></td></tr>
+<tr><td>含水量</td><td>最佳±<span class="hl">2%</span></td></tr>
+<tr><td>碾压</td><td>先轻后重，<span class="hl">6~8遍</span></td></tr>
 </table>
 
-<h4>路基拓宽拼接</h4>
-<ul><li>台阶开挖：阶高<span class="hl">0.3~0.5m</span>，阶宽≥1.0m</li><li>每层铺设<span class="hl">土工格栅</span></li><li>冲击碾压或强夯补强</li></ul>
+<h4>路基拓宽</h4>
+<ul><li>台阶：阶高<span class="hl">0.3~0.5m</span>，阶宽≥1.0m</li><li>每层设<span class="hl">土工格栅</span></li></ul>
 
 <div class="note-box"><strong>📅</strong>2018年11月1日实施。</div>`
   },
@@ -1812,18 +1803,14 @@ var SPECS = [
     status:'current',
     tags:["软土","地基"],
     hasPdf:false,
-    content:`<h4>📑 内容概要</h4>
-<p><span class="hl">公路软土地基路堤设计与施工技术细则</span>。</p>
+    content:`<h4>📑 软土鉴别标准</h4>
+<ul><li>含水量≥<span class="hl">35%或液限</span></li><li>孔隙比≥<span class="hl">1.0</span></li><li>十字板强度<35kPa</li></ul>
 
-<h4>软土鉴别</h4>
-<ul><li>天然含水量≥<span class="hl">35%或液限</span></li><li>孔隙比≥<span class="hl">1.0</span></li><li>十字板强度<35kPa</li></ul>
-
-<h4>处理措施</h4>
-<table><tr><th>方法</th><th>深度</th><th>工期</th><th>效果</th></tr>
-<tr><td>排水固结(堆载/真空)</td><td><20m</td><td>3~12月</td><td>好</td></tr>
-<tr><td>水泥搅拌桩</td><td><15m</td><td>快</td><td>好</td></tr>
-<tr><td>CFG桩</td><td>10~25m</td><td>快</td><td>优</td></tr>
-<tr><td>换填</td><td><3m</td><td>快</td><td>较好</td></tr>
+<h4>处理措施比选</h4>
+<table><tr><th>方法</th><th>深度</th><th>工期</th></tr>
+<tr><td>排水固结</td><td><20m</td><td>3~12月</td></tr>
+<tr><td>水泥搅拌桩</td><td><15m</td><td>快</td></tr>
+<tr><td>CFG桩</td><td>10~25m</td><td>快</td></tr>
 </table>
 
 <div class="note-box"><strong>📅</strong>2008年10月1日实施。</div>`
@@ -1835,19 +1822,15 @@ var SPECS = [
     status:'current',
     tags:["土工材料"],
     hasPdf:false,
-    content:`<h4>📑 内容概要</h4>
-<p><span class="hl">公路土工合成材料应用技术规范</span>。</p>
-
-<h4>材料分类</h4>
-<table><tr><th>类型</th><th>主要用途</th><th>关键参数</th></tr>
+    content:`<h4>📑 土工材料分类</h4>
+<table><tr><th>类型</th><th>用途</th><th>关键参数</th></tr>
 <tr><td>土工格栅</td><td>路基加筋</td><td>抗拉≥<span class="hl">50kN/m</span></td></tr>
 <tr><td>土工布</td><td>过滤隔离</td><td>等效孔径O90</td></tr>
 <tr><td>土工膜</td><td>防渗隔水</td><td>厚≥<span class="hl">0.3mm</span></td></tr>
-<tr><td>土工格室</td><td>边坡防护</td><td>高5~20cm</td></tr>
 </table>
 
-<h4>加筋土设计</h4>
-<ul><li>筋材长度≥<span class="hl">0.7H</span>且≥3m</li><li>层间距≤<span class="hl">0.6m</span></li><li>新旧路拼接处<span class="hl">分层设格栅</span></li></ul>
+<h4>加筋参数</h4>
+<ul><li>筋材长≥<span class="hl">0.7H</span>且≥3m</li><li>层间距≤<span class="hl">0.6m</span></li></ul>
 
 <div class="note-box"><strong>📅</strong>2013年2月1日实施。</div>`
   },
@@ -1858,34 +1841,19 @@ var SPECS = [
     status:'current',
     tags:["路基排水"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（8章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 水文计算</div><div>4 路基排水</div><div>5 路面排水</div><div>6 桥涵排水</div><div>7 隧道排水</div><div>8 附属设施排水</div></div>
-
-<h4>📜 第3章 水文计算</h4>
-<ul>
-<li>设计降雨重现期：高速/一级<span class="hl">15年</span>，二级10年，三级5年</li>
-<li>径流系数：沥青路面<span class="hl">0.9</span>，水泥路面0.85，土路肩0.4~0.6</li>
-<li>汇流时间：路面排水<span class="hl">5~10min</span>，路基排水10~30min</li>
-</ul>
-
-<h4>💧 第4章 路基排水设施</h4>
-<table><tr><th>设施类型</th><th>最小尺寸</th><th>最小纵坡</th></tr>
-<tr><td>边沟</td><td>底宽<span class="hl">0.4m</span>×深0.4m</td><td>0.3%(困难0.1%)</td></tr>
-<tr><td>截水沟</td><td>底宽0.5m×深0.5m</td><td>0.3%</td></tr>
-<tr><td>排水沟</td><td>底宽0.5m×深0.5m</td><td>0.3%</td></tr>
+    content:`<h4>📑 排水设施尺寸</h4>
+<table><tr><th>设施</th><th>最小尺寸</th><th>最小纵坡</th></tr>
+<tr><td>边沟</td><td>0.4×0.4m</td><td>0.3%(困难0.1%)</td></tr>
+<tr><td>截水沟</td><td>0.5×0.5m</td><td>0.3%</td></tr>
+<tr><td>排水沟</td><td>0.5×0.5m</td><td>0.3%</td></tr>
 <tr><td>急流槽</td><td>宽0.3~0.5m</td><td>—(陡坡消能)</td></tr>
-<tr><td>盲沟</td><td>宽0.4~0.6m×深0.6~1.0m</td><td>≥1%</td></tr>
+<tr><td>盲沟</td><td>0.4~0.6×0.6~1.0m</td><td>≥1%</td></tr>
 </table>
 
-<h4>🛣 第5章 路面排水</h4>
-<ul>
-<li>路面横坡：沥青<span class="hl">1.5%~2.0%</span>，水泥1.0%~1.5%</li>
-<li>超高段路面排水：设<span class="hl">中央分隔带排水沟</span></li>
-<li>路面内部排水：透水基层+盲沟+排水管</li>
-<li>边缘排水系统：纵向集水沟+横向出水管间距≤<span class="hl">50m</span></li>
-</ul>
+<h4>路面排水</h4>
+<ul><li>横坡：沥青<span class="hl">1.5%~2.0%</span>，水泥1.0%~1.5%</li><li>边缘排水管间距≤<span class="hl">50m</span></li></ul>
 
-<div class="note-box"><strong>📅 实施信息</strong><br>2013年2月1日实施。公路排水设计的主要技术依据。</div>`
+<div class="note-box"><strong>📅</strong>2013年2月1日实施。</div>`
   },
   {
     code:'JTG/T F30-2014',
@@ -1895,17 +1863,11 @@ var SPECS = [
     tags:["水泥混凝土","施工"],
     pdf:'规范PDF/JTGT F30-2014 公路水泥混凝土路面施工技术细则.pdf',
     hasPdf:true,
-    content:`<h4>📑 内容概要</h4>
-<p><span class="hl">公路水泥混凝土路面施工技术细则</span>。</p>
+    content:`<h4>📑 水泥路面施工参数</h4>
+<ul><li>模板高程偏差≤<span class="hl">±5mm</span></li><li>滑模摊铺：<span class="hl">0.5~3m/min</span></li><li>振捣棒间距≤<span class="hl">45cm</span></li></ul>
 
-<h4>混凝土施工参数</h4>
-<ul><li>模板高程偏差≤<span class="hl">±5mm</span></li><li>滑模摊铺速度：<span class="hl">0.5~3m/min</span></li><li>振捣棒间距≤<span class="hl">45cm</span></li></ul>
-
-<h4>接缝施工</h4>
-<ul><li>切缝时机：强度达<span class="hl">25%~30%</span>设计值</li><li>传力杆偏差≤<span class="hl">±10mm</span></li><li>填缝料灌深<span class="hl">20~30mm</span></li></ul>
-
-<h4>养生</h4>
-<ul><li>保湿养生≥<span class="hl">14天</span></li><li>覆盖薄膜<span class="hl">严密不透风</span></li></ul>
+<h4>接缝与养生</h4>
+<ul><li>切缝：强度达<span class="hl">25%~30%</span>时</li><li>传力杆偏差≤±10mm</li><li>保湿养生≥<span class="hl">14天</span></li></ul>
 
 <div class="note-box"><strong>📅</strong>2014年8月1日实施。</div>`
   },
@@ -1917,18 +1879,15 @@ var SPECS = [
     tags:["基层","施工"],
     pdf:'规范PDF/JTGT F20-2015 公路路面基层施工技术细则.pdf',
     hasPdf:true,
-    content:`<h4>📑 内容概要</h4>
-<p><span class="hl">公路路面基层施工技术细则</span>。</p>
-
-<h4>水稳基层强度标准</h4>
-<table><tr><th>公路等级</th><th>极重/特重交通</th><th>重交通</th><th>中/轻交通</th></tr>
-<tr><td>高速/一级</td><td class="hl">4~6MPa</td><td>3~5MPa</td><td>2~4MPa</td></tr>
-<tr><td>二级</td><td>—</td><td>3~5MPa</td><td>2~4MPa</td></tr>
-<tr><td>三级及以下</td><td>—</td><td>—</td><td>2~3MPa</td></tr>
+    content:`<h4>📑 水稳基层强度标准</h4>
+<table><tr><th>交通等级</th><th>高速/一级</th><th>二级</th></tr>
+<tr><td>极重/特重</td><td class="hl">4~6MPa</td><td>—</td></tr>
+<tr><td>重</td><td>3~5MPa</td><td>3~5MPa</td></tr>
+<tr><td>中/轻</td><td>2~4MPa</td><td>2~4MPa</td></tr>
 </table>
 
-<h4>施工时间控制</h4>
-<ul><li>拌和到碾压完成≤<span class="hl">2h</span></li><li>碾压遍数：<span class="hl">6~8遍</span></li><li>养生期≥<span class="hl">7d</span>保持湿润</li></ul>
+<h4>施工控制</h4>
+<ul><li>拌和到碾压≤<span class="hl">2h</span></li><li>碾压<span class="hl">6~8遍</span></li><li>养生≥<span class="hl">7d</span>保湿</li></ul>
 
 <div class="note-box"><strong>📅</strong>2015年8月1日实施。</div>`
   },
@@ -2244,24 +2203,18 @@ var SPECS = [
     status:'current',
     tags:["钢结构","桥梁"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（10章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 材料</div><div>4 结构分析</div><div>5 连接</div><div>6 钢板梁</div><div>7 钢箱梁</div><div>8 钢桁梁</div><div>9 钢拱桥</div><div>10 钢塔与缆索</div></div>
-
-<h4>钢材牌号</h4>
-<table><tr><th>牌号</th><th>屈服MPa</th><th>抗拉MPa</th><th>适用部位</th></tr>
-<tr><td>Q345qD</td><td class="hl">≥345</td><td>≥490</td><td>主梁、横梁</td></tr>
-<tr><td>Q370qD</td><td>≥370</td><td>≥510</td><td>大跨主梁</td></tr>
-<tr><td>Q420qD</td><td>≥420</td><td>≥540</td><td>关键构件</td></tr>
-<tr><td>Q500qD</td><td>≥500</td><td>≥630</td><td>特大桥关键</td></tr>
+    content:`<h4>📑 钢材牌号</h4>
+<table><tr><th>牌号</th><th>屈服MPa</th><th>适用</th></tr>
+<tr><td>Q345qD</td><td class="hl">≥345</td><td>主梁/横梁</td></tr>
+<tr><td>Q370qD</td><td>≥370</td><td>大跨主梁</td></tr>
+<tr><td>Q420qD</td><td>≥420</td><td>关键构件</td></tr>
+<tr><td>Q500qD</td><td>≥500</td><td>特大桥关键</td></tr>
 </table>
 
-<h4>连接设计</h4>
-<ul><li>高强螺栓：M20~M30，<span class="hl">10.9S级</span></li><li>摩擦面抗滑移≥<span class="hl">0.45</span>(喷砂)</li><li>角焊缝：h≥<span class="hl">1.5√t</span>(t为较厚板厚)</li><li>对接焊缝：全熔透，<span class="hl">100%UT</span>检测</li></ul>
+<h4>连接</h4>
+<ul><li>高强螺栓：M20~M30，<span class="hl">10.9S级</span></li><li>摩擦面抗滑移≥<span class="hl">0.45</span></li><li>角焊缝：h≥<span class="hl">1.5√t</span></li></ul>
 
-<h4>结构分析要点</h4>
-<ul><li>计入<span class="hl">剪力滞效应</span>（有效宽度法）</li><li>薄壁构件考虑<span class="hl">局部屈曲</span>和畸变</li><li>正交异性桥面板需验算疲劳</li></ul>
-
-<div class="note-box"><strong>📅</strong>2015年5月1日实施。公路钢桥设计的核心规范。</div>`
+<div class="note-box"><strong>📅</strong>2015年5月1日实施。公路钢桥设计核心规范。</div>`
   },
   {
     code:'JTG D65-2015',
@@ -2270,21 +2223,18 @@ var SPECS = [
     status:'current',
     tags:["钢混组合","桥梁"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（8章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 材料</div><div>4 组合梁</div><div>5 组合桥面板</div><div>6 剪力连接件</div><div>7 施工</div><div>8 耐久性</div></div>
-
-<h4>钢混组合梁类型</h4>
-<table><tr><th>类型</th><th>适用跨径(m)</th><th>特点</th></tr>
-<tr><td>钢板梁+混凝土桥面板</td><td>20~60</td><td>最常用</td></tr>
-<tr><td>钢箱梁+混凝土桥面板</td><td>40~150</td><td>大跨径</td></tr>
-<tr><td>波形钢腹板PC梁</td><td>30~160</td><td>减轻自重</td></tr>
-<tr><td>钢管混凝土拱</td><td>100~500</td><td>超大跨径</td></tr>
+    content:`<h4>📑 钢混组合梁类型</h4>
+<table><tr><th>类型</th><th>跨径</th><th>特点</th></tr>
+<tr><td>钢板梁+混凝土板</td><td>20~60m</td><td>最常用</td></tr>
+<tr><td>钢箱梁+混凝土板</td><td>40~150m</td><td>大跨径</td></tr>
+<tr><td>波形钢腹板PC梁</td><td>30~160m</td><td>减轻自重</td></tr>
+<tr><td>钢管混凝土拱</td><td>100~500m</td><td>超大跨径</td></tr>
 </table>
 
 <h4>剪力连接件</h4>
-<ul><li>圆柱头焊钉：直径<span class="hl">19~25mm</span>，高径比≥4</li><li>开孔钢板(PBL)：孔径40~60mm，穿钢筋</li><li>抗剪承载力：<span class="hl">0.7·As·fu</span></li></ul>
+<ul><li>圆柱头焊钉：φ<span class="hl">19~25mm</span>，高径比≥4</li><li>PBL开孔板：孔径40~60mm，穿钢筋</li><li>抗剪承载力：<span class="hl">0.7·As·fu</span></li></ul>
 
-<div class="note-box"><strong>📅</strong>2015年5月1日实施。钢混组合结构设计的核心规范。</div>`
+<div class="note-box"><strong>📅</strong>2015年5月1日实施。</div>`
   },
   {
     code:'JTG/T 2231-01-2020',
@@ -2293,38 +2243,19 @@ var SPECS = [
     status:'current',
     tags:["抗震","桥梁"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（9章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 抗震设防标准</div><div>4 地震作用</div><div>5 抗震分析</div><div>6 强度与变形验算</div><div>7 延性构造</div><div>8 减隔震设计</div><div>9 抗震措施</div></div>
-
-<h4>📜 第3章 抗震设防标准</h4>
-<table><tr><th>设防等级</th><th>地震水准</th><th>性能目标</th></tr>
-<tr><td>E1地震</td><td class="hl">475年一遇(50年10%)</td><td>结构弹性，基本无损伤</td></tr>
-<tr><td>E2地震</td><td class="hl">2000年一遇(50年2%)</td><td>允许延性变形，不倒塌</td></tr>
+    content:`<h4>📑 抗震设防标准</h4>
+<table><tr><th>等级</th><th>地震水准</th><th>性能目标</th></tr>
+<tr><td>E1</td><td class="hl">475年(50年10%)</td><td>弹性，基本无损伤</td></tr>
+<tr><td>E2</td><td class="hl">2000年(50年2%)</td><td>允许延性变形</td></tr>
 </table>
 
-<h4>🌍 第4章 地震作用</h4>
-<ul>
-<li>水平地震系数Kh：Ⅵ度<span class="hl">0.05g</span>，Ⅶ度0.10g，Ⅷ度0.20g，Ⅸ度0.40g</li>
-<li>反应谱：按场地类别(I~IV)和特征周期Tg确定</li>
-<li>竖向地震系数：<span class="hl">0.5~0.65Kh</span></li>
-</ul>
+<h4>地震系数Kh</h4>
+<ul><li>Ⅵ度：<span class="hl">0.05g</span>，Ⅶ度：0.10g，Ⅷ度：0.20g，Ⅸ度：0.40g</li></ul>
 
-<h4>🔧 第7章 延性构造</h4>
-<ul>
-<li>墩柱潜在塑性铰区：配箍率≥<span class="hl">0.4%(E2验算)</span></li>
-<li>箍筋间距：≤<span class="hl">10cm</span>(塑性铰区)、≤15cm(过渡区)</li>
-<li>纵向钢筋配筋率：<span class="hl">0.8%~4%</span></li>
-<li>能力保护：盖梁、基础按<span class="hl">超强系数</span>设计</li>
-</ul>
+<h4>延性构造</h4>
+<ul><li>塑性铰区配箍率≥<span class="hl">0.4%</span></li><li>箍筋间距≤<span class="hl">10cm</span></li><li>纵筋配筋率<span class="hl">0.8%~4%</span></li></ul>
 
-<h4>🛡 第8章 减隔震设计</h4>
-<ul>
-<li>减隔震支座：铅芯橡胶支座(LRB)、高阻尼橡胶支座(HDR)</li>
-<li>阻尼器：粘滞阻尼器、金属屈服阻尼器</li>
-<li>隔震周期≥<span class="hl">2.5倍</span>非隔震周期</li>
-</ul>
-
-<div class="note-box"><strong>📅 实施信息</strong><br>2020年9月1日实施。替代JTG/T B02-01-2008。桥梁抗震设计的核心规范。</div>`
+<div class="note-box"><strong>📅</strong>2020年9月1日实施。桥梁抗震核心规范。</div>`
   },
   {
     code:'JTG/T 3365-2022',
@@ -2333,14 +2264,11 @@ var SPECS = [
     status:'current',
     tags:["装配式","预制"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（8章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 材料</div><div>4 上部结构</div><div>5 下部结构</div><div>6 连接构造</div><div>7 抗震设计</div><div>8 施工</div></div>
-
-<h4>装配式桥梁特点</h4>
+    content:`<h4>📑 装配式桥梁</h4>
 <ul><li>预制构件<span class="hl">工厂化生产</span>，质量可控</li><li>现场<span class="hl">快速拼装</span>，减少交通干扰</li><li>适用跨径：<span class="hl">20~50m</span>(PC梁)</li></ul>
 
 <h4>连接构造</h4>
-<ul><li>墩梁连接：灌浆套筒+<span class="hl">波纹管</span>灌浆锚固</li><li>湿接缝宽≥<span class="hl">40cm</span></li><li>钢筋搭接长度≥<span class="hl">1.2la</span></li></ul>
+<ul><li>墩梁连接：灌浆套筒+<span class="hl">波纹管</span>灌浆锚固</li><li>湿接缝宽≥<span class="hl">40cm</span></li><li>钢筋搭接≥<span class="hl">1.2la</span></li></ul>
 
 <div class="note-box"><strong>📅</strong>2022年11月1日实施。推动桥梁工业化建造。</div>`
   },
@@ -2351,16 +2279,13 @@ var SPECS = [
     status:'current',
     tags:["施工","钢筋"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（12章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 施工准备</div><div>4 基础施工</div><div>5 墩台施工</div><div>6 梁式桥施工</div><div>7 拱桥施工</div><div>8 斜拉桥施工</div><div>9 悬索桥施工</div><div>10 预应力施工</div><div>11 支座与伸缩缝</div><div>12 质量控制</div></div>
-
-<h4>预应力张拉</h4>
-<ul><li>张拉控制应力：<span class="hl">0.70~0.75fpk</span></li><li>张拉程序：0→初应力(10%)→控制应力→持荷5min→锚固</li><li>张拉伸长值校核：实测与理论偏差≤<span class="hl">±6%</span></li></ul>
+    content:`<h4>📑 预应力施工</h4>
+<ul><li>张拉控制应力：<span class="hl">0.70~0.75fpk</span></li><li>程序：0→初应力(10%)→控制应力→持荷5min→锚固</li><li>伸长值偏差≤<span class="hl">±6%</span></li></ul>
 
 <h4>孔道压浆</h4>
-<ul><li>压浆材料：专用<span class="hl">预应力孔道压浆料</span></li><li>水胶比≤<span class="hl">0.28</span></li><li>压浆压力：<span class="hl">0.5~0.7MPa</span></li><li>稳压时间≥<span class="hl">3min</span></li></ul>
+<ul><li>专用<span class="hl">预应力孔道压浆料</span></li><li>水胶比≤<span class="hl">0.28</span></li><li>压力<span class="hl">0.5~0.7MPa</span>，稳压≥3min</li></ul>
 
-<div class="note-box"><strong>📅</strong>2020年9月1日实施。桥涵施工质量的核心技术规范。</div>`
+<div class="note-box"><strong>📅</strong>2020年9月1日实施。桥涵施工核心规范。</div>`
   },
   {
     code:'JTG/T 3651-2022',
@@ -2415,19 +2340,16 @@ var SPECS = [
     status:'current',
     tags:["加固","桥梁"],
     hasPdf:false,
-    content:`<h4>📑 内容概要</h4>
-<p><span class="hl">公路桥梁加固设计规范</span>。2025年发布，2026年4月1日实施。</p>
-
-<h4>加固方法选择</h4>
-<table><tr><th>加固目的</th><th>推荐方法</th><th>适用条件</th></tr>
-<tr><td>提高抗弯承载力</td><td>粘贴钢板/碳纤维</td><td>承载力不足≤40%</td></tr>
-<tr><td>提高抗剪承载力</td><td>粘贴钢板箍/CFRP U形</td><td>腹板裂缝</td></tr>
-<tr><td>减小挠度裂缝</td><td>体外预应力</td><td>下挠超限</td></tr>
-<tr><td>综合加固</td><td>增大截面</td><td>严重损伤</td></tr>
+    content:`<h4>📑 加固方法选择</h4>
+<table><tr><th>目的</th><th>方法</th></tr>
+<tr><td>提高抗弯</td><td>粘贴钢板/碳纤维</td></tr>
+<tr><td>提高抗剪</td><td>钢板箍/CFRP U形</td></tr>
+<tr><td>减小挠度裂缝</td><td>体外预应力</td></tr>
+<tr><td>综合加固</td><td>增大截面</td></tr>
 </table>
 
-<h4>加固材料</h4>
-<ul><li>碳纤维布(CFRP)：抗拉≥<span class="hl">3400MPa</span></li><li>结构胶：抗拉≥<span class="hl">30MPa</span>，抗压≥70MPa</li><li>预应力钢束：<span class="hl">fpk=1860MPa</span></li></ul>
+<h4>材料指标</h4>
+<ul><li>CFRP抗拉≥<span class="hl">3400MPa</span></li><li>结构胶抗拉≥<span class="hl">30MPa</span></li><li>预应力钢束fpk=<span class="hl">1860MPa</span></li></ul>
 
 <div class="note-box"><strong>📅</strong>2026年4月1日实施。</div>`
   },
@@ -2517,28 +2439,18 @@ var SPECS = [
     status:'current',
     tags:["水文","勘测"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（9章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 水文调查</div><div>4 设计洪水</div><div>5 桥涵水文</div><div>6 路基排水水文</div><div>7 冲刷计算</div><div>8 特殊地区</div><div>9 水文观测</div></div>
-
-<h4>设计洪水频率</h4>
-<table><tr><th>公路等级</th><th>路基</th><th>特大桥</th><th>大中桥</th><th>小桥涵</th></tr>
-<tr><td>高速</td><td class="hl">1/100</td><td>1/300</td><td>1/100</td><td>1/100</td></tr>
-<tr><td>一级</td><td>1/100</td><td>1/300</td><td>1/100</td><td>1/100</td></tr>
-<tr><td>二级</td><td>1/50</td><td>1/100</td><td>1/100</td><td>1/50</td></tr>
-<tr><td>三级</td><td>1/25</td><td>1/100</td><td>1/50</td><td>1/25</td></tr>
+    content:`<h4>📑 设计洪水频率</h4>
+<table><tr><th>公路等级</th><th>路基</th><th>特大桥</th><th>大中桥</th></tr>
+<tr><td>高速</td><td class="hl">1/100</td><td>1/300</td><td>1/100</td></tr>
+<tr><td>一级</td><td>1/100</td><td>1/300</td><td>1/100</td></tr>
+<tr><td>二级</td><td>1/50</td><td>1/100</td><td>1/100</td></tr>
+<tr><td>三级</td><td>1/25</td><td>1/100</td><td>1/50</td></tr>
 </table>
 
-<h4>设计洪水计算方法</h4>
-<ul><li>小流域(<500km²)：<span class="hl">推理公式Q=0.278·ψ·q·F</span></li><li>中等流域：地区经验公式或水文比拟法</li><li>大流域：频率分析（<span class="hl">P-Ⅲ型曲线</span>）</li></ul>
+<h4>计算方法</h4>
+<ul><li>小流域：<span class="hl">推理公式Q=0.278ψqF</span></li><li>中流域：地区经验公式/水文比拟</li><li>大流域：频率分析(P-Ⅲ曲线)</li></ul>
 
-<h4>冲刷计算</h4>
-<table><tr><th>类型</th><th>公式</th><th>参数</th></tr>
-<tr><td>一般冲刷</td><td>64-1/64-2式</td><td>Q、B、h、d₅₀</td></tr>
-<tr><td>局部冲刷</td><td>65-1/65-2式</td><td>V、h、d、Kξ</td></tr>
-<tr><td>总冲刷</td><td>一般+局部</td><td>叠加后+安全值</td></tr>
-</table>
-
-<div class="note-box"><strong>📅</strong>2015年5月1日实施。桥涵水文设计的核心规范。</div>`
+<div class="note-box"><strong>📅</strong>2015年5月1日实施。</div>`
   },
   {
     code:'JTG/T 3610-2019',
