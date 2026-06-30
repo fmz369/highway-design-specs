@@ -373,15 +373,19 @@ var SPECS = [
     status:'current',
     tags:["养护","基础标准"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（11章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 基本规定</div><div>4 路基养护</div><div>5 路面养护</div><div>6 桥涵养护</div><div>7 隧道养护</div><div>8 交安设施养护</div><div>9 机电设施养护</div><div>10 绿化环保养护</div><div>11 防灾与应急</div></div>
+    content:`<h4>📑 章节目录（10章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 养护分级</div><div>4 日常养护</div><div>5 预防性养护</div><div>6 修复性养护</div><div>7 专项养护</div><div>8 应急养护</div><div>9 养护管理</div><div>10 养护评价</div></div>
 
-<h4>📊 养护工程分类</h4>
-<table><tr><th>类型</th><th>定义</th><th>周期</th></tr><tr><td>日常养护</td><td>经常性保养、轻微损坏修补</td><td>持续进行</td></tr><tr><td><span class="hl">预防性养护</span></td><td>延缓损坏、保持功能（封层/微表处/灌缝）</td><td>3~5年</td></tr><tr><td>修复养护</td><td>修复结构性损坏（罩面/换板）</td><td>按需</td></tr><tr><td>专项养护</td><td>针对性整治（边坡加固/桥涵维修）</td><td>按需</td></tr><tr><td>应急养护</td><td>自然灾害/突发事件抢通保畅</td><td>即时响应</td></tr></table>
+<h4>📜 第3章 养护分级</h4>
+<table><tr><th>养护类型</th><th>适用条件</th><th>措施示例</th></tr>
+<tr><td>日常养护</td><td>MQI≥80</td><td>清扫、灌缝、小修</td></tr>
+<tr><td>预防性养护</td><td>MQI 75~90</td><td>微表处、薄层罩面</td></tr>
+<tr><td>修复性养护</td><td>MQI 60~80</td><td>铣刨重铺、补强</td></tr>
+<tr><td>专项养护</td><td>特定病害</td><td>桥梁加固、边坡治理</td></tr>
+<tr><td>应急养护</td><td>自然灾害后</td><td>抢通、保畅</td></tr>
+</table>
 
-<h4>🔑 养护决策体系</h4><ul><li>基于<span class="hl">技术状况评定</span>结果（PCI/RQI/MQI）</li><li>贯彻<span class="hl">"一路一策"</span>方针</li><li>全寿命周期理念：兼顾结构性能与经济效益</li></ul>
-
-<h4>🆕 2023版变化（vs JTG H10-2009）</h4><ul><li>名称从"规范"升级为"标准"</li><li>新增<span class="hl">预防性养护</span>和<span class="hl">应急养护</span></li><li>强化与评定标准的联动（按MQI/PQI分级决策）</li><li>新增机电设施、绿化环保养护章节</li></ul>`
+<div class="note-box"><strong>📅 实施信息</strong><br>2023年6月1日实施。替代JTG H10-2009。养护决策的纲领性标准。</div>`
   },
   {
     code:'JTG 5211-2024',
@@ -1205,18 +1209,25 @@ var SPECS = [
     tags:["抗震","国家标准"],
     pdf:'规范PDF/GB 50011-2010(2024版) 建筑抗震设计标准.pdf',
     hasPdf:true,
-    content:`<h4>📑 适用范围</h4><p>适用于抗震设防烈度<span class="hl">6~9度</span>地区建筑工程的抗震设计。2024年修订版。</p>
-<h4>🌍 抗震设防核心参数</h4>
-<table><tr><th>设防烈度</th><th>6度</th><th>7度</th><th>7.5度</th><th>8度</th><th>8.5度</th><th>9度</th></tr>
-<tr><td>设计基本加速度</td><td>0.05g</td><td>0.10g</td><td>0.15g</td><td>0.20g</td><td>0.30g</td><td>0.40g</td></tr></table>
-<h4>📐 设计地震分组与特征周期</h4>
-<table><tr><th>场地类别</th><th>第一组</th><th>第二组</th><th>第三组</th></tr>
-<tr><td>Ⅰ₀</td><td>0.20</td><td>0.25</td><td>0.30</td></tr>
-<tr><td>Ⅰ₁</td><td>0.25</td><td>0.30</td><td>0.35</td></tr>
-<tr><td>Ⅱ</td><td>0.35</td><td>0.40</td><td>0.45</td></tr>
-<tr><td>Ⅲ</td><td>0.45</td><td>0.55</td><td>0.65</td></tr>
-<tr><td>Ⅳ</td><td>0.65</td><td>0.75</td><td>0.90</td></tr></table>
-<ul><li>公路桥涵抗震设计参考JTG/T 2231-01-2020</li><li>两水准设防：小震不坏(E1)、大震不倒(E2)</li></ul>`
+    content:`<h4>📑 内容概要</h4>
+<p>规定了<span class="hl">建筑抗震设计</span>的基本原则和方法。2024年局部修订。</p>
+
+<h4>抗震设防分类</h4>
+<table><tr><th>类别</th><th>设防标准</th><th>示例</th></tr>
+<tr><td>甲类</td><td>特殊设防</td><td>核电站等特别重要建筑</td></tr>
+<tr><td>乙类</td><td>重点设防</td><td>医院、学校、大型桥梁</td></tr>
+<tr><td>丙类</td><td>标准设防</td><td>一般工业与民用建筑</td></tr>
+<tr><td>丁类</td><td>适度设防</td><td>次要建筑</td></tr>
+</table>
+
+<h4>抗震设计方法</h4>
+<ul>
+<li>小震不坏：多遇地震下结构<span class="hl">弹性</span></li>
+<li>中震可修：设防地震下允许<span class="hl">有限损伤</span></li>
+<li>大震不倒：罕遇地震下<span class="hl">不倒塌</span></li>
+</ul>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2010年12月1日实施，2024年局部修订。公路桥梁抗震的参考依据。</div>`
   },
   {
     code:'GB 18306-2015',
@@ -1931,49 +1942,25 @@ var SPECS = [
     status:'current',
     tags:["路基","施工"],
     hasPdf:false,
-    content:`
-<h4>📑 章节目录（7章）</h4>
-<div class="ch-list">
-<div>1 总则</div><div>2 施工准备</div><div>3 填方路基</div><div>4 挖方路基</div>
-<div>5 特殊路基施工</div><div>6 路基排水</div><div>7 防护与支挡</div>
-</div>
+    content:`<h4>📑 章节目录（9章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 施工准备</div><div>4 一般路基施工</div><div>5 特殊路基施工</div><div>6 路基排水施工</div><div>7 防护支挡施工</div><div>8 路基拓宽施工</div><div>9 质量检验</div></div>
 
-<h4>⚙ 第3章 填方路基</h4>
-<h4>填筑要求</h4>
-<ul>
-<li>分层填筑：每层松铺厚度<span class="hl">≤30cm</span>（振动压路机）/ ≤20cm（静碾压路机）</li>
-<li>填料最大粒径：≤压实层厚的<span class="hl">2/3</span></li>
-<li>不同填料应分层填筑，透水性差的填在下面</li>
-<li>填挖交界：台阶宽度≥2m，反向横坡≥3%</li>
-</ul>
-
-<h4>压实设备选择</h4>
-<table><tr><th>压路机类型</th><th>适用填料</th><th>压实厚度(cm)</th></tr>
-<tr><td>振动压路机(≥18t)</td><td>粗粒土/石方</td><td>30~50</td></tr>
-<tr><td>振动压路机(12~18t)</td><td>细粒土/粗粒土</td><td>20~30</td></tr>
-<tr><td>静碾压路机</td><td>细粒土</td><td>15~20</td></tr>
-<tr><td>冲击压路机(25kJ)</td><td>高填方(>4m)</td><td>每填2m冲碾一次</td></tr>
-<tr><td>强夯(1000~2000kN·m)</td><td>粗粒土/石方</td><td>每填3~4m强夯</td></tr>
+<h4>📜 第4章 一般路基施工</h4>
+<table><tr><th>工序</th><th>控制要点</th><th>标准</th></tr>
+<tr><td>清表</td><td>清除草皮、树根、腐殖土</td><td>厚度≥30cm</td></tr>
+<tr><td>分层填筑</td><td>松铺厚度≤<span class="hl">30cm</span></td><td>虚铺系数1.2~1.4</td></tr>
+<tr><td>含水量控制</td><td>最佳含水量<span class="hl">±2%</span></td><td>必要时洒水或翻晒</td></tr>
+<tr><td>碾压</td><td>先轻后重、先慢后快</td><td>碾压遍数6~8遍</td></tr>
 </table>
 
-<h4>🏔 第4章 挖方路基</h4>
+<h4>🌉 第8章 路基拓宽</h4>
 <ul>
-<li>土质挖方：自上而下分层开挖，不得掏底开挖</li>
-<li>石方开挖：爆破法/机械破碎法（距居民区<200m不宜爆破）</li>
-<li>路床超挖：土质路床顶面以下30cm超挖回填碾压</li>
-<li>边坡开挖面应及时防护</li>
+<li>台阶开挖：阶高<span class="hl">0.3~0.5m</span>，阶宽≥1.0m</li>
+<li>拼接处：铺设<span class="hl">土工格栅</span>，每层一道</li>
+<li>压实度：同新建路基标准</li>
 </ul>
 
-<h4>🔧 第5章 特殊路基施工</h4>
-<table><tr><th>路基类型</th><th>关键施工要求</th></tr>
-<tr><td>软土路基</td><td>堆载预压分层加载速率<1m/月；真空预压膜下真空度≥80kPa；搅拌桩钻杆提升速度0.8~1.2m/min</td></tr>
-<tr><td>湿陷性黄土</td><td>强夯夯击能≥2000kN·m，最后两击贯入度≤5cm；灰土挤密桩间距2~3d</td></tr>
-<tr><td>膨胀土</td><td>避开雨季施工；石灰掺量5%~8%；隔水层≥30cm</td></tr>
-</table>
-
-<h4>🔄 施工流程</h4>
-<ul><li>施工准备（清表/基底处理）→分层填筑→压实度检测→边坡修整→防护工程→排水工程施工→交工验收</li></ul>
-`
+<div class="note-box"><strong>📅 实施信息</strong><br>2018年11月1日实施。路基施工质量控制的核技术规范。</div>`
   },
   {
     code:'JTG/T 3351-2024',
@@ -2171,31 +2158,25 @@ var SPECS = [
     tags:["基层","施工"],
     pdf:'规范PDF/JTGT F20-2015 公路路面基层施工技术细则.pdf',
     hasPdf:true,
-    content:`
-<h4>📑 章节目录</h4>
-<div class="ch-list">
-<div>1 总则</div><div>2 术语</div><div>3 材料要求</div><div>4 水泥稳定类基层</div>
-<div>5 石灰粉煤灰稳定类基层</div><div>6 级配碎石基层</div><div>7 质量检验</div>
-</div>
-<h4>🪨 第3章 材料要求</h4>
+    content:`<h4>📑 章节目录（9章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 材料要求</div><div>4 水泥稳定碎石基层</div><div>5 石灰粉煤灰稳定基层</div><div>6 级配碎石基层</div><div>7 施工工艺</div><div>8 质量控制</div><div>9 验收标准</div></div>
+
+<h4>📜 第4章 水泥稳定碎石基层</h4>
+<table><tr><th>指标</th><th>高速/一级</th><th>二级及以下</th></tr>
+<tr><td>7d无侧限抗压强度</td><td class="hl">3~5 MPa</td><td>2~4 MPa</td></tr>
+<tr><td>水泥剂量</td><td class="hl">3%~6%</td><td>2%~5%</td></tr>
+<tr><td>压实度</td><td class="hl">≥98%</td><td>≥97%</td></tr>
+<tr><td>厚度偏差</td><td>−10mm</td><td>−12mm</td></tr>
+</table>
+
+<h4>施工要点</h4>
 <ul>
-<li>水泥：普通硅酸盐水泥，强度等级≥<span class="hl">32.5</span>级</li>
-<li>石灰：钙质生石灰，有效钙镁含量≥<span class="hl">70%</span>（Ⅲ级以上）</li>
-<li>粉煤灰：SiO₂+Al₂O₃+Fe₂O₃≥<span class="hl">70%</span>，烧失量≤20%</li>
-<li>集料最大粒径：基层≤<span class="hl">31.5mm</span>；底基层≤<span class="hl">37.5mm</span></li>
-<li>集料压碎值：高速/一级≤30%；二级及以下≤35%</li>
+<li>拌和到碾压完成≤<span class="hl">2h</span>(水泥初凝前)</li>
+<li>碾压：初压→复压→终压，压实遍数<span class="hl">6~8遍</span></li>
+<li>养生期≥<span class="hl">7d</span>，保持湿润</li>
 </ul>
-<h4>📊 水泥稳定碎石级配范围</h4>
-<table><tr><th>筛孔(mm)</th><th>31.5</th><th>19</th><th>9.5</th><th>4.75</th><th>2.36</th><th>0.6</th><th>0.075</th></tr>
-<tr><td>通过率(%)</td><td>100</td><td>68~86</td><td>44~62</td><td>27~42</td><td>18~30</td><td>8~15</td><td>0~5</td></tr></table>
-<h4>🔧 施工控制要点</h4>
-<ul>
-<li>水泥剂量：一般<span class="hl">3%~6%</span>（通过配合比试验确定）</li>
-<li>含水量：最佳含水量<span class="hl">±1%</span></li>
-<li>压实度：基层≥<span class="hl">98%</span>；底基层≥<span class="hl">97%</span></li>
-<li>7d无侧限抗压强度：高速≥4.0MPa；二级≥3.0MPa</li>
-<li>从加水拌和到碾压完成≤<span class="hl">2h</span></li>
-</ul>`
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2015年8月1日实施。路面基层施工的核心技术细则。</div>`
   },
   {
     code:'GB/T 35162-2017',
@@ -2544,18 +2525,24 @@ var SPECS = [
     status:'current',
     tags:["钢结构","桥梁"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（7章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 材料</div><div>3 强度验算</div><div>4 稳定验算</div><div>5 疲劳验算</div><div>6 连接</div><div>7 桥面系</div></div>
+    content:`<h4>📑 章节目录（10章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 材料</div><div>4 结构分析</div><div>5 连接设计</div><div>6 钢板梁</div><div>7 钢箱梁</div><div>8 钢桁梁</div><div>9 钢拱桥</div><div>10 钢塔与缆索</div></div>
 
-<h4>🪵 第2章 桥梁用钢</h4>
-<table><tr><th>牌号</th><th>屈服(MPa)</th><th>抗拉(MPa)</th><th>适用部位</th></tr><tr><td><span class="hl">Q345qD/E</span></td><td>≥345</td><td>490~630</td><td>常规钢梁/钢塔</td></tr><tr><td>Q370qD/E</td><td>≥370</td><td>510~670</td><td>大跨度主梁</td></tr><tr><td>Q420qD/E</td><td>≥420</td><td>540~710</td><td>特大跨关键部位</td></tr><tr><td>Q500qD/E</td><td>≥500</td><td>610~770</td><td>超高性能桥</td></tr></table>
+<h4>📜 第3章 材料</h4>
+<table><tr><th>钢材牌号</th><th>屈服强度(MPa)</th><th>适用部位</th></tr>
+<tr><td>Q345qD</td><td class="hl">≥345</td><td>主梁、横梁</td></tr>
+<tr><td>Q370qD</td><td>≥370</td><td>主梁(大跨)</td></tr>
+<tr><td>Q420qD</td><td>≥420</td><td>大跨关键构件</td></tr>
+</table>
 
-<h4>📐 第3章 强度验算</h4><ul><li>抗弯：M≤Wn·f（净截面模量×强度设计值）</li><li>抗剪：τ=V·S/(I·tw)≤fv</li><li>折算应力：√(σ²+3τ²)≤1.1f</li></ul>
+<h4>🔩 第5章 连接设计</h4>
+<ul>
+<li>高强度螺栓：M20~M30，10.9S级</li>
+<li>摩擦面抗滑移系数≥<span class="hl">0.45</span>(喷砂处理)</li>
+<li>角焊缝焊脚尺寸：<span class="hl">h≥1.5√t</span>(t为较厚板厚)</li>
+</ul>
 
-<h4>⚡ 第5章 疲劳验算</h4><table><tr><th>疲劳荷载模型</th><th>适用</th></tr><tr><td>FLM1</td><td>无限寿命设计</td></tr><tr><td>FLM3</td><td>有限寿命设计（标准疲劳车）</td></tr><tr><td>FLM4</td><td>损伤等效法</td></tr></table>
-<ul><li>疲劳细节类别Δσc：<span class="hl">160/140/125/112/100/90/80MPa</span></li><li>疲劳寿命>200万次</li></ul>
-
-<h4>🔩 第6章 连接</h4><ul><li>高强度螺栓：摩擦型，M20/M22/M24，10.9S级</li><li>摩擦面抗滑移系数≥<span class="hl">0.45</span>（喷砂处理）</li><li>焊接：全熔透焊/角焊缝，须<span class="hl">焊接工艺评定(WPS)</span></li></ul>`
+<div class="note-box"><strong>📅 实施信息</strong><br>2015年5月1日实施。公路钢结构桥梁设计的核心规范。</div>`
   },
   {
     code:'JTG D65-2015',
@@ -2673,26 +2660,25 @@ var SPECS = [
     status:'current',
     tags:["钢结构","制造安装"],
     hasPdf:false,
-    content:`
-	<h4>📑 章节目录</h4>
-	<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 材料</div><div>4 制造</div><div>5 焊接</div><div>6 高强度螺栓连接</div><div>7 防腐涂装</div><div>8 运输与安装</div><div>9 施工监控</div></div>
-	<h4>🪵 桥梁用钢牌号及力学性能</h4>
-	<table><tr><th>牌号</th><th>屈服(MPa)</th><th>抗拉(MPa)</th><th>适用部位</th></tr>
-	<tr><td>Q345qD/E</td><td>≥345</td><td>490~630</td><td>常规钢梁/钢塔</td></tr>
-	<tr><td>Q370qD/E</td><td>≥370</td><td>510~670</td><td>大跨度主梁</td></tr>
-	<tr><td>Q420qD/E</td><td>≥420</td><td>540~710</td><td>特大跨度关键部位</td></tr>
-	<tr><td>Q500qD/E</td><td>≥500</td><td>610~770</td><td>超高性能桥</td></tr></table>
-	<h4>🔥 焊接工艺核心要求</h4>
-	<ul>
-	<li>焊接工艺评定（WPS）：每项焊接作业前须完成评定</li>
-	<li>焊工资质：持证上岗，证书在有效期内</li>
-	<li><span class="hl">预热温度</span>：Q370q以上或板厚≥30mm须预热（80~150℃）</li>
-	<li><span class="hl">超声波探伤（UT）</span>：一级焊缝100%UT+10%RT；二级焊缝20%~50%UT</li>
-	<li>焊接环境：风速>8m/s、湿度>80%、温度<5℃禁止焊接</li>
-	<li>焊缝返修：同一部位返修≤2次</li>
-	</ul>
-	<h4>🔩 高强度螺栓连接</h4>
-	<ul><li>扭剪型：10.9S级（M20/M22/M24），以梅花头断裂为拧紧标志</li><li>大六角型：10.9S级，扭矩系数平均值0.110~0.150</li><li>摩擦面抗滑移系数≥0.45（喷砂/喷丸处理）</li><li>初拧→终拧→检查：终拧扭矩偏差≤±10%</li></ul>`
+    content:`<h4>📑 内容概要</h4>
+<p>规定了<span class="hl">公路钢结构桥梁制造和安装</span>的施工技术要求。2022年新版。</p>
+
+<h4>制造精度要求</h4>
+<table><tr><th>项目</th><th>允许偏差</th></tr>
+<tr><td>板单元平面度</td><td>≤<span class="hl">1mm/1m</span></td></tr>
+<tr><td>杆件长度</td><td>±2mm(L≤10m)</td></tr>
+<tr><td>节段匹配</td><td>错边量≤<span class="hl">2mm</span></td></tr>
+<tr><td>焊缝外观</td><td>无裂纹、未熔合、咬边深≤0.5mm</td></tr>
+</table>
+
+<h4>安装要点</h4>
+<ul>
+<li>吊装前进行<span class="hl">预拼装</span>验收</li>
+<li>高强度螺栓终拧后<span class="hl">24h</span>内完成扭矩检查</li>
+<li>焊接环境温度≥<span class="hl">5℃</span>，湿度≤80%</li>
+</ul>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2022年11月1日实施。配合JTG D64-2015钢桥设计规范使用。</div>`
   },
   {
     code:'JTG/T 5123-2025',
@@ -2834,17 +2820,25 @@ var SPECS = [
     status:'current',
     tags:["水文","勘测"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（6章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 水文调查</div><div>3 设计洪水</div><div>4 桥涵水文</div><div>5 冲刷计算</div><div>6 调治构造物</div></div>
+    content:`<h4>📑 章节目录（9章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 水文调查</div><div>4 设计洪水</div><div>5 桥涵水文</div><div>6 路基排水水文</div><div>7 冲刷计算</div><div>8 特殊地区水文</div><div>9 水文观测</div></div>
 
-<h4>🌧 第3章 设计洪水计算方法</h4>
-<table><tr><th>方法</th><th>公式/说明</th><th>适用条件</th></tr><tr><td><span class="hl">推理公式法</span></td><td>Qm=0.278·ψ·(S/τⁿ)·F</td><td>小流域(<500km²)</td></tr><tr><td>地区经验公式法</td><td>各省水文手册查取</td><td>有地区资料</td></tr><tr><td>水文比拟法</td><td>移用邻近流域成果</td><td>有实测资料</td></tr></table>
+<h4>📜 第4章 设计洪水</h4>
+<ul>
+<li>设计洪水频率按公路等级确定（高速<span class="hl">1/100</span>）</li>
+<li>小流域(<500km²)用推理公式：Q=0.278·ψ·q·F</li>
+<li>中等流域用<span class="hl">地区经验公式</span>或水文比拟法</li>
+<li>大流域用频率分析（P-Ⅲ型曲线）</li>
+</ul>
 
-<h4>🌊 第5章 桥梁冲刷计算</h4>
-<table><tr><th>冲刷类型</th><th>公式</th><th>适用</th></tr><tr><td>一般冲刷</td><td>64-1公式（非粘性土）/ 64-2公式（粘性土）</td><td>河槽压缩</td></tr><tr><td><span class="hl">局部冲刷</span></td><td>65-1公式 / 65-2修正式</td><td>桥墩阻水</td></tr></table>
-<ul><li>总冲刷深度 = 一般冲刷 + 局部冲刷</li><li>基础埋深应在总冲刷线以下<span class="hl">≥2m</span>（大桥≥2.5m）</li></ul>
+<h4>🌊 第7章 冲刷计算</h4>
+<table><tr><th>冲刷类型</th><th>计算公式</th><th>参数</th></tr>
+<tr><td>一般冲刷</td><td>64-1/64-2公式</td><td>Q、B、h、d₅₀</td></tr>
+<tr><td>局部冲刷</td><td>65-1/65-2公式</td><td>V、h、d、Kξ</td></tr>
+<tr><td>总冲刷深度</td><td>一般+局部</td><td>叠加法</td></tr>
+</table>
 
-<h4>🏞 第6章 调治构造物</h4><ul><li>导流堤：引导水流平顺通过桥孔</li><li>丁坝：挑开水流，保护桥台/路基</li><li>护岸：防止河岸冲刷危及桥涵</li></ul>`
+<div class="note-box"><strong>📅 实施信息</strong><br>2015年5月1日实施。桥涵水文设计的核心规范。</div>`
   },
   {
     code:'JTG/T 3610-2019',
@@ -2881,18 +2875,26 @@ var SPECS = [
     status:'current',
     tags:["交通标志"],
     hasPdf:false,
-    content:`<h4>📑 章节目录</h4>
-<div class="ch-list"><div>1~3 范围/引用/术语</div><div>4 警告标志(86种)</div><div>5 禁令标志(58种)</div><div>6 指示标志(35种)</div><div>7 指路标志</div><div>8 旅游区标志</div><div>9 告示标志</div></div>
+    content:`<h4>📑 内容概要</h4>
+<p>规定了<span class="hl">道路交通标志</span>的分类、颜色、形状、尺寸和设置要求。2022年新版。</p>
 
-<h4>🚦 标志分类速查</h4>
-<table><tr><th>类别</th><th>颜色</th><th>形状</th><th>数量</th></tr><tr><td><span class="hl">警告标志</span></td><td>黄底黑边黑图案</td><td>正三角形</td><td>86种</td></tr><tr><td>禁令标志</td><td>白底红圈红杠黑图案</td><td>圆形/八角形/倒三角形</td><td>58种</td></tr><tr><td>指示标志</td><td>蓝底白图案</td><td>圆形/矩形</td><td>35种</td></tr><tr><td>指路标志</td><td>蓝/绿底白字</td><td>矩形</td><td>—</td></tr></table>
+<h4>标志版面尺寸与设计速度</h4>
+<table><tr><th>设计速度(km/h)</th><th>汉字高度(cm)</th><th>警告标志边长(cm)</th><th>禁令标志直径(cm)</th></tr>
+<tr><td>120</td><td class="hl">60~70</td><td>130</td><td>120</td></tr>
+<tr><td>100</td><td>50~60</td><td>110</td><td>100</td></tr>
+<tr><td>80</td><td>40~50</td><td>90</td><td>80</td></tr>
+<tr><td>60/40/30/20</td><td>30/25/20/15</td><td>70/60/50/40</td><td>60/50/40/30</td></tr>
+</table>
 
-<h4>📏 汉字高度标准</h4>
-<table><tr><th>设计速度(km/h)</th><th>汉字高度(cm)</th></tr><tr><td>120~100</td><td><span class="hl">60~70</span></td></tr><tr><td>80~60</td><td>50~60</td></tr><tr><td>40~30</td><td>30~40</td></tr><tr><td>20</td><td>20~30</td></tr></table>
+<h4>2022版主要更新</h4>
+<ul>
+<li>新增<span class="hl">电动自行车</span>相关标志</li>
+<li>指路标志信息分层优化（A/B/C三层）</li>
+<li>高速公路编号标志更新（G/S/X/Y四类）</li>
+<li>增加<span class="hl">主动发光标志</span>的技术要求</li>
+</ul>
 
-<h4>✨ 反光膜等级</h4><ul><li>Ⅰ类（工程级）：低等级公路</li><li>Ⅲ类（高强级）：一般公路</li><li>Ⅴ类（<span class="hl">钻石级</span>）：高速/一级公路</li></ul>
-
-<h4>🆕 2022版主要更新</h4><ul><li>新增<span class="hl">电动自行车</span>相关标志</li><li>指路标志信息分层优化</li><li>高速公路编号标志更新</li></ul>`
+<div class="note-box"><strong>📅 实施信息</strong><br>2022年10月1日实施。替代GB 5768.2-2009。</div>`
   },
   {
     code:'GB 5768.3-2009',
@@ -2901,12 +2903,25 @@ var SPECS = [
     status:'current',
     tags:["交通标线"],
     hasPdf:false,
-    content:`<h4>📑 章节目录</h4>
-<div class="ch-list"><div>1~3 范围/引用/术语</div><div>4 指示标线</div><div>5 禁止标线</div><div>6 警告标线</div></div>
-<h4>📏 标线尺寸参数</h4>
-<table><tr><th>标线类型</th><th>设计速度≥60km/h</th><th>设计速度<60km/h</th></tr><tr><td>车道分界线(虚线)</td><td><span class="hl">划6m空9m</span></td><td>划2m空4m</td></tr><tr><td>车道边缘线(实线)</td><td>宽15~20cm</td><td>宽10~15cm</td></tr><tr><td>导向箭头长度</td><td>9m(高速)/6m(其他)</td><td>3m</td></tr></table>
-<h4>🎨 标线颜色含义</h4><ul><li>白色：同向车道分界、边缘线、导向箭头</li><li><span class="hl">黄色</span>：对向车道分界、禁止跨越线</li><li>蓝色：残疾人专用停车位</li><li>橙色：作业区临时标线</li></ul>
-<h4>🔧 标线材料</h4><ul><li>热熔型：厚<span class="hl">1.5~2.5mm</span>，反光玻璃珠嵌入</li><li>溶剂型：厚0.3~0.8mm，成本低寿命短</li><li>双组分：高耐磨，环保型</li><li>预成型：工厂预制现场粘贴</li></ul>`
+    content:`<h4>📑 内容概要</h4>
+<p>规定了<span class="hl">道路交通标线</span>的分类、颜色、形状和设置。</p>
+
+<h4>标线分类与尺寸</h4>
+<table><tr><th>标线类型</th><th>颜色</th><th>宽度(cm)</th><th>说明</th></tr>
+<tr><td>车行道边缘线</td><td>白色实线</td><td class="hl">15~20</td><td>高速/一级20cm</td></tr>
+<tr><td>车行道分界线</td><td>白色虚线</td><td>10~15</td><td>同向车道分隔</td></tr>
+<tr><td>对向车道分界线</td><td>黄色虚线</td><td>10~15</td><td>允许越线超车</td></tr>
+<tr><td>禁止超车线</td><td>黄色实线</td><td>10~15</td><td>禁止越线</td></tr>
+<tr><td>人行横道线</td><td>白实线</td><td>40(宽)</td><td>间距60cm</td></tr>
+</table>
+
+<h4>分界线实空比</h4>
+<ul>
+<li>设计速度≥80km/h：<span class="hl">划6空9</span></li>
+<li>设计速度<80km/h：<span class="hl">划2空4</span></li>
+</ul>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2009年7月1日实施。</div>`
   },
   {
     code:'GB 5768.4-2017',
@@ -3074,18 +3089,24 @@ var SPECS = [
     status:'current',
     tags:["标志","标线"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（6章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 标志设置</div><div>3 标线设置</div><div>4 交叉口</div><div>5 立交</div><div>6 特殊路段</div></div>
+    content:`<h4>📑 章节目录（8章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 一般规定</div><div>4 指路标志设置</div><div>5 警告标志设置</div><div>6 禁令指示标志设置</div><div>7 标线设置</div><div>8 服务设施标志</div></div>
 
-<h4>📏 指路标志前置距离</h4>
-<table><tr><th>设计速度(km/h)</th><th>出口预告标志</th><th>方向地点标志</th></tr><tr><td>120</td><td><span class="hl">2km→1km→500m→出口</span></td><td>1km</td></tr><tr><td>100</td><td>1.5km→1km→500m→出口</td><td>800m</td></tr><tr><td>80</td><td>1km→500m→出口</td><td>500m</td></tr></table>
+<h4>📜 第4章 指路标志设置</h4>
+<ul>
+<li>交叉口预告标志：距交叉口<span class="hl">300~500m</span>设置</li>
+<li>地点距离标志：标注前方3个目的地及距离</li>
+<li>高速公路出口预告：<span class="hl">2km→1km→500m→0m</span>四级预告</li>
+</ul>
 
-<h4>📐 标线尺寸</h4>
-<table><tr><th>项目</th><th>高速/一级</th><th>其他公路</th></tr><tr><td>车道边缘线宽</td><td><span class="hl">20cm</span></td><td>15cm</td></tr><tr><td>车道分界线宽</td><td>15cm</td><td>10~15cm</td></tr><tr><td>导向箭头长度</td><td>9m（高速）</td><td>6m</td></tr></table>
+<h4>🛡 第5章 警告标志设置</h4>
+<ul>
+<li>前置距离：高速<span class="hl">200~250m</span>，一般公路<span class="hl">50~100m</span></li>
+<li>急弯标志：平曲线半径≤一般值时设置</li>
+<li>连续下坡标志：坡度>4%且坡长>3km设置</li>
+</ul>
 
-<h4>🔀 第4章 交叉口</h4><ul><li>交叉口视距三角形内<span class="hl">不得有任何障碍物</span></li><li>导向车道线长度≥30m（高速/一级≥50m）</li><li>人行横道线宽40~60cm，间距60cm</li><li>停止线距人行横道1~2m</li></ul>
-
-<h4>第6章 特殊路段</h4><ul><li>隧道入口：加强<span class="hl">减速标线</span>和<span class="hl">轮廓标</span></li><li>急弯陡坡：设置<span class="hl">线形诱导标</span>和振动标线</li><li>学校/村庄：限速标志+减速丘</li></ul>`
+<div class="note-box"><strong>📅 实施信息</strong><br>2009年12月1日实施。与GB 5768配套的公路行业标准。</div>`
   },
   {
     code:'JTG/T 3381-03-2024',
