@@ -45,7 +45,7 @@
 </head>
 <body>
 <header class="header"><div class="header-inner"><div class="header-top">
-<a href="../" class="header-logo" style="text-decoration:none;">⚡</a><div><h1>深度检索</h1><p class="subtitle">智能检索发现规范 → 勾选 → 送对比页并排对比 · 与规范对比功能互补</p></div>
+<a href="../" class="header-logo" style="text-decoration:none;">⚡</a><div><h1>深度检索</h1><p class="subtitle">智能检索发现规范 → 勾选 → 送对比页并排对比 · 与多规范交叉对比功能互补</p></div>
 </div></div></header>
 <main class="main ds-wrap">
 <div id="breadcrumb"></div>
@@ -54,22 +54,22 @@
 <textarea id="dsInput" placeholder="输入问题或关键词…&#10;例如：平曲线最小半径 | 四级公路压实度多少 | JTG和CJJ有什么区别"></textarea>
 </div>
 
-<div class="ds-hints-group"><div class="ds-hints-label">🔥 高频查询</div>
+<div class="ds-hints-group"><div class="ds-hints-label">🔥 高频查询（规范条文）</div>
 <div class="ds-hints">
-<button class="ds-hint" onclick="quickAsk('平曲线最小半径 各等级对比')">📐 平曲线最小半径</button>
-<button class="ds-hint" onclick="quickAsk('最大纵坡 各等级 标准')">📏 最大纵坡标准</button>
-<button class="ds-hint" onclick="quickAsk('路基压实度 各等级 CBR要求')">🪨 路基压实度CBR</button>
-<button class="ds-hint" onclick="quickAsk('设计速度 车道宽度 路肩宽度 对比')">🛣 设计速度/车道宽度</button>
-<button class="ds-hint" onclick="quickAsk('停车视距 会车视距 超车视距')">👁 视距标准</button>
-<button class="ds-hint" onclick="quickAsk('挡土墙 抗滑 抗倾覆 安全系数 各类型')">🧱 挡土墙验算</button>
+<button class="ds-hint" onclick="quickAsk('平曲线最小半径')">📐 平曲线最小半径</button>
+<button class="ds-hint" onclick="quickAsk('最大纵坡')">📏 最大纵坡标准</button>
+<button class="ds-hint" onclick="quickAsk('路基压实度')">🪨 路基压实度CBR</button>
+<button class="ds-hint" onclick="quickAsk('设计速度')">🛣 设计速度/车道宽度</button>
+<button class="ds-hint" onclick="quickAsk('停车视距')">👁 视距标准</button>
+<button class="ds-hint" onclick="quickAsk('挡土墙 抗滑 抗倾覆')">🧱 挡土墙验算</button>
 </div></div>
 
-<div class="ds-hints-group"><div class="ds-hints-label">📋 规范对比</div>
+<div class="ds-hints-group"><div class="ds-hints-label">📋 多规范交叉对比</div>
 <div class="ds-hints">
-<button class="ds-hint" onclick="quickAsk('JTG B01 CJJ 37 公路 城市道路 设计速度 车道 区别')">🔄 公路vs城市道路</button>
-<button class="ds-hint" onclick="quickAsk('沥青路面 水泥路面 设计年限 厚度对比')">🛣 沥青vs水泥路面</button>
-<button class="ds-hint" onclick="quickAsk('高速 一级 二级 三级 四级 路基 路面 参数对比')">📊 各等级参数全对比</button>
-<button class="ds-hint" onclick="quickAsk('JTG D60 CJJ 11 桥梁 荷载 区别')">🌉 公路vs城市桥梁</button>
+<button class="ds-hint" onclick="quickAsk('高速 一级 二级 三级 四级 设计速度 车道宽度 路基宽度')">📊 各等级参数对比</button>
+<button class="ds-hint" onclick="quickAsk('沥青路面 水泥路面 设计年限 面层厚度')">🛣 沥青vs水泥路面</button>
+<button class="ds-hint" onclick="quickAsk('桥梁 汽车荷载 设计洪水频率')">📊 桥梁荷载对比</button>
+<button class="ds-hint" onclick="quickAsk('CJJ JTG 城市道路 公路 设计速度 车道 区别')">🔄 公路vs城市道路</button>
 </div></div>
 
 <div class="ds-btn-row">
