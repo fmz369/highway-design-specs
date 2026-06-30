@@ -59,62 +59,42 @@ var SPECS = [
     tags:["城市道路","总体"],
     pdf:'规范PDF/CJJ 37-2012 城市道路工程设计规范.pdf',
     hasPdf:true,
-    content:`<h4>📑 章节目录（11章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 基本规定</div><div>4 通行能力与服务水平</div><div>5 横断面</div><div>6 平面与纵断面</div><div>7 交叉</div><div>8 路基路面</div><div>9 公共交通</div><div>10 行人与非机动车</div><div>11 管线及设施</div></div>
+    content:`<h4>📑 章节目录（15章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 基本规定</div><div>4 道路分级</div><div>5 平面设计</div><div>6 纵断面设计</div><div>7 横断面设计</div><div>8 交叉口</div><div>9 立体交叉</div><div>10 路基</div><div>11 路面</div><div>12 桥梁</div><div>13 隧道</div><div>14 排水</div><div>15 照明</div></div>
 
-<h4>📜 第1章 总则</h4>
-<ul><li>适用于<span class="hl">新建和改建</span>城市道路工程设计</li><li>设计原则：安全可靠、技术先进、经济合理、保护环境</li></ul>
+<h4>📜 第4章 道路分级</h4>
+<table><tr><th>等级</th><th>设计速度(km/h)</th><th>红线宽度(m)</th><th>车道数</th></tr>
+<tr><td>快速路</td><td class="hl">60~100</td><td>50~80</td><td>4~8</td></tr>
+<tr><td>主干路</td><td>40~60</td><td>40~60</td><td>4~8</td></tr>
+<tr><td>次干路</td><td>30~50</td><td>25~40</td><td>2~4</td></tr>
+<tr><td>支路</td><td>20~30</td><td>12~25</td><td>2</td></tr>
+</table>
 
-<h4>🚗 第3章 基本规定</h4>
-<h4>道路分级与设计速度</h4>
-<table><tr><th>道路等级</th><th>设计速度(km/h)</th><th>设计年限(年)</th><th>一条车道通行能力(pcu/h)</th></tr>
-<tr><td><span class="hl">快速路</span></td><td>100/80/60</td><td>20</td><td>1800~2000</td></tr>
-<tr><td>主干路</td><td>60/50/40</td><td>20</td><td>1650~1800</td></tr>
-<tr><td>次干路</td><td>50/40/30</td><td>15</td><td>1550~1700</td></tr>
-<tr><td>支路</td><td>40/30/20</td><td>10~15</td><td>1400~1600</td></tr></table>
+<h4>📐 第5章 平面设计</h4>
+<table><tr><th>设计速度(km/h)</th><th>平曲线最小半径一般值(m)</th><th>不设超高最小半径(m)</th></tr>
+<tr><td>100</td><td class="hl">650</td><td>4000</td></tr>
+<tr><td>80</td><td>400</td><td>2000</td></tr>
+<tr><td>60</td><td>200</td><td>1000</td></tr>
+<tr><td>40</td><td>70</td><td>300</td></tr>
+</table>
 
-<h4>📏 第4章 通行能力与服务水平</h4>
-<ul><li>快速路设计服务水平：<span class="hl">三级</span>（稳定车流）</li><li>主干路：三级或四级</li><li>次干路/支路：四级（可接受延误）</li></ul>
+<h4>📏 第6章 纵断面设计</h4>
+<table><tr><th>设计速度(km/h)</th><th>最大纵坡(%)</th><th>凸形竖曲线最小(m)</th><th>凹形竖曲线最小(m)</th></tr>
+<tr><td>100</td><td class="hl">4</td><td>10000</td><td>4500</td></tr>
+<tr><td>80</td><td>5</td><td>4500</td><td>2700</td></tr>
+<tr><td>60</td><td>6</td><td>2000</td><td>1500</td></tr>
+<tr><td>40</td><td>7</td><td>700</td><td>700</td></tr>
+</table>
 
-<h4>📏 第5章 横断面</h4>
-<table><tr><th>项目</th><th>快速路</th><th>主干路</th><th>次干路</th><th>支路</th></tr>
-<tr><td>机动车道宽度(m)</td><td><span class="hl">3.25~3.75</span></td><td>3.25~3.50</td><td>3.25~3.50</td><td>3.00~3.50</td></tr>
-<tr><td>小客车道(m)</td><td>3.00~3.50</td><td>3.00~3.50</td><td>3.00</td><td>3.00</td></tr>
-<tr><td>非机动车道宽(m)</td><td>—</td><td>2.5~3.5</td><td>2.5~3.5</td><td>1.5~2.5</td></tr>
-<tr><td>人行道最小宽(m)</td><td>—</td><td>3.0</td><td>2.0</td><td>2.0</td></tr>
-<tr><td>设施带宽(m)</td><td>0.5~1.5</td><td>0.5~1.5</td><td>0.5~1.0</td><td>0.5~1.0</td></tr></table>
+<h4>🛣 第7章 横断面设计</h4>
+<ul>
+<li>机动车道宽：<span class="hl">3.25~3.75m</span>/车道</li>
+<li>非机动车道：≥<span class="hl">2.5m</span>(单向)、≥3.5m(双向)</li>
+<li>人行道：≥<span class="hl">2.0m</span>(最小1.5m)</li>
+<li>分车带：≥<span class="hl">1.5m</span>(绿化)、≥0.5m(护栏)</li>
+</ul>
 
-<h4>📐 第6章 平面与纵断面</h4>
-<h4>平曲线最小半径</h4>
-<table><tr><th>设计速度(km/h)</th><th>100</th><th>80</th><th>60</th><th>50</th><th>40</th><th>30</th><th>20</th></tr>
-<tr><td>不设超高(m)</td><td>1600</td><td>1000</td><td>600</td><td>400</td><td>300</td><td>150</td><td>70</td></tr>
-<tr><td>设超高一般值(m)</td><td><span class="hl">650</span></td><td>400</td><td>300</td><td>200</td><td>150</td><td>85</td><td>40</td></tr>
-<tr><td>设超高极限值(m)</td><td>400</td><td>250</td><td>150</td><td>100</td><td>70</td><td>40</td><td>20</td></tr></table>
-<h4>最大纵坡</h4>
-<table><tr><th>设计速度(km/h)</th><th>100</th><th>80</th><th>60</th><th>50</th><th>40</th><th>30</th><th>20</th></tr>
-<tr><td>最大纵坡(%)</td><td><span class="hl">4</span></td><td>5</td><td>6</td><td>6.5</td><td>7</td><td>8</td><td>8</td></tr></table>
-<h4>停车视距</h4>
-<table><tr><th>设计速度(km/h)</th><th>100</th><th>80</th><th>60</th><th>50</th><th>40</th><th>30</th><th>20</th></tr>
-<tr><td>停车视距(m)</td><td><span class="hl">160</span></td><td>110</td><td>75</td><td>55</td><td>40</td><td>30</td><td>20</td></tr></table>
-
-<h4>🔀 第7章 交叉</h4>
-<ul><li>交叉口视距三角形内<span class="hl">不得有任何障碍物</span></li><li>快速路与各级道路相交必须采用立体交叉</li><li>平面交叉口转角缘石半径：主干路<span class="hl">20~25m</span>；次干路15~20m；支路10~15m</li></ul>
-
-<h4>🪨 第8章 路基路面</h4>
-<ul><li>路基压实度参照CJJ 1-2008执行</li><li>路面设计年限：快速路/主干路<span class="hl">15年</span>；次干路10~12年；支路8~10年</li><li>需考虑检查井、雨水口对路面结构的影响，薄弱处补强</li></ul>
-
-<h4>🚌 第9章 公共交通</h4>
-<ul><li>公交专用道宽度：<span class="hl">3.5~3.75m</span></li><li>公交停靠站：市区<span class="hl">500~800m</span>；郊区800~1000m</li><li>港湾式停靠站：减速段≥20m+站台≥30m+加速段≥30m</li></ul>
-
-<h4>🚶 第10章 行人与非机动车</h4>
-<ul><li>人行道必须设置<span class="hl">盲道</span>，满足无障碍要求</li><li>非机动车道与机动车道之间应有隔离设施</li><li>人行横道宽度≥4m，间距250~300m</li></ul>
-
-<h4>🔧 第11章 管线及设施</h4>
-<ul><li>管线应综合规划，减少重复开挖</li><li>照明标准：快速路平均照度<span class="hl">20~30lx</span></li></ul>
-
-<div class="note-box"><strong>💡 与JTG D20-2017的关键差异</strong><br>① CJJ适用于<span class="hl">城市道路</span>（需考虑管线/公交/行人/盲道），JTG适用于<span class="hl">公路</span><br>② CJJ设计速度分7档(100~20)，比JTG多50km/h档<br>③ CJJ平曲线半径偏小（城市用地受限），最大纵坡偏小1%<br>④ CJJ强制性要求盲道和无障碍设施</div>
-<h4>📄 规范原文获取</h4>
-<ul><li>📥 <a href="./规范PDF/CJJ 37-2012 城市道路工程设计规范.pdf" target="_blank" style="color:#2563eb;font-weight:600;">打开 PDF 原文</a></li></ul>`
+<div class="note-box"><strong>📅 实施信息</strong><br>2012年5月1日实施，2016年局部修订。城市道路设计的<span class="hl">母规范</span>。</div>`
   },
   {
     code:'GB 5768.1-2009',
@@ -1614,56 +1594,33 @@ var SPECS = [
     status:'current',
     tags:["养护","沥青"],
     hasPdf:false,
-    content:`
-<h4>📑 章节目录（6章）</h4>
-<div class="ch-list">
-<div>1 总则</div><div>2 检测与评价</div><div>3 日常养护</div><div>4 预防性养护</div>
-<div>5 修复养护</div><div>6 专项养护</div>
-</div>
+    content:`<h4>📑 章节目录（9章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 路面状况调查</div><div>4 日常养护</div><div>5 预防性养护</div><div>6 修复性养护</div><div>7 罩面与加铺</div><div>8 再生利用</div><div>9 养护质量评定</div></div>
 
-<h4>📊 第2章 路面技术状况评定</h4>
-<h4>PCI（路面损坏状况指数）评级</h4>
-<table><tr><th>等级</th><th>PCI</th><th>养护对策</th></tr>
-<tr><td>优</td><td><span class="hl">≥90</span></td><td>日常养护</td></tr>
-<tr><td>良</td><td>80~90</td><td>预防性养护（最佳时机）</td></tr>
-<tr><td>中</td><td>70~80</td><td>预防性或修复性养护</td></tr>
-<tr><td>次</td><td>60~70</td><td>修复性养护</td></tr>
-<tr><td>差</td><td><span class="hl"><60</span></td><td>大修/重建</td></tr></table>
-
-<h4>RQI（行驶质量指数）</h4>
-<table><tr><th>等级</th><th>优</th><th>良</th><th>中</th><th>次</th><th>差</th></tr>
-<tr><td>RQI</td><td>≥90</td><td>80~90</td><td>70~80</td><td>60~70</td><td><60</td></tr>
+<h4>📜 第3章 路面状况调查</h4>
+<table><tr><th>指标</th><th>检测方法</th><th>频率</th></tr>
+<tr><td>路面损坏PCI</td><td>人工/自动检测</td><td>高速/一级<span class="hl">每年</span></td></tr>
+<tr><td>行驶质量RQI</td><td>IRI激光断面仪</td><td>高速/一级每年</td></tr>
+<tr><td>车辙RDI</td><td>车辙仪/3m直尺</td><td>高速/一级每年</td></tr>
+<tr><td>抗滑SRI</td><td>SFC/摆式仪</td><td>高速<span class="hl">每2年</span></td></tr>
 </table>
 
-<h4>🔧 第3章 日常养护</h4>
+<h4>🔧 第5章 预防性养护</h4>
+<table><tr><th>技术</th><th>厚度(mm)</th><th>适用PCI</th><th>寿命(年)</th></tr>
+<tr><td>微表处</td><td>10~15</td><td>≥85</td><td>3~5</td></tr>
+<tr><td>薄层罩面</td><td>20~25</td><td>≥80</td><td>4~6</td></tr>
+<tr><td>雾封层</td><td>—(液体)</td><td>≥90</td><td>2~3</td></tr>
+<tr><td>碎石封层</td><td>10~15</td><td>≥80</td><td>3~5</td></tr>
+</table>
+
+<h4>🛣 第6章 修复性养护</h4>
 <ul>
-<li>清扫频率：高速/一级<span class="hl">≥1次/天</span>；二级及以下<span class="hl">≥1次/周</span></li>
-<li>巡查频率：高速/一级≥1次/天；二级及以下≥1次/周</li>
-<li>雨季、汛期加密巡查</li>
-<li>发现坑槽、裂缝等病害及时处治</li>
+<li>面层铣刨重铺：厚度≥原面层厚，搭接宽度≥<span class="hl">30cm</span></li>
+<li>基层挖补：深度≥基层厚，新旧结合面涂<span class="hl">粘层油</span></li>
+<li>全厚式加铺：≥<span class="hl">50mm</span>(结合处设应力吸收层)</li>
 </ul>
 
-<h4>🛡 第4章 预防性养护</h4>
-<table><tr><th>技术措施</th><th>适用条件</th><th>预期寿命</th></tr>
-<tr><td><span class="hl">雾封层</span></td><td>PCI≥85，轻微老化/渗水</td><td>2~3年</td></tr>
-<tr><td>稀浆封层</td><td>PCI≥80，轻微裂缝/松散</td><td>3~5年</td></tr>
-<tr><td><span class="hl">微表处</span></td><td>PCI≥75，裂缝/车辙<15mm</td><td>5~7年</td></tr>
-<tr><td>碎石封层</td><td>PCI≥80，抗滑不足/老化</td><td>3~5年</td></tr>
-<tr><td>薄层罩面(2~3cm)</td><td>PCI≥70，裂缝/车辙<20mm</td><td>5~8年</td></tr>
-<tr><td>超薄磨耗层(1.5~2.5cm)</td><td>PCI≥75，抗滑不足</td><td>5~8年</td></tr>
-</table>
-
-<h4>🔨 第5章 修复养护</h4>
-<table><tr><th>病害类型</th><th>处治方案</th></tr>
-<tr><td>裂缝<6mm</td><td><span class="hl">灌缝</span>（热灌/冷灌）</td></tr>
-<tr><td>裂缝≥6mm或网状裂缝</td><td>开槽灌缝或挖补</td></tr>
-<tr><td>车辙<15mm</td><td>不需处理</td></tr>
-<tr><td>车辙15~25mm</td><td><span class="hl">微表处</span>或薄层罩面</td></tr>
-<tr><td>车辙>25mm</td><td><span class="hl">铣刨重铺</span></td></tr>
-<tr><td>坑槽</td><td>冷补（应急）/ 热补（永久）</td></tr>
-<tr><td>松散/麻面</td><td>封层或罩面</td></tr>
-</table>
-`
+<div class="note-box"><strong>📅 实施信息</strong><br>2019年6月1日实施。沥青路面养护决策与施工的依据。</div>`
   },
   {
     code:'JTG 5150-2020',
@@ -1810,36 +1767,51 @@ var SPECS = [
     tags:["水泥混凝土","路面"],
     pdf:'规范PDF/JTG D40-2011 公路水泥混凝土路面设计规范.pdf',
     hasPdf:true,
-    content:`<h4>📑 章节目录（7章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 结构设计</div><div>4 接缝设计</div><div>5 配筋设计</div><div>6 特殊路面</div><div>7 材料</div></div>
+    content:`<h4>📑 章节目录（8章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 设计参数</div><div>4 结构组合</div><div>5 板厚设计</div><div>6 接缝设计</div><div>7 配筋设计</div><div>8 特殊路面</div></div>
 
-<h4>🔑 第3章 结构设计参数（全等级）</h4>
-<table><tr><th>项目</th><th>高速</th><th>一级</th><th>二级</th><th>三级</th><th>四级</th></tr>
-<tr><td>弯拉强度标准值(MPa)</td><td>≥5.0</td><td>≥5.0</td><td>≥4.5</td><td>≥4.0</td><td>≥4.0</td></tr>
-<tr><td>面板最小厚度(cm)</td><td>26</td><td>26</td><td>22</td><td>20</td><td>20</td></tr>
-<tr><td>设计年限(年)</td><td>30</td><td>30</td><td>20</td><td>15</td><td>10~15</td></tr></table>
+<h4>📜 第3章 设计参数</h4>
+<table><tr><th>交通等级</th><th>BZZ-100累计轴次(次/车道)</th><th>弯拉强度(MPa)</th></tr>
+<tr><td>极重</td><td>>1×10⁸</td><td class="hl">5.0</td></tr>
+<tr><td>特重</td><td>2×10⁷~1×10⁸</td><td class="hl">5.0</td></tr>
+<tr><td>重</td><td>1×10⁶~2×10⁷</td><td>5.0</td></tr>
+<tr><td>中等</td><td>3×10⁴~1×10⁶</td><td>4.5</td></tr>
+<tr><td>轻</td><td><3×10⁴</td><td>4.0</td></tr>
+</table>
 
-<h4>📐 标准轴载</h4><ul><li>BZZ-100：单轴双轮组，轴重<span class="hl">100kN</span>，轮压0.7MPa，当量圆直径21.3cm</li></ul>
+<h4>🛣 第4章 结构组合</h4>
+<ul>
+<li>面层：普通混凝土/钢筋混凝土/连续配筋混凝土</li>
+<li>基层：水泥稳定碎石/贫混凝土/沥青稳定碎石</li>
+<li>垫层：级配碎石/砂砾(防冻/排水)</li>
+</ul>
 
-<h4>接缝设计</h4>
-<table><tr><th>类型</th><th>构造</th><th>间距</th></tr>
-<tr><td>横缝缩缝</td><td>假缝+<span class="hl">传力杆</span></td><td>4~6m</td></tr>
-<tr><td>横缝胀缝</td><td>贯通缝+填缝料+传力杆</td><td><span class="hl">200~500m</span></td></tr>
-<tr><td>纵缝施工缝</td><td>企口+拉杆</td><td>—</td></tr>
-<tr><td>纵缝缩缝</td><td>假缝+拉杆</td><td>3.0~4.5m</td></tr></table>
+<h4>📐 第5章 板厚设计</h4>
+<table><tr><th>交通等级</th><th>高速/一级(mm)</th><th>二级(mm)</th><th>三级(mm)</th></tr>
+<tr><td>极重</td><td class="hl">≥320</td><td>—</td><td>—</td></tr>
+<tr><td>特重</td><td>280~320</td><td>260~280</td><td>—</td></tr>
+<tr><td>重</td><td>260~280</td><td>240~260</td><td>220~240</td></tr>
+<tr><td>中等</td><td>240~260</td><td>220~240</td><td>200~220</td></tr>
+<tr><td>轻</td><td>—</td><td>220</td><td>200</td></tr>
+</table>
 
-<h4>传力杆尺寸</h4>
-<table><tr><th>板厚(cm)</th><th>传力杆直径(mm)</th><th>长度(mm)</th><th>间距(mm)</th></tr>
-<tr><td>20~24</td><td>φ28</td><td>400</td><td>300</td></tr>
-<tr><td>25~28</td><td>φ32</td><td>450</td><td>300</td></tr>
-<tr><td>29~32</td><td>φ36</td><td>500</td><td>300</td></tr></table>
+<h4>🔧 第6章 接缝设计</h4>
+<h4>接缝类型与间距</h4>
+<table><tr><th>接缝类型</th><th>间距(m)</th><th>宽度(mm)</th></tr>
+<tr><td>横向缩缝</td><td class="hl">4~6</td><td>3~8</td></tr>
+<tr><td>横向胀缝</td><td>视需要</td><td>20~30</td></tr>
+<tr><td>纵向缩缝</td><td>3~4.5(车道宽)</td><td>3~8</td></tr>
+<tr><td>纵向施工缝</td><td>车道分界线</td><td>—</td></tr>
+</table>
 
-<h4>🧪 第7章 材料要求</h4>
-<table><tr><th>材料</th><th>技术要求</th></tr>
-<tr><td>水泥</td><td>道路硅酸盐/普通硅酸盐，≥42.5级</td></tr>
-<tr><td>粗集料</td><td>压碎值≤25%，针片状≤15%</td></tr>
-<tr><td>水灰比</td><td>≤0.44（特重交通），≤0.46（其他）</td></tr>
-<tr><td>最小水泥用量</td><td>≥300kg/m³（特重），≥280kg/m³（其他）</td></tr></table>`
+<h4>传力杆与拉杆</h4>
+<ul>
+<li>传力杆(缩缝)：φ<span class="hl">32~36mm</span>光圆钢筋，长500mm，间距300mm</li>
+<li>拉杆(纵缝)：φ<span class="hl">14~16mm</span>螺纹钢筋，长800mm，间距600mm</li>
+<li>胀缝传力杆：φ<span class="hl">32~40mm</span>，设滑动端套筒</li>
+</ul>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2011年7月1日实施。水泥路面设计专用规范，与JTG D50沥青路面互补。</div>`
   },
   {
     code:'JTG D50-2017',
@@ -2055,66 +2027,34 @@ var SPECS = [
     status:'current',
     tags:["路基排水"],
     hasPdf:false,
-    content:`
-<h4>📑 章节目录（6章）</h4>
-<div class="ch-list">
-<div>1 总则</div><div>2 水文计算</div><div>3 路面排水</div><div>4 中分带排水</div>
-<div>5 路基排水</div><div>6 地下排水</div>
-</div>
+    content:`<h4>📑 章节目录（8章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 水文计算</div><div>4 路基排水</div><div>5 路面排水</div><div>6 桥涵排水</div><div>7 隧道排水</div><div>8 附属设施排水</div></div>
 
-<h4>🌧 第2章 水文计算</h4>
-<h4>设计降雨重现期（年）</h4>
-<table><tr><th>公路等级</th><th>路面/路基排水</th><th>涵洞</th><th>桥梁</th></tr>
-<tr><td>高速/一级</td><td><span class="hl">5~15</span></td><td>100</td><td>100~300</td></tr>
-<tr><td>二级</td><td>3~10</td><td>50</td><td>50~100</td></tr>
-<tr><td>三级及以下</td><td>3~5</td><td>25</td><td>25~50</td></tr></table>
-
-<h4>设计流量计算</h4>
+<h4>📜 第3章 水文计算</h4>
 <ul>
-<li>推理公式法：Q = 0.278·ψ·(S/τ^n)·F</li>
-<li>ψ——径流系数；S——设计降雨强度(mm/h)；τ——汇流时间(min)；F——汇水面积(km²)</li>
-<li>径流系数：沥青路面<span class="hl">0.90~0.95</span>；水泥路面<span class="hl">0.85~0.90</span>；土路肩<span class="hl">0.40~0.65</span></li>
+<li>设计降雨重现期：高速/一级<span class="hl">15年</span>，二级10年，三级5年</li>
+<li>径流系数：沥青路面<span class="hl">0.9</span>，水泥路面0.85，土路肩0.4~0.6</li>
+<li>汇流时间：路面排水<span class="hl">5~10min</span>，路基排水10~30min</li>
 </ul>
 
-<h4>🛣 第3章 路面排水</h4>
+<h4>💧 第4章 路基排水设施</h4>
+<table><tr><th>设施类型</th><th>最小尺寸</th><th>最小纵坡</th></tr>
+<tr><td>边沟</td><td>底宽<span class="hl">0.4m</span>×深0.4m</td><td>0.3%(困难0.1%)</td></tr>
+<tr><td>截水沟</td><td>底宽0.5m×深0.5m</td><td>0.3%</td></tr>
+<tr><td>排水沟</td><td>底宽0.5m×深0.5m</td><td>0.3%</td></tr>
+<tr><td>急流槽</td><td>宽0.3~0.5m</td><td>—(陡坡消能)</td></tr>
+<tr><td>盲沟</td><td>宽0.4~0.6m×深0.6~1.0m</td><td>≥1%</td></tr>
+</table>
+
+<h4>🛣 第5章 路面排水</h4>
 <ul>
-<li>路拱横坡：沥青/水泥路面<span class="hl">1.5%~2.5%</span></li>
-<li>路面排水宽度：双向排水≤12m；单向排水≤6m</li>
-<li>超高路段：路面水汇入中分带或外侧边沟</li>
-<li>拦水带：高速/一级公路硬路肩外侧设置，间距≤50m设泄水口</li>
+<li>路面横坡：沥青<span class="hl">1.5%~2.0%</span>，水泥1.0%~1.5%</li>
+<li>超高段路面排水：设<span class="hl">中央分隔带排水沟</span></li>
+<li>路面内部排水：透水基层+盲沟+排水管</li>
+<li>边缘排水系统：纵向集水沟+横向出水管间距≤<span class="hl">50m</span></li>
 </ul>
 
-<h4>🏞 第4章 中分带排水</h4>
-<ul>
-<li>中分带宽度≥3m：设纵向盲沟+横向排水管</li>
-<li>中分带宽度<3m：设纵向排水沟</li>
-<li>排水管间距：一般<span class="hl">50~80m</span></li>
-</ul>
-
-<h4>💧 第5章 路基排水</h4>
-<h4>边沟设计</h4>
-<ul>
-<li>底宽≥<span class="hl">0.4m</span>，深度≥0.4m</li>
-<li>纵坡≥<span class="hl">0.3%</span>（困难0.2%）</li>
-<li>形式：梯形/矩形/浅碟形/三角形</li>
-<li>加固：浆砌片石/混凝土预制块/植草</li>
-</ul>
-
-<h4>截水沟</h4>
-<ul>
-<li>距挖方坡顶<span class="hl">≥5m</span></li>
-<li>纵坡<span class="hl">≥0.5%</span></li>
-<li>长度≤500m设出水口</li>
-</ul>
-
-<h4>🕳 第6章 地下排水</h4>
-<ul>
-<li>暗沟/渗沟：降低地下水位，深度≥1.5m</li>
-<li>排水隧洞：地下水丰富路段</li>
-<li>仰斜排水孔：边坡排水</li>
-<li>土工合成材料：反滤层/排水层</li>
-</ul>
-`
+<div class="note-box"><strong>📅 实施信息</strong><br>2013年2月1日实施。公路排水设计的主要技术依据。</div>`
   },
   {
     code:'JTG/T F30-2014',
@@ -2243,37 +2183,71 @@ var SPECS = [
     status:'current',
     tags:["钢筋混凝土","PC"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（7章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 材料</div><div>3 承载能力极限状态</div><div>4 正常使用极限状态</div><div>5 构造细节</div><div>6 预应力</div><div>7 抗震构造</div></div>
+    content:`<h4>📑 章节目录（11章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 材料</div><div>4 承载能力极限状态</div><div>5 正常使用极限状态</div><div>6 构造规定</div><div>7 预应力混凝土</div><div>8 受弯构件</div><div>9 受压构件</div><div>10 受剪与受扭</div><div>11 疲劳验算</div></div>
 
-<h4>🧱 第2章 材料</h4>
-<table><tr><th>材料</th><th>常用等级/牌号</th><th>关键指标</th></tr>
-<tr><td>混凝土</td><td>C30~C60（预应力≥C40）</td><td>fck=20.1~38.5MPa</td></tr>
-<tr><td>普通钢筋</td><td><span class="hl">HRB400</span>（主筋首选）</td><td>fsk=400MPa</td></tr>
-<tr><td>高强钢筋</td><td>HRB500</td><td>fsk=500MPa</td></tr>
-<tr><td>预应力钢绞线</td><td>φs15.2</td><td><span class="hl">fpk=1860MPa</span></td></tr></table>
+<h4>📜 第1章 总则</h4>
+<ul>
+<li>适用于<span class="hl">公路桥涵RC和PC结构</span>的设计</li>
+<li>设计使用年限：特大桥/大桥<span class="hl">100年</span>，中桥50年，小桥30年</li>
+<li>采用<span class="hl">极限状态设计法</span>（承载能力+正常使用）</li>
+</ul>
 
-<h4>📐 第3章 承载能力极限状态</h4>
-<ul><li>抗弯：γ₀Md ≤ fcd·b·x·(h₀-x/2) + f'sd·A's·(h₀-a's)</li><li>抗剪：V ≤ Vcs + Vsb + Vpb</li><li>最小配筋率：受弯构件<span class="hl">≥0.2%</span>（C30~C40）或45ftd/fsd取大值</li></ul>
+<h4>🔩 第3章 材料</h4>
+<table><tr><th>混凝土强度等级</th><th>适用范围</th><th>fck(MPa)</th></tr>
+<tr><td>C30</td><td>一般构件</td><td>20.1</td></tr>
+<tr><td>C40</td><td>主梁、墩柱</td><td>26.8</td></tr>
+<tr><td>C50</td><td class="hl">预应力主梁</td><td>32.4</td></tr>
+<tr><td>C60</td><td>大跨关键构件</td><td>38.5</td></tr>
+</table>
 
-<h4>🔍 第4章 裂缝宽度限值</h4>
-<table><tr><th>环境类别</th><th>限值(mm)</th><th>适用条件</th></tr>
-<tr><td>Ⅰ类（一般）</td><td><span class="hl">0.20</span></td><td>普通大气环境</td></tr>
-<tr><td>Ⅱ类（海水/除冰盐）</td><td>0.15</td><td>近海/海洋/撒除冰盐</td></tr>
-<tr><td>Ⅲ/Ⅳ类（严重腐蚀）</td><td>0.15~0.10</td><td>化学腐蚀环境</td></tr></table>
+<h4>钢筋强度指标</h4>
+<table><tr><th>钢筋种类</th><th>符号</th><th>fsk(MPa)</th><th>fsd(MPa)</th></tr>
+<tr><td>HPB300</td><td>φ</td><td>300</td><td>250</td></tr>
+<tr><td>HRB400</td><td class="hl">Φ</td><td>400</td><td>330</td></tr>
+<tr><td>HRB500</td><td>Φ</td><td>500</td><td>415</td></tr>
+<tr><td>钢绞线1×7</td><td>Φs</td><td class="hl">1860</td><td>1260</td></tr>
+</table>
 
-<h4>📏 挠度限值</h4><ul><li>汽车荷载（不计冲击）：L/<span class="hl">600</span></li><li>汽车+人群：L/500</li><li>悬臂端：L/300</li></ul>
+<h4>📐 第4章 承载能力极限状态</h4>
+<ul>
+<li>基本组合：<span class="hl">1.2恒载+1.4汽车+0.75×1.4其他可变</span></li>
+<li>偶然组合：1.0恒载+偶然作用+0.75可变</li>
+<li>地震组合：按JTG/T 2231-01-2020确定</li>
+</ul>
 
-<h4>⚡ 第6章 预应力损失（6项）</h4>
-<table><tr><th>符号</th><th>损失类型</th><th>计算方法</th></tr>
-<tr><td>σl1</td><td>锚具变形和钢筋回缩</td><td>(Δl/L)·Ep</td></tr>
-<tr><td>σl2</td><td>孔道摩擦</td><td><span class="hl">σcon·[1-e^(-μθ+kx)]</span></td></tr>
-<tr><td>σl3</td><td>养护温差</td><td>2Δt</td></tr>
-<tr><td>σl4</td><td>钢筋松弛</td><td>按规范和应力等级折减</td></tr>
-<tr><td>σl5</td><td>收缩徐变</td><td>按环境湿度和加载龄期</td></tr>
-<tr><td>σl6</td><td>弹性压缩</td><td>分批张拉时的弹性压缩</td></tr></table>
+<h4>🔍 第5章 正常使用极限状态</h4>
+<h4>裂缝宽度限值</h4>
+<table><tr><th>环境类别</th><th>最大裂缝宽度(mm)</th><th>适用示例</th></tr>
+<tr><td>Ⅰ类(一般)</td><td class="hl">0.20</td><td>普通大气环境</td></tr>
+<tr><td>Ⅱ类(冻融)</td><td>0.15</td><td>寒冷地区</td></tr>
+<tr><td>Ⅲ类(海洋)</td><td>0.15</td><td>近海桥梁</td></tr>
+<tr><td>Ⅳ类(化学)</td><td>0.10</td><td>化工厂区</td></tr>
+</table>
 
-<h4>🔩 第5章 构造细节</h4><ul><li>保护层最小厚度：Ⅰ类环境<span class="hl">30mm</span>（梁）/20mm（板）</li><li>钢筋间距：≥max(40mm,1.25d)</li><li>锚固长度：la=α·(fy/ftd)·d</li></ul>`
+<h4>挠度限值</h4>
+<ul>
+<li>梁式桥主梁：<span class="hl">≤L/600</span></li>
+<li>悬臂端：<span class="hl">≤L/300</span></li>
+<li>拱桥：≤L/800(正挠度)</li>
+</ul>
+
+<h4>🏗 第6章 构造规定</h4>
+<ul>
+<li>钢筋净距：≥<span class="hl">d(直径)或30mm</span>取大值</li>
+<li>保护层厚度：Ⅰ类≥<span class="hl">30mm</span>，Ⅱ类≥40mm</li>
+<li>最小配筋率：受弯构件<span class="hl">0.2%或45ftd/fsd</span>取大值</li>
+<li>锚固长度：≥<span class="hl">la=α·(fsd/ftd)·d</span></li>
+</ul>
+
+<h4>⚡ 第7章 预应力混凝土</h4>
+<ul>
+<li>张拉控制应力：<span class="hl">0.70~0.75 fpk</span></li>
+<li>预应力损失：摩阻、锚具变形、弹性压缩、钢束松弛、收缩徐变</li>
+<li>预应力度：全预应力≥1.0，部分预应力A类≥0，B类可开裂</li>
+</ul>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2018年11月1日实施。替代JTG D62-2004。公路RC/PC桥梁设计的<span class="hl">核心规范</span>，与JTG D60荷载规范配合。</div>`
   },
   {
     code:'JTG 5120-2021',
@@ -2452,62 +2426,49 @@ var SPECS = [
     status:'current',
     tags:["地基","基础"],
     hasPdf:false,
-    content:`
-<h4>📑 章节目录（6章）</h4>
-<div class="ch-list">
-<div>1 总则</div><div>2 地基承载力</div><div>3 扩大基础</div><div>4 桩基础</div>
-<div>5 沉井基础</div><div>6 地基处理</div>
-</div>
+    content:`<h4>📑 章节目录（8章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 地基承载力</div><div>4 浅基础</div><div>5 桩基础</div><div>6 沉井基础</div><div>7 特殊地基</div><div>8 基坑工程</div></div>
 
-<h4>🏔 第2章 地基承载力</h4>
-<h4>地基承载力特征值</h4>
-<table><tr><th>岩土类别</th><th>承载力特征值fa(kPa)</th></tr>
-<tr><td>硬质岩石（微风化）</td><td><span class="hl">≥2000</span></td></tr>
-<tr><td>软质岩石（微风化）</td><td>1000~2000</td></tr>
-<tr><td>碎石土（密实）</td><td>500~1000</td></tr>
-<tr><td>砂土（密实）</td><td>200~500</td></tr>
-<tr><td>黏性土（坚硬）</td><td>200~400</td></tr>
-<tr><td>黏性土（可塑）</td><td>100~200</td></tr>
-</table>
-<ul>
-<li>地基承载力容许值 = fa + k1·γ1·(b-2) + k2·γ2·(h-3)</li>
-<li>修正系数k1/k2按土类查表（黏土k1=0，砂土k1=1.0~3.0）</li>
-</ul>
-
-<h4>🏛 第3章 扩大基础</h4>
-<ul>
-<li>基底埋深：冲刷线以下<span class="hl">≥2m</span>（大桥≥2.5m）</li>
-<li>基底承载力验算：σmax ≤ [fa]</li>
-<li>抗倾覆系数≥1.5；抗滑移系数≥1.3</li>
-<li>基础襟边宽度≥50cm</li>
-</ul>
-
-<h4>🔩 第4章 桩基础</h4>
-<h4>单桩承载力（经验参数法）</h4>
-<ul>
-<li>[Ra] = (1/2)·u·Σqsik·li + Ap·qpk</li>
-<li>u=桩周长；qsik=侧摩阻力标准值；qpk=桩端阻力标准值</li>
-<li>侧摩阻力和端阻力按地质勘察报告取值</li>
-</ul>
-
-<h4>桩基础设计参数</h4>
-<table><tr><th>项目</th><th>规定</th></tr>
-<tr><td>桩距</td><td><span class="hl">≥2.5d</span>（摩擦桩）/ ≥2.0d（端承桩）</td></tr>
-<tr><td>桩长</td><td>≥6m（一般）；特长桩需验算压屈稳定</td></tr>
-<tr><td>桩径</td><td>钻孔灌注桩≥0.8m；打入桩≥0.4m</td></tr>
-<tr><td>配筋率</td><td>≥0.5%（受压桩）；≥0.8%（受弯桩）</td></tr>
-<tr><td>桩身混凝土</td><td>≥C25（水下C30）</td></tr>
+<h4>📜 第3章 地基承载力</h4>
+<table><tr><th>岩土类别</th><th>容许承载力(kPa)</th><th>说明</th></tr>
+<tr><td>坚硬岩石(微风化)</td><td class="hl">≥2000</td><td>按岩样试验</td></tr>
+<tr><td>软质岩石(强风化)</td><td>500~1000</td><td>折减后取用</td></tr>
+<tr><td>密实砂土/卵石</td><td>400~700</td><td>N>30击</td></tr>
+<tr><td>硬塑粘性土</td><td>200~400</td><td>IL<0.25</td></tr>
 </table>
 
-<h4>🌊 第6章 地基处理</h4>
-<table><tr><th>方法</th><th>适用范围</th></tr>
-<tr><td>换填法</td><td>软弱层厚度≤3m</td></tr>
-<tr><td>水泥搅拌桩</td><td>软土层厚度≤15m</td></tr>
-<tr><td>CFG桩</td><td>软土层厚度≤25m</td></tr>
-<tr><td>强夯法</td><td>碎石土/砂土/低饱和黏性土</td></tr>
-<tr><td>排水固结法</td><td>饱和软黏土</td></tr>
+<h4>🏛 第5章 桩基础</h4>
+<h4>桩的分类</h4>
+<table><tr><th>分类方式</th><th>类型</th><th>特点</th></tr>
+<tr><td>按受力</td><td>摩擦桩/端承桩</td><td>侧阻为主/端阻为主</td></tr>
+<tr><td>按材料</td><td>RC桩/预应力管桩/钢桩</td><td>常用/预制/特殊</td></tr>
+<tr><td>按施工</td><td>钻孔灌注/挖孔/打入</td><td>最常用/浅层/预制</td></tr>
 </table>
-`
+
+<h4>桩基础构造要求</h4>
+<ul>
+<li>桩距：摩擦桩≥<span class="hl">2.5d</span>，端承桩≥2.0d</li>
+<li>桩径：钻孔桩≥<span class="hl">0.8m</span>，挖孔桩≥1.2m</li>
+<li>桩长：嵌岩桩入岩≥<span class="hl">0.5m</span>（单轴抗压≥30MPa）</li>
+<li>配筋率：≥<span class="hl">0.5%</span>（主筋）</li>
+<li>保护层：≥<span class="hl">60mm</span>(钻孔桩水下)</li>
+</ul>
+
+<h4>桩基承载力</h4>
+<ul>
+<li>单桩容许承载力：<span class="hl">[Ra]=0.5UΣqik·li+Ap·qr</span></li>
+<li>竖向承载力验算：<span class="hl">N+G≤[Ra]</span></li>
+<li>水平承载力：按m法或P-y曲线法计算</li>
+</ul>
+
+<h4>📐 第4章 浅基础</h4>
+<ul>
+<li>基础埋深：在冲刷线以下≥<span class="hl">2.0m</span>(大中桥)</li>
+<li>在冻结线以下≥<span class="hl">0.25m</span></li>
+<li>基底偏心距：e≤<span class="hl">ρ·W/A</span>(ρ=1.0土质/1.2岩基)</li>
+</ul>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2007年12月1日实施。桥涵基础设计的核心规范。</div>`
   },
   {
     code:'JTG D64-2015',
@@ -2559,44 +2520,38 @@ var SPECS = [
     status:'current',
     tags:["抗震","桥梁"],
     hasPdf:false,
-    content:`
-	<h4>📑 章节目录</h4>
-	<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 基本规定</div><div>4 设计地震动</div><div>5 抗震分析</div><div>6 强度与变形验算</div><div>7 延性构造细节</div><div>8 减隔震设计</div><div>9 基础抗震</div><div>10 抗震措施</div><div>附录A~E</div></div>
-	<h4>🌍 两水准设防体系</h4>
-	<ul>
-	<li><span class="hl">E1地震</span>（重现期475年）：结构不坏，保持在弹性范围</li>
-	<li><span class="hl">E2地震</span>（重现期2000年）：可修不倒，允许进入塑性但保证延性</li>
-	<li>抗震体系分类：<span class="hl">延性抗震体系</span> / <span class="hl">减隔震体系</span></li>
-	</ul>
-	<h4>📊 设计加速度反应谱核心参数</h4>
-	<table><tr><th>场地类别</th><th>特征周期Tg(s)</th><th>反应谱平台值</th></tr>
-	<tr><td>I₀</td><td>0.20~0.25</td><td>αmax = 2.5·Ci·Cs·Cd·A/g</td></tr>
-	<tr><td>I₁</td><td>0.25~0.35</td><td>（与GB18306-2015衔接）</td></tr>
-	<tr><td>Ⅱ</td><td>0.35~0.45</td><td>βmax由2.25→<span class="hl">2.5</span></td></tr>
-	<tr><td>Ⅲ</td><td>0.45~0.65</td><td>—</td></tr>
-	<tr><td>Ⅳ</td><td>0.65~0.90</td><td>—</td></tr></table>
-	<h4>⚙ 减隔震装置详表</h4>
-	<table><tr><th>装置</th><th>原理</th><th>典型周期(s)</th><th>适用</th></tr>
-	<tr><td>铅芯橡胶支座</td><td>橡胶弹性+铅芯耗能</td><td>1.5~2.5</td><td>中小跨径</td></tr>
-	<tr><td>高阻尼橡胶支座</td><td>高阻尼橡胶耗能</td><td>1.5~2.5</td><td>中小跨径</td></tr>
-	<tr><td>摩擦摆支座</td><td>曲面滑动+重力复位</td><td>2.0~5.0</td><td>大跨径</td></tr>
-	<tr><td>粘滞阻尼器</td><td>速度相关耗能</td><td>—</td><td>特大/特殊桥</td></tr>
-	</table>
-	<h4>🏛 墩柱延性设计关键参数</h4>
-	<ul>
-	<li>潜在塑性铰区域：<span class="hl">箍筋加密</span>，体积配箍率≥0.5%~0.8%（按轴压比）</li>
-	<li>纵向钢筋配筋率：0.6%~4%</li>
-	<li>约束混凝土极限压应变提高至≥0.004~0.006</li>
-	<li>墩梁搭接长度按规范公式计算（≥70+0.5L，L为梁长）</li>
-	</ul>
-	<h4>🆕 2020版主要修订（vs 2008旧版）</h4>
-	<ul>
-	<li>反应谱平台值βmax：2.25 → <span class="hl">2.5</span></li>
-	<li>I类场地细分为I₀、I₁两个亚类</li>
-	<li>新增抗震体系分类（延性/减隔震）</li>
-	<li>新增<span class="hl">抗震构造措施等级</span>概念（与地震烈度、桥梁类别挂钩）</li>
-	<li>墩梁搭接长度公式修订</li>
-	</ul>`
+    content:`<h4>📑 章节目录（9章）</h4>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 抗震设防标准</div><div>4 地震作用</div><div>5 抗震分析</div><div>6 强度与变形验算</div><div>7 延性构造</div><div>8 减隔震设计</div><div>9 抗震措施</div></div>
+
+<h4>📜 第3章 抗震设防标准</h4>
+<table><tr><th>设防等级</th><th>地震水准</th><th>性能目标</th></tr>
+<tr><td>E1地震</td><td class="hl">475年一遇(50年10%)</td><td>结构弹性，基本无损伤</td></tr>
+<tr><td>E2地震</td><td class="hl">2000年一遇(50年2%)</td><td>允许延性变形，不倒塌</td></tr>
+</table>
+
+<h4>🌍 第4章 地震作用</h4>
+<ul>
+<li>水平地震系数Kh：Ⅵ度<span class="hl">0.05g</span>，Ⅶ度0.10g，Ⅷ度0.20g，Ⅸ度0.40g</li>
+<li>反应谱：按场地类别(I~IV)和特征周期Tg确定</li>
+<li>竖向地震系数：<span class="hl">0.5~0.65Kh</span></li>
+</ul>
+
+<h4>🔧 第7章 延性构造</h4>
+<ul>
+<li>墩柱潜在塑性铰区：配箍率≥<span class="hl">0.4%(E2验算)</span></li>
+<li>箍筋间距：≤<span class="hl">10cm</span>(塑性铰区)、≤15cm(过渡区)</li>
+<li>纵向钢筋配筋率：<span class="hl">0.8%~4%</span></li>
+<li>能力保护：盖梁、基础按<span class="hl">超强系数</span>设计</li>
+</ul>
+
+<h4>🛡 第8章 减隔震设计</h4>
+<ul>
+<li>减隔震支座：铅芯橡胶支座(LRB)、高阻尼橡胶支座(HDR)</li>
+<li>阻尼器：粘滞阻尼器、金属屈服阻尼器</li>
+<li>隔震周期≥<span class="hl">2.5倍</span>非隔震周期</li>
+</ul>
+
+<div class="note-box"><strong>📅 实施信息</strong><br>2020年9月1日实施。替代JTG/T B02-01-2008。桥梁抗震设计的核心规范。</div>`
   },
   {
     code:'JTG/T 3365-2022',
@@ -3292,49 +3247,41 @@ var SPECS = [
     tags:["隧道","土建"],
     hasPdf:false,
     content:`<h4>📑 章节目录（17章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 隧道调查与围岩分级</div><div>4 总体设计</div><div>5 建筑材料</div><div>6 隧道荷载</div><div>7 洞口与洞门</div><div>8 衬砌结构</div><div>9 辅助施工措施</div><div>10 特殊地质隧道</div><div>11 隧道防排水</div><div>12 隧道路面</div><div>13 通风与照明</div><div>14 消防与救援</div><div>15 监控</div><div>16 改扩建</div><div>17 风险评估</div></div>
-
-<h4>📜 第1章 总则</h4>
-<ul>
-<li><span class="hl">1.0.1</span> 为规范公路隧道设计，保证隧道工程安全适用、技术先进、经济合理，制定本规范</li>
-<li><span class="hl">1.0.2</span> 适用于<span class="hl">新建和改扩建</span>各等级公路隧道设计</li>
-</ul>
+<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 围岩分级</div><div>4 总体设计</div><div>5 建筑材料</div><div>6 荷载</div><div>7 洞口洞门</div><div>8 衬砌结构</div><div>9 辅助施工</div><div>10 特殊地质</div><div>11 防排水</div><div>12 路面</div><div>13 通风照明</div><div>14 消防救援</div><div>15 监控</div><div>16 改扩建</div><div>17 风险评估</div></div>
 
 <h4>🪨 第3章 围岩分级</h4>
-<table><tr><th>围岩级别</th><th>BQ值</th><th>稳定性特征</th></tr>
-<tr><td>Ⅰ</td><td>>550</td><td>稳定，无坍塌</td></tr>
-<tr><td>Ⅱ</td><td>550~451</td><td>基本稳定，局部掉块</td></tr>
-<tr><td>Ⅲ</td><td>450~351</td><td>暂时稳定，局部崩塌</td></tr>
-<tr><td>Ⅳ</td><td class="hl">350~251</td><td>不稳定，易变形坍塌</td></tr>
-<tr><td>Ⅴ</td><td class="hl">≤250</td><td>极不稳定，极易坍塌</td></tr>
-<tr><td>Ⅵ</td><td>—</td><td>特殊（软土、断层破碎带等）</td></tr>
+<table><tr><th>级别</th><th>BQ值</th><th>稳定性</th><th>开挖方法</th></tr>
+<tr><td>Ⅰ</td><td>>550</td><td>稳定</td><td>全断面</td></tr>
+<tr><td>Ⅱ</td><td>451~550</td><td>基本稳定</td><td>全断面</td></tr>
+<tr><td>Ⅲ</td><td>351~450</td><td>局部掉块</td><td>台阶法</td></tr>
+<tr><td>Ⅳ</td><td class="hl">251~350</td><td>不稳定</td><td>环形开挖</td></tr>
+<tr><td>Ⅴ</td><td class="hl">≤250</td><td>极不稳定</td><td>双侧壁导坑</td></tr>
 </table>
 
 <h4>📐 第4章 总体设计</h4>
 <ul>
-<li>隧道分类：特长隧道L><span class="hl">3000m</span>，长隧道1000~3000m，中隧道500~1000m，短隧道L<500m</li>
-<li>隧道线形：平面线形宜为直线或大半径曲线，纵坡宜≤<span class="hl">3%</span>，短隧道可适当放宽</li>
-<li>隧道横断面：车道宽度同主线，侧向宽度≥<span class="hl">0.5m</span>（设计速度80km/h）</li>
-<li>建筑限界净高：<span class="hl">5.0m</span>（高速/一级）、<span class="hl">4.5m</span>（二级及以下）</li>
+<li>隧道分类：特长L>3000m，长1000~3000m，中500~1000m，短<500m</li>
+<li>纵坡：宜≤<span class="hl">3%</span>，短隧道可放宽</li>
+<li>横断面：车道宽同主线，侧向宽≥<span class="hl">0.5m</span>(V=80)</li>
+<li>建筑限界净高：<span class="hl">5.0m</span>(高速/一级)</li>
 </ul>
 
-<h4>🏛 第8章 衬砌结构</h4>
-<table><tr><th>衬砌类型</th><th>适用条件</th><th>厚度范围(cm)</th></tr>
-<tr><td>复合式衬砌</td><td>各级围岩通用</td><td>初期支护5~25，二次衬砌30~60</td></tr>
-<tr><td>整体式衬砌</td><td>Ⅰ~Ⅲ级围岩</td><td>30~50</td></tr>
-<tr><td>喷锚衬砌</td><td>Ⅰ~Ⅱ级围岩</td><td>喷层5~15</td></tr>
-<tr><td>明洞衬砌</td><td>洞口段、浅埋段</td><td>拱部≥60，边墙≥50</td></tr>
+<h4>🏗 第8章 衬砌结构</h4>
+<table><tr><th>衬砌类型</th><th>适用围岩</th><th>厚度(cm)</th></tr>
+<tr><td>复合式衬砌</td><td>各级通用</td><td>初支5~25+二衬30~60</td></tr>
+<tr><td>喷锚衬砌</td><td>Ⅰ~Ⅱ级</td><td>喷层5~15</td></tr>
+<tr><td>整体式衬砌</td><td>Ⅰ~Ⅲ级</td><td>30~50</td></tr>
+<tr><td>明洞衬砌</td><td>洞口/浅埋</td><td>拱≥60,边墙≥50</td></tr>
 </table>
 
 <h4>💧 第11章 防排水</h4>
 <ul>
-<li>隧道防排水应遵循<span class="hl">"防、排、截、堵"</span>相结合原则</li>
-<li>防水等级：一级（不允许渗水）、二级（允许少量湿渍）</li>
-<li>防水层：隧道衬砌背后设<span class="hl">防水板</span>（厚度≥1.2mm）</li>
-<li>排水系统：环向盲管→纵向排水管→横向导水管→中央排水沟</li>
+<li>遵循<span class="hl">"防、排、截、堵"</span>原则</li>
+<li>防水板≥<span class="hl">1.2mm</span></li>
+<li>排水：环向盲管→纵向管→横向导水管→中央沟</li>
 </ul>
 
-<div class="note-box"><strong>📅 实施信息</strong><br>2018年11月1日实施。替代JTG D70-2004。共17章，公路隧道设计的核心规范。</div>`
+<div class="note-box"><strong>📅 实施信息</strong><br>2018年11月1日实施。替代JTG D70-2004。</div>`
   },
   {
     code:'JTG F80/1-2017',
