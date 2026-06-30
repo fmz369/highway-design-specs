@@ -331,22 +331,18 @@ var SPECS = [
     status:'current',
     tags:["养护","基础标准"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（10章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 养护分级</div><div>4 日常养护</div><div>5 预防性养护</div><div>6 修复性养护</div><div>7 专项养护</div><div>8 应急养护</div><div>9 养护管理</div><div>10 养护评价</div></div>
-
-<h4>养护分级决策（MQI=公路技术状况指数）</h4>
-<table><tr><th>养护类型</th><th>MQI范围</th><th>适用条件</th><th>典型措施</th></tr>
-<tr><td>日常养护</td><td class="hl">≥80</td><td>技术状况良好</td><td>清扫、灌缝、坑槽修补</td></tr>
-<tr><td>预防性养护</td><td>75~90</td><td>轻微病害</td><td>微表处、薄层罩面、封层</td></tr>
-<tr><td>修复性养护</td><td>60~80</td><td>明显病害</td><td>铣刨重铺、基层挖补</td></tr>
-<tr><td>专项养护</td><td><60</td><td>结构性损坏</td><td>大修或改建</td></tr>
-<tr><td>应急养护</td><td>—（灾后）</td><td>自然灾害损毁</td><td>抢通、保畅</td></tr>
+    content:`<h4>📑 养护分级决策</h4>
+<table><tr><th>类型</th><th>MQI</th><th>措施</th></tr>
+<tr><td>日常养护</td><td class="hl">≥80</td><td>清扫/灌缝/坑槽修补</td></tr>
+<tr><td>预防性养护</td><td>75~90</td><td>微表处/薄层罩面</td></tr>
+<tr><td>修复性养护</td><td>60~80</td><td>铣刨重铺/基层挖补</td></tr>
+<tr><td>专项/应急</td><td><60或灾后</td><td>大修或抢通保畅</td></tr>
 </table>
 
-<h4>养护决策流程</h4>
-<ul><li>检测评定→<span class="hl">划分养护段落</span>→选定养护方案→设计→施工→验收</li><li>高速/一级应<span class="hl">每年</span>进行一次全面检测评定</li><li>养护工程按<span class="hl">"一路一策"</span>编制方案</li></ul>
+<h4>决策流程</h4>
+<ul><li>检测评定→<span class="hl">划分养护段落</span>→选定方案→设计→施工→验收</li><li>高速/一级<span class="hl">每年</span>全面检测</li></ul>
 
-<div class="note-box"><strong>📅</strong>2023年6月1日实施。替代JTG H10-2009。养护决策的纲领性标准。</div>`
+<div class="note-box"><strong>📅</strong>2023年6月1日实施。</div>`
   },
   {
     code:'JTG 5211-2024',
@@ -1475,33 +1471,20 @@ var SPECS = [
     status:'current',
     tags:["养护","沥青"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（9章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 路面状况调查</div><div>4 日常养护</div><div>5 预防性养护</div><div>6 修复性养护</div><div>7 罩面与加铺</div><div>8 再生利用</div><div>9 养护质量评定</div></div>
-
-<h4>📜 第3章 路面状况调查</h4>
-<table><tr><th>指标</th><th>检测方法</th><th>频率</th></tr>
-<tr><td>路面损坏PCI</td><td>人工/自动检测</td><td>高速/一级<span class="hl">每年</span></td></tr>
-<tr><td>行驶质量RQI</td><td>IRI激光断面仪</td><td>高速/一级每年</td></tr>
-<tr><td>车辙RDI</td><td>车辙仪/3m直尺</td><td>高速/一级每年</td></tr>
-<tr><td>抗滑SRI</td><td>SFC/摆式仪</td><td>高速<span class="hl">每2年</span></td></tr>
+    content:`<h4>📑 预防性养护技术</h4>
+<table><tr><th>技术</th><th>厚度(mm)</th><th>适用PCI</th></tr>
+<tr><td>微表处</td><td>10~15</td><td>≥85</td></tr>
+<tr><td>薄层罩面</td><td>20~25</td><td>≥80</td></tr>
+<tr><td>雾封层</td><td>—</td><td>≥90</td></tr>
 </table>
 
-<h4>🔧 第5章 预防性养护</h4>
-<table><tr><th>技术</th><th>厚度(mm)</th><th>适用PCI</th><th>寿命(年)</th></tr>
-<tr><td>微表处</td><td>10~15</td><td>≥85</td><td>3~5</td></tr>
-<tr><td>薄层罩面</td><td>20~25</td><td>≥80</td><td>4~6</td></tr>
-<tr><td>雾封层</td><td>—(液体)</td><td>≥90</td><td>2~3</td></tr>
-<tr><td>碎石封层</td><td>10~15</td><td>≥80</td><td>3~5</td></tr>
-</table>
+<h4>修复性养护</h4>
+<ul><li>面层铣刨重铺：搭接≥<span class="hl">30cm</span></li><li>基层挖补：≥基层厚</li><li>全厚式加铺≥<span class="hl">50mm</span></li></ul>
 
-<h4>🛣 第6章 修复性养护</h4>
-<ul>
-<li>面层铣刨重铺：厚度≥原面层厚，搭接宽度≥<span class="hl">30cm</span></li>
-<li>基层挖补：深度≥基层厚，新旧结合面涂<span class="hl">粘层油</span></li>
-<li>全厚式加铺：≥<span class="hl">50mm</span>(结合处设应力吸收层)</li>
-</ul>
+<h4>检测频率</h4>
+<ul><li>PCI/RQI：高速/一级<span class="hl">每年</span></li><li>SRI：高速<span class="hl">每2年</span></li></ul>
 
-<div class="note-box"><strong>📅 实施信息</strong><br>2019年6月1日实施。沥青路面养护决策与施工的依据。</div>`
+<div class="note-box"><strong>📅</strong>2019年6月1日实施。</div>`
   },
   {
     code:'JTG 5150-2020',
@@ -2075,25 +2058,19 @@ var SPECS = [
     status:'current',
     tags:["养护","桥梁"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（9章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 检查与评定</div><div>4 上部结构养护</div><div>5 下部结构养护</div><div>6 桥面系养护</div><div>7 附属设施养护</div><div>8 特殊养护</div><div>9 养护管理</div></div>
-
-<h4>桥梁技术状况评定</h4>
-<table><tr><th>等级</th><th>评分</th><th>状态</th><th>措施</th></tr>
-<tr><td>1类</td><td class="hl">≥95</td><td>全新完好</td><td>日常养护</td></tr>
-<tr><td>2类</td><td>80~94</td><td>轻微缺损</td><td>小修保养</td></tr>
-<tr><td>3类</td><td>60~79</td><td>中等缺损</td><td>中修</td></tr>
-<tr><td>4类</td><td>40~59</td><td>主要缺损</td><td>大修或限载</td></tr>
-<tr><td>5类</td><td class="hl"><40</td><td>危险</td><td>封闭或拆除</td></tr>
+    content:`<h4>📑 桥梁技术状况评定</h4>
+<table><tr><th>等级</th><th>评分</th><th>措施</th></tr>
+<tr><td>1类</td><td class="hl">≥95</td><td>日常养护</td></tr>
+<tr><td>2类</td><td>80~94</td><td>小修保养</td></tr>
+<tr><td>3类</td><td>60~79</td><td>中修</td></tr>
+<tr><td>4类</td><td>40~59</td><td>大修或限载</td></tr>
+<tr><td>5类</td><td class="hl"><40</td><td>封闭或拆除</td></tr>
 </table>
 
-<h4>上部结构养护</h4>
-<ul><li>裂缝：<0.15mm封闭，≥0.15mm<span class="hl">灌浆或注胶</span></li><li>混凝土剥落：凿除松动层+<span class="hl">聚合物砂浆</span>修补</li><li>预应力：锚头防腐、压浆密实度检测</li></ul>
+<h4>养护要点</h4>
+<ul><li>裂缝<0.15mm封闭，≥0.15mm<span class="hl">灌浆注胶</span></li><li>伸缩缝变形<设计值<span class="hl">±20%</span>时更换</li><li>支座位移超限或老化开裂应更换</li></ul>
 
-<h4>桥面系养护</h4>
-<ul><li>铺装：坑槽即时修补，车辙>15mm铣刨加铺</li><li>伸缩缝：清理杂物，变形量<设计值<span class="hl">±20%</span>时更换</li><li>支座：位移超限或老化开裂应更换</li></ul>
-
-<div class="note-box"><strong>📅</strong>2021年6月1日实施。桥涵养护的核心规范。</div>`
+<div class="note-box"><strong>📅</strong>2021年6月1日实施。桥涵养护核心规范。</div>`
   },
   {
     code:'JTG D60-2015',
@@ -2593,19 +2570,15 @@ var SPECS = [
     status:'current',
     tags:["交通标志"],
     hasPdf:false,
-    content:`<h4>📑 内容概要</h4>
-<p><span class="hl">道路交通标志</span>。2022年新版。</p>
-
-<h4>标志版面与设计速度</h4>
-<table><tr><th>V(km/h)</th><th>汉字高度(cm)</th><th>警告边长(cm)</th><th>禁令直径(cm)</th></tr>
+    content:`<h4>📑 标志版面尺寸</h4>
+<table><tr><th>V(km/h)</th><th>汉字高(cm)</th><th>警告边长(cm)</th><th>禁令直径(cm)</th></tr>
 <tr><td>120</td><td class="hl">60~70</td><td>130</td><td>120</td></tr>
 <tr><td>100</td><td>50~60</td><td>110</td><td>100</td></tr>
 <tr><td>80</td><td>40~50</td><td>90</td><td>80</td></tr>
-<tr><td>60/40/30/20</td><td>30/25/20/15</td><td>70/60/50/40</td><td>60/50/40/30</td></tr>
 </table>
 
-<h4>2022版主要更新</h4>
-<ul><li>新增<span class="hl">电动自行车</span>标志</li><li>指路标志信息<span class="hl">A/B/C</span>三层分级</li><li>高速公路编号<span class="hl">G/S/X/Y</span>四类</li><li>主动发光标志技术要求</li></ul>
+<h4>2022版更新</h4>
+<ul><li>新增<span class="hl">电动自行车</span>标志</li><li>指路标志A/B/C三层信息分级</li><li>高速编号G/S/X/Y四类</li><li>主动发光标志技术要求</li></ul>
 
 <div class="note-box"><strong>📅</strong>2022年10月1日实施。替代GB 5768.2-2009。</div>`
   },
@@ -2616,27 +2589,16 @@ var SPECS = [
     status:'current',
     tags:["交通标线"],
     hasPdf:false,
-    content:`<h4>📑 内容概要</h4>
-<p><span class="hl">道路交通标线</span>分类、颜色、尺寸和设置要求。</p>
-
-<h4>标线分类与尺寸</h4>
-<table><tr><th>标线类型</th><th>颜色</th><th>宽度(cm)</th><th>说明</th></tr>
-<tr><td>车行道边缘线</td><td>白实线</td><td class="hl">15~20</td><td>高速/一级20cm</td></tr>
-<tr><td>车行道分界线</td><td>白虚线</td><td>10~15</td><td>同向车道</td></tr>
-<tr><td>中心黄线</td><td>黄实/虚线</td><td>10~15</td><td>对向分隔</td></tr>
-<tr><td>人行横道线</td><td>白实线</td><td>40宽×60间距</td><td>斑马线</td></tr>
-<tr><td>减速标线</td><td>白色</td><td>振动高5~7mm</td><td>强制减速</td></tr>
+    content:`<h4>📑 标线分类与尺寸</h4>
+<table><tr><th>类型</th><th>颜色</th><th>宽度(cm)</th></tr>
+<tr><td>车行道边缘线</td><td>白实线</td><td class="hl">15~20</td></tr>
+<tr><td>车行道分界线</td><td>白虚线</td><td>10~15</td></tr>
+<tr><td>中心黄线</td><td>黄实/虚线</td><td>10~15</td></tr>
+<tr><td>人行横道线</td><td>白实线</td><td>40宽×60间距</td></tr>
 </table>
 
-<h4>分界线实空比</h4>
+<h4>实空比</h4>
 <ul><li>V≥80km/h：<span class="hl">划6空9</span></li><li>V<80km/h：<span class="hl">划2空4</span></li></ul>
-
-<h4>导向箭头尺寸</h4>
-<table><tr><th>设计速度</th><th>导向箭头长(m)</th><th>适用</th></tr>
-<tr><td>≥80km/h</td><td class="hl">9.0</td><td>高速/一级</td></tr>
-<tr><td>40~60km/h</td><td>6.0</td><td>二/三级</td></tr>
-<tr><td><40km/h</td><td>3.0</td><td>四级/支路</td></tr>
-</table>
 
 <div class="note-box"><strong>📅</strong>2009年7月1日实施。</div>`
   },
@@ -2647,22 +2609,18 @@ var SPECS = [
     status:'current',
     tags:["作业区","交安"],
     hasPdf:false,
-    content:`<h4>📑 内容概要</h4>
-<p><span class="hl">道路交通标志和标线 第4部分：作业区</span>。施工养护作业区的安全布设标准。</p>
-
-<h4>作业区六段式</h4>
+    content:`<h4>📑 作业区六段式</h4>
 <ul><li><span class="hl">警告区→上游过渡区→缓冲区→工作区→下游过渡区→终止区</span></li></ul>
 
 <h4>各区段长度</h4>
-<table><tr><th>设计速度</th><th>警告区(m)</th><th>过渡区(m)</th><th>缓冲区(m)</th></tr>
-<tr><td>120km/h</td><td class="hl">≥1000</td><td>≥200</td><td>≥80</td></tr>
-<tr><td>100</td><td>≥800</td><td>≥150</td><td>≥60</td></tr>
-<tr><td>80</td><td>≥600</td><td>≥100</td><td>≥40</td></tr>
-<tr><td>60</td><td>≥400</td><td>≥60</td><td>≥30</td></tr>
+<table><tr><th>V(km/h)</th><th>警告区(m)</th><th>过渡区(m)</th></tr>
+<tr><td>120</td><td class="hl">≥1000</td><td>≥200</td></tr>
+<tr><td>100</td><td>≥800</td><td>≥150</td></tr>
+<tr><td>80</td><td>≥600</td><td>≥100</td></tr>
 </table>
 
-<h4>安全设施要求</h4>
-<ul><li>锥形交通标间距：高速≤<span class="hl">5m</span>，一般公路≤10m</li><li>夜间设<span class="hl">警示灯</span>+反光标志</li><li>限速标志<span class="hl">逐级降低</span>，每级≤20km/h</li></ul>
+<h4>安全设施</h4>
+<ul><li>锥形交通标间距≤<span class="hl">5m</span>(高速)</li><li>夜间设<span class="hl">警示灯</span></li><li>限速<span class="hl">逐级降低</span>(每级≤20km/h)</li></ul>
 
 <div class="note-box"><strong>📅</strong>2018年2月1日实施。</div>`
   },
@@ -2715,21 +2673,18 @@ var SPECS = [
     status:'current',
     tags:["隧道","交安"],
     hasPdf:false,
-    content:`<h4>📑 内容概要</h4>
-<p><span class="hl">公路隧道设计规范 第二册 交通工程与附属设施</span>。</p>
-
-<h4>隧道通风</h4>
-<ul><li>CO设计浓度：正常≤<span class="hl">100ppm</span>(15min)</li><li>烟雾设计浓度：<span class="hl">0.005~0.009/m</span></li><li>换气频率：<span class="hl">3~6次/h</span></li></ul>
-
-<h4>隧道照明</h4>
-<table><tr><th>区段</th><th>亮度要求</th><th>长度</th></tr>
-<tr><td>入口段</td><td class="hl">80~120cd/m²</td><td>一个停车视距</td></tr>
-<tr><td>过渡段</td><td>递减至中间段</td><td>按梯度3段</td></tr>
-<tr><td>中间段</td><td>2.5~4.5cd/m²</td><td>剩余全长</td></tr>
-<tr><td>出口段</td><td>中间段×5</td><td>60m</td></tr>
+    content:`<h4>📑 隧道照明区段</h4>
+<table><tr><th>区段</th><th>亮度要求</th></tr>
+<tr><td>入口段</td><td class="hl">80~120cd/m²</td></tr>
+<tr><td>过渡段(3段递减)</td><td>递减至中间段</td></tr>
+<tr><td>中间段</td><td>2.5~4.5cd/m²</td></tr>
+<tr><td>出口段(60m)</td><td>中间段×5</td></tr>
 </table>
 
-<div class="note-box"><strong>📅</strong>2014年12月1日实施。配合JTG 3370.1-2018隧道土建设计。</div>`
+<h4>通风标准</h4>
+<ul><li>CO浓度≤<span class="hl">100ppm</span>(15min)</li><li>烟雾浓度：0.005~0.009/m</li><li>换气频率：<span class="hl">3~6次/h</span></li></ul>
+
+<div class="note-box"><strong>📅</strong>2014年12月1日实施。</div>`
   },
   {
     code:'JTG D81-2017',
@@ -2815,21 +2770,17 @@ var SPECS = [
     status:'current',
     tags:["标志","标线"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（8章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 一般规定</div><div>4 指路标志</div><div>5 警告禁令标志</div><div>6 标线设置</div><div>7 服务设施标志</div><div>8 养护管理</div></div>
-
-<h4>指路标志设置</h4>
-<ul><li>交叉口预告：距交叉口<span class="hl">300~500m</span></li><li>高速出口：<span class="hl">2km→1km→500m→0m</span>四级预告</li><li>地点距离：标注前方3个目的地及距离</li></ul>
+    content:`<h4>📑 指路标志设置</h4>
+<ul><li>交叉口预告：距交叉口<span class="hl">300~500m</span></li><li>高速出口：<span class="hl">2km→1km→500m→0m</span>四级预告</li><li>地点距离：标注前方3个目的地</li></ul>
 
 <h4>警告标志前置距离</h4>
-<table><tr><th>设计速度</th><th>高速公路</th><th>一级公路</th><th>二级公路</th></tr>
-<tr><td>120</td><td class="hl">200~250m</td><td>—</td><td>—</td></tr>
-<tr><td>100</td><td>150~200m</td><td class="hl">150~200m</td><td>—</td></tr>
-<tr><td>80</td><td>100~150m</td><td>100~150m</td><td>100~150m</td></tr>
-<tr><td>60</td><td>—</td><td>80~120m</td><td>80~120m</td></tr>
+<table><tr><th>V(km/h)</th><th>高速(m)</th><th>一级(m)</th><th>二级(m)</th></tr>
+<tr><td>120</td><td class="hl">200~250</td><td>—</td><td>—</td></tr>
+<tr><td>100</td><td>150~200</td><td>150~200</td><td>—</td></tr>
+<tr><td>80</td><td>100~150</td><td>100~150</td><td>100~150</td></tr>
 </table>
 
-<div class="note-box"><strong>📅</strong>2009年12月1日实施。与GB 5768配套的公路行业标准。</div>`
+<div class="note-box"><strong>📅</strong>2009年12月1日实施。</div>`
   },
   {
     code:'JTG/T 3381-03-2024',
@@ -2935,17 +2886,11 @@ var SPECS = [
     status:'current',
     tags:["限速","标志"],
     hasPdf:false,
-    content:`<h4>📑 内容概要</h4>
-<p><span class="hl">公路限速标志设计规范</span>。规定了限速值的确定方法和标志设置要求。</p>
+    content:`<h4>📑 限速值</h4>
+<ul><li>一般路段限速=<span class="hl">设计速度</span></li><li>特殊路段可降<span class="hl">10~20km/h</span></li><li>限速值为<span class="hl">10的整数倍</span></li></ul>
 
-<h4>限速值确定原则</h4>
-<ul><li>一般路段限速=<span class="hl">设计速度</span></li><li>特殊路段(急弯、陡坡、隧道)可降<span class="hl">10~20km/h</span></li><li>限速值为<span class="hl">10的整数倍</span></li></ul>
-
-<h4>限速标志设置</h4>
-<ul><li>限速起点：限速标志+<span class="hl">辅助标志</span>说明原因</li><li>隧道入口前<span class="hl">100~200m</span>设置</li><li>限速路段较长时<span class="hl">每2~3km</span>重复设置</li><li>解除限速：限速路段终点</li></ul>
-
-<h4>分车型限速</h4>
-<ul><li>大型车限速可比小型车低<span class="hl">10~20km/h</span></li><li>危险品运输车应按<span class="hl">最低限速</span>行驶</li></ul>
+<h4>设置要求</h4>
+<ul><li>限速起点：标志+<span class="hl">辅助标志</span></li><li>隧道前<span class="hl">100~200m</span></li><li>限速较长时每<span class="hl">2~3km</span>重复</li></ul>
 
 <div class="note-box"><strong>📅</strong>2021年11月1日实施。</div>`
   },
@@ -2977,19 +2922,16 @@ var SPECS = [
     status:'current',
     tags:["交通安全","细则"],
     hasPdf:false,
-    content:`<h4>📑 内容概要</h4>
-<p><span class="hl">公路交通安全设施设计细则</span>。JTG D81-2017的配套细则，提供设计示例和详细计算方法。</p>
+    content:`<h4>📑 护栏设计参数</h4>
+<ul><li>护栏高度：路侧<span class="hl">0.6~1.1m</span>，中央0.8~1.2m</li><li>立柱间距：<span class="hl">2~4m</span>(波形梁)</li><li>埋入深度：<span class="hl">1.25~1.65m</span></li></ul>
 
-<h4>护栏设计要点</h4>
-<ul><li>护栏高度：路侧<span class="hl">0.6~1.1m</span>，中央<span class="hl">0.8~1.2m</span></li><li>立柱间距：<span class="hl">2~4m</span>(波形梁)</li><li>埋入深度：<span class="hl">1.25~1.65m</span></li></ul>
+<h4>过渡段</h4>
+<ul><li>不同等级间设<span class="hl">过渡段≥15m</span></li><li>护栏端部<span class="hl">外展或锚固</span></li></ul>
 
-<h4>护栏过渡段</h4>
-<ul><li>不同等级护栏间设<span class="hl">过渡段≥15m</span></li><li>护栏端部设<span class="hl">外展或锚固</span>处理</li></ul>
+<h4>轮廓标</h4>
+<ul><li>弯道≤<span class="hl">8m</span>，直线≤20m</li></ul>
 
-<h4>轮廓标设置</h4>
-<ul><li>弯道：≤<span class="hl">8m</span></li><li>直线段：≤<span class="hl">20m</span>(高速/一级)</li></ul>
-
-<div class="note-box"><strong>📅</strong>2017年11月1日实施。与JTG D81-2017配套使用。</div>`
+<div class="note-box"><strong>📅</strong>2017年11月1日实施。JTG D81细则。</div>`
   },
   {
     code:'GB 51038-2015',
@@ -3080,29 +3022,23 @@ var SPECS = [
     status:'current',
     tags:["质检","土建"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（12章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 路基工程</div><div>4 路面工程</div><div>5 桥梁工程</div><div>6 涵洞工程</div><div>7 隧道工程</div><div>8 交安设施</div><div>9 绿化</div><div>10 环保</div><div>11 管理设施</div><div>12 机电工程</div></div>
-
-<h4>路基关键检测项目</h4>
+    content:`<h4>📑 路基关键项目</h4>
 <table><tr><th>项目</th><th>规定值</th><th>频率</th></tr>
-<tr><td>压实度</td><td class="hl">≥96%(上路床高速)</td><td>每200m每层4处</td></tr>
-<tr><td>弯沉值</td><td>≤设计容许值</td><td>每车道每20m1点</td></tr>
-<tr><td>纵断高程</td><td>+10/-15mm</td><td>每200m4断面</td></tr>
-<tr><td>宽度</td><td>≥设计值</td><td>每200m4处</td></tr>
+<tr><td>压实度</td><td class="hl">≥96%(上路床高速)</td><td>200m/层4处</td></tr>
+<tr><td>弯沉</td><td>≤设计值</td><td>20m/车道</td></tr>
 </table>
 
-<h4>沥青路面关键项目</h4>
-<table><tr><th>项目</th><th>规定值</th><th>频率</th></tr>
-<tr><td>厚度</td><td class="hl">代表值≥设计值-8%H</td><td>200m/车道</td></tr>
-<tr><td>压实度</td><td>≥96%(马歇尔)</td><td>200m/车道</td></tr>
-<tr><td>平整度</td><td>σ≤<span class="hl">1.2mm</span>(高速)</td><td>连续检测</td></tr>
-<tr><td>抗滑SFC</td><td>≥40(高速)</td><td>200m/车道</td></tr>
+<h4>路面关键项目</h4>
+<table><tr><th>项目</th><th>规定值</th></tr>
+<tr><td>厚度</td><td class="hl">代表值≥设计值-8%H</td></tr>
+<tr><td>压实度</td><td>≥96%(马歇尔)</td></tr>
+<tr><td>平整度</td><td>σ≤<span class="hl">1.2mm</span>(高速)</td></tr>
 </table>
 
-<h4>评定等级</h4>
-<ul><li>分项工程→分部工程→单位工程逐级评定</li><li>等级：<span class="hl">合格/不合格</span></li><li>主控项目<span class="hl">100%</span>合格，一般项目≥80%</li></ul>
+<h4>评定</h4>
+<ul><li>分项→分部→单位逐级评定</li><li>主控<span class="hl">100%</span>合格，一般≥80%</li></ul>
 
-<div class="note-box"><strong>📅</strong>2018年5月1日实施。公路土建工程交竣工验收的法定依据。</div>`
+<div class="note-box"><strong>📅</strong>2018年5月1日实施。</div>`
   },
   {
     code:'JTG 5210-2018',
@@ -3111,27 +3047,19 @@ var SPECS = [
     status:'current',
     tags:["评定","养护"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（9章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 一般规定</div><div>4 路基技术状况SCI</div><div>5 路面技术状况PQI</div><div>6 桥梁技术状况BCI</div><div>7 隧道技术状况TCI</div><div>8 设施技术状况</div><div>9 综合评定MQI</div></div>
-
-<h4>MQI综合评定</h4>
-<table><tr><th>评定等级</th><th>MQI值</th><th>对应措施</th></tr>
-<tr><td>优</td><td class="hl">≥90</td><td>日常养护</td></tr>
-<tr><td>良</td><td>80~89</td><td>日常养护为主</td></tr>
-<tr><td>中</td><td>70~79</td><td>预防性养护</td></tr>
-<tr><td>次</td><td>60~69</td><td>修复性养护</td></tr>
-<tr><td>差</td><td class="hl"><60</td><td>大修或改建</td></tr>
+    content:`<h4>📑 MQI评定</h4>
+<table><tr><th>等级</th><th>MQI</th></tr>
+<tr><td>优</td><td class="hl">≥90</td></tr>
+<tr><td>良</td><td>80~89</td></tr>
+<tr><td>中</td><td>70~79</td></tr>
+<tr><td>次</td><td>60~69</td></tr>
+<tr><td>差</td><td><60</td></tr>
 </table>
 
-<h4>路面PQI分项</h4>
-<table><tr><th>分项</th><th>指标</th><th>检测方式</th><th>权重</th></tr>
-<tr><td>PCI</td><td>路面损坏</td><td>人工/自动检测</td><td class="hl">0.35</td></tr>
-<tr><td>RQI</td><td>行驶质量(IRI)</td><td>激光断面仪</td><td>0.40</td></tr>
-<tr><td>RDI</td><td>车辙深度</td><td>车辙仪</td><td>0.15</td></tr>
-<tr><td>SRI</td><td>抗滑性能</td><td>SFC/摆式仪</td><td>0.10</td></tr>
-</table>
+<h4>路面PQI分项权重</h4>
+<ul><li>PCI(损坏)：<span class="hl">0.35</span></li><li>RQI(平整度)：0.40</li><li>RDI(车辙)：0.15</li><li>SRI(抗滑)：0.10</li></ul>
 
-<div class="note-box"><strong>📅</strong>2018年6月1日实施。替代JTG H20-2007。公路养护决策的基础标准。</div>`
+<div class="note-box"><strong>📅</strong>2018年6月1日实施。养护决策基础标准。</div>`
   },
   {
     code:'JTG F90-2015',
@@ -3140,22 +3068,19 @@ var SPECS = [
     status:'current',
     tags:["施工安全"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（12章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 基本规定</div><div>4 路基施工安全</div><div>5 路面施工安全</div><div>6 桥梁施工安全</div><div>7 隧道施工安全</div><div>8 交安施工安全</div><div>9 临时工程安全</div><div>10 特种设备</div><div>11 爆破作业</div><div>12 应急管理</div></div>
-
-<h4>基本规定</h4>
-<ul><li>危险性较大工程应编<span class="hl">专项施工方案</span>并专家论证</li><li>特种作业人员持证上岗</li><li>施工区设置安全警示标志和防护设施</li></ul>
-
-<h4>关键安全要点</h4>
-<table><tr><th>工程类型</th><th>关键安全要求</th></tr>
+    content:`<h4>📑 施工安全要点</h4>
+<table><tr><th>工程类型</th><th>安全要求</th></tr>
 <tr><td>高处作业(≥2m)</td><td>安全带+安全网+防护栏杆</td></tr>
-<tr><td>桥梁架设</td><td>吊装半径内禁站人，限位装置</td></tr>
-<tr><td>支架搭设</td><td>基础承载力验算+预压试验</td></tr>
-<tr><td>隧道瓦斯</td><td>瓦斯浓度≥0.5%撤人，防爆设备</td></tr>
-<tr><td>爆破作业</td><td>爆破器材专用库房，安全距离≥300m</td></tr>
+<tr><td>桥梁架设</td><td>吊装半径内禁站人</td></tr>
+<tr><td>支架搭设</td><td>基础验算+预压试验</td></tr>
+<tr><td>隧道瓦斯</td><td>浓度≥0.5%撤人</td></tr>
+<tr><td>爆破作业</td><td>安全距离≥300m</td></tr>
 </table>
 
-<div class="note-box"><strong>📅</strong>2015年7月1日实施。公路施工安全的强制性规范。</div>`
+<h4>管理要求</h4>
+<ul><li>危险性较大工程需<span class="hl">专项方案+专家论证</span></li><li>特种作业人员持证上岗</li></ul>
+
+<div class="note-box"><strong>📅</strong>2015年7月1日实施。</div>`
   },
   {
     code:'JTG H10-2009',
@@ -3164,21 +3089,18 @@ var SPECS = [
     status:'current',
     tags:["养护"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（12章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 路基养护</div><div>4 路面养护</div><div>5 桥梁养护</div><div>6 隧道养护</div><div>7 交安设施养护</div><div>8 绿化养护</div><div>9 灾害防治</div><div>10 养护作业安全</div><div>11 养护管理</div><div>12 检查评定</div></div>
-
-<h4>养护作业安全</h4>
-<ul><li>作业区：<span class="hl">警告区→上游过渡区→缓冲区→工作区→下游过渡区→终止区</span></li><li>高速/一级警告区≥<span class="hl">1000m</span></li><li>作业人员穿<span class="hl">反光背心</span>，夜间设警示灯</li></ul>
-
-<h4>路面养护措施选择</h4>
-<table><tr><th>PCI范围</th><th>养护类型</th><th>措施</th></tr>
-<tr><td>≥85</td><td>日常养护</td><td>灌缝、小修</td></tr>
-<tr><td>80~85</td><td>预防性养护</td><td>微表处、薄层罩面</td></tr>
-<tr><td>60~80</td><td>修复性养护</td><td>铣刨重铺</td></tr>
-<tr><td><60</td><td>大修</td><td>结构性重建</td></tr>
+    content:`<h4>📑 养护决策</h4>
+<table><tr><th>PCI范围</th><th>养护类型</th></tr>
+<tr><td>≥85</td><td>日常养护</td></tr>
+<tr><td>80~85</td><td>预防性养护</td></tr>
+<tr><td>60~80</td><td>修复性养护</td></tr>
+<tr><td><60</td><td>大修</td></tr>
 </table>
 
-<div class="note-box"><strong>📅</strong>2010年2月1日实施。已被JTG 5110-2023替代，仍有参考价值。</div>`
+<h4>养护作业安全</h4>
+<ul><li>作业区六段式布置</li><li>高速/一级警告区≥<span class="hl">1000m</span></li><li>作业人员穿<span class="hl">反光背心</span></li></ul>
+
+<div class="note-box"><strong>📅</strong>已被JTG 5110-2023替代，仍有参考价值。</div>`
   },
   {
     code:'CJJ 45-2015',
@@ -3283,20 +3205,18 @@ var SPECS = [
     status:'current',
     tags:["隧道","施工"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（15章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 施工准备</div><div>4 洞口施工</div><div>5 明洞</div><div>6 暗挖法</div><div>7 钻爆法</div><div>8 TBM法</div><div>9 支护衬砌</div><div>10 防排水</div><div>11 路面</div><div>12 通风防尘</div><div>13 监控量测</div><div>14 超前预报</div><div>15 质量检验</div></div>
-
-<h4>新奥法(NATM)开挖</h4>
-<ul><li>全断面法：Ⅰ~Ⅲ级围岩</li><li>台阶法：Ⅲ~Ⅳ级，台阶长≤<span class="hl">1.5倍洞径</span></li><li>环形开挖留核心土：Ⅳ~Ⅴ级</li><li>双侧壁导坑：Ⅴ级</li></ul>
-
-<h4>监控量测预警</h4>
-<table><tr><th>项目</th><th>频率</th><th>预警值</th></tr>
-<tr><td>拱顶下沉</td><td>1~2次/天</td><td>>5mm/d或累计>50mm</td></tr>
-<tr><td>周边收敛</td><td>1~2次/天</td><td>>5mm/d</td></tr>
-<tr><td>地表沉降</td><td>1次/天</td><td>>30mm(累计)</td></tr>
+    content:`<h4>📑 新奥法开挖方法</h4>
+<table><tr><th>方法</th><th>适用围岩</th></tr>
+<tr><td>全断面法</td><td>Ⅰ~Ⅲ级</td></tr>
+<tr><td>台阶法</td><td>Ⅲ~Ⅳ级，台阶长≤1.5倍洞径</td></tr>
+<tr><td>环形开挖留核心土</td><td>Ⅳ~Ⅴ级</td></tr>
+<tr><td>双侧壁导坑</td><td>Ⅴ级</td></tr>
 </table>
 
-<div class="note-box"><strong>📅</strong>2020年9月1日实施。隧道施工质量安全的核心规范。</div>`
+<h4>监控量测预警</h4>
+<ul><li>拱顶下沉>5mm/d或累计>50mm</li><li>周边收敛>5mm/d</li><li>地表沉降累计>30mm</li></ul>
+
+<div class="note-box"><strong>📅</strong>2020年9月1日实施。</div>`
   },
   {
     code:'JTG/T J21-2011',
