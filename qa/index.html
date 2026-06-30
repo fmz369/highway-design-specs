@@ -133,8 +133,7 @@ function deepSearch(){
     var raw=spec.content||'',pt=raw.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ');
     var score=0;
     terms.forEach(function(t){
-      var re=new RegExp(t.replace(/[.*+?^${}()|[\]\\\/]/g,'\\$&'),'gi'),cnt=0;
-      while(re.exec(pt)!==null)cnt++;
+      var idx=0,cnt=0;while((idx=pt.indexOf(t,idx))>=0){cnt++;idx+=t.length}
       if(cnt>0)score+=cnt*t.length*2;
       if(spec.code.indexOf(t)>=0)score+=8;
       if(spec.title.indexOf(t)>=0)score+=6;
@@ -148,11 +147,12 @@ function deepSearch(){
   results.forEach(function(r){
     var clauses=[],pt=r.plainText;
     terms.forEach(function(t){
-      var re=new RegExp(t.replace(/[.*+?^${}()|[\]\\\/]/g,'\\$&'),'gi'),idx;
-      while((idx=re.exec(pt))!==null&&clauses.length<10){
+      var idx=0,found=0;
+      while((idx=pt.indexOf(t,idx))>=0&&found<5){
         var start=Math.max(0,idx-80),end=Math.min(pt.length,idx+t.length+150);
         var ctx=pt.substring(start,end).trim();
-        if(ctx.length>15)clauses.push({text:ctx,score:t.length*2});
+        if(ctx.length>15){clauses.push({text:ctx,score:t.length*2});found++}
+        idx+=t.length;
       }
     });
     var seen={};clauses=clauses.filter(function(c){var k=c.text.substring(0,30);if(seen[k])return false;seen[k]=true;return true});
