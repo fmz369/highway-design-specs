@@ -514,15 +514,19 @@ var SPECS = [
     status:'current',
     tags:["安全评价"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（7章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 一般要求</div><div>4 工可阶段评价</div><div>5 初设阶段评价</div><div>6 施工图阶段评价</div><div>7 交工验收评价</div></div>
+    content:`<h4>📑 内容概要</h4>
+<p><span class="hl">公路项目安全性评价规范</span>。规定公路各阶段安全评价的内容和方法。</p>
 
-<h4>🔄 四阶段安全评价体系</h4>
-<table><tr><th>阶段</th><th>评价重点</th><th>关键指标</th></tr><tr><td><span class="hl">工可阶段</span></td><td>路线走向、规模、技术标准选用的安全性</td><td>—</td></tr><tr><td>初步设计</td><td><span class="hl">运行速度协调性</span></td><td>|Δv|≤20km/h为优良</td></tr><tr><td>施工图设计</td><td>护栏等级验算、标志标线布设、视距复核</td><td>—</td></tr><tr><td>交工验收</td><td>现场核查、试运行安全评估</td><td>—</td></tr></table>
+<h4>评价阶段</h4>
+<table><tr><th>阶段</th><th>评价内容</th><th>重点</th></tr>
+<tr><td>工程可研</td><td>路线走廊带安全</td><td>地质灾害、气象风险</td></tr>
+<tr><td>初步设计</td><td>路线方案安全比选</td><td>线形指标、视距</td></tr>
+<tr><td>施工图设计</td><td>细部构造安全</td><td>护栏、标志标线</td></tr>
+<tr><td>交工验收</td><td>通车前安全评价</td><td>全线安全设施</td></tr>
+<tr><td>运营阶段</td><td>运营安全评价</td><td>事故分析、改善</td></tr>
+</table>
 
-<h4>🎯 运行速度V85预测</h4><ul><li>小客车V85=设计速度×1.2~1.5（按平纵面指标调整）</li><li>大货车V85=设计速度×0.8~1.0</li><li>相邻路段|ΔV85|≤<span class="hl">20km/h</span>为优良；>20km/h需优化线形</li></ul>
-
-<h4>⚠ 重点关注路段</h4><ul><li>连续上下坡、不良线形组合</li><li>路侧临水/临崖/高填方路段</li><li>隧道洞口、互通立交区</li><li>视距不足的小半径平曲线</li></ul>`
+<div class="note-box"><strong>📅</strong>2015年5月1日实施。公路全生命周期安全评价依据。</div>`
   },
   {
     code:'JTG B06-2007',
@@ -1266,32 +1270,16 @@ var SPECS = [
     status:'current',
     tags:["快速路","城市"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（10章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 基本规定</div><div>4 线形设计</div><div>5 横断面</div><div>6 立交</div><div>7 出入口</div><div>8 铺道与集散车道</div><div>9 路基路面</div><div>10 附属设施</div></div>
+    content:`<h4>📑 内容概要</h4>
+<p><span class="hl">城市快速路设计规程</span>。</p>
 
-<h4>📜 第3章 基本规定</h4>
-<ul>
-<li>快速路设计速度：<span class="hl">60~100km/h</span></li>
-<li>快速路应为<span class="hl">全部控制出入</span>，中央分隔</li>
-<li>车道数：<span class="hl">4~8车道</span>（双向）</li>
-</ul>
+<h4>基本标准</h4>
+<ul><li>设计速度：<span class="hl">60~100km/h</span></li><li>车道数：双向<span class="hl">4~8车道</span></li><li>全部控制出入，中央分隔</li></ul>
 
-<h4>🚗 第7章 出入口设计</h4>
-<ul>
-<li>互通立交间距：<span class="hl">1.5~3.0km</span>（城区最小值0.8km）</li>
-<li>加速车道长度：设计速度80km/h≥<span class="hl">200m</span></li>
-<li>减速车道长度：设计速度80km/h≥<span class="hl">100m</span></li>
-<li>出入口应避免设在<span class="hl">主线左侧</span></li>
-</ul>
+<h4>出入口设计</h4>
+<ul><li>立交间距：<span class="hl">1.5~3.0km</span>(城区最小0.8km)</li><li>加速车道：V=80时≥<span class="hl">200m</span></li><li>减速车道：V=80时≥<span class="hl">100m</span></li><li>出入口不应设在<span class="hl">主线左侧</span></li></ul>
 
-<h4>🛣 第9章 路基路面</h4>
-<ul>
-<li>路基压实度：路床<span class="hl">≥96%</span></li>
-<li>路面设计使用年限：<span class="hl">15年</span></li>
-<li>路面结构组合：面层+基层+底基层+（垫层）</li>
-</ul>
-
-<div class="note-box"><strong>📅 实施信息</strong><br>2010年3月1日实施。城市快速路设计的核心规程。</div>`
+<div class="note-box"><strong>📅</strong>2010年3月1日实施。</div>`
   },
   {
     code:'CJJ 193-2012',
@@ -1339,30 +1327,20 @@ var SPECS = [
     status:'current',
     tags:["城镇化","路线"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（9章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 公路分级与功能</div><div>4 线形设计</div><div>5 横断面</div><div>6 交叉</div><div>7 路基路面</div><div>8 交通安全设施</div><div>9 管线综合</div></div>
+    content:`<h4>📑 内容概要</h4>
+<p><span class="hl">城镇化地区公路工程技术标准</span>。填补城镇密集区公路设计的标准空白。</p>
 
-<h4>📜 第3章 公路分级</h4>
-<ul>
-<li>城镇化公路按功能分为：<span class="hl">主干路、次干路、支路</span></li>
-<li>设计速度：主干路<span class="hl">60~80km/h</span>，次干路40~60km/h，支路30km/h</li>
-</ul>
-
-<h4>🛣 第5章 横断面</h4>
-<table><tr><th>类型</th><th>车道宽(m)</th><th>侧向净宽(m)</th><th>人行道(m)</th></tr>
-<tr><td>主干路</td><td class="hl">3.5~3.75</td><td>0.75~1.0</td><td>≥3.0</td></tr>
-<tr><td>次干路</td><td>3.25~3.5</td><td>0.5~0.75</td><td>≥2.0</td></tr>
-<tr><td>支路</td><td>3.0~3.25</td><td>0.5</td><td>≥1.5</td></tr>
+<h4>城镇化公路分级</h4>
+<table><tr><th>功能等级</th><th>设计速度</th><th>车道宽(m)</th></tr>
+<tr><td>主干路</td><td class="hl">60~80km/h</td><td>3.5~3.75</td></tr>
+<tr><td>次干路</td><td>40~60km/h</td><td>3.25~3.5</td></tr>
+<tr><td>支路</td><td>30km/h</td><td>3.0~3.25</td></tr>
 </table>
 
-<h4>🚸 第8章 交通安全设施</h4>
-<ul>
-<li>城镇化公路应兼顾<span class="hl">机动交通与非机动交通</span>安全</li>
-<li>与城市道路衔接处应设过渡段限速标志</li>
-<li>非机动车道与机动车道间宜设<span class="hl">隔离设施</span></li>
-</ul>
+<h4>横断面特点</h4>
+<ul><li>需设<span class="hl">非机动车道</span>和人行道</li><li>与城市道路衔接处设过渡段</li><li>管线综合：协调地下管线布置</li></ul>
 
-<div class="note-box"><strong>📅 实施信息</strong><br>2021年11月1日实施。填补城镇化地区公路设计标准空白。</div>`
+<div class="note-box"><strong>📅</strong>2021年11月1日实施。城镇化公路的专用标准。</div>`
   },
   {
     code:'JTG D20-2017',
@@ -1489,24 +1467,20 @@ var SPECS = [
     status:'current',
     tags:["立交","枢纽"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（8章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 立交类型</div><div>4 互通式立交</div><div>5 分离式立交</div><div>6 匝道设计</div><div>7 变速车道</div><div>8 收费站与服务区</div></div>
+    content:`<h4>📑 内容概要</h4>
+<p><span class="hl">公路立体交叉设计细则</span>。</p>
 
-<h4>📜 第3章 立交类型</h4>
-<table><tr><th>类型</th><th>适用条件</th><th>通行能力</th></tr>
-<tr><td>枢纽互通</td><td>高速×高速</td><td>高</td></tr>
-<tr><td>一般互通</td><td>高速×一般公路</td><td>中</td></tr>
+<h4>立交分类</h4>
+<table><tr><th>类型</th><th>适用</th><th>匝道速度</th></tr>
+<tr><td>枢纽互通</td><td>高速×高速</td><td class="hl">40~80km/h</td></tr>
+<tr><td>一般互通</td><td>高速×一般路</td><td>30~60km/h</td></tr>
 <tr><td>分离式立交</td><td>交叉不转换</td><td>—</td></tr>
 </table>
 
-<h4>匝道设计速度</h4>
-<ul>
-<li>枢纽互通匝道：<span class="hl">40~80km/h</span></li>
-<li>一般互通匝道：<span class="hl">30~60km/h</span></li>
-<li>环形匝道：<span class="hl">25~40km/h</span></li>
-</ul>
+<h4>匝道设计</h4>
+<ul><li>单车道匝道宽：<span class="hl">8.5m</span>(含硬路肩)</li><li>环形匝道：Rmin=<span class="hl">40~60m</span></li><li>匝道纵坡≤<span class="hl">5%</span></li></ul>
 
-<div class="note-box"><strong>📅 实施信息</strong><br>2014年12月1日实施。立体交叉设计的专用细则。</div>`
+<div class="note-box"><strong>📅</strong>2014年12月1日实施。</div>`
   },
   {
     code:'JTG/T L11-2014',
@@ -1607,33 +1581,21 @@ var SPECS = [
     status:'current',
     tags:["路基","养护"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（8章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 一般规定</div><div>4 路基日常养护</div><div>5 路基修复养护</div><div>6 边坡养护</div><div>7 排水设施养护</div><div>8 防护与支挡养护</div></div>
+    content:`<h4>📑 内容概要</h4>
+<p><span class="hl">公路路基养护技术规范</span>。</p>
 
-<h4>📜 第4章 路基日常养护</h4>
-<ul>
-<li>路基应保持<span class="hl">稳定、密实、排水通畅</span></li>
-<li>路肩应平整坚实，横坡适度，无车辙坑槽</li>
-<li>边坡应无坍塌、冲沟、滑坡</li>
-<li>排水沟应<span class="hl">畅通无淤塞</span></li>
-</ul>
+<h4>日常养护要点</h4>
+<ul><li>路基应保持<span class="hl">稳定密实排水通畅</span></li><li>路肩平整坚实，横坡适度</li><li>边坡无坍塌冲沟滑坡</li></ul>
 
-<h4>🔧 第5章 路基修复养护</h4>
-<table><tr><th>病害</th><th>处理措施</th></tr>
+<h4>路基病害处治</h4>
+<table><tr><th>病害</th><th>处治措施</th></tr>
 <tr><td>路基沉陷</td><td>注浆加固、换填、桩基托换</td></tr>
-<tr><td>路基翻浆</td><td>增设排水盲沟、换填砂砾</td></tr>
-<tr><td>路基拓宽</td><td>开挖台阶+土工格栅+分层压实</td></tr>
-<tr><td>路肩损坏</td><td>挖除重铺、恢复横坡</td></tr>
+<tr><td>路基翻浆</td><td>增设盲沟、换填砂砾</td></tr>
+<tr><td>边坡滑塌</td><td>卸载+锚固+排水</td></tr>
+<tr><td>挡墙开裂</td><td>灌浆修补+锚杆加固</td></tr>
 </table>
 
-<h4>🏔 第6章 边坡养护</h4>
-<ul>
-<li>高边坡(>20m)应<span class="hl">定期监测</span>位移和裂缝</li>
-<li>锚杆/锚索应检测预应力损失</li>
-<li>植被护坡及时补种，覆盖率≥<span class="hl">90%</span></li>
-</ul>
-
-<div class="note-box"><strong>📅 实施信息</strong><br>2020年6月1日实施。配合JTG 5110-2023养护技术标准使用。</div>`
+<div class="note-box"><strong>📅</strong>2020年6月1日实施。</div>`
   },
   {
     code:'JTG D30-2015',
@@ -1882,25 +1844,21 @@ var SPECS = [
     status:'current',
     tags:["路基","施工"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（9章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 施工准备</div><div>4 一般路基施工</div><div>5 特殊路基施工</div><div>6 路基排水施工</div><div>7 防护支挡施工</div><div>8 路基拓宽施工</div><div>9 质量检验</div></div>
+    content:`<h4>📑 内容概要</h4>
+<p><span class="hl">公路路基施工技术规范</span>。</p>
 
-<h4>📜 第4章 一般路基施工</h4>
+<h4>填方路基施工</h4>
 <table><tr><th>工序</th><th>控制要点</th><th>标准</th></tr>
-<tr><td>清表</td><td>清除草皮、树根、腐殖土</td><td>厚度≥30cm</td></tr>
-<tr><td>分层填筑</td><td>松铺厚度≤<span class="hl">30cm</span></td><td>虚铺系数1.2~1.4</td></tr>
-<tr><td>含水量控制</td><td>最佳含水量<span class="hl">±2%</span></td><td>必要时洒水或翻晒</td></tr>
-<tr><td>碾压</td><td>先轻后重、先慢后快</td><td>碾压遍数6~8遍</td></tr>
+<tr><td>清表</td><td>清除草皮树根腐殖土</td><td>厚≥30cm</td></tr>
+<tr><td>分层填筑</td><td>松铺≤<span class="hl">30cm</span></td><td>虚铺系数1.2~1.4</td></tr>
+<tr><td>含水量</td><td>最佳含水量<span class="hl">±2%</span></td><td>超出时洒水/翻晒</td></tr>
+<tr><td>碾压</td><td>先轻后重、先慢后快</td><td>6~8遍</td></tr>
 </table>
 
-<h4>🌉 第8章 路基拓宽</h4>
-<ul>
-<li>台阶开挖：阶高<span class="hl">0.3~0.5m</span>，阶宽≥1.0m</li>
-<li>拼接处：铺设<span class="hl">土工格栅</span>，每层一道</li>
-<li>压实度：同新建路基标准</li>
-</ul>
+<h4>路基拓宽拼接</h4>
+<ul><li>台阶开挖：阶高<span class="hl">0.3~0.5m</span>，阶宽≥1.0m</li><li>每层铺设<span class="hl">土工格栅</span></li><li>冲击碾压或强夯补强</li></ul>
 
-<div class="note-box"><strong>📅 实施信息</strong><br>2018年11月1日实施。路基施工质量控制的核技术规范。</div>`
+<div class="note-box"><strong>📅</strong>2018年11月1日实施。</div>`
   },
   {
     code:'JTG/T 3351-2024',
@@ -1969,34 +1927,21 @@ var SPECS = [
     status:'current',
     tags:["土工材料"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（8章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 材料分类与性能</div><div>4 路基加筋</div><div>5 路基防排水</div><div>6 路基防护</div><div>7 路面工程应用</div><div>8 质量检验</div></div>
+    content:`<h4>📑 内容概要</h4>
+<p><span class="hl">公路土工合成材料应用技术规范</span>。</p>
 
-<h4>🧵 第3章 材料分类</h4>
-<table><tr><th>类别</th><th>名称</th><th>主要用途</th></tr>
-<tr><td>土工格栅</td><td>单向/双向/多向</td><td class="hl">路基加筋、边坡稳定</td></tr>
-<tr><td>土工布</td><td>短纤/长丝/编织</td><td>过滤、隔离、排水</td></tr>
-<tr><td>土工膜</td><td>HDPE/LDPE/PVC</td><td class="hl">防渗、隔水</td></tr>
-<tr><td>土工格室</td><td>焊接/插接式</td><td>边坡防护、基层加固</td></tr>
-<tr><td>土工网垫</td><td>三维/二维</td><td>坡面植草防护</td></tr>
+<h4>材料分类</h4>
+<table><tr><th>类型</th><th>主要用途</th><th>关键参数</th></tr>
+<tr><td>土工格栅</td><td>路基加筋</td><td>抗拉≥<span class="hl">50kN/m</span></td></tr>
+<tr><td>土工布</td><td>过滤隔离</td><td>等效孔径O90</td></tr>
+<tr><td>土工膜</td><td>防渗隔水</td><td>厚≥<span class="hl">0.3mm</span></td></tr>
+<tr><td>土工格室</td><td>边坡防护</td><td>高5~20cm</td></tr>
 </table>
 
-<h4>🪨 第4章 路基加筋</h4>
-<ul>
-<li>筋材抗拉强度设计值=极限抗拉强度/分项系数（<span class="hl">1.25~1.5</span>）</li>
-<li>加筋土挡墙筋材长度≥<span class="hl">0.7H</span>（H为墙高）且≥3m</li>
-<li>层间距≤<span class="hl">0.6m</span>（压实后才能敷设上层筋材）</li>
-<li>新旧路拼接处应<span class="hl">分层铺设土工格栅</span></li>
-</ul>
+<h4>加筋土设计</h4>
+<ul><li>筋材长度≥<span class="hl">0.7H</span>且≥3m</li><li>层间距≤<span class="hl">0.6m</span></li><li>新旧路拼接处<span class="hl">分层设格栅</span></li></ul>
 
-<h4>💧 第5章 路基防排水</h4>
-<ul>
-<li>土工布过滤层：等效孔径O90≤<span class="hl">0.15~0.3mm</span></li>
-<li>土工膜防渗层厚≥<span class="hl">0.3mm</span>（HDPE膜≥0.5mm）</li>
-<li>复合排水网：排水芯板厚<span class="hl">5~10mm</span></li>
-</ul>
-
-<div class="note-box"><strong>📅 实施信息</strong><br>2013年2月1日实施。公路土工合成材料应用的主要技术依据。</div>`
+<div class="note-box"><strong>📅</strong>2013年2月1日实施。</div>`
   },
   {
     code:'JTG/T D33-2012',
@@ -2042,24 +1987,19 @@ var SPECS = [
     tags:["水泥混凝土","施工"],
     pdf:'规范PDF/JTGT F30-2014 公路水泥混凝土路面施工技术细则.pdf',
     hasPdf:true,
-    content:`<h4>📑 章节目录（9章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 材料要求</div><div>4 配合比设计</div><div>5 模板与钢筋</div><div>6 混凝土施工</div><div>7 接缝施工</div><div>8 养生</div><div>9 质量检验</div></div>
+    content:`<h4>📑 内容概要</h4>
+<p><span class="hl">公路水泥混凝土路面施工技术细则</span>。</p>
 
-<h4>📜 第6章 混凝土施工</h4>
-<ul>
-<li>摊铺前模板高程偏差≤<span class="hl">±5mm</span></li>
-<li>滑模摊铺速度：<span class="hl">0.5~3m/min</span></li>
-<li>振捣棒间距≤<span class="hl">45cm</span>，插入深度到底</li>
-</ul>
+<h4>混凝土施工参数</h4>
+<ul><li>模板高程偏差≤<span class="hl">±5mm</span></li><li>滑模摊铺速度：<span class="hl">0.5~3m/min</span></li><li>振捣棒间距≤<span class="hl">45cm</span></li></ul>
 
-<h4>第7章 接缝施工</h4>
-<ul>
-<li>切缝时机：<span class="hl">混凝土强度达25%~30%</span>设计强度</li>
-<li>传力杆定位偏差≤<span class="hl">±10mm</span></li>
-<li>填缝料灌入深度：<span class="hl">20~30mm</span></li>
-</ul>
+<h4>接缝施工</h4>
+<ul><li>切缝时机：强度达<span class="hl">25%~30%</span>设计值</li><li>传力杆偏差≤<span class="hl">±10mm</span></li><li>填缝料灌深<span class="hl">20~30mm</span></li></ul>
 
-<div class="note-box"><strong>📅 实施信息</strong><br>2014年8月1日实施。水泥路面施工质量控制的依据。</div>`
+<h4>养生</h4>
+<ul><li>保湿养生≥<span class="hl">14天</span></li><li>覆盖薄膜<span class="hl">严密不透风</span></li></ul>
+
+<div class="note-box"><strong>📅</strong>2014年8月1日实施。</div>`
   },
   {
     code:'JTG/T F20-2015',
@@ -2069,25 +2009,20 @@ var SPECS = [
     tags:["基层","施工"],
     pdf:'规范PDF/JTGT F20-2015 公路路面基层施工技术细则.pdf',
     hasPdf:true,
-    content:`<h4>📑 章节目录（9章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 材料要求</div><div>4 水泥稳定碎石基层</div><div>5 石灰粉煤灰稳定基层</div><div>6 级配碎石基层</div><div>7 施工工艺</div><div>8 质量控制</div><div>9 验收标准</div></div>
+    content:`<h4>📑 内容概要</h4>
+<p><span class="hl">公路路面基层施工技术细则</span>。</p>
 
-<h4>📜 第4章 水泥稳定碎石基层</h4>
-<table><tr><th>指标</th><th>高速/一级</th><th>二级及以下</th></tr>
-<tr><td>7d无侧限抗压强度</td><td class="hl">3~5 MPa</td><td>2~4 MPa</td></tr>
-<tr><td>水泥剂量</td><td class="hl">3%~6%</td><td>2%~5%</td></tr>
-<tr><td>压实度</td><td class="hl">≥98%</td><td>≥97%</td></tr>
-<tr><td>厚度偏差</td><td>−10mm</td><td>−12mm</td></tr>
+<h4>水稳基层强度标准</h4>
+<table><tr><th>公路等级</th><th>极重/特重交通</th><th>重交通</th><th>中/轻交通</th></tr>
+<tr><td>高速/一级</td><td class="hl">4~6MPa</td><td>3~5MPa</td><td>2~4MPa</td></tr>
+<tr><td>二级</td><td>—</td><td>3~5MPa</td><td>2~4MPa</td></tr>
+<tr><td>三级及以下</td><td>—</td><td>—</td><td>2~3MPa</td></tr>
 </table>
 
-<h4>施工要点</h4>
-<ul>
-<li>拌和到碾压完成≤<span class="hl">2h</span>(水泥初凝前)</li>
-<li>碾压：初压→复压→终压，压实遍数<span class="hl">6~8遍</span></li>
-<li>养生期≥<span class="hl">7d</span>，保持湿润</li>
-</ul>
+<h4>施工时间控制</h4>
+<ul><li>拌和到碾压完成≤<span class="hl">2h</span></li><li>碾压遍数：<span class="hl">6~8遍</span></li><li>养生期≥<span class="hl">7d</span>保持湿润</li></ul>
 
-<div class="note-box"><strong>📅 实施信息</strong><br>2015年8月1日实施。路面基层施工的核心技术细则。</div>`
+<div class="note-box"><strong>📅</strong>2015年8月1日实施。</div>`
   },
   {
     code:'GB/T 35162-2017',
@@ -2802,23 +2737,23 @@ var SPECS = [
     tags:["作业区","交安"],
     hasPdf:false,
     content:`<h4>📑 内容概要</h4>
-<p>规定了<span class="hl">道路交通标志和标线 第4部分：作业区</span>的设置要求。</p>
+<p><span class="hl">道路交通标志和标线 第4部分：作业区</span>。施工养护作业区的安全布设标准。</p>
 
-<h4>作业区组成</h4>
-<ul>
-<li>警告区→<span class="hl">上游过渡区</span>→缓冲区→工作区→<span class="hl">下游过渡区</span>→终止区</li>
-<li>警告区长度：高速≥<span class="hl">1000m</span>，一级≥600m，二级≥400m</li>
-<li>过渡区长度：根据车速和偏移量计算</li>
-</ul>
+<h4>作业区六段式</h4>
+<ul><li><span class="hl">警告区→上游过渡区→缓冲区→工作区→下游过渡区→终止区</span></li></ul>
 
-<h4>安全设施</h4>
-<ul>
-<li>施工标志+限速标志+导向标志</li>
-<li>锥形交通标：间距≤<span class="hl">5m</span>(高速/一级)</li>
-<li>夜间<span class="hl">警示灯</span>+反光标志</li>
-</ul>
+<h4>各区段长度</h4>
+<table><tr><th>设计速度</th><th>警告区(m)</th><th>过渡区(m)</th><th>缓冲区(m)</th></tr>
+<tr><td>120km/h</td><td class="hl">≥1000</td><td>≥200</td><td>≥80</td></tr>
+<tr><td>100</td><td>≥800</td><td>≥150</td><td>≥60</td></tr>
+<tr><td>80</td><td>≥600</td><td>≥100</td><td>≥40</td></tr>
+<tr><td>60</td><td>≥400</td><td>≥60</td><td>≥30</td></tr>
+</table>
 
-<div class="note-box"><strong>📅 实施信息</strong><br>2018年2月1日实施。施工养护作业区安全布设的依据。</div>`
+<h4>安全设施要求</h4>
+<ul><li>锥形交通标间距：高速≤<span class="hl">5m</span>，一般公路≤10m</li><li>夜间设<span class="hl">警示灯</span>+反光标志</li><li>限速标志<span class="hl">逐级降低</span>，每级≤20km/h</li></ul>
+
+<div class="note-box"><strong>📅</strong>2018年2月1日实施。</div>`
   },
   {
     code:'GB/T 31446-2015',
@@ -3092,23 +3027,18 @@ var SPECS = [
     tags:["限速","标志"],
     hasPdf:false,
     content:`<h4>📑 内容概要</h4>
-<p>规定了<span class="hl">公路限速标志</span>的设计和设置要求。</p>
+<p><span class="hl">公路限速标志设计规范</span>。规定了限速值的确定方法和标志设置要求。</p>
 
-<h4>限速值确定</h4>
-<ul>
-<li>一般限速为<span class="hl">设计速度</span>（如设计速度80km/h→限速80）</li>
-<li>特殊路段（急弯、陡坡、隧道）可降速<span class="hl">10~20km/h</span></li>
-<li>限速值应为<span class="hl">10的整数倍</span></li>
-</ul>
+<h4>限速值确定原则</h4>
+<ul><li>一般路段限速=<span class="hl">设计速度</span></li><li>特殊路段(急弯、陡坡、隧道)可降<span class="hl">10~20km/h</span></li><li>限速值为<span class="hl">10的整数倍</span></li></ul>
 
 <h4>限速标志设置</h4>
-<ul>
-<li>限速路段起点设限速标志+<span class="hl">辅助标志</span>说明原因</li>
-<li>隧道入口前<span class="hl">100~200m</span>设置</li>
-<li>解除限速标志在限速路段终点</li>
-</ul>
+<ul><li>限速起点：限速标志+<span class="hl">辅助标志</span>说明原因</li><li>隧道入口前<span class="hl">100~200m</span>设置</li><li>限速路段较长时<span class="hl">每2~3km</span>重复设置</li><li>解除限速：限速路段终点</li></ul>
 
-<div class="note-box"><strong>📅 实施信息</strong><br>2021年11月1日实施。配合JTG D81-2017和JTG D82-2009使用。</div>`
+<h4>分车型限速</h4>
+<ul><li>大型车限速可比小型车低<span class="hl">10~20km/h</span></li><li>危险品运输车应按<span class="hl">最低限速</span>行驶</li></ul>
+
+<div class="note-box"><strong>📅</strong>2021年11月1日实施。</div>`
   },
   {
     code:'JTG/T 3671-2021',
@@ -3350,26 +3280,21 @@ var SPECS = [
     status:'current',
     tags:["照明"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（8章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 照明标准</div><div>4 光源灯具</div><div>5 照明方式</div><div>6 照明设计</div><div>7 节能</div><div>8 供电与控制</div></div>
+    content:`<h4>📑 内容概要</h4>
+<p><span class="hl">城市道路照明设计标准</span>。</p>
 
 <h4>道路照明标准值</h4>
-<table><tr><th>道路级别</th><th>平均照度(lx)</th><th>均匀度</th><th>眩光限制</th></tr>
-<tr><td>快速路</td><td class="hl">20~30</td><td>≥0.4</td><td>G≥5</td></tr>
-<tr><td>主干路</td><td class="hl">15~20</td><td>≥0.35</td><td>G≥5</td></tr>
-<tr><td>次干路</td><td>10~15</td><td>≥0.3</td><td>G≥4</td></tr>
-<tr><td>支路</td><td>8~10</td><td>≥0.3</td><td>—</td></tr>
+<table><tr><th>道路级别</th><th>平均照度(lx)</th><th>均匀度</th></tr>
+<tr><td>快速路</td><td class="hl">20~30</td><td>≥0.4</td></tr>
+<tr><td>主干路</td><td>15~20</td><td>≥0.35</td></tr>
+<tr><td>次干路</td><td>10~15</td><td>≥0.3</td></tr>
+<tr><td>支路</td><td>8~10</td><td>≥0.3</td></tr>
 </table>
 
-<h4>灯具选择</h4>
-<ul>
-<li>快速路/主干路宜采用<span class="hl">LED灯</span>或高压钠灯</li>
-<li>灯具防护等级≥<span class="hl">IP65</span></li>
-<li>灯杆高度：快速路<span class="hl">10~15m</span>，主干路8~12m，次干路6~10m</li>
-<li>灯杆间距：宜为灯杆高度的<span class="hl">3.5~4倍</span></li>
-</ul>
+<h4>灯具与灯杆</h4>
+<ul><li>防护等级≥<span class="hl">IP65</span></li><li>快速路灯杆<span class="hl">10~15m</span>，间距3.5~4倍杆高</li><li>主干路8~12m</li></ul>
 
-<div class="note-box"><strong>📅 实施信息</strong><br>2016年6月1日实施。替代CJJ 45-2006。</div>`
+<div class="note-box"><strong>📅</strong>2016年6月1日实施。</div>`
   },
   {
     code:'CJJ 152-2010',
@@ -3378,32 +3303,23 @@ var SPECS = [
     status:'current',
     tags:["交叉口"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（9章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 平面交叉</div><div>4 立体交叉</div><div>5 交叉口渠化</div><div>6 交通岛</div><div>7 人行过街</div><div>8 非机动车过街</div><div>9 附属设施</div></div>
+    content:`<h4>📑 内容概要</h4>
+<p><span class="hl">城市道路交叉口设计规程</span>。</p>
 
-<h4>📐 第3章 平面交叉设计</h4>
-<ul>
-<li>交叉口间距：主干路<span class="hl">≥500m</span>，次干路≥300m</li>
-<li>交叉口转角缘石半径：主干路<span class="hl">15~25m</span>，次干路10~15m，支路5~10m</li>
-<li>交叉口视距三角形：按设计速度停车视距确定，三角形内<span class="hl">不得有障碍物</span></li>
-</ul>
+<h4>平面交叉间距</h4>
+<ul><li>主干路：≥<span class="hl">500m</span></li><li>次干路：≥300m</li><li>支路：≥150m</li></ul>
 
-<h4>🚶 第7章 人行过街设施</h4>
-<ul>
-<li>人行横道宽度宜为<span class="hl">4~6m</span>，间距250~300m</li>
-<li>路段人行横道应设<span class="hl">人行横道标志</span>和标线</li>
-<li>过街长度>16m时应设<span class="hl">安全岛</span>，宽度≥1.5m</li>
-<li>主干路人行横道宜设<span class="hl">信号灯</span></li>
-</ul>
+<h4>转角缘石半径</h4>
+<table><tr><th>道路等级</th><th>缘石半径(m)</th></tr>
+<tr><td>主干路</td><td class="hl">15~25</td></tr>
+<tr><td>次干路</td><td>10~15</td></tr>
+<tr><td>支路</td><td>5~10</td></tr>
+</table>
 
-<h4>🔄 第5章 交叉口渠化</h4>
-<ul>
-<li>左转车道渐变段长度：设计速度60km/h≥<span class="hl">70m</span></li>
-<li>右转专用车道宽度：<span class="hl">3.5m</span>（大型车4.0m）</li>
-<li>导流岛面积≥<span class="hl">7m²</span>（城区5m²）</li>
-</ul>
+<h4>人行过街</h4>
+<ul><li>横道宽：<span class="hl">4~6m</span></li><li>过街>16m设<span class="hl">安全岛</span>(宽≥1.5m)</li><li>主干路宜设<span class="hl">信号灯</span></li></ul>
 
-<div class="note-box"><strong>📅 实施信息</strong><br>2011年3月1日实施。城市道路交叉口设计的核心规程。</div>`
+<div class="note-box"><strong>📅</strong>2011年3月1日实施。</div>`
   },
   {
     code:'CJJ 194-2013',
@@ -3412,24 +3328,20 @@ var SPECS = [
     status:'current',
     tags:["路基","城市"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（9章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 一般规定</div><div>4 路基填料</div><div>5 路基压实</div><div>6 路基防护</div><div>7 路基排水</div><div>8 特殊路基</div><div>9 既有路基利用</div></div>
+    content:`<h4>📑 内容概要</h4>
+<p><span class="hl">城市道路路基设计规范</span>。</p>
 
-<h4>🪨 第5章 路基压实标准</h4>
-<table><tr><th>路基部位</th><th>快速路</th><th>主干路</th><th>次干路</th><th>支路</th></tr>
-<tr><td>路床(0~0.8m)</td><td class="hl">≥96</td><td>≥95</td><td>≥94</td><td>≥92</td></tr>
-<tr><td>上路堤(0.8~1.5m)</td><td>≥94</td><td>≥94</td><td>≥93</td><td>≥90</td></tr>
-<tr><td>下路堤(>1.5m)</td><td>≥93</td><td>≥92</td><td>≥90</td><td>≥90</td></tr>
+<h4>压实度标准</h4>
+<table><tr><th>路基部位</th><th>快速路</th><th>主干路</th><th>次干路</th></tr>
+<tr><td>路床(0~0.8m)</td><td class="hl">≥96</td><td>≥95</td><td>≥94</td></tr>
+<tr><td>上路堤</td><td>≥94</td><td>≥94</td><td>≥93</td></tr>
+<tr><td>下路堤</td><td>≥93</td><td>≥92</td><td>≥90</td></tr>
 </table>
 
-<h4>💧 第7章 路基排水</h4>
-<ul>
-<li>城市道路应与<span class="hl">市政排水系统</span>协调衔接</li>
-<li>路面横坡一般<span class="hl">1.5%~2.0%</span></li>
-<li>地下管线应在路基施工<span class="hl">前</span>完成</li>
-</ul>
+<h4>城市特点</h4>
+<ul><li>与<span class="hl">市政排水</span>协调</li><li>地下管线应<span class="hl">施工前</span>完成</li><li>路基宽度含管线走廊</li></ul>
 
-<div class="note-box"><strong>📅 实施信息</strong><br>2014年3月1日实施。城市道路路基设计的专用规范。</div>`
+<div class="note-box"><strong>📅</strong>2014年3月1日实施。</div>`
   },
   {
     code:'CJJ 36-2016',
@@ -3438,32 +3350,24 @@ var SPECS = [
     status:'current',
     tags:["养护","城市"],
     hasPdf:false,
-    content:`<h4>📑 章节目录（10章）</h4>
-<div class="ch-list"><div>1 总则</div><div>2 术语</div><div>3 基本规定</div><div>4 道路检测与评价</div><div>5 路基养护</div><div>6 路面养护</div><div>7 人行道养护</div><div>8 附属设施养护</div><div>9 掘路修复</div><div>10 养护作业安全</div></div>
+    content:`<h4>📑 内容概要</h4>
+<p><span class="hl">城镇道路养护技术规范</span>。</p>
 
-<h4>📜 第4章 道路检测与评价</h4>
-<ul>
-<li>快速路/主干路应<span class="hl">每年</span>进行一次常规检测</li>
-<li>路面损坏状况评价等级：A/B/C/D四级</li>
-<li>结构承载能力：<span class="hl">3~5年</span>检测一次</li>
-</ul>
+<h4>检测频率</h4>
+<ul><li>快速路/主干路：<span class="hl">每年1次</span>常规检测</li><li>结构承载能力：<span class="hl">3~5年</span>一次</li></ul>
 
-<h4>🛣 第6章 路面养护</h4>
-<table><tr><th>病害类型</th><th>养护措施</th></tr>
-<tr><td>裂缝（宽度<5mm）</td><td>灌缝或贴缝</td></tr>
-<tr><td>裂缝（宽度≥5mm）</td><td>开槽灌缝+贴缝带</td></tr>
+<h4>路面病害与处治</h4>
+<table><tr><th>病害</th><th>处治方法</th></tr>
+<tr><td>裂缝(<5mm)</td><td>灌缝或贴缝</td></tr>
+<tr><td>裂缝(≥5mm)</td><td>开槽灌缝+贴缝带</td></tr>
 <tr><td>坑槽</td><td>挖补修补，分层压实</td></tr>
 <tr><td>车辙</td><td>铣刨加铺或微表处</td></tr>
-<tr><td>拥包/推移</td><td>铲除重铺</td></tr>
 </table>
 
-<h4>⚠ 第10章 养护作业安全</h4>
-<ul>
-<li>城区养护作业应<span class="hl">避开交通高峰</span>时段</li>
-<li>占路施工应取得<span class="hl">交管部门</span>审批</li>
-</ul>
+<h4>城区作业要求</h4>
+<ul><li>避开<span class="hl">交通高峰</span>时段</li><li>占路施工须<span class="hl">交管部门</span>审批</li></ul>
 
-<div class="note-box"><strong>📅 实施信息</strong><br>2017年5月1日实施。替代CJJ 36-2006。</div>`
+<div class="note-box"><strong>📅</strong>2017年5月1日实施。替代CJJ 36-2006。</div>`
   },
   {
     code:'JTG/T 3660-2020',
