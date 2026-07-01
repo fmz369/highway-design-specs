@@ -715,7 +715,8 @@ var SPECS = [
     hasPdf:true,
     content:`<h4>📑 公路名词术语</h4>
 <ul><li>公路5级分类：高速/一/二/三/四级</li><li>路线术语：平纵横/超高/加宽/视距</li><li>路基术语：路堤/路堑/路床/压实度/CBR</li><li>路面术语：面层/基层/底基层</li><li>桥涵术语：上部/下部/基础/跨径/净空</li></ul>
-<div class="note-box"><strong>📅</strong>1987年发布。术语标准化重要参考。</div>`
+<div class="note-box"><strong>📅</strong>1987年发布。术语标准化重要参考。
+<div class="note-box"><strong>📅 实施信息</strong><br>1987年发布。公路工程术语标准化基础标准。</div></div>`
   },
   {
     code:'交公路发[2007]358号',
@@ -725,9 +726,23 @@ var SPECS = [
     tags:["设计管理","文件编制"],
     pdf:'规范PDF/公路工程基本建设项目设计文件编制办法.pdf',
     hasPdf:true,
-    content:`<h4>📑 设计文件编制办法</h4>
-<ul><li>七篇：总说明/总体/路线/路基路面/桥梁/隧道/交通工程</li><li>三阶段：可研(方案)→初设→施工图</li></ul>
-<div class="note-box"><strong>📅</strong>2007年交通部发布。</div>`
+    content:`<h4>📑 内容概要</h4>
+<p><span class="hl">公路工程基本建设项目设计文件编制办法</span>。交通部发布。</p>
+
+<h4>设计阶段划分</h4>
+<table><tr><th>阶段</th><th>内容</th><th>用途</th></tr>
+<tr><td>工程可行性研究</td><td>技术经济论证</td><td>立项决策</td></tr>
+<tr><td>初步设计</td><td>确定方案和主要技术标准</td><td>概算编制</td></tr>
+<tr><td>施工图设计</td><td>详细构造尺寸材料工艺</td><td>施工依据</td></tr>
+</table>
+
+<h4>设计文件七篇</h4>
+<ul><li>总说明书：工程概况、技术标准、推荐方案</li><li>总体设计：路线方案比选、总体布置</li><li>路线：平纵横+交叉口+安全设施</li><li>路基路面：路基+路面+排水+防护</li><li>桥梁涵洞：桥型布置+结构设计+基础</li><li>隧道：洞门+衬砌+通风+照明</li><li>交通工程：标志+标线+护栏+监控+收费</li></ul>
+
+<h4>概预算编制精度</h4>
+<ul><li>投资估算(可研)：±<span class="hl">30%</span></li><li>设计概算(初设)：±<span class="hl">10%</span></li><li>施工图预算：±<span class="hl">5%</span></li></ul>
+
+<div class="note-box"><strong>📅</strong>2007年发布。公路勘察设计招标和文件编制的基本依据。</div>`
   },
   {
     code:'建城[2025]XX号',
@@ -824,9 +839,16 @@ var SPECS = [
     tags:["钢筋","防腐"],
     pdf:'规范PDF/GBT 25826-2010 钢筋混凝土用环氧涂层钢筋.pdf',
     hasPdf:true,
-    content:`<h4>📑 环氧涂层钢筋</h4>
-<ul><li>涂层厚<span class="hl">0.18~0.30mm</span></li><li>针孔≤3个/m</li><li>弯芯4d弯无裂纹</li><li>适用海洋/化冰盐/化工厂</li></ul>
-<div class="note-box"><strong>📅</strong>2011年6月1日实施。</div>`
+    content:`<h4>📑 内容概要</h4>
+<p><span class="hl">钢筋混凝土用环氧涂层钢筋</span>。用于海洋、化冰盐等强腐蚀环境。</p>
+
+<h4>技术要求</h4>
+<ul><li>涂层厚度：<span class="hl">0.18~0.30mm</span></li><li>针孔数≤<span class="hl">3个/m</span>(出厂检测)</li><li>弯芯4d弯后无裂纹</li><li>涂层可修复，修补材料与原材料相容</li></ul>
+
+<h4>适用环境</h4>
+<ul><li>海洋环境（潮汐区/浪溅区）</li><li>化冰盐环境（北方桥梁）</li><li>化工厂区</li></ul>
+
+<div class="note-box"><strong>📅</strong>2011年6月1日实施。海工结构和化冰盐地区标配。</div>`
   },
   {
     code:'GB/T 20933-2021',
@@ -880,8 +902,19 @@ var SPECS = [
     status:'current',
     tags:["城镇化","路线"],
     hasPdf:false,
-    content:`<h4>📑 城镇化公路</h4>
-<ul><li>主干路V60~80,次干V40~60,支路V30</li><li>需设<span class="hl">非机动车道</span>+人行道</li><li>管线综合协调</li></ul>
+    content:`<h4>📑 内容概要</h4>
+<p><span class="hl">城镇化地区公路工程技术标准</span>。填补城镇密集区公路设计标准空白。</p>
+
+<h4>功能分级</h4>
+<table><tr><th>等级</th><th>设计速度</th><th>车道宽(m)</th><th>适用</th></tr>
+<tr><td>主干路</td><td class="hl">60~80km/h</td><td>3.5~3.75</td><td>承担主要交通</td></tr>
+<tr><td>次干路</td><td>40~60km/h</td><td>3.25~3.5</td><td>集散交通</td></tr>
+<tr><td>支路</td><td>30km/h</td><td>3.0~3.25</td><td>服务性交通</td></tr>
+</table>
+
+<h4>横断面特点</h4>
+<ul><li>需设<span class="hl">非机动车道</span>和人行道</li><li>与城市道路衔接处设过渡段</li><li>管线综合：协调地下管线布置</li></ul>
+
 <div class="note-box"><strong>📅</strong>2021年11月1日实施。</div>`
   },
   {
@@ -983,8 +1016,15 @@ var SPECS = [
     status:'current',
     tags:["改扩建","高速"],
     hasPdf:false,
-    content:`<h4>📑 高速改扩建</h4>
-<ul><li>拼宽：单侧/双侧/分离式</li><li>路基拼接：台阶+土工格栅+冲击碾压</li><li>路面搭接≥<span class="hl">30cm</span></li></ul>
+    content:`<h4>📑 内容概要</h4>
+<p><span class="hl">高速公路改扩建设计细则</span>。2022年版。</p>
+
+<h4>拼宽方式</h4>
+<ul><li><span class="hl">单侧拼宽</span>：一侧新建，方案简单占地少</li><li><span class="hl">双侧拼宽</span>：两侧各加宽，占地多但对称</li><li><span class="hl">分离式增建</span>：保持间距独立运行</li></ul>
+
+<h4>拼接技术</h4>
+<ul><li>路基拼接：开挖台阶+<span class="hl">土工格栅</span>+冲击碾压</li><li>桥梁拼接：同跨径拼宽或分离增建</li><li>路面拼接：铣刨搭接≥<span class="hl">30cm</span></li></ul>
+
 <div class="note-box"><strong>📅</strong>2022年11月1日实施。</div>`
   },
   {
@@ -1755,9 +1795,21 @@ var SPECS = [
     status:'current',
     tags:["钢结构","养护"],
     hasPdf:false,
-    content:`<h4>📑 钢桥养护</h4>
-<ul><li>涂层：底漆≥<span class="hl">80μm</span>+中间≥100μm+面≥80μm</li><li>疲劳裂纹→止裂孔+补强板</li><li>腐蚀→除锈+重涂防腐体系</li></ul>
-<div class="note-box"><strong>📅</strong>2026年4月1日实施。首部钢桥养护标准。</div>`
+    content:`<h4>📑 内容概要</h4>
+<p><span class="hl">公路钢结构桥梁养护技术规范</span>。2025年发布，2026年4月1日实施。首部系统化钢桥养护技术标准。</p>
+
+<h4>主要病害检查</h4>
+<table><tr><th>病害</th><th>检测方法</th><th>处治</th></tr>
+<tr><td>涂层劣化</td><td>目视+膜厚仪+电位</td><td>除锈重涂</td></tr>
+<tr><td>钢材腐蚀</td><td>超声波测厚</td><td>补强或更换</td></tr>
+<tr><td>疲劳裂纹</td><td>磁粉/超声波/渗透</td><td>止裂孔+补强板</td></tr>
+<tr><td>螺栓松动</td><td>扭矩扳手抽检</td><td>复拧或更换</td></tr>
+</table>
+
+<h4>防腐涂装体系</h4>
+<ul><li>底漆(环氧富锌)≥<span class="hl">80μm</span></li><li>中间漆(环氧云铁)≥<span class="hl">100μm</span></li><li>面漆(聚氨酯/氟碳)≥<span class="hl">80μm</span></li></ul>
+
+<div class="note-box"><strong>📅</strong>2026年4月1日实施。</div>`
   },
   {
     code:'JTG/T 5431-2025',
@@ -1777,9 +1829,18 @@ var SPECS = [
     status:'current',
     tags:["加固","施工"],
     hasPdf:false,
-    content:`<h4>📑 桥梁加固施工</h4>
-<ul><li>表面处理<span class="hl">Sa2.5级</span></li><li>粘贴钢板：结构胶+锚栓</li><li>CFRP：底胶+浸渍胶+碳布</li><li>体外预应力：锚固块+转向块+张拉+防腐</li></ul>
-<div class="note-box"><strong>📅</strong>2026年4月1日实施。</div>`
+    content:`<h4>📑 内容概要</h4>
+<p><span class="hl">公路桥梁加固施工技术规范</span>。2026年4月1日实施。与JTG/T 5431-2025加固设计配套。</p>
+
+<h4>加固方法与工艺</h4>
+<table><tr><th>方法</th><th>关键工艺</th><th>质量控制</th></tr>
+<tr><td>粘贴钢板</td><td>表面处理<span class="hl">Sa2.5级</span>+结构胶+锚栓</td><td>粘结强度≥2.5MPa</td></tr>
+<tr><td>粘贴碳纤维</td><td>基面打磨+底胶+浸渍胶+CFRP布</td><td>正拉粘结≥2.5MPa</td></tr>
+<tr><td>体外预应力</td><td>锚固块+转向块+张拉+防腐</td><td>张拉力偏差≤±5%</td></tr>
+<tr><td>增大截面</td><td>凿毛+植筋+浇筑+养护</td><td>新增混凝土≥C40</td></tr>
+</table>
+
+<div class="note-box"><strong>📅</strong>2026年4月1日实施。配合JTG/T 5431使用。</div>`
   },
   {
     code:'JTG/T B02-01-2008',
@@ -1912,9 +1973,22 @@ var SPECS = [
     status:'current',
     tags:["机电","质检"],
     hasPdf:false,
-    content:`<h4>📑 机电工程质量检验</h4>
-<ul><li>监控：车辆检测/VMS/CCTV</li><li>通信：光纤/程控/紧急电话</li><li>收费：ETC成功率≥<span class="hl">99.5%</span></li><li>隧道机电：通风/照明/消防</li></ul>
-<div class="note-box"><strong>📅</strong>2020年9月1日实施。</div>`
+    content:`<h4>📑 内容概要</h4>
+<p><span class="hl">公路工程质量检验评定标准 第二册 机电工程</span>。规定机电工程检测项目和评定标准。</p>
+
+<h4>机电工程五大系统</h4>
+<table><tr><th>系统</th><th>主要设备</th><th>关键指标</th></tr>
+<tr><td>监控设施</td><td>车辆检测器/VMS/CCTV</td><td>检测精度≥95%</td></tr>
+<tr><td>通信设施</td><td>光纤传输/程控交换</td><td>光缆衰耗≤<span class="hl">0.4dB/km</span></td></tr>
+<tr><td>收费设施</td><td>车道设备/ETC系统</td><td>交易成功率≥<span class="hl">99.5%</span></td></tr>
+<tr><td>隧道机电</td><td>通风机/照明灯/消防</td><td>照度≥<span class="hl">20lx</span></td></tr>
+<tr><td>供配电</td><td>变电所/配电箱/电缆</td><td>绝缘电阻≥0.5MΩ</td></tr>
+</table>
+
+<h4>评定等级</h4>
+<ul><li><span class="hl">合格</span>：主控项目全部合格+一般项目≥80%</li><li><span class="hl">不合格</span>：任一项不满足</li></ul>
+
+<div class="note-box"><strong>📅</strong>2020年9月1日实施。机电工程交竣工验收法定依据。</div>`
   },
   {
     code:'JTG D70/2-2014',
@@ -2171,7 +2245,8 @@ var SPECS = [
     hasPdf:true,
     content:`<h4>📑 城市道路设计深度图样</h4>
 <ul><li>平面图/纵断面/横断面标准深度示例</li><li>交叉口竖向设计图</li><li>路面结构大样+无障碍设施详图</li><li>配合CJJ 37使用，PDF可下载</li></ul>
-<div class="note-box"><strong>📅</strong>国家建筑标准设计图集。</div>`
+<div class="note-box"><strong>📅</strong>国家建筑标准设计图集。
+<div class="note-box"><strong>📅 实施信息</strong><br>国家建筑标准设计图集。配合CJJ 37使用。</div></div>`
   },
   {
     code:'JTG 3370.1-2018',
@@ -2262,9 +2337,21 @@ var SPECS = [
     status:'current',
     tags:["养护"],
     hasPdf:false,
-    content:`<h4>📑 公路养护（旧版）</h4>
-<ul><li>已被JTG 5110-2023替代</li><li>养护作业区六段式：警告→过渡→缓冲→工作→过渡→终止</li><li>高速警告区≥<span class="hl">1000m</span></li></ul>
-<div class="note-box"><strong>📅</strong>2010年2月实施，已被替代。仍有参考价值。</div>`
+    content:`<h4>📑 内容概要</h4>
+<p><span class="hl">公路养护技术规范</span>。已被JTG 5110-2023替代，仍有参考价值。</p>
+
+<h4>养护作业安全</h4>
+<ul><li>作业区布置：<span class="hl">警告区→上游过渡区→缓冲区→工作区→下游过渡区→终止区</span></li><li>高速/一级警告区≥<span class="hl">1000m</span></li><li>作业人员穿<span class="hl">反光背心</span></li><li>夜间设警示灯+反光标志</li></ul>
+
+<h4>路面养护决策</h4>
+<table><tr><th>PCI范围</th><th>养护类型</th><th>措施</th></tr>
+<tr><td>≥85</td><td>日常养护</td><td>灌缝、小修</td></tr>
+<tr><td>80~85</td><td>预防性养护</td><td>微表处、薄层罩面</td></tr>
+<tr><td>60~80</td><td>修复性养护</td><td>铣刨重铺</td></tr>
+<tr><td><60</td><td>大修</td><td>结构性重建</td></tr>
+</table>
+
+<div class="note-box"><strong>📅</strong>2010年2月1日实施。已被JTG 5110-2023替代。</div>`
   },
   {
     code:'CJJ 45-2015',
@@ -2399,7 +2486,8 @@ var SPECS = [
     hasPdf:true,
     content:`<h4>📑 城市道路水泥路面图集</h4>
 <ul><li>各交通等级水泥路面典型结构组合</li><li>接缝布置平面+传力杆/拉杆详图</li><li>检查井周边+路缘石衔接大样</li><li>配合JTG D40/CJJ 169使用，PDF可下载</li></ul>
-<div class="note-box"><strong>📅</strong>国家建筑标准设计图集。</div>`
+<div class="note-box"><strong>📅</strong>国家建筑标准设计图集。
+<div class="note-box"><strong>📅 实施信息</strong><br>国家建筑标准设计图集。配合JTG D40/CJJ 169使用。</div></div>`
   },
   {
     code:'FDIS MD5-12170',
@@ -2418,6 +2506,7 @@ var SPECS = [
 <tr><td>砂石路面</td><td>8~15cm</td></tr>
 </table>
 <ul><li>造价<span class="hl">30%~50%</span>传统路面</li><li>压实度≥<span class="hl">93%</span></li></ul>
-<div class="note-box"><strong>📅</strong>配合JTG 2111使用。PDF可下载。</div>`
+<div class="note-box"><strong>📅</strong>配合JTG 2111使用。PDF可下载。
+<div class="note-box"><strong>📅 实施信息</strong><br>配合JTG 2111-2019和JTG/T 3311-2021使用。</div></div>`
   }
 ];
